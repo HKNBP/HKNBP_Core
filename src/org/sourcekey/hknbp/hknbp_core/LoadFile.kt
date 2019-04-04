@@ -22,7 +22,6 @@ import kotlin.browser.document
 
 object LoadFile {
     fun load(filePath: String, onLoadedFile: (xmlhttp: XMLHttpRequest)->Unit, onFailedLoadFile: ()->Unit){
-        val cors_api_url = "https://cors-anywhere.herokuapp.com/"//實現<跨Domain存取(CORS)>重點,完全唔明點解做到,要將呢個+文件位置就得
         val xmlhttp = XMLHttpRequest()
         var isLoaded = false
         xmlhttp.onreadystatechange = fun(event) {
@@ -48,8 +47,14 @@ object LoadFile {
                 //PromptBox.promptMessage(dialogues.node().canNotReadData)
             }
         }
-        xmlhttp.open("GET", cors_api_url + filePath, true)
+        xmlhttp.open("GET", filePath, true)
         xmlhttp.send()
+    }
+
+    fun corsLoad(filePath: String, onLoadedFile: (xmlhttp: XMLHttpRequest)->Unit, onFailedLoadFile: ()->Unit){
+        val cors_api_url = "https://cors-anywhere.herokuapp.com/" //實現<跨Domain存取(CORS)>重點
+        val path = cors_api_url + filePath //完全唔明點解做到,要將呢個+文件位置就得
+        LoadFile.load(path, onLoadedFile, onFailedLoadFile)
     }
 
     fun load(filePath: String): XMLHttpRequest{

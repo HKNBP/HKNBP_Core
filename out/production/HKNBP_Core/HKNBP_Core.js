@@ -1384,15 +1384,19 @@ var HKNBP_Core = function (_, Kotlin) {
     };
   }
   LoadFile.prototype.load_gc4c6p$ = function (filePath, onLoadedFile, onFailedLoadFile) {
-    var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
     var xmlhttp = new XMLHttpRequest();
     var isLoaded = {v: false};
     xmlhttp.onreadystatechange = LoadFile$load$lambda(isLoaded, xmlhttp, onLoadedFile);
     var isFailedLoad = {v: false};
     xmlhttp.ontimeout = LoadFile$load$lambda_0(isFailedLoad, onFailedLoadFile);
     xmlhttp.onerror = LoadFile$load$lambda_1(isFailedLoad, onFailedLoadFile);
-    xmlhttp.open('GET', cors_api_url + filePath, true);
+    xmlhttp.open('GET', filePath, true);
     xmlhttp.send();
+  };
+  LoadFile.prototype.corsLoad_gc4c6p$ = function (filePath, onLoadedFile, onFailedLoadFile) {
+    var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
+    var path = cors_api_url + filePath;
+    LoadFile_getInstance().load_gc4c6p$(path, onLoadedFile, onFailedLoadFile);
   };
   LoadFile.prototype.load_61zpoe$ = function (filePath) {
     var xmlhttp = new XMLHttpRequest();
@@ -4480,7 +4484,7 @@ var HKNBP_Core = function (_, Kotlin) {
     };
   }
   XMLTV$Companion.prototype.parseXMLTV_yr8ruz$ = function (xmltvSrc, epgID, onParsedXMLTVListener, onFailedParseXMLTVListener) {
-    LoadFile_getInstance().load_gc4c6p$(xmltvSrc, XMLTV$Companion$parseXMLTV$lambda(onParsedXMLTVListener, epgID, this), XMLTV$Companion$parseXMLTV$lambda_0(onFailedParseXMLTVListener));
+    LoadFile_getInstance().corsLoad_gc4c6p$(xmltvSrc, XMLTV$Companion$parseXMLTV$lambda(onParsedXMLTVListener, epgID, this), XMLTV$Companion$parseXMLTV$lambda_0(onFailedParseXMLTVListener));
   };
   XMLTV$Companion.prototype.compareTo_fsx041$ = function ($receiver, date) {
     return numberToInt($receiver.getTime() - date.getTime());

@@ -464,7 +464,7 @@ open class XMLTV(
          * @param onParseedXMLTVListener 當完成解析XMLTV就執行呢個function
          * */
         fun parseXMLTV(xmltvSrc: String, epgID: String, onParsedXMLTVListener: (xmltv: XMLTV) -> Unit, onFailedParseXMLTVListener: ()->Unit){
-            LoadFile.load(xmltvSrc, fun(xmlHttp){
+            LoadFile.corsLoad(xmltvSrc, fun(xmlHttp){
                 onParsedXMLTVListener(getXMLTV(xmlHttp.responseXML, epgID))
             }, fun(){
                 onFailedParseXMLTVListener()
