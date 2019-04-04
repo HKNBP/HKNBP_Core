@@ -2898,7 +2898,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.shower_0.onmousemove = UserControlPanel_init$lambda_0(this);
     this.panel_0.onmousemove = UserControlPanel_init$lambda_1(this);
     this.panel_0.onscroll = UserControlPanel_init$lambda_2(this);
-    jQuery.mouseleave(UserControlPanel_init$lambda_3(this));
+    jQuery('body').mouseleave(UserControlPanel_init$lambda_3(this));
     this.panel_0.onfocus = UserControlPanel_init$lambda_4(this);
     var _shower = this.shower_0;
     _shower.ontouchstart = UserControlPanel_init$lambda_5(this);

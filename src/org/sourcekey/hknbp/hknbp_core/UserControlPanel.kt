@@ -174,7 +174,7 @@ object UserControlPanel {
         panel.onscroll = fun(event){
             show(30000)
         }
-        jQuery.mouseleave(fun(){
+        jQuery("body").mouseleave(fun(){
             hide()
         })
         ////遙控////
