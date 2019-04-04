@@ -52,7 +52,7 @@
             <iframeplayersrc>iframePlayer/youtube_api.html</iframeplayersrc>
             <link>74SZXCQb44s</link>
         </source>
-        <information epgid="3sat.de" src="test/test_xmltv.xml"/>
+        <information epgid="hayat-tv.ba" src="http://tvprofil.net/xmltv/data/hayat-tv.ba/weekly_hayat-tv.ba_tvprofil.net.xml"/>
     </channel>
     <channel>
         <number>004</number>
@@ -62,7 +62,7 @@
             <iframeplayersrc>iframePlayer/youtube_api.html</iframeplayersrc>
             <link>dm2qhAoU2aY</link>
         </source>
-        <information epgid="3sat.de" src="test/test_xmltv.xml"/>
+        <information epgid="obn.ba" src="http://tvprofil.net/xmltv/data/obn.ba/weekly_obn.ba_tvprofil.net.xml"/>
     </channel>
     <channel>
         <number>005</number>
@@ -72,7 +72,7 @@
             <iframeplayersrc>iframePlayer/youtube_api.html</iframeplayersrc>
             <link>4kf8X3_sWh8</link>
         </source>
-        <information epgid="3sat.de" src="test/test_xmltv.xml"/>
+        <information epgid="rtrs.ba" src="http://tvprofil.net/xmltv/data/rtrs.ba/weekly_rtrs.ba_tvprofil.net.xml"/>
     </channel>
     <channel>
         <number>006</number>
@@ -92,7 +92,7 @@
             <iframeplayersrc>iframePlayer/videojs_dash.html</iframeplayersrc>
             <link>https://bitmovin-a.akamaihd.net/content/MI201109210084_1/mpds/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.mpd</link>
         </source>
-        <information epgid="amerika.dw.de" src="test/test_xmltv.xml"/>
+        <information epgid="b92.sr" src="http://tvprofil.net/xmltv/data/b92.sr/weekly_b92.sr_tvprofil.net.xml"/>
     </channel>
     <channel>
         <number>008</number>

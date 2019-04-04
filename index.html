@@ -981,44 +981,12 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('js/service-worker.js').then(function(registration) {
       // Registration was successful
       console.log('ServiceWorker registration successful with scope: ', registration.scope);
-
-      function getCurrentCity(location) {
-        const request = new Request(location, { mode: 'cors' });
-        return fetch(request)
-            .then(response => response.text())
-            //.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
-            .then(data => {console.log("z");console.log(data);})
-      }
-      console.log(getCurrentCity("http://tvprofil.net/xmltv/data/vinkovacka-tv.hr/weekly_vinkovacka-tv.hr_tvprofil.net.xml"));
-
     }).catch(function(err) {
       // registration failed :(
       console.log('ServiceWorker registration failed: ', err);
     });
   });
 }
-</script>
-<script>
-  var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
-  function doCORSRequest(options, printResult) {
-    var x = new XMLHttpRequest();
-    x.open(options.method, cors_api_url + options.url);
-    x.onload = x.onerror = function() {
-      printResult((x.responseText || ''));
-    };
-    if (/^POST/i.test(options.method)) {
-      x.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    }
-    x.send(options.data);
-  }
-
-  doCORSRequest({
-        method: this.id === 'post' ? 'POST' : 'GET',
-        url: "http://tvprofil.net/xmltv/data/vinkovacka-tv.hr/weekly_vinkovacka-tv.hr_tvprofil.net.xml",
-        data: "http://tvprofil.net/xmltv/data/vinkovacka-tv.hr/weekly_vinkovacka-tv.hr_tvprofil.net.xml"
-      }, function printResult(result) {
-        console.log(result);
-      });
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="js/jquery.tabbable.js"></script>
