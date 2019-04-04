@@ -14,24 +14,26 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
+import org.w3c.dom.HTMLDivElement
 import org.w3c.dom.HTMLElement
 import kotlin.browser.document
 import kotlin.browser.window
 import kotlin.js.Date
 
 object ChannelInformation{
-    private val channelInformation              = document.getElementById("channelInformation") as HTMLElement
-    private val currentChannelName              = document.getElementById("channelInformationCurrentChannelName") as HTMLElement
-    private val currentChannelNumber            = document.getElementById("channelInformationCurrentChannelNumber") as HTMLElement
-    private val currentDate                     = document.getElementById("channelInformationCurrentDate") as HTMLElement
-    //private val currentChannelBitRate           = document.getElementById("channelInformationCurrentChannelBitRate") as HTMLElement
-    //private val currentChannelResolution        = document.getElementById("channelInformationCurrentChannelResolution") as HTMLElement
-    private val currentProgrammeTitle           = document.getElementById("channelInformationCurrentProgrammeTitle") as HTMLElement
-    private val currentProgrammeSubTitle        = document.getElementById("channelInformationCurrentProgrammeSubTitle") as HTMLElement
-    private val currentProgrammeEpisode         = document.getElementById("channelInformationCurrentProgrammeEpisode") as HTMLElement
-    private val currentProgrammeBroadcastTime   = document.getElementById("channelInformationCurrentProgrammeBroadcastTime") as HTMLElement
-    private val currentProgrammeDesc            = document.getElementById("channelInformationCurrentProgrammeDesc") as HTMLElement
-    private val currentProgrammeCategory        = document.getElementById("channelInformationCurrentProgrammeCategory") as HTMLElement
+    private val channelInformation              = document.getElementById("channelInformation") as HTMLDivElement
+    private val currentChannelName              = document.getElementById("channelInformationCurrentChannelName") as HTMLDivElement
+    private val currentChannelNumber            = document.getElementById("channelInformationCurrentChannelNumber") as HTMLDivElement
+    private val currentDate                     = document.getElementById("channelInformationCurrentDate") as HTMLDivElement
+    //private val currentChannelBitRate           = document.getElementById("channelInformationCurrentChannelBitRate") as org.w3c.dom.HTMLDivElement
+    //private val currentChannelResolution        = document.getElementById("channelInformationCurrentChannelResolution") as org.w3c.dom.HTMLDivElement
+    private val currentChannelAspectRatio        = document.getElementById("channelInformationCurrentChannelAspectRatio") as HTMLDivElement
+    private val currentProgrammeTitle           = document.getElementById("channelInformationCurrentProgrammeTitle") as HTMLDivElement
+    private val currentProgrammeSubTitle        = document.getElementById("channelInformationCurrentProgrammeSubTitle") as HTMLDivElement
+    private val currentProgrammeEpisode         = document.getElementById("channelInformationCurrentProgrammeEpisode") as HTMLDivElement
+    private val currentProgrammeBroadcastTime   = document.getElementById("channelInformationCurrentProgrammeBroadcastTime") as HTMLDivElement
+    private val currentProgrammeDesc            = document.getElementById("channelInformationCurrentProgrammeDesc") as HTMLDivElement
+    private val currentProgrammeCategory        = document.getElementById("channelInformationCurrentProgrammeCategory") as HTMLDivElement
 
     /**
      * 隱藏頻道訊息計時器

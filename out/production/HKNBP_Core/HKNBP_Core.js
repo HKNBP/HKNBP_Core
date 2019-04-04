@@ -22,11 +22,11 @@ var HKNBP_Core = function (_, Kotlin) {
   var addClass = Kotlin.kotlin.dom.addClass_hhb33f$;
   var toIntOrNull = Kotlin.kotlin.text.toIntOrNull_pdl1vz$;
   var toShort = Kotlin.toShort;
+  var println = Kotlin.kotlin.io.println_s8jyv4$;
   var throwUPAE = Kotlin.throwUPAE;
   var split = Kotlin.kotlin.text.split_ip8yn$;
   var ensureNotNull = Kotlin.ensureNotNull;
   var split_0 = Kotlin.kotlin.text.split_o64adg$;
-  var println = Kotlin.kotlin.io.println_s8jyv4$;
   var String_0 = String;
   var toDoubleOrNull = Kotlin.kotlin.text.toDoubleOrNull_pdl1vz$;
   var Enum = Kotlin.kotlin.Enum;
@@ -292,17 +292,18 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function ChannelInformation() {
     ChannelInformation_instance = this;
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8;
-    this.channelInformation_0 = Kotlin.isType(tmp$ = document.getElementById('channelInformation'), HTMLElement) ? tmp$ : throwCCE();
-    this.currentChannelName_0 = Kotlin.isType(tmp$_0 = document.getElementById('channelInformationCurrentChannelName'), HTMLElement) ? tmp$_0 : throwCCE();
-    this.currentChannelNumber_0 = Kotlin.isType(tmp$_1 = document.getElementById('channelInformationCurrentChannelNumber'), HTMLElement) ? tmp$_1 : throwCCE();
-    this.currentDate_0 = Kotlin.isType(tmp$_2 = document.getElementById('channelInformationCurrentDate'), HTMLElement) ? tmp$_2 : throwCCE();
-    this.currentProgrammeTitle_0 = Kotlin.isType(tmp$_3 = document.getElementById('channelInformationCurrentProgrammeTitle'), HTMLElement) ? tmp$_3 : throwCCE();
-    this.currentProgrammeSubTitle_0 = Kotlin.isType(tmp$_4 = document.getElementById('channelInformationCurrentProgrammeSubTitle'), HTMLElement) ? tmp$_4 : throwCCE();
-    this.currentProgrammeEpisode_0 = Kotlin.isType(tmp$_5 = document.getElementById('channelInformationCurrentProgrammeEpisode'), HTMLElement) ? tmp$_5 : throwCCE();
-    this.currentProgrammeBroadcastTime_0 = Kotlin.isType(tmp$_6 = document.getElementById('channelInformationCurrentProgrammeBroadcastTime'), HTMLElement) ? tmp$_6 : throwCCE();
-    this.currentProgrammeDesc_0 = Kotlin.isType(tmp$_7 = document.getElementById('channelInformationCurrentProgrammeDesc'), HTMLElement) ? tmp$_7 : throwCCE();
-    this.currentProgrammeCategory_0 = Kotlin.isType(tmp$_8 = document.getElementById('channelInformationCurrentProgrammeCategory'), HTMLElement) ? tmp$_8 : throwCCE();
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9;
+    this.channelInformation_0 = Kotlin.isType(tmp$ = document.getElementById('channelInformation'), HTMLDivElement) ? tmp$ : throwCCE();
+    this.currentChannelName_0 = Kotlin.isType(tmp$_0 = document.getElementById('channelInformationCurrentChannelName'), HTMLDivElement) ? tmp$_0 : throwCCE();
+    this.currentChannelNumber_0 = Kotlin.isType(tmp$_1 = document.getElementById('channelInformationCurrentChannelNumber'), HTMLDivElement) ? tmp$_1 : throwCCE();
+    this.currentDate_0 = Kotlin.isType(tmp$_2 = document.getElementById('channelInformationCurrentDate'), HTMLDivElement) ? tmp$_2 : throwCCE();
+    this.currentChannelAspectRatio_0 = Kotlin.isType(tmp$_3 = document.getElementById('channelInformationCurrentChannelAspectRatio'), HTMLDivElement) ? tmp$_3 : throwCCE();
+    this.currentProgrammeTitle_0 = Kotlin.isType(tmp$_4 = document.getElementById('channelInformationCurrentProgrammeTitle'), HTMLDivElement) ? tmp$_4 : throwCCE();
+    this.currentProgrammeSubTitle_0 = Kotlin.isType(tmp$_5 = document.getElementById('channelInformationCurrentProgrammeSubTitle'), HTMLDivElement) ? tmp$_5 : throwCCE();
+    this.currentProgrammeEpisode_0 = Kotlin.isType(tmp$_6 = document.getElementById('channelInformationCurrentProgrammeEpisode'), HTMLDivElement) ? tmp$_6 : throwCCE();
+    this.currentProgrammeBroadcastTime_0 = Kotlin.isType(tmp$_7 = document.getElementById('channelInformationCurrentProgrammeBroadcastTime'), HTMLDivElement) ? tmp$_7 : throwCCE();
+    this.currentProgrammeDesc_0 = Kotlin.isType(tmp$_8 = document.getElementById('channelInformationCurrentProgrammeDesc'), HTMLDivElement) ? tmp$_8 : throwCCE();
+    this.currentProgrammeCategory_0 = Kotlin.isType(tmp$_9 = document.getElementById('channelInformationCurrentProgrammeCategory'), HTMLDivElement) ? tmp$_9 : throwCCE();
     this.hideTimer_0 = 0;
     this.isShow_g8q9la$_0 = equals(this.channelInformation_0.style.display, 'block');
     this.currentDateTimer_0 = 0;
@@ -1393,10 +1394,16 @@ var HKNBP_Core = function (_, Kotlin) {
     xmlhttp.open('GET', filePath, true);
     xmlhttp.send();
   };
+  function LoadFile$corsLoad$lambda(closure$onFailedLoadFile) {
+    return function () {
+      println('\u53EF\u80FD\u7528\u5514\u5230<\u8DE8\u4F86\u6E90\u8CC7\u6E90\u5171\u7528(CORS)>');
+      closure$onFailedLoadFile();
+    };
+  }
   LoadFile.prototype.corsLoad_gc4c6p$ = function (filePath, onLoadedFile, onFailedLoadFile) {
     var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
     var path = cors_api_url + filePath;
-    LoadFile_getInstance().load_gc4c6p$(path, onLoadedFile, onFailedLoadFile);
+    LoadFile_getInstance().load_gc4c6p$(path, onLoadedFile, LoadFile$corsLoad$lambda(onFailedLoadFile));
   };
   LoadFile.prototype.load_61zpoe$ = function (filePath) {
     var xmlhttp = new XMLHttpRequest();
@@ -1438,6 +1445,32 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function set_player(player_0) {
     player = player_0;
+  }
+  function reductionTo(m, n) {
+    var arr = new Int32Array(2);
+    var h = m;
+    var k = n;
+    var a = h;
+    var b = k;
+    if (a >= b) {
+      a = h;
+      b = k;
+    }
+     else {
+      a = k;
+      b = h;
+    }
+    if (h !== 1 && k !== 1) {
+      for (var i = b; i >= 2; i--) {
+        if (h % i === 0 && k % i === 0) {
+          h = h / i | 0;
+          k = k / i | 0;
+        }
+      }
+    }
+    arr[0] = h;
+    arr[1] = k;
+    return arr;
   }
   function updateURLParameter(param, paramVal) {
     var tmp$, tmp$_0, tmp$_1;
@@ -2893,8 +2926,8 @@ var HKNBP_Core = function (_, Kotlin) {
     this.panelShowTime = 500;
     this.hideTimer_mknn4j$_0 = 0;
     this.hideMouseTimer_r29tyc$_0 = 0;
-    this.onShowpanel = UserControlPanel$onShowpanel$lambda;
-    this.onHidepanel = UserControlPanel$onHidepanel$lambda;
+    this.onShowUserControlPanel = UserControlPanel$onShowUserControlPanel$lambda;
+    this.onHideUserControlPanel = UserControlPanel$onHideUserControlPanel$lambda;
     this.onLongClick_jizysp$_0 = new UserControlPanel$OnLongClick(UserControlPanel$onLongClick$lambda);
     VirtualRemote_getInstance();
     FullScreenButton_getInstance();
@@ -2930,7 +2963,7 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   UserControlPanel.prototype.show = function () {
     this.panel_0.style.display = 'block';
-    this.onShowpanel();
+    this.onShowUserControlPanel();
     window.clearTimeout(this.hideTimer_0);
     jQuery('#panelShower').css('cursor', 'auto');
   };
@@ -2948,7 +2981,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   UserControlPanel.prototype.hide = function () {
     this.panel_0.style.display = 'none';
-    this.onHidepanel();
+    this.onHideUserControlPanel();
     window.clearTimeout(this.hideTimer_0);
     this.hideMouseTimer_0 = window.setTimeout(UserControlPanel$hide$lambda, 2000);
   };
@@ -3018,9 +3051,9 @@ var HKNBP_Core = function (_, Kotlin) {
   UserControlPanel.prototype.setAllBuutonOnLongClickFeatures_0 = function () {
     jQuery('button').mousedown(UserControlPanel$setAllBuutonOnLongClickFeatures$lambda(this)).mouseup(UserControlPanel$setAllBuutonOnLongClickFeatures$lambda_0(this)).mouseout(UserControlPanel$setAllBuutonOnLongClickFeatures$lambda_1(this));
   };
-  function UserControlPanel$onShowpanel$lambda() {
+  function UserControlPanel$onShowUserControlPanel$lambda() {
   }
-  function UserControlPanel$onHidepanel$lambda() {
+  function UserControlPanel$onHideUserControlPanel$lambda() {
   }
   function UserControlPanel$onLongClick$lambda() {
   }
@@ -5231,6 +5264,7 @@ var HKNBP_Core = function (_, Kotlin) {
     get: get_player,
     set: set_player
   });
+  package$hknbp_core.reductionTo_vux9f0$ = reductionTo;
   package$hknbp_core.updateURLParameter_puj7f4$ = updateURLParameter;
   package$hknbp_core.designatedChannel = designatedChannel;
   package$hknbp_core.updateChannel = updateChannel;

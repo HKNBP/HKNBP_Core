@@ -29,6 +29,27 @@ var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
 lateinit var tvChannels: ArrayLinkList<TVChannel>
 lateinit var player: Player
 
+// m,n為正整數的分子和分母
+fun reductionTo(m: Int, n: Int): IntArray{
+    val arr = IntArray(2)
+    var h = m
+    var k = n
+    var a = h
+    var b = k
+    if(a >= b){ a = h; b = k }else{ a = k; b = h}
+    if (h != 1 && k != 1 ) {
+        for ( i in b downTo 2 ) {
+            if (h % i == 0 && k % i == 0 ) {
+                h = (h / i)
+                k = (k / i)
+            }
+        }
+    }
+    arr[0] = h
+    arr[1] = k
+    return arr
+}
+
 /**
  * 更新URL參數
  * @param param 參數名

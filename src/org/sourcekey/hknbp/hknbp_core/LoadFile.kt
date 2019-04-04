@@ -54,7 +54,10 @@ object LoadFile {
     fun corsLoad(filePath: String, onLoadedFile: (xmlhttp: XMLHttpRequest)->Unit, onFailedLoadFile: ()->Unit){
         val cors_api_url = "https://cors-anywhere.herokuapp.com/" //實現<跨Domain存取(CORS)>重點
         val path = cors_api_url + filePath //完全唔明點解做到,要將呢個+文件位置就得
-        LoadFile.load(path, onLoadedFile, onFailedLoadFile)
+        LoadFile.load(path, onLoadedFile, fun(){
+            println("可能用唔到<跨來源資源共用(CORS)>")
+            onFailedLoadFile()
+        })
     }
 
     fun load(filePath: String): XMLHttpRequest{

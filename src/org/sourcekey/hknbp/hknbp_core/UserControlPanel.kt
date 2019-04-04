@@ -64,7 +64,7 @@ object UserControlPanel {
      * 執行外部某特定需要程序
      * 模仿Set Listener做法
      * */
-    var onShowpanel: ()->Unit = fun(){}
+    var onShowUserControlPanel: ()->Unit = fun(){}
 
     /**
      * 響隱藏panel時執行嘅程序
@@ -74,12 +74,12 @@ object UserControlPanel {
      * 執行外部某特定需要程序
      * 模仿Set Listener做法
      * */
-    var onHidepanel: ()->Unit = fun(){}
+    var onHideUserControlPanel: ()->Unit = fun(){}
 
 
     fun show(){
         panel.style.display="block"
-        onShowpanel()
+        onShowUserControlPanel()
         window.clearTimeout(hideTimer)
         jQuery("#panelShower").css("cursor", "auto")
     }
@@ -91,7 +91,7 @@ object UserControlPanel {
 
     fun hide(){
         panel.style.display="none"
-        onHidepanel()
+        onHideUserControlPanel()
         window.clearTimeout(hideTimer)
         hideMouseTimer = window.setTimeout(fun(){ jQuery("#panelShower").css("cursor", "none") }, 2000)
     }
