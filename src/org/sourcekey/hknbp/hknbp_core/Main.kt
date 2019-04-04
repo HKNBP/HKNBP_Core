@@ -197,9 +197,7 @@ fun main(args: Array<String>) {
     try {
         UserControlPanel
         ConsentPanel
-    } catch (e: dynamic) {
-        println("介面初始化哀左: $e")
-    }
+    } catch (e: dynamic) { println("介面初始化哀左: $e") }
 
     TVChannel.getTVChannels(fun(tvChannels_) {
         tvChannels = tvChannels_

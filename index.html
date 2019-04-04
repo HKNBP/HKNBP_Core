@@ -29,6 +29,8 @@
     <link rel="apple-touch-icon" href="img/icons/book-256.png">
 
     <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
+    <meta http-equiv="Access-Control-Allow-Methods" content="GET, PUT, POST, DELETE, OPTIONS"/>
+    <meta http-equiv="Access-Control-Allow-Headers" content="DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range"/>
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <title>香港網路廣播平台</title>
@@ -966,7 +968,7 @@
         ">
     </div>
 </div>
-
+<button id="get"></button>
 <!--
 //node.js
 <script src="https://cdn.bootcss.com/BrowserFS/2.0.0/browserfs.js"></script>
@@ -987,7 +989,7 @@ if ('serviceWorker' in navigator) {
             //.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
             .then(data => {console.log("z");console.log(data);})
       }
-      console.log(getCurrentCity("http://tvprofil.net/xmltv/data/htv2.hr/weekly_htv2.hr_tvprofil.net.xml"));
+      console.log(getCurrentCity("http://tvprofil.net/xmltv/data/vinkovacka-tv.hr/weekly_vinkovacka-tv.hr_tvprofil.net.xml"));
 
     }).catch(function(err) {
       // registration failed :(
@@ -995,6 +997,43 @@ if ('serviceWorker' in navigator) {
     });
   });
 }
+</script>
+<script>
+  var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
+  function doCORSRequest(options, printResult) {
+    var x = new XMLHttpRequest();
+    x.open(options.method, cors_api_url + options.url);
+    x.onload = x.onerror = function() {
+      printResult(
+        options.method + ' ' + options.url + '\n' +
+        x.status + ' ' + x.statusText + '\n\n' +
+        (x.responseText || '')
+      );
+    };
+    if (/^POST/i.test(options.method)) {
+      x.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    }
+    x.send(options.data);
+  }
+
+  // Bind event
+  (function() {
+    document.getElementById('appDownloadWindowButton').onclick = function(e) {
+      console.log("cccc");
+      e.preventDefault();
+      doCORSRequest({
+        method: this.id === 'post' ? 'POST' : 'GET',
+        url: "http://tvprofil.net/xmltv/data/vinkovacka-tv.hr/weekly_vinkovacka-tv.hr_tvprofil.net.xml",
+        data: "http://tvprofil.net/xmltv/data/vinkovacka-tv.hr/weekly_vinkovacka-tv.hr_tvprofil.net.xml"
+      }, function printResult(result) {
+        console.log(result);
+      });
+    };
+  })();
+  if (typeof console === 'object') {
+    console.log('// To test a local CORS Anywhere server, set cors_api_url. For example:');
+    console.log('cors_api_url = "http://localhost:8080/"');
+  }
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="js/jquery.tabbable.js"></script>
