@@ -1,2 +1,4 @@
-//sudo npm install -g browserify
-browserify -r through -r duplexer -r xmltv -r fs -o js/nodejs-library.js
+# HKNBP_Core
+
+# License
+The source code is licensed under GPL v3. License is available [here](/LICENSE).
