@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/index.html" line="971" />
+    <bookmark url="file://$PROJECT_DIR$/index.html" line="969" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="439dc076-fa64-48ca-946e-6d20fa2781e4" name="Default" comment="">
@@ -36,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            <state relative-caret-position="324">
+              <caret line="30" column="64" selection-start-line="30" selection-start-column="64" selection-end-line="30" selection-end-column="64" />
               <folding>
                 <element signature="e#39#635#0" />
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
@@ -1043,8 +1043,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        <state relative-caret-position="324">
+          <caret line="30" column="64" selection-start-line="30" selection-start-column="64" selection-end-line="30" selection-end-column="64" />
           <folding>
             <element signature="e#39#635#0" />
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
