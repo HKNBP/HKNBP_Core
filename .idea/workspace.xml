@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="439dc076-fa64-48ca-946e-6d20fa2781e4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,8 +37,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="1024" column="9" selection-start-line="1024" selection-start-column="9" selection-end-line="1024" selection-end-column="9" />
+            <state relative-caret-position="279">
+              <caret line="1001" column="60" lean-forward="true" selection-start-line="1001" selection-start-column="2" selection-end-line="1001" selection-end-column="60" />
               <folding>
                 <element signature="e#39#635#0" />
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
@@ -68,6 +69,15 @@
                 <element signature="n#div#9;n#div#1;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#10;n#div#1;n#body#0;n#html#0;n#!!top" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="612">
+              <caret line="50" column="43" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -127,7 +137,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>dynamic</find>
       <find>Select: dynamic</find>
       <find>: dynamic</find>
       <find>fun(){</find>
@@ -157,6 +166,7 @@
       <find>http</find>
       <find>urlField</find>
       <find>outputField</find>
+      <find>cors_api_url</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -202,7 +212,6 @@
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/EPG.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Dialogue.kt" />
         <option value="$PROJECT_DIR$/js/serviceWorker.js" />
-        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt" />
         <option value="$PROJECT_DIR$/manifest.json" />
         <option value="$PROJECT_DIR$/data/tv_channels.xml" />
@@ -216,6 +225,7 @@
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VirtualRemote.kt" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt" />
       </list>
     </option>
   </component>
@@ -712,13 +722,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/serviceWorker.js" />
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Modernizr.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -1050,10 +1053,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="50" column="43" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="1024" column="9" selection-start-line="1024" selection-start-column="9" selection-end-line="1024" selection-end-column="9" />
+        <state relative-caret-position="279">
+          <caret line="1001" column="60" lean-forward="true" selection-start-line="1001" selection-start-column="2" selection-end-line="1001" selection-end-column="60" />
           <folding>
             <element signature="e#39#635#0" />
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />

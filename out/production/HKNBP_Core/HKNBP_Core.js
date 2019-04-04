@@ -1384,13 +1384,14 @@ var HKNBP_Core = function (_, Kotlin) {
     };
   }
   LoadFile.prototype.load_gc4c6p$ = function (filePath, onLoadedFile, onFailedLoadFile) {
+    var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
     var xmlhttp = new XMLHttpRequest();
     var isLoaded = {v: false};
     xmlhttp.onreadystatechange = LoadFile$load$lambda(isLoaded, xmlhttp, onLoadedFile);
     var isFailedLoad = {v: false};
     xmlhttp.ontimeout = LoadFile$load$lambda_0(isFailedLoad, onFailedLoadFile);
     xmlhttp.onerror = LoadFile$load$lambda_1(isFailedLoad, onFailedLoadFile);
-    xmlhttp.open('GET', filePath, true);
+    xmlhttp.open('GET', cors_api_url + filePath, true);
     xmlhttp.send();
   };
   LoadFile.prototype.load_61zpoe$ = function (filePath) {

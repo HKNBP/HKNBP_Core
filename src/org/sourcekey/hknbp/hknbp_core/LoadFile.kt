@@ -22,6 +22,7 @@ import kotlin.browser.document
 
 object LoadFile {
     fun load(filePath: String, onLoadedFile: (xmlhttp: XMLHttpRequest)->Unit, onFailedLoadFile: ()->Unit){
+        val cors_api_url = "https://cors-anywhere.herokuapp.com/"
         val xmlhttp = XMLHttpRequest()
         var isLoaded = false
         xmlhttp.onreadystatechange = fun(event) {
@@ -47,7 +48,7 @@ object LoadFile {
                 //PromptBox.promptMessage(dialogues.node().canNotReadData)
             }
         }
-        xmlhttp.open("GET", filePath, true)
+        xmlhttp.open("GET", cors_api_url + filePath, true)
         xmlhttp.send()
     }
 
