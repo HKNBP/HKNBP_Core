@@ -193,7 +193,7 @@ object UserControlPanel {
         }
 
         //設 當onfocus 就onhover 同步
-        jQuery("button, select, option, input").focus(fun(){ jQuery(js("this").hover()) })
+        jQuery("button, select, option, input").focus(fun(){ jQuery(js("this")).hover() })
 
         //設置所有制當長撳制時不斷重複執行onClick程序
         setAllBuutonOnLongClickFeatures()

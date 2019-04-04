@@ -3067,7 +3067,7 @@ var HKNBP_Core = function (_, Kotlin) {
     };
   }
   function UserControlPanel_init$lambda_6() {
-    jQuery(this.hover());
+    jQuery(this).hover();
   }
   UserControlPanel.$metadata$ = {
     kind: Kind_OBJECT,
