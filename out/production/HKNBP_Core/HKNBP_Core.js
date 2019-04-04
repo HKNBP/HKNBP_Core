@@ -23,16 +23,17 @@ var HKNBP_Core = function (_, Kotlin) {
   var toIntOrNull = Kotlin.kotlin.text.toIntOrNull_pdl1vz$;
   var toShort = Kotlin.toShort;
   var throwUPAE = Kotlin.throwUPAE;
+  var split = Kotlin.kotlin.text.split_ip8yn$;
+  var ensureNotNull = Kotlin.ensureNotNull;
+  var split_0 = Kotlin.kotlin.text.split_o64adg$;
   var println = Kotlin.kotlin.io.println_s8jyv4$;
   var String_0 = String;
   var toDoubleOrNull = Kotlin.kotlin.text.toDoubleOrNull_pdl1vz$;
   var Enum = Kotlin.kotlin.Enum;
   var throwISE = Kotlin.throwISE;
-  var ensureNotNull = Kotlin.ensureNotNull;
   var Random = Kotlin.kotlin.random.Random;
   var getOrNull_0 = Kotlin.kotlin.text.getOrNull_94bcnn$;
   var last = Kotlin.kotlin.collections.last_2p1efm$;
-  var split = Kotlin.kotlin.text.split_ip8yn$;
   var ArrayList_init_0 = Kotlin.kotlin.collections.ArrayList_init_ww73n8$;
   var ArrayList_init_1 = Kotlin.kotlin.collections.ArrayList_init_mqih57$;
   var Regex_init = Kotlin.kotlin.text.Regex_init_61zpoe$;
@@ -1410,6 +1411,9 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return LoadFile_instance;
   }
+  var rootURL;
+  var coreVersion;
+  var appVersion;
   var jQuery;
   var userLanguageList;
   var tvChannels;
@@ -1429,6 +1433,46 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function set_player(player_0) {
     player = player_0;
+  }
+  function updateURLParameter(param, paramVal) {
+    var tmp$, tmp$_0, tmp$_1;
+    var url = window.location.href;
+    var TheAnchor = null;
+    var newAdditionalURL = '';
+    var tempArray = split(url, ['?']);
+    var baseURL = getOrNull(tempArray, 0);
+    var additionalURL = getOrNull(tempArray, 1);
+    var temp = '';
+    if (additionalURL != null) {
+      var tmpAnchor = split(additionalURL, ['#']);
+      var TheParams = getOrNull(tmpAnchor, 0);
+      TheAnchor = getOrNull(tmpAnchor, 1);
+      if (TheAnchor != null) {
+        additionalURL = TheParams;
+      }
+      tempArray = split(ensureNotNull(additionalURL), ['&']);
+      tmp$ = tempArray.size;
+      for (var i = 0; i < tmp$; i++) {
+        if (!equals((tmp$_1 = (tmp$_0 = getOrNull(tempArray, i)) != null ? split_0(tmp$_0, Kotlin.charArrayOf(61)) : null) != null ? getOrNull(tmp$_1, 0) : null, param)) {
+          newAdditionalURL += temp + getOrNull(tempArray, i);
+          temp = '&';
+        }
+      }
+    }
+     else {
+      var tmpAnchor_0 = split(ensureNotNull(baseURL), ['#']);
+      var TheParams_0 = getOrNull(tmpAnchor_0, 0);
+      TheAnchor = getOrNull(tmpAnchor_0, 1);
+      if (TheParams_0 != null) {
+        baseURL = TheParams_0;
+      }
+    }
+    var _paramVal = paramVal;
+    if (TheAnchor != null) {
+      _paramVal += '#' + TheAnchor;
+    }
+    var rows_txt = temp + '' + param + '=' + _paramVal;
+    window.history.replaceState('', '', baseURL + '?' + newAdditionalURL + rows_txt);
   }
   function designatedChannel$lambda(dialogues) {
     var tmp$, tmp$_0;
@@ -2506,19 +2550,21 @@ var HKNBP_Core = function (_, Kotlin) {
     this.xmltv_0 = null;
   }
   function TVChannel$Information$getXMLTV$lambda(this$Information, closure$onLoadedXMLTVListener) {
-    return function (xmlHttp) {
-      this$Information.xmltv_0 = XMLTV$Companion_getInstance().parseXMLTV_2d38xr$(xmlHttp, this$Information.epgID);
-      closure$onLoadedXMLTVListener(ensureNotNull(this$Information.xmltv_0));
+    return function (xmltv) {
+      var tmp$;
+      this$Information.xmltv_0 = xmltv;
+      closure$onLoadedXMLTVListener((tmp$ = this$Information.xmltv_0) != null ? tmp$ : new XMLTV());
     };
   }
   function TVChannel$Information$getXMLTV$lambda_0() {
   }
   TVChannel$Information.prototype.getXMLTV_29qkou$ = function (onLoadedXMLTVListener) {
+    var tmp$;
     if (this.xmltv_0 == null) {
-      LoadFile_getInstance().load_gc4c6p$(this.src, TVChannel$Information$getXMLTV$lambda(this, onLoadedXMLTVListener), TVChannel$Information$getXMLTV$lambda_0);
+      XMLTV$Companion_getInstance().parseXMLTV_yr8ruz$(this.src, this.epgID, TVChannel$Information$getXMLTV$lambda(this, onLoadedXMLTVListener), TVChannel$Information$getXMLTV$lambda_0);
     }
      else {
-      onLoadedXMLTVListener(ensureNotNull(this.xmltv_0));
+      onLoadedXMLTVListener((tmp$ = this.xmltv_0) != null ? tmp$ : new XMLTV());
     }
   };
   TVChannel$Information.$metadata$ = {
@@ -2530,7 +2576,20 @@ var HKNBP_Core = function (_, Kotlin) {
     TVChannel$Companion_instance = this;
     this.tvChannels_0 = null;
   }
-  TVChannel$Companion.prototype.parseTVChannels_0 = function (xmlHttp) {
+  function TVChannel$Companion$parseTVChannels$lambda(closure$onParsedTVChannelsListener, this$TVChannel$) {
+    return function (xmlHttp) {
+      closure$onParsedTVChannelsListener(this$TVChannel$.getTVChannels_0(xmlHttp));
+    };
+  }
+  function TVChannel$Companion$parseTVChannels$lambda_0(closure$onFailedParseTVChannelsListener) {
+    return function () {
+      closure$onFailedParseTVChannelsListener();
+    };
+  }
+  TVChannel$Companion.prototype.parseTVChannels_0 = function (src, onParsedTVChannelsListener, onFailedParseTVChannelsListener) {
+    LoadFile_getInstance().load_gc4c6p$(src, TVChannel$Companion$parseTVChannels$lambda(onParsedTVChannelsListener, this), TVChannel$Companion$parseTVChannels$lambda_0(onFailedParseTVChannelsListener));
+  };
+  TVChannel$Companion.prototype.getTVChannels_0 = function (xmlHttp) {
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9;
     var tvChannels = ArrayLinkList_init([]);
     var i = 0;
@@ -2605,6 +2664,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   TVChannel$Companion$getTVChannels$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
     localStorage.setItem('RecentlyWatchedTVChannel', toString(postChangeNodeID));
+    updateURLParameter('tvchannel', toString(postChangeNode != null ? postChangeNode.number : null));
   };
   TVChannel$Companion$getTVChannels$lambda$ObjectLiteral.$metadata$ = {
     kind: Kind_CLASS,
@@ -2650,28 +2710,28 @@ var HKNBP_Core = function (_, Kotlin) {
       closure$onLoadedTVChannelsListener((tmp$_4 = this$TVChannel$.tvChannels_0) != null ? tmp$_4 : ArrayLinkList_init([]));
     };
   }
-  function TVChannel$Companion$getTVChannels$lambda_0(closure$setupTvChannels, this$TVChannel$) {
-    return function (xmlHttp) {
-      closure$setupTvChannels(this$TVChannel$.parseTVChannels_0(xmlHttp));
+  function TVChannel$Companion$getTVChannels$lambda_0(closure$setupTvChannels) {
+    return function (tvChannels) {
+      closure$setupTvChannels(tvChannels);
     };
   }
-  function TVChannel$Companion$getTVChannels$lambda$lambda_0(closure$setupTvChannels, this$TVChannel$) {
-    return function (xmlHttp) {
-      closure$setupTvChannels(this$TVChannel$.parseTVChannels_0(xmlHttp));
+  function TVChannel$Companion$getTVChannels$lambda$lambda_0(closure$setupTvChannels) {
+    return function (tvChannels) {
+      closure$setupTvChannels(tvChannels);
     };
   }
   function TVChannel$Companion$getTVChannels$lambda$lambda_1() {
   }
   function TVChannel$Companion$getTVChannels$lambda_1(closure$setupTvChannels, this$TVChannel$) {
     return function () {
-      LoadFile_getInstance().load_gc4c6p$('data/tv_channels.xml', TVChannel$Companion$getTVChannels$lambda$lambda_0(closure$setupTvChannels, this$TVChannel$), TVChannel$Companion$getTVChannels$lambda$lambda_1);
+      this$TVChannel$.parseTVChannels_0('data/tv_channels.xml', TVChannel$Companion$getTVChannels$lambda$lambda_0(closure$setupTvChannels), TVChannel$Companion$getTVChannels$lambda$lambda_1);
     };
   }
   TVChannel$Companion.prototype.getTVChannels_94t8aj$ = function (onLoadedTVChannelsListener) {
     var tmp$;
     if (this.tvChannels_0 == null) {
       var setupTvChannels = TVChannel$Companion$getTVChannels$lambda(this, onLoadedTVChannelsListener);
-      LoadFile_getInstance().load_gc4c6p$('http://hknbp.org/data/tv_channels.xml', TVChannel$Companion$getTVChannels$lambda_0(setupTvChannels, this), TVChannel$Companion$getTVChannels$lambda_1(setupTvChannels, this));
+      this.parseTVChannels_0('https://hknbp.org/data/tv_channels.xml', TVChannel$Companion$getTVChannels$lambda_0(setupTvChannels), TVChannel$Companion$getTVChannels$lambda_1(setupTvChannels, this));
     }
      else {
       onLoadedTVChannelsListener((tmp$ = this.tvChannels_0) != null ? tmp$ : ArrayLinkList_init([]));
@@ -2823,25 +2883,26 @@ var HKNBP_Core = function (_, Kotlin) {
   function UserControlPanel() {
     UserControlPanel_instance = this;
     var tmp$, tmp$_0;
-    this.userControlPanel_0 = Kotlin.isType(tmp$ = document.getElementById('userControlPanel'), HTMLElement) ? tmp$ : throwCCE();
+    this.panel_0 = Kotlin.isType(tmp$ = document.getElementById('userControlPanel'), HTMLElement) ? tmp$ : throwCCE();
     this.shower_0 = Kotlin.isType(tmp$_0 = document.getElementById('userControlPanelShower'), HTMLElement) ? tmp$_0 : throwCCE();
-    this.userControlPanelShowTime = 500;
+    this.panelShowTime = 500;
     this.hideTimer_mknn4j$_0 = 0;
     this.hideMouseTimer_r29tyc$_0 = 0;
-    this.onShowUserControlPanel = UserControlPanel$onShowUserControlPanel$lambda;
-    this.onHideUserControlPanel = UserControlPanel$onHideUserControlPanel$lambda;
+    this.onShowpanel = UserControlPanel$onShowpanel$lambda;
+    this.onHidepanel = UserControlPanel$onHidepanel$lambda;
     this.onLongClick_jizysp$_0 = new UserControlPanel$OnLongClick(UserControlPanel$onLongClick$lambda);
     VirtualRemote_getInstance();
     FullScreenButton_getInstance();
     PictureInPictureButton_getInstance();
     this.shower_0.onclick = UserControlPanel_init$lambda(this);
     this.shower_0.onmousemove = UserControlPanel_init$lambda_0(this);
-    this.userControlPanel_0.onmousemove = UserControlPanel_init$lambda_1(this);
-    window.onmouseout = UserControlPanel_init$lambda_2(this);
-    this.userControlPanel_0.onfocus = UserControlPanel_init$lambda_3(this);
+    this.panel_0.onmousemove = UserControlPanel_init$lambda_1(this);
+    this.panel_0.onscroll = UserControlPanel_init$lambda_2(this);
+    jQuery.mouseleave(UserControlPanel_init$lambda_3(this));
+    this.panel_0.onfocus = UserControlPanel_init$lambda_4(this);
     var _shower = this.shower_0;
-    _shower.ontouchstart = UserControlPanel_init$lambda_4(this);
-    jQuery('button, select, option, input').focus(UserControlPanel_init$lambda_5);
+    _shower.ontouchstart = UserControlPanel_init$lambda_5(this);
+    jQuery('button, select, option, input').focus(UserControlPanel_init$lambda_6);
     this.setAllBuutonOnLongClickFeatures_0();
   }
   Object.defineProperty(UserControlPanel.prototype, 'hideTimer_0', {
@@ -2863,10 +2924,10 @@ var HKNBP_Core = function (_, Kotlin) {
     }
   });
   UserControlPanel.prototype.show = function () {
-    this.userControlPanel_0.style.display = 'block';
-    this.onShowUserControlPanel();
+    this.panel_0.style.display = 'block';
+    this.onShowpanel();
     window.clearTimeout(this.hideTimer_0);
-    jQuery('#userControlPanelShower').css('cursor', 'auto');
+    jQuery('#panelShower').css('cursor', 'auto');
   };
   function UserControlPanel$show$lambda(this$UserControlPanel) {
     return function () {
@@ -2878,11 +2939,11 @@ var HKNBP_Core = function (_, Kotlin) {
     this.hideTimer_0 = window.setTimeout(UserControlPanel$show$lambda(this), hideTimerTimeout);
   };
   function UserControlPanel$hide$lambda() {
-    jQuery('#userControlPanelShower').css('cursor', 'none');
+    jQuery('#panelShower').css('cursor', 'none');
   }
   UserControlPanel.prototype.hide = function () {
-    this.userControlPanel_0.style.display = 'none';
-    this.onHideUserControlPanel();
+    this.panel_0.style.display = 'none';
+    this.onHidepanel();
     window.clearTimeout(this.hideTimer_0);
     this.hideMouseTimer_0 = window.setTimeout(UserControlPanel$hide$lambda, 2000);
   };
@@ -2952,15 +3013,15 @@ var HKNBP_Core = function (_, Kotlin) {
   UserControlPanel.prototype.setAllBuutonOnLongClickFeatures_0 = function () {
     jQuery('button').mousedown(UserControlPanel$setAllBuutonOnLongClickFeatures$lambda(this)).mouseup(UserControlPanel$setAllBuutonOnLongClickFeatures$lambda_0(this)).mouseout(UserControlPanel$setAllBuutonOnLongClickFeatures$lambda_1(this));
   };
-  function UserControlPanel$onShowUserControlPanel$lambda() {
+  function UserControlPanel$onShowpanel$lambda() {
   }
-  function UserControlPanel$onHideUserControlPanel$lambda() {
+  function UserControlPanel$onHidepanel$lambda() {
   }
   function UserControlPanel$onLongClick$lambda() {
   }
   function UserControlPanel_init$lambda(this$UserControlPanel) {
     return function (event) {
-      if (this$UserControlPanel.userControlPanel_0.style.display === 'block') {
+      if (this$UserControlPanel.panel_0.style.display === 'block') {
         this$UserControlPanel.hide();
       }
        else {
@@ -2981,18 +3042,23 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function UserControlPanel_init$lambda_2(this$UserControlPanel) {
     return function (event) {
-      this$UserControlPanel.hide();
+      this$UserControlPanel.show_za3lpa$(30000);
     };
   }
   function UserControlPanel_init$lambda_3(this$UserControlPanel) {
-    return function (event) {
-      this$UserControlPanel.show_za3lpa$(15000);
+    return function () {
+      this$UserControlPanel.hide();
     };
   }
   function UserControlPanel_init$lambda_4(this$UserControlPanel) {
     return function (event) {
+      this$UserControlPanel.show_za3lpa$(15000);
+    };
+  }
+  function UserControlPanel_init$lambda_5(this$UserControlPanel) {
+    return function (event) {
       event.preventDefault();
-      if (this$UserControlPanel.userControlPanel_0.style.display === 'block') {
+      if (this$UserControlPanel.panel_0.style.display === 'block') {
         this$UserControlPanel.hide();
       }
        else {
@@ -3000,7 +3066,7 @@ var HKNBP_Core = function (_, Kotlin) {
       }
     };
   }
-  function UserControlPanel_init$lambda_5() {
+  function UserControlPanel_init$lambda_6() {
     jQuery(this.hover());
   }
   UserControlPanel.$metadata$ = {
@@ -3509,9 +3575,7 @@ var HKNBP_Core = function (_, Kotlin) {
   function WatchingCounter(tvChannel) {
     WatchingCounter$Companion_getInstance();
     this.tvChannel_0 = tvChannel;
-    var tmp$;
-    this.iframeWatchingCounter_0 = Kotlin.isType(tmp$ = document.getElementById('iframeWatchingCounter'), HTMLIFrameElement) ? tmp$ : throwCCE();
-    this.rootURL_0 = 'http://hknbp.org/';
+    this.iframeWatchingCounter_0 = document.getElementById('iframeWatchingCounter');
     WatchingCounter$Companion_getInstance().timer_0 = window.setTimeout(WatchingCounter_init$lambda(this), 15000);
   }
   function WatchingCounter$Companion() {
@@ -3539,9 +3603,16 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return WatchingCounter$Companion_instance;
   }
+  function WatchingCounter_init$lambda$lambda(this$WatchingCounter) {
+    return function () {
+      this$WatchingCounter.iframeWatchingCounter_0.contentWindow.coreVersion = coreVersion;
+      this$WatchingCounter.iframeWatchingCounter_0.contentWindow.appVersion = appVersion;
+    };
+  }
   function WatchingCounter_init$lambda(this$WatchingCounter) {
     return function () {
-      this$WatchingCounter.iframeWatchingCounter_0.src = this$WatchingCounter.rootURL_0 + 'watching-counter.html?tvchannel=' + this$WatchingCounter.tvChannel_0.number;
+      this$WatchingCounter.iframeWatchingCounter_0.src = rootURL + 'watching-counter.html?tvchannel=' + this$WatchingCounter.tvChannel_0.number;
+      this$WatchingCounter.iframeWatchingCounter_0.onload = WatchingCounter_init$lambda$lambda(this$WatchingCounter);
     };
   }
   WatchingCounter.$metadata$ = {
@@ -4397,8 +4468,18 @@ var HKNBP_Core = function (_, Kotlin) {
   function XMLTV$Companion() {
     XMLTV$Companion_instance = this;
   }
-  XMLTV$Companion.prototype.parseXMLTV_2d38xr$ = function (xmlHttp, epgID) {
-    return this.getXMLTV_0(xmlHttp.responseXML, epgID);
+  function XMLTV$Companion$parseXMLTV$lambda(closure$onParsedXMLTVListener, closure$epgID, this$XMLTV$) {
+    return function (xmlHttp) {
+      closure$onParsedXMLTVListener(this$XMLTV$.getXMLTV_0(xmlHttp.responseXML, closure$epgID));
+    };
+  }
+  function XMLTV$Companion$parseXMLTV$lambda_0(closure$onFailedParseXMLTVListener) {
+    return function () {
+      closure$onFailedParseXMLTVListener();
+    };
+  }
+  XMLTV$Companion.prototype.parseXMLTV_yr8ruz$ = function (xmltvSrc, epgID, onParsedXMLTVListener, onFailedParseXMLTVListener) {
+    LoadFile_getInstance().load_gc4c6p$(xmltvSrc, XMLTV$Companion$parseXMLTV$lambda(onParsedXMLTVListener, epgID, this), XMLTV$Companion$parseXMLTV$lambda_0(onFailedParseXMLTVListener));
   };
   XMLTV$Companion.prototype.compareTo_fsx041$ = function ($receiver, date) {
     return numberToInt($receiver.getTime() - date.getTime());
@@ -5106,6 +5187,24 @@ var HKNBP_Core = function (_, Kotlin) {
   Object.defineProperty(package$hknbp_core, 'LoadFile', {
     get: LoadFile_getInstance
   });
+  Object.defineProperty(package$hknbp_core, 'rootURL', {
+    get: function () {
+      return rootURL;
+    }
+  });
+  Object.defineProperty(package$hknbp_core, 'coreVersion', {
+    get: function () {
+      return coreVersion;
+    }
+  });
+  Object.defineProperty(package$hknbp_core, 'appVersion', {
+    get: function () {
+      return appVersion;
+    },
+    set: function (value) {
+      appVersion = value;
+    }
+  });
   Object.defineProperty(package$hknbp_core, 'jQuery', {
     get: function () {
       return jQuery;
@@ -5127,6 +5226,7 @@ var HKNBP_Core = function (_, Kotlin) {
     get: get_player,
     set: set_player
   });
+  package$hknbp_core.updateURLParameter_puj7f4$ = updateURLParameter;
   package$hknbp_core.designatedChannel = designatedChannel;
   package$hknbp_core.updateChannel = updateChannel;
   package$hknbp_core.main_kand9s$ = main;
@@ -5251,6 +5351,9 @@ var HKNBP_Core = function (_, Kotlin) {
     get: XMLTV$Companion_getInstance
   });
   package$hknbp_core.XMLTV = XMLTV;
+  rootURL = 'https://hknbp.org/';
+  coreVersion = '0.9';
+  appVersion = '0.9-Web';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();
   main([]);

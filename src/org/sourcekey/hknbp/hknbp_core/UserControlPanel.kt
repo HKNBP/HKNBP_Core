@@ -27,8 +27,8 @@ import kotlin.js.Math
  * 操作使用者介面器
  * */
 object UserControlPanel {
-    private val userControlPanel: HTMLElement   = document.getElementById("userControlPanel") as HTMLElement
-    private val shower: HTMLElement             = document.getElementById("userControlPanelShower") as HTMLElement
+    private val panel: HTMLElement   = document.getElementById("userControlPanel") as HTMLElement
+    private val shower: HTMLElement  = document.getElementById("userControlPanelShower") as HTMLElement
 
     /**
      * 操作使用者介面器出現時間
@@ -36,7 +36,7 @@ object UserControlPanel {
      * 唔private係因為其他平台需要更改再長啲時間
      * 來畀唔同操作器嘅使用者方便
      * */
-    var userControlPanelShowTime: Int = 500
+    var panelShowTime: Int = 500
 
     /**
      * 隱藏操作使用者介面板計時器
@@ -57,31 +57,31 @@ object UserControlPanel {
         }
 
     /**
-     * 響顯示UserControlPanel時執行嘅程序
+     * 響顯示panel時執行嘅程序
      * 畀外部連接
      * 當以HKNBP_Core有以下動作時
      * 外部程序可以寫入以下function
      * 執行外部某特定需要程序
      * 模仿Set Listener做法
      * */
-    var onShowUserControlPanel: ()->Unit = fun(){}
+    var onShowpanel: ()->Unit = fun(){}
 
     /**
-     * 響隱藏UserControlPanel時執行嘅程序
+     * 響隱藏panel時執行嘅程序
      * 畀外部連接
      * 當以HKNBP_Core有以下動作時
      * 外部程序可以寫入以下function
      * 執行外部某特定需要程序
      * 模仿Set Listener做法
      * */
-    var onHideUserControlPanel: ()->Unit = fun(){}
+    var onHidepanel: ()->Unit = fun(){}
 
 
     fun show(){
-        userControlPanel.style.display="block"
-        onShowUserControlPanel()
+        panel.style.display="block"
+        onShowpanel()
         window.clearTimeout(hideTimer)
-        jQuery("#userControlPanelShower").css("cursor", "auto")
+        jQuery("#panelShower").css("cursor", "auto")
     }
 
     fun show(hideTimerTimeout: Int){
@@ -90,10 +90,10 @@ object UserControlPanel {
     }
 
     fun hide(){
-        userControlPanel.style.display="none"
-        onHideUserControlPanel()
+        panel.style.display="none"
+        onHidepanel()
         window.clearTimeout(hideTimer)
-        hideMouseTimer = window.setTimeout(fun(){ jQuery("#userControlPanelShower").css("cursor", "none") }, 2000)
+        hideMouseTimer = window.setTimeout(fun(){ jQuery("#panelShower").css("cursor", "none") }, 2000)
     }
 
     /**
@@ -157,7 +157,7 @@ object UserControlPanel {
         //設定使用者控制界面顯示方法
         ////滑鼠////
         shower.onclick = fun(event){
-            if(userControlPanel.style.display==="block"){
+            if(panel.style.display==="block"){
                 hide()
             }else{
                 show(15000)
@@ -166,23 +166,26 @@ object UserControlPanel {
         shower.onmousemove = fun(event){
             show(500)
         }
-        userControlPanel.onmousemove = fun(event){
-            //使用緊userControlPanel就繼續顯示
+        panel.onmousemove = fun(event){
+            //使用緊panel就繼續顯示
             event.stopPropagation()
             show(30000)
         }
-        window.onmouseout = fun(event){
-            hide()
+        panel.onscroll = fun(event){
+            show(30000)
         }
+        jQuery.mouseleave(fun(){
+            hide()
+        })
         ////遙控////
-        userControlPanel.onfocus = fun(event){
+        panel.onfocus = fun(event){
             show(15000)
         }
         ////觸控////
         val _shower: dynamic = shower
         _shower.ontouchstart = fun(event: MouseEvent){
             event.preventDefault()//因觸控會同時觸發其他EVENT,https://medium.com/frochu/touch-and-mouse-together-76fb69114c04
-            if(userControlPanel.style.display==="block"){
+            if(panel.style.display==="block"){
                 hide()
             }else{
                 show(15000)

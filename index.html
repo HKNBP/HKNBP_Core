@@ -31,6 +31,7 @@
     <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
     <meta http-equiv="Content-Security-Policy"
           content="default-src * 'unsafe-inline' 'unsafe-eval' data: blob: filesystem:">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <title>香港網路廣播平台</title>
 
@@ -50,7 +51,7 @@
           var frameWindow = document.getElementById('iframeWatchingCounter').contentWindow;
 
           // Sends the client ID to the window inside the destination frame.
-          frameWindow.postMessage(clientId, 'http://hknbp.sourcekey.org/');
+          frameWindow.postMessage(clientId, 'https://hknbp.org/');
       });
     </script>
 
@@ -988,10 +989,7 @@ if ('serviceWorker' in navigator) {
             //.then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
             .then(data => {console.log("z");console.log(data);})
       }
-      console.log("x");
       console.log(getCurrentCity("http://tvprofil.net/xmltv/data/htv2.hr/weekly_htv2.hr_tvprofil.net.xml"));
-      console.log("y");
-      console.log(getCurrentCity("test/channels.xml"));
 
     }).catch(function(err) {
       // registration failed :(

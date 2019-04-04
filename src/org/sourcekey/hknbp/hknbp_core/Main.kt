@@ -20,23 +20,70 @@ import kotlin.browser.document
 import kotlin.browser.window
 import kotlin.js.Date
 
+val rootURL: String     = "https://hknbp.org/"
+val coreVersion: String = "0.9"
+var appVersion: String  = "0.9-Web"
+
 val jQuery: dynamic = js("\$")
 var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
 lateinit var tvChannels: ArrayLinkList<TVChannel>
 lateinit var player: Player
 
+/**
+ * 更新URL參數
+ * @param param 參數名
+ * @param paramVal 參數值
+ * */
+fun updateURLParameter(param: String, paramVal: String){
+    val url: String = window.location.href
+    var TheAnchor: String? = null
+    var newAdditionalURL = ""
+    var tempArray = url.split("?")
+    var baseURL = tempArray.getOrNull(0)
+    var additionalURL: String? = tempArray.getOrNull(1)
+    var temp = ""
+
+    if (additionalURL != null) {
+        val tmpAnchor = additionalURL.split("#")
+        val TheParams = tmpAnchor.getOrNull(0)
+        TheAnchor = tmpAnchor.getOrNull(1)
+        if (TheAnchor != null) {additionalURL = TheParams}
+
+        tempArray = additionalURL!!.split("&")
+
+        for (i in 0 until tempArray.size){
+            if (tempArray.getOrNull(i)?.split('=')?.getOrNull(0) != param) {
+                newAdditionalURL += temp + tempArray.getOrNull(i)
+                temp = "&"
+            }
+        }
+    } else {
+        val tmpAnchor = baseURL!!.split("#")
+        val TheParams = tmpAnchor.getOrNull(0)
+        TheAnchor = tmpAnchor.getOrNull(1)
+
+        if (TheParams != null) {baseURL = TheParams}
+    }
+
+    var _paramVal = paramVal
+    if (TheAnchor != null) {_paramVal += "#" + TheAnchor}
+
+    val rows_txt = temp + "" + param + "=" + _paramVal
+    window.history.replaceState("", "", baseURL + "?" + newAdditionalURL + rows_txt)
+}
 
 /**
  * 去特定頻道
  * @param channelNumber 要轉去頻道冧把
  */
-@JsName("designatedChannel") fun designatedChannel(channelNumber: Int): Boolean {
+@JsName("designatedChannel")
+fun designatedChannel(channelNumber: Int): Boolean {
     val channelNumberNodeID = TVChannel.toChannelNumberNodeID(tvChannels, channelNumber)
     if (channelNumberNodeID != null) {
         tvChannels.designated(channelNumberNodeID)
         return true
     } else {
-        Dialogue.getDialogues(fun(dialogues){
+        Dialogue.getDialogues(fun(dialogues) {
             PromptBox.promptMessage(dialogues.node?.canNotFind ?: "")
         })
         return false
@@ -47,12 +94,12 @@ lateinit var player: Player
  * 刷新頻道
  */
 fun updateChannel() {
-    player = Player(tvChannels.node?:TVChannel())
-    player.addOnPlayerEventListener( object: Player.OnPlayerEventListener {
+    player = Player(tvChannels.node ?: TVChannel())
+    player.addOnPlayerEventListener(object : Player.OnPlayerEventListener {
         private var currentPlayer: Player? = null
         private var isPlaying: Boolean = false
         override fun on(onPlayerEvent: Player.OnPlayerEvent) {
-            when(onPlayerEvent){
+            when (onPlayerEvent) {
                 Player.OnPlayerEvent.playing -> {
                     currentPlayer = player
                     isPlaying = true
@@ -62,7 +109,11 @@ fun updateChannel() {
                     //15秒後刷新頻道
                     isPlaying = false
                     //檢查呢15秒內Player有冇再繼續正常播放,若冇就刷新Player
-                    window.setTimeout(fun(){if((!isPlaying)&&(player==currentPlayer)){updateChannel()}}, 15000)
+                    window.setTimeout(fun() {
+                        if ((!isPlaying) && (player == currentPlayer)) {
+                            updateChannel()
+                        }
+                    }, 15000)
                 }
                 Player.OnPlayerEvent.videoTrackChanged,
                 Player.OnPlayerEvent.audioTrackChanged,
@@ -142,19 +193,21 @@ updateChannel()
  * 成個HKNBP_Core嘅Kotlin部分嘅開始 *
  * ****************************** *
  * */
-fun main(args: Array<String>){
+fun main(args: Array<String>) {
     try {
         UserControlPanel
         ConsentPanel
-    }catch(e: dynamic){ println("介面初始化哀左: $e") }
+    } catch (e: dynamic) {
+        println("介面初始化哀左: $e")
+    }
 
-    TVChannel.getTVChannels(fun(tvChannels_){
+    TVChannel.getTVChannels(fun(tvChannels_) {
         tvChannels = tvChannels_
         tvChannels.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<TVChannel> {
             override fun OnNodeIDChanged(
                     preChangeNodeID: Int?, postChangeNodeID: Int?,
                     preChangeNode: TVChannel?, postChangeNode: TVChannel?
-            ){
+            ) {
                 updateChannel()
                 ChannelInformation.show(3000)
             }
@@ -163,10 +216,4 @@ fun main(args: Array<String>){
         ChannelInformation.show(3000)
         (document.querySelector("[tabindex=\"100000002\"]") as HTMLElement).focus()
     })
-
-    /**
-    println(args.size)
-    for(arg in args){
-    println(arg)
-    }*/
 }

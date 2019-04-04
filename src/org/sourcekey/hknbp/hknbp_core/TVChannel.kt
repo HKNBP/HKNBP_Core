@@ -74,12 +74,12 @@ class TVChannel(
          * */
         fun getXMLTV(onLoadedXMLTVListener: (xmltv: XMLTV)->Unit){
             if(xmltv == null){
-                LoadFile.load(src, fun(xmlHttp){
-                    this.xmltv = XMLTV.parseXMLTV(xmlHttp, epgID)
-                    onLoadedXMLTVListener(this.xmltv!!)
+                XMLTV.parseXMLTV(src, epgID, fun(xmltv){
+                    this.xmltv = xmltv
+                    onLoadedXMLTVListener(this.xmltv?: XMLTV())
                 },fun(){})
             }else{
-                onLoadedXMLTVListener(xmltv!!)
+                onLoadedXMLTVListener(xmltv?:XMLTV())
             }
         }
     }
@@ -88,7 +88,19 @@ class TVChannel(
         /**
          * 分析已讀取返來嘅電視頻道表資料
          * */
-        private fun parseTVChannels(xmlHttp: XMLHttpRequest): ArrayLinkList<TVChannel>{
+        private fun parseTVChannels(
+                src: String,
+                onParsedTVChannelsListener: (tvChannels: ArrayLinkList<TVChannel>) -> Unit,
+                onFailedParseTVChannelsListener: ()->Unit
+        ){
+            LoadFile.load(src, fun(xmlHttp){
+                onParsedTVChannelsListener(getTVChannels(xmlHttp))
+            }, fun(){
+                onFailedParseTVChannelsListener()
+            })
+        }
+
+        private fun getTVChannels(xmlHttp: XMLHttpRequest): ArrayLinkList<TVChannel>{
             val tvChannels = ArrayLinkList<TVChannel>()
 
             var i = 0
@@ -186,6 +198,8 @@ class TVChannel(
                             ){
                                 //儲存低返最近睇過嘅頻道
                                 localStorage.setItem("RecentlyWatchedTVChannel", postChangeNodeID.toString())
+                                //更新URL嘅tvChannel參數
+                                updateURLParameter("tvchannel", postChangeNode?.number.toString())
                             }
                         })
                         //讀返最近睇過嘅頻道
@@ -200,15 +214,14 @@ class TVChannel(
                     this.tvChannels = tvChannels
                     onLoadedTVChannelsListener(this.tvChannels?:ArrayLinkList<TVChannel>())
                 }
-                LoadFile.load("http://hknbp.org/data/tv_channels.xml", fun(xmlHttp){
-                    setupTvChannels(parseTVChannels(xmlHttp))
+                parseTVChannels("${rootURL}data/tv_channels.xml", fun(tvChannels){
+                    setupTvChannels(tvChannels)
                 }, fun(){
                     //如果Load唔到電視頻道表就Load原本Load過嘅電視頻道表
-                    LoadFile.load("data/tv_channels.xml", fun(xmlHttp){
-                        setupTvChannels(parseTVChannels(xmlHttp))
+                    parseTVChannels("data/tv_channels.xml", fun(tvChannels){
+                        setupTvChannels(tvChannels)
                     }, fun(){})
                 })
-
             }else{
                 onLoadedTVChannelsListener(tvChannels?:ArrayLinkList<TVChannel>())
             }
