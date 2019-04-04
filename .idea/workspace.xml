@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="439dc076-fa64-48ca-946e-6d20fa2781e4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="1020" column="52" selection-start-line="1020" selection-start-column="52" selection-end-line="1020" selection-end-column="52" />
+            <state relative-caret-position="555">
+              <caret line="1024" column="9" selection-start-line="1024" selection-start-column="9" selection-end-line="1024" selection-end-column="9" />
               <folding>
                 <element signature="e#39#635#0" />
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
@@ -1054,8 +1052,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="1020" column="52" selection-start-line="1020" selection-start-column="52" selection-end-line="1020" selection-end-column="52" />
+        <state relative-caret-position="555">
+          <caret line="1024" column="9" selection-start-line="1024" selection-start-column="9" selection-end-line="1024" selection-end-column="9" />
           <folding>
             <element signature="e#39#635#0" />
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />

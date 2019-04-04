@@ -1016,24 +1016,13 @@ if ('serviceWorker' in navigator) {
     x.send(options.data);
   }
 
-  // Bind event
-  (function() {
-    document.getElementById('appDownloadWindowButton').onclick = function(e) {
-      console.log("cccc");
-      e.preventDefault();
-      doCORSRequest({
+  doCORSRequest({
         method: this.id === 'post' ? 'POST' : 'GET',
         url: "http://tvprofil.net/xmltv/data/vinkovacka-tv.hr/weekly_vinkovacka-tv.hr_tvprofil.net.xml",
         data: "http://tvprofil.net/xmltv/data/vinkovacka-tv.hr/weekly_vinkovacka-tv.hr_tvprofil.net.xml"
       }, function printResult(result) {
         console.log(result);
       });
-    };
-  })();
-  if (typeof console === 'object') {
-    console.log('// To test a local CORS Anywhere server, set cors_api_url. For example:');
-    console.log('cors_api_url = "http://localhost:8080/"');
-  }
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="js/jquery.tabbable.js"></script>
