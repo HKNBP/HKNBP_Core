@@ -220,6 +220,7 @@ fun main(args: Array<String>) {
         ConsentPanel
         (document.querySelector("[tabindex=\"100000002\"]") as HTMLElement).focus()
     } catch (e: dynamic) { println("介面初始化哀左: $e") }
+
     TVChannel.getTVChannels(fun(tvChannels_) {
         tvChannels = tvChannels_
         tvChannels.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<TVChannel> {

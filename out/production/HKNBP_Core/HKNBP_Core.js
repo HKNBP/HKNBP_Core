@@ -1434,7 +1434,6 @@ var HKNBP_Core = function (_, Kotlin) {
     if (startsWith(path, 'http')) {
       var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
       path = cors_api_url + path;
-      xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     }
     xmlhttp.open('GET', path, true);
     xmlhttp.send();
