@@ -30,12 +30,6 @@ object LoadFile {
     }
 
     fun load(onLoadedFile: (xmlhttp: XMLHttpRequest)->Unit, onFailedLoadFile: ()->Unit, filePaths: ArrayLinkList<String>){
-        var path: String = filePaths.node?:""
-        if(path.startsWith("http")){
-            val cors_api_url = "https://cors-anywhere.herokuapp.com/" //實現<跨Domain存取(CORS)>重點
-            path = cors_api_url + path //完全唔明點解做到,要將呢個+文件位置就得
-        }
-
         val xmlhttp = XMLHttpRequest()
         xmlhttp.onreadystatechange = fun(event) {
             if (xmlhttp.readyState == 4.toShort() && xmlhttp.status == 200.toShort()) {
@@ -53,7 +47,12 @@ object LoadFile {
         xmlhttp.ontimeout = onFailedLoadFileFun
         xmlhttp.onerror = onFailedLoadFileFun
 
-        xmlhttp.setRequestHeader("X-Requested-With", "XMLHttpRequest")
+        var path: String = filePaths.node?:""
+        if(path.startsWith("http")){
+            val cors_api_url = "https://cors-anywhere.herokuapp.com/" //實現<跨Domain存取(CORS)>重點
+            path = cors_api_url + path //完全唔明點解做到,要將呢個+文件位置就得
+            xmlhttp.setRequestHeader("X-Requested-With", "XMLHttpRequest")
+        }
         xmlhttp.open("GET", path, true)
         xmlhttp.send()
     }

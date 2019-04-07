@@ -21,8 +21,8 @@ var HKNBP_Core = function (_, Kotlin) {
   var toInt = Kotlin.kotlin.text.toInt_pdl1vz$;
   var addClass = Kotlin.kotlin.dom.addClass_hhb33f$;
   var toIntOrNull = Kotlin.kotlin.text.toIntOrNull_pdl1vz$;
-  var startsWith = Kotlin.kotlin.text.startsWith_7epoxm$;
   var toShort = Kotlin.toShort;
+  var startsWith = Kotlin.kotlin.text.startsWith_7epoxm$;
   var throwUPAE = Kotlin.throwUPAE;
   var split = Kotlin.kotlin.text.split_ip8yn$;
   var ensureNotNull = Kotlin.ensureNotNull;
@@ -1425,17 +1425,17 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   LoadFile.prototype.load_uq4zwc$ = function (onLoadedFile, onFailedLoadFile, filePaths) {
     var tmp$;
-    var path = (tmp$ = filePaths.node) != null ? tmp$ : '';
-    if (startsWith(path, 'http')) {
-      var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
-      path = cors_api_url + path;
-    }
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = LoadFile$load$lambda(xmlhttp, onLoadedFile);
     var onFailedLoadFileFun = LoadFile$load$lambda_0(onFailedLoadFile, filePaths, onLoadedFile, this);
     xmlhttp.ontimeout = onFailedLoadFileFun;
     xmlhttp.onerror = onFailedLoadFileFun;
-    xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    var path = (tmp$ = filePaths.node) != null ? tmp$ : '';
+    if (startsWith(path, 'http')) {
+      var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
+      path = cors_api_url + path;
+      xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    }
     xmlhttp.open('GET', path, true);
     xmlhttp.send();
   };
