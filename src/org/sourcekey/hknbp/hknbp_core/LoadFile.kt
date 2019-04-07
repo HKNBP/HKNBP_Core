@@ -53,6 +53,7 @@ object LoadFile {
         xmlhttp.ontimeout = onFailedLoadFileFun
         xmlhttp.onerror = onFailedLoadFileFun
 
+        xmlhttp.setRequestHeader("X-Requested-With", "XMLHttpRequest")
         xmlhttp.open("GET", path, true)
         xmlhttp.send()
     }

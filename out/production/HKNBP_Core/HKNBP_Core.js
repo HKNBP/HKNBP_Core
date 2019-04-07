@@ -1435,6 +1435,7 @@ var HKNBP_Core = function (_, Kotlin) {
     var onFailedLoadFileFun = LoadFile$load$lambda_0(onFailedLoadFile, filePaths, onLoadedFile, this);
     xmlhttp.ontimeout = onFailedLoadFileFun;
     xmlhttp.onerror = onFailedLoadFileFun;
+    xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xmlhttp.open('GET', path, true);
     xmlhttp.send();
   };
@@ -2786,7 +2787,7 @@ var HKNBP_Core = function (_, Kotlin) {
   TVChannel$Companion.prototype.getTVChannels_94t8aj$ = function (onLoadedTVChannelsListener) {
     var tmp$;
     if (this.tvChannels_0 == null) {
-      this.parseTVChannels_0(TVChannel$Companion$getTVChannels$lambda(this, onLoadedTVChannelsListener), TVChannel$Companion$getTVChannels$lambda_0, ['data/tv_channels.xml']);
+      this.parseTVChannels_0(TVChannel$Companion$getTVChannels$lambda(this, onLoadedTVChannelsListener), TVChannel$Companion$getTVChannels$lambda_0, ['https://hknbp.org/data/tv_channels.xml', 'data/tv_channels.xml']);
     }
      else {
       onLoadedTVChannelsListener((tmp$ = this.tvChannels_0) != null ? tmp$ : ArrayLinkList_init([]));
