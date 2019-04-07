@@ -1432,7 +1432,7 @@ var HKNBP_Core = function (_, Kotlin) {
     xmlhttp.onerror = onFailedLoadFileFun;
     var path = (tmp$ = filePaths.node) != null ? tmp$ : '';
     if (startsWith(path, 'http')) {
-      var cors_api_url = 'https://crossorigin.me/';
+      var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
       path = cors_api_url + path;
     }
     xmlhttp.open('GET', path, true);
