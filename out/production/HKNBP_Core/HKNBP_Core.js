@@ -1625,6 +1625,7 @@ var HKNBP_Core = function (_, Kotlin) {
     get_tvChannels().addOnNodeEventListener_ljxrtv$(new main$lambda$ObjectLiteral());
     println('2');
     updateChannel();
+    println('2.2');
     ChannelInformation_getInstance().show_za3lpa$(3000);
     println('3');
   }
