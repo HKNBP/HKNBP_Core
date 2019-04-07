@@ -17,7 +17,6 @@ var HKNBP_Core = function (_, Kotlin) {
   var padStart = Kotlin.kotlin.text.padStart_vrc1nu$;
   var replace = Kotlin.kotlin.text.replace_680rmw$;
   var equals = Kotlin.equals;
-  var println = Kotlin.kotlin.io.println_s8jyv4$;
   var toBoolean = Kotlin.kotlin.text.toBoolean_pdl1vz$;
   var toInt = Kotlin.kotlin.text.toInt_pdl1vz$;
   var addClass = Kotlin.kotlin.dom.addClass_hhb33f$;
@@ -28,6 +27,7 @@ var HKNBP_Core = function (_, Kotlin) {
   var split = Kotlin.kotlin.text.split_ip8yn$;
   var ensureNotNull = Kotlin.ensureNotNull;
   var split_0 = Kotlin.kotlin.text.split_o64adg$;
+  var println = Kotlin.kotlin.io.println_s8jyv4$;
   var String_0 = String;
   var toDoubleOrNull = Kotlin.kotlin.text.toDoubleOrNull_pdl1vz$;
   var Enum = Kotlin.kotlin.Enum;
@@ -323,18 +323,17 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function ChannelInformation() {
     ChannelInformation_instance = this;
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8;
     this.channelInformation_0 = Kotlin.isType(tmp$ = document.getElementById('channelInformation'), HTMLDivElement) ? tmp$ : throwCCE();
     this.currentChannelName_0 = Kotlin.isType(tmp$_0 = document.getElementById('channelInformationCurrentChannelName'), HTMLDivElement) ? tmp$_0 : throwCCE();
     this.currentChannelNumber_0 = Kotlin.isType(tmp$_1 = document.getElementById('channelInformationCurrentChannelNumber'), HTMLDivElement) ? tmp$_1 : throwCCE();
     this.currentDate_0 = Kotlin.isType(tmp$_2 = document.getElementById('channelInformationCurrentDate'), HTMLDivElement) ? tmp$_2 : throwCCE();
-    this.currentChannelAspectRatio_0 = Kotlin.isType(tmp$_3 = document.getElementById('channelInformationCurrentChannelAspectRatio'), HTMLDivElement) ? tmp$_3 : throwCCE();
-    this.currentProgrammeTitle_0 = Kotlin.isType(tmp$_4 = document.getElementById('channelInformationCurrentProgrammeTitle'), HTMLDivElement) ? tmp$_4 : throwCCE();
-    this.currentProgrammeSubTitle_0 = Kotlin.isType(tmp$_5 = document.getElementById('channelInformationCurrentProgrammeSubTitle'), HTMLDivElement) ? tmp$_5 : throwCCE();
-    this.currentProgrammeEpisode_0 = Kotlin.isType(tmp$_6 = document.getElementById('channelInformationCurrentProgrammeEpisode'), HTMLDivElement) ? tmp$_6 : throwCCE();
-    this.currentProgrammeBroadcastTime_0 = Kotlin.isType(tmp$_7 = document.getElementById('channelInformationCurrentProgrammeBroadcastTime'), HTMLDivElement) ? tmp$_7 : throwCCE();
-    this.currentProgrammeDesc_0 = Kotlin.isType(tmp$_8 = document.getElementById('channelInformationCurrentProgrammeDesc'), HTMLDivElement) ? tmp$_8 : throwCCE();
-    this.currentProgrammeCategory_0 = Kotlin.isType(tmp$_9 = document.getElementById('channelInformationCurrentProgrammeCategory'), HTMLDivElement) ? tmp$_9 : throwCCE();
+    this.currentProgrammeTitle_0 = Kotlin.isType(tmp$_3 = document.getElementById('channelInformationCurrentProgrammeTitle'), HTMLDivElement) ? tmp$_3 : throwCCE();
+    this.currentProgrammeSubTitle_0 = Kotlin.isType(tmp$_4 = document.getElementById('channelInformationCurrentProgrammeSubTitle'), HTMLDivElement) ? tmp$_4 : throwCCE();
+    this.currentProgrammeEpisode_0 = Kotlin.isType(tmp$_5 = document.getElementById('channelInformationCurrentProgrammeEpisode'), HTMLDivElement) ? tmp$_5 : throwCCE();
+    this.currentProgrammeBroadcastTime_0 = Kotlin.isType(tmp$_6 = document.getElementById('channelInformationCurrentProgrammeBroadcastTime'), HTMLDivElement) ? tmp$_6 : throwCCE();
+    this.currentProgrammeDesc_0 = Kotlin.isType(tmp$_7 = document.getElementById('channelInformationCurrentProgrammeDesc'), HTMLDivElement) ? tmp$_7 : throwCCE();
+    this.currentProgrammeCategory_0 = Kotlin.isType(tmp$_8 = document.getElementById('channelInformationCurrentProgrammeCategory'), HTMLDivElement) ? tmp$_8 : throwCCE();
     this.currentDateTimer_0 = 0;
     this.hideTimer_spqbhg$_0 = 0;
     this.isShow_g8q9la$_0 = equals(this.channelInformation_0.style.display, 'block');
@@ -474,11 +473,8 @@ var HKNBP_Core = function (_, Kotlin) {
     }
   });
   ChannelInformation.prototype.show = function () {
-    println('c1');
     this.channelInformation_0.style.display = 'block';
-    println('c2');
     this.update();
-    println('c3');
   };
   function ChannelInformation$show$lambda(this$ChannelInformation) {
     return function () {
@@ -1614,24 +1610,18 @@ var HKNBP_Core = function (_, Kotlin) {
   function main$lambda$ObjectLiteral() {
   }
   main$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
-    println('4');
     updateChannel();
     ChannelInformation_getInstance().show_za3lpa$(3000);
-    println('5');
   };
   main$lambda$ObjectLiteral.$metadata$ = {
     kind: Kind_CLASS,
     interfaces: [ArrayLinkList$OnNodeEventListener]
   };
   function main$lambda(tvChannels_) {
-    var tmp$;
     set_tvChannels(tvChannels_);
     get_tvChannels().addOnNodeEventListener_ljxrtv$(new main$lambda$ObjectLiteral());
-    println((tmp$ = tvChannels_.node) != null ? tmp$.number : null);
     updateChannel();
-    println('2.2');
     ChannelInformation_getInstance().show_za3lpa$(3000);
-    println('3');
   }
   function main(args) {
     var tmp$;
@@ -1643,7 +1633,6 @@ var HKNBP_Core = function (_, Kotlin) {
      catch (e) {
       println('\u4ECB\u9762\u521D\u59CB\u5316\u54C0\u5DE6: ' + e.toString());
     }
-    println('1');
     TVChannel$Companion_getInstance().getTVChannels_94t8aj$(main$lambda);
   }
   function Modernizr_0() {
