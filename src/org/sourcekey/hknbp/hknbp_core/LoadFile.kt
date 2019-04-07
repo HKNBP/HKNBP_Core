@@ -31,17 +31,19 @@ object LoadFile {
 
     fun load(onLoadedFile: (xmlhttp: XMLHttpRequest)->Unit, onFailedLoadFile: ()->Unit, filePaths: ArrayLinkList<String>){
         val xmlhttp = XMLHttpRequest()
-        xmlhttp.onreadystatechange = fun(event) {
-            if (xmlhttp.readyState == 4.toShort() && xmlhttp.status == 200.toShort()) {
-                onLoadedFile(xmlhttp)
-            }
-        }
-        val onFailedLoadFileFun = fun(event: Event){
+        val onFailedLoadFileFun: dynamic = fun(){
             onFailedLoadFile()
             //PromptBox.promptMessage(dialogues.node().canNotReadData)
             if(filePaths.nodeID?:return < filePaths.size){
                 filePaths.next()
                 load(onLoadedFile, onFailedLoadFile, filePaths)
+            }
+        }
+        xmlhttp.onreadystatechange = fun(event) {
+            if (xmlhttp.readyState == 4.toShort() && xmlhttp.status == 200.toShort()) {
+                onLoadedFile(xmlhttp)
+            }else{
+                onFailedLoadFileFun()
             }
         }
         xmlhttp.ontimeout = onFailedLoadFileFun

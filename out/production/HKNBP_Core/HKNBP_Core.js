@@ -1402,15 +1402,8 @@ var HKNBP_Core = function (_, Kotlin) {
     xmlhttp.send();
     return xmlhttp;
   };
-  function LoadFile$load$lambda(closure$xmlhttp, closure$onLoadedFile) {
-    return function (event) {
-      if (closure$xmlhttp.readyState === toShort(4) && closure$xmlhttp.status === toShort(200)) {
-        closure$onLoadedFile(closure$xmlhttp);
-      }
-    };
-  }
-  function LoadFile$load$lambda_0(closure$onFailedLoadFile, closure$filePaths, closure$onLoadedFile, this$LoadFile) {
-    return function (event) {
+  function LoadFile$load$lambda(closure$onFailedLoadFile, closure$filePaths, closure$onLoadedFile, this$LoadFile) {
+    return function () {
       var tmp$;
       closure$onFailedLoadFile();
       tmp$ = closure$filePaths.nodeID;
@@ -1423,11 +1416,21 @@ var HKNBP_Core = function (_, Kotlin) {
       }
     };
   }
+  function LoadFile$load$lambda_0(closure$xmlhttp, closure$onLoadedFile, closure$onFailedLoadFileFun) {
+    return function (event) {
+      if (closure$xmlhttp.readyState === toShort(4) && closure$xmlhttp.status === toShort(200)) {
+        closure$onLoadedFile(closure$xmlhttp);
+      }
+       else {
+        closure$onFailedLoadFileFun();
+      }
+    };
+  }
   LoadFile.prototype.load_uq4zwc$ = function (onLoadedFile, onFailedLoadFile, filePaths) {
     var tmp$;
     var xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = LoadFile$load$lambda(xmlhttp, onLoadedFile);
-    var onFailedLoadFileFun = LoadFile$load$lambda_0(onFailedLoadFile, filePaths, onLoadedFile, this);
+    var onFailedLoadFileFun = LoadFile$load$lambda(onFailedLoadFile, filePaths, onLoadedFile, this);
+    xmlhttp.onreadystatechange = LoadFile$load$lambda_0(xmlhttp, onLoadedFile, onFailedLoadFileFun);
     xmlhttp.ontimeout = onFailedLoadFileFun;
     xmlhttp.onerror = onFailedLoadFileFun;
     var path = (tmp$ = filePaths.node) != null ? tmp$ : '';
