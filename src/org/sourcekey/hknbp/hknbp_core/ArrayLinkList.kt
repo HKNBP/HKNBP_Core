@@ -141,24 +141,6 @@ open class ArrayLinkList<T> : ArrayList<T> {
         node = toNode
     }
 
-    companion object {
-        fun <E> valueOf(arrayList: ArrayList<E>): ArrayLinkList<E> {
-            val arrayLinkList = ArrayLinkList<E>()
-            for (i in arrayList.indices) {
-                arrayLinkList.add(arrayList[i])
-            }
-            return arrayLinkList
-        }
-
-        fun <E> valueOf(array: Array<E>): ArrayLinkList<E> {
-            val arrayLinkList = ArrayLinkList<E>()
-            for (i in array.indices) {
-                arrayLinkList.add(array[i])
-            }
-            return arrayLinkList
-        }
-    }
-
 
     /**
      * @param initElements 初始化時一次過窒入所有元素
@@ -175,6 +157,56 @@ open class ArrayLinkList<T> : ArrayList<T> {
      * @param initElements 初始化時一次過窒入所有元素
      * */
     constructor(initNodeID: Int, vararg initElements: T): super() {
+        for (initElement in initElements){
+            add(initElement)
+        }
+        if (0 <= initNodeID && initNodeID < initElements.size) {
+            node = getOrNull(initNodeID)
+        }else{
+            node = getOrNull(0)
+        }
+    }
+
+    /**
+     * @param initElements 初始化時一次過窒入所有元素
+     * */
+    constructor(initElements: Array<out T>): super() {
+        for (initElement in initElements){
+            add(initElement)
+        }
+        node = getOrNull(0)
+    }
+
+    /**
+     * @param initNodeID 初始去指定Node,如冇set為第0個Node開始
+     * @param initElements 初始化時一次過窒入所有元素
+     * */
+    constructor(initNodeID: Int, initElements: Array<out T>): super() {
+        for (initElement in initElements){
+            add(initElement)
+        }
+        if (0 <= initNodeID && initNodeID < initElements.size) {
+            node = getOrNull(initNodeID)
+        }else{
+            node = getOrNull(0)
+        }
+    }
+
+    /**
+     * @param initElements 初始化時一次過窒入所有元素
+     * */
+    constructor(initElements: ArrayList<T>): super() {
+        for (initElement in initElements){
+            add(initElement)
+        }
+        node = getOrNull(0)
+    }
+
+    /**
+     * @param initNodeID 初始去指定Node,如冇set為第0個Node開始
+     * @param initElements 初始化時一次過窒入所有元素
+     * */
+    constructor(initNodeID: Int, initElements: ArrayList<T>): super() {
         for (initElement in initElements){
             add(initElement)
         }

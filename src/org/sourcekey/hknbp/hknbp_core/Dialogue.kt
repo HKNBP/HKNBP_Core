@@ -47,9 +47,9 @@ class Dialogue(
 
         fun getDialogues(onLoadedDialogueListener: (dialogues: ArrayLinkList<Dialogue>)->Unit){
             if(dialogues == null){
-                LoadFile.load("data/dialogue.json", fun(xmlHttp){
+                LoadFile.load(fun(xmlHttp){
                     if(xmlHttp.responseText!==""){
-                        val dialogues = ArrayLinkList.valueOf(JSON.parse<Array<Dialogue>>(xmlHttp.responseText))
+                        val dialogues = ArrayLinkList(JSON.parse<Array<Dialogue>>(xmlHttp.responseText))
                         dialogues.addOnNodeEventListener(object: ArrayLinkList.OnNodeEventListener<Dialogue>{
                             override fun OnNodeIDChanged(preChangeNodeID: Int?, postChangeNodeID: Int?, preChangeNode: Dialogue?, postChangeNode: Dialogue?) {
                                 localStorage.setItem("SelectedLanguage", postChangeNodeID.toString())//儲存低返最近睇過嘅頻道
@@ -60,7 +60,7 @@ class Dialogue(
                         this.dialogues = dialogues
                         onLoadedDialogueListener(this.dialogues?:ArrayLinkList<Dialogue>())
                     }
-                }, fun(){})
+                }, fun(){}, "data/dialogue.json")
             }else{
                 onLoadedDialogueListener(dialogues?:ArrayLinkList<Dialogue>())
             }

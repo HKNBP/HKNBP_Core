@@ -16,54 +16,52 @@ package org.sourcekey.hknbp.hknbp_core
 
 import jquery.jq
 import org.w3c.dom.*
+import org.w3c.dom.events.Event
 import org.w3c.dom.parsing.DOMParser
 import org.w3c.xhr.XMLHttpRequest
 import kotlin.browser.document
 
 object LoadFile {
-    fun load(filePath: String, onLoadedFile: (xmlhttp: XMLHttpRequest)->Unit, onFailedLoadFile: ()->Unit){
-        val xmlhttp = XMLHttpRequest()
-        var isLoaded = false
-        xmlhttp.onreadystatechange = fun(event) {
-            if(!isLoaded){
-                if (xmlhttp.readyState == 4.toShort() && xmlhttp.status == 200.toShort()) {
-                    isLoaded = true
-                    onLoadedFile(xmlhttp)
-                }
-            }
-        }
-        var isFailedLoad = false
-        xmlhttp.ontimeout = fun(event){
-            if(!isFailedLoad){
-                isFailedLoad = true
-                onFailedLoadFile()
-                //PromptBox.promptMessage(dialogues.node().canNotReadData)
-            }
-        }
-        xmlhttp.onerror = fun(event){
-            if(!isFailedLoad){
-                isFailedLoad = true
-                onFailedLoadFile()
-                //PromptBox.promptMessage(dialogues.node().canNotReadData)
-            }
-        }
-        xmlhttp.open("GET", filePath, true)
-        xmlhttp.send()
-    }
-
-    fun corsLoad(filePath: String, onLoadedFile: (xmlhttp: XMLHttpRequest)->Unit, onFailedLoadFile: ()->Unit){
-        val cors_api_url = "https://cors-anywhere.herokuapp.com/" //實現<跨Domain存取(CORS)>重點
-        val path = cors_api_url + filePath //完全唔明點解做到,要將呢個+文件位置就得
-        LoadFile.load(path, onLoadedFile, fun(){
-            println("可能用唔到<跨來源資源共用(CORS)>")
-            onFailedLoadFile()
-        })
-    }
-
     fun load(filePath: String): XMLHttpRequest{
         val xmlhttp = XMLHttpRequest()
         xmlhttp.open("GET", filePath, false)
         xmlhttp.send()
         return xmlhttp
+    }
+
+    fun load(onLoadedFile: (xmlhttp: XMLHttpRequest)->Unit, onFailedLoadFile: ()->Unit, filePaths: ArrayLinkList<String>){
+        var path: String = filePaths.node?:""
+        if(path.startsWith("http")){
+            val cors_api_url = "https://cors-anywhere.herokuapp.com/" //實現<跨Domain存取(CORS)>重點
+            path = cors_api_url + path //完全唔明點解做到,要將呢個+文件位置就得
+        }
+
+        val xmlhttp = XMLHttpRequest()
+        xmlhttp.onreadystatechange = fun(event) {
+            if (xmlhttp.readyState == 4.toShort() && xmlhttp.status == 200.toShort()) {
+                onLoadedFile(xmlhttp)
+            }
+        }
+        val onFailedLoadFileFun = fun(event: Event){
+            onFailedLoadFile()
+            //PromptBox.promptMessage(dialogues.node().canNotReadData)
+            if(filePaths.nodeID?:return < filePaths.size){
+                filePaths.next()
+                load(onLoadedFile, onFailedLoadFile, filePaths)
+            }
+        }
+        xmlhttp.ontimeout = onFailedLoadFileFun
+        xmlhttp.onerror = onFailedLoadFileFun
+
+        xmlhttp.open("GET", path, true)
+        xmlhttp.send()
+    }
+
+    fun load(onLoadedFile: (xmlhttp: XMLHttpRequest)->Unit, onFailedLoadFile: ()->Unit, filePath: Array<out String>){
+        LoadFile.load(onLoadedFile, onFailedLoadFile, ArrayLinkList(filePath))
+    }
+
+    fun load(onLoadedFile: (xmlhttp: XMLHttpRequest)->Unit, onFailedLoadFile: ()->Unit, vararg filePath: String){
+        LoadFile.load(onLoadedFile, onFailedLoadFile, filePath)
     }
 }

@@ -272,6 +272,18 @@
     function onSetIframePlayerMuted(value) {
         if(value){player.mute();}else{player.unMute();}
     }
+
+    /**
+     * 由HKNBP_Core發出片源解像度值讀取
+     * @returns {Array} array[0]為寬 array[1]為高
+     * */
+    function onGetIframePlayerVideoResolution(){
+        ////////////////////////////////////////////////////////////
+        var array = [];
+        array.push(player.videoWidth());
+        array.push(player.videoHeight());
+        return array;
+    }
 </script>
 </body>
 </html>

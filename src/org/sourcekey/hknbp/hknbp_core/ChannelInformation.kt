@@ -35,15 +35,6 @@ object ChannelInformation{
     private val currentProgrammeDesc            = document.getElementById("channelInformationCurrentProgrammeDesc") as HTMLDivElement
     private val currentProgrammeCategory        = document.getElementById("channelInformationCurrentProgrammeCategory") as HTMLDivElement
 
-    /**
-     * 隱藏頻道訊息計時器
-     * */
-    private var hideTimer: Int = 0
-
-    var isShow: Boolean = channelInformation.style.display == "block"
-        get() { return channelInformation.style.display == "block" }
-        private set
-
     private fun setCurrentChannelName(){
         currentChannelName.innerHTML = tvChannels.node?.name?: ""
     }
@@ -135,9 +126,22 @@ object ChannelInformation{
         setCurrentProgrammeCategory()
     }
 
+    /**
+     * 隱藏頻道訊息計時器
+     * */
+    private var hideTimer: Int = 0
+        set(value) {
+            window.clearInterval(field)
+            field = value
+        }
+
+    var isShow: Boolean = channelInformation.style.display == "block"
+        get() { return channelInformation.style.display == "block" }
+        private set
+
     fun show(){
-        update()
         channelInformation.style.display = "block"
+        update()
     }
 
     fun show(hideTimerTimeout: Int){
@@ -148,10 +152,7 @@ object ChannelInformation{
 
     fun hide(){
         channelInformation.style.display = "none"
-        window.clearInterval(currentDateTimer)
     }
 
-    init {
-
-    }
+    init { }
 }

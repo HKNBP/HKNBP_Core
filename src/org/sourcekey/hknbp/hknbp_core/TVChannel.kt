@@ -74,10 +74,10 @@ class TVChannel(
          * */
         fun getXMLTV(onLoadedXMLTVListener: (xmltv: XMLTV)->Unit){
             if(xmltv == null){
-                XMLTV.parseXMLTV(src, epgID, fun(xmltv){
+                XMLTV.parseXMLTV(fun(xmltv){
                     this.xmltv = xmltv
                     onLoadedXMLTVListener(this.xmltv?: XMLTV())
-                },fun(){})
+                }, fun(){}, epgID, src)
             }else{
                 onLoadedXMLTVListener(xmltv?:XMLTV())
             }
@@ -89,15 +89,15 @@ class TVChannel(
          * 分析已讀取返來嘅電視頻道表資料
          * */
         private fun parseTVChannels(
-                src: String,
                 onParsedTVChannelsListener: (tvChannels: ArrayLinkList<TVChannel>) -> Unit,
-                onFailedParseTVChannelsListener: ()->Unit
+                onFailedParseTVChannelsListener: ()->Unit,
+                vararg src: String
         ){
-            LoadFile.load(src, fun(xmlHttp){
+            LoadFile.load(fun(xmlHttp){
                 onParsedTVChannelsListener(getTVChannels(xmlHttp))
             }, fun(){
                 onFailedParseTVChannelsListener()
-            })
+            }, src)
         }
 
         private fun getTVChannels(xmlHttp: XMLHttpRequest): ArrayLinkList<TVChannel>{
@@ -189,7 +189,7 @@ class TVChannel(
          */
         fun getTVChannels(onLoadedTVChannelsListener: (tvChannels: ArrayLinkList<TVChannel>)->Unit){
             if(tvChannels == null){
-                val setupTvChannels = fun(tvChannels: ArrayLinkList<TVChannel>){
+                parseTVChannels(fun(tvChannels){
                     try {
                         tvChannels.addOnNodeEventListener(object: ArrayLinkList.OnNodeEventListener<TVChannel>{
                             override fun OnNodeIDChanged(
@@ -213,15 +213,7 @@ class TVChannel(
 
                     this.tvChannels = tvChannels
                     onLoadedTVChannelsListener(this.tvChannels?:ArrayLinkList<TVChannel>())
-                }
-                parseTVChannels("${rootURL}data/tv_channels.xml", fun(tvChannels){
-                    setupTvChannels(tvChannels)
-                }, fun(){
-                    //如果Load唔到電視頻道表就Load原本Load過嘅電視頻道表
-                    parseTVChannels("data/tv_channels.xml", fun(tvChannels){
-                        setupTvChannels(tvChannels)
-                    }, fun(){})
-                })
+                }, fun(){}, "${rootURL}data/tv_channels.xml", "data/tv_channels.xml")
             }else{
                 onLoadedTVChannelsListener(tvChannels?:ArrayLinkList<TVChannel>())
             }

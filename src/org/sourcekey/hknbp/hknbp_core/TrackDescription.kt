@@ -73,9 +73,7 @@ class TrackDescription(
             try {
                 //讀取TrackDescriptions
                 val trackDescriptions = sortTrackDescriptions(
-                        ArrayLinkList.valueOf(
-                                JSON.parse<Array<TrackDescription>>(JSON.stringify(fromIframePlayerGetTracksValue))
-                        )
+                        ArrayLinkList(JSON.parse<Array<TrackDescription>>(JSON.stringify(fromIframePlayerGetTracksValue)))
                 )
                 trackDescriptions.designated(
                         TrackDescription.toTracksNodeID(

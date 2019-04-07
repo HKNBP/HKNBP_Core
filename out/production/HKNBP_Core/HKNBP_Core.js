@@ -13,20 +13,21 @@ var HKNBP_Core = function (_, Kotlin) {
   var Kind_CLASS = Kotlin.Kind.CLASS;
   var numberToInt = Kotlin.numberToInt;
   var throwCCE = Kotlin.throwCCE;
-  var equals = Kotlin.equals;
   var toString = Kotlin.toString;
   var padStart = Kotlin.kotlin.text.padStart_vrc1nu$;
   var replace = Kotlin.kotlin.text.replace_680rmw$;
+  var equals = Kotlin.equals;
   var toBoolean = Kotlin.kotlin.text.toBoolean_pdl1vz$;
   var toInt = Kotlin.kotlin.text.toInt_pdl1vz$;
   var addClass = Kotlin.kotlin.dom.addClass_hhb33f$;
   var toIntOrNull = Kotlin.kotlin.text.toIntOrNull_pdl1vz$;
+  var startsWith = Kotlin.kotlin.text.startsWith_7epoxm$;
   var toShort = Kotlin.toShort;
-  var println = Kotlin.kotlin.io.println_s8jyv4$;
   var throwUPAE = Kotlin.throwUPAE;
   var split = Kotlin.kotlin.text.split_ip8yn$;
   var ensureNotNull = Kotlin.ensureNotNull;
   var split_0 = Kotlin.kotlin.text.split_o64adg$;
+  var println = Kotlin.kotlin.io.println_s8jyv4$;
   var String_0 = String;
   var toDoubleOrNull = Kotlin.kotlin.text.toDoubleOrNull_pdl1vz$;
   var Enum = Kotlin.kotlin.Enum;
@@ -65,7 +66,6 @@ var HKNBP_Core = function (_, Kotlin) {
     return AboutWindow_instance;
   }
   function ArrayLinkList() {
-    ArrayLinkList$Companion_getInstance();
     this.node_ns7zwb$_0 = null;
     this.lastTimeNode_rxcek8$_0 = null;
     this.onNodeEventListeners_907qg9$_0 = ArrayList_init();
@@ -171,35 +171,6 @@ var HKNBP_Core = function (_, Kotlin) {
     this.saveLastTimeNode_8x70b$_0();
     this.node = toNode;
   };
-  function ArrayLinkList$Companion() {
-    ArrayLinkList$Companion_instance = this;
-  }
-  ArrayLinkList$Companion.prototype.valueOf_h5wnxp$ = function (arrayList) {
-    var arrayLinkList = ArrayLinkList_init([]);
-    for (var i = 0; i !== arrayList.size; ++i) {
-      arrayLinkList.add_11rb$(arrayList.get_za3lpa$(i));
-    }
-    return arrayLinkList;
-  };
-  ArrayLinkList$Companion.prototype.valueOf_ro6dgy$ = function (array) {
-    var arrayLinkList = ArrayLinkList_init([]);
-    for (var i = 0; i !== array.length; ++i) {
-      arrayLinkList.add_11rb$(array[i]);
-    }
-    return arrayLinkList;
-  };
-  ArrayLinkList$Companion.$metadata$ = {
-    kind: Kind_OBJECT,
-    simpleName: 'Companion',
-    interfaces: []
-  };
-  var ArrayLinkList$Companion_instance = null;
-  function ArrayLinkList$Companion_getInstance() {
-    if (ArrayLinkList$Companion_instance === null) {
-      new ArrayLinkList$Companion();
-    }
-    return ArrayLinkList$Companion_instance;
-  }
   ArrayLinkList.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'ArrayLinkList',
@@ -227,6 +198,66 @@ var HKNBP_Core = function (_, Kotlin) {
       $this.add_11rb$(initElement);
     }
     if (0 <= initNodeID && initNodeID < initElements.length) {
+      $this.node = getOrNull($this, initNodeID);
+    }
+     else {
+      $this.node = getOrNull($this, 0);
+    }
+    return $this;
+  }
+  function ArrayLinkList_init_1(initElements, $this) {
+    $this = $this || Object.create(ArrayLinkList.prototype);
+    ArrayList_init($this);
+    ArrayLinkList.call($this);
+    var tmp$;
+    for (tmp$ = 0; tmp$ !== initElements.length; ++tmp$) {
+      var initElement = initElements[tmp$];
+      $this.add_11rb$(initElement);
+    }
+    $this.node = getOrNull($this, 0);
+    return $this;
+  }
+  function ArrayLinkList_init_2(initNodeID, initElements, $this) {
+    $this = $this || Object.create(ArrayLinkList.prototype);
+    ArrayList_init($this);
+    ArrayLinkList.call($this);
+    var tmp$;
+    for (tmp$ = 0; tmp$ !== initElements.length; ++tmp$) {
+      var initElement = initElements[tmp$];
+      $this.add_11rb$(initElement);
+    }
+    if (0 <= initNodeID && initNodeID < initElements.length) {
+      $this.node = getOrNull($this, initNodeID);
+    }
+     else {
+      $this.node = getOrNull($this, 0);
+    }
+    return $this;
+  }
+  function ArrayLinkList_init_3(initElements, $this) {
+    $this = $this || Object.create(ArrayLinkList.prototype);
+    ArrayList_init($this);
+    ArrayLinkList.call($this);
+    var tmp$;
+    tmp$ = initElements.iterator();
+    while (tmp$.hasNext()) {
+      var initElement = tmp$.next();
+      $this.add_11rb$(initElement);
+    }
+    $this.node = getOrNull($this, 0);
+    return $this;
+  }
+  function ArrayLinkList_init_4(initNodeID, initElements, $this) {
+    $this = $this || Object.create(ArrayLinkList.prototype);
+    ArrayList_init($this);
+    ArrayLinkList.call($this);
+    var tmp$;
+    tmp$ = initElements.iterator();
+    while (tmp$.hasNext()) {
+      var initElement = tmp$.next();
+      $this.add_11rb$(initElement);
+    }
+    if (0 <= initNodeID && initNodeID < initElements.size) {
       $this.node = getOrNull($this, initNodeID);
     }
      else {
@@ -304,18 +335,10 @@ var HKNBP_Core = function (_, Kotlin) {
     this.currentProgrammeBroadcastTime_0 = Kotlin.isType(tmp$_7 = document.getElementById('channelInformationCurrentProgrammeBroadcastTime'), HTMLDivElement) ? tmp$_7 : throwCCE();
     this.currentProgrammeDesc_0 = Kotlin.isType(tmp$_8 = document.getElementById('channelInformationCurrentProgrammeDesc'), HTMLDivElement) ? tmp$_8 : throwCCE();
     this.currentProgrammeCategory_0 = Kotlin.isType(tmp$_9 = document.getElementById('channelInformationCurrentProgrammeCategory'), HTMLDivElement) ? tmp$_9 : throwCCE();
-    this.hideTimer_0 = 0;
-    this.isShow_g8q9la$_0 = equals(this.channelInformation_0.style.display, 'block');
     this.currentDateTimer_0 = 0;
+    this.hideTimer_spqbhg$_0 = 0;
+    this.isShow_g8q9la$_0 = equals(this.channelInformation_0.style.display, 'block');
   }
-  Object.defineProperty(ChannelInformation.prototype, 'isShow', {
-    get: function () {
-      return equals(this.channelInformation_0.style.display, 'block');
-    },
-    set: function (isShow) {
-      this.isShow_g8q9la$_0 = isShow;
-    }
-  });
   ChannelInformation.prototype.setCurrentChannelName_0 = function () {
     var tmp$, tmp$_0;
     this.currentChannelName_0.innerHTML = (tmp$_0 = (tmp$ = get_tvChannels().node) != null ? tmp$.name : null) != null ? tmp$_0 : '';
@@ -433,9 +456,26 @@ var HKNBP_Core = function (_, Kotlin) {
     this.setCurrentProgrammeBroadcastTime_0();
     this.setCurrentProgrammeCategory_0();
   };
+  Object.defineProperty(ChannelInformation.prototype, 'hideTimer_0', {
+    get: function () {
+      return this.hideTimer_spqbhg$_0;
+    },
+    set: function (value) {
+      window.clearInterval(this.hideTimer_spqbhg$_0);
+      this.hideTimer_spqbhg$_0 = value;
+    }
+  });
+  Object.defineProperty(ChannelInformation.prototype, 'isShow', {
+    get: function () {
+      return equals(this.channelInformation_0.style.display, 'block');
+    },
+    set: function (isShow) {
+      this.isShow_g8q9la$_0 = isShow;
+    }
+  });
   ChannelInformation.prototype.show = function () {
-    this.update();
     this.channelInformation_0.style.display = 'block';
+    this.update();
   };
   function ChannelInformation$show$lambda(this$ChannelInformation) {
     return function () {
@@ -449,7 +489,6 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   ChannelInformation.prototype.hide = function () {
     this.channelInformation_0.style.display = 'none';
-    window.clearInterval(this.currentDateTimer_0);
   };
   ChannelInformation.$metadata$ = {
     kind: Kind_OBJECT,
@@ -568,7 +607,7 @@ var HKNBP_Core = function (_, Kotlin) {
     return function (xmlHttp) {
       var tmp$, tmp$_0, tmp$_1;
       if (xmlHttp.responseText !== '') {
-        var dialogues = ArrayLinkList$Companion_getInstance().valueOf_ro6dgy$(JSON.parse(xmlHttp.responseText));
+        var dialogues = ArrayLinkList_init_1(JSON.parse(xmlHttp.responseText));
         dialogues.addOnNodeEventListener_ljxrtv$(new Dialogue$Companion$getDialogues$lambda$ObjectLiteral());
         dialogues.designated_za3lpa$((tmp$_0 = (tmp$ = localStorage.getItem('SelectedLanguage')) != null ? toInt(tmp$) : null) != null ? tmp$_0 : 0);
         this$Dialogue$.dialogues_0 = dialogues;
@@ -581,7 +620,7 @@ var HKNBP_Core = function (_, Kotlin) {
   Dialogue$Companion.prototype.getDialogues_fs1aqo$ = function (onLoadedDialogueListener) {
     var tmp$;
     if (this.dialogues_0 == null) {
-      LoadFile_getInstance().load_gc4c6p$('data/dialogue.json', Dialogue$Companion$getDialogues$lambda(this, onLoadedDialogueListener), Dialogue$Companion$getDialogues$lambda_0);
+      LoadFile_getInstance().load_h2maru$(Dialogue$Companion$getDialogues$lambda(this, onLoadedDialogueListener), Dialogue$Companion$getDialogues$lambda_0, ['data/dialogue.json']);
     }
      else {
       onLoadedDialogueListener((tmp$ = this.dialogues_0) != null ? tmp$ : ArrayLinkList_init([]));
@@ -1358,58 +1397,53 @@ var HKNBP_Core = function (_, Kotlin) {
   function LoadFile() {
     LoadFile_instance = this;
   }
-  function LoadFile$load$lambda(closure$isLoaded, closure$xmlhttp, closure$onLoadedFile) {
-    return function (event) {
-      if (!closure$isLoaded.v) {
-        if (closure$xmlhttp.readyState === toShort(4) && closure$xmlhttp.status === toShort(200)) {
-          closure$isLoaded.v = true;
-          closure$onLoadedFile(closure$xmlhttp);
-        }
-      }
-    };
-  }
-  function LoadFile$load$lambda_0(closure$isFailedLoad, closure$onFailedLoadFile) {
-    return function (event) {
-      if (!closure$isFailedLoad.v) {
-        closure$isFailedLoad.v = true;
-        closure$onFailedLoadFile();
-      }
-    };
-  }
-  function LoadFile$load$lambda_1(closure$isFailedLoad, closure$onFailedLoadFile) {
-    return function (event) {
-      if (!closure$isFailedLoad.v) {
-        closure$isFailedLoad.v = true;
-        closure$onFailedLoadFile();
-      }
-    };
-  }
-  LoadFile.prototype.load_gc4c6p$ = function (filePath, onLoadedFile, onFailedLoadFile) {
-    var xmlhttp = new XMLHttpRequest();
-    var isLoaded = {v: false};
-    xmlhttp.onreadystatechange = LoadFile$load$lambda(isLoaded, xmlhttp, onLoadedFile);
-    var isFailedLoad = {v: false};
-    xmlhttp.ontimeout = LoadFile$load$lambda_0(isFailedLoad, onFailedLoadFile);
-    xmlhttp.onerror = LoadFile$load$lambda_1(isFailedLoad, onFailedLoadFile);
-    xmlhttp.open('GET', filePath, true);
-    xmlhttp.send();
-  };
-  function LoadFile$corsLoad$lambda(closure$onFailedLoadFile) {
-    return function () {
-      println('\u53EF\u80FD\u7528\u5514\u5230<\u8DE8\u4F86\u6E90\u8CC7\u6E90\u5171\u7528(CORS)>');
-      closure$onFailedLoadFile();
-    };
-  }
-  LoadFile.prototype.corsLoad_gc4c6p$ = function (filePath, onLoadedFile, onFailedLoadFile) {
-    var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
-    var path = cors_api_url + filePath;
-    LoadFile_getInstance().load_gc4c6p$(path, onLoadedFile, LoadFile$corsLoad$lambda(onFailedLoadFile));
-  };
   LoadFile.prototype.load_61zpoe$ = function (filePath) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open('GET', filePath, false);
     xmlhttp.send();
     return xmlhttp;
+  };
+  function LoadFile$load$lambda(closure$xmlhttp, closure$onLoadedFile) {
+    return function (event) {
+      if (closure$xmlhttp.readyState === toShort(4) && closure$xmlhttp.status === toShort(200)) {
+        closure$onLoadedFile(closure$xmlhttp);
+      }
+    };
+  }
+  function LoadFile$load$lambda_0(closure$onFailedLoadFile, closure$filePaths, closure$onLoadedFile, this$LoadFile) {
+    return function (event) {
+      var tmp$;
+      closure$onFailedLoadFile();
+      tmp$ = closure$filePaths.nodeID;
+      if (tmp$ == null) {
+        return;
+      }
+      if (tmp$ < closure$filePaths.size) {
+        closure$filePaths.next();
+        this$LoadFile.load_uq4zwc$(closure$onLoadedFile, closure$onFailedLoadFile, closure$filePaths);
+      }
+    };
+  }
+  LoadFile.prototype.load_uq4zwc$ = function (onLoadedFile, onFailedLoadFile, filePaths) {
+    var tmp$;
+    var path = (tmp$ = filePaths.node) != null ? tmp$ : '';
+    if (startsWith(path, 'http')) {
+      var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
+      path = cors_api_url + path;
+    }
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = LoadFile$load$lambda(xmlhttp, onLoadedFile);
+    var onFailedLoadFileFun = LoadFile$load$lambda_0(onFailedLoadFile, filePaths, onLoadedFile, this);
+    xmlhttp.ontimeout = onFailedLoadFileFun;
+    xmlhttp.onerror = onFailedLoadFileFun;
+    xmlhttp.open('GET', path, true);
+    xmlhttp.send();
+  };
+  LoadFile.prototype.load_y8xsdy$ = function (onLoadedFile, onFailedLoadFile, filePath) {
+    LoadFile_getInstance().load_uq4zwc$(onLoadedFile, onFailedLoadFile, ArrayLinkList_init_1(filePath));
+  };
+  LoadFile.prototype.load_h2maru$ = function (onLoadedFile, onFailedLoadFile, filePath) {
+    LoadFile_getInstance().load_y8xsdy$(onLoadedFile, onFailedLoadFile, filePath);
   };
   LoadFile.$metadata$ = {
     kind: Kind_OBJECT,
@@ -1585,17 +1619,17 @@ var HKNBP_Core = function (_, Kotlin) {
     interfaces: [ArrayLinkList$OnNodeEventListener]
   };
   function main$lambda(tvChannels_) {
-    var tmp$;
     set_tvChannels(tvChannels_);
     get_tvChannels().addOnNodeEventListener_ljxrtv$(new main$lambda$ObjectLiteral());
     updateChannel();
     ChannelInformation_getInstance().show_za3lpa$(3000);
-    (Kotlin.isType(tmp$ = document.querySelector('[tabindex="100000002"]'), HTMLElement) ? tmp$ : throwCCE()).focus();
   }
   function main(args) {
+    var tmp$;
     try {
       UserControlPanel_getInstance();
       ConsentPanel_getInstance();
+      (Kotlin.isType(tmp$ = document.querySelector('[tabindex="100000002"]'), HTMLElement) ? tmp$ : throwCCE()).focus();
     }
      catch (e) {
       println('\u4ECB\u9762\u521D\u59CB\u5316\u54C0\u5DE6: ' + e.toString());
@@ -2599,7 +2633,7 @@ var HKNBP_Core = function (_, Kotlin) {
   TVChannel$Information.prototype.getXMLTV_29qkou$ = function (onLoadedXMLTVListener) {
     var tmp$;
     if (this.xmltv_0 == null) {
-      XMLTV$Companion_getInstance().parseXMLTV_yr8ruz$(this.src, this.epgID, TVChannel$Information$getXMLTV$lambda(this, onLoadedXMLTVListener), TVChannel$Information$getXMLTV$lambda_0);
+      XMLTV$Companion_getInstance().parseXMLTV_22edlo$(TVChannel$Information$getXMLTV$lambda(this, onLoadedXMLTVListener), TVChannel$Information$getXMLTV$lambda_0, this.epgID, [this.src]);
     }
      else {
       onLoadedXMLTVListener((tmp$ = this.xmltv_0) != null ? tmp$ : new XMLTV());
@@ -2624,8 +2658,8 @@ var HKNBP_Core = function (_, Kotlin) {
       closure$onFailedParseTVChannelsListener();
     };
   }
-  TVChannel$Companion.prototype.parseTVChannels_0 = function (src, onParsedTVChannelsListener, onFailedParseTVChannelsListener) {
-    LoadFile_getInstance().load_gc4c6p$(src, TVChannel$Companion$parseTVChannels$lambda(onParsedTVChannelsListener, this), TVChannel$Companion$parseTVChannels$lambda_0(onFailedParseTVChannelsListener));
+  TVChannel$Companion.prototype.parseTVChannels_0 = function (onParsedTVChannelsListener, onFailedParseTVChannelsListener, src) {
+    LoadFile_getInstance().load_y8xsdy$(TVChannel$Companion$parseTVChannels$lambda(onParsedTVChannelsListener, this), TVChannel$Companion$parseTVChannels$lambda_0(onFailedParseTVChannelsListener), src);
   };
   TVChannel$Companion.prototype.getTVChannels_0 = function (xmlHttp) {
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9;
@@ -2748,28 +2782,12 @@ var HKNBP_Core = function (_, Kotlin) {
       closure$onLoadedTVChannelsListener((tmp$_4 = this$TVChannel$.tvChannels_0) != null ? tmp$_4 : ArrayLinkList_init([]));
     };
   }
-  function TVChannel$Companion$getTVChannels$lambda_0(closure$setupTvChannels) {
-    return function (tvChannels) {
-      closure$setupTvChannels(tvChannels);
-    };
-  }
-  function TVChannel$Companion$getTVChannels$lambda$lambda_0(closure$setupTvChannels) {
-    return function (tvChannels) {
-      closure$setupTvChannels(tvChannels);
-    };
-  }
-  function TVChannel$Companion$getTVChannels$lambda$lambda_1() {
-  }
-  function TVChannel$Companion$getTVChannels$lambda_1(closure$setupTvChannels, this$TVChannel$) {
-    return function () {
-      this$TVChannel$.parseTVChannels_0('data/tv_channels.xml', TVChannel$Companion$getTVChannels$lambda$lambda_0(closure$setupTvChannels), TVChannel$Companion$getTVChannels$lambda$lambda_1);
-    };
+  function TVChannel$Companion$getTVChannels$lambda_0() {
   }
   TVChannel$Companion.prototype.getTVChannels_94t8aj$ = function (onLoadedTVChannelsListener) {
     var tmp$;
     if (this.tvChannels_0 == null) {
-      var setupTvChannels = TVChannel$Companion$getTVChannels$lambda(this, onLoadedTVChannelsListener);
-      this.parseTVChannels_0('https://hknbp.org/data/tv_channels.xml', TVChannel$Companion$getTVChannels$lambda_0(setupTvChannels), TVChannel$Companion$getTVChannels$lambda_1(setupTvChannels, this));
+      this.parseTVChannels_0(TVChannel$Companion$getTVChannels$lambda(this, onLoadedTVChannelsListener), TVChannel$Companion$getTVChannels$lambda_0, ['https://hknbp.org/data/tv_channels.xml', 'data/tv_channels.xml']);
     }
      else {
       onLoadedTVChannelsListener((tmp$ = this.tvChannels_0) != null ? tmp$ : ArrayLinkList_init([]));
@@ -2893,7 +2911,7 @@ var HKNBP_Core = function (_, Kotlin) {
   TrackDescription$Companion.prototype.fromIframePlayerReturnTrackDescriptionsToKotilnUseableTrackDescriptions_wn2jw4$ = function (fromIframePlayerGetTracksValue, fromIframePlayerGetTrackValue) {
     var tmp$;
     try {
-      var trackDescriptions = this.sortTrackDescriptions_gwog88$(ArrayLinkList$Companion_getInstance().valueOf_ro6dgy$(JSON.parse(JSON.stringify(fromIframePlayerGetTracksValue))));
+      var trackDescriptions = this.sortTrackDescriptions_gwog88$(ArrayLinkList_init_1(JSON.parse(JSON.stringify(fromIframePlayerGetTracksValue))));
       trackDescriptions.designated_za3lpa$((tmp$ = TrackDescription$Companion_getInstance().toTracksNodeID_w1sgja$(trackDescriptions, JSON.parse(JSON.stringify(fromIframePlayerGetTrackValue)).id)) != null ? tmp$ : 0);
       return trackDescriptions;
     }
@@ -4516,8 +4534,8 @@ var HKNBP_Core = function (_, Kotlin) {
       closure$onFailedParseXMLTVListener();
     };
   }
-  XMLTV$Companion.prototype.parseXMLTV_yr8ruz$ = function (xmltvSrc, epgID, onParsedXMLTVListener, onFailedParseXMLTVListener) {
-    LoadFile_getInstance().corsLoad_gc4c6p$(xmltvSrc, XMLTV$Companion$parseXMLTV$lambda(onParsedXMLTVListener, epgID, this), XMLTV$Companion$parseXMLTV$lambda_0(onFailedParseXMLTVListener));
+  XMLTV$Companion.prototype.parseXMLTV_22edlo$ = function (onParsedXMLTVListener, onFailedParseXMLTVListener, epgID, xmltvSrc) {
+    LoadFile_getInstance().load_y8xsdy$(XMLTV$Companion$parseXMLTV$lambda(onParsedXMLTVListener, epgID, this), XMLTV$Companion$parseXMLTV$lambda_0(onFailedParseXMLTVListener), xmltvSrc);
   };
   XMLTV$Companion.prototype.compareTo_fsx041$ = function ($receiver, date) {
     return numberToInt($receiver.getTime() - date.getTime());
@@ -5191,11 +5209,12 @@ var HKNBP_Core = function (_, Kotlin) {
     get: AboutWindow_getInstance
   });
   ArrayLinkList.OnNodeEventListener = ArrayLinkList$OnNodeEventListener;
-  Object.defineProperty(ArrayLinkList, 'Companion', {
-    get: ArrayLinkList$Companion_getInstance
-  });
   package$hknbp_core.ArrayLinkList_init_i5x0yv$ = ArrayLinkList_init;
   package$hknbp_core.ArrayLinkList_init_vzjx9f$ = ArrayLinkList_init_0;
+  package$hknbp_core.ArrayLinkList_init_5x1j0d$ = ArrayLinkList_init_1;
+  package$hknbp_core.ArrayLinkList_init_y3505j$ = ArrayLinkList_init_2;
+  package$hknbp_core.ArrayLinkList_init_h5wnxp$ = ArrayLinkList_init_3;
+  package$hknbp_core.ArrayLinkList_init_ivph99$ = ArrayLinkList_init_4;
   package$hknbp_core.ArrayLinkList = ArrayLinkList;
   Object.defineProperty(package$hknbp_core, 'AudioDescription', {
     get: AudioDescription_getInstance

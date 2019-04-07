@@ -31,6 +31,8 @@
     <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
     <meta http-equiv="Access-Control-Allow-Methods" content="GET, PUT, POST, DELETE, OPTIONS"/>
     <meta http-equiv="Access-Control-Allow-Headers" content="DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range"/>
+
+    <!--允許讀URL為http協定嘅資料(唔係https)-->
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <title>香港網路廣播平台</title>
@@ -333,13 +335,6 @@
     .css-table .th, .css-table .td{
       display:table-cell;
     }
-
-
-
-
-
-
-
     </style>
 </head>
 
@@ -352,6 +347,8 @@
         font-family: FreeSans;
         margin:0vh;
         overflow: hidden;
+        position: absolute;
+        top:0; bottom:0; left:0; right:0;
         //text-transform: full-size-kana;
         /* disable text selection highlighting */
         -webkit-touch-callout: none; /* iOS Safari */
@@ -362,14 +359,12 @@
         user-select          : none; /* Non-prefixed version, currently supported by Chrome and Opera */
        "
 >
-<div id="player"
-     style="
+<div id="player" style="
          overflow: hidden;
          position: absolute;
          top:0; bottom:0; left:0; right:0;
          z-index:20;
-       "
->
+       ">
     <iframe
             id="iframePlayer"
             style="width:100%; height:100%; position:absolute; top:0; left:0; overflow:hidden;"
@@ -380,6 +375,7 @@
 </div>
 <div id="userInterface">
     <button id="userControlPanelShower" style="
+              //display: none;
               background: rgba(0, 0, 0, 0);
               border-style: none;
               outline:none;
@@ -968,7 +964,7 @@
         ">
     </div>
 </div>
-<button id="get"></button>
+
 <!--
 //node.js
 <script src="https://cdn.bootcss.com/BrowserFS/2.0.0/browserfs.js"></script>

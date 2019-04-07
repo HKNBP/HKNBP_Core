@@ -463,12 +463,16 @@ open class XMLTV(
          * @param epgID 需要獲取嘅頻道嘅節目指南ID
          * @param onParseedXMLTVListener 當完成解析XMLTV就執行呢個function
          * */
-        fun parseXMLTV(xmltvSrc: String, epgID: String, onParsedXMLTVListener: (xmltv: XMLTV) -> Unit, onFailedParseXMLTVListener: ()->Unit){
-            LoadFile.corsLoad(xmltvSrc, fun(xmlHttp){
+        fun parseXMLTV(
+                onParsedXMLTVListener: (xmltv: XMLTV) -> Unit,
+                onFailedParseXMLTVListener: ()->Unit,
+                epgID: String, vararg xmltvSrc: String
+        ){
+            LoadFile.load(fun(xmlHttp){
                 onParsedXMLTVListener(getXMLTV(xmlHttp.responseXML, epgID))
             }, fun(){
                 onFailedParseXMLTVListener()
-            })
+            }, xmltvSrc)
         }
 
         /**

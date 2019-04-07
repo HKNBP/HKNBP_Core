@@ -218,6 +218,7 @@ fun main(args: Array<String>) {
     try {
         UserControlPanel
         ConsentPanel
+        (document.querySelector("[tabindex=\"100000002\"]") as HTMLElement).focus()
     } catch (e: dynamic) { println("介面初始化哀左: $e") }
 
     TVChannel.getTVChannels(fun(tvChannels_) {
@@ -233,6 +234,5 @@ fun main(args: Array<String>) {
         })
         updateChannel()
         ChannelInformation.show(3000)
-        (document.querySelector("[tabindex=\"100000002\"]") as HTMLElement).focus()
     })
 }
