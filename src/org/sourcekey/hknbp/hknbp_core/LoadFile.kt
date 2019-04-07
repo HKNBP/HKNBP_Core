@@ -49,7 +49,7 @@ object LoadFile {
 
         var path: String = filePaths.node?:""
         if(path.startsWith("http")){
-            val cors_api_url = "https://cors-anywhere.herokuapp.com/" //實現<跨Domain存取(CORS)>重點
+            val cors_api_url = "https://crossorigin.me/" //實現<跨Domain存取(CORS)>重點
             path = cors_api_url + path //完全唔明點解做到,要將呢個+文件位置就得
         }
         xmlhttp.open("GET", path, true)
