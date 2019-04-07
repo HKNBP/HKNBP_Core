@@ -20,6 +20,7 @@ import org.w3c.dom.events.Event
 import org.w3c.dom.parsing.DOMParser
 import org.w3c.xhr.XMLHttpRequest
 import kotlin.browser.document
+import kotlin.browser.window
 
 object LoadFile {
     fun load(filePath: String): XMLHttpRequest{
@@ -31,23 +32,29 @@ object LoadFile {
 
     fun load(onLoadedFile: (xmlhttp: XMLHttpRequest)->Unit, onFailedLoadFile: ()->Unit, filePaths: ArrayLinkList<String>){
         val xmlhttp = XMLHttpRequest()
-        val onFailedLoadFileFun: dynamic = fun(){
-            onFailedLoadFile()
-            //PromptBox.promptMessage(dialogues.node().canNotReadData)
-            if(filePaths.nodeID?:return < filePaths.size){
-                filePaths.next()
-                load(onLoadedFile, onFailedLoadFile, filePaths)
-            }
+        var isLoaded = false
+        val onFailedLoadFileProgram: dynamic = fun(){
+            window.setTimeout(fun(){
+                if(!isLoaded){
+                    onFailedLoadFile()
+                    //PromptBox.promptMessage(dialogues.node().canNotReadData)
+                    if(filePaths.nodeID?:return < filePaths.size-1){
+                        filePaths.next()
+                        load(onLoadedFile, onFailedLoadFile, filePaths)
+                    }
+                }
+            }, 10000)
         }
         xmlhttp.onreadystatechange = fun(event) {
             if (xmlhttp.readyState == 4.toShort() && xmlhttp.status == 200.toShort()) {
+                isLoaded = true
                 onLoadedFile(xmlhttp)
             }else{
-                onFailedLoadFileFun()
+                onFailedLoadFileProgram()
             }
         }
-        xmlhttp.ontimeout = onFailedLoadFileFun
-        xmlhttp.onerror = onFailedLoadFileFun
+        xmlhttp.ontimeout = onFailedLoadFileProgram
+        xmlhttp.onerror = onFailedLoadFileProgram
 
         var path: String = filePaths.node?:""
         if(path.startsWith("http")){
