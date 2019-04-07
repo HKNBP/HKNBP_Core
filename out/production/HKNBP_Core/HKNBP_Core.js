@@ -1611,8 +1611,10 @@ var HKNBP_Core = function (_, Kotlin) {
   function main$lambda$ObjectLiteral() {
   }
   main$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
+    println('4');
     updateChannel();
     ChannelInformation_getInstance().show_za3lpa$(3000);
+    println('5');
   };
   main$lambda$ObjectLiteral.$metadata$ = {
     kind: Kind_CLASS,
@@ -1621,8 +1623,10 @@ var HKNBP_Core = function (_, Kotlin) {
   function main$lambda(tvChannels_) {
     set_tvChannels(tvChannels_);
     get_tvChannels().addOnNodeEventListener_ljxrtv$(new main$lambda$ObjectLiteral());
+    println('2');
     updateChannel();
     ChannelInformation_getInstance().show_za3lpa$(3000);
+    println('3');
   }
   function main(args) {
     var tmp$;
@@ -1634,6 +1638,7 @@ var HKNBP_Core = function (_, Kotlin) {
      catch (e) {
       println('\u4ECB\u9762\u521D\u59CB\u5316\u54C0\u5DE6: ' + e.toString());
     }
+    println('1');
     TVChannel$Companion_getInstance().getTVChannels_94t8aj$(main$lambda);
   }
   function Modernizr_0() {
