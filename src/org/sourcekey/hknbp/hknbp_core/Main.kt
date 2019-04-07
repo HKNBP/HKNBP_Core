@@ -234,7 +234,7 @@ fun main(args: Array<String>) {
                 println("5")
             }
         })
-        println("2")
+        println(tvChannels_.node?.number)
         updateChannel()
         println("2.2")
         ChannelInformation.show(3000)

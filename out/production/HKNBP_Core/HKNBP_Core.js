@@ -1621,9 +1621,10 @@ var HKNBP_Core = function (_, Kotlin) {
     interfaces: [ArrayLinkList$OnNodeEventListener]
   };
   function main$lambda(tvChannels_) {
+    var tmp$;
     set_tvChannels(tvChannels_);
     get_tvChannels().addOnNodeEventListener_ljxrtv$(new main$lambda$ObjectLiteral());
-    println('2');
+    println((tmp$ = tvChannels_.node) != null ? tmp$.number : null);
     updateChannel();
     println('2.2');
     ChannelInformation_getInstance().show_za3lpa$(3000);
