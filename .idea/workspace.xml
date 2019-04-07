@@ -5,22 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="439dc076-fa64-48ca-946e-6d20fa2781e4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iframePlayer/videojs_dash.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframePlayer/videojs_dash.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iframePlayer/videojs_hls.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframePlayer/videojs_hls.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iframePlayer/youtube_api.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframePlayer/youtube_api.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.meta.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.meta.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ArrayLinkList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ArrayLinkList.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ChannelInformation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ChannelInformation.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Dialogue.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Dialogue.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/TVChannel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/TVChannel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/TrackDescription.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/TrackDescription.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/XMLTV.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/XMLTV.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -111,7 +96,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ChannelInformation.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="551">
@@ -124,9 +109,40 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="660">
+              <caret line="60" column="78" selection-start-line="60" selection-start-column="78" selection-end-line="60" selection-end-column="78" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/TVChannel.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="600">
+              <caret line="215" column="60" selection-start-line="215" selection-start-column="60" selection-end-line="215" selection-end-column="60" />
+              <folding>
+                <element signature="n#!!block;n#getTVChannels#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
+                <element signature="n#!!block;n#getNumber#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
+                <element signature="n#!!block;n#getName#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
+                <element signature="n#!!block;n#getSources#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
+                <element signature="n#!!block;n#getInformation#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
+                <element signature="n#!!block;n#getDescription#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
+                <element signature="n#!!block;n#getIFramePlayerSrc#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
+                <element signature="n#!!block;n#getLink#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
+                <element signature="n#!!doc;n#toChannelNumberNodeID#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
+                <element signature="n#!!block;n#toChannelNumberNodeID#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
+                <element signature="e#6770#8043#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1674">
+            <state relative-caret-position="-1564">
               <caret line="72" column="25" selection-start-line="72" selection-start-column="25" selection-end-line="72" selection-end-column="25" />
             </state>
           </provider>
@@ -233,10 +249,10 @@
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/TrackDescription.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Dialogue.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt" />
-        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/TVChannel.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ChannelInformation.kt" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" />
+        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/TVChannel.kt" />
       </list>
     </option>
   </component>
@@ -966,13 +982,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1674">
-          <caret line="72" column="25" selection-start-line="72" selection-start-column="25" selection-end-line="72" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/TrackDescription.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="373">
@@ -984,33 +993,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="618">
           <caret line="62" column="26" selection-start-line="62" selection-start-column="26" selection-end-line="62" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="60" column="78" selection-start-line="60" selection-start-column="78" selection-end-line="60" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/TVChannel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="445">
-          <caret line="215" column="26" selection-start-line="215" selection-start-column="26" selection-end-line="215" selection-end-column="26" />
-          <folding>
-            <element signature="n#!!block;n#getTVChannels#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
-            <element signature="n#!!block;n#getNumber#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
-            <element signature="n#!!block;n#getName#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
-            <element signature="n#!!block;n#getSources#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
-            <element signature="n#!!block;n#getInformation#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
-            <element signature="n#!!block;n#getDescription#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
-            <element signature="n#!!block;n#getIFramePlayerSrc#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
-            <element signature="n#!!block;n#getLink#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
-            <element signature="n#!!doc;n#toChannelNumberNodeID#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
-            <element signature="n#!!block;n#toChannelNumberNodeID#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
-            <element signature="e#6869#8142#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1090,6 +1072,40 @@
           <caret line="147" column="14" lean-forward="true" selection-start-line="147" selection-start-column="14" selection-end-line="147" selection-end-column="14" />
           <folding>
             <element signature="e#623#769#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1564">
+          <caret line="72" column="25" selection-start-line="72" selection-start-column="25" selection-end-line="72" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="660">
+          <caret line="60" column="78" selection-start-line="60" selection-start-column="78" selection-end-line="60" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/TVChannel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="215" column="60" selection-start-line="215" selection-start-column="60" selection-end-line="215" selection-end-column="60" />
+          <folding>
+            <element signature="n#!!block;n#getTVChannels#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
+            <element signature="n#!!block;n#getNumber#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
+            <element signature="n#!!block;n#getName#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
+            <element signature="n#!!block;n#getSources#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
+            <element signature="n#!!block;n#getInformation#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
+            <element signature="n#!!block;n#getDescription#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
+            <element signature="n#!!block;n#getIFramePlayerSrc#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
+            <element signature="n#!!block;n#getLink#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
+            <element signature="n#!!doc;n#toChannelNumberNodeID#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
+            <element signature="n#!!block;n#toChannelNumberNodeID#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
+            <element signature="e#6770#8043#0" />
           </folding>
         </state>
       </provider>

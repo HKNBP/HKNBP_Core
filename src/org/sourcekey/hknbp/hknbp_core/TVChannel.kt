@@ -213,7 +213,7 @@ class TVChannel(
 
                     this.tvChannels = tvChannels
                     onLoadedTVChannelsListener(this.tvChannels?:ArrayLinkList<TVChannel>())
-                }, fun(){}, "${rootURL}data/tv_channels.xml", "data/tv_channels.xml")
+                }, fun(){}, "${rootURL}data/tv_channels.xml")
             }else{
                 onLoadedTVChannelsListener(tvChannels?:ArrayLinkList<TVChannel>())
             }
