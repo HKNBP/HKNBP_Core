@@ -220,7 +220,6 @@ fun main(args: Array<String>) {
         ConsentPanel
         (document.querySelector("[tabindex=\"100000002\"]") as HTMLElement).focus()
     } catch (e: dynamic) { println("介面初始化哀左: $e") }
-    println("1")
     TVChannel.getTVChannels(fun(tvChannels_) {
         tvChannels = tvChannels_
         tvChannels.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<TVChannel> {
@@ -228,16 +227,11 @@ fun main(args: Array<String>) {
                     preChangeNodeID: Int?, postChangeNodeID: Int?,
                     preChangeNode: TVChannel?, postChangeNode: TVChannel?
             ) {
-                println("4")
                 updateChannel()
                 ChannelInformation.show(3000)
-                println("5")
             }
         })
-        println(tvChannels_.node?.number)
         updateChannel()
-        println("2.2")
         ChannelInformation.show(3000)
-        println("3")
     })
 }

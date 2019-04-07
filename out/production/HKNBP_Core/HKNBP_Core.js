@@ -17,6 +17,7 @@ var HKNBP_Core = function (_, Kotlin) {
   var padStart = Kotlin.kotlin.text.padStart_vrc1nu$;
   var replace = Kotlin.kotlin.text.replace_680rmw$;
   var equals = Kotlin.equals;
+  var println = Kotlin.kotlin.io.println_s8jyv4$;
   var toBoolean = Kotlin.kotlin.text.toBoolean_pdl1vz$;
   var toInt = Kotlin.kotlin.text.toInt_pdl1vz$;
   var addClass = Kotlin.kotlin.dom.addClass_hhb33f$;
@@ -27,7 +28,6 @@ var HKNBP_Core = function (_, Kotlin) {
   var split = Kotlin.kotlin.text.split_ip8yn$;
   var ensureNotNull = Kotlin.ensureNotNull;
   var split_0 = Kotlin.kotlin.text.split_o64adg$;
-  var println = Kotlin.kotlin.io.println_s8jyv4$;
   var String_0 = String;
   var toDoubleOrNull = Kotlin.kotlin.text.toDoubleOrNull_pdl1vz$;
   var Enum = Kotlin.kotlin.Enum;
@@ -474,8 +474,11 @@ var HKNBP_Core = function (_, Kotlin) {
     }
   });
   ChannelInformation.prototype.show = function () {
+    println('c1');
     this.channelInformation_0.style.display = 'block';
+    println('c2');
     this.update();
+    println('c3');
   };
   function ChannelInformation$show$lambda(this$ChannelInformation) {
     return function () {

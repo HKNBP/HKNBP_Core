@@ -27,7 +27,7 @@ object ChannelInformation{
     private val currentDate                     = document.getElementById("channelInformationCurrentDate") as HTMLDivElement
     //private val currentChannelBitRate           = document.getElementById("channelInformationCurrentChannelBitRate") as org.w3c.dom.HTMLDivElement
     //private val currentChannelResolution        = document.getElementById("channelInformationCurrentChannelResolution") as org.w3c.dom.HTMLDivElement
-    private val currentChannelAspectRatio        = document.getElementById("channelInformationCurrentChannelAspectRatio") as HTMLDivElement
+    //private val currentChannelAspectRatio        = document.getElementById("channelInformationCurrentChannelAspectRatio") as HTMLDivElement
     private val currentProgrammeTitle           = document.getElementById("channelInformationCurrentProgrammeTitle") as HTMLDivElement
     private val currentProgrammeSubTitle        = document.getElementById("channelInformationCurrentProgrammeSubTitle") as HTMLDivElement
     private val currentProgrammeEpisode         = document.getElementById("channelInformationCurrentProgrammeEpisode") as HTMLDivElement
