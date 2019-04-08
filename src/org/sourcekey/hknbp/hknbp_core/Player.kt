@@ -257,7 +257,7 @@ class Player(private val tvChannel: TVChannel) {
              *
              * 因依家大部分 <瀏覽器> 唔畀自動播放
              * 如果要自動播放一定要將Player設為 <靜音>
-             * */
+             *
             if(1 < indexOfPlayer){
                 muted = false
             }else{
@@ -265,7 +265,7 @@ class Player(private val tvChannel: TVChannel) {
                         fun(){ muted = false },
                         fun(){ muted = true }
                 )
-            }
+            }*/
         }catch (e: dynamic) {println("頻道響iframe程序未行完好 或者 Get唔到靜音資訊: "+e.toString())}
 
         for(event in onPlayerEvents){ event.on(OnPlayerEvent.playing) }

@@ -2134,16 +2134,6 @@ var HKNBP_Core = function (_, Kotlin) {
     kind: Kind_CLASS,
     interfaces: [ArrayLinkList$OnNodeEventListener]
   };
-  function Player$onPlaying$lambda(this$Player) {
-    return function () {
-      this$Player.muted = false;
-    };
-  }
-  function Player$onPlaying$lambda_0(this$Player) {
-    return function () {
-      this$Player.muted = true;
-    };
-  }
   Player.prototype.onPlaying_0 = function () {
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7;
     try {
@@ -2178,17 +2168,6 @@ var HKNBP_Core = function (_, Kotlin) {
     }
      catch (e) {
       println('\u983B\u9053\u97FFiframe\u7A0B\u5E8F\u672A\u884C\u5B8C\u597D \u6216\u8005 Get\u5514\u5230\u97F3\u91CF\u8CC7\u8A0A: ' + e.toString());
-    }
-    try {
-      if (1 < Player$Companion_getInstance().indexOfPlayer) {
-        this.muted = false;
-      }
-       else {
-        Modernizr_getInstance().checkVideoAutoPlay_9dmrm4$(Player$onPlaying$lambda(this), Player$onPlaying$lambda_0(this));
-      }
-    }
-     catch (e) {
-      println('\u983B\u9053\u97FFiframe\u7A0B\u5E8F\u672A\u884C\u5B8C\u597D \u6216\u8005 Get\u5514\u5230\u975C\u97F3\u8CC7\u8A0A: ' + e.toString());
     }
     tmp$_7 = this.onPlayerEvents_0.iterator();
     while (tmp$_7.hasNext()) {
