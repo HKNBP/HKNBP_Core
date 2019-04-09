@@ -62,7 +62,7 @@ object VirtualRemote {
     val number8Button               = document.getElementById("number8Button")              as HTMLButtonElement
     val number9Button               = document.getElementById("number9Button")              as HTMLButtonElement
     val refreshButton               = document.getElementById("refreshButton")              as HTMLButtonElement
-    val channelInformationButton    = document.getElementById("channelInformationButton")   as HTMLButtonElement
+    val tvChannelDescriptionButton    = document.getElementById("tvChannelDescriptionButton")   as HTMLButtonElement
     val settingWindowButton         = document.getElementById("settingWindowButton")        as HTMLButtonElement
     val clearSettingButton          = document.getElementById("clearSettingButton")         as HTMLButtonElement
 
@@ -75,8 +75,10 @@ object VirtualRemote {
     val videoDescriptionButton      = document.createElement("button")                      as HTMLButtonElement
     val audioDescriptionButton      = document.createElement("button")                      as HTMLButtonElement
     val subtitleDescriptionButton   = document.createElement("button")                      as HTMLButtonElement
+    val volumeDescriptionButton     = document.createElement("button")                      as HTMLButtonElement
 
-    fun update(){
+
+    fun updateTVChannelDescription(){
         //顯示頻道選項
         var channelOptionHTMLString = ""
         for(tvChannel in tvChannels){
@@ -87,7 +89,9 @@ object VirtualRemote {
         }
         designateChannelSelect.innerHTML = channelOptionHTMLString
         designateChannelSelect.value = tvChannels.node?.number.toString()
+    }
 
+    fun updateVideoInformation(){
         //顯示依家影片Track選項
         var videoOptionHTMLString = ""
         for(videoTracks in player.videoTracks){
@@ -95,7 +99,9 @@ object VirtualRemote {
         }
         designateVideoSelect.innerHTML = videoOptionHTMLString
         designateVideoSelect.value = (player.videoTracks.node?.id ?: 0).toString()
+    }
 
+    fun updateAudioInformation(){
         //顯示依家聲音Track選項
         var audioOptionHTMLString = ""
         for(audioTracks in player.audioTracks){
@@ -103,7 +109,9 @@ object VirtualRemote {
         }
         designateAudioSelect.innerHTML = audioOptionHTMLString
         designateAudioSelect.value = (player.audioTracks.node?.id ?: 0).toString()
+    }
 
+    fun updateSubtitleInformation(){
         //顯示依家字幕Track選項
         var subtitleOptionHTMLString = ""
         for(subtitleTracks in player.subtitleTracks){
@@ -111,6 +119,13 @@ object VirtualRemote {
         }
         designateSubtitleSelect.innerHTML = subtitleOptionHTMLString
         designateSubtitleSelect.value = (player.subtitleTracks.node?.id ?: 0).toString()
+    }
+
+    fun update(){
+        updateTVChannelDescription()
+        updateVideoInformation()
+        updateAudioInformation()
+        updateSubtitleInformation()
     }
 
     init {
@@ -121,17 +136,17 @@ object VirtualRemote {
         designateChannelSelect.onchange     = fun(event){designatedChannel(designateChannelSelect.value.toInt())}
         designateChannelButton.onclick      = fun(event){designatedChannel(designateChannelInputText.value.toInt())}
         lastTimeChannelButton.onclick       = fun(event){tvChannels.lastTime()}
-        nextVideoButton.onclick             = fun(event){player.nextVideoTrack()}
-        previousVideoButton.onclick         = fun(event){player.previousVideoTrack()}
-        designateVideoSelect.onchange       = fun(event){player.designatedVideoTrack(designateVideoSelect.value.toInt())}
-        nextAudioButton.onclick             = fun(event){player.nextAudioTrack()}
-        previousAudioButton.onclick         = fun(event){player.previousAudioTrack()}
-        designateAudioSelect.onchange       = fun(event){player.designatedAudioTrack(designateAudioSelect.value.toInt())}
-        onHeadNextAudioButton.onclick       = fun(event){player.nextAudioTrack()}
-        nextSubtitleButton.onclick          = fun(event){player.nextSubtitleTrack()}
-        previousSubtitleButton.onclick      = fun(event){player.previousSubtitleTrack()}
-        designateSubtitleSelect.onchange    = fun(event){player.designatedSubtitleTrack(designateSubtitleSelect.value.toInt())}
-        onHeadNextSubtitleButton.onclick    = fun(event){player.nextSubtitleTrack()}
+        nextVideoButton.onclick             = fun(event){player.nextVideoTrack();VideoDescription.show(3000)}
+        previousVideoButton.onclick         = fun(event){player.previousVideoTrack();VideoDescription.show(3000)}
+        designateVideoSelect.onchange       = fun(event){player.designatedVideoTrack(designateVideoSelect.value.toInt());VideoDescription.show(3000)}
+        nextAudioButton.onclick             = fun(event){player.nextAudioTrack();AudioDescription.show(3000)}
+        previousAudioButton.onclick         = fun(event){player.previousAudioTrack();AudioDescription.show(3000)}
+        designateAudioSelect.onchange       = fun(event){player.designatedAudioTrack(designateAudioSelect.value.toInt());AudioDescription.show(3000)}
+        onHeadNextAudioButton.onclick       = fun(event){player.nextAudioTrack();AudioDescription.show(3000)}
+        nextSubtitleButton.onclick          = fun(event){player.nextSubtitleTrack();SubtitleDescription.show(3000)}
+        previousSubtitleButton.onclick      = fun(event){player.previousSubtitleTrack();SubtitleDescription.show(3000)}
+        designateSubtitleSelect.onchange    = fun(event){player.designatedSubtitleTrack(designateSubtitleSelect.value.toInt());SubtitleDescription.show(3000)}
+        onHeadNextSubtitleButton.onclick    = fun(event){player.nextSubtitleTrack();SubtitleDescription.show(3000)}
         volumeMuteButton.onclick            = fun(event){player.volumeMute()}
         volumeUpButton.onclick              = fun(event){player.volumeUp()}
         volumeDownButton.onclick            = fun(event){player.volumeDown()}
@@ -150,7 +165,7 @@ object VirtualRemote {
         number8Button.onclick               = fun(event){EnteringNumberBox.show("8")}
         number9Button.onclick               = fun(event){EnteringNumberBox.show("9")}
         refreshButton.onclick               = fun(event){updateChannel()}
-        channelInformationButton.onclick    = fun(event){if(ChannelInformation.isShow){ChannelInformation.hide()}else{ChannelInformation.show(60000)}}
+        tvChannelDescriptionButton.onclick  = fun(event){if(TVChannelDescription.isShow){TVChannelDescription.hide()}else{TVChannelDescription.show(60000)}}
         settingWindowButton.onclick         = fun(event){SettingWindow.show()}
 
         clearSettingButton.onclick          = fun(event){localStorage.clear();js("location.reload();")}
@@ -257,5 +272,6 @@ object VirtualRemote {
         videoDescriptionButton.onclick      = fun(event){VideoDescription.show(5000)}
         audioDescriptionButton.onclick      = fun(event){AudioDescription.show(5000)}
         subtitleDescriptionButton.onclick   = fun(event){SubtitleDescription.show(5000)}
+        volumeDescriptionButton.onclick     = fun(event){VolumeDescription.show(5000)}
     }
 }

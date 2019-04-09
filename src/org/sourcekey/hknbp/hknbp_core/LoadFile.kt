@@ -43,7 +43,7 @@ object LoadFile {
                         load(onLoadedFile, onFailedLoadFile, filePaths)
                     }
                 }
-            }, 10000)
+            }, 2000)
         }
         xmlhttp.onreadystatechange = fun(event) {
             if (xmlhttp.readyState == 4.toShort() && xmlhttp.status == 200.toShort()) {

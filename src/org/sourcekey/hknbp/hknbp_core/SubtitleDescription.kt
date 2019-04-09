@@ -14,15 +14,33 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
+import org.w3c.dom.HTMLDivElement
+import kotlin.browser.document
+import kotlin.browser.window
+
 object SubtitleDescription {
+    private val subtitleDescription: HTMLDivElement = document.getElementById("subtitleDescription") as HTMLDivElement
+    private val text: HTMLDivElement = document.getElementById("subtitleDescriptionText") as HTMLDivElement
 
-    fun show(){}
 
-    fun show(showTime: Int){}
+    private var hideTimer = window.setTimeout(fun(){ }, 0)
+        set(value) {
+            window.clearTimeout(field)
+            field = value
+        }
 
-    fun hide(){}
-
-    init {
-
+    fun show(){
+        println(player.subtitleTracks.node?.name?:"")
+        subtitleDescription.style.display = "block"
+        text.innerHTML = player.subtitleTracks.node?.name?:""
     }
+
+    fun show(showTime: Int){
+        hideTimer = window.setTimeout(fun(){ hide() }, showTime)
+        show()
+    }
+
+    fun hide(){ subtitleDescription.style.display = "none"}
+
+    init {  }
 }

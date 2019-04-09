@@ -97,11 +97,11 @@ class Player(private val tvChannel: TVChannel) {
      * */
     var volume: Double = 100.0
         get() {
-            return iframePlayer.contentWindow.onGetIframePlayerVolume().toString().toDoubleOrNull()?:100.0
+            return iframePlayer?.contentWindow?.onGetIframePlayerVolume()?.toString()?.toDoubleOrNull()?:100.0
         }
         set(value) {
             val script = fun(){
-                iframePlayer.contentWindow.onSetIframePlayerVolume(value)
+                iframePlayer?.contentWindow?.onSetIframePlayerVolume(value)
                 var v = value
                 if(100 < v){v = 100.0}
                 if(v < 0){v = 0.0}
@@ -139,13 +139,13 @@ class Player(private val tvChannel: TVChannel) {
      * 順水設個值可以畀其他地方容易get()同set()
      * var volume: Boolean 等於 false <- 係冇意思,順水初始化之用
      * */
-    var muted: Boolean = false
+    var muted: Boolean = true
         get() {
-            return iframePlayer.contentWindow.onGetIframePlayerMuted().toString().toBoolean()
+            return iframePlayer?.contentWindow?.onGetIframePlayerMuted()?.toString()?.toBoolean()?:true
         }
         set(value) {
             val script = fun(){
-                iframePlayer.contentWindow.onSetIframePlayerMuted(value)
+                iframePlayer?.contentWindow?.onSetIframePlayerMuted(value)
                 if(muted == value){
                     window.clearInterval(makeSureIframePlayerMutedValueIsChangedTimer)
                     field = value
@@ -185,12 +185,12 @@ class Player(private val tvChannel: TVChannel) {
     private fun onPlaying(){
         try{
             videoTracks = TrackDescription.fromIframePlayerReturnTrackDescriptionsToKotilnUseableTrackDescriptions(
-                    iframePlayer.contentWindow.onGetIframePlayerVideoTracks(),
-                    iframePlayer.contentWindow.onGetIframePlayerVideoTrack()
+                    iframePlayer?.contentWindow?.onGetIframePlayerVideoTracks(),
+                    iframePlayer?.contentWindow?.onGetIframePlayerVideoTrack()
             )
             videoTracks.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<TrackDescription> {
                 override fun OnNodeIDChanged(preChangeNodeID: Int?, postChangeNodeID: Int?, preChangeNode: TrackDescription?, postChangeNode: TrackDescription?) {
-                    iframePlayer.contentWindow.onSetIframePlayerVideoTrack(postChangeNode)
+                    iframePlayer?.contentWindow?.onSetIframePlayerVideoTrack(postChangeNode)
                     localStorage.setItem("RecentlyChannel${tvChannel.number}VideoTrackID", postChangeNodeID.toString())
                     for(event in onPlayerEvents){ event.on(OnPlayerEvent.videoTrackChanged) }
                 }
@@ -205,12 +205,12 @@ class Player(private val tvChannel: TVChannel) {
 
         try{
             audioTracks = TrackDescription.fromIframePlayerReturnTrackDescriptionsToKotilnUseableTrackDescriptions(
-                    iframePlayer.contentWindow.onGetIframePlayerAudioTracks(),
-                    iframePlayer.contentWindow.onGetIframePlayerAudioTrack()
+                    iframePlayer?.contentWindow?.onGetIframePlayerAudioTracks(),
+                    iframePlayer?.contentWindow?.onGetIframePlayerAudioTrack()
             )
             audioTracks.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<TrackDescription> {
                 override fun OnNodeIDChanged(preChangeNodeID: Int?, postChangeNodeID: Int?, preChangeNode: TrackDescription?, postChangeNode: TrackDescription?) {
-                    iframePlayer.contentWindow.onSetIframePlayerAudioTrack(postChangeNode)
+                    iframePlayer?.contentWindow?.onSetIframePlayerAudioTrack(postChangeNode)
                     localStorage.setItem("RecentlyChannel${tvChannel.number}AudioTrackID", postChangeNodeID.toString())
                     for(event in onPlayerEvents){ event.on(OnPlayerEvent.audioTrackChanged) }
                 }
@@ -225,12 +225,12 @@ class Player(private val tvChannel: TVChannel) {
 
         try{
             subtitleTracks = TrackDescription.fromIframePlayerReturnTrackDescriptionsToKotilnUseableTrackDescriptions(
-                    iframePlayer.contentWindow.onGetIframePlayerSubtitleTracks(),
-                    iframePlayer.contentWindow.onGetIframePlayerSubtitleTrack()
+                    iframePlayer?.contentWindow?.onGetIframePlayerSubtitleTracks(),
+                    iframePlayer?.contentWindow?.onGetIframePlayerSubtitleTrack()
             )
             subtitleTracks.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<TrackDescription> {
                 override fun OnNodeIDChanged(preChangeNodeID: Int?, postChangeNodeID: Int?, preChangeNode: TrackDescription?, postChangeNode: TrackDescription?) {
-                    iframePlayer.contentWindow.onSetIframePlayerSubtitleTrack(postChangeNode)
+                    iframePlayer?.contentWindow?.onSetIframePlayerSubtitleTrack(postChangeNode)
                     localStorage.setItem("RecentlyChannel${tvChannel.number}SubtitleTrackID", postChangeNodeID.toString())
                     for(event in onPlayerEvents){ event.on(OnPlayerEvent.subtitleTrackChanged) }
                 }
@@ -245,7 +245,7 @@ class Player(private val tvChannel: TVChannel) {
 
         try{
             //讀取最近設定音量再去設定IframePlayer音量
-            iframePlayer.contentWindow.onSetIframePlayerVolume(
+            iframePlayer?.contentWindow?.onSetIframePlayerVolume(
                     localStorage.getItem("RecentlyVolume")?.toDoubleOrNull()?:100.0
             )
         }catch (e: dynamic) {println("頻道響iframe程序未行完好 或者 Get唔到音量資訊: "+e.toString())}
@@ -266,6 +266,7 @@ class Player(private val tvChannel: TVChannel) {
                         fun(){ muted = true }
                 )
             }*/
+            muted = true
         }catch (e: dynamic) {println("頻道響iframe程序未行完好 或者 Get唔到靜音資訊: "+e.toString())}
 
         for(event in onPlayerEvents){ event.on(OnPlayerEvent.playing) }
@@ -477,12 +478,12 @@ class Player(private val tvChannel: TVChannel) {
     init {
         indexOfPlayer++
 
-        iframePlayer.src = tvChannel.sources.node?.iFramePlayerSrc ?: "iframePlayer/videojs_hls.html"
-        iframePlayer.onload = fun(){
+        iframePlayer?.src = tvChannel.sources.node?.iFramePlayerSrc ?: "iframePlayer/videojs_hls.html"
+        iframePlayer?.onload = fun(){
             try {
-                iframePlayer.contentWindow.onIframePlayerPlaying = fun(){ onPlaying() }
-                iframePlayer.contentWindow.onIframePlayerNotPlaying = fun(){ onNotPlaying() }
-                iframePlayer.contentWindow.onIframePlayerInit(
+                iframePlayer?.contentWindow?.onIframePlayerPlaying = fun(){ onPlaying() }
+                iframePlayer?.contentWindow?.onIframePlayerNotPlaying = fun(){ onNotPlaying() }
+                iframePlayer?.contentWindow?.onIframePlayerInit(
                         tvChannel.sources.node?.link?:
                         "https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8"
                 )

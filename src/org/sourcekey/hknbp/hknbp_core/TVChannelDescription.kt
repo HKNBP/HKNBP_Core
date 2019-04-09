@@ -20,20 +20,20 @@ import kotlin.browser.document
 import kotlin.browser.window
 import kotlin.js.Date
 
-object ChannelInformation{
-    private val channelInformation              = document.getElementById("channelInformation") as HTMLDivElement
-    private val currentChannelName              = document.getElementById("channelInformationCurrentChannelName") as HTMLDivElement
-    private val currentChannelNumber            = document.getElementById("channelInformationCurrentChannelNumber") as HTMLDivElement
-    private val currentDate                     = document.getElementById("channelInformationCurrentDate") as HTMLDivElement
-    //private val currentChannelBitRate           = document.getElementById("channelInformationCurrentChannelBitRate") as org.w3c.dom.HTMLDivElement
-    //private val currentChannelResolution        = document.getElementById("channelInformationCurrentChannelResolution") as org.w3c.dom.HTMLDivElement
-    //private val currentChannelAspectRatio        = document.getElementById("channelInformationCurrentChannelAspectRatio") as HTMLDivElement
-    private val currentProgrammeTitle           = document.getElementById("channelInformationCurrentProgrammeTitle") as HTMLDivElement
-    private val currentProgrammeSubTitle        = document.getElementById("channelInformationCurrentProgrammeSubTitle") as HTMLDivElement
-    private val currentProgrammeEpisode         = document.getElementById("channelInformationCurrentProgrammeEpisode") as HTMLDivElement
-    private val currentProgrammeBroadcastTime   = document.getElementById("channelInformationCurrentProgrammeBroadcastTime") as HTMLDivElement
-    private val currentProgrammeDesc            = document.getElementById("channelInformationCurrentProgrammeDesc") as HTMLDivElement
-    private val currentProgrammeCategory        = document.getElementById("channelInformationCurrentProgrammeCategory") as HTMLDivElement
+object TVChannelDescription{
+    private val tvChannelDescription            = document.getElementById("tvChannelDescription") as HTMLDivElement
+    private val currentChannelName              = document.getElementById("tvChannelDescriptionCurrentChannelName") as HTMLDivElement
+    private val currentChannelNumber            = document.getElementById("tvChannelDescriptionCurrentChannelNumber") as HTMLDivElement
+    private val currentDate                     = document.getElementById("tvChannelDescriptionCurrentDate") as HTMLDivElement
+    //private val currentChannelBitRate           = document.getElementById("tvChannelDescriptionCurrentChannelBitRate") as org.w3c.dom.HTMLDivElement
+    //private val currentChannelResolution        = document.getElementById("tvChannelDescriptionCurrentChannelResolution") as org.w3c.dom.HTMLDivElement
+    //private val currentChannelAspectRatio       = document.getElementById("tvChannelDescriptionCurrentChannelAspectRatio") as HTMLDivElement
+    private val currentProgrammeTitle           = document.getElementById("tvChannelDescriptionCurrentProgrammeTitle") as HTMLDivElement
+    private val currentProgrammeSubTitle        = document.getElementById("tvChannelDescriptionCurrentProgrammeSubTitle") as HTMLDivElement
+    private val currentProgrammeEpisode         = document.getElementById("tvChannelDescriptionCurrentProgrammeEpisode") as HTMLDivElement
+    private val currentProgrammeBroadcastTime   = document.getElementById("tvChannelDescriptionCurrentProgrammeBroadcastTime") as HTMLDivElement
+    private val currentProgrammeDesc            = document.getElementById("tvChannelDescriptionCurrentProgrammeDesc") as HTMLDivElement
+    private val currentProgrammeCategory        = document.getElementById("tvChannelDescriptionCurrentProgrammeCategory") as HTMLDivElement
 
     private fun setCurrentChannelName(){
         currentChannelName.innerHTML = tvChannels.node?.name?: ""
@@ -135,12 +135,12 @@ object ChannelInformation{
             field = value
         }
 
-    var isShow: Boolean = channelInformation.style.display == "block"
-        get() { return channelInformation.style.display == "block" }
+    var isShow: Boolean = tvChannelDescription.style.display == "block"
+        get() { return tvChannelDescription.style.display == "block" }
         private set
 
     fun show(){
-        channelInformation.style.display = "block"
+        tvChannelDescription.style.display = "block"
         update()
     }
 
@@ -151,7 +151,7 @@ object ChannelInformation{
     }
 
     fun hide(){
-        channelInformation.style.display = "none"
+        tvChannelDescription.style.display = "none"
     }
 
     init { }

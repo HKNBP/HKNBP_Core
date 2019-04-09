@@ -488,7 +488,7 @@
                         <button tabindex="100070001" class="normal" id="number0Button">0</button>
                     </div>
                     <div class="th" style="width: 33%; height:100%">
-                        <button tabindex="100070002" id="channelInformationButton" style="font-size: 4.5vh; padding: 0.9vh;"><i
+                        <button tabindex="100070002" id="tvChannelDescriptionButton" style="font-size: 4.5vh; padding: 0.9vh;"><i
                                 class="icon-font">&#xf129;</i></button>
                     </div>
                 </div>
@@ -636,7 +636,7 @@
             <i class="icon-font">&#xe829;</i>
         </button>
     </div>
-    <button id="inDisplayMutedButton" style="
+    <button id="mutedDescriptionButton" style="
               background-color: rgba(0, 0, 0, 0);
               text-shadow: black 0em 0em 0.2em;
               display: none;
@@ -648,14 +648,14 @@
             ">
         <i class="icon-font">&#xe809;</i>
     </button>
-    <div id="audioDescription" style="
+    <div id="volumeDescription" style="
            display: none;
            position: absolute;
            bottom:5vh; right:5vh;
            width: 85vh; height: 6vh;
            z-index:40;
          ">
-        <button id="audioDescriptionVolumeDownButton"
+        <button id="volumeDescriptionVolumeDownButton"
                 style="
                   background-color: rgba(0, 0, 0, 0);
                   text-shadow: black 0em 0em 0.2em;
@@ -665,7 +665,7 @@
                   width: 6vh;
                 "
         ><i class="icon-font">&#xe803;</i></button>
-        <div id="audioDescriptionVolumeValue"
+        <div id="volumeDescriptionVolumeValue"
              style="
                 background-color: rgba(0, 0, 0, 0);
               text-shadow: black 0em 0em 0.2em;
@@ -675,7 +675,7 @@
               width: 10vh;
             "
         ></div>
-        <div id="audioDescriptionVolumeIconList"
+        <div id="volumeDescriptionVolumeIconList"
              style="
               background-color: rgba(0, 0, 0, 0);
               text-shadow: black 0em 0em 0.2em;
@@ -684,7 +684,7 @@
               top:0; bottom:0; left:18vh;
             "
         ></div>
-        <button id="audioDescriptionVolumeUpButton"
+        <button id="volumeDescriptionVolumeUpButton"
                 style="
                     background-color: rgba(0, 0, 0, 0);
                     text-shadow: black 0em 0em 0.2em;
@@ -695,7 +695,37 @@
                 "
         ><i class="icon-font">&#xe804;</i></button>
     </div>
-    <div id="channelInformation" style="
+    <div id="videoDescription" style="
+           display: none;
+           position: absolute;
+           top:5vh; right:5vh;
+           z-index:40;
+         ">
+        <i class="icon-font nestle-bottom">&#xe815;</i>
+        <em>&nbsp</em>
+        <div id="videoDescriptionText" style="float:right;"></div>
+    </div>
+    <div id="audioDescription" style="
+           display: none;
+           position: absolute;
+           top:5vh; right:5vh;
+           z-index:40;
+         ">
+        <i class="icon-font nestle-bottom">&#xe81c;</i>
+        <em>&nbsp</em>
+        <div id="audioDescriptionText" style="float:right;"></div>
+    </div>
+    <div id="subtitleDescription" style="
+           display: none;
+           position: absolute;
+           top:5vh; right:5vh;
+           z-index:40;
+         ">
+        <i class="icon-font nestle-bottom">&#xe81d;</i>
+        <em>&nbsp</em>
+        <div id="subtitleDescriptionText" style="float:right;"></div>
+    </div>
+    <div id="tvChannelDescription" style="
               background: rgba(30, 30, 30, 0.9);
               display: none;
               font-size: 5vh;
@@ -707,29 +737,29 @@
         <div style="position:absolute;top:5vh;bottom:5vh;left:5vh;right:5vh;">
             <div style="position:absolute;top:0;left:0;right:0;height:6vh;">
                 <div class="absoluteLeft" style="width:30vh;height:6vh;">
-                    <div id="channelInformationCurrentChannelName" class="absoluteLeft" style="font-size:4vh;"></div>
+                    <div id="tvChannelDescriptionCurrentChannelName" class="absoluteLeft" style="font-size:4vh;"></div>
                 </div>
                 <div class="absoluteRight" style="width:12vh;height:6vh;">
-                    <div id="channelInformationCurrentChannelNumber" class="absoluteCenter"></div>
+                    <div id="tvChannelDescriptionCurrentChannelNumber" class="absoluteCenter"></div>
                 </div>
             </div>
-            <div id="channelInformationCurrentDate"
+            <div id="tvChannelDescriptionCurrentDate"
                  style="font-size:3vh;position:absolute;top:7vh;left:0;right:0;height:5vh;text-align:center;"></div>
-            <div id="channelInformationCurrentProgrammeTitle" class="contentPenetrateX"
+            <div id="tvChannelDescriptionCurrentProgrammeTitle" class="contentPenetrateX"
                  style="font-weight:bold;font-size:4vh;position:absolute;top:12vh;left:0;right:0;height:5vh;text-align:left;"></div>
-            <div id="channelInformationCurrentProgrammeSubTitle" class="contentPenetrateX"
+            <div id="tvChannelDescriptionCurrentProgrammeSubTitle" class="contentPenetrateX"
                  style="font-size:3vh;position:absolute;top:16vh;left:0;right:0;height:4vh;text-align:left;"></div>
             <div style="color:#888;position:absolute;top:22vh;left:0;right:0;height:4vh;">
-                <div id="channelInformationCurrentProgrammeCategory" class="contentPenetrateX"
+                <div id="tvChannelDescriptionCurrentProgrammeCategory" class="contentPenetrateX"
                      style="font-size:2.5vh;position:absolute;top:0;bottom:0;left:0;width:min-content;text-align:left;"></div>
-                <div id="channelInformationCurrentProgrammeEpisode" class="contentPenetrateX"
+                <div id="tvChannelDescriptionCurrentProgrammeEpisode" class="contentPenetrateX"
                      style="font-size:3vh;position:absolute;top:0;bottom:0;right:0;width:min-content;text-align:right;"></div>
             </div>
-            <div id="channelInformationCurrentProgrammeDesc" class="contentPenetrateY"
+            <div id="tvChannelDescriptionCurrentProgrammeDesc" class="contentPenetrateY"
                  style="color:#DDD;font-size:3vh;position:absolute;top:28vh;left:0;right:0;height:50vh;text-align:left;"></div>
             <div></div>
             <div style="position:absolute;bottom:0;left:0;right:0;height:4vh;">
-                <div id="channelInformationCurrentProgrammeBroadcastTime"
+                <div id="tvChannelDescriptionCurrentProgrammeBroadcastTime"
                      style="font-size:4vh;position:absolute;top:0;bottom:0;right:0;width:25vh;"></div>
             </div>
         </div>

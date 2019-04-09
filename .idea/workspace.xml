@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/index.html" line="967" />
+    <bookmark url="file://$PROJECT_DIR$/index.html" line="997" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="439dc076-fa64-48ca-946e-6d20fa2781e4" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/MutedDescription.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VolumeDescription.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.meta.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.meta.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/AudioDescription.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/AudioDescription.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ChannelInformation.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/InDisplayMutedButton.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/SubtitleDescription.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/SubtitleDescription.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VideoDescription.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VideoDescription.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VirtualRemote.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VirtualRemote.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,144 +51,186 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="355" column="7" selection-start-line="355" selection-start-column="7" selection-end-line="355" selection-end-column="7" />
+            <state relative-caret-position="342">
+              <caret line="737" column="76" selection-start-line="737" selection-start-column="76" selection-end-line="737" selection-end-column="76" />
               <folding>
                 <element signature="e#39#635#0" />
                 <element signature="n#script#0;n#head#0;n#html#0;n#!!top" />
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
-                <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#button#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#iframe#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#i#0;n#button#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#11308#11316#1" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#11529#11537#1" />
+                <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#11786#11794#1" />
+                <element signature="n#div#3;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#12040#12048#1" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#i#0;n#button#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#12392#12400#1" />
+                <element signature="n#button#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#i#0;n#button#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#12596#12604#1" />
+                <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#12785#12793#1" />
+                <element signature="e#12913#12921#1" />
+                <element signature="n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#i#0;n#button#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#13194#13202#1" />
+                <element signature="n#button#1;n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#i#0;n#button#1;n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#13403#13411#1" />
+                <element signature="n#div#2;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#2;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#div#2;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#3;n#div#2;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#1;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#div#1;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#2;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#2;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#div#2;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#3;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#0;n#div#3;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#16463#16471#1" />
+                <element signature="n#div#1;n#div#3;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#2;n#div#3;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#i#0;n#button#0;n#div#2;n#div#3;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#16978#16986#1" />
+                <element signature="n#div#4;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#4;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#select#0;n#div#0;n#div#4;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#5;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#input#0;n#div#0;n#div#5;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#1;n#div#5;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#17954#17962#1" />
+                <element signature="n#style#0;n#i#0;n#div#2;n#div#0;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#18673#18681#1" />
+                <element signature="n#div#1;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#1;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#0;n#div#1;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#18982#18990#1" />
+                <element signature="n#div#1;n#div#1;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#1;n#div#1;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#19252#19260#1" />
+                <element signature="n#div#2;n#div#1;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#2;n#div#1;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#19522#19530#1" />
+                <element signature="n#div#2;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#2;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#select#0;n#div#0;n#div#2;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#2;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#select#0;n#div#1;n#div#2;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#2;n#div#2;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#select#0;n#div#2;n#div#2;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#3;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#3;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#0;n#div#3;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#20909#20917#1" />
+                <element signature="n#div#1;n#div#3;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#1;n#div#3;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#21176#21184#1" />
+                <element signature="n#div#2;n#div#3;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#2;n#div#3;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#21443#21451#1" />
+                <element signature="n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#0;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#i#0;n#button#0;n#div#0;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#21837#21845#1" />
+                <element signature="n#div#1;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#1;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#i#0;n#button#0;n#div#1;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#22091#22099#1" />
+                <element signature="n#div#2;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#2;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#i#0;n#button#0;n#div#2;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#22342#22350#1" />
+                <element signature="n#div#3;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#3;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#i#0;n#button#0;n#div#3;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#22595#22603#1" />
+                <element signature="n#div#0;n#div#1;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#0;n#div#1;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#i#0;n#button#0;n#div#0;n#div#1;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#22915#22923#1" />
+                <element signature="n#div#1;n#div#1;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#1;n#div#1;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#i#0;n#button#0;n#div#1;n#div#1;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#23215#23223#1" />
+                <element signature="n#div#2;n#div#1;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#2;n#div#1;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#i#0;n#button#0;n#div#2;n#div#1;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#23467#23475#1" />
+                <element signature="e#23862#23870#1" />
+                <element signature="n#div#8;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#button#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#24504#24512#1" />
+                <element signature="n#button#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="e#24972#24980#1" />
                 <element signature="n#button#1;n#div#1;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#button#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#button#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#button#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#style#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#div#4;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#4;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#4;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#hr#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#1;n#div#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#2;n#div#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#3;n#div#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#4;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#div#6;n#div#1;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#7;n#div#1;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#0;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#9;n#div#1;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#10;n#div#1;n#body#0;n#html#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="702">
-              <caret line="267" column="13" selection-start-line="267" selection-start-column="13" selection-end-line="267" selection-end-column="15" />
-              <folding>
-                <element signature="n#!!block;n#Companion#0;n#!!block;n#Player#0" />
-                <element signature="n#!!doc;n#indexOfPlayer#0;n#!!block;n#Companion#0;n#!!block;n#Player#0" />
-                <element signature="e#1056#1155#0" />
-                <element signature="n#!!doc;n#videoTracks#0;n#!!block;n#Player#0" />
-                <element signature="n#!!doc;n#audioTracks#0;n#!!block;n#Player#0" />
-                <element signature="n#!!doc;n#subtitleTracks#0;n#!!block;n#Player#0" />
-                <element signature="n#!!doc;n#makeSureIframePlayerVolumeValueIsChangedTimer#0;n#!!block;n#Player#0" />
-                <element signature="e#2268#2360#0" />
-                <element signature="n#!!doc;n#volume#0;n#!!block;n#Player#0" />
-                <element signature="e#2694#2812#0" />
-                <element signature="e#2832#3524#0" />
-                <element signature="e#2864#3401#0" />
-                <element signature="e#3075#3301#1" />
-                <element signature="n#!!doc;n#makeSureIframePlayerMutedValueIsChangedTimer#0;n#!!block;n#Player#0" />
-                <element signature="e#3766#3858#0" />
-                <element signature="n#!!doc;n#muted#0;n#!!block;n#Player#0" />
-                <element signature="e#4114#4219#0" />
-                <element signature="e#4239#4741#0" />
-                <element signature="e#4271#4619#0" />
-                <element signature="e#4380#4520#1" />
-                <element signature="n#!!block;n#OnPlayerEvent#0;n#!!block;n#Player#0" />
-                <element signature="n#!!block;n#OnPlayerEventListener#0;n#!!block;n#Player#0" />
-                <element signature="n#!!block;n#addOnPlayerEventListener#0;n#!!block;n#Player#0" />
-                <element signature="n#!!doc;n#onPlaying#0;n#!!block;n#Player#0" />
-                <element signature="e#5400#6467#0" />
-                <element signature="e#5796#6297#0" />
-                <element signature="e#5959#6283#0" />
-                <element signature="e#6486#6637#0" />
-                <element signature="e#6650#7717#0" />
-                <element signature="e#7046#7547#0" />
-                <element signature="e#7209#7533#0" />
-                <element signature="e#7736#7887#0" />
-                <element signature="e#7900#8994#0" />
-                <element signature="e#8308#8818#0" />
-                <element signature="e#8471#8804#0" />
-                <element signature="e#9013#9176#0" />
-                <element signature="e#9189#9403#0" />
-                <element signature="n#!!doc;n#onNotPlaying#0;n#!!block;n#Player#0" />
-                <element signature="n#!!block;n#onNotPlaying#0;n#!!block;n#Player#0" />
-                <element signature="e#10409#10899#0" />
-                <element signature="n#!!doc;n#nextVideoTrack#0;n#!!block;n#Player#0" />
-                <element signature="n#!!block;n#nextVideoTrack#0;n#!!block;n#Player#0" />
-                <element signature="n#!!doc;n#previousVideoTrack#0;n#!!block;n#Player#0" />
-                <element signature="n#!!block;n#previousVideoTrack#0;n#!!block;n#Player#0" />
-                <element signature="n#!!doc;n#designatedVideoTrack#0;n#!!block;n#Player#0" />
-                <element signature="n#!!block;n#designatedVideoTrack#0;n#!!block;n#Player#0" />
-                <element signature="e#11410#11506#1" />
-                <element signature="e#11512#11688#1" />
-                <element signature="e#11563#11652#0" />
-                <element signature="n#!!doc;n#nextAudioTrack#0;n#!!block;n#Player#0" />
-                <element signature="n#!!block;n#nextAudioTrack#0;n#!!block;n#Player#0" />
-                <element signature="n#!!doc;n#previousAudioTrack#0;n#!!block;n#Player#0" />
-                <element signature="n#!!block;n#previousAudioTrack#0;n#!!block;n#Player#0" />
-                <element signature="n#!!doc;n#designatedAudioTrack#0;n#!!block;n#Player#0" />
-                <element signature="n#!!block;n#designatedAudioTrack#0;n#!!block;n#Player#0" />
-                <element signature="e#12206#12302#1" />
-                <element signature="e#12308#12484#1" />
-                <element signature="e#12359#12448#0" />
-                <element signature="n#!!doc;n#nextSubtitleTrack#0;n#!!block;n#Player#0" />
-                <element signature="n#!!block;n#nextSubtitleTrack#0;n#!!block;n#Player#0" />
-                <element signature="n#!!doc;n#previousSubtitleTrack#0;n#!!block;n#Player#0" />
-                <element signature="n#!!block;n#previousSubtitleTrack#0;n#!!block;n#Player#0" />
-                <element signature="n#!!doc;n#designatedSubtitleTrack#0;n#!!block;n#Player#0" />
-                <element signature="n#!!block;n#designatedSubtitleTrack#0;n#!!block;n#Player#0" />
-                <element signature="e#13038#13140#1" />
-                <element signature="e#13146#13322#1" />
-                <element signature="e#13197#13286#0" />
-                <element signature="n#!!doc;n#volumeUp#0;n#!!block;n#Player#0" />
-                <element signature="e#13600#13680#0" />
-                <element signature="n#!!doc;n#volumeDown#0;n#!!block;n#Player#0" />
-                <element signature="e#13833#13913#0" />
-                <element signature="n#!!doc;n#volumeMute#0;n#!!block;n#Player#0" />
-                <element signature="e#14056#14100#0" />
-                <element signature="n#!!doc;n#programmable#0;n#!!block;n#Player#0" />
-                <element signature="n#!!block;n#programmable#0;n#!!block;n#Player#0" />
-                <element signature="n#!!doc;n#enableProgrammable#0;n#!!block;n#Player#0" />
-                <element signature="n#!!block;n#enableProgrammable#0;n#!!block;n#Player#0" />
-                <element signature="n#!!doc;n#disableProgrammable#0;n#!!block;n#Player#0" />
-                <element signature="n#!!block;n#disableProgrammable#0;n#!!block;n#Player#0" />
-                <element signature="n#!!doc;n#ProgrammableColor#0;n#!!block;n#Player#0" />
-                <element signature="n#!!block;n#ProgrammableColor#0;n#!!block;n#Player#0" />
+                <element signature="n#div#11;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#div#12;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VirtualRemote.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2682">
+              <caret line="167" column="44" selection-start-line="167" selection-start-column="44" selection-end-line="167" selection-end-column="44" />
+              <folding>
+                <element signature="e#12311#14764#0" />
+                <element signature="e#14821#17116#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="972">
-              <caret line="222" selection-start-line="222" selection-end-line="222" />
+            <state relative-caret-position="549">
+              <caret line="238" column="23" lean-forward="true" selection-start-line="238" selection-start-column="23" selection-end-line="238" selection-end-column="23" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="n#!!block;n#reductionTo#0" />
@@ -182,61 +239,33 @@
                 <element signature="n#!!doc;n#designatedChannel#0" />
                 <element signature="n#!!block;n#designatedChannel#0" />
                 <element signature="n#!!doc;n#updateChannel#0" />
-                <element signature="n#!!block;n#updateChannel#0" />
-                <element signature="e#4854#5910#0" />
+                <element signature="e#4851#5907#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ChannelInformation.kt">
+        <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VideoDescription.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2358">
-              <caret line="143" column="16" selection-start-line="143" selection-start-column="16" selection-end-line="143" selection-end-column="16" />
+            <state relative-caret-position="542">
+              <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
               <folding>
-                <element signature="e#623#769#0" expanded="true" />
+                <element signature="n#!!doc" expanded="true" />
+                <element signature="e#623#716#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt">
+        <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/SubtitleDescription.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
-              <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/TVChannel.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2088">
-              <caret line="215" column="85" selection-start-line="215" selection-start-column="85" selection-end-line="215" selection-end-column="85" />
+              <caret line="32" column="52" selection-start-line="32" selection-start-column="52" selection-end-line="32" selection-end-column="52" />
               <folding>
-                <element signature="n#!!block;n#getTVChannels#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
-                <element signature="n#!!block;n#getNumber#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
-                <element signature="n#!!block;n#getName#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
-                <element signature="n#!!block;n#getSources#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
-                <element signature="n#!!block;n#getInformation#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
-                <element signature="n#!!block;n#getDescription#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
-                <element signature="n#!!block;n#getIFramePlayerSrc#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
-                <element signature="n#!!block;n#getLink#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
-                <element signature="n#!!doc;n#toChannelNumberNodeID#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
-                <element signature="n#!!block;n#toChannelNumberNodeID#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
-                <element signature="e#6770#8043#0" />
+                <element signature="e#623#716#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/iframePlayer/youtube_api.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="141" column="27" selection-start-line="141" selection-start-column="27" selection-end-line="141" selection-end-column="27" />
             </state>
           </provider>
         </entry>
@@ -244,8 +273,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2610">
-              <caret line="164" column="9" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
+            <state relative-caret-position="830">
+              <caret line="190" column="21" selection-start-line="190" selection-start-column="21" selection-end-line="190" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -257,32 +286,15 @@
       <list>
         <option value="JavaScript File" />
         <option value="Class" />
-        <option value="Kotlin Object" />
         <option value="Kotlin Class" />
-        <option value="Kotlin File" />
         <option value="HTML File" />
+        <option value="Kotlin File" />
+        <option value="Kotlin Object" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>聲音軌</find>
-      <find>字幕軌</find>
-      <find>println(1234)</find>
-      <find>player.</find>
-      <find>=</find>
-      <find>Icon</find>
-      <find>serInterface</find>
-      <find>台</find>
-      <find>hideCursorTimer</find>
-      <find>userControlPanelShower</find>
-      <find>!</find>
-      <find>button</find>
-      <find>0.5vh</find>
-      <find>getXMLTV</find>
-      <find>hk</find>
-      <find>paramVal</find>
-      <find>hknbp.org</find>
       <find>userControlPanel</find>
       <find>http</find>
       <find>urlField</find>
@@ -296,6 +308,23 @@
       <find>isShow</find>
       <find>isLoad</find>
       <find>onFailedLoadFileFun</find>
+      <find>inDispla</find>
+      <find>inDisplayMutedButton</find>
+      <find>audioDescription</find>
+      <find>iframePlayer.</find>
+      <find>left</find>
+      <find>background: rgba(30, 30, 30, 0.9); text-align: right;</find>
+      <find>createLanguageOption</find>
+      <find>HTMLSelectElement</find>
+      <find>video</find>
+      <find>audio</find>
+      <find>&amp;nbsp&amp;nbsp</find>
+      <find>subtitleDescription</find>
+      <find>hannelInformation</find>
+      <find>ChannelDescription</find>
+      <find>channelDescription</find>
+      <find>channelInformation</find>
+      <find>ChannelInformation</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -304,11 +333,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$USER_HOME$/下載/12-1/full-screen-demo.html" />
-        <option value="$USER_HOME$/桌面/sss.html" />
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/channel/WatchingCounterScript.js" />
-        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserInterfaceShower.kt" />
         <option value="$USER_HOME$/桌面/index (副本).html" />
         <option value="$USER_HOME$/桌面/index.html" />
         <option value="$PROJECT_DIR$/tv_channels.xml" />
@@ -337,9 +361,7 @@
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/X.kt" />
         <option value="$PROJECT_DIR$/watching-counter.html" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/WatchingCounter.kt" />
-        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VirtualRemote.kt" />
         <option value="$PROJECT_DIR$/data/tv_channels.xml" />
-        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt" />
         <option value="$PROJECT_DIR$/iframePlayer/videojs_dash.html" />
         <option value="$PROJECT_DIR$/iframePlayer/videojs_hls.html" />
         <option value="$PROJECT_DIR$/iframePlayer/videojs_youtube.html" />
@@ -347,14 +369,21 @@
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/XMLTV.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/TrackDescription.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Dialogue.kt" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ChannelInformation.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/TVChannel.kt" />
         <option value="$PROJECT_DIR$/test.html" />
-        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" />
-        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt" />
         <option value="$PROJECT_DIR$/iframePlayer/youtube_api.html" />
+        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt" />
+        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/MutedDescription.kt" />
+        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt" />
+        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VolumeDescription.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt" />
+        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VideoDescription.kt" />
+        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/AudioDescription.kt" />
+        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/SubtitleDescription.kt" />
+        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ChannelInformation.kt" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VirtualRemote.kt" />
+        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" />
       </list>
     </option>
   </component>
@@ -372,10 +401,12 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="4">
     <option name="x" value="1281" />
-    <option name="width" value="1269" />
+    <option name="width" value="1279" />
     <option name="height" value="1040" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -629,20 +660,20 @@
     <option name="totallyTimeSpent" value="468277000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1281" y="0" width="1269" height="1040" extended-state="4" />
+    <frame x="1281" y="0" width="1279" height="1040" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info id="Capture Tool" order="0" />
       <window_info id="Designer" order="1" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.15321924" />
+      <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.18835893" />
       <window_info id="Structure" order="5" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="6" />
       <window_info anchor="bottom" id="Event Log" order="0" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Messages" order="1" visible="true" weight="0.16921398" />
+      <window_info anchor="bottom" id="Messages" order="1" visible="true" weight="0.16921398" />
       <window_info anchor="bottom" id="Version Control" order="2" />
-      <window_info anchor="bottom" id="Terminal" order="3" visible="true" weight="0.104803495" />
+      <window_info anchor="bottom" id="Terminal" order="3" weight="0.104803495" />
       <window_info anchor="bottom" id="Run" order="4" weight="0.0" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Debug" order="6" weight="0.4" />
@@ -702,26 +733,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/nodejs-library-compile.sh" />
-    <entry file="file://$PROJECT_DIR$/css/animation.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/fontello.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/channel/000.html" />
-    <entry file="file://$PROJECT_DIR$/AAAA.js" />
-    <entry file="file://$PROJECT_DIR$/main.js" />
-    <entry file="file://$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6555" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/tv_channels.json" />
     <entry file="file://$PROJECT_DIR$/AAAA.html" />
     <entry file="file://$PROJECT_DIR$/index_test.html" />
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadTVChannels.kt" />
@@ -801,13 +812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="716">
           <caret line="287" lean-forward="true" selection-start-line="287" selection-end-line="287" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iframePlayer/videojs_hls.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="207" column="50" lean-forward="true" selection-start-line="207" selection-start-column="41" selection-end-line="207" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -983,13 +987,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/TrackDescription.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="373">
-          <caret line="75" column="121" selection-start-line="75" selection-start-column="121" selection-end-line="75" selection-end-column="121" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Dialogue.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="618">
@@ -997,56 +994,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VirtualRemote.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="152" column="79" selection-start-line="152" selection-start-column="79" selection-end-line="152" selection-end-column="79" />
-          <folding>
-            <element signature="e#11894#14347#0" />
-            <element signature="e#14404#16699#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.html" />
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="972">
-          <caret line="222" selection-start-line="222" selection-end-line="222" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="n#!!block;n#reductionTo#0" />
-            <element signature="n#!!doc;n#updateURLParameter#0" />
-            <element signature="n#!!block;n#updateURLParameter#0" />
-            <element signature="n#!!doc;n#designatedChannel#0" />
-            <element signature="n#!!block;n#designatedChannel#0" />
-            <element signature="n#!!doc;n#updateChannel#0" />
-            <element signature="n#!!block;n#updateChannel#0" />
-            <element signature="e#4854#5910#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ChannelInformation.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2358">
-          <caret line="143" column="16" selection-start-line="143" selection-start-column="16" selection-end-line="143" selection-end-column="16" />
-          <folding>
-            <element signature="e#623#769#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="38" column="38" selection-start-line="38" selection-start-column="38" selection-end-line="38" selection-end-column="38" />
+        <state relative-caret-position="222">
+          <caret line="45" column="16" selection-start-line="45" selection-start-column="16" selection-end-line="45" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/TVChannel.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2088">
+        <state relative-caret-position="600">
           <caret line="215" column="85" selection-start-line="215" selection-start-column="85" selection-end-line="215" selection-end-column="85" />
           <folding>
             <element signature="n#!!block;n#getTVChannels#0;n#!!block;n#Companion#0;n#!!block;n#TVChannel#0" />
@@ -1064,10 +1022,38 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt">
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/InDisplayMutedButton.kt" />
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/TrackDescription.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2610">
-          <caret line="164" column="9" selection-start-line="164" selection-start-column="9" selection-end-line="164" selection-end-column="9" />
+        <state relative-caret-position="397">
+          <caret line="75" column="121" selection-start-line="75" selection-start-column="121" selection-end-line="75" selection-end-column="121" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/MutedDescription.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="22" column="17" selection-start-line="22" selection-start-column="17" selection-end-line="22" selection-end-column="17" />
+          <folding>
+            <element signature="e#623#690#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VolumeDescription.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="32" column="25" lean-forward="true" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+          <folding>
+            <element signature="e#623#753#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/SettingWindow.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="843">
+          <caret line="132" column="40" selection-start-line="132" selection-start-column="20" selection-end-line="132" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -1078,54 +1064,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/iframePlayer/videojs_hls.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="355" column="7" selection-start-line="355" selection-start-column="7" selection-end-line="355" selection-end-column="7" />
-          <folding>
-            <element signature="e#39#635#0" />
-            <element signature="n#script#0;n#head#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#button#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#button#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#button#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#button#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#button#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#div#4;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#4;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#4;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#hr#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#0;n#div#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#2;n#div#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#3;n#div#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#5;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#6;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#7;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#0;n#div#0;n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#9;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#div#10;n#div#1;n#body#0;n#html#0;n#!!top" />
-          </folding>
+        <state relative-caret-position="3096">
+          <caret line="208" column="20" lean-forward="true" selection-start-line="208" selection-start-column="20" selection-end-line="208" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/AudioDescription.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="23" column="4" selection-start-line="23" selection-start-column="4" selection-end-line="45" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="702">
-          <caret line="267" column="13" selection-start-line="267" selection-start-column="13" selection-end-line="267" selection-end-column="15" />
+        <state relative-caret-position="324">
+          <caret line="214" column="93" lean-forward="true" selection-start-line="214" selection-start-column="93" selection-end-line="214" selection-end-column="93" />
           <folding>
-            <element signature="n#!!block;n#Companion#0;n#!!block;n#Player#0" />
             <element signature="n#!!doc;n#indexOfPlayer#0;n#!!block;n#Companion#0;n#!!block;n#Player#0" />
             <element signature="e#1056#1155#0" />
             <element signature="n#!!doc;n#videoTracks#0;n#!!block;n#Player#0" />
@@ -1134,70 +1091,35 @@
             <element signature="n#!!doc;n#makeSureIframePlayerVolumeValueIsChangedTimer#0;n#!!block;n#Player#0" />
             <element signature="e#2268#2360#0" />
             <element signature="n#!!doc;n#volume#0;n#!!block;n#Player#0" />
-            <element signature="e#2694#2812#0" />
-            <element signature="e#2832#3524#0" />
-            <element signature="e#2864#3401#0" />
-            <element signature="e#3075#3301#1" />
             <element signature="n#!!doc;n#makeSureIframePlayerMutedValueIsChangedTimer#0;n#!!block;n#Player#0" />
-            <element signature="e#3766#3858#0" />
             <element signature="n#!!doc;n#muted#0;n#!!block;n#Player#0" />
-            <element signature="e#4114#4219#0" />
-            <element signature="e#4239#4741#0" />
-            <element signature="e#4271#4619#0" />
-            <element signature="e#4380#4520#1" />
-            <element signature="n#!!block;n#OnPlayerEvent#0;n#!!block;n#Player#0" />
             <element signature="n#!!block;n#OnPlayerEventListener#0;n#!!block;n#Player#0" />
             <element signature="n#!!block;n#addOnPlayerEventListener#0;n#!!block;n#Player#0" />
             <element signature="n#!!doc;n#onPlaying#0;n#!!block;n#Player#0" />
-            <element signature="e#5400#6467#0" />
-            <element signature="e#5796#6297#0" />
-            <element signature="e#5959#6283#0" />
-            <element signature="e#6486#6637#0" />
-            <element signature="e#6650#7717#0" />
-            <element signature="e#7046#7547#0" />
-            <element signature="e#7209#7533#0" />
-            <element signature="e#7736#7887#0" />
-            <element signature="e#7900#8994#0" />
-            <element signature="e#8308#8818#0" />
-            <element signature="e#8471#8804#0" />
-            <element signature="e#9013#9176#0" />
-            <element signature="e#9189#9403#0" />
             <element signature="n#!!doc;n#onNotPlaying#0;n#!!block;n#Player#0" />
             <element signature="n#!!block;n#onNotPlaying#0;n#!!block;n#Player#0" />
-            <element signature="e#10409#10899#0" />
+            <element signature="e#10470#10960#0" />
             <element signature="n#!!doc;n#nextVideoTrack#0;n#!!block;n#Player#0" />
             <element signature="n#!!block;n#nextVideoTrack#0;n#!!block;n#Player#0" />
             <element signature="n#!!doc;n#previousVideoTrack#0;n#!!block;n#Player#0" />
             <element signature="n#!!block;n#previousVideoTrack#0;n#!!block;n#Player#0" />
             <element signature="n#!!doc;n#designatedVideoTrack#0;n#!!block;n#Player#0" />
             <element signature="n#!!block;n#designatedVideoTrack#0;n#!!block;n#Player#0" />
-            <element signature="e#11410#11506#1" />
-            <element signature="e#11512#11688#1" />
-            <element signature="e#11563#11652#0" />
             <element signature="n#!!doc;n#nextAudioTrack#0;n#!!block;n#Player#0" />
             <element signature="n#!!block;n#nextAudioTrack#0;n#!!block;n#Player#0" />
             <element signature="n#!!doc;n#previousAudioTrack#0;n#!!block;n#Player#0" />
             <element signature="n#!!block;n#previousAudioTrack#0;n#!!block;n#Player#0" />
             <element signature="n#!!doc;n#designatedAudioTrack#0;n#!!block;n#Player#0" />
             <element signature="n#!!block;n#designatedAudioTrack#0;n#!!block;n#Player#0" />
-            <element signature="e#12206#12302#1" />
-            <element signature="e#12308#12484#1" />
-            <element signature="e#12359#12448#0" />
             <element signature="n#!!doc;n#nextSubtitleTrack#0;n#!!block;n#Player#0" />
             <element signature="n#!!block;n#nextSubtitleTrack#0;n#!!block;n#Player#0" />
             <element signature="n#!!doc;n#previousSubtitleTrack#0;n#!!block;n#Player#0" />
             <element signature="n#!!block;n#previousSubtitleTrack#0;n#!!block;n#Player#0" />
             <element signature="n#!!doc;n#designatedSubtitleTrack#0;n#!!block;n#Player#0" />
             <element signature="n#!!block;n#designatedSubtitleTrack#0;n#!!block;n#Player#0" />
-            <element signature="e#13038#13140#1" />
-            <element signature="e#13146#13322#1" />
-            <element signature="e#13197#13286#0" />
             <element signature="n#!!doc;n#volumeUp#0;n#!!block;n#Player#0" />
-            <element signature="e#13600#13680#0" />
             <element signature="n#!!doc;n#volumeDown#0;n#!!block;n#Player#0" />
-            <element signature="e#13833#13913#0" />
             <element signature="n#!!doc;n#volumeMute#0;n#!!block;n#Player#0" />
-            <element signature="e#14056#14100#0" />
             <element signature="n#!!doc;n#programmable#0;n#!!block;n#Player#0" />
             <element signature="n#!!block;n#programmable#0;n#!!block;n#Player#0" />
             <element signature="n#!!doc;n#enableProgrammable#0;n#!!block;n#Player#0" />
@@ -1206,6 +1128,242 @@
             <element signature="n#!!block;n#disableProgrammable#0;n#!!block;n#Player#0" />
             <element signature="n#!!doc;n#ProgrammableColor#0;n#!!block;n#Player#0" />
             <element signature="n#!!block;n#ProgrammableColor#0;n#!!block;n#Player#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="830">
+          <caret line="190" column="21" selection-start-line="190" selection-start-column="21" selection-end-line="190" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/SubtitleDescription.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="32" column="52" selection-start-line="32" selection-start-column="52" selection-end-line="32" selection-end-column="52" />
+          <folding>
+            <element signature="e#623#716#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VideoDescription.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="542">
+          <caret line="32" column="48" selection-start-line="32" selection-start-column="48" selection-end-line="32" selection-end-column="48" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#623#716#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ChannelInformation.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="23" column="36" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="36" />
+          <folding>
+            <element signature="e#623#769#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="737" column="76" selection-start-line="737" selection-start-column="76" selection-end-line="737" selection-end-column="76" />
+          <folding>
+            <element signature="e#39#635#0" />
+            <element signature="n#script#0;n#head#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#iframe#0;n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#i#0;n#button#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#11308#11316#1" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#11529#11537#1" />
+            <element signature="n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#2;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#11786#11794#1" />
+            <element signature="n#div#3;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#12040#12048#1" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#i#0;n#button#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#12392#12400#1" />
+            <element signature="n#button#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#i#0;n#button#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#12596#12604#1" />
+            <element signature="n#div#1;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#12785#12793#1" />
+            <element signature="e#12913#12921#1" />
+            <element signature="n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#i#0;n#button#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#13194#13202#1" />
+            <element signature="n#button#1;n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#i#0;n#button#1;n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#13403#13411#1" />
+            <element signature="n#div#2;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#2;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#2;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#2;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#3;n#div#2;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#1;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#2;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#2;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#2;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#3;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#0;n#div#3;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#16463#16471#1" />
+            <element signature="n#div#1;n#div#3;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#2;n#div#3;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#i#0;n#button#0;n#div#2;n#div#3;n#div#3;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#16978#16986#1" />
+            <element signature="n#div#4;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#4;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#select#0;n#div#0;n#div#4;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#5;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#input#0;n#div#0;n#div#5;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#1;n#div#5;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#17954#17962#1" />
+            <element signature="n#style#0;n#i#0;n#div#2;n#div#0;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#18673#18681#1" />
+            <element signature="n#div#1;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#0;n#div#1;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#18982#18990#1" />
+            <element signature="n#div#1;n#div#1;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#1;n#div#1;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#19252#19260#1" />
+            <element signature="n#div#2;n#div#1;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#2;n#div#1;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#19522#19530#1" />
+            <element signature="n#div#2;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#2;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#select#0;n#div#0;n#div#2;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#2;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#select#0;n#div#1;n#div#2;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#2;n#div#2;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#select#0;n#div#2;n#div#2;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#3;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#3;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#0;n#div#3;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#20909#20917#1" />
+            <element signature="n#div#1;n#div#3;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#1;n#div#3;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#21176#21184#1" />
+            <element signature="n#div#2;n#div#3;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#2;n#div#3;n#div#6;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#21443#21451#1" />
+            <element signature="n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#0;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#i#0;n#button#0;n#div#0;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#21837#21845#1" />
+            <element signature="n#div#1;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#1;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#i#0;n#button#0;n#div#1;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#22091#22099#1" />
+            <element signature="n#div#2;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#2;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#i#0;n#button#0;n#div#2;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#22342#22350#1" />
+            <element signature="n#div#3;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#3;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#i#0;n#button#0;n#div#3;n#div#0;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#22595#22603#1" />
+            <element signature="n#div#0;n#div#1;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#0;n#div#1;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#i#0;n#button#0;n#div#0;n#div#1;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#22915#22923#1" />
+            <element signature="n#div#1;n#div#1;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#1;n#div#1;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#i#0;n#button#0;n#div#1;n#div#1;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#23215#23223#1" />
+            <element signature="n#div#2;n#div#1;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#2;n#div#1;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#i#0;n#button#0;n#div#2;n#div#1;n#div#7;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#23467#23475#1" />
+            <element signature="e#23862#23870#1" />
+            <element signature="n#div#8;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#24504#24512#1" />
+            <element signature="n#button#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="e#24972#24980#1" />
+            <element signature="n#button#1;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#button#1;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#4;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#div#6;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#7;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#8;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#9;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#10;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#11;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#div#12;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#script#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VirtualRemote.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2682">
+          <caret line="167" column="44" selection-start-line="167" selection-start-column="44" selection-end-line="167" selection-end-column="44" />
+          <folding>
+            <element signature="e#12311#14764#0" />
+            <element signature="e#14821#17116#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/TVChannelDescription.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="22" column="7" selection-start-line="22" selection-start-column="7" selection-end-line="22" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="238" column="23" lean-forward="true" selection-start-line="238" selection-start-column="23" selection-end-line="238" selection-end-column="23" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!block;n#reductionTo#0" />
+            <element signature="n#!!doc;n#updateURLParameter#0" />
+            <element signature="n#!!block;n#updateURLParameter#0" />
+            <element signature="n#!!doc;n#designatedChannel#0" />
+            <element signature="n#!!block;n#designatedChannel#0" />
+            <element signature="n#!!doc;n#updateChannel#0" />
+            <element signature="e#4851#5907#0" />
           </folding>
         </state>
       </provider>

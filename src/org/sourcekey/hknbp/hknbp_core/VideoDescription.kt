@@ -14,15 +14,32 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
+import org.w3c.dom.HTMLDivElement
+import kotlin.browser.document
+import kotlin.browser.window
+
 object VideoDescription {
+    private val videoDescription: HTMLDivElement = document.getElementById("videoDescription") as HTMLDivElement
+    private val text: HTMLDivElement = document.getElementById("videoDescriptionText") as HTMLDivElement
 
-    fun show(){}
 
-    fun show(showTime: Int){}
+    private var hideTimer = window.setTimeout(fun(){ }, 0)
+        set(value) {
+            window.clearTimeout(field)
+            field = value
+        }
 
-    fun hide(){}
-
-    init {
-
+    fun show(){
+        videoDescription.style.display = "block"
+        text.innerHTML = player.videoTracks.node?.name?:""
     }
+
+    fun show(showTime: Int){
+        hideTimer = window.setTimeout(fun(){ hide() }, showTime)
+        show()
+    }
+
+    fun hide(){ videoDescription.style.display = "none"}
+
+    init { }
 }

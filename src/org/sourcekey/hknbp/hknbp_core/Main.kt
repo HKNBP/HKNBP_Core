@@ -136,16 +136,20 @@ fun updateChannel() {
                         }
                     }, 15000)
                 }
-                Player.OnPlayerEvent.videoTrackChanged,
-                Player.OnPlayerEvent.audioTrackChanged,
+                Player.OnPlayerEvent.videoTrackChanged -> {
+                    VirtualRemote.updateVideoInformation()
+                }
+                Player.OnPlayerEvent.audioTrackChanged -> {
+                    VirtualRemote.updateAudioInformation()
+                }
                 Player.OnPlayerEvent.subtitleTrackChanged -> {
-                    VirtualRemote.update()
+                    VirtualRemote.updateSubtitleInformation()
                 }
                 Player.OnPlayerEvent.volumeChanged -> {
-                    AudioDescription.show(3000)
+                    VolumeDescription.show(3000)
                 }
                 Player.OnPlayerEvent.mutedChanged -> {
-                    InDisplayMutedButton.update()
+                    MutedDescription.update()
                 }
             }
         }
@@ -229,10 +233,10 @@ fun main(args: Array<String>) {
                     preChangeNode: TVChannel?, postChangeNode: TVChannel?
             ) {
                 updateChannel()
-                ChannelInformation.show(3000)
+                TVChannelDescription.show(3000)
             }
         })
         updateChannel()
-        ChannelInformation.show(3000)
+        TVChannelDescription.show(3000)
     })
 }
