@@ -177,6 +177,9 @@ object UserControlPanel {
         jQuery("body").mouseleave(fun(){
             hide()
         })
+        shower.ondblclick = fun(event){
+            FullScreenButton.enterExitFullScreenAlternately()
+        }
         ////遙控////
         panel.onfocus = fun(event){
             show(15000)

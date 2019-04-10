@@ -21,7 +21,7 @@ import org.w3c.dom.HTMLElement
 import kotlin.browser.document
 
 object FullScreenButton {
-    private val fullScreenButton: HTMLElement = document.getElementById("fullScreenButton") as HTMLButtonElement
+    private val fullScreenButton: HTMLButtonElement = document.getElementById("fullScreenButton") as HTMLButtonElement
     private val enterFullscreenIcon: String = "<i class=\"icon-font\">&#xe80c;</i>"
     private val exitFullscreenIcon: String = "<i class=\"icon-font\">&#xe80b;</i>"
 
@@ -30,7 +30,7 @@ object FullScreenButton {
      * 顯示全螢幕制
      * */
     fun show(){
-        fullScreenButton.style.display="block"
+        fullScreenButton.style.display = "block"
     }
 
     /**
@@ -40,59 +40,63 @@ object FullScreenButton {
      * 因為手機版程式本來就全螢幕左
      * */
     fun hide(){
-        fullScreenButton.style.display="none"
+        fullScreenButton.style.display = "none"
     }
 
     /**
      * 轉成全螢幕
      * */
     fun enterFullscreen() {
-        val element = document.body
-        js("""
-             if(element.requestFullscreen) {
-                element.requestFullscreen();
-              } else if(element.mozRequestFullScreen) {
-                element.mozRequestFullScreen();
-              } else if(element.webkitRequestFullscreen) {
-                element.webkitRequestFullscreen();
-              } else if(element.msRequestFullscreen) {
-                element.msRequestFullscreen();
-              }
-        """)
+        val element: dynamic = document.body
+        if(element.requestFullscreen) {
+            element.requestFullscreen()
+        } else if(element.mozRequestFullScreen) {
+            element.mozRequestFullScreen()
+        } else if(element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen()
+        } else if(element.msRequestFullscreen) {
+            element.msRequestFullscreen()
+        }
     }
 
     /**
      *  轉成唔係全螢幕
      *  */
     fun exitFullscreen() {
-        js("""
-              if(document.exitFullscreen) {
-                document.exitFullscreen();
-              } else if(document.mozCancelFullScreen) {
-                document.mozCancelFullScreen();
-              } else if(document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-              } else if(document.msExitFullscreen)
-		        document.msExitFullscreen();
-        """)
+        val document: dynamic = document
+        if(document.exitFullscreen) {
+            document.exitFullscreen()
+        } else if(document.mozCancelFullScreen) {
+            document.mozCancelFullScreen()
+        } else if(document.webkitExitFullscreen) {
+            document.webkitExitFullscreen()
+        } else if(document.msExitFullscreen) {
+            document.msExitFullscreen()
+        }
     }
 
     /**
      *  檢查係米全螢幕
      *  */
     fun isFullscreen(): Boolean {
-        return js("document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement") != undefined
+        return js("document.fullscreenElement " +
+                "|| document.mozFullScreenElement " +
+                "|| document.webkitFullscreenElement " +
+                "|| document.msFullscreenElement"
+        ) != undefined
+    }
+
+    fun enterExitFullScreenAlternately(){
+        if (isFullscreen()) {
+            exitFullscreen()
+            fullScreenButton.innerHTML = enterFullscreenIcon
+        } else {
+            enterFullscreen()
+            fullScreenButton.innerHTML = exitFullscreenIcon
+        }
     }
 
     init {
-        fullScreenButton.onclick = fun(event){
-            if (isFullscreen()) {
-                exitFullscreen()
-                fullScreenButton.innerHTML = enterFullscreenIcon
-            } else {
-                enterFullscreen()
-                fullScreenButton.innerHTML = exitFullscreenIcon
-            }
-        }
+        fullScreenButton.onclick = fun(event){ enterExitFullScreenAlternately() }
     }
 }

@@ -62,7 +62,7 @@ object VirtualRemote {
     val number8Button               = document.getElementById("number8Button")              as HTMLButtonElement
     val number9Button               = document.getElementById("number9Button")              as HTMLButtonElement
     val refreshButton               = document.getElementById("refreshButton")              as HTMLButtonElement
-    val tvChannelDescriptionButton    = document.getElementById("tvChannelDescriptionButton")   as HTMLButtonElement
+    val tvChannelDescriptionButton  = document.getElementById("tvChannelDescriptionButton") as HTMLButtonElement
     val settingWindowButton         = document.getElementById("settingWindowButton")        as HTMLButtonElement
     val clearSettingButton          = document.getElementById("clearSettingButton")         as HTMLButtonElement
 

@@ -1130,31 +1130,36 @@ var HKNBP_Core = function (_, Kotlin) {
     }
   };
   FullScreenButton.prototype.exitFullscreen = function () {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
+    var document_0 = document;
+    if (document_0.exitFullscreen) {
+      document_0.exitFullscreen();
     }
-     else if (document.mozCancelFullScreen) {
-      document.mozCancelFullScreen();
+     else if (document_0.mozCancelFullScreen) {
+      document_0.mozCancelFullScreen();
     }
-     else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
+     else if (document_0.webkitExitFullscreen) {
+      document_0.webkitExitFullscreen();
     }
-     else if (document.msExitFullscreen)
-      document.msExitFullscreen();
+     else if (document_0.msExitFullscreen) {
+      document_0.msExitFullscreen();
+    }
   };
   FullScreenButton.prototype.isFullscreen = function () {
     return (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) != undefined;
   };
+  FullScreenButton.prototype.enterExitFullScreenAlternately = function () {
+    if (this.isFullscreen()) {
+      this.exitFullscreen();
+      this.fullScreenButton_0.innerHTML = this.enterFullscreenIcon_0;
+    }
+     else {
+      this.enterFullscreen();
+      this.fullScreenButton_0.innerHTML = this.exitFullscreenIcon_0;
+    }
+  };
   function FullScreenButton_init$lambda(this$FullScreenButton) {
     return function (event) {
-      if (this$FullScreenButton.isFullscreen()) {
-        this$FullScreenButton.exitFullscreen();
-        this$FullScreenButton.fullScreenButton_0.innerHTML = this$FullScreenButton.enterFullscreenIcon_0;
-      }
-       else {
-        this$FullScreenButton.enterFullscreen();
-        this$FullScreenButton.fullScreenButton_0.innerHTML = this$FullScreenButton.exitFullscreenIcon_0;
-      }
+      this$FullScreenButton.enterExitFullScreenAlternately();
     };
   }
   FullScreenButton.$metadata$ = {
@@ -2978,10 +2983,11 @@ var HKNBP_Core = function (_, Kotlin) {
     this.panel_0.onmousemove = UserControlPanel_init$lambda_1(this);
     this.panel_0.onscroll = UserControlPanel_init$lambda_2(this);
     jQuery('body').mouseleave(UserControlPanel_init$lambda_3(this));
-    this.panel_0.onfocus = UserControlPanel_init$lambda_4(this);
+    this.shower_0.ondblclick = UserControlPanel_init$lambda_4;
+    this.panel_0.onfocus = UserControlPanel_init$lambda_5(this);
     var _shower = this.shower_0;
-    _shower.ontouchstart = UserControlPanel_init$lambda_5(this);
-    jQuery('button, select, option, input').focus(UserControlPanel_init$lambda_6);
+    _shower.ontouchstart = UserControlPanel_init$lambda_6(this);
+    jQuery('button, select, option, input').focus(UserControlPanel_init$lambda_7);
     this.setAllBuutonOnLongClickFeatures_0();
   }
   Object.defineProperty(UserControlPanel.prototype, 'hideTimer_0', {
@@ -3129,12 +3135,15 @@ var HKNBP_Core = function (_, Kotlin) {
       this$UserControlPanel.hide();
     };
   }
-  function UserControlPanel_init$lambda_4(this$UserControlPanel) {
+  function UserControlPanel_init$lambda_4(event) {
+    FullScreenButton_getInstance().enterExitFullScreenAlternately();
+  }
+  function UserControlPanel_init$lambda_5(this$UserControlPanel) {
     return function (event) {
       this$UserControlPanel.show_za3lpa$(15000);
     };
   }
-  function UserControlPanel_init$lambda_5(this$UserControlPanel) {
+  function UserControlPanel_init$lambda_6(this$UserControlPanel) {
     return function (event) {
       event.preventDefault();
       if (this$UserControlPanel.panel_0.style.display === 'block') {
@@ -3145,7 +3154,7 @@ var HKNBP_Core = function (_, Kotlin) {
       }
     };
   }
-  function UserControlPanel_init$lambda_6() {
+  function UserControlPanel_init$lambda_7() {
     jQuery(this).hover();
   }
   UserControlPanel.$metadata$ = {
