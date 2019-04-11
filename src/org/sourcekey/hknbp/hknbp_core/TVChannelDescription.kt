@@ -135,9 +135,8 @@ object TVChannelDescription{
             field = value
         }
 
-    var isShow: Boolean = tvChannelDescription.style.display == "block"
+    val isShow: Boolean
         get() { return tvChannelDescription.style.display == "block" }
-        private set
 
     fun show(){
         tvChannelDescription.style.display = "block"
@@ -152,6 +151,10 @@ object TVChannelDescription{
 
     fun hide(){
         tvChannelDescription.style.display = "none"
+    }
+
+    fun showHideAlternately(){
+        if(isShow){ show() }else{ hide() }
     }
 
     init { }

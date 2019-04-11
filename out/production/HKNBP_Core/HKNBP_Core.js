@@ -3,19 +3,19 @@ if (typeof kotlin === 'undefined') {
 }
 var HKNBP_Core = function (_, Kotlin) {
   'use strict';
+  var equals = Kotlin.equals;
+  var throwCCE = Kotlin.throwCCE;
+  var Unit = Kotlin.kotlin.Unit;
   var Kind_OBJECT = Kotlin.Kind.OBJECT;
   var getOrNull = Kotlin.kotlin.collections.getOrNull_yzln2o$;
-  var Unit = Kotlin.kotlin.Unit;
   var Kind_INTERFACE = Kotlin.Kind.INTERFACE;
   var ArrayList = Kotlin.kotlin.collections.ArrayList;
   var get_lastIndex = Kotlin.kotlin.collections.get_lastIndex_55thoc$;
   var ArrayList_init = Kotlin.kotlin.collections.ArrayList_init_287e2$;
   var Kind_CLASS = Kotlin.Kind.CLASS;
-  var throwCCE = Kotlin.throwCCE;
   var toBoolean = Kotlin.kotlin.text.toBoolean_pdl1vz$;
   var toString = Kotlin.toString;
   var toInt = Kotlin.kotlin.text.toInt_pdl1vz$;
-  var equals = Kotlin.equals;
   var replace = Kotlin.kotlin.text.replace_680rmw$;
   var padStart = Kotlin.kotlin.text.padStart_vrc1nu$;
   var numberToInt = Kotlin.numberToInt;
@@ -52,7 +52,47 @@ var HKNBP_Core = function (_, Kotlin) {
   XMLTV$Programme$ProgrammeList.prototype.constructor = XMLTV$Programme$ProgrammeList;
   function AboutWindow() {
     AboutWindow_instance = this;
+    var tmp$;
+    this.aboutWindow_0 = Kotlin.isType(tmp$ = document.getElementById('AboutWindow'), HTMLDivElement) ? tmp$ : throwCCE();
+    this.hideTimer_rx5brs$_0 = 0;
   }
+  Object.defineProperty(AboutWindow.prototype, 'hideTimer_0', {
+    get: function () {
+      return this.hideTimer_rx5brs$_0;
+    },
+    set: function (value) {
+      window.clearTimeout(this.hideTimer_rx5brs$_0);
+      this.hideTimer_rx5brs$_0 = value;
+    }
+  });
+  Object.defineProperty(AboutWindow.prototype, 'isShow', {
+    get: function () {
+      return equals(this.aboutWindow_0.style.display, 'block');
+    }
+  });
+  AboutWindow.prototype.show = function () {
+    this.aboutWindow_0.style.display = 'block';
+  };
+  function AboutWindow$show$lambda(this$AboutWindow) {
+    return function () {
+      this$AboutWindow.hide();
+    };
+  }
+  AboutWindow.prototype.show_za3lpa$ = function (showTime) {
+    this.hideTimer_0 = window.setTimeout(AboutWindow$show$lambda(this), showTime);
+    this.show();
+  };
+  AboutWindow.prototype.hide = function () {
+    this.aboutWindow_0.style.display = 'none';
+  };
+  AboutWindow.prototype.showHideAlternately = function () {
+    if (this.isShow) {
+      this.show();
+    }
+     else {
+      this.hide();
+    }
+  };
   AboutWindow.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'AboutWindow',
@@ -64,6 +104,61 @@ var HKNBP_Core = function (_, Kotlin) {
       new AboutWindow();
     }
     return AboutWindow_instance;
+  }
+  function AppDownloadWindow() {
+    AppDownloadWindow_instance = this;
+    var tmp$;
+    this.appDownloadWindow_0 = Kotlin.isType(tmp$ = document.getElementById('appDownloadWindow'), HTMLDivElement) ? tmp$ : throwCCE();
+    this.hideTimer_pridt8$_0 = 0;
+  }
+  Object.defineProperty(AppDownloadWindow.prototype, 'hideTimer_0', {
+    get: function () {
+      return this.hideTimer_pridt8$_0;
+    },
+    set: function (value) {
+      window.clearTimeout(this.hideTimer_pridt8$_0);
+      this.hideTimer_pridt8$_0 = value;
+    }
+  });
+  Object.defineProperty(AppDownloadWindow.prototype, 'isShow', {
+    get: function () {
+      return equals(this.appDownloadWindow_0.style.display, 'block');
+    }
+  });
+  AppDownloadWindow.prototype.show = function () {
+    this.appDownloadWindow_0.style.display = 'block';
+  };
+  function AppDownloadWindow$show$lambda(this$AppDownloadWindow) {
+    return function () {
+      this$AppDownloadWindow.hide();
+    };
+  }
+  AppDownloadWindow.prototype.show_za3lpa$ = function (showTime) {
+    this.hideTimer_0 = window.setTimeout(AppDownloadWindow$show$lambda(this), showTime);
+    this.show();
+  };
+  AppDownloadWindow.prototype.hide = function () {
+    this.appDownloadWindow_0.style.display = 'none';
+  };
+  AppDownloadWindow.prototype.showHideAlternately = function () {
+    if (this.isShow) {
+      this.show();
+    }
+     else {
+      this.hide();
+    }
+  };
+  AppDownloadWindow.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'AppDownloadWindow',
+    interfaces: []
+  };
+  var AppDownloadWindow_instance = null;
+  function AppDownloadWindow_getInstance() {
+    if (AppDownloadWindow_instance === null) {
+      new AppDownloadWindow();
+    }
+    return AppDownloadWindow_instance;
   }
   function ArrayLinkList() {
     this.node_ns7zwb$_0 = null;
@@ -1102,6 +1197,61 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return EnteringNumberBox_instance;
   }
+  function FeedbackWindow() {
+    FeedbackWindow_instance = this;
+    var tmp$;
+    this.feedbackWindow_0 = Kotlin.isType(tmp$ = document.getElementById('feedbackWindow'), HTMLDivElement) ? tmp$ : throwCCE();
+    this.hideTimer_r7ljxs$_0 = 0;
+  }
+  Object.defineProperty(FeedbackWindow.prototype, 'hideTimer_0', {
+    get: function () {
+      return this.hideTimer_r7ljxs$_0;
+    },
+    set: function (value) {
+      window.clearTimeout(this.hideTimer_r7ljxs$_0);
+      this.hideTimer_r7ljxs$_0 = value;
+    }
+  });
+  Object.defineProperty(FeedbackWindow.prototype, 'isShow', {
+    get: function () {
+      return equals(this.feedbackWindow_0.style.display, 'block');
+    }
+  });
+  FeedbackWindow.prototype.show = function () {
+    this.feedbackWindow_0.style.display = 'block';
+  };
+  function FeedbackWindow$show$lambda(this$FeedbackWindow) {
+    return function () {
+      this$FeedbackWindow.hide();
+    };
+  }
+  FeedbackWindow.prototype.show_za3lpa$ = function (showTime) {
+    this.hideTimer_0 = window.setTimeout(FeedbackWindow$show$lambda(this), showTime);
+    this.show();
+  };
+  FeedbackWindow.prototype.hide = function () {
+    this.feedbackWindow_0.style.display = 'none';
+  };
+  FeedbackWindow.prototype.showHideAlternately = function () {
+    if (this.isShow) {
+      this.show();
+    }
+     else {
+      this.hide();
+    }
+  };
+  FeedbackWindow.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'FeedbackWindow',
+    interfaces: []
+  };
+  var FeedbackWindow_instance = null;
+  function FeedbackWindow_getInstance() {
+    if (FeedbackWindow_instance === null) {
+      new FeedbackWindow();
+    }
+    return FeedbackWindow_instance;
+  }
   function FullScreenButton() {
     FullScreenButton_instance = this;
     var tmp$;
@@ -1274,30 +1424,30 @@ var HKNBP_Core = function (_, Kotlin) {
   function set_player(player_0) {
     player = player_0;
   }
-  function reductionTo(m, n) {
+  function reductionTo(w, h) {
     var arr = new Int32Array(2);
-    var h = m;
-    var k = n;
-    var a = h;
-    var b = k;
+    var p = w;
+    var q = h;
+    var a = p;
+    var b = q;
     if (a >= b) {
-      a = h;
-      b = k;
+      a = p;
+      b = q;
     }
      else {
-      a = k;
-      b = h;
+      a = q;
+      b = p;
     }
-    if (h !== 1 && k !== 1) {
+    if (p !== 1 && q !== 1) {
       for (var i = b; i >= 2; i--) {
-        if (h % i === 0 && k % i === 0) {
-          h = h / i | 0;
-          k = k / i | 0;
+        if (p % i === 0 && q % i === 0) {
+          p = p / i | 0;
+          q = q / i | 0;
         }
       }
     }
-    arr[0] = h;
-    arr[1] = k;
+    arr[0] = p;
+    arr[1] = q;
     return arr;
   }
   function updateURLParameter(param, paramVal) {
@@ -1390,7 +1540,7 @@ var HKNBP_Core = function (_, Kotlin) {
         VolumeDescription_getInstance().show_za3lpa$(3000);
         break;
       case 'mutedChanged':
-        MutedDescription_getInstance().update();
+        MutedDescription_getInstance().showHideAlternately();
         break;
       default:Kotlin.noWhenBranchMatched();
         break;
@@ -1574,23 +1724,24 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function MutedDescription() {
     MutedDescription_instance = this;
-    var tmp$;
-    this.mutedDescriptionButton_0 = Kotlin.isType(tmp$ = document.getElementById('mutedDescriptionButton'), HTMLButtonElement) ? tmp$ : throwCCE();
+    var tmp$, tmp$_0;
+    this.mutedDescription_0 = Kotlin.isType(tmp$ = document.getElementById('mutedDescription'), HTMLDivElement) ? tmp$ : throwCCE();
+    this.mutedDescriptionButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('mutedDescriptionButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.mutedDescriptionButton_0.onclick = MutedDescription_init$lambda;
   }
-  MutedDescription.prototype.update = function () {
+  MutedDescription.prototype.show_0 = function () {
+    this.mutedDescription_0.style.display = 'block';
+  };
+  MutedDescription.prototype.hide_0 = function () {
+    this.mutedDescription_0.style.display = 'none';
+  };
+  MutedDescription.prototype.showHideAlternately = function () {
     if (get_player().muted) {
       this.show_0();
     }
      else {
       this.hide_0();
     }
-  };
-  MutedDescription.prototype.show_0 = function () {
-    this.mutedDescriptionButton_0.style.display = 'block';
-  };
-  MutedDescription.prototype.hide_0 = function () {
-    this.mutedDescriptionButton_0.style.display = 'none';
   };
   function MutedDescription_init$lambda(event) {
     get_player().muted = !get_player().muted;
@@ -2236,6 +2387,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.languageMoveUpLanguage_0 = Kotlin.isType(tmp$_9 = document.getElementById('settingWindowLanguageMoveUpLanguage'), HTMLButtonElement) ? tmp$_9 : throwCCE();
     this.languageMoveDownLanguage_0 = Kotlin.isType(tmp$_10 = document.getElementById('settingWindowLanguageMoveDownLanguage'), HTMLButtonElement) ? tmp$_10 : throwCCE();
     this.currentUserLanguage_0 = typeof (tmp$_11 = navigator.language || navigator.userLanguage) === 'string' ? tmp$_11 : throwCCE();
+    this.hideTimer_fn7zuj$_0 = window.setTimeout(SettingWindow$hideTimer$lambda, 0);
     this.settingWindow_0.style.cursor = 'auto';
     this.hideButton_0.onclick = SettingWindow_init$lambda(this);
     this.languageAddLanguage_0.onclick = SettingWindow_init$lambda_0(this);
@@ -2257,12 +2409,6 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return userLanguageList;
   };
-  SettingWindow.prototype.show = function () {
-    this.settingWindow_0.style.display = 'block';
-  };
-  SettingWindow.prototype.hide = function () {
-    this.settingWindow_0.style.display = 'none';
-  };
   SettingWindow.prototype.createLanguageOption_0 = function (isoCode) {
     var tmp$;
     var option = Kotlin.isType(tmp$ = document.createElement('option'), HTMLOptionElement) ? tmp$ : throwCCE();
@@ -2270,6 +2416,45 @@ var HKNBP_Core = function (_, Kotlin) {
     option.value = isoCode;
     return option;
   };
+  Object.defineProperty(SettingWindow.prototype, 'hideTimer_0', {
+    get: function () {
+      return this.hideTimer_fn7zuj$_0;
+    },
+    set: function (value) {
+      window.clearTimeout(this.hideTimer_fn7zuj$_0);
+      this.hideTimer_fn7zuj$_0 = value;
+    }
+  });
+  Object.defineProperty(SettingWindow.prototype, 'isShow', {
+    get: function () {
+      return equals(this.settingWindow_0.style.display, 'block');
+    }
+  });
+  SettingWindow.prototype.show = function () {
+    this.settingWindow_0.style.display = 'block';
+  };
+  function SettingWindow$show$lambda(this$SettingWindow) {
+    return function () {
+      this$SettingWindow.hide();
+    };
+  }
+  SettingWindow.prototype.show_za3lpa$ = function (showTime) {
+    this.hideTimer_0 = window.setTimeout(SettingWindow$show$lambda(this), showTime);
+    this.show();
+  };
+  SettingWindow.prototype.hide = function () {
+    this.settingWindow_0.style.display = 'none';
+  };
+  SettingWindow.prototype.showHideAlternately = function () {
+    if (this.isShow) {
+      this.show();
+    }
+     else {
+      this.hide();
+    }
+  };
+  function SettingWindow$hideTimer$lambda() {
+  }
   function SettingWindow_init$lambda(this$SettingWindow) {
     return function (event) {
       this$SettingWindow.hide();
@@ -2382,6 +2567,61 @@ var HKNBP_Core = function (_, Kotlin) {
       new SettingWindow();
     }
     return SettingWindow_instance;
+  }
+  function ShareWindow() {
+    ShareWindow_instance = this;
+    var tmp$;
+    this.shareWindow_0 = Kotlin.isType(tmp$ = document.getElementById('shareWindow'), HTMLDivElement) ? tmp$ : throwCCE();
+    this.hideTimer_gnoeei$_0 = 0;
+  }
+  Object.defineProperty(ShareWindow.prototype, 'hideTimer_0', {
+    get: function () {
+      return this.hideTimer_gnoeei$_0;
+    },
+    set: function (value) {
+      window.clearTimeout(this.hideTimer_gnoeei$_0);
+      this.hideTimer_gnoeei$_0 = value;
+    }
+  });
+  Object.defineProperty(ShareWindow.prototype, 'isShow', {
+    get: function () {
+      return equals(this.shareWindow_0.style.display, 'block');
+    }
+  });
+  ShareWindow.prototype.show = function () {
+    this.shareWindow_0.style.display = 'block';
+  };
+  function ShareWindow$show$lambda(this$ShareWindow) {
+    return function () {
+      this$ShareWindow.hide();
+    };
+  }
+  ShareWindow.prototype.show_za3lpa$ = function (showTime) {
+    this.hideTimer_0 = window.setTimeout(ShareWindow$show$lambda(this), showTime);
+    this.show();
+  };
+  ShareWindow.prototype.hide = function () {
+    this.shareWindow_0.style.display = 'none';
+  };
+  ShareWindow.prototype.showHideAlternately = function () {
+    if (this.isShow) {
+      this.show();
+    }
+     else {
+      this.hide();
+    }
+  };
+  ShareWindow.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'ShareWindow',
+    interfaces: []
+  };
+  var ShareWindow_instance = null;
+  function ShareWindow_getInstance() {
+    if (ShareWindow_instance === null) {
+      new ShareWindow();
+    }
+    return ShareWindow_instance;
   }
   function SubtitleDescription() {
     SubtitleDescription_instance = this;
@@ -2675,7 +2915,6 @@ var HKNBP_Core = function (_, Kotlin) {
     this.currentProgrammeCategory_0 = Kotlin.isType(tmp$_8 = document.getElementById('tvChannelDescriptionCurrentProgrammeCategory'), HTMLDivElement) ? tmp$_8 : throwCCE();
     this.currentDateTimer_0 = 0;
     this.hideTimer_ekxmx6$_0 = 0;
-    this.isShow_7503ds$_0 = equals(this.tvChannelDescription_0.style.display, 'block');
   }
   TVChannelDescription.prototype.setCurrentChannelName_0 = function () {
     var tmp$, tmp$_0;
@@ -2806,9 +3045,6 @@ var HKNBP_Core = function (_, Kotlin) {
   Object.defineProperty(TVChannelDescription.prototype, 'isShow', {
     get: function () {
       return equals(this.tvChannelDescription_0.style.display, 'block');
-    },
-    set: function (isShow) {
-      this.isShow_7503ds$_0 = isShow;
     }
   });
   TVChannelDescription.prototype.show = function () {
@@ -2827,6 +3063,14 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   TVChannelDescription.prototype.hide = function () {
     this.tvChannelDescription_0.style.display = 'none';
+  };
+  TVChannelDescription.prototype.showHideAlternately = function () {
+    if (this.isShow) {
+      this.show();
+    }
+     else {
+      this.hide();
+    }
   };
   TVChannelDescription.$metadata$ = {
     kind: Kind_OBJECT,
@@ -2966,6 +3210,21 @@ var HKNBP_Core = function (_, Kotlin) {
     simpleName: 'TrackDescription',
     interfaces: []
   };
+  function UpdatePrompt() {
+    UpdatePrompt_instance = this;
+  }
+  UpdatePrompt.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'UpdatePrompt',
+    interfaces: []
+  };
+  var UpdatePrompt_instance = null;
+  function UpdatePrompt_getInstance() {
+    if (UpdatePrompt_instance === null) {
+      new UpdatePrompt();
+    }
+    return UpdatePrompt_instance;
+  }
   function UserControlPanel() {
     UserControlPanel_instance = this;
     var tmp$, tmp$_0;
@@ -3180,7 +3439,7 @@ var HKNBP_Core = function (_, Kotlin) {
     var tmp$, tmp$_0;
     this.videoDescription_0 = Kotlin.isType(tmp$ = document.getElementById('videoDescription'), HTMLDivElement) ? tmp$ : throwCCE();
     this.text_0 = Kotlin.isType(tmp$_0 = document.getElementById('videoDescriptionText'), HTMLDivElement) ? tmp$_0 : throwCCE();
-    this.hideTimer_7bohs4$_0 = window.setTimeout(VideoDescription$hideTimer$lambda, 0);
+    this.hideTimer_7bohs4$_0 = 0;
   }
   Object.defineProperty(VideoDescription.prototype, 'hideTimer_0', {
     get: function () {
@@ -3189,6 +3448,11 @@ var HKNBP_Core = function (_, Kotlin) {
     set: function (value) {
       window.clearTimeout(this.hideTimer_7bohs4$_0);
       this.hideTimer_7bohs4$_0 = value;
+    }
+  });
+  Object.defineProperty(VideoDescription.prototype, 'isShow', {
+    get: function () {
+      return equals(this.videoDescription_0.style.display, 'block');
     }
   });
   VideoDescription.prototype.show = function () {
@@ -3208,8 +3472,14 @@ var HKNBP_Core = function (_, Kotlin) {
   VideoDescription.prototype.hide = function () {
     this.videoDescription_0.style.display = 'none';
   };
-  function VideoDescription$hideTimer$lambda() {
-  }
+  VideoDescription.prototype.showHideAlternately = function () {
+    if (this.isShow) {
+      this.show();
+    }
+     else {
+      this.hide();
+    }
+  };
   VideoDescription.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'VideoDescription',
@@ -3224,7 +3494,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function VirtualRemote() {
     VirtualRemote_instance = this;
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22, tmp$_23, tmp$_24, tmp$_25, tmp$_26, tmp$_27, tmp$_28, tmp$_29, tmp$_30, tmp$_31, tmp$_32, tmp$_33, tmp$_34, tmp$_35, tmp$_36, tmp$_37, tmp$_38, tmp$_39, tmp$_40, tmp$_41, tmp$_42, tmp$_43, tmp$_44, tmp$_45, tmp$_46, tmp$_47, tmp$_48, tmp$_49;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22, tmp$_23, tmp$_24, tmp$_25, tmp$_26, tmp$_27, tmp$_28, tmp$_29, tmp$_30, tmp$_31, tmp$_32, tmp$_33, tmp$_34, tmp$_35, tmp$_36, tmp$_37, tmp$_38, tmp$_39, tmp$_40, tmp$_41, tmp$_42, tmp$_43, tmp$_44, tmp$_45, tmp$_46, tmp$_47, tmp$_48, tmp$_49, tmp$_50, tmp$_51, tmp$_52, tmp$_53, tmp$_54, tmp$_55;
     this.virtualRemote_0 = Kotlin.isType(tmp$ = document.getElementById('virtualRemote'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideVirtualRemoteButton = Kotlin.isType(tmp$_0 = document.getElementById('hideVirtualRemoteButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.epgButton = Kotlin.isType(tmp$_1 = document.getElementById('epgButton'), HTMLButtonElement) ? tmp$_1 : throwCCE();
@@ -3264,18 +3534,24 @@ var HKNBP_Core = function (_, Kotlin) {
     this.number9Button = Kotlin.isType(tmp$_35 = document.getElementById('number9Button'), HTMLButtonElement) ? tmp$_35 : throwCCE();
     this.refreshButton = Kotlin.isType(tmp$_36 = document.getElementById('refreshButton'), HTMLButtonElement) ? tmp$_36 : throwCCE();
     this.tvChannelDescriptionButton = Kotlin.isType(tmp$_37 = document.getElementById('tvChannelDescriptionButton'), HTMLButtonElement) ? tmp$_37 : throwCCE();
-    this.settingWindowButton = Kotlin.isType(tmp$_38 = document.getElementById('settingWindowButton'), HTMLButtonElement) ? tmp$_38 : throwCCE();
-    this.clearSettingButton = Kotlin.isType(tmp$_39 = document.getElementById('clearSettingButton'), HTMLButtonElement) ? tmp$_39 : throwCCE();
-    this.centerButton = Kotlin.isType(tmp$_40 = document.createElement('button'), HTMLButtonElement) ? tmp$_40 : throwCCE();
-    this.upButton = Kotlin.isType(tmp$_41 = document.createElement('button'), HTMLButtonElement) ? tmp$_41 : throwCCE();
-    this.downButton = Kotlin.isType(tmp$_42 = document.createElement('button'), HTMLButtonElement) ? tmp$_42 : throwCCE();
-    this.leftButton = Kotlin.isType(tmp$_43 = document.createElement('button'), HTMLButtonElement) ? tmp$_43 : throwCCE();
-    this.rightButton = Kotlin.isType(tmp$_44 = document.createElement('button'), HTMLButtonElement) ? tmp$_44 : throwCCE();
-    this.menuButton = Kotlin.isType(tmp$_45 = document.createElement('button'), HTMLButtonElement) ? tmp$_45 : throwCCE();
-    this.videoDescriptionButton = Kotlin.isType(tmp$_46 = document.createElement('button'), HTMLButtonElement) ? tmp$_46 : throwCCE();
-    this.audioDescriptionButton = Kotlin.isType(tmp$_47 = document.createElement('button'), HTMLButtonElement) ? tmp$_47 : throwCCE();
-    this.subtitleDescriptionButton = Kotlin.isType(tmp$_48 = document.createElement('button'), HTMLButtonElement) ? tmp$_48 : throwCCE();
-    this.volumeDescriptionButton = Kotlin.isType(tmp$_49 = document.createElement('button'), HTMLButtonElement) ? tmp$_49 : throwCCE();
+    this.aboutWindowButton = Kotlin.isType(tmp$_38 = document.getElementById('aboutWindowButton'), HTMLButtonElement) ? tmp$_38 : throwCCE();
+    this.feedbackWindowButton = Kotlin.isType(tmp$_39 = document.getElementById('feedbackWindowButton'), HTMLButtonElement) ? tmp$_39 : throwCCE();
+    this.shareWindowButton = Kotlin.isType(tmp$_40 = document.getElementById('shareWindowButton'), HTMLButtonElement) ? tmp$_40 : throwCCE();
+    this.settingWindowButton = Kotlin.isType(tmp$_41 = document.getElementById('settingWindowButton'), HTMLButtonElement) ? tmp$_41 : throwCCE();
+    this.appDownloadWindowButton = Kotlin.isType(tmp$_42 = document.getElementById('appDownloadWindowButton'), HTMLButtonElement) ? tmp$_42 : throwCCE();
+    this.githubWebButton = Kotlin.isType(tmp$_43 = document.getElementById('githubWebButton'), HTMLButtonElement) ? tmp$_43 : throwCCE();
+    this.clearSettingButton = Kotlin.isType(tmp$_44 = document.getElementById('clearSettingButton'), HTMLButtonElement) ? tmp$_44 : throwCCE();
+    this.watchingCounterWebButton = Kotlin.isType(tmp$_45 = document.getElementById('watchingCounterWebButton'), HTMLButtonElement) ? tmp$_45 : throwCCE();
+    this.centerButton = Kotlin.isType(tmp$_46 = document.createElement('button'), HTMLButtonElement) ? tmp$_46 : throwCCE();
+    this.upButton = Kotlin.isType(tmp$_47 = document.createElement('button'), HTMLButtonElement) ? tmp$_47 : throwCCE();
+    this.downButton = Kotlin.isType(tmp$_48 = document.createElement('button'), HTMLButtonElement) ? tmp$_48 : throwCCE();
+    this.leftButton = Kotlin.isType(tmp$_49 = document.createElement('button'), HTMLButtonElement) ? tmp$_49 : throwCCE();
+    this.rightButton = Kotlin.isType(tmp$_50 = document.createElement('button'), HTMLButtonElement) ? tmp$_50 : throwCCE();
+    this.menuButton = Kotlin.isType(tmp$_51 = document.createElement('button'), HTMLButtonElement) ? tmp$_51 : throwCCE();
+    this.videoDescriptionButton = Kotlin.isType(tmp$_52 = document.createElement('button'), HTMLButtonElement) ? tmp$_52 : throwCCE();
+    this.audioDescriptionButton = Kotlin.isType(tmp$_53 = document.createElement('button'), HTMLButtonElement) ? tmp$_53 : throwCCE();
+    this.subtitleDescriptionButton = Kotlin.isType(tmp$_54 = document.createElement('button'), HTMLButtonElement) ? tmp$_54 : throwCCE();
+    this.volumeDescriptionButton = Kotlin.isType(tmp$_55 = document.createElement('button'), HTMLButtonElement) ? tmp$_55 : throwCCE();
     this.hideTimer_x3k190$_0 = window.setTimeout(VirtualRemote$hideTimer$lambda, 0);
     this.hideVirtualRemoteButton.onclick = VirtualRemote_init$lambda(this);
     this.epgButton.onclick = VirtualRemote_init$lambda_0(this);
@@ -3314,18 +3590,24 @@ var HKNBP_Core = function (_, Kotlin) {
     this.number9Button.onclick = VirtualRemote_init$lambda_33;
     this.refreshButton.onclick = VirtualRemote_init$lambda_34;
     this.tvChannelDescriptionButton.onclick = VirtualRemote_init$lambda_35;
-    this.settingWindowButton.onclick = VirtualRemote_init$lambda_36;
-    this.clearSettingButton.onclick = VirtualRemote_init$lambda_37;
-    this.centerButton.onclick = VirtualRemote_init$lambda_38;
-    this.upButton.onclick = VirtualRemote_init$lambda_39;
-    this.downButton.onclick = VirtualRemote_init$lambda_40;
-    this.leftButton.onclick = VirtualRemote_init$lambda_41;
-    this.rightButton.onclick = VirtualRemote_init$lambda_42;
-    this.menuButton.onclick = VirtualRemote_init$lambda_43(this);
-    this.videoDescriptionButton.onclick = VirtualRemote_init$lambda_44;
-    this.audioDescriptionButton.onclick = VirtualRemote_init$lambda_45;
-    this.subtitleDescriptionButton.onclick = VirtualRemote_init$lambda_46;
-    this.volumeDescriptionButton.onclick = VirtualRemote_init$lambda_47;
+    this.aboutWindowButton.onclick = VirtualRemote_init$lambda_36;
+    this.feedbackWindowButton.onclick = VirtualRemote_init$lambda_37;
+    this.shareWindowButton.onclick = VirtualRemote_init$lambda_38;
+    this.settingWindowButton.onclick = VirtualRemote_init$lambda_39;
+    this.appDownloadWindowButton.onclick = VirtualRemote_init$lambda_40;
+    this.githubWebButton.onclick = VirtualRemote_init$lambda_41;
+    this.clearSettingButton.onclick = VirtualRemote_init$lambda_42;
+    this.watchingCounterWebButton.onclick = VirtualRemote_init$lambda_43;
+    this.centerButton.onclick = VirtualRemote_init$lambda_44;
+    this.upButton.onclick = VirtualRemote_init$lambda_45;
+    this.downButton.onclick = VirtualRemote_init$lambda_46;
+    this.leftButton.onclick = VirtualRemote_init$lambda_47;
+    this.rightButton.onclick = VirtualRemote_init$lambda_48;
+    this.menuButton.onclick = VirtualRemote_init$lambda_49(this);
+    this.videoDescriptionButton.onclick = VirtualRemote_init$lambda_50;
+    this.audioDescriptionButton.onclick = VirtualRemote_init$lambda_51;
+    this.subtitleDescriptionButton.onclick = VirtualRemote_init$lambda_52;
+    this.volumeDescriptionButton.onclick = VirtualRemote_init$lambda_53;
   }
   VirtualRemote.prototype.updateTVChannelDescription = function () {
     var tmp$, tmp$_0;
@@ -3556,14 +3838,32 @@ var HKNBP_Core = function (_, Kotlin) {
       TVChannelDescription_getInstance().show_za3lpa$(60000);
     }
   }
-  function VirtualRemote_init$lambda_36(event) {
-    SettingWindow_getInstance().show();
+  function VirtualRemote_init$lambda_36(evebt) {
+    AboutWindow_getInstance().showHideAlternately();
   }
-  function VirtualRemote_init$lambda_37(event) {
+  function VirtualRemote_init$lambda_37(evebt) {
+    FeedbackWindow_getInstance().showHideAlternately();
+  }
+  function VirtualRemote_init$lambda_38(evebt) {
+    ShareWindow_getInstance().showHideAlternately();
+  }
+  function VirtualRemote_init$lambda_39(event) {
+    SettingWindow_getInstance().showHideAlternately();
+  }
+  function VirtualRemote_init$lambda_40(evebt) {
+    AppDownloadWindow_getInstance().showHideAlternately();
+  }
+  function VirtualRemote_init$lambda_41(evebt) {
+    window.open('https://github.com/HKNBP', '_blank');
+  }
+  function VirtualRemote_init$lambda_42(event) {
     localStorage.clear();
     location.reload();
   }
-  function VirtualRemote_init$lambda_38(event) {
+  function VirtualRemote_init$lambda_43(evebt) {
+    window.open('https://datastudio.google.com/reporting/1GKlAWHEsDdryWh2PRdQFmWzQ_ksRQ8BK/page/1M', '_blank');
+  }
+  function VirtualRemote_init$lambda_44(event) {
     var tmp$;
     (tmp$ = jQuery(':focus')) != null ? tmp$.click() : null;
   }
@@ -3587,7 +3887,7 @@ var HKNBP_Core = function (_, Kotlin) {
     return this.closure$comparison(a, b);
   };
   Comparator$ObjectLiteral_0.$metadata$ = {kind: Kind_CLASS, interfaces: [Comparator]};
-  function VirtualRemote_init$lambda_39(event) {
+  function VirtualRemote_init$lambda_45(event) {
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19;
     var selectables = jQuery(':tabbable');
     var current = jQuery(':focus');
@@ -3669,7 +3969,7 @@ var HKNBP_Core = function (_, Kotlin) {
     return this.closure$comparison(a, b);
   };
   Comparator$ObjectLiteral_1.$metadata$ = {kind: Kind_CLASS, interfaces: [Comparator]};
-  function VirtualRemote_init$lambda_40(event) {
+  function VirtualRemote_init$lambda_46(event) {
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19;
     var selectables = jQuery(':tabbable');
     var current = jQuery(':focus');
@@ -3731,13 +4031,13 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     (tmp$_19 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_19.focus() : null;
   }
-  function VirtualRemote_init$lambda_41(event) {
+  function VirtualRemote_init$lambda_47(event) {
     jQuery != null ? jQuery.tabPrev() : null;
   }
-  function VirtualRemote_init$lambda_42(event) {
+  function VirtualRemote_init$lambda_48(event) {
     jQuery != null ? jQuery.tabNext() : null;
   }
-  function VirtualRemote_init$lambda_43(this$VirtualRemote) {
+  function VirtualRemote_init$lambda_49(this$VirtualRemote) {
     return function (event) {
       if (this$VirtualRemote.isShow) {
         this$VirtualRemote.hide();
@@ -3747,16 +4047,16 @@ var HKNBP_Core = function (_, Kotlin) {
       }
     };
   }
-  function VirtualRemote_init$lambda_44(event) {
+  function VirtualRemote_init$lambda_50(event) {
     VideoDescription_getInstance().show_za3lpa$(5000);
   }
-  function VirtualRemote_init$lambda_45(event) {
+  function VirtualRemote_init$lambda_51(event) {
     AudioDescription_getInstance().show_za3lpa$(5000);
   }
-  function VirtualRemote_init$lambda_46(event) {
+  function VirtualRemote_init$lambda_52(event) {
     SubtitleDescription_getInstance().show_za3lpa$(5000);
   }
-  function VirtualRemote_init$lambda_47(event) {
+  function VirtualRemote_init$lambda_53(event) {
     VolumeDescription_getInstance().show_za3lpa$(5000);
   }
   VirtualRemote.$metadata$ = {
@@ -5415,6 +5715,9 @@ var HKNBP_Core = function (_, Kotlin) {
   Object.defineProperty(package$hknbp_core, 'AboutWindow', {
     get: AboutWindow_getInstance
   });
+  Object.defineProperty(package$hknbp_core, 'AppDownloadWindow', {
+    get: AppDownloadWindow_getInstance
+  });
   ArrayLinkList.OnNodeEventListener = ArrayLinkList$OnNodeEventListener;
   package$hknbp_core.ArrayLinkList_init_i5x0yv$ = ArrayLinkList_init;
   package$hknbp_core.ArrayLinkList_init_vzjx9f$ = ArrayLinkList_init_0;
@@ -5438,6 +5741,9 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   Object.defineProperty(package$hknbp_core, 'EnteringNumberBox', {
     get: EnteringNumberBox_getInstance
+  });
+  Object.defineProperty(package$hknbp_core, 'FeedbackWindow', {
+    get: FeedbackWindow_getInstance
   });
   Object.defineProperty(package$hknbp_core, 'FullScreenButton', {
     get: FullScreenButton_getInstance
@@ -5544,6 +5850,9 @@ var HKNBP_Core = function (_, Kotlin) {
   Object.defineProperty(package$hknbp_core, 'SettingWindow', {
     get: SettingWindow_getInstance
   });
+  Object.defineProperty(package$hknbp_core, 'ShareWindow', {
+    get: ShareWindow_getInstance
+  });
   Object.defineProperty(package$hknbp_core, 'SubtitleDescription', {
     get: SubtitleDescription_getInstance
   });
@@ -5564,6 +5873,9 @@ var HKNBP_Core = function (_, Kotlin) {
     get: TrackDescription$Companion_getInstance
   });
   package$hknbp_core.TrackDescription = TrackDescription;
+  Object.defineProperty(package$hknbp_core, 'UpdatePrompt', {
+    get: UpdatePrompt_getInstance
+  });
   Object.defineProperty(package$hknbp_core, 'UserControlPanel', {
     get: UserControlPanel_getInstance
   });

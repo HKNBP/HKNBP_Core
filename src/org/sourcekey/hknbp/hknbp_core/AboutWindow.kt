@@ -14,5 +14,40 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
+import org.w3c.dom.HTMLDivElement
+import kotlin.browser.document
+import kotlin.browser.window
+
 object AboutWindow {
+    private val aboutWindow: HTMLDivElement = document.getElementById("AboutWindow") as HTMLDivElement
+
+    private var hideTimer = 0
+        set(value) {
+            window.clearTimeout(field)
+            field = value
+        }
+
+    val isShow: Boolean
+        get(){
+            return aboutWindow.style.display == "block"
+        }
+
+    fun show(){
+        aboutWindow.style.display = "block"
+    }
+
+    fun show(showTime: Int){
+        hideTimer = window.setTimeout(fun(){ hide() }, showTime)
+        show()
+    }
+
+    fun hide(){
+        aboutWindow.style.display = "none"
+    }
+
+    fun showHideAlternately(){
+        if(isShow){ show() }else{ hide() }
+    }
+
+    init { }
 }

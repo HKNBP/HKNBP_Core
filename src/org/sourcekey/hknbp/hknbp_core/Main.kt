@@ -20,6 +20,7 @@ import kotlin.browser.document
 import kotlin.browser.window
 import kotlin.js.Date
 
+
 val rootURL: String     = "https://hknbp.org/"
 val coreVersion: String = "0.9"
 var appVersion: String  = "0.9-Web"
@@ -29,24 +30,26 @@ var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
 lateinit var tvChannels: ArrayLinkList<TVChannel>
 lateinit var player: Player
 
-// m,n為正整數的分子和分母
-fun reductionTo(m: Int, n: Int): IntArray{
+/**
+ *  w,h為正整數的分子和分母
+ */
+fun reductionTo(w: Int, h: Int): IntArray{
     val arr = IntArray(2)
-    var h = m
-    var k = n
-    var a = h
-    var b = k
-    if(a >= b){ a = h; b = k }else{ a = k; b = h}
-    if (h != 1 && k != 1 ) {
+    var p = w
+    var q = h
+    var a = p
+    var b = q
+    if(a >= b){ a = p; b = q }else{ a = q; b = p}
+    if (p != 1 && q != 1 ) {
         for ( i in b downTo 2 ) {
-            if (h % i == 0 && k % i == 0 ) {
-                h = (h / i)
-                k = (k / i)
+            if (p % i == 0 && q % i == 0 ) {
+                p = (p / i)
+                q = (q / i)
             }
         }
     }
-    arr[0] = h
-    arr[1] = k
+    arr[0] = p
+    arr[1] = q
     return arr
 }
 
@@ -97,8 +100,7 @@ fun updateURLParameter(param: String, paramVal: String){
  * 去特定頻道
  * @param channelNumber 要轉去頻道冧把
  */
-@JsName("designatedChannel")
-fun designatedChannel(channelNumber: Int): Boolean {
+@JsName("designatedChannel") fun designatedChannel(channelNumber: Int): Boolean {
     val channelNumberNodeID = TVChannel.toChannelNumberNodeID(tvChannels, channelNumber)
     if (channelNumberNodeID != null) {
         tvChannels.designated(channelNumberNodeID)
@@ -149,7 +151,7 @@ fun updateChannel() {
                     VolumeDescription.show(3000)
                 }
                 Player.OnPlayerEvent.mutedChanged -> {
-                    MutedDescription.update()
+                    MutedDescription.showHideAlternately()
                 }
             }
         }

@@ -63,10 +63,14 @@ object VirtualRemote {
     val number9Button               = document.getElementById("number9Button")              as HTMLButtonElement
     val refreshButton               = document.getElementById("refreshButton")              as HTMLButtonElement
     val tvChannelDescriptionButton  = document.getElementById("tvChannelDescriptionButton") as HTMLButtonElement
+    val aboutWindowButton           = document.getElementById("aboutWindowButton")          as HTMLButtonElement
+    val feedbackWindowButton        = document.getElementById("feedbackWindowButton")       as HTMLButtonElement
+    val shareWindowButton           = document.getElementById("shareWindowButton")          as HTMLButtonElement
     val settingWindowButton         = document.getElementById("settingWindowButton")        as HTMLButtonElement
-
+    val appDownloadWindowButton     = document.getElementById("appDownloadWindowButton")    as HTMLButtonElement
+    val githubWebButton             = document.getElementById("githubWebButton")            as HTMLButtonElement
     val clearSettingButton          = document.getElementById("clearSettingButton")         as HTMLButtonElement
-
+    val watchingCounterWebButton    = document.getElementById("watchingCounterWebButton")   as HTMLButtonElement
     val centerButton                = document.createElement("button")                      as HTMLButtonElement
     val upButton                    = document.createElement("button")                      as HTMLButtonElement
     val downButton                  = document.createElement("button")                      as HTMLButtonElement
@@ -189,10 +193,24 @@ object VirtualRemote {
         number9Button.onclick               = fun(event){EnteringNumberBox.show("9")}
         refreshButton.onclick               = fun(event){updateChannel()}
         tvChannelDescriptionButton.onclick  = fun(event){if(TVChannelDescription.isShow){TVChannelDescription.hide()}else{TVChannelDescription.show(60000)}}
-        settingWindowButton.onclick         = fun(event){SettingWindow.show()}
-
+        aboutWindowButton.onclick           = fun(evebt){AboutWindow.showHideAlternately()}
+        feedbackWindowButton.onclick        = fun(evebt){FeedbackWindow.showHideAlternately()}
+        shareWindowButton.onclick           = fun(evebt){ShareWindow.showHideAlternately()}
+        settingWindowButton.onclick         = fun(event){SettingWindow.showHideAlternately()}
+        appDownloadWindowButton.onclick     = fun(evebt){AppDownloadWindow.showHideAlternately()}
+        githubWebButton.onclick             = fun(evebt){
+            window.open(
+                    "https://github.com/HKNBP",
+                    "_blank" // <- This is what makes it open in a new window.
+            )
+        }
         clearSettingButton.onclick          = fun(event){localStorage.clear();js("location.reload();")}
-
+        watchingCounterWebButton.onclick    = fun(evebt){
+            window.open(
+                    "https://datastudio.google.com/reporting/1GKlAWHEsDdryWh2PRdQFmWzQ_ksRQ8BK/page/1M",
+                    "_blank" // <- This is what makes it open in a new window.
+            )
+        }
         centerButton.onclick                = fun(event){jQuery(":focus")?.click()}
         upButton.onclick                    = fun(event){
             val selectables = jQuery(":tabbable")

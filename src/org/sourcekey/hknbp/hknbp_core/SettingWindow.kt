@@ -17,6 +17,7 @@ package org.sourcekey.hknbp.hknbp_core
 import org.w3c.dom.*
 import kotlin.browser.document
 import kotlin.browser.localStorage
+import kotlin.browser.window
 
 object SettingWindow {
     private val settingWindow                   = document.getElementById("settingWindow") as HTMLDivElement
@@ -42,19 +43,39 @@ object SettingWindow {
         return userLanguageList
     }
 
+    private fun createLanguageOption(isoCode: String): HTMLOptionElement{
+        val option = document.createElement("option") as HTMLOptionElement
+        option.text = isoCode
+        option.value = isoCode
+        return option
+    }
+
+    private var hideTimer = window.setTimeout(fun(){ }, 0)
+        set(value) {
+            window.clearTimeout(field)
+            field = value
+        }
+
+    val isShow: Boolean
+        get(){
+            return settingWindow.style.display == "block"
+        }
+
     fun show(){
         settingWindow.style.display = "block"
+    }
+
+    fun show(showTime: Int){
+        hideTimer = window.setTimeout(fun(){ hide() }, showTime)
+        show()
     }
 
     fun hide(){
         settingWindow.style.display = "none"
     }
 
-    private fun createLanguageOption(isoCode: String): HTMLOptionElement{
-        val option = document.createElement("option") as HTMLOptionElement
-        option.text = isoCode
-        option.value = isoCode
-        return option
+    fun showHideAlternately(){
+        if(isShow){ show() }else{ hide() }
     }
 
     init {

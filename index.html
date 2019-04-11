@@ -593,7 +593,7 @@
                                 class="icon-font">&#xe826;</i></button>
                     </div>
                     <div class="th" style="height:100%">
-                        <button tabindex="100140001" id="githubWebButton" class="fourRow" onclick="location.href='https://github.com/HKNBP'"><i
+                        <button tabindex="100140001" id="githubWebButton" class="fourRow"><i
                                 class="icon-font">&#xf09b;</i></button>
                     </div>
                     <div class="th" style="height:100%">
@@ -601,8 +601,7 @@
                                 class="icon-font">&#xe82b;</i></button>
                     </div>
                     <div class="th" style="height:100%">
-                        <button tabindex="100140003" id="watchingCounterWebButton" class="fourRow"
-                                onclick="location.href='https://datastudio.google.com/reporting/1GKlAWHEsDdryWh2PRdQFmWzQ_ksRQ8BK/page/1M'">
+                        <button tabindex="100140003" id="watchingCounterWebButton" class="fourRow">
                             <i class="icon-font">&#xe828;</i></button>
                     </div>
                 </div>
@@ -636,18 +635,29 @@
             <i class="icon-font">&#xe829;</i>
         </button>
     </div>
-    <button id="mutedDescriptionButton" style="
-              background-color: rgba(0, 0, 0, 0);
-              text-shadow: black 0em 0em 0.2em;
+    <div id="consentPanel" style="background-color:rgba(0, 0, 0, 0.6);display:none;position:absolute;top:0;bottom:0;left:0;right:0;z-index:90;">
+        <div style="position:absolute;top:8vh;bottom:8vh;left:8vh;right:8vh;">
+            <div style="position:absolute;top:0;bottom:8vh;left:0;right:0;">
+                <iframe id="iframeConsent" style="height:100%;width:100%;" src="consent.html" frameBorder="0">你嘅瀏覽器唔支援iframe</iframe>
+            </div>
+            <button id="consentPanelAgreeConsentButton" style="position:absolute;bottom:0;left:0;right:0;font-size:5vh;"></button>
+        </div>
+    </div>
+    <div id="mutedDescription" style="
               display: none;
-              font-size: 6vh;
               position: absolute;
               bottom:12vh; right:5vh;
               width: max-content;
               z-index:40;
             ">
-        <i class="icon-font">&#xe809;</i>
-    </button>
+        <button id="mutedDescriptionButton" style="
+            background-color: rgba(0, 0, 0, 0);
+            text-shadow: black 0em 0em 0.2em;
+            font-size: 6vh;
+        ">
+            <i class="icon-font">&#xe809;</i>
+        </button>
+    </div>
     <div id="volumeDescription" style="
            display: none;
            position: absolute;
@@ -918,13 +928,9 @@
     </div>
     <div id="aboutWindow" class="absoluteCenter" style="background:#303030;display:none;width:100vh;height:70vh;z-index:90;">
     </div>
-    <div id="consentPanel" style="background-color:rgba(0, 0, 0, 0.6);display:none;position:absolute;top:0;bottom:0;left:0;right:0;z-index:90;">
-        <div style="position:absolute;top:8vh;bottom:8vh;left:8vh;right:8vh;">
-            <div style="position:absolute;top:0;bottom:8vh;left:0;right:0;">
-                <iframe id="iframeConsent" style="height:100%;width:100%;" src="consent.html" frameBorder="0">你嘅瀏覽器唔支援iframe</iframe>
-            </div>
-            <button id="consentPanelAgreeConsentButton" style="position:absolute;bottom:0;left:0;right:0;font-size:5vh;"></button>
-        </div>
+    <div id="feedbackWindow" class="absoluteCenter" style="background:#303030;display:none;width:100vh;height:70vh;z-index:90;">
+    </div>
+    <div id="shareWindow" class="absoluteCenter" style="background:#303030;display:none;width:100vh;height:70vh;z-index:90;">
     </div>
     <div id="settingWindow" class="absoluteCenter" style="background:#303030;display:none;width:100vh;height:70vh;z-index:90;">
         <div style="position:absolute;top:0;bottom:0;left:0;right:0;padding:5vh;">
@@ -979,6 +985,8 @@
                 </button>
             </div>
         </div>
+    </div>
+    <div id="appDownloadWindow" class="absoluteCenter" style="background:#303030;display:none;width:100vh;height:70vh;z-index:90;">
     </div>
     <div id="watchingCounter" style="
             width: 0vh; height: 0vh;

@@ -18,10 +18,8 @@ import org.w3c.dom.HTMLDivElement
 import kotlin.browser.document
 import kotlin.browser.window
 
-object VideoDescription {
-    private val videoDescription: HTMLDivElement = document.getElementById("videoDescription") as HTMLDivElement
-    private val text: HTMLDivElement = document.getElementById("videoDescriptionText") as HTMLDivElement
-
+object AppDownloadWindow {
+    private val appDownloadWindow: HTMLDivElement = document.getElementById("appDownloadWindow") as HTMLDivElement
 
     private var hideTimer = 0
         set(value) {
@@ -31,12 +29,11 @@ object VideoDescription {
 
     val isShow: Boolean
         get(){
-            return videoDescription.style.display == "block"
+            return appDownloadWindow.style.display == "block"
         }
 
     fun show(){
-        videoDescription.style.display = "block"
-        text.innerHTML = player.videoTracks.node?.name?:""
+        appDownloadWindow.style.display = "block"
     }
 
     fun show(showTime: Int){
@@ -45,7 +42,7 @@ object VideoDescription {
     }
 
     fun hide(){
-        videoDescription.style.display = "none"
+        appDownloadWindow.style.display = "none"
     }
 
     fun showHideAlternately(){
