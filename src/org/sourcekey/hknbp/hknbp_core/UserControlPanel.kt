@@ -31,14 +31,6 @@ object UserControlPanel {
     private val shower: HTMLElement  = document.getElementById("userControlPanelShower") as HTMLElement
 
     /**
-     * 操作使用者介面器出現時間
-     *
-     * 唔private係因為其他平台需要更改再長啲時間
-     * 來畀唔同操作器嘅使用者方便
-     * */
-    var panelShowTime: Int = 500
-
-    /**
      * 隱藏操作使用者介面板計時器
      * */
     private var hideTimer: Int = 0
@@ -76,6 +68,10 @@ object UserControlPanel {
      * */
     var onHideUserControlPanel: ()->Unit = fun(){}
 
+    val isShow: Boolean
+        get(){
+            return panel.style.display == "block"
+        }
 
     fun show(){
         panel.style.display="block"

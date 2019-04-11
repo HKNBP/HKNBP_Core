@@ -64,14 +64,15 @@ object VirtualRemote {
     val refreshButton               = document.getElementById("refreshButton")              as HTMLButtonElement
     val tvChannelDescriptionButton  = document.getElementById("tvChannelDescriptionButton") as HTMLButtonElement
     val settingWindowButton         = document.getElementById("settingWindowButton")        as HTMLButtonElement
-    val clearSettingButton          = document.getElementById("clearSettingButton")         as HTMLButtonElement
 
+    val clearSettingButton          = document.getElementById("clearSettingButton")         as HTMLButtonElement
 
     val centerButton                = document.createElement("button")                      as HTMLButtonElement
     val upButton                    = document.createElement("button")                      as HTMLButtonElement
     val downButton                  = document.createElement("button")                      as HTMLButtonElement
     val leftButton                  = document.createElement("button")                      as HTMLButtonElement
     val rightButton                 = document.createElement("button")                      as HTMLButtonElement
+    val menuButton                  = document.createElement("button")                      as HTMLButtonElement
     val videoDescriptionButton      = document.createElement("button")                      as HTMLButtonElement
     val audioDescriptionButton      = document.createElement("button")                      as HTMLButtonElement
     val subtitleDescriptionButton   = document.createElement("button")                      as HTMLButtonElement
@@ -128,9 +129,31 @@ object VirtualRemote {
         updateSubtitleInformation()
     }
 
+    private var hideTimer = window.setTimeout(fun(){ }, 0)
+        set(value) {
+            window.clearTimeout(field)
+            field = value
+        }
+
+    val isShow: Boolean
+        get() {return UserControlPanel.isShow}
+
+    fun show(){
+        UserControlPanel.show()
+    }
+
+    fun show(showTime: Int){
+        hideTimer = window.setTimeout(fun(){ hide() }, showTime)
+        show()
+    }
+
+    fun hide(){
+        UserControlPanel.hide()
+    }
+
     init {
-        hideVirtualRemoteButton.onclick     = fun(event){event.stopPropagation();UserControlPanel.hide()}
-        epgButton.onclick                   = fun(event){if(EPG.isShow()){EPG.hide()}else{EPG.show();UserControlPanel.hide()}}
+        hideVirtualRemoteButton.onclick     = fun(event){event.stopPropagation();hide()}
+        epgButton.onclick                   = fun(event){if(EPG.isShow){EPG.hide()}else{EPG.show();hide()}}
         nextChannelButton.onclick           = fun(event){tvChannels.next()}
         previousChannelButton.onclick       = fun(event){tvChannels.previous()}
         designateChannelSelect.onchange     = fun(event){designatedChannel(designateChannelSelect.value.toInt())}
@@ -269,6 +292,7 @@ object VirtualRemote {
         }
         leftButton.onclick                  = fun(event){jQuery?.tabPrev()}
         rightButton.onclick                 = fun(event){jQuery?.tabNext()}
+        menuButton.onclick                  = fun(event){if(isShow){hide()}else{show()}}
         videoDescriptionButton.onclick      = fun(event){VideoDescription.show(5000)}
         audioDescriptionButton.onclick      = fun(event){AudioDescription.show(5000)}
         subtitleDescriptionButton.onclick   = fun(event){SubtitleDescription.show(5000)}

@@ -1020,9 +1020,11 @@ var HKNBP_Core = function (_, Kotlin) {
     this.setProgrammeListChannelList_0();
     this.setProgrammeListTable_0();
   };
-  EPG.prototype.isShow = function () {
-    return equals(this.epg_0.style.display, 'block');
-  };
+  Object.defineProperty(EPG.prototype, 'isShow', {
+    get: function () {
+      return equals(this.epg_0.style.display, 'block');
+    }
+  });
   EPG.prototype.show = function () {
     this.epg_0.style.display = 'block';
     this.setDisplayCurrentDateBox_0();
@@ -2969,7 +2971,6 @@ var HKNBP_Core = function (_, Kotlin) {
     var tmp$, tmp$_0;
     this.panel_0 = Kotlin.isType(tmp$ = document.getElementById('userControlPanel'), HTMLElement) ? tmp$ : throwCCE();
     this.shower_0 = Kotlin.isType(tmp$_0 = document.getElementById('userControlPanelShower'), HTMLElement) ? tmp$_0 : throwCCE();
-    this.panelShowTime = 500;
     this.hideTimer_mknn4j$_0 = 0;
     this.hideMouseTimer_r29tyc$_0 = 0;
     this.onShowUserControlPanel = UserControlPanel$onShowUserControlPanel$lambda;
@@ -3006,6 +3007,11 @@ var HKNBP_Core = function (_, Kotlin) {
     set: function (value) {
       window.clearTimeout(this.hideMouseTimer_r29tyc$_0);
       this.hideMouseTimer_r29tyc$_0 = value;
+    }
+  });
+  Object.defineProperty(UserControlPanel.prototype, 'isShow', {
+    get: function () {
+      return equals(this.panel_0.style.display, 'block');
     }
   });
   UserControlPanel.prototype.show = function () {
@@ -3218,7 +3224,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function VirtualRemote() {
     VirtualRemote_instance = this;
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22, tmp$_23, tmp$_24, tmp$_25, tmp$_26, tmp$_27, tmp$_28, tmp$_29, tmp$_30, tmp$_31, tmp$_32, tmp$_33, tmp$_34, tmp$_35, tmp$_36, tmp$_37, tmp$_38, tmp$_39, tmp$_40, tmp$_41, tmp$_42, tmp$_43, tmp$_44, tmp$_45, tmp$_46, tmp$_47, tmp$_48;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22, tmp$_23, tmp$_24, tmp$_25, tmp$_26, tmp$_27, tmp$_28, tmp$_29, tmp$_30, tmp$_31, tmp$_32, tmp$_33, tmp$_34, tmp$_35, tmp$_36, tmp$_37, tmp$_38, tmp$_39, tmp$_40, tmp$_41, tmp$_42, tmp$_43, tmp$_44, tmp$_45, tmp$_46, tmp$_47, tmp$_48, tmp$_49;
     this.virtualRemote_0 = Kotlin.isType(tmp$ = document.getElementById('virtualRemote'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideVirtualRemoteButton = Kotlin.isType(tmp$_0 = document.getElementById('hideVirtualRemoteButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.epgButton = Kotlin.isType(tmp$_1 = document.getElementById('epgButton'), HTMLButtonElement) ? tmp$_1 : throwCCE();
@@ -3265,12 +3271,14 @@ var HKNBP_Core = function (_, Kotlin) {
     this.downButton = Kotlin.isType(tmp$_42 = document.createElement('button'), HTMLButtonElement) ? tmp$_42 : throwCCE();
     this.leftButton = Kotlin.isType(tmp$_43 = document.createElement('button'), HTMLButtonElement) ? tmp$_43 : throwCCE();
     this.rightButton = Kotlin.isType(tmp$_44 = document.createElement('button'), HTMLButtonElement) ? tmp$_44 : throwCCE();
-    this.videoDescriptionButton = Kotlin.isType(tmp$_45 = document.createElement('button'), HTMLButtonElement) ? tmp$_45 : throwCCE();
-    this.audioDescriptionButton = Kotlin.isType(tmp$_46 = document.createElement('button'), HTMLButtonElement) ? tmp$_46 : throwCCE();
-    this.subtitleDescriptionButton = Kotlin.isType(tmp$_47 = document.createElement('button'), HTMLButtonElement) ? tmp$_47 : throwCCE();
-    this.volumeDescriptionButton = Kotlin.isType(tmp$_48 = document.createElement('button'), HTMLButtonElement) ? tmp$_48 : throwCCE();
-    this.hideVirtualRemoteButton.onclick = VirtualRemote_init$lambda;
-    this.epgButton.onclick = VirtualRemote_init$lambda_0;
+    this.menuButton = Kotlin.isType(tmp$_45 = document.createElement('button'), HTMLButtonElement) ? tmp$_45 : throwCCE();
+    this.videoDescriptionButton = Kotlin.isType(tmp$_46 = document.createElement('button'), HTMLButtonElement) ? tmp$_46 : throwCCE();
+    this.audioDescriptionButton = Kotlin.isType(tmp$_47 = document.createElement('button'), HTMLButtonElement) ? tmp$_47 : throwCCE();
+    this.subtitleDescriptionButton = Kotlin.isType(tmp$_48 = document.createElement('button'), HTMLButtonElement) ? tmp$_48 : throwCCE();
+    this.volumeDescriptionButton = Kotlin.isType(tmp$_49 = document.createElement('button'), HTMLButtonElement) ? tmp$_49 : throwCCE();
+    this.hideTimer_x3k190$_0 = window.setTimeout(VirtualRemote$hideTimer$lambda, 0);
+    this.hideVirtualRemoteButton.onclick = VirtualRemote_init$lambda(this);
+    this.epgButton.onclick = VirtualRemote_init$lambda_0(this);
     this.nextChannelButton.onclick = VirtualRemote_init$lambda_1;
     this.previousChannelButton.onclick = VirtualRemote_init$lambda_2;
     this.designateChannelSelect.onchange = VirtualRemote_init$lambda_3(this);
@@ -3313,10 +3321,11 @@ var HKNBP_Core = function (_, Kotlin) {
     this.downButton.onclick = VirtualRemote_init$lambda_40;
     this.leftButton.onclick = VirtualRemote_init$lambda_41;
     this.rightButton.onclick = VirtualRemote_init$lambda_42;
-    this.videoDescriptionButton.onclick = VirtualRemote_init$lambda_43;
-    this.audioDescriptionButton.onclick = VirtualRemote_init$lambda_44;
-    this.subtitleDescriptionButton.onclick = VirtualRemote_init$lambda_45;
-    this.volumeDescriptionButton.onclick = VirtualRemote_init$lambda_46;
+    this.menuButton.onclick = VirtualRemote_init$lambda_43(this);
+    this.videoDescriptionButton.onclick = VirtualRemote_init$lambda_44;
+    this.audioDescriptionButton.onclick = VirtualRemote_init$lambda_45;
+    this.subtitleDescriptionButton.onclick = VirtualRemote_init$lambda_46;
+    this.volumeDescriptionButton.onclick = VirtualRemote_init$lambda_47;
   }
   VirtualRemote.prototype.updateTVChannelDescription = function () {
     var tmp$, tmp$_0;
@@ -3368,18 +3377,53 @@ var HKNBP_Core = function (_, Kotlin) {
     this.updateAudioInformation();
     this.updateSubtitleInformation();
   };
-  function VirtualRemote_init$lambda(event) {
-    event.stopPropagation();
-    UserControlPanel_getInstance().hide();
+  Object.defineProperty(VirtualRemote.prototype, 'hideTimer_0', {
+    get: function () {
+      return this.hideTimer_x3k190$_0;
+    },
+    set: function (value) {
+      window.clearTimeout(this.hideTimer_x3k190$_0);
+      this.hideTimer_x3k190$_0 = value;
+    }
+  });
+  Object.defineProperty(VirtualRemote.prototype, 'isShow', {
+    get: function () {
+      return UserControlPanel_getInstance().isShow;
+    }
+  });
+  VirtualRemote.prototype.show = function () {
+    UserControlPanel_getInstance().show();
+  };
+  function VirtualRemote$show$lambda(this$VirtualRemote) {
+    return function () {
+      this$VirtualRemote.hide();
+    };
   }
-  function VirtualRemote_init$lambda_0(event) {
-    if (EPG_getInstance().isShow()) {
-      EPG_getInstance().hide();
-    }
-     else {
-      EPG_getInstance().show();
-      UserControlPanel_getInstance().hide();
-    }
+  VirtualRemote.prototype.show_za3lpa$ = function (showTime) {
+    this.hideTimer_0 = window.setTimeout(VirtualRemote$show$lambda(this), showTime);
+    this.show();
+  };
+  VirtualRemote.prototype.hide = function () {
+    UserControlPanel_getInstance().hide();
+  };
+  function VirtualRemote$hideTimer$lambda() {
+  }
+  function VirtualRemote_init$lambda(this$VirtualRemote) {
+    return function (event) {
+      event.stopPropagation();
+      this$VirtualRemote.hide();
+    };
+  }
+  function VirtualRemote_init$lambda_0(this$VirtualRemote) {
+    return function (event) {
+      if (EPG_getInstance().isShow) {
+        EPG_getInstance().hide();
+      }
+       else {
+        EPG_getInstance().show();
+        this$VirtualRemote.hide();
+      }
+    };
   }
   function VirtualRemote_init$lambda_1(event) {
     get_tvChannels().next();
@@ -3693,16 +3737,26 @@ var HKNBP_Core = function (_, Kotlin) {
   function VirtualRemote_init$lambda_42(event) {
     jQuery != null ? jQuery.tabNext() : null;
   }
-  function VirtualRemote_init$lambda_43(event) {
-    VideoDescription_getInstance().show_za3lpa$(5000);
+  function VirtualRemote_init$lambda_43(this$VirtualRemote) {
+    return function (event) {
+      if (this$VirtualRemote.isShow) {
+        this$VirtualRemote.hide();
+      }
+       else {
+        this$VirtualRemote.show();
+      }
+    };
   }
   function VirtualRemote_init$lambda_44(event) {
-    AudioDescription_getInstance().show_za3lpa$(5000);
+    VideoDescription_getInstance().show_za3lpa$(5000);
   }
   function VirtualRemote_init$lambda_45(event) {
-    SubtitleDescription_getInstance().show_za3lpa$(5000);
+    AudioDescription_getInstance().show_za3lpa$(5000);
   }
   function VirtualRemote_init$lambda_46(event) {
+    SubtitleDescription_getInstance().show_za3lpa$(5000);
+  }
+  function VirtualRemote_init$lambda_47(event) {
     VolumeDescription_getInstance().show_za3lpa$(5000);
   }
   VirtualRemote.$metadata$ = {

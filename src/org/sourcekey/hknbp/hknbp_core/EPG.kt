@@ -540,9 +540,10 @@ object EPG {
         setProgrammeListTable()
     }
 
-    fun isShow(): Boolean{
-        return epg.style.display == "block"
-    }
+    val isShow: Boolean
+        get(){
+            return epg.style.display == "block"
+        }
 
     fun show(){
         epg.style.display = "block"
