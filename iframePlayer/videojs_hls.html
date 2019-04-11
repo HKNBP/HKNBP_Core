@@ -120,7 +120,15 @@
         player = videojs('player', {
             autoplay: true,
             controls: false,
-            poster: ''
+            poster: '',
+            html5: {
+                hls: {
+                  overrideNative: false
+                },
+                nativeVideoTracks: true,
+                nativeAudioTracks: true,
+                nativeTextTracks: true
+             }
         });
         player.ready(function(){
             var settings = this.textTrackSettings;
