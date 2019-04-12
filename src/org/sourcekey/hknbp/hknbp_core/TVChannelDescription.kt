@@ -20,7 +20,11 @@ import kotlin.browser.document
 import kotlin.browser.window
 import kotlin.js.Date
 
-object TVChannelDescription{
+object TVChannelDescription: UserInterface(
+        "tvChannelDescription",
+        fun(){ TVChannelDescription.update() },
+        fun(){}
+) {
     private val tvChannelDescription            = document.getElementById("tvChannelDescription") as HTMLDivElement
     private val currentChannelName              = document.getElementById("tvChannelDescriptionCurrentChannelName") as HTMLDivElement
     private val currentChannelNumber            = document.getElementById("tvChannelDescriptionCurrentChannelNumber") as HTMLDivElement
@@ -125,37 +129,4 @@ object TVChannelDescription{
         setCurrentProgrammeBroadcastTime()
         setCurrentProgrammeCategory()
     }
-
-    /**
-     * 隱藏頻道訊息計時器
-     * */
-    private var hideTimer: Int = 0
-        set(value) {
-            window.clearInterval(field)
-            field = value
-        }
-
-    val isShow: Boolean
-        get() { return tvChannelDescription.style.display == "block" }
-
-    fun show(){
-        tvChannelDescription.style.display = "block"
-        update()
-    }
-
-    fun show(hideTimerTimeout: Int){
-        show()
-        window.clearTimeout(hideTimer)//重新計時
-        hideTimer = window.setTimeout(fun(){ hide() }, hideTimerTimeout)
-    }
-
-    fun hide(){
-        tvChannelDescription.style.display = "none"
-    }
-
-    fun showHideAlternately(){
-        if(isShow){ show() }else{ hide() }
-    }
-
-    init { }
 }

@@ -26,18 +26,21 @@ import kotlin.js.Math
 /**
  * 操作使用者介面器
  * */
-object UserControlPanel {
+object UserControlPanel: UserInterface(
+        "userControlPanel",
+        fun(){
+            UserControlPanel.onShowUserControlPanel()
+            jQuery("#panelShower").css("cursor", "auto")
+        },
+        fun(){
+            UserControlPanel.onHideUserControlPanel()
+            UserControlPanel.hideMouseTimer = window.setTimeout(fun(){
+                jQuery("#panelShower").css("cursor", "none")
+            }, 2000)
+        }
+) {
     private val panel: HTMLElement   = document.getElementById("userControlPanel") as HTMLElement
     private val shower: HTMLElement  = document.getElementById("userControlPanelShower") as HTMLElement
-
-    /**
-     * 隱藏操作使用者介面板計時器
-     * */
-    private var hideTimer: Int = 0
-        set(value) {
-            window.clearTimeout(field)
-            field = value
-        }
 
     /**
      * 隱藏滑鼠計時器
@@ -67,30 +70,6 @@ object UserControlPanel {
      * 模仿Set Listener做法
      * */
     var onHideUserControlPanel: ()->Unit = fun(){}
-
-    val isShow: Boolean
-        get(){
-            return panel.style.display == "block"
-        }
-
-    fun show(){
-        panel.style.display="block"
-        onShowUserControlPanel()
-        window.clearTimeout(hideTimer)
-        jQuery("#panelShower").css("cursor", "auto")
-    }
-
-    fun show(hideTimerTimeout: Int){
-        show()
-        hideTimer = window.setTimeout(fun(){ hide() }, hideTimerTimeout)
-    }
-
-    fun hide(){
-        panel.style.display="none"
-        onHideUserControlPanel()
-        window.clearTimeout(hideTimer)
-        hideMouseTimer = window.setTimeout(fun(){ jQuery("#panelShower").css("cursor", "none") }, 2000)
-    }
 
     /**
      * 用onmousedown加onmouseup實現<長撳>功能
@@ -183,7 +162,9 @@ object UserControlPanel {
         ////觸控////
         val _shower: dynamic = shower
         _shower.ontouchstart = fun(event: MouseEvent){
-            event.preventDefault()//因觸控會同時觸發其他EVENT,https://medium.com/frochu/touch-and-mouse-together-76fb69114c04
+            // 因觸控會同時觸發其他EVENT
+            // https://medium.com/frochu/touch-and-mouse-together-76fb69114c04
+            event.preventDefault()
             if(panel.style.display==="block"){
                 hide()
             }else{

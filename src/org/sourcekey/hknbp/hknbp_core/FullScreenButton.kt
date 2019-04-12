@@ -20,28 +20,14 @@ import org.w3c.dom.HTMLButtonElement
 import org.w3c.dom.HTMLElement
 import kotlin.browser.document
 
-object FullScreenButton {
+object FullScreenButton: UserInterface(
+        "fullScreenButton",
+        fun(){},
+        fun(){}
+) {
     private val fullScreenButton: HTMLButtonElement = document.getElementById("fullScreenButton") as HTMLButtonElement
     private val enterFullscreenIcon: String = "<i class=\"icon-font\">&#xe80c;</i>"
     private val exitFullscreenIcon: String = "<i class=\"icon-font\">&#xe80b;</i>"
-
-
-    /**
-     * 顯示全螢幕制
-     * */
-    fun show(){
-        fullScreenButton.style.display = "block"
-    }
-
-    /**
-     * 隱藏全螢幕制
-     *
-     * 畀手機版程式唔顯示全螢幕制
-     * 因為手機版程式本來就全螢幕左
-     * */
-    fun hide(){
-        fullScreenButton.style.display = "none"
-    }
 
     /**
      * 轉成全螢幕

@@ -18,7 +18,11 @@ import org.w3c.dom.*
 import org.w3c.dom.events.Event
 import kotlin.browser.document
 
-object PictureInPictureButton {
+object PictureInPictureButton: UserInterface(
+        "pictureInPictureButton",
+        fun(){},
+        fun(){}
+){
     private val pictureInPictureButton = document.getElementById("pictureInPictureButton") as HTMLButtonElement
     //val body = document.getElementById("body") as HTMLVideoElement
     private val iframePlayer: dynamic = document.getElementById("iframePlayer")
@@ -50,20 +54,6 @@ object PictureInPictureButton {
         }
         find(Event(String()))
         iframe.onload = find
-    }
-
-    /**
-     * 顯示畫中畫制
-     * */
-    fun show(){
-        pictureInPictureButton.style.display="block"
-    }
-
-    /**
-     * 隱藏畫中畫制
-     * */
-    fun hide(){
-        pictureInPictureButton.style.display="none"
     }
 
     init {

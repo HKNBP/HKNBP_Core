@@ -19,7 +19,11 @@ import kotlin.browser.document
 import kotlin.browser.localStorage
 import kotlin.browser.window
 
-object SettingWindow {
+object SettingWindow: UserInterface(
+        "settingWindow",
+        fun(){},
+        fun(){}
+) {
     private val settingWindow                   = document.getElementById("settingWindow") as HTMLDivElement
     private val hideButton                      = document.getElementById("settingWindowHideButton") as HTMLButtonElement
     private val languageSetHonJyutElegantSet    = document.getElementById("settingWindowLanguageSetHonJyutElegantSet") as HTMLButtonElement
@@ -50,38 +54,7 @@ object SettingWindow {
         return option
     }
 
-    private var hideTimer = window.setTimeout(fun(){ }, 0)
-        set(value) {
-            window.clearTimeout(field)
-            field = value
-        }
-
-    val isShow: Boolean
-        get(){
-            return settingWindow.style.display == "block"
-        }
-
-    fun show(){
-        settingWindow.style.display = "block"
-    }
-
-    fun show(showTime: Int){
-        hideTimer = window.setTimeout(fun(){ hide() }, showTime)
-        show()
-    }
-
-    fun hide(){
-        settingWindow.style.display = "none"
-    }
-
-    fun showHideAlternately(){
-        if(isShow){ show() }else{ hide() }
-    }
-
-    init {
-        settingWindow.style.cursor = "auto"
-        hideButton.onclick = fun(event){ hide() }
-
+    fun initLangugeSetting(){
         languageAddLanguage.onclick = fun(event){
             if(languageSetLanguageISOCodeInput.value != ""){
                 val option = document.createElement("option") as HTMLOptionElement
@@ -193,9 +166,15 @@ object SettingWindow {
             )
         }
 
-
         languageSelectSequenceList.innerHTML =
                 localStorage.getItem("RecentlyLanguageSelectSequence")?:
-                "<option value=\"${currentUserLanguage}\">${currentUserLanguage}</option>"
+                        "<option value=\"${currentUserLanguage}\">${currentUserLanguage}</option>"
+    }
+
+    init {
+        settingWindow.style.cursor = "auto"
+        hideButton.onclick = fun(event){ hide() }
+
+        initLangugeSetting()
     }
 }

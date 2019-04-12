@@ -17,7 +17,11 @@ package org.sourcekey.hknbp.hknbp_core
 import kotlin.browser.document
 import kotlin.browser.window
 
-object PromptBox{
+object PromptBox: UserInterface(
+        "promptBox",
+        fun(){},
+        fun(){}
+) {
     private val promptBox: dynamic = document.getElementById("promptBox")
 
     /**
@@ -27,21 +31,13 @@ object PromptBox{
      */
     private var canHideOnPromptMessage: Int = 0
 
-    private fun show(promptMessage: String){
-        promptBox.innerHTML = promptMessage
-        promptBox.style.display = "block"
-    }
-
-    private fun hide(){
-        promptBox.style.display = "none"
-    }
-
     /**
      * 輸出 提示訊息 提示觀眾
      * @param promptMessage 提示訊息
      */
     @JsName("promptMessage") fun promptMessage(promptMessage: String){
-        show(promptMessage)
+        show()
+        promptBox.innerHTML = promptMessage
         canHideOnPromptMessage++
         window.setTimeout(fun(){
             canHideOnPromptMessage--

@@ -14,5 +14,6 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
-object UpdatePrompt {
+object UpdatePrompt{
+
 }

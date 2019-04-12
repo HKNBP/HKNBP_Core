@@ -17,7 +17,11 @@ package org.sourcekey.hknbp.hknbp_core
 import kotlin.browser.document
 import kotlin.browser.window
 
-object EnteringNumberBox {
+object EnteringNumberBox: UserInterface(
+        "enteringNumberBox",
+        fun(){},
+        fun(){}
+) {
     private val enteringNumberBox: dynamic  = document.getElementById("enteringNumberBox")
     private val text: dynamic               = document.getElementById("enteringNumberBoxText")
 
@@ -37,10 +41,6 @@ object EnteringNumberBox {
 
     private fun update(){
         text.innerHTML = enteringNumberNumber
-    }
-
-    private fun show(){
-        enteringNumberBox.style.display = "block"
     }
 
     /**
@@ -75,11 +75,5 @@ object EnteringNumberBox {
         show()
     }
 
-    private fun hide(){
-        enteringNumberBox.style.display = "none"
-    }
-
-    init {
-
-    }
+    init {  }
 }

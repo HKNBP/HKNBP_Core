@@ -19,7 +19,17 @@ import org.w3c.dom.HTMLDivElement
 import kotlin.browser.document
 import kotlin.browser.window
 
-object VolumeDescription{
+object VolumeDescription: UserInterface(
+        "volumeDescription",
+        fun(){
+            VolumeDescription.volumeValue.innerHTML = player.volume.toInt().toString()
+            VolumeDescription.volumeIconList.innerHTML = ""
+            for(i in 0 until (player.volume/10).toInt()){
+                VolumeDescription.volumeIconList.innerHTML += VolumeDescription.volumeIcon
+            }
+        },
+        fun(){}
+) {
     private val volumeDescription: HTMLDivElement = document.getElementById("volumeDescription") as HTMLDivElement
     private val volumeUpButton: HTMLButtonElement = document.getElementById("volumeDescriptionVolumeUpButton") as HTMLButtonElement
     private val volumeDownButton: HTMLButtonElement = document.getElementById("volumeDescriptionVolumeDownButton") as HTMLButtonElement
@@ -27,28 +37,6 @@ object VolumeDescription{
     private val volumeIconList: HTMLDivElement = document.getElementById("volumeDescriptionVolumeIconList") as HTMLDivElement
 
     private val volumeIcon = "<i class=\"icon-font\">&#xe82a;</i>"
-    private var hideTimer = window.setTimeout(fun(){ }, 0)
-        set(value) {
-            window.clearTimeout(field)
-            field = value
-        }
-
-
-    fun show(){
-        volumeValue.innerHTML = player.volume.toInt().toString()
-        volumeIconList.innerHTML = ""
-        for(i in 0 until (player.volume/10).toInt()){volumeIconList.innerHTML += volumeIcon}
-        volumeDescription.style.display = "block"
-    }
-
-    fun show(showTime: Int){
-        hideTimer = window.setTimeout(fun(){ hide() }, showTime)
-        show()
-    }
-
-    fun hide(){
-        volumeDescription.style.display = "none"
-    }
 
     init {
         volumeUpButton.onclick = fun(event){player.volumeUp}

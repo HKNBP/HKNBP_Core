@@ -20,28 +20,13 @@ import org.w3c.dom.Window
 import kotlin.browser.document
 import kotlin.browser.window
 
-object AudioDescription {
+object AudioDescription: UserInterface(
+        "audioDescription",
+        fun(){ AudioDescription.text.innerHTML = player.audioTracks.node?.name?:"" },
+        fun(){}
+) {
     private val audioDescription: HTMLDivElement = document.getElementById("audioDescription") as HTMLDivElement
     private val text: HTMLDivElement = document.getElementById("audioDescriptionText") as HTMLDivElement
-
-
-    private var hideTimer = window.setTimeout(fun(){ }, 0)
-        set(value) {
-            window.clearTimeout(field)
-            field = value
-        }
-
-    fun show(){
-        audioDescription.style.display = "block"
-        text.innerHTML = player.audioTracks.node?.name?:""
-    }
-
-    fun show(showTime: Int){
-        hideTimer = window.setTimeout(fun(){ hide() }, showTime)
-        show()
-    }
-
-    fun hide(){ audioDescription.style.display = "none"}
 
     init {  }
 }

@@ -18,36 +18,12 @@ import org.w3c.dom.HTMLDivElement
 import kotlin.browser.document
 import kotlin.browser.window
 
-object AppDownloadWindow {
+object AppDownloadWindow: UserInterface(
+        "appDownloadWindow",
+        fun(){},
+        fun(){}
+) {
     private val appDownloadWindow: HTMLDivElement = document.getElementById("appDownloadWindow") as HTMLDivElement
-
-    private var hideTimer = 0
-        set(value) {
-            window.clearTimeout(field)
-            field = value
-        }
-
-    val isShow: Boolean
-        get(){
-            return appDownloadWindow.style.display == "block"
-        }
-
-    fun show(){
-        appDownloadWindow.style.display = "block"
-    }
-
-    fun show(showTime: Int){
-        hideTimer = window.setTimeout(fun(){ hide() }, showTime)
-        show()
-    }
-
-    fun hide(){
-        appDownloadWindow.style.display = "none"
-    }
-
-    fun showHideAlternately(){
-        if(isShow){ show() }else{ hide() }
-    }
 
     init { }
 }

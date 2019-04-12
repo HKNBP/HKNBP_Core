@@ -95,7 +95,7 @@
         <information epgid="b92.sr" src="http://tvprofil.net/xmltv/data/b92.sr/weekly_b92.sr_tvprofil.net.xml"/>
     </channel>
     <channel>
-        <number>008</number>
+        <number>048</number>
         <name>Dash 2</name>
         <source>
             <description>HLSSource</description>
@@ -105,7 +105,7 @@
         <information epgid="tv-istra.hr" src="http://tvprofil.net/xmltv/data/tv-istra.hr/weekly_tv-istra.hr_tvprofil.net.xml"/>
     </channel>
     <channel>
-        <number>009</number>
+        <number>998</number>
         <name>T</name>
         <source>
             <description>HLSSource</description>

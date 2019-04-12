@@ -18,36 +18,12 @@ import org.w3c.dom.HTMLDivElement
 import kotlin.browser.document
 import kotlin.browser.window
 
-object ShareWindow {
+object ShareWindow : UserInterface(
+        "shareWindow",
+        fun(){},
+        fun(){}
+) {
     private val shareWindow: HTMLDivElement = document.getElementById("shareWindow") as HTMLDivElement
-
-    private var hideTimer = 0
-        set(value) {
-            window.clearTimeout(field)
-            field = value
-        }
-
-    val isShow: Boolean
-        get(){
-            return shareWindow.style.display == "block"
-        }
-
-    fun show(){
-        shareWindow.style.display = "block"
-    }
-
-    fun show(showTime: Int){
-        hideTimer = window.setTimeout(fun(){ hide() }, showTime)
-        show()
-    }
-
-    fun hide(){
-        shareWindow.style.display = "none"
-    }
-
-    fun showHideAlternately(){
-        if(isShow){ show() }else{ hide() }
-    }
 
     init { }
 }

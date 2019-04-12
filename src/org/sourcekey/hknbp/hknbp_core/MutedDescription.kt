@@ -18,23 +18,13 @@ import org.w3c.dom.HTMLButtonElement
 import org.w3c.dom.HTMLDivElement
 import kotlin.browser.document
 
-object MutedDescription {
+object MutedDescription: UserInterface(
+        "mutedDescription",
+        fun(){},
+        fun(){}
+) {
     private val mutedDescription: HTMLDivElement = document.getElementById("mutedDescription") as HTMLDivElement
     private val mutedDescriptionButton: HTMLButtonElement = document.getElementById("mutedDescriptionButton") as HTMLButtonElement
-
-
-
-    private fun show(){
-        mutedDescription.style.display = "block"
-    }
-
-    private fun hide(){
-        mutedDescription.style.display = "none"
-    }
-
-    fun showHideAlternately(){
-        if(player.muted){ show() }else{ hide() }
-    }
 
     init {
         mutedDescriptionButton.onclick = fun(event){player.muted = !player.muted}

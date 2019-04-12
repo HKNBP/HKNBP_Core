@@ -24,7 +24,16 @@ import org.sourcekey.hknbp.hknbp_core.XMLTV.MultiLanguage.MultiLanguageList
 import org.w3c.dom.*
 
 
-object EPG {
+object EPG: UserInterface(
+        "epg",
+        fun(){
+            EPG.setDisplayCurrentDateBox()
+            EPG.setProgrammeList()
+        },
+        fun(){
+            window.clearTimeout(EPG.updateDisplayCurrentDateBoxTimer)
+        }
+) {
     private val epg                             = document.getElementById("epg") as HTMLElement
     private val displayCurrentDateBox           = document.getElementById("epgDisplayCurrentDateBox") as HTMLElement
     private val hideButton                      = document.getElementById("epgHideButton") as HTMLElement
@@ -538,22 +547,6 @@ object EPG {
         setProgrammeListTimeLine()
         setProgrammeListChannelList()
         setProgrammeListTable()
-    }
-
-    val isShow: Boolean
-        get(){
-            return epg.style.display == "block"
-        }
-
-    fun show(){
-        epg.style.display = "block"
-        setDisplayCurrentDateBox()
-        setProgrammeList()
-    }
-
-    fun hide(){
-        epg.style.display = "none"
-        window.clearTimeout(updateDisplayCurrentDateBoxTimer?:0)
     }
 
     init {

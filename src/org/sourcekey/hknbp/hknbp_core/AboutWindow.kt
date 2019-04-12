@@ -14,40 +14,24 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
+import org.w3c.dom.HTMLButtonElement
 import org.w3c.dom.HTMLDivElement
 import kotlin.browser.document
 import kotlin.browser.window
 
-object AboutWindow {
-    private val aboutWindow: HTMLDivElement = document.getElementById("AboutWindow") as HTMLDivElement
+object AboutWindow: UserInterface(
+        "aboutWindow",
+        fun(){ println("s")},
+        fun(){println("h")}
+) {
+    private val aboutWindow: HTMLDivElement = document.getElementById("aboutWindow") as HTMLDivElement
+    private val hideButton: HTMLButtonElement = document.getElementById("aboutWindowHideButton") as HTMLButtonElement
+    private val coreVersionText: HTMLDivElement = document.getElementById("aboutWindowCoreVersionText") as HTMLDivElement
+    private val consentText: HTMLDivElement = document.getElementById("aboutWindowConsentText") as HTMLDivElement
 
-    private var hideTimer = 0
-        set(value) {
-            window.clearTimeout(field)
-            field = value
-        }
-
-    val isShow: Boolean
-        get(){
-            return aboutWindow.style.display == "block"
-        }
-
-    fun show(){
-        aboutWindow.style.display = "block"
+    init {
+        hideButton.onclick = fun(event){hide()}
+        coreVersionText.innerHTML = coreVersion
+        consentText.onclick = fun(event){ConsentPanel.show()}
     }
-
-    fun show(showTime: Int){
-        hideTimer = window.setTimeout(fun(){ hide() }, showTime)
-        show()
-    }
-
-    fun hide(){
-        aboutWindow.style.display = "none"
-    }
-
-    fun showHideAlternately(){
-        if(isShow){ show() }else{ hide() }
-    }
-
-    init { }
 }
