@@ -140,6 +140,9 @@
       width: inherit; height:5.5vh;
       margin: 0.2vh;
     }
+    #shareWindowShareButtonList a img{
+        width:5vh; height:5vh;
+    }
     #virtualRemote div{
       //display:inline;
       //border: 1vh solid red;
@@ -638,7 +641,13 @@
             <i class="icon-font">&#xe829;</i>
         </button>
     </div>
-    <div id="consentPanel" style="background-color:rgba(0, 0, 0, 0.6);display:none;position:absolute;top:0;bottom:0;left:0;right:0;z-index:90;">
+    <div id="consentPanel" style="
+        background-color:rgba(0, 0, 0, 0.6);
+        display:none;
+        position:absolute;
+        top:0;bottom:0;left:0;right:0;
+        z-index:100;
+    ">
         <div style="position:absolute;top:8vh;bottom:8vh;left:8vh;right:8vh;">
             <div style="position:absolute;top:0;bottom:8vh;left:0;right:0;">
                 <iframe id="iframeConsent" style="height:100%;width:100%;" src="consent.html" frameBorder="0">你嘅瀏覽器唔支援iframe</iframe>
@@ -943,7 +952,7 @@
                 <div>Core版本: <div style="display:inline;" id="aboutWindowCoreVersionText"></div></div>
                 <br>
                 <br>
-                <div id="aboutWindowConsentText">Consent</div>
+                <div id="aboutWindowConsentText" style="text-decoration:underline;">Consent</div>
                 <br>
                 <div style="font-size:5vh;" onclick="window.open('https://github.com/HKNBP', '_blank')" >
                     <div style="display:inline;font-size:2.5vh;">
@@ -979,7 +988,54 @@
             </button>
         </div>
     </div>
-    <div id="shareWindow" class="absoluteCenter" style="background:#303030;display:none;width:100vh;height:70vh;z-index:90;">
+    <div id="shareWindow" class="absoluteCenter" style="background:#303030;display:none;width:50vh;height:20vh;z-index:90;">
+        <div style="position:absolute;top:0;bottom:0;left:0;right:0;">
+            <div class="absoluteCenter" style="width:76%;">
+                <!-- AddToAny BEGIN -->
+                <div class="a2a_kit a2a_kit_size_32 a2a_default_style" id="shareWindowShareButtonList">
+                    <a class="a2a_button_facebook">
+                        <img src="https://static.addtoany.com/buttons/facebook.svg" style="background-color:#3b5998">
+                    </a>
+                    <a class="a2a_button_twitter">
+                        <img src="https://static.addtoany.com/buttons/twitter.svg" style="background-color:#55acee">
+                    </a>
+                    <a class="a2a_button_linkedin">
+                        <img src="https://static.addtoany.com/buttons/linkedin.svg" style="background-color:#007bb5">
+                    </a>
+                    <a class="a2a_button_whatsapp">
+                        <img src="https://static.addtoany.com/buttons/whatsapp.svg" style="background-color:#12af0a">
+                    </a>
+                    <a class="a2a_button_email">
+                        <img src="https://static.addtoany.com/buttons/email.svg" style="background-color:royalblue">
+                    </a>
+                    <a class="a2a_button_reddit">
+                        <img src="https://static.addtoany.com/buttons/reddit.svg" style="background-color:#ff4500">
+                    </a>
+                    <a class="a2a_button_line">
+                        <img src="https://static.addtoany.com/buttons/line.svg" style="background-color:#00c300">
+                    </a>
+                    <a class="a2a_button_copy_link">
+                        <img src="https://static.addtoany.com/buttons/link.svg" style="background-color:#666666">
+                    </a>
+                    <a class="a2a_button_google_gmail">
+                        <img src="https://static.addtoany.com/buttons/gmail.svg" style="background-color:#dd5347">
+                    </a>
+                    <a class="a2a_button_telegram">
+                        <img src="https://static.addtoany.com/buttons/telegram.svg" style="background-color:#2ca5e0">
+                    </a>
+                    <a class="a2a_dd" href="https://www.addtoany.com/share">
+                        <img src="https://static.addtoany.com/buttons/a2a.svg" style="background-color:rgba(0,0,0,0);">
+                    </a>
+                </div>
+                <script async src="https://static.addtoany.com/menu/page.js"></script>
+                <!-- AddToAny END -->
+            </div>
+        </div>
+        <div style="position:absolute;top:0;right:0;">
+            <button id="shareWindowHideButton" style="padding:0vh;border:0vh;color:#FFFFFF;font-weight:bold;font-size:4vh;">
+                <i class="icon-font" style="font-size:6vh;">&#xe801;</i>
+            </button>
+        </div>
     </div>
     <div id="settingWindow" class="absoluteCenter" style="
         background:#303030;

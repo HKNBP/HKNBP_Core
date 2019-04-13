@@ -16,22 +16,23 @@ package org.sourcekey.hknbp.hknbp_core
 
 import org.w3c.dom.HTMLButtonElement
 import org.w3c.dom.HTMLDivElement
+import org.w3c.dom.HTMLElement
 import kotlin.browser.document
 import kotlin.browser.window
 
 object AboutWindow: UserInterface(
         "aboutWindow",
-        fun(){ println("s")},
-        fun(){println("h")}
+        fun(){},
+        fun(){}
 ) {
     private val aboutWindow: HTMLDivElement = document.getElementById("aboutWindow") as HTMLDivElement
     private val hideButton: HTMLButtonElement = document.getElementById("aboutWindowHideButton") as HTMLButtonElement
     private val coreVersionText: HTMLDivElement = document.getElementById("aboutWindowCoreVersionText") as HTMLDivElement
-    private val consentText: HTMLDivElement = document.getElementById("aboutWindowConsentText") as HTMLDivElement
+    private val consentText: HTMLElement = document.getElementById("aboutWindowConsentText") as HTMLElement
 
     init {
         hideButton.onclick = fun(event){hide()}
-        coreVersionText.innerHTML = coreVersion
         consentText.onclick = fun(event){ConsentPanel.show()}
+        coreVersionText.innerHTML = coreVersion
     }
 }

@@ -3,7 +3,6 @@ if (typeof kotlin === 'undefined') {
 }
 var HKNBP_Core = function (_, Kotlin) {
   'use strict';
-  var println = Kotlin.kotlin.io.println_s8jyv4$;
   var throwCCE = Kotlin.throwCCE;
   var Kind_OBJECT = Kotlin.Kind.OBJECT;
   var getOrNull = Kotlin.kotlin.collections.getOrNull_yzln2o$;
@@ -29,6 +28,7 @@ var HKNBP_Core = function (_, Kotlin) {
   var split = Kotlin.kotlin.text.split_ip8yn$;
   var ensureNotNull = Kotlin.ensureNotNull;
   var split_0 = Kotlin.kotlin.text.split_o64adg$;
+  var println = Kotlin.kotlin.io.println_s8jyv4$;
   var String_0 = String;
   var toDoubleOrNull = Kotlin.kotlin.text.toDoubleOrNull_pdl1vz$;
   var Enum = Kotlin.kotlin.Enum;
@@ -95,23 +95,26 @@ var HKNBP_Core = function (_, Kotlin) {
   function AboutWindow() {
     AboutWindow_instance = this;
     UserInterface.call(this, 'aboutWindow', AboutWindow_init$lambda, AboutWindow_init$lambda_0);
-    var tmp$, tmp$_0, tmp$_1;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2;
     this.aboutWindow_0 = Kotlin.isType(tmp$ = document.getElementById('aboutWindow'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('aboutWindowHideButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.coreVersionText_0 = Kotlin.isType(tmp$_1 = document.getElementById('aboutWindowCoreVersionText'), HTMLDivElement) ? tmp$_1 : throwCCE();
+    this.consentText_0 = Kotlin.isType(tmp$_2 = document.getElementById('aboutWindowConsentText'), HTMLElement) ? tmp$_2 : throwCCE();
     this.hideButton_0.onclick = AboutWindow_init$lambda_1(this);
+    this.consentText_0.onclick = AboutWindow_init$lambda_2;
     this.coreVersionText_0.innerHTML = coreVersion;
   }
   function AboutWindow_init$lambda() {
-    println('s');
   }
   function AboutWindow_init$lambda_0() {
-    println('h');
   }
   function AboutWindow_init$lambda_1(this$AboutWindow) {
     return function (event) {
       this$AboutWindow.hide();
     };
+  }
+  function AboutWindow_init$lambda_2(event) {
+    ConsentPanel_getInstance().show();
   }
   AboutWindow.$metadata$ = {
     kind: Kind_OBJECT,
@@ -2449,12 +2452,21 @@ var HKNBP_Core = function (_, Kotlin) {
   function ShareWindow() {
     ShareWindow_instance = this;
     UserInterface.call(this, 'shareWindow', ShareWindow_init$lambda, ShareWindow_init$lambda_0);
-    var tmp$;
+    var tmp$, tmp$_0, tmp$_1;
     this.shareWindow_0 = Kotlin.isType(tmp$ = document.getElementById('shareWindow'), HTMLDivElement) ? tmp$ : throwCCE();
+    this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('shareWindowHideButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
+    this.buttonList_0 = Kotlin.isType(tmp$_1 = document.getElementById('shareWindowShareButtonList'), HTMLDivElement) ? tmp$_1 : throwCCE();
+    this.hideButton_0.onclick = ShareWindow_init$lambda_1(this);
   }
   function ShareWindow_init$lambda() {
+    ShareWindow_getInstance().buttonList_0.setAttribute('data-a2a-url', window.location.href);
   }
   function ShareWindow_init$lambda_0() {
+  }
+  function ShareWindow_init$lambda_1(this$ShareWindow) {
+    return function (event) {
+      this$ShareWindow.hide();
+    };
   }
   ShareWindow.$metadata$ = {
     kind: Kind_OBJECT,
@@ -3878,7 +3890,7 @@ var HKNBP_Core = function (_, Kotlin) {
     WatchingCounter$Companion_getInstance();
     this.tvChannel_0 = tvChannel;
     this.iframeWatchingCounter_0 = document.getElementById('iframeWatchingCounter');
-    WatchingCounter$Companion_getInstance().timer_0 = window.setTimeout(WatchingCounter_init$lambda(this), 15000);
+    WatchingCounter$Companion_getInstance().timer_0 = window.setTimeout(WatchingCounter_init$lambda(this), 60000);
   }
   function WatchingCounter$Companion() {
     WatchingCounter$Companion_instance = this;
@@ -3913,7 +3925,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function WatchingCounter_init$lambda(this$WatchingCounter) {
     return function () {
-      this$WatchingCounter.iframeWatchingCounter_0.src = rootURL + 'watching-counter.html?tvchannel=' + this$WatchingCounter.tvChannel_0.number;
+      this$WatchingCounter.iframeWatchingCounter_0.src = '/watching-counter.html?tvchannel=' + this$WatchingCounter.tvChannel_0.number;
       this$WatchingCounter.iframeWatchingCounter_0.onload = WatchingCounter_init$lambda$lambda(this$WatchingCounter);
     };
   }

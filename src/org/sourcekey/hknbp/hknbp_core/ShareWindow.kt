@@ -14,16 +14,23 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
+import org.w3c.dom.HTMLButtonElement
 import org.w3c.dom.HTMLDivElement
 import kotlin.browser.document
 import kotlin.browser.window
 
 object ShareWindow : UserInterface(
         "shareWindow",
-        fun(){},
+        fun(){
+            ShareWindow.buttonList.setAttribute("data-a2a-url", window.location.href)//設定要分享嘅Link
+        },
         fun(){}
 ) {
-    private val shareWindow: HTMLDivElement = document.getElementById("shareWindow") as HTMLDivElement
+    private val shareWindow = document.getElementById("shareWindow") as HTMLDivElement
+    private val hideButton = document.getElementById("shareWindowHideButton") as HTMLButtonElement
+    private val buttonList = document.getElementById("shareWindowShareButtonList") as HTMLDivElement
 
-    init { }
+    init {
+        hideButton.onclick = fun(event){hide()}
+    }
 }

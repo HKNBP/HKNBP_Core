@@ -14,6 +14,14 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
+/**
+ * 將Tab嘅Index分為3維數值
+ *
+ * 為解決使用遙控向上下左右Focus
+ * 將x為左右維道
+ * 將y為上下維道
+ * 將z為分格介面
+ * */
 class Tab3dIndex(
         val x: Int = 0,
         val y: Int = 0,
