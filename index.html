@@ -138,10 +138,14 @@
       overflow: hidden;
       text-align: left;
       width: inherit; height:5.5vh;
-      margin: 0.2vh;
+      margin: 0vh;
+    }
+    #shareWindowShareButtonList a{
+        padding: 0vh;
+        margin: 0vh;
     }
     #shareWindowShareButtonList a img{
-        width:5vh; height:5vh;
+        width:10vh; height:10vh;
     }
     #virtualRemote div{
       //display:inline;
@@ -380,7 +384,7 @@
     </iframe>
 </div>
 <div id="userInterface">
-    <button id="userControlPanelShower" style="
+    <button id="userControlPanelShower" tabindex="000000001" style="
               //display: none;
               background: rgba(0, 0, 0, 0);
               border-style: none;
@@ -988,9 +992,14 @@
             </button>
         </div>
     </div>
-    <div id="shareWindow" class="absoluteCenter" style="background:#303030;display:none;width:50vh;height:20vh;z-index:90;">
+    <div id="shareWindow" class="absoluteCenter" style="
+        background:#303030;
+        display:none;
+        width:74vh;height:35vh;
+        z-index:90;
+    ">
         <div style="position:absolute;top:0;bottom:0;left:0;right:0;">
-            <div class="absoluteCenter" style="width:76%;">
+            <div class="absoluteCenter" style="width:60vh;">
                 <!-- AddToAny BEGIN -->
                 <div class="a2a_kit a2a_kit_size_32 a2a_default_style" id="shareWindowShareButtonList">
                     <a class="a2a_button_facebook">
