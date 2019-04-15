@@ -22,7 +22,7 @@ import kotlin.js.Date
 
 
 val rootURL: String     = "https://hknbp.org/"
-val coreVersion: String = "0.9"
+val coreVersion: String = "0.9.1"
 var appVersion: String  = "0.9-Web"
 
 val jQuery: dynamic = js("\$")
