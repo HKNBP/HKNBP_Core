@@ -18,8 +18,14 @@ import org.w3c.dom.HTMLElement
 import kotlin.browser.document
 import kotlin.browser.window
 
-abstract class UserInterface(val htmlElementID: String, val onShow: ()->Unit, val onHide: ()->Unit) {
+abstract class UserInterface(
+        val htmlElementID: String,
+        private val onShow: ()->Unit = fun(){},
+        private val onHide: ()->Unit = fun(){},
+        private val firstFocusElementID: String? = null
+) {
     private val htmlElement = document.getElementById(htmlElementID) as HTMLElement
+    private var lastTimeFocusElement: dynamic = jQuery("#${firstFocusElementID}")
 
     /**
      * 隱藏頻道訊息計時器
@@ -37,6 +43,7 @@ abstract class UserInterface(val htmlElementID: String, val onShow: ()->Unit, va
 
     open fun show(){
         htmlElement.style.display = "block"
+        lastTimeFocusElement?.focus()
         onShow()
     }
 
@@ -54,4 +61,17 @@ abstract class UserInterface(val htmlElementID: String, val onShow: ()->Unit, va
         if(isShow){ hide() }else{ show() }
     }
 
+    init {
+        jQuery(
+                "#${htmlElementID} button" + "," +
+                "#${htmlElementID} select" + "," +
+                "#${htmlElementID} option" + "," +
+                "#${htmlElementID} input"
+        ).focus(fun(){
+            //設 當onfocus 就onhover 同步
+            jQuery(js("this"))?.hover()
+            //設定依家Focus邊粒element為之後再Show呢個介面時Focus返對上個次嘅element
+            lastTimeFocusElement = jQuery(js("this"))
+        })
+    }
 }

@@ -17,11 +17,7 @@ package org.sourcekey.hknbp.hknbp_core
 import kotlin.browser.document
 import kotlin.browser.window
 
-object EnteringNumberBox: UserInterface(
-        "enteringNumberBox",
-        fun(){},
-        fun(){}
-) {
+object EnteringNumberBox: UserInterface("enteringNumberBox") {
     private val enteringNumberBox: dynamic  = document.getElementById("enteringNumberBox")
     private val text: dynamic               = document.getElementById("enteringNumberBoxText")
 

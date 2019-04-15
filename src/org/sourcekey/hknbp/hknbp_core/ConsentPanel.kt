@@ -19,11 +19,7 @@ import org.w3c.dom.HTMLDivElement
 import kotlin.browser.document
 import kotlin.browser.localStorage
 
-object ConsentPanel: UserInterface(
-        "consentPanel",
-        fun(){},
-        fun(){}
-) {
+object ConsentPanel: UserInterface("consentPanel", firstFocusElementID = "consentPanelAgreeConsentButton"){
     private val consentPanel       = document.getElementById("consentPanel") as HTMLDivElement
     private val agreeConsentButton  = document.getElementById("consentPanelAgreeConsentButton") as HTMLButtonElement
 

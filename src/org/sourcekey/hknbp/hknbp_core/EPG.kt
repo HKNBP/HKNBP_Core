@@ -32,7 +32,8 @@ object EPG: UserInterface(
         },
         fun(){
             window.clearTimeout(EPG.updateDisplayCurrentDateBoxTimer)
-        }
+        },
+        "epgHideButton"
 ) {
     private val epg                             = document.getElementById("epg") as HTMLElement
     private val displayCurrentDateBox           = document.getElementById("epgDisplayCurrentDateBox") as HTMLElement
@@ -68,7 +69,7 @@ object EPG: UserInterface(
     private val programmeListChannelList        = document.getElementById("epgProgrammeListChannelList") as HTMLElement
     private val programmeListTable              = document.getElementById("epgProgrammeListTable") as HTMLElement
 
-    private val tabIndexZ: Int = 3
+    private val tabIndexZ: Int = 9
 
     private var updateDisplayCurrentDateBoxTimer: Int = 0
 
@@ -411,8 +412,8 @@ object EPG: UserInterface(
         var increaseHour = 0
         while (fromDate.getTime()+(increaseHour*60*60*1000) < toDate.getTime()) {
             val hour = Date(fromDate.getTime()+(increaseHour*60*60*1000)).getHours().toString().padStart(2, '0')
-            content += "<div class=\"time\"><button>"+hour+":00</button></div>"
-            content += "<div class=\"time\"><button>"+hour+":30</button></div>"
+            content += "<div class=\"time\"><button tabindex=\"-1\">"+hour+":00</button></div>"
+            content += "<div class=\"time\"><button tabindex=\"-1\">"+hour+":30</button></div>"
 
             increaseHour++
         }
@@ -424,8 +425,8 @@ object EPG: UserInterface(
         var content: String = ""
         for (tvChannel in tvChannels){
             content += "<div>"
-            content += "<div class=\"channelNumber\"><button>"+tvChannel.number.toString().padStart(3, '0')+"</button></div>"
-            content += "<div class=\"channelName\"><button>"+tvChannel.name+"</button></div>"
+            content += "<div class=\"channelNumber\"><button tabindex=\"-1\">"+tvChannel.number.toString().padStart(3, '0')+"</button></div>"
+            content += "<div class=\"channelName\"><button tabindex=\"-1\">"+tvChannel.name+"</button></div>"
             content += "</div>"
         }
         programmeListChannelList.innerHTML = content

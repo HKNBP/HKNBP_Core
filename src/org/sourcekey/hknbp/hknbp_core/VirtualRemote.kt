@@ -23,11 +23,7 @@ import kotlin.browser.localStorage
 import kotlin.browser.window
 
 
-object VirtualRemote: UserInterface(
-         "virtualRemote",
-        fun(){},
-        fun(){}
-) {
+object VirtualRemote: UserInterface("virtualRemote", firstFocusElementID = "onHeadNextAudioButton") {
     private val virtualRemote       = document.getElementById("virtualRemote")              as HTMLDivElement
     val hideVirtualRemoteButton     = document.getElementById("hideVirtualRemoteButton")    as HTMLButtonElement
     val epgButton                   = document.getElementById("epgButton")                  as HTMLButtonElement

@@ -20,8 +20,7 @@ import kotlin.browser.window
 
 object SubtitleDescription: UserInterface(
         "subtitleDescription",
-        fun(){ SubtitleDescription.text.innerHTML = player.subtitleTracks.node?.name?:"" },
-        fun(){}
+        fun(){ SubtitleDescription.text.innerHTML = player.subtitleTracks.node?.name?:"" }
 ) {
     private val subtitleDescription: HTMLDivElement = document.getElementById("subtitleDescription") as HTMLDivElement
     private val text: HTMLDivElement = document.getElementById("subtitleDescriptionText") as HTMLDivElement

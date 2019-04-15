@@ -20,11 +20,7 @@ import kotlin.browser.document
 import kotlin.browser.window
 import kotlin.js.Date
 
-object TVChannelDescription: UserInterface(
-        "tvChannelDescription",
-        fun(){ TVChannelDescription.update() },
-        fun(){}
-) {
+object TVChannelDescription: UserInterface("tvChannelDescription", fun(){ TVChannelDescription.update() }) {
     private val tvChannelDescription            = document.getElementById("tvChannelDescription") as HTMLDivElement
     private val currentChannelName              = document.getElementById("tvChannelDescriptionCurrentChannelName") as HTMLDivElement
     private val currentChannelNumber            = document.getElementById("tvChannelDescriptionCurrentChannelNumber") as HTMLDivElement
@@ -119,6 +115,7 @@ object TVChannelDescription: UserInterface(
     }
 
     fun update(){
+        println("xxx1")
         setCurrentChannelName()
         setCurrentChannelNumber()
         setCurrentDate()
@@ -128,5 +125,6 @@ object TVChannelDescription: UserInterface(
         setCurrentProgrammeDesc()
         setCurrentProgrammeBroadcastTime()
         setCurrentProgrammeCategory()
+        println("xxx")
     }
 }

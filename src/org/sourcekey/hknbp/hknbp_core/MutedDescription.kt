@@ -18,11 +18,7 @@ import org.w3c.dom.HTMLButtonElement
 import org.w3c.dom.HTMLDivElement
 import kotlin.browser.document
 
-object MutedDescription: UserInterface(
-        "mutedDescription",
-        fun(){},
-        fun(){}
-) {
+object MutedDescription: UserInterface("mutedDescription") {
     private val mutedDescription: HTMLDivElement = document.getElementById("mutedDescription") as HTMLDivElement
     private val mutedDescriptionButton: HTMLButtonElement = document.getElementById("mutedDescriptionButton") as HTMLButtonElement
 

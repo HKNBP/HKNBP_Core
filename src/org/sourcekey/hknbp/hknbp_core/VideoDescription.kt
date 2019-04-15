@@ -20,8 +20,7 @@ import kotlin.browser.window
 
 object VideoDescription: UserInterface(
         "videoDescription",
-        fun(){ VideoDescription.text.innerHTML = player.videoTracks.node?.name?:""},
-        fun(){}
+        fun(){ VideoDescription.text.innerHTML = player.videoTracks.node?.name?:""}
 ) {
     private val videoDescription: HTMLDivElement = document.getElementById("videoDescription") as HTMLDivElement
     private val text: HTMLDivElement = document.getElementById("videoDescriptionText") as HTMLDivElement

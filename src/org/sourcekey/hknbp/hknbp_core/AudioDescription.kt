@@ -22,8 +22,7 @@ import kotlin.browser.window
 
 object AudioDescription: UserInterface(
         "audioDescription",
-        fun(){ AudioDescription.text.innerHTML = player.audioTracks.node?.name?:"" },
-        fun(){}
+        fun(){ AudioDescription.text.innerHTML = player.audioTracks.node?.name?:"" }
 ) {
     private val audioDescription: HTMLDivElement = document.getElementById("audioDescription") as HTMLDivElement
     private val text: HTMLDivElement = document.getElementById("audioDescriptionText") as HTMLDivElement

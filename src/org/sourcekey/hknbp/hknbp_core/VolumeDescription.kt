@@ -27,8 +27,7 @@ object VolumeDescription: UserInterface(
             for(i in 0 until (player.volume/10).toInt()){
                 VolumeDescription.volumeIconList.innerHTML += VolumeDescription.volumeIcon
             }
-        },
-        fun(){}
+        }
 ) {
     private val volumeDescription: HTMLDivElement = document.getElementById("volumeDescription") as HTMLDivElement
     private val volumeUpButton: HTMLButtonElement = document.getElementById("volumeDescriptionVolumeUpButton") as HTMLButtonElement

@@ -31,14 +31,14 @@ object UserControlPanel: UserInterface(
         fun(){
             UserControlPanel.onShowUserControlPanel()
             jQuery("#panelShower").css("cursor", "auto")
-            (document.querySelector("[tabindex=\"100000002\"]") as HTMLElement).focus()
         },
         fun(){
             UserControlPanel.onHideUserControlPanel()
             UserControlPanel.hideMouseTimer = window.setTimeout(fun(){
                 jQuery("#panelShower").css("cursor", "none")
             }, 2000)
-        }
+        },
+        "onHeadNextAudioButton"
 ) {
     private val panel: HTMLElement   = document.getElementById("userControlPanel") as HTMLElement
     private val shower: HTMLElement  = document.getElementById("userControlPanelShower") as HTMLElement
@@ -172,9 +172,6 @@ object UserControlPanel: UserInterface(
                 show(15000)
             }
         }
-
-        //設 當onfocus 就onhover 同步
-        jQuery("button, select, option, input").focus(fun(){ jQuery(js("this")).hover() })
 
         //設置所有制當長撳制時不斷重複執行onClick程序
         setAllBuutonOnLongClickFeatures()

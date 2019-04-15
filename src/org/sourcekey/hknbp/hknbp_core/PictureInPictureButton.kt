@@ -18,11 +18,7 @@ import org.w3c.dom.*
 import org.w3c.dom.events.Event
 import kotlin.browser.document
 
-object PictureInPictureButton: UserInterface(
-        "pictureInPictureButton",
-        fun(){},
-        fun(){}
-){
+object PictureInPictureButton: UserInterface("pictureInPictureButton"){
     private val pictureInPictureButton = document.getElementById("pictureInPictureButton") as HTMLButtonElement
     //val body = document.getElementById("body") as HTMLVideoElement
     private val iframePlayer: dynamic = document.getElementById("iframePlayer")
