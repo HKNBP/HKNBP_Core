@@ -224,7 +224,6 @@ fun main(args: Array<String>) {
     try {
         UserControlPanel
         ConsentPanel
-        (document.querySelector("[tabindex=\"000000001\"]") as HTMLElement).focus()
     } catch (e: dynamic) { println("介面初始化哀左: $e") }
 
     TVChannel.getTVChannels(fun(tvChannels_) {

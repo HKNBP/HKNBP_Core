@@ -1496,11 +1496,9 @@ var HKNBP_Core = function (_, Kotlin) {
     TVChannelDescription_getInstance().show_za3lpa$(3000);
   }
   function main(args) {
-    var tmp$;
     try {
       UserControlPanel_getInstance();
       ConsentPanel_getInstance();
-      (Kotlin.isType(tmp$ = document.querySelector('[tabindex="000000001"]'), HTMLElement) ? tmp$ : throwCCE()).focus();
     }
      catch (e) {
       println('\u4ECB\u9762\u521D\u59CB\u5316\u54C0\u5DE6: ' + e.toString());
