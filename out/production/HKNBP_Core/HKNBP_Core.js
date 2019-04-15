@@ -3121,8 +3121,10 @@ var HKNBP_Core = function (_, Kotlin) {
     jQuery('button').mousedown(UserControlPanel$setAllBuutonOnLongClickFeatures$lambda(this)).mouseup(UserControlPanel$setAllBuutonOnLongClickFeatures$lambda_0(this)).mouseout(UserControlPanel$setAllBuutonOnLongClickFeatures$lambda_1(this));
   };
   function UserControlPanel_init$lambda() {
+    var tmp$;
     UserControlPanel_getInstance().onShowUserControlPanel();
     jQuery('#panelShower').css('cursor', 'auto');
+    (Kotlin.isType(tmp$ = document.querySelector('[tabindex="100000002"]'), HTMLElement) ? tmp$ : throwCCE()).focus();
   }
   function UserControlPanel_init$lambda$lambda() {
     jQuery('#panelShower').css('cursor', 'none');
@@ -5634,7 +5636,7 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   package$hknbp_core.XMLTV = XMLTV;
   rootURL = 'https://hknbp.org/';
-  coreVersion = '0.9.1';
+  coreVersion = '0.9.2';
   appVersion = '0.9-Web';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();

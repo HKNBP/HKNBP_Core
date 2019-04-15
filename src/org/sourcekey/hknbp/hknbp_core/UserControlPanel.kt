@@ -31,6 +31,7 @@ object UserControlPanel: UserInterface(
         fun(){
             UserControlPanel.onShowUserControlPanel()
             jQuery("#panelShower").css("cursor", "auto")
+            (document.querySelector("[tabindex=\"100000002\"]") as HTMLElement).focus()
         },
         fun(){
             UserControlPanel.onHideUserControlPanel()
