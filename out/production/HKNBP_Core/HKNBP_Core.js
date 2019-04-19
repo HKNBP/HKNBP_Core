@@ -11,6 +11,7 @@ var HKNBP_Core = function (_, Kotlin) {
   var get_lastIndex = Kotlin.kotlin.collections.get_lastIndex_55thoc$;
   var ArrayList_init = Kotlin.kotlin.collections.ArrayList_init_287e2$;
   var Kind_CLASS = Kotlin.Kind.CLASS;
+  var println = Kotlin.kotlin.io.println_s8jyv4$;
   var toBoolean = Kotlin.kotlin.text.toBoolean_pdl1vz$;
   var toString = Kotlin.toString;
   var toInt = Kotlin.kotlin.text.toInt_pdl1vz$;
@@ -28,7 +29,6 @@ var HKNBP_Core = function (_, Kotlin) {
   var split = Kotlin.kotlin.text.split_ip8yn$;
   var ensureNotNull = Kotlin.ensureNotNull;
   var split_0 = Kotlin.kotlin.text.split_o64adg$;
-  var println = Kotlin.kotlin.io.println_s8jyv4$;
   var String_0 = String;
   var toDoubleOrNull = Kotlin.kotlin.text.toDoubleOrNull_pdl1vz$;
   var Enum = Kotlin.kotlin.Enum;
@@ -84,8 +84,6 @@ var HKNBP_Core = function (_, Kotlin) {
   UserControlPanel.prototype.constructor = UserControlPanel;
   VideoDescription.prototype = Object.create(UserInterface.prototype);
   VideoDescription.prototype.constructor = VideoDescription;
-  VirtualRemote.prototype = Object.create(UserInterface.prototype);
-  VirtualRemote.prototype.constructor = VirtualRemote;
   VolumeDescription.prototype = Object.create(UserInterface.prototype);
   VolumeDescription.prototype.constructor = VolumeDescription;
   XMLTV$MultiLanguage$MultiLanguageList.prototype = Object.create(ArrayList.prototype);
@@ -94,7 +92,7 @@ var HKNBP_Core = function (_, Kotlin) {
   XMLTV$Programme$ProgrammeList.prototype.constructor = XMLTV$Programme$ProgrammeList;
   function AboutWindow() {
     AboutWindow_instance = this;
-    UserInterface.call(this, 'aboutWindow', void 0, void 0, 'aboutWindowHideButton');
+    UserInterface.call(this, 'aboutWindow', void 0, void 0, 'aboutWindowHideButton', true);
     var tmp$, tmp$_0, tmp$_1, tmp$_2;
     this.aboutWindow_0 = Kotlin.isType(tmp$ = document.getElementById('aboutWindow'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('aboutWindowHideButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
@@ -126,7 +124,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function AppDownloadWindow() {
     AppDownloadWindow_instance = this;
-    UserInterface.call(this, 'appDownloadWindow', void 0, void 0, 'appDownloadWindowHideButton');
+    UserInterface.call(this, 'appDownloadWindow', void 0, void 0, 'appDownloadWindowHideButton', true);
     var tmp$;
     this.appDownloadWindow_0 = Kotlin.isType(tmp$ = document.getElementById('appDownloadWindow'), HTMLDivElement) ? tmp$ : throwCCE();
   }
@@ -364,6 +362,92 @@ var HKNBP_Core = function (_, Kotlin) {
       new AudioDescription();
     }
     return AudioDescription_instance;
+  }
+  function CanAutoplay() {
+    CanAutoplay_instance = this;
+    this.video = {type: 'video', method: 'video', params: null};
+    this.videoMuted = {type: 'videoMuted', method: 'video', params: {muted: true}};
+    this.videoInline = {type: 'videoInline', method: 'video', params: {inline: true}};
+    this.videoInlineMuted = {type: 'videoInlineMuted', method: 'video', params: {inline: true, muted: true}};
+    this.checkCanAutoplay_0(CanAutoplay_init$lambda(this), CanAutoplay_init$lambda_0(this), this.video);
+    this.checkCanAutoplay_0(CanAutoplay_init$lambda_1(this), CanAutoplay_init$lambda_2(this), this.videoMuted);
+    this.checkCanAutoplay_0(CanAutoplay_init$lambda_3(this), CanAutoplay_init$lambda_4(this), this.videoInline);
+    this.checkCanAutoplay_0(CanAutoplay_init$lambda_5(this), CanAutoplay_init$lambda_6(this), this.videoInlineMuted);
+  }
+  function CanAutoplay$checkCanAutoplay$lambda(closure$onCanAutoplay, closure$onCanNotAutoplay) {
+    return function (obj) {
+      var result = false;
+      try {
+        result = obj.result;
+      }
+       catch (e) {
+      }
+      if (result === true) {
+        closure$onCanAutoplay();
+      }
+       else {
+        closure$onCanNotAutoplay();
+      }
+    };
+  }
+  CanAutoplay.prototype.checkCanAutoplay_0 = function (onCanAutoplay, onCanNotAutoplay, autoplayType) {
+    var _canAutoplay = canAutoplay;
+    _canAutoplay[autoplayType.method](autoplayType.params).then(CanAutoplay$checkCanAutoplay$lambda(onCanAutoplay, onCanNotAutoplay));
+  };
+  CanAutoplay.prototype.checkVideoAutoPlayNeedToMute_9dmrm4$ = function (onNotNeedToMuteCanAutoplay, onNeedToMuteCanAutoplay) {
+    this.checkCanAutoplay_0(onNotNeedToMuteCanAutoplay, onNeedToMuteCanAutoplay, this.video);
+  };
+  function CanAutoplay_init$lambda(this$CanAutoplay) {
+    return function () {
+      println(this$CanAutoplay.video.type + '\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
+    };
+  }
+  function CanAutoplay_init$lambda_0(this$CanAutoplay) {
+    return function () {
+      println(this$CanAutoplay.video.type + '\u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
+    };
+  }
+  function CanAutoplay_init$lambda_1(this$CanAutoplay) {
+    return function () {
+      println(this$CanAutoplay.videoMuted.type + '\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
+    };
+  }
+  function CanAutoplay_init$lambda_2(this$CanAutoplay) {
+    return function () {
+      println(this$CanAutoplay.videoMuted.type + '\u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
+    };
+  }
+  function CanAutoplay_init$lambda_3(this$CanAutoplay) {
+    return function () {
+      println(this$CanAutoplay.videoInline.type + '\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
+    };
+  }
+  function CanAutoplay_init$lambda_4(this$CanAutoplay) {
+    return function () {
+      println(this$CanAutoplay.videoInline.type + '\u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
+    };
+  }
+  function CanAutoplay_init$lambda_5(this$CanAutoplay) {
+    return function () {
+      println(this$CanAutoplay.videoInlineMuted.type + '\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
+    };
+  }
+  function CanAutoplay_init$lambda_6(this$CanAutoplay) {
+    return function () {
+      println(this$CanAutoplay.videoInlineMuted.type + '\u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
+    };
+  }
+  CanAutoplay.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'CanAutoplay',
+    interfaces: []
+  };
+  var CanAutoplay_instance = null;
+  function CanAutoplay_getInstance() {
+    if (CanAutoplay_instance === null) {
+      new CanAutoplay();
+    }
+    return CanAutoplay_instance;
   }
   function ConsentPanel() {
     ConsentPanel_instance = this;
@@ -1024,25 +1108,34 @@ var HKNBP_Core = function (_, Kotlin) {
   EPG.prototype.loadProgrammeListTableContentChannelProgrammeTimeLine_0 = function (tvChannel) {
     tvChannel.information.getXMLTV_29qkou$(EPG$loadProgrammeListTableContentChannelProgrammeTimeLine$lambda(tvChannel, this));
   };
-  function EPG$setProgrammeListTable$lambda() {
-    jQuery('#epgProgrammeListChannelList').scrollTop(jQuery(this).scrollTop());
-    jQuery('#epgProgrammeListTimeLine').scrollLeft(jQuery(this).scrollLeft());
-  }
-  function EPG$setProgrammeListTable$lambda_0(this$EPG) {
+  function EPG$focusCurrentProgramme$lambda(this$EPG) {
     return function (xmltv) {
       var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
-      tmp$_0 = (tmp$ = xmltv.programmes) != null ? tmp$.getClosestNextProgrammeByTime_qjzqsm$(new Date()) : null;
+      tmp$_0 = (tmp$ = xmltv.programmes) != null ? tmp$.getProgrammeByTime() : null;
       if (tmp$_0 == null) {
         return;
       }
-      var firstFocusProgramme = tmp$_0;
-      var firstFocusTabIndex = Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(new Tab3dIndex((tmp$_1 = toIntOrNull(padStart(firstFocusProgramme.start.getDate().toString(), 2, 48) + padStart(firstFocusProgramme.start.getHours().toString(), 2, 48))) != null ? tmp$_1 : 0, (tmp$_3 = (tmp$_2 = get_tvChannels().node) != null ? tmp$_2.number : null) != null ? tmp$_3 : 0, this$EPG.tabIndexZ_0));
+      var currentProgramme = tmp$_0;
+      var firstFocusTabIndex = Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(new Tab3dIndex((tmp$_1 = toIntOrNull(padStart(currentProgramme.start.getDate().toString(), 2, 48) + padStart(currentProgramme.start.getHours().toString(), 2, 48))) != null ? tmp$_1 : 0, (tmp$_3 = (tmp$_2 = get_tvChannels().node) != null ? tmp$_2.number : null) != null ? tmp$_3 : 0, this$EPG.tabIndexZ_0));
       (Kotlin.isType(tmp$_4 = document.querySelector('[tabindex=' + '"' + firstFocusTabIndex + '"' + ']'), HTMLElement) ? tmp$_4 : throwCCE()).focus();
     };
   }
-  EPG.prototype.setProgrammeListTable_0 = function () {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6;
-    jQuery('#epgProgrammeListTable').on('scroll', EPG$setProgrammeListTable$lambda);
+  EPG.prototype.focusCurrentProgramme_0 = function () {
+    var tmp$, tmp$_0, tmp$_1;
+    (tmp$_1 = (tmp$_0 = (tmp$ = get_tvChannels().node) != null ? tmp$.information : null) != null ? (tmp$_0.getXMLTV_29qkou$(EPG$focusCurrentProgramme$lambda(this)), Unit) : null) != null ? tmp$_1 : jQuery('#epgHideButton').focus();
+  };
+  EPG.prototype.setChannelProgrammeTimeLineContent_0 = function () {
+    var tmp$, tmp$_0;
+    tmp$ = get_tvChannels().iterator();
+    while (tmp$.hasNext()) {
+      var tvChannel = tmp$.next();
+      var id = 'channel' + tvChannel.number + 'ProgrammeTimeLine';
+      this.addProgrammeOnTimeLine_0(Kotlin.isType(tmp$_0 = document.getElementById(id), HTMLDivElement) ? tmp$_0 : throwCCE(), tvChannel, new XMLTV$Programme(this.fromDate_0, this.toDate_0, void 0, void 0, void 0, void 0, void 0, XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init_0([new XMLTV$Programme$Title(void 0, '\u66AB\u7121\u8CC7\u8A0A')])));
+      this.loadProgrammeListTableContentChannelProgrammeTimeLine_0(tvChannel);
+    }
+  };
+  EPG.prototype.newChannelProgrammeTimeLineArea_0 = function () {
+    var tmp$, tmp$_0;
     var programmeListTable = Kotlin.isType(tmp$ = document.getElementById('epgProgrammeListTable'), HTMLElement) ? tmp$ : throwCCE();
     var content = '';
     tmp$_0 = get_tvChannels().iterator();
@@ -1053,14 +1146,19 @@ var HKNBP_Core = function (_, Kotlin) {
       content += '<\/div>';
     }
     programmeListTable.innerHTML = content;
-    tmp$_1 = get_tvChannels().iterator();
-    while (tmp$_1.hasNext()) {
-      var tvChannel_0 = tmp$_1.next();
-      var id_0 = 'channel' + tvChannel_0.number + 'ProgrammeTimeLine';
-      this.addProgrammeOnTimeLine_0(Kotlin.isType(tmp$_2 = document.getElementById(id_0), HTMLDivElement) ? tmp$_2 : throwCCE(), tvChannel_0, new XMLTV$Programme(this.fromDate_0, this.toDate_0, void 0, void 0, void 0, void 0, void 0, XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init_0([new XMLTV$Programme$Title(void 0, '\u66AB\u7121\u8CC7\u8A0A')])));
-      this.loadProgrammeListTableContentChannelProgrammeTimeLine_0(tvChannel_0);
-    }
-    (tmp$_6 = (tmp$_4 = (tmp$_3 = get_tvChannels().node) != null ? tmp$_3.information : null) != null ? (tmp$_4.getXMLTV_29qkou$(EPG$setProgrammeListTable$lambda_0(this)), Unit) : null) != null ? tmp$_6 : (Kotlin.isType(tmp$_5 = document.querySelector('[tabindex="399999999"]'), HTMLElement) ? tmp$_5 : throwCCE()).focus();
+  };
+  function EPG$syncScroll$lambda() {
+    jQuery('#epgProgrammeListChannelList').scrollTop(jQuery(this).scrollTop());
+    jQuery('#epgProgrammeListTimeLine').scrollLeft(jQuery(this).scrollLeft());
+  }
+  EPG.prototype.syncScroll_0 = function () {
+    jQuery('#epgProgrammeListTable').on('scroll', EPG$syncScroll$lambda);
+  };
+  EPG.prototype.setProgrammeListTable_0 = function () {
+    this.syncScroll_0();
+    this.newChannelProgrammeTimeLineArea_0();
+    this.setChannelProgrammeTimeLineContent_0();
+    this.focusCurrentProgramme_0();
   };
   EPG.prototype.setProgrammeList_0 = function () {
     this.setProgrammeListCurrentDisplayDate_0();
@@ -1138,7 +1236,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function FeedbackWindow() {
     FeedbackWindow_instance = this;
-    UserInterface.call(this, 'feedbackWindow', void 0, void 0, 'feedbackWindowHideButton');
+    UserInterface.call(this, 'feedbackWindow', void 0, void 0, 'feedbackWindowHideButton', true);
     var tmp$;
     this.feedbackWindow_0 = Kotlin.isType(tmp$ = document.getElementById('feedbackWindow'), HTMLDivElement) ? tmp$ : throwCCE();
   }
@@ -1453,6 +1551,67 @@ var HKNBP_Core = function (_, Kotlin) {
     get_player().addOnPlayerEventListener_j8fzjz$(new updateChannel$ObjectLiteral());
     VirtualRemote_getInstance().update();
   }
+  function OnLongClick(onLongClickProgram) {
+    this.onLongClickProgram = onLongClickProgram;
+    this.pressTimer_0 = 0;
+    this.isPressDown = false;
+  }
+  function OnLongClick$mousedown$lambda$lambda(this$OnLongClick) {
+    return function () {
+      this$OnLongClick.onLongClickProgram();
+    };
+  }
+  function OnLongClick$mousedown$lambda(this$OnLongClick) {
+    return function () {
+      if (this$OnLongClick.isPressDown) {
+        this$OnLongClick.pressTimer_0 = window.setInterval(OnLongClick$mousedown$lambda$lambda(this$OnLongClick), 100);
+      }
+    };
+  }
+  OnLongClick.prototype.mousedown = function () {
+    this.isPressDown = true;
+    window.setTimeout(OnLongClick$mousedown$lambda(this), 500);
+    return false;
+  };
+  OnLongClick.prototype.mouseup = function () {
+    this.isPressDown = false;
+    window.clearInterval(this.pressTimer_0);
+    return false;
+  };
+  OnLongClick.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'OnLongClick',
+    interfaces: []
+  };
+  function onLongClick$lambda() {
+  }
+  var onLongClick;
+  function get_onLongClick() {
+    return onLongClick;
+  }
+  function set_onLongClick(value) {
+    onLongClick.mouseup();
+    onLongClick = value;
+  }
+  function setAllBuutonOnLongClickFeatures$lambda$lambda(closure$button) {
+    return function () {
+      closure$button.click();
+    };
+  }
+  function setAllBuutonOnLongClickFeatures$lambda() {
+    var button = jQuery(this);
+    set_onLongClick(new OnLongClick(setAllBuutonOnLongClickFeatures$lambda$lambda(button)));
+    get_onLongClick().mousedown();
+  }
+  function setAllBuutonOnLongClickFeatures$lambda_0() {
+    get_onLongClick().mouseup();
+  }
+  function setAllBuutonOnLongClickFeatures$lambda_1() {
+    get_onLongClick().mouseup();
+  }
+  function setAllBuutonOnLongClickFeatures() {
+    jQuery('button').mousedown(setAllBuutonOnLongClickFeatures$lambda).mouseup(setAllBuutonOnLongClickFeatures$lambda_0).mouseout(setAllBuutonOnLongClickFeatures$lambda_1);
+  }
   function main$lambda$ObjectLiteral() {
   }
   main$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
@@ -1473,149 +1632,12 @@ var HKNBP_Core = function (_, Kotlin) {
     try {
       UserControlPanel_getInstance();
       ConsentPanel_getInstance();
+      setAllBuutonOnLongClickFeatures();
     }
      catch (e) {
       println('\u4ECB\u9762\u521D\u59CB\u5316\u54C0\u5DE6: ' + e.toString());
     }
     TVChannel$Companion_getInstance().getTVChannels_94t8aj$(main$lambda);
-  }
-  function Modernizr_0() {
-    Modernizr_instance = this;
-    !function (A, e) {
-      function o(A, e) {
-        return typeof A === e;
-      }
-      function n() {
-        var A, e, n, t, a, c, R;
-        for (var E in i) {
-          if (A = [], e = i[E], e.name && (A.push(e.name.toLowerCase()), e.options && e.options.aliases && e.options.aliases.length))
-            for (n = 0; n < e.options.aliases.length; n++)
-              A.push(e.options.aliases[n].toLowerCase());
-          for (t = o(e.fn, 'function') ? e.fn() : e.fn, a = 0; a < A.length; a++)
-            c = A[a], R = c.split('.'), 1 === R.length ? (Modernizr[R[0]] = t) : (!Modernizr[R[0]] || Modernizr[R[0]] instanceof Boolean || (Modernizr[R[0]] = new Boolean(Modernizr[R[0]])), Modernizr[R[0]][R[1]] = t), l.push((t ? '' : 'no-') + R.join('-'));
-        }
-      }
-      function t(A) {
-        var e = R.className, o = Modernizr._config.classPrefix || '';
-        if (Modernizr._config.enableJSClass) {
-          var n = new RegExp('(^|\\s)' + o + 'no-js(\\s|$)');
-          e = e.replace(n, '$1' + o + 'js$2');
-        }
-        Modernizr._config.enableClasses && (e += ' ' + o + A.join(' ' + o), R.className = e);
-      }
-      function a(A, e) {
-        if ('object' == typeof A)
-          for (var o in A)
-            s(A, o) && a(o, A[o]);
-        else {
-          A = A.toLowerCase();
-          var n = A.split('.'), i = Modernizr[n[0]];
-          if (2 == n.length && (i = i[n[1]]), 'undefined' != typeof i)
-            return Modernizr;
-          e = 'function' == typeof e ? e() : e, 1 == n.length ? (Modernizr[n[0]] = e) : (!Modernizr[n[0]] || Modernizr[n[0]] instanceof Boolean || (Modernizr[n[0]] = new Boolean(Modernizr[n[0]])), Modernizr[n[0]][n[1]] = e), t([(e && 0 != e ? '' : 'no-') + n.join('-')]), Modernizr._trigger(A, e);
-        }
-        return Modernizr;
-      }
-      var i = [], c = {_version: '3.0.0-alpha.3', _config: {classPrefix: '', enableClasses: !0, enableJSClass: !0, usePrefixes: !0}, _q: [], on: function (A, e) {
-        var o = this;
-        setTimeout(function () {
-          e(o[A]);
-        }, 0);
-      }, addTest: function (A, e, o) {
-        i.push({name: A, fn: e, options: o});
-      }, addAsyncTest: function (A) {
-        i.push({name: null, fn: A});
-      }}, Modernizr = function () {
-      };
-      Modernizr.prototype = c, Modernizr = new Modernizr();
-      var l = [], R = e.documentElement, E = function () {
-        return 'function' != typeof e.createElement ? e.createElement(arguments[0]) : e.createElement.apply(e, arguments);
-      };
-      Modernizr.addTest('video', function () {
-        var A = E('video'), e = !1;
-        try {
-          (e = !!A.canPlayType) && (e = new Boolean(e), e.ogg = A.canPlayType('video/ogg; codecs="theora"').replace(/^no$/, ''), e.h264 = A.canPlayType('video/mp4; codecs="avc1.42E01E"').replace(/^no$/, ''), e.webm = A.canPlayType('video/webm; codecs="vp8, vorbis"').replace(/^no$/, ''), e.vp9 = A.canPlayType('video/webm; codecs="vp9"').replace(/^no$/, ''), e.hls = A.canPlayType('application/x-mpegURL; codecs="avc1.42E01E"').replace(/^no$/, ''));
-        }
-         catch (o) {
-        }
-        return e;
-      });
-      var s;
-      (function () {
-        var A = {}.hasOwnProperty;
-        s = o(A, 'undefined') || o(A.call, 'undefined') ? function (A, e) {
-          return e in A && o(A.constructor.prototype[e], 'undefined');
-        } : function (e, o) {
-          return A.call(e, o);
-        };
-      }(), c._l = {}, c.on = function (A, e) {
-        this._l[A] || (this._l[A] = []), this._l[A].push(e), Modernizr.hasOwnProperty(A) && setTimeout(function () {
-          Modernizr._trigger(A, Modernizr[A]);
-        }, 0);
-      }, c._trigger = function (A, e) {
-        if (this._l[A]) {
-          var o = this._l[A];
-          setTimeout(function () {
-            var A, n;
-            for (A = 0; A < o.length; A++)
-              (n = o[A])(e);
-          }, 0), delete this._l[A];
-        }
-      }, Modernizr._q.push(function () {
-        c.addTest = a;
-      }), Modernizr.addAsyncTest(function () {
-        var A, e = 300, o = E('video'), n = o.style, t = function (e) {
-          clearTimeout(A), o.removeEventListener('playing', t), a('videoautoplay', e && 'playing' === e.type || 0 !== o.currentTime), o.parentNode.removeChild(o);
-        };
-        if (!(Modernizr.video && 'autoplay' in o))
-          return void a('videoautoplay', !1);
-        n.position = 'absolute', n.height = 0, n.width = 0;
-        try {
-          if (Modernizr.video.ogg)
-            o.src = 'data:video/ogg;base64,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';
-          else {
-            if (!Modernizr.video.h264)
-              return void a('videoautoplay', !1);
-            o.src = 'data:video/mp4;base64,AAAAHGZ0eXBtcDQyAAAAAG1wNDJpc29tYXZjMQAAAz5tb292AAAAbG12aGQAAAAAzaNacc2jWnEAAV+QAAFfkAABAAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAGGlvZHMAAAAAEICAgAcAT////3//AAACQ3RyYWsAAABcdGtoZAAAAAHNo1pxzaNacQAAAAEAAAAAAAFfkAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAAAEAAAABAAAAAAAd9tZGlhAAAAIG1kaGQAAAAAzaNacc2jWnEAAV+QAAFfkFXEAAAAAAAhaGRscgAAAAAAAAAAdmlkZQAAAAAAAAAAAAAAAAAAAAGWbWluZgAAABR2bWhkAAAAAQAAAAAAAAAAAAAAJGRpbmYAAAAcZHJlZgAAAAAAAAABAAAADHVybCAAAAABAAABVnN0YmwAAACpc3RzZAAAAAAAAAABAAAAmWF2YzEAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAEAAQAEgAAABIAAAAAAAAAAEOSlZUL0FWQyBDb2RpbmcAAAAAAAAAAAAAAAAAAAAAAAAY//8AAAAxYXZjQwH0AAr/4QAZZ/QACq609NQYBBkAAAMAAQAAAwAKjxImoAEABWjOAa8gAAAAEmNvbHJuY2xjAAYAAQAGAAAAGHN0dHMAAAAAAAAAAQAAAAUAAEZQAAAAKHN0c3oAAAAAAAAAAAAAAAUAAAIqAAAACAAAAAgAAAAIAAAACAAAAChzdHNjAAAAAAAAAAIAAAABAAAABAAAAAEAAAACAAAAAQAAAAEAAAAYc3RjbwAAAAAAAAACAAADYgAABaQAAAAUc3RzcwAAAAAAAAABAAAAAQAAABFzZHRwAAAAAAREREREAAAAb3VkdGEAAABnbWV0YQAAAAAAAAAhaGRscgAAAAAAAAAAbWRpcgAAAAAAAAAAAAAAAAAAAAA6aWxzdAAAADKpdG9vAAAAKmRhdGEAAAABAAAAAEhhbmRCcmFrZSAwLjkuOCAyMDEyMDcxODAwAAACUm1kYXQAAAHkBgX/4NxF6b3m2Ui3lizYINkj7u94MjY0IC0gY29yZSAxMjAgLSBILjI2NC9NUEVHLTQgQVZDIGNvZGVjIC0gQ29weWxlZnQgMjAwMy0yMDExIC0gaHR0cDovL3d3dy52aWRlb2xhbi5vcmcveDI2NC5odG1sIC0gb3B0aW9uczogY2FiYWM9MCByZWY9MSBkZWJsb2NrPTE6MDowIGFuYWx5c2U9MHgxOjAgbWU9ZXNhIHN1Ym1lPTkgcHN5PTAgbWl4ZWRfcmVmPTAgbWVfcmFuZ2U9NCBjaHJvbWFfbWU9MSB0cmVsbGlzPTAgOHg4ZGN0PTAgY3FtPTAgZGVhZHpvbmU9MjEsMTEgZmFzdF9wc2tpcD0wIGNocm9tYV9xcF9vZmZzZXQ9MCB0aHJlYWRzPTYgc2xpY2VkX3RocmVhZHM9MCBucj0wIGRlY2ltYXRlPTEgaW50ZXJsYWNlZD0wIGJsdXJheV9jb21wYXQ9MCBjb25zdHJhaW5lZF9pbnRyYT0wIGJmcmFtZXM9MCB3ZWlnaHRwPTAga2V5aW50PTUwIGtleWludF9taW49NSBzY2VuZWN1dD00MCBpbnRyYV9yZWZyZXNoPTAgcmM9Y3FwIG1idHJlZT0wIHFwPTAAgAAAAD5liISscR8A+E4ACAACFoAAITAAAgsAAPgYCoKgoC+L4vi+KAvi+L4YfAEAACMzgABF9AAEUGUgABDJiXnf4AAAAARBmiKUAAAABEGaQpQAAAAEQZpilAAAAARBmoKU';
-          }
-        }
-         catch (i) {
-          return void a('videoautoplay', !1);
-        }
-        o.setAttribute('autoplay', ''), o.style = 'display:none', R.appendChild(o), setTimeout(function () {
-          o.addEventListener('playing', t), A = setTimeout(t, e);
-        }, 0);
-      }), n(), delete c.addTest, delete c.addAsyncTest);
-      for (var r = 0; r < Modernizr._q.length; r++)
-        Modernizr._q[r]();
-      A.Modernizr = Modernizr;
-    }(window, document);
-  }
-  function Modernizr$checkVideoAutoPlay$lambda(closure$onSupportAutoplay, closure$onNotSupportAutoplay) {
-    return function (result) {
-      if (result) {
-        closure$onSupportAutoplay();
-      }
-       else {
-        closure$onNotSupportAutoplay();
-      }
-    };
-  }
-  Modernizr_0.prototype.checkVideoAutoPlay_9dmrm4$ = function (onSupportAutoplay, onNotSupportAutoplay) {
-    var modernizr = Modernizr;
-    modernizr.on('videoautoplay', Modernizr$checkVideoAutoPlay$lambda(onSupportAutoplay, onNotSupportAutoplay));
-  };
-  Modernizr_0.$metadata$ = {
-    kind: Kind_OBJECT,
-    simpleName: 'Modernizr',
-    interfaces: []
-  };
-  var Modernizr_instance = null;
-  function Modernizr_getInstance() {
-    if (Modernizr_instance === null) {
-      new Modernizr_0();
-    }
-    return Modernizr_instance;
   }
   function MutedDescription() {
     MutedDescription_instance = this;
@@ -1985,6 +2007,16 @@ var HKNBP_Core = function (_, Kotlin) {
     kind: Kind_CLASS,
     interfaces: [ArrayLinkList$OnNodeEventListener]
   };
+  function Player$onPlaying$lambda(this$Player) {
+    return function () {
+      this$Player.muted = false;
+    };
+  }
+  function Player$onPlaying$lambda_0(this$Player) {
+    return function () {
+      this$Player.muted = true;
+    };
+  }
   Player.prototype.onPlaying_0 = function () {
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22;
     try {
@@ -2023,6 +2055,7 @@ var HKNBP_Core = function (_, Kotlin) {
       println('\u983B\u9053\u97FFiframe\u7A0B\u5E8F\u672A\u884C\u5B8C\u597D \u6216\u8005 Get\u5514\u5230\u97F3\u91CF\u8CC7\u8A0A: ' + e.toString());
     }
     try {
+      CanAutoplay_getInstance().checkVideoAutoPlayNeedToMute_9dmrm4$(Player$onPlaying$lambda(this), Player$onPlaying$lambda_0(this));
       this.muted = true;
     }
      catch (e) {
@@ -2249,7 +2282,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function SettingWindow() {
     SettingWindow_instance = this;
-    UserInterface.call(this, 'settingWindow', void 0, void 0, 'settingWindowHideButton');
+    UserInterface.call(this, 'settingWindow', void 0, void 0, 'settingWindowHideButton', true);
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11;
     this.settingWindow_0 = Kotlin.isType(tmp$ = document.getElementById('settingWindow'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('settingWindowHideButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
@@ -2411,7 +2444,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function ShareWindow() {
     ShareWindow_instance = this;
-    UserInterface.call(this, 'shareWindow', ShareWindow_init$lambda, void 0, 'shareWindowHideButton');
+    UserInterface.call(this, 'shareWindow', ShareWindow_init$lambda, void 0, 'shareWindowHideButton', true);
     var tmp$, tmp$_0, tmp$_1;
     this.shareWindow_0 = Kotlin.isType(tmp$ = document.getElementById('shareWindow'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('shareWindowHideButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
@@ -2810,7 +2843,6 @@ var HKNBP_Core = function (_, Kotlin) {
     (tmp$_0 = (tmp$ = get_tvChannels().node) != null ? tmp$.information : null) != null ? (tmp$_0.getXMLTV_29qkou$(TVChannelDescription$setCurrentProgrammeCategory$lambda(this)), Unit) : null;
   };
   TVChannelDescription.prototype.update = function () {
-    println('xxx1');
     this.setCurrentChannelName_0();
     this.setCurrentChannelNumber_0();
     this.setCurrentDate_0();
@@ -2820,7 +2852,6 @@ var HKNBP_Core = function (_, Kotlin) {
     this.setCurrentProgrammeDesc_0();
     this.setCurrentProgrammeBroadcastTime_0();
     this.setCurrentProgrammeCategory_0();
-    println('xxx');
   };
   function TVChannelDescription_init$lambda() {
     TVChannelDescription_getInstance().update();
@@ -2987,7 +3018,6 @@ var HKNBP_Core = function (_, Kotlin) {
     this.hideMouseTimer_r29tyc$_0 = 0;
     this.onShowUserControlPanel = UserControlPanel$onShowUserControlPanel$lambda;
     this.onHideUserControlPanel = UserControlPanel$onHideUserControlPanel$lambda;
-    this.onLongClick_jizysp$_0 = new UserControlPanel$OnLongClick(UserControlPanel$onLongClick$lambda);
     VirtualRemote_getInstance();
     FullScreenButton_getInstance();
     PictureInPictureButton_getInstance();
@@ -3000,7 +3030,6 @@ var HKNBP_Core = function (_, Kotlin) {
     this.panel_0.onfocus = UserControlPanel_init$lambda_7(this);
     var _shower = this.shower_0;
     _shower.ontouchstart = UserControlPanel_init$lambda_8(this);
-    this.setAllBuutonOnLongClickFeatures_0();
   }
   Object.defineProperty(UserControlPanel.prototype, 'hideMouseTimer_0', {
     get: function () {
@@ -3011,72 +3040,6 @@ var HKNBP_Core = function (_, Kotlin) {
       this.hideMouseTimer_r29tyc$_0 = value;
     }
   });
-  function UserControlPanel$OnLongClick(onLongClickProgram) {
-    this.onLongClickProgram = onLongClickProgram;
-    this.pressTimer_0 = 0;
-    this.isPressDown = false;
-  }
-  function UserControlPanel$OnLongClick$mousedown$lambda$lambda(this$OnLongClick) {
-    return function () {
-      this$OnLongClick.onLongClickProgram();
-    };
-  }
-  function UserControlPanel$OnLongClick$mousedown$lambda(this$OnLongClick) {
-    return function () {
-      if (this$OnLongClick.isPressDown) {
-        this$OnLongClick.pressTimer_0 = window.setInterval(UserControlPanel$OnLongClick$mousedown$lambda$lambda(this$OnLongClick), 100);
-      }
-    };
-  }
-  UserControlPanel$OnLongClick.prototype.mousedown = function () {
-    this.isPressDown = true;
-    window.setTimeout(UserControlPanel$OnLongClick$mousedown$lambda(this), 500);
-    return false;
-  };
-  UserControlPanel$OnLongClick.prototype.mouseup = function () {
-    this.isPressDown = false;
-    window.clearInterval(this.pressTimer_0);
-    return false;
-  };
-  UserControlPanel$OnLongClick.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'OnLongClick',
-    interfaces: []
-  };
-  Object.defineProperty(UserControlPanel.prototype, 'onLongClick_0', {
-    get: function () {
-      return this.onLongClick_jizysp$_0;
-    },
-    set: function (value) {
-      this.onLongClick_jizysp$_0.mouseup();
-      this.onLongClick_jizysp$_0 = value;
-    }
-  });
-  function UserControlPanel$setAllBuutonOnLongClickFeatures$lambda$lambda(closure$button) {
-    return function () {
-      closure$button.click();
-    };
-  }
-  function UserControlPanel$setAllBuutonOnLongClickFeatures$lambda(this$UserControlPanel) {
-    return function () {
-      var button = jQuery(this);
-      this$UserControlPanel.onLongClick_0 = new UserControlPanel$OnLongClick(UserControlPanel$setAllBuutonOnLongClickFeatures$lambda$lambda(button));
-      this$UserControlPanel.onLongClick_0.mousedown();
-    };
-  }
-  function UserControlPanel$setAllBuutonOnLongClickFeatures$lambda_0(this$UserControlPanel) {
-    return function () {
-      this$UserControlPanel.onLongClick_0.mouseup();
-    };
-  }
-  function UserControlPanel$setAllBuutonOnLongClickFeatures$lambda_1(this$UserControlPanel) {
-    return function () {
-      this$UserControlPanel.onLongClick_0.mouseup();
-    };
-  }
-  UserControlPanel.prototype.setAllBuutonOnLongClickFeatures_0 = function () {
-    jQuery('button').mousedown(UserControlPanel$setAllBuutonOnLongClickFeatures$lambda(this)).mouseup(UserControlPanel$setAllBuutonOnLongClickFeatures$lambda_0(this)).mouseout(UserControlPanel$setAllBuutonOnLongClickFeatures$lambda_1(this));
-  };
   function UserControlPanel_init$lambda() {
     UserControlPanel_getInstance().onShowUserControlPanel();
     jQuery('#panelShower').css('cursor', 'auto');
@@ -3091,8 +3054,6 @@ var HKNBP_Core = function (_, Kotlin) {
   function UserControlPanel$onShowUserControlPanel$lambda() {
   }
   function UserControlPanel$onHideUserControlPanel$lambda() {
-  }
-  function UserControlPanel$onLongClick$lambda() {
   }
   function UserControlPanel_init$lambda_1(this$UserControlPanel) {
     return function (event) {
@@ -3156,22 +3117,25 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return UserControlPanel_instance;
   }
-  function UserInterface(htmlElementID, onShow, onHide, firstFocusElementID) {
+  function UserInterface(htmlElementID, onShow, onHide, firstFocusElementID, isFocuxOutHide) {
     if (onShow === void 0)
       onShow = UserInterface_init$lambda;
     if (onHide === void 0)
       onHide = UserInterface_init$lambda_0;
     if (firstFocusElementID === void 0)
       firstFocusElementID = null;
-    this.htmlElementID = htmlElementID;
+    if (isFocuxOutHide === void 0)
+      isFocuxOutHide = false;
+    this.htmlElementID_fynci$_0 = htmlElementID;
     this.onShow_5c20oy$_0 = onShow;
     this.onHide_5i3ctj$_0 = onHide;
     this.firstFocusElementID_ydky23$_0 = firstFocusElementID;
+    this.isFocuxOutHide_gmfj99$_0 = isFocuxOutHide;
     var tmp$;
-    this.htmlElement_sdspbr$_0 = Kotlin.isType(tmp$ = document.getElementById(this.htmlElementID), HTMLElement) ? tmp$ : throwCCE();
+    this.htmlElement_sdspbr$_0 = Kotlin.isType(tmp$ = document.getElementById(this.htmlElementID_fynci$_0), HTMLElement) ? tmp$ : throwCCE();
     this.lastTimeFocusElement_bd4klp$_0 = jQuery('#' + toString(this.firstFocusElementID_ydky23$_0));
     this.hideTimer_1c3smv$_rf6tp$_0 = 0;
-    jQuery('#' + this.htmlElementID + ' button' + ',' + ('#' + this.htmlElementID + ' select') + ',' + ('#' + this.htmlElementID + ' option') + ',' + ('#' + this.htmlElementID + ' input')).focus(UserInterface_init$lambda_1(this));
+    jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input')).focus(UserInterface_init$lambda_1(this));
   }
   Object.defineProperty(UserInterface.prototype, 'hideTimer_1c3smv$_0', {
     get: function () {
@@ -3189,9 +3153,11 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   UserInterface.prototype.show = function () {
     var tmp$;
-    this.htmlElement_sdspbr$_0.style.display = 'block';
-    (tmp$ = this.lastTimeFocusElement_bd4klp$_0) != null ? tmp$.focus() : null;
-    this.onShow_5c20oy$_0();
+    if (!this.isShow) {
+      this.htmlElement_sdspbr$_0.style.display = 'block';
+      (tmp$ = this.lastTimeFocusElement_bd4klp$_0) != null ? tmp$.focus() : null;
+      this.onShow_5c20oy$_0();
+    }
   };
   function UserInterface$show$lambda(this$UserInterface) {
     return function () {
@@ -3287,7 +3253,6 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   function VirtualRemote() {
     VirtualRemote_instance = this;
-    UserInterface.call(this, 'virtualRemote', void 0, void 0, 'onHeadNextAudioButton');
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22, tmp$_23, tmp$_24, tmp$_25, tmp$_26, tmp$_27, tmp$_28, tmp$_29, tmp$_30, tmp$_31, tmp$_32, tmp$_33, tmp$_34, tmp$_35, tmp$_36, tmp$_37, tmp$_38, tmp$_39, tmp$_40, tmp$_41, tmp$_42, tmp$_43, tmp$_44, tmp$_45, tmp$_46, tmp$_47, tmp$_48, tmp$_49, tmp$_50, tmp$_51, tmp$_52, tmp$_53, tmp$_54, tmp$_55;
     this.virtualRemote_0 = Kotlin.isType(tmp$ = document.getElementById('virtualRemote'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideVirtualRemoteButton = Kotlin.isType(tmp$_0 = document.getElementById('hideVirtualRemoteButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
@@ -3803,7 +3768,7 @@ var HKNBP_Core = function (_, Kotlin) {
   VirtualRemote.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'VirtualRemote',
-    interfaces: [UserInterface]
+    interfaces: []
   };
   var VirtualRemote_instance = null;
   function VirtualRemote_getInstance() {
@@ -5398,6 +5363,9 @@ var HKNBP_Core = function (_, Kotlin) {
   Object.defineProperty(package$hknbp_core, 'AudioDescription', {
     get: AudioDescription_getInstance
   });
+  Object.defineProperty(package$hknbp_core, 'CanAutoplay', {
+    get: CanAutoplay_getInstance
+  });
   Object.defineProperty(package$hknbp_core, 'ConsentPanel', {
     get: ConsentPanel_getInstance
   });
@@ -5464,9 +5432,6 @@ var HKNBP_Core = function (_, Kotlin) {
   package$hknbp_core.designatedChannel = designatedChannel;
   package$hknbp_core.updateChannel = updateChannel;
   package$hknbp_core.main_kand9s$ = main;
-  Object.defineProperty(package$hknbp_core, 'Modernizr', {
-    get: Modernizr_getInstance
-  });
   Object.defineProperty(package$hknbp_core, 'MutedDescription', {
     get: MutedDescription_getInstance
   });
@@ -5606,6 +5571,7 @@ var HKNBP_Core = function (_, Kotlin) {
   appVersion = '0.9-Web';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();
+  onLongClick = new OnLongClick(onLongClick$lambda);
   main([]);
   Kotlin.defineModule('HKNBP_Core', _);
   return _;

@@ -18,7 +18,11 @@ import org.w3c.dom.HTMLDivElement
 import kotlin.browser.document
 import kotlin.browser.window
 
-object AppDownloadWindow: UserInterface("appDownloadWindow", firstFocusElementID = "appDownloadWindowHideButton") {
+object AppDownloadWindow: UserInterface(
+        "appDownloadWindow",
+        firstFocusElementID = "appDownloadWindowHideButton",
+        isFocuxOutHide = true
+) {
     private val appDownloadWindow: HTMLDivElement = document.getElementById("appDownloadWindow") as HTMLDivElement
 
     init { }

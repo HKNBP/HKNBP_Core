@@ -496,29 +496,27 @@ object EPG: UserInterface(
         })
     }
 
-    private fun setProgrammeListTable(){
-        //Scroll去依家嘅時間
-        //println(programmeListTimeLine.parentElement?.scrollWidth)
-        //(programmeListTable.parentElement as HTMLElement).style.width = programmeListTimeLine.scrollWidth.toString()
-        //programmeListTable.scrollLeft = (oneHourLengthPX() / 2) * (dateToDateDifferenceMinute(fromDate, nowDateWithoutMinute()) / 30)
+    /**
+     * Focus到依家頻道嘅節目
+     * */
+    private fun focusCurrentProgramme(){
+        tvChannels.node?.information?.getXMLTV(fun(xmltv){
+            val currentProgramme: Programme = xmltv.programmes?.getProgrammeByTime()?: return
+            val firstFocusTabIndex: String = Tab3dIndex.toUnparsedTabIndex(Tab3dIndex(
+                    (currentProgramme.start.getDate().toString().padStart(2, '0') +
+                            currentProgramme.start.getHours().toString().padStart(2, '0')
+                            ).toIntOrNull()?:0,
+                    tvChannels.node?.number?:0,
+                    tabIndexZ
+            ))
+            (document.querySelector("[tabindex=\"${firstFocusTabIndex}\"]") as HTMLElement).focus()
+        })?: jQuery("#epgHideButton").focus()
+    }
 
-        //將epgProgrammeListTimeLine同epgProgrammeListChannelList同epgProgrammeListTable嘅scroll同步
-        jQuery("#epgProgrammeListTable").on("scroll", fun(){
-            jQuery("#epgProgrammeListChannelList").scrollTop(jQuery(js("this")).scrollTop())
-            jQuery("#epgProgrammeListTimeLine").scrollLeft(jQuery(js("this")).scrollLeft())
-        })
-
-        //為每頻道建立ChannelProgrammeTimeLine空間
-        val programmeListTable = document.getElementById("epgProgrammeListTable") as HTMLElement
-        var content = ""
-        for (tvChannel in tvChannels){
-            val id = "channel${tvChannel.number}ProgrammeTimeLine"
-            content += "<div id=\""+id+"\">"
-            content += "</div>"
-        }
-        programmeListTable.innerHTML = content
-
-        //設定ChannelProgrammeTimeLine內容
+    /**
+     * 設定ChannelProgrammeTimeLine內容
+     * */
+    private fun setChannelProgrammeTimeLineContent(){
         for (tvChannel in tvChannels){
             val id = "channel${tvChannel.number}ProgrammeTimeLine"
             addProgrammeOnTimeLine((document.getElementById(id) as HTMLDivElement), tvChannel,
@@ -528,19 +526,37 @@ object EPG: UserInterface(
             )
             loadProgrammeListTableContentChannelProgrammeTimeLine(tvChannel)
         }
+    }
 
-        //Focus依家頻道嘅節目
-        tvChannels.node?.information?.getXMLTV(fun(xmltv){
-            val firstFocusProgramme: Programme = xmltv.programmes?.getClosestNextProgrammeByTime(Date())?: return
-            val firstFocusTabIndex: String = Tab3dIndex.toUnparsedTabIndex(Tab3dIndex(
-                    (firstFocusProgramme.start.getDate().toString().padStart(2, '0') +
-                            firstFocusProgramme.start.getHours().toString().padStart(2, '0')
-                            ).toIntOrNull()?:0,
-                    tvChannels.node?.number?:0,
-                    tabIndexZ
-            ))
-            (document.querySelector("[tabindex=\"${firstFocusTabIndex}\"]") as HTMLElement).focus()
-        })?: (document.querySelector("[tabindex=\"399999999\"]") as HTMLElement).focus()
+    /**
+     * 為每頻道建立ChannelProgrammeTimeLine空間
+     * */
+    private fun newChannelProgrammeTimeLineArea(){
+        val programmeListTable = document.getElementById("epgProgrammeListTable") as HTMLElement
+        var content = ""
+        for (tvChannel in tvChannels){
+            val id = "channel${tvChannel.number}ProgrammeTimeLine"
+            content += "<div id=\""+id+"\">"
+            content += "</div>"
+        }
+        programmeListTable.innerHTML = content
+    }
+
+    /**
+     * 將TimeLine同ChannelList同Table嘅scroll同步
+     * */
+    private fun syncScroll(){
+        jQuery("#epgProgrammeListTable").on("scroll", fun(){
+            jQuery("#epgProgrammeListChannelList").scrollTop(jQuery(js("this")).scrollTop())
+            jQuery("#epgProgrammeListTimeLine").scrollLeft(jQuery(js("this")).scrollLeft())
+        })
+    }
+
+    private fun setProgrammeListTable(){
+        syncScroll()
+        newChannelProgrammeTimeLineArea()
+        setChannelProgrammeTimeLineContent()
+        focusCurrentProgramme()
     }
 
     private fun setProgrammeList(){

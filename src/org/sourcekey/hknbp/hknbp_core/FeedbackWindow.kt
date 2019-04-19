@@ -18,7 +18,11 @@ import org.w3c.dom.HTMLDivElement
 import kotlin.browser.document
 import kotlin.browser.window
 
-object FeedbackWindow: UserInterface("feedbackWindow", firstFocusElementID = "feedbackWindowHideButton") {
+object FeedbackWindow: UserInterface(
+        "feedbackWindow",
+        firstFocusElementID = "feedbackWindowHideButton",
+        isFocuxOutHide = true
+) {
     private val feedbackWindow: HTMLDivElement = document.getElementById("feedbackWindow") as HTMLDivElement
 
     init { }

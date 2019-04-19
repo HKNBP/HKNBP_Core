@@ -266,6 +266,10 @@ class Player(private val tvChannel: TVChannel) {
                         fun(){ muted = true }
                 )
             }*/
+            CanAutoplay.checkVideoAutoPlayNeedToMute(
+                    fun(){ muted = false },
+                    fun(){ muted = true }
+            )
             muted = true
         }catch (e: dynamic) {println("頻道響iframe程序未行完好 或者 Get唔到靜音資訊: "+e.toString())}
 

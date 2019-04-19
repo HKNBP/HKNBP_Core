@@ -23,7 +23,7 @@ import kotlin.browser.localStorage
 import kotlin.browser.window
 
 
-object VirtualRemote: UserInterface("virtualRemote", firstFocusElementID = "onHeadNextAudioButton") {
+object VirtualRemote{
     private val virtualRemote       = document.getElementById("virtualRemote")              as HTMLDivElement
     val hideVirtualRemoteButton     = document.getElementById("hideVirtualRemoteButton")    as HTMLButtonElement
     val epgButton                   = document.getElementById("epgButton")                  as HTMLButtonElement
@@ -133,14 +133,14 @@ object VirtualRemote: UserInterface("virtualRemote", firstFocusElementID = "onHe
         updateSubtitleInformation()
     }
 
-    override val isShow: Boolean
+    val isShow: Boolean
         get() {return UserControlPanel.isShow}
 
-    override fun show(){
+    fun show(){
         UserControlPanel.show()
     }
 
-    override fun hide(){
+    fun hide(){
         UserControlPanel.hide()
     }
 

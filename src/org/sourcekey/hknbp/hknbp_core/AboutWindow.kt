@@ -20,7 +20,11 @@ import org.w3c.dom.HTMLElement
 import kotlin.browser.document
 import kotlin.browser.window
 
-object AboutWindow: UserInterface("aboutWindow", firstFocusElementID = "aboutWindowHideButton") {
+object AboutWindow: UserInterface(
+        "aboutWindow",
+        firstFocusElementID = "aboutWindowHideButton",
+        isFocuxOutHide = true
+) {
     private val aboutWindow: HTMLDivElement = document.getElementById("aboutWindow") as HTMLDivElement
     private val hideButton: HTMLButtonElement = document.getElementById("aboutWindowHideButton") as HTMLButtonElement
     private val coreVersionText: HTMLDivElement = document.getElementById("aboutWindowCoreVersionText") as HTMLDivElement

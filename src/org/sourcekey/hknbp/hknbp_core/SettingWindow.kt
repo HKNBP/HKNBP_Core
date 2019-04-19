@@ -19,7 +19,11 @@ import kotlin.browser.document
 import kotlin.browser.localStorage
 import kotlin.browser.window
 
-object SettingWindow: UserInterface("settingWindow", firstFocusElementID = "settingWindowHideButton") {
+object SettingWindow: UserInterface(
+        "settingWindow",
+        firstFocusElementID = "settingWindowHideButton",
+        isFocuxOutHide = true
+) {
     private val settingWindow                   = document.getElementById("settingWindow") as HTMLDivElement
     private val hideButton                      = document.getElementById("settingWindowHideButton") as HTMLButtonElement
     private val languageSetHonJyutElegantSet    = document.getElementById("settingWindowLanguageSetHonJyutElegantSet") as HTMLButtonElement

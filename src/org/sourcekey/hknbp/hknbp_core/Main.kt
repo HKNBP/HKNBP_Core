@@ -216,6 +216,59 @@ updateChannel()
 
 
 /**
+ * 用onmousedown加onmouseup實現<長撳>功能
+ *
+ * 由於完本HTML並無<長撳>功能
+ * */
+private class OnLongClick(val onLongClickProgram: ()->Unit){
+    private var pressTimer = 0
+    var isPressDown = false
+
+    fun mousedown(): Boolean{
+        isPressDown = true
+        window.setTimeout(fun(){
+            if(isPressDown){
+                pressTimer = window.setInterval(fun(){
+                    onLongClickProgram()
+                }, 100)
+            }
+        }, 500)
+        return false
+    }
+
+    fun mouseup(): Boolean{
+        isPressDown = false
+        window.clearInterval(pressTimer)
+        return false
+    }
+}
+
+/**
+ * 盛載當前長撳動作
+ */
+private var onLongClick = OnLongClick(fun(){})
+    set(value) {
+        field.mouseup()
+        field = value
+    }
+
+/**
+ * 設置所有Button擁有<長撳>功能
+ * 設置所有制當長撳制時不斷重複執行onClick程序
+ * */
+private fun setAllBuutonOnLongClickFeatures(){
+    jQuery("button").mousedown(fun(){
+        val button = jQuery(js("this"))
+        onLongClick = OnLongClick(fun(){button.click()})
+        onLongClick.mousedown()
+    }).mouseup(fun(){
+        onLongClick.mouseup()
+    }).mouseout(fun(){
+        onLongClick.mouseup()
+    })
+}
+
+/**
  * ****************************** *
  * 成個HKNBP_Core嘅Kotlin部分嘅開始 *
  * ****************************** *
@@ -224,6 +277,7 @@ fun main(args: Array<String>) {
     try {
         UserControlPanel
         ConsentPanel
+        setAllBuutonOnLongClickFeatures()
     } catch (e: dynamic) { println("介面初始化哀左: $e") }
 
     TVChannel.getTVChannels(fun(tvChannels_) {

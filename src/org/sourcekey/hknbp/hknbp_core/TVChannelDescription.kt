@@ -115,7 +115,6 @@ object TVChannelDescription: UserInterface("tvChannelDescription", fun(){ TVChan
     }
 
     fun update(){
-        println("xxx1")
         setCurrentChannelName()
         setCurrentChannelNumber()
         setCurrentDate()
@@ -125,6 +124,5 @@ object TVChannelDescription: UserInterface("tvChannelDescription", fun(){ TVChan
         setCurrentProgrammeDesc()
         setCurrentProgrammeBroadcastTime()
         setCurrentProgrammeCategory()
-        println("xxx")
     }
 }

@@ -72,58 +72,6 @@ object UserControlPanel: UserInterface(
      * */
     var onHideUserControlPanel: ()->Unit = fun(){}
 
-    /**
-     * 用onmousedown加onmouseup實現<長撳>功能
-     *
-     * 由於完本HTML並無<長撳>功能
-     * */
-    private class OnLongClick(val onLongClickProgram: ()->Unit){
-        private var pressTimer = 0
-        var isPressDown = false
-
-        fun mousedown(): Boolean{
-            isPressDown = true
-            window.setTimeout(fun(){
-                if(isPressDown){
-                    pressTimer = window.setInterval(fun(){
-                        onLongClickProgram()
-                    }, 100)
-                }
-            }, 500)
-            return false
-        }
-
-        fun mouseup(): Boolean{
-            isPressDown = false
-            window.clearInterval(pressTimer)
-            return false
-        }
-    }
-
-    /**
-     * 盛載當前長撳動作
-     */
-    private var onLongClick = OnLongClick(fun(){})
-        set(value) {
-            field.mouseup()
-            field = value
-        }
-
-    /**
-     * 設置所有Button擁有<長撳>功能
-     * */
-    private fun setAllBuutonOnLongClickFeatures(){
-        jQuery("button").mousedown(fun(){
-            val button = jQuery(js("this"))
-            onLongClick = OnLongClick(fun(){button.click()})
-            onLongClick.mousedown()
-        }).mouseup(fun(){
-            onLongClick.mouseup()
-        }).mouseout(fun(){
-            onLongClick.mouseup()
-        })
-    }
-
     init {
         //初始化各使用者控制界面
         VirtualRemote
@@ -172,8 +120,5 @@ object UserControlPanel: UserInterface(
                 show(15000)
             }
         }
-
-        //設置所有制當長撳制時不斷重複執行onClick程序
-        setAllBuutonOnLongClickFeatures()
     }
 }

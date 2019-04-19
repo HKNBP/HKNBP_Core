@@ -19,10 +19,11 @@ import kotlin.browser.document
 import kotlin.browser.window
 
 abstract class UserInterface(
-        val htmlElementID: String,
+        private val htmlElementID: String,
         private val onShow: ()->Unit = fun(){},
         private val onHide: ()->Unit = fun(){},
-        private val firstFocusElementID: String? = null
+        private val firstFocusElementID: String? = null,
+        private val isFocuxOutHide: Boolean = false
 ) {
     private val htmlElement = document.getElementById(htmlElementID) as HTMLElement
     private var lastTimeFocusElement: dynamic = jQuery("#${firstFocusElementID}")
@@ -36,15 +37,17 @@ abstract class UserInterface(
             field = value
         }
 
-    open val isShow: Boolean
+    val isShow: Boolean
         get(){
             return htmlElement.style.display == "block"
         }
 
-    open fun show(){
-        htmlElement.style.display = "block"
-        lastTimeFocusElement?.focus()
-        onShow()
+    fun show(){
+        if(!isShow){
+            htmlElement.style.display = "block"
+            lastTimeFocusElement?.focus()
+            onShow()
+        }
     }
 
     fun show(showTime: Int){
@@ -52,7 +55,7 @@ abstract class UserInterface(
         show()
     }
 
-    open fun hide(){
+    fun hide(){
         htmlElement.style.display = "none"
         onHide()
     }
@@ -73,5 +76,12 @@ abstract class UserInterface(
             //設定依家Focus邊粒element為之後再Show呢個介面時Focus返對上個次嘅element
             lastTimeFocusElement = jQuery(js("this"))
         })
+
+        /**
+        jQuery("#${htmlElementID}").blur(fun(){
+            if(isFocuxOutHide){
+                hide()
+            }
+        })*/
     }
 }
