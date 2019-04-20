@@ -256,6 +256,13 @@ class Player(private val tvChannel: TVChannel) {
         for(event in onPlayerEvents){ event.on(OnPlayerEvent.notPlaying) }
     }
 
+    /**
+     *  播放
+     */
+    fun play(){
+        iframePlayer?.contentWindow?.onSetIframePlayerPlay()
+    }
+
     /******************************************************************************************************************/
     /**
     /**

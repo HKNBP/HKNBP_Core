@@ -22,7 +22,7 @@ import kotlin.js.Date
 
 
 val rootURL: String     = "https://hknbp.org/"
-val coreVersion: String = "0.9.5"
+val coreVersion: String = "0.9.6"
 var appVersion: String  = "0.9-Web"
 
 val jQuery: dynamic = js("\$")
@@ -162,6 +162,7 @@ fun updateChannel() {
             }
         }
     })
+    player.play()
     VirtualRemote.update()
 }
 

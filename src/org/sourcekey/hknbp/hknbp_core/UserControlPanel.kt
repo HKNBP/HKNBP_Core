@@ -81,6 +81,7 @@ object UserControlPanel: UserInterface(
         //設定使用者控制界面顯示方法
         ////滑鼠////
         shower.onclick = fun(event){
+            player.play()
             if(panel.style.display==="block"){
                 hide()
             }else{

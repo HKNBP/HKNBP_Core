@@ -1555,6 +1555,7 @@ var HKNBP_Core = function (_, Kotlin) {
     var tmp$;
     set_player(new Player((tmp$ = get_tvChannels().node) != null ? tmp$ : new TVChannel()));
     get_player().addOnPlayerEventListener_j8fzjz$(new updateChannel$ObjectLiteral());
+    get_player().play();
     VirtualRemote_getInstance().update();
   }
   function OnLongClick(onLongClickProgram) {
@@ -2045,6 +2046,10 @@ var HKNBP_Core = function (_, Kotlin) {
       var event = tmp$.next();
       event.on_mdxcb7$(Player$OnPlayerEvent$notPlaying_getInstance());
     }
+  };
+  Player.prototype.play = function () {
+    var tmp$, tmp$_0;
+    (tmp$_0 = (tmp$ = this.iframePlayer_0) != null ? tmp$.contentWindow : null) != null ? tmp$_0.onSetIframePlayerPlay() : null;
   };
   Player.prototype.nextVideoTrack = function () {
     get_player().videoTracks.next();
@@ -3028,6 +3033,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function UserControlPanel_init$lambda_1(this$UserControlPanel) {
     return function (event) {
+      get_player().play();
       if (this$UserControlPanel.panel_0.style.display === 'block') {
         this$UserControlPanel.hide();
       }
@@ -5535,7 +5541,7 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   package$hknbp_core.XMLTV = XMLTV;
   rootURL = 'https://hknbp.org/';
-  coreVersion = '0.9.5';
+  coreVersion = '0.9.6';
   appVersion = '0.9-Web';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();
