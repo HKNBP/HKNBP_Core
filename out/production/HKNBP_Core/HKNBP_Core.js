@@ -399,42 +399,42 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function CanAutoplay_init$lambda(this$CanAutoplay) {
     return function () {
-      println(this$CanAutoplay.video.type + '\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
+      println(this$CanAutoplay.video.type + ': \u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
     };
   }
   function CanAutoplay_init$lambda_0(this$CanAutoplay) {
     return function () {
-      println(this$CanAutoplay.video.type + '\u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
+      println(this$CanAutoplay.video.type + ': \u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
     };
   }
   function CanAutoplay_init$lambda_1(this$CanAutoplay) {
     return function () {
-      println(this$CanAutoplay.videoMuted.type + '\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
+      println(this$CanAutoplay.videoMuted.type + ': \u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
     };
   }
   function CanAutoplay_init$lambda_2(this$CanAutoplay) {
     return function () {
-      println(this$CanAutoplay.videoMuted.type + '\u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
+      println(this$CanAutoplay.videoMuted.type + ': \u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
     };
   }
   function CanAutoplay_init$lambda_3(this$CanAutoplay) {
     return function () {
-      println(this$CanAutoplay.videoInline.type + '\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
+      println(this$CanAutoplay.videoInline.type + ': \u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
     };
   }
   function CanAutoplay_init$lambda_4(this$CanAutoplay) {
     return function () {
-      println(this$CanAutoplay.videoInline.type + '\u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
+      println(this$CanAutoplay.videoInline.type + ': \u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
     };
   }
   function CanAutoplay_init$lambda_5(this$CanAutoplay) {
     return function () {
-      println(this$CanAutoplay.videoInlineMuted.type + '\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
+      println(this$CanAutoplay.videoInlineMuted.type + ': \u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
     };
   }
   function CanAutoplay_init$lambda_6(this$CanAutoplay) {
     return function () {
-      println(this$CanAutoplay.videoInlineMuted.type + '\u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
+      println(this$CanAutoplay.videoInlineMuted.type + ': \u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
     };
   }
   CanAutoplay.$metadata$ = {
@@ -1535,7 +1535,13 @@ var HKNBP_Core = function (_, Kotlin) {
         VolumeDescription_getInstance().show_za3lpa$(3000);
         break;
       case 'mutedChanged':
-        MutedDescription_getInstance().showHideAlternately();
+        if (get_player().muted) {
+          MutedDescription_getInstance().show();
+        }
+         else {
+          MutedDescription_getInstance().hide();
+        }
+
         break;
       default:Kotlin.noWhenBranchMatched();
         break;
@@ -1711,7 +1717,6 @@ var HKNBP_Core = function (_, Kotlin) {
     return PictureInPictureButton_instance;
   }
   function Player(tvChannel) {
-    Player$Companion_getInstance();
     this.tvChannel_0 = tvChannel;
     this.iframePlayer_0 = document.getElementById('iframePlayer');
     this.watchingCounter_0 = new WatchingCounter(this.tvChannel_0);
@@ -1726,43 +1731,9 @@ var HKNBP_Core = function (_, Kotlin) {
     this.volumeUp = Player$volumeUp$lambda;
     this.volumeDown = Player$volumeDown$lambda;
     this.volumeMute = Player$volumeMute$lambda;
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3;
-    tmp$ = Player$Companion_getInstance().indexOfPlayer;
-    Player$Companion_getInstance().indexOfPlayer = tmp$ + 1 | 0;
-    (tmp$_2 = this.iframePlayer_0) != null ? (tmp$_2.src = (tmp$_1 = (tmp$_0 = this.tvChannel_0.sources.node) != null ? tmp$_0.iFramePlayerSrc : null) != null ? tmp$_1 : 'iframePlayer/videojs_hls.html') : null;
-    (tmp$_3 = this.iframePlayer_0) != null ? (tmp$_3.onload = Player_init$lambda(this)) : null;
-  }
-  function Player$Companion() {
-    Player$Companion_instance = this;
-    this.indexOfPlayer_56ee75$_0 = 0;
-  }
-  Object.defineProperty(Player$Companion.prototype, 'indexOfPlayer', {
-    get: function () {
-      return this.indexOfPlayer_56ee75$_0;
-    },
-    set: function (value) {
-      var tmp$;
-      if (2 < value) {
-        tmp$ = 2;
-      }
-       else {
-        tmp$ = value;
-      }
-      var index = tmp$;
-      this.indexOfPlayer_56ee75$_0 = index;
-    }
-  });
-  Player$Companion.$metadata$ = {
-    kind: Kind_OBJECT,
-    simpleName: 'Companion',
-    interfaces: []
-  };
-  var Player$Companion_instance = null;
-  function Player$Companion_getInstance() {
-    if (Player$Companion_instance === null) {
-      new Player$Companion();
-    }
-    return Player$Companion_instance;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2;
+    (tmp$_1 = this.iframePlayer_0) != null ? (tmp$_1.src = (tmp$_0 = (tmp$ = this.tvChannel_0.sources.node) != null ? tmp$.iFramePlayerSrc : null) != null ? tmp$_0 : 'iframePlayer/videojs_hls.html') : null;
+    (tmp$_2 = this.iframePlayer_0) != null ? (tmp$_2.onload = Player_init$lambda(this)) : null;
   }
   Object.defineProperty(Player.prototype, 'videoTracks', {
     get: function () {
@@ -5438,9 +5409,6 @@ var HKNBP_Core = function (_, Kotlin) {
   Object.defineProperty(package$hknbp_core, 'PictureInPictureButton', {
     get: PictureInPictureButton_getInstance
   });
-  Object.defineProperty(Player, 'Companion', {
-    get: Player$Companion_getInstance
-  });
   Object.defineProperty(Player$OnPlayerEvent, 'playing', {
     get: Player$OnPlayerEvent$playing_getInstance
   });
@@ -5567,7 +5535,7 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   package$hknbp_core.XMLTV = XMLTV;
   rootURL = 'https://hknbp.org/';
-  coreVersion = '0.9.3';
+  coreVersion = '0.9.4';
   appVersion = '0.9-Web';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();

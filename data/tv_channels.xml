@@ -36,7 +36,7 @@
     </channel>
     <channel>
         <number>002</number>
-        <name>T RTMP</name>
+        <name>mp4 File</name>
         <source>
             <description>HLSSource</description>
             <iframeplayersrc>iframePlayer/videojs_hls.html</iframeplayersrc>

@@ -19,23 +19,6 @@ import kotlin.browser.localStorage
 import kotlin.browser.window
 
 class Player(private val tvChannel: TVChannel) {
-    companion object {
-        /**
-         * 第幾個Player
-         *
-         * 用作畀其他Player知道自己係米第1個Player
-         * 為左如果觀眾已經轉左台一次
-         * 下一個台就唔再 <靜音>
-         * 因依家大部分 <瀏覽器> 唔畀自動播放
-         * 如果要自動播放一定要將Player設為 <靜音>
-         * */
-        var indexOfPlayer = 0
-            set(value) {
-                val index = if(2<value){2}else{value}
-                field = index
-            }
-    }
-
     private val iframePlayer: dynamic = document.getElementById("iframePlayer")
     private val watchingCounter: WatchingCounter = WatchingCounter(tvChannel)
 
@@ -252,20 +235,9 @@ class Player(private val tvChannel: TVChannel) {
 
         try{
             /**
-             * 如果依家呢個Player唔係第1個Player
-             * 即可以唔使 靜音播放
-             *
              * 因依家大部分 <瀏覽器> 唔畀自動播放
              * 如果要自動播放一定要將Player設為 <靜音>
-             *
-            if(1 < indexOfPlayer){
-                muted = false
-            }else{
-                Modernizr.checkVideoAutoPlay(
-                        fun(){ muted = false },
-                        fun(){ muted = true }
-                )
-            }*/
+             **/
             CanAutoplay.checkVideoAutoPlayNeedToMute(
                     fun(){ muted = false },
                     fun(){ muted = true }
@@ -480,8 +452,6 @@ class Player(private val tvChannel: TVChannel) {
 
     /******************************************************************************************************************/
     init {
-        indexOfPlayer++
-
         iframePlayer?.src = tvChannel.sources.node?.iFramePlayerSrc ?: "iframePlayer/videojs_hls.html"
         iframePlayer?.onload = fun(){
             try {

@@ -22,7 +22,7 @@ import kotlin.js.Date
 
 
 val rootURL: String     = "https://hknbp.org/"
-val coreVersion: String = "0.9.3"
+val coreVersion: String = "0.9.4"
 var appVersion: String  = "0.9-Web"
 
 val jQuery: dynamic = js("\$")
@@ -32,6 +32,8 @@ lateinit var player: Player
 
 /**
  *  w,h為正整數的分子和分母
+ *
+ *  @return intArray[0] 為約簡後分子 intArray[1] 為約簡後分母
  */
 fun reductionTo(w: Int, h: Int): IntArray{
     val arr = IntArray(2)
@@ -151,7 +153,11 @@ fun updateChannel() {
                     VolumeDescription.show(3000)
                 }
                 Player.OnPlayerEvent.mutedChanged -> {
-                    MutedDescription.showHideAlternately()
+                    if(player.muted){
+                        MutedDescription.show()
+                    }else{
+                        MutedDescription.hide()
+                    }
                 }
             }
         }
