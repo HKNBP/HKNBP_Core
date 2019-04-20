@@ -135,6 +135,8 @@
         player.src(sourceSrc);
     }
 
+    var isP = true;
+
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去將Player播放
      * 由於因依家啲瀏覽器唔準(出聲)自動播放
@@ -142,7 +144,15 @@
      * 基於此 為有增加一個按扭備不時之需讓觀眾點擊播放
      * */
     function onSetIframePlayerPlay(){
+        if (isP === true) {
+        isP = false;
         player.play();
+        console.log("play!");
+        }else{
+        isP = true;
+        player.pause();
+        console.log("pause!");
+        }
     }
 
 
