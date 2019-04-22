@@ -23,7 +23,7 @@ import kotlin.browser.localStorage
 import kotlin.browser.window
 
 
-object VirtualRemote{
+object VirtualRemote: UserInterface("virtualRemote"){
     private val virtualRemote       = document.getElementById("virtualRemote")              as HTMLDivElement
     val hideVirtualRemoteButton     = document.getElementById("hideVirtualRemoteButton")    as HTMLButtonElement
     val epgButton                   = document.getElementById("epgButton")                  as HTMLButtonElement
@@ -126,21 +126,21 @@ object VirtualRemote{
         designateSubtitleSelect.value = (player.subtitleTracks.node?.id ?: 0).toString()
     }
 
-    fun update(){
+    override fun update(){
         updateTVChannelDescription()
         updateVideoInformation()
         updateAudioInformation()
         updateSubtitleInformation()
     }
 
-    val isShow: Boolean
+    override val isShow: Boolean
         get() {return UserControlPanel.isShow}
 
-    fun show(){
+    override fun show(){
         UserControlPanel.show()
     }
 
-    fun hide(){
+    override fun hide(){
         UserControlPanel.hide()
     }
 

@@ -84,6 +84,8 @@ var HKNBP_Core = function (_, Kotlin) {
   UserControlPanel.prototype.constructor = UserControlPanel;
   VideoDescription.prototype = Object.create(UserInterface.prototype);
   VideoDescription.prototype.constructor = VideoDescription;
+  VirtualRemote.prototype = Object.create(UserInterface.prototype);
+  VirtualRemote.prototype.constructor = VirtualRemote;
   VolumeDescription.prototype = Object.create(UserInterface.prototype);
   VolumeDescription.prototype.constructor = VolumeDescription;
   XMLTV$MultiLanguage$MultiLanguageList.prototype = Object.create(ArrayList.prototype);
@@ -1199,7 +1201,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.isenteringNumber_0 = false;
     this.enteringNumberWaitingTime_0 = 3500;
   }
-  EnteringNumberBox.prototype.update_0 = function () {
+  EnteringNumberBox.prototype.update = function () {
     this.text_0.innerHTML = this.enteringNumberNumber_0;
   };
   EnteringNumberBox.prototype.enteringNumberToDesignatedChannelRun_0 = function () {
@@ -1219,7 +1221,7 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     this.enteringNumberNumber_0 = this.enteringNumberNumber_0 + enteringNumberNumber;
     this.isenteringNumber_0 = true;
-    this.update_0();
+    this.update();
     this.show();
   };
   EnteringNumberBox.$metadata$ = {
@@ -1624,6 +1626,7 @@ var HKNBP_Core = function (_, Kotlin) {
   main$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
     updateChannel();
     TVChannelDescription_getInstance().show_za3lpa$(3000);
+    TVChannelDescription_getInstance().update();
   };
   main$lambda$ObjectLiteral.$metadata$ = {
     kind: Kind_CLASS,
@@ -1634,6 +1637,7 @@ var HKNBP_Core = function (_, Kotlin) {
     get_tvChannels().addOnNodeEventListener_ljxrtv$(new main$lambda$ObjectLiteral());
     updateChannel();
     TVChannelDescription_getInstance().show_za3lpa$(3000);
+    TVChannelDescription_getInstance().update();
   }
   function main(args) {
     try {
@@ -2698,7 +2702,7 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function TVChannelDescription() {
     TVChannelDescription_instance = this;
-    UserInterface.call(this, 'tvChannelDescription', TVChannelDescription_init$lambda);
+    UserInterface.call(this, 'tvChannelDescription');
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8;
     this.tvChannelDescription_0 = Kotlin.isType(tmp$ = document.getElementById('tvChannelDescription'), HTMLDivElement) ? tmp$ : throwCCE();
     this.currentChannelName_0 = Kotlin.isType(tmp$_0 = document.getElementById('tvChannelDescriptionCurrentChannelName'), HTMLDivElement) ? tmp$_0 : throwCCE();
@@ -2829,9 +2833,6 @@ var HKNBP_Core = function (_, Kotlin) {
     this.setCurrentProgrammeBroadcastTime_0();
     this.setCurrentProgrammeCategory_0();
   };
-  function TVChannelDescription_init$lambda() {
-    TVChannelDescription_getInstance().update();
-  }
   TVChannelDescription.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'TVChannelDescription',
@@ -3003,9 +3004,8 @@ var HKNBP_Core = function (_, Kotlin) {
     this.panel_0.onscroll = UserControlPanel_init$lambda_4(this);
     jQuery('body').mouseleave(UserControlPanel_init$lambda_5(this));
     this.shower_0.ondblclick = UserControlPanel_init$lambda_6;
-    this.panel_0.onfocus = UserControlPanel_init$lambda_7(this);
     var _shower = this.shower_0;
-    _shower.ontouchstart = UserControlPanel_init$lambda_8(this);
+    _shower.ontouchstart = UserControlPanel_init$lambda_7(this);
   }
   Object.defineProperty(UserControlPanel.prototype, 'hideMouseTimer_0', {
     get: function () {
@@ -3068,11 +3068,6 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function UserControlPanel_init$lambda_7(this$UserControlPanel) {
     return function (event) {
-      this$UserControlPanel.show_za3lpa$(15000);
-    };
-  }
-  function UserControlPanel_init$lambda_8(this$UserControlPanel) {
-    return function (event) {
       event.preventDefault();
       if (this$UserControlPanel.panel_0.style.display === 'block') {
         this$UserControlPanel.hide();
@@ -3108,12 +3103,15 @@ var HKNBP_Core = function (_, Kotlin) {
     this.onHide_5i3ctj$_0 = onHide;
     this.firstFocusElementID_ydky23$_0 = firstFocusElementID;
     this.isFocuxOutHide_gmfj99$_0 = isFocuxOutHide;
-    var tmp$;
+    var tmp$, tmp$_0, tmp$_1;
     this.htmlElement_sdspbr$_0 = Kotlin.isType(tmp$ = document.getElementById(this.htmlElementID_fynci$_0), HTMLElement) ? tmp$ : throwCCE();
     this.lastTimeFocusElement_bd4klp$_0 = jQuery('#' + toString(this.firstFocusElementID_ydky23$_0));
     this.hideTimer_1c3smv$_rf6tp$_0 = 0;
-    jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input')).focus(UserInterface_init$lambda_1(this));
+    (tmp$_0 = jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input'))) != null ? tmp$_0.focus(UserInterface_init$lambda_1(this)) : null;
+    (tmp$_1 = jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input'))) != null ? tmp$_1.hover(UserInterface_init$lambda_2) : null;
   }
+  UserInterface.prototype.update = function () {
+  };
   Object.defineProperty(UserInterface.prototype, 'hideTimer_1c3smv$_0', {
     get: function () {
       return this.hideTimer_1c3smv$_rf6tp$_0;
@@ -3134,6 +3132,7 @@ var HKNBP_Core = function (_, Kotlin) {
       this.htmlElement_sdspbr$_0.style.display = 'block';
       (tmp$ = this.lastTimeFocusElement_bd4klp$_0) != null ? tmp$.focus() : null;
       this.onShow_5c20oy$_0();
+      this.update();
     }
   };
   function UserInterface$show$lambda(this$UserInterface) {
@@ -3164,9 +3163,16 @@ var HKNBP_Core = function (_, Kotlin) {
   function UserInterface_init$lambda_1(this$UserInterface) {
     return function () {
       var tmp$;
-      (tmp$ = jQuery(this)) != null ? tmp$.hover() : null;
-      this$UserInterface.lastTimeFocusElement_bd4klp$_0 = jQuery(this);
+      if (!$('this').is(':focus')) {
+        (tmp$ = jQuery(this)) != null ? tmp$.hover() : null;
+        this$UserInterface.lastTimeFocusElement_bd4klp$_0 = jQuery(this);
+        this$UserInterface.show_za3lpa$(15000);
+      }
     };
+  }
+  function UserInterface_init$lambda_2() {
+    var tmp$;
+    (tmp$ = jQuery(this)) != null ? tmp$.focus() : null;
   }
   UserInterface.$metadata$ = {
     kind: Kind_CLASS,
@@ -3230,6 +3236,7 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   function VirtualRemote() {
     VirtualRemote_instance = this;
+    UserInterface.call(this, 'virtualRemote');
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22, tmp$_23, tmp$_24, tmp$_25, tmp$_26, tmp$_27, tmp$_28, tmp$_29, tmp$_30, tmp$_31, tmp$_32, tmp$_33, tmp$_34, tmp$_35, tmp$_36, tmp$_37, tmp$_38, tmp$_39, tmp$_40, tmp$_41, tmp$_42, tmp$_43, tmp$_44, tmp$_45, tmp$_46, tmp$_47, tmp$_48, tmp$_49, tmp$_50, tmp$_51, tmp$_52, tmp$_53, tmp$_54, tmp$_55;
     this.virtualRemote_0 = Kotlin.isType(tmp$ = document.getElementById('virtualRemote'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideVirtualRemoteButton = Kotlin.isType(tmp$_0 = document.getElementById('hideVirtualRemoteButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
@@ -3745,7 +3752,7 @@ var HKNBP_Core = function (_, Kotlin) {
   VirtualRemote.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'VirtualRemote',
-    interfaces: []
+    interfaces: [UserInterface]
   };
   var VirtualRemote_instance = null;
   function VirtualRemote_getInstance() {

@@ -35,7 +35,7 @@ object EnteringNumberBox: UserInterface("enteringNumberBox") {
     private val enteringNumberWaitingTime: Int = 3500
 
 
-    private fun update(){
+    override fun update(){
         text.innerHTML = enteringNumberNumber
     }
 

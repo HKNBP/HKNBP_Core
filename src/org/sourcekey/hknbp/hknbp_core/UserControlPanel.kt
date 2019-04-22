@@ -79,7 +79,6 @@ object UserControlPanel: UserInterface(
         PictureInPictureButton
 
         //設定使用者控制界面顯示方法
-        ////滑鼠////
         shower.onclick = fun(event){
             player.play()
             if(panel.style.display==="block"){
@@ -105,11 +104,6 @@ object UserControlPanel: UserInterface(
         shower.ondblclick = fun(event){
             FullScreenButton.enterExitFullScreenAlternately()
         }
-        ////遙控////
-        panel.onfocus = fun(event){
-            show(15000)
-        }
-        ////觸控////
         val _shower: dynamic = shower
         _shower.ontouchstart = fun(event: MouseEvent){
             // 因觸控會同時觸發其他EVENT

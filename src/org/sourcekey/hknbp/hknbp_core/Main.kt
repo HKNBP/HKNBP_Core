@@ -296,9 +296,11 @@ fun main(args: Array<String>) {
             ) {
                 updateChannel()
                 TVChannelDescription.show(3000)
+                TVChannelDescription.update()
             }
         })
         updateChannel()
         TVChannelDescription.show(3000)
+        TVChannelDescription.update()
     })
 }

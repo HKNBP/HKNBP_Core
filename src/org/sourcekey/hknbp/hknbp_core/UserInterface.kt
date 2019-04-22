@@ -28,6 +28,8 @@ abstract class UserInterface(
     private val htmlElement = document.getElementById(htmlElementID) as HTMLElement
     private var lastTimeFocusElement: dynamic = jQuery("#${firstFocusElementID}")
 
+    open fun update(){}
+
     /**
      * 隱藏頻道訊息計時器
      * */
@@ -37,16 +39,17 @@ abstract class UserInterface(
             field = value
         }
 
-    val isShow: Boolean
+    open val isShow: Boolean
         get(){
             return htmlElement.style.display == "block"
         }
 
-    fun show(){
+    open fun show(){
         if(!isShow){
             htmlElement.style.display = "block"
             lastTimeFocusElement?.focus()
             onShow()
+            update()
         }
     }
 
@@ -55,7 +58,7 @@ abstract class UserInterface(
         show()
     }
 
-    fun hide(){
+    open fun hide(){
         htmlElement.style.display = "none"
         onHide()
     }
@@ -70,11 +73,24 @@ abstract class UserInterface(
                 "#${htmlElementID} select" + "," +
                 "#${htmlElementID} option" + "," +
                 "#${htmlElementID} input"
-        ).focus(fun(){
-            //設 當onfocus 就onhover 同步
-            jQuery(js("this"))?.hover()
-            //設定依家Focus邊粒element為之後再Show呢個介面時Focus返對上個次嘅element
-            lastTimeFocusElement = jQuery(js("this"))
+        )?.focus(fun(){
+            if(!js("\$(\"this\").is(\":focus\")")){
+                //設 當onfocus 就onhover 同步
+                jQuery(js("this"))?.hover()
+                //設定依家Focus邊粒element為之後再Show呢個介面時Focus返對上個次嘅element
+                lastTimeFocusElement = jQuery(js("this"))
+                //當focus就重新倒數介面顯示時間
+                show(15000)
+            }
+        })
+        jQuery(
+                "#${htmlElementID} button" + "," +
+                "#${htmlElementID} select" + "," +
+                "#${htmlElementID} option" + "," +
+                "#${htmlElementID} input"
+        )?.hover(fun(){
+            //設 當onhover 就onfocus 同步
+            jQuery(js("this"))?.focus()
         })
 
         /**
