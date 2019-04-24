@@ -41,7 +41,7 @@ object UserControlPanel: UserInterface(
         "onHeadNextAudioButton"
 ) {
     private val panel: HTMLElement   = document.getElementById("userControlPanel") as HTMLElement
-    private val shower: HTMLElement  = document.getElementById("userControlPanelShower") as HTMLElement
+    //private val shower: HTMLElement  = document.getElementById("userControlPanelShower") as HTMLElement
 
     /**
      * 隱藏滑鼠計時器
@@ -72,6 +72,20 @@ object UserControlPanel: UserInterface(
      * */
     var onHideUserControlPanel: ()->Unit = fun(){}
 
+    fun setIframeOnClick(iframeId: String, onClick: ()->Unit){
+        var obj = js("{}")
+        obj.blurCallback = fun(){
+            println("a")
+            onClick()
+            window.setTimeout(fun() {
+                jQuery(js("this")).focus()
+            }, 0)
+        }
+        jQuery(js("document")).ready(fun(){
+            jQuery("#${iframeId}").iframeTracker(obj)
+        })
+    }
+
     init {
         //初始化各使用者控制界面
         VirtualRemote
@@ -79,17 +93,10 @@ object UserControlPanel: UserInterface(
         PictureInPictureButton
 
         //設定使用者控制界面顯示方法
-        shower.onclick = fun(event){
+        setIframeOnClick("iframePlayer", fun(){
+            showHideAlternately()
             player.play()
-            if(panel.style.display==="block"){
-                hide()
-            }else{
-                show(15000)
-            }
-        }
-        shower.onmousemove = fun(event){
-            show(500)
-        }
+        })
         panel.onmousemove = fun(event){
             //使用緊panel就繼續顯示
             event.stopPropagation()
@@ -101,19 +108,5 @@ object UserControlPanel: UserInterface(
         jQuery("body").mouseleave(fun(){
             hide()
         })
-        shower.ondblclick = fun(event){
-            FullScreenButton.enterExitFullScreenAlternately()
-        }
-        val _shower: dynamic = shower
-        _shower.ontouchstart = fun(event: MouseEvent){
-            // 因觸控會同時觸發其他EVENT
-            // https://medium.com/frochu/touch-and-mouse-together-76fb69114c04
-            event.preventDefault()
-            if(panel.style.display==="block"){
-                hide()
-            }else{
-                show(15000)
-            }
-        }
     }
 }

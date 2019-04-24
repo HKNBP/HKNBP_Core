@@ -2989,23 +2989,18 @@ var HKNBP_Core = function (_, Kotlin) {
   function UserControlPanel() {
     UserControlPanel_instance = this;
     UserInterface.call(this, 'userControlPanel', UserControlPanel_init$lambda, UserControlPanel_init$lambda_0, 'onHeadNextAudioButton');
-    var tmp$, tmp$_0;
+    var tmp$;
     this.panel_0 = Kotlin.isType(tmp$ = document.getElementById('userControlPanel'), HTMLElement) ? tmp$ : throwCCE();
-    this.shower_0 = Kotlin.isType(tmp$_0 = document.getElementById('userControlPanelShower'), HTMLElement) ? tmp$_0 : throwCCE();
     this.hideMouseTimer_r29tyc$_0 = 0;
     this.onShowUserControlPanel = UserControlPanel$onShowUserControlPanel$lambda;
     this.onHideUserControlPanel = UserControlPanel$onHideUserControlPanel$lambda;
     VirtualRemote_getInstance();
     FullScreenButton_getInstance();
     PictureInPictureButton_getInstance();
-    this.shower_0.onclick = UserControlPanel_init$lambda_1(this);
-    this.shower_0.onmousemove = UserControlPanel_init$lambda_2(this);
-    this.panel_0.onmousemove = UserControlPanel_init$lambda_3(this);
-    this.panel_0.onscroll = UserControlPanel_init$lambda_4(this);
-    jQuery('body').mouseleave(UserControlPanel_init$lambda_5(this));
-    this.shower_0.ondblclick = UserControlPanel_init$lambda_6;
-    var _shower = this.shower_0;
-    _shower.ontouchstart = UserControlPanel_init$lambda_7(this);
+    this.setIframeOnClick_a4mwiz$('iframePlayer', UserControlPanel_init$lambda_1(this));
+    this.panel_0.onmousemove = UserControlPanel_init$lambda_2(this);
+    this.panel_0.onscroll = UserControlPanel_init$lambda_3(this);
+    jQuery('body').mouseleave(UserControlPanel_init$lambda_4(this));
   }
   Object.defineProperty(UserControlPanel.prototype, 'hideMouseTimer_0', {
     get: function () {
@@ -3016,6 +3011,26 @@ var HKNBP_Core = function (_, Kotlin) {
       this.hideMouseTimer_r29tyc$_0 = value;
     }
   });
+  function UserControlPanel$setIframeOnClick$lambda$lambda() {
+    jQuery(this).focus();
+  }
+  function UserControlPanel$setIframeOnClick$lambda(closure$onClick) {
+    return function () {
+      println('a');
+      closure$onClick();
+      window.setTimeout(UserControlPanel$setIframeOnClick$lambda$lambda, 0);
+    };
+  }
+  function UserControlPanel$setIframeOnClick$lambda_0(closure$iframeId, closure$obj) {
+    return function () {
+      jQuery('#' + closure$iframeId).iframeTracker(closure$obj.v);
+    };
+  }
+  UserControlPanel.prototype.setIframeOnClick_a4mwiz$ = function (iframeId, onClick) {
+    var obj = {v: {}};
+    obj.v.blurCallback = UserControlPanel$setIframeOnClick$lambda(onClick);
+    jQuery(document).ready(UserControlPanel$setIframeOnClick$lambda_0(iframeId, obj));
+  };
   function UserControlPanel_init$lambda() {
     UserControlPanel_getInstance().onShowUserControlPanel();
     jQuery('#panelShower').css('cursor', 'auto');
@@ -3032,49 +3047,25 @@ var HKNBP_Core = function (_, Kotlin) {
   function UserControlPanel$onHideUserControlPanel$lambda() {
   }
   function UserControlPanel_init$lambda_1(this$UserControlPanel) {
-    return function (event) {
+    return function () {
+      this$UserControlPanel.showHideAlternately();
       get_player().play();
-      if (this$UserControlPanel.panel_0.style.display === 'block') {
-        this$UserControlPanel.hide();
-      }
-       else {
-        this$UserControlPanel.show_za3lpa$(15000);
-      }
     };
   }
   function UserControlPanel_init$lambda_2(this$UserControlPanel) {
-    return function (event) {
-      this$UserControlPanel.show_za3lpa$(500);
-    };
-  }
-  function UserControlPanel_init$lambda_3(this$UserControlPanel) {
     return function (event) {
       event.stopPropagation();
       this$UserControlPanel.show_za3lpa$(30000);
     };
   }
-  function UserControlPanel_init$lambda_4(this$UserControlPanel) {
+  function UserControlPanel_init$lambda_3(this$UserControlPanel) {
     return function (event) {
       this$UserControlPanel.show_za3lpa$(30000);
     };
   }
-  function UserControlPanel_init$lambda_5(this$UserControlPanel) {
+  function UserControlPanel_init$lambda_4(this$UserControlPanel) {
     return function () {
       this$UserControlPanel.hide();
-    };
-  }
-  function UserControlPanel_init$lambda_6(event) {
-    FullScreenButton_getInstance().enterExitFullScreenAlternately();
-  }
-  function UserControlPanel_init$lambda_7(this$UserControlPanel) {
-    return function (event) {
-      event.preventDefault();
-      if (this$UserControlPanel.panel_0.style.display === 'block') {
-        this$UserControlPanel.hide();
-      }
-       else {
-        this$UserControlPanel.show_za3lpa$(15000);
-      }
     };
   }
   UserControlPanel.$metadata$ = {

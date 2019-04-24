@@ -384,17 +384,18 @@
     </iframe>
 </div>
 <div id="userInterface">
-    <button id="userControlPanelShower" tabindex="000000001" style="
-              //display: none;
-              background: rgba(0, 0, 0, 0);
+    <div id="userControlPanelShower" tabindex="000000001" style="
+              display: none;
+              background: rgba(0, 0, 0, 0.5);
               border-style: none;
               outline:none;
+              //pointer-events: none;
               position: absolute;
               top:0; bottom:0; left:0; right:50vh;
-              width:50%; height:100vh;
+              width:100%; height:100vh;
               z-index: 30;
           " autofocus>
-    </button>
+    </div>
     <div id="userControlPanel" style="display: none;">
         <div id="virtualRemote" style="
                   background: #303030;
@@ -1154,6 +1155,10 @@ if ('serviceWorker' in navigator) {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="js/jquery.tabbable.js"></script>
 <script src="https://video-dev.github.io/can-autoplay/build/can-autoplay.min.js"></script>
+<script src="https://cdn.rawgit.com/vincepare/iframeTracker-jquery/master/dist/jquery.iframetracker.min.js"></script>
+<script>
+
+</script>
 <script src="out/production/HKNBP_Core/lib/kotlin.js"></script>
 <script src="out/production/HKNBP_Core/HKNBP_Core.js"></script>
 </body>
