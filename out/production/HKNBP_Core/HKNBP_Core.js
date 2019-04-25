@@ -2053,7 +2053,11 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   Player.prototype.play = function () {
     var tmp$, tmp$_0;
-    (tmp$_0 = (tmp$ = this.iframePlayer_0) != null ? tmp$.contentWindow : null) != null ? tmp$_0.onSetIframePlayerPlay() : null;
+    try {
+      (tmp$_0 = (tmp$ = this.iframePlayer_0) != null ? tmp$.contentWindow : null) != null ? tmp$_0.onSetIframePlayerPlay() : null;
+    }
+     catch (e) {
+    }
   };
   Player.prototype.nextVideoTrack = function () {
     get_player().videoTracks.next();
@@ -2989,8 +2993,9 @@ var HKNBP_Core = function (_, Kotlin) {
   function UserControlPanel() {
     UserControlPanel_instance = this;
     UserInterface.call(this, 'userControlPanel', UserControlPanel_init$lambda, UserControlPanel_init$lambda_0, 'onHeadNextAudioButton');
-    var tmp$;
+    var tmp$, tmp$_0;
     this.panel_0 = Kotlin.isType(tmp$ = document.getElementById('userControlPanel'), HTMLElement) ? tmp$ : throwCCE();
+    this.shower_0 = Kotlin.isType(tmp$_0 = document.getElementById('userControlPanelShower'), HTMLElement) ? tmp$_0 : throwCCE();
     this.hideMouseTimer_r29tyc$_0 = 0;
     this.onShowUserControlPanel = UserControlPanel$onShowUserControlPanel$lambda;
     this.onHideUserControlPanel = UserControlPanel$onHideUserControlPanel$lambda;
@@ -2998,9 +3003,14 @@ var HKNBP_Core = function (_, Kotlin) {
     FullScreenButton_getInstance();
     PictureInPictureButton_getInstance();
     this.setIframeOnClick_a4mwiz$('iframePlayer', UserControlPanel_init$lambda_1(this));
-    this.panel_0.onmousemove = UserControlPanel_init$lambda_2(this);
-    this.panel_0.onscroll = UserControlPanel_init$lambda_3(this);
-    jQuery('body').mouseleave(UserControlPanel_init$lambda_4(this));
+    this.shower_0.onclick = UserControlPanel_init$lambda_2(this);
+    this.shower_0.onmousemove = UserControlPanel_init$lambda_3(this);
+    this.panel_0.onmousemove = UserControlPanel_init$lambda_4(this);
+    this.panel_0.onscroll = UserControlPanel_init$lambda_5(this);
+    jQuery('body').mouseleave(UserControlPanel_init$lambda_6(this));
+    this.shower_0.ondblclick = UserControlPanel_init$lambda_7;
+    var _shower = this.shower_0;
+    _shower.ontouchstart = UserControlPanel_init$lambda_8(this);
   }
   Object.defineProperty(UserControlPanel.prototype, 'hideMouseTimer_0', {
     get: function () {
@@ -3054,18 +3064,43 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function UserControlPanel_init$lambda_2(this$UserControlPanel) {
     return function (event) {
-      event.stopPropagation();
-      this$UserControlPanel.show_za3lpa$(30000);
+      this$UserControlPanel.showHideAlternately();
+      get_player().play();
     };
   }
   function UserControlPanel_init$lambda_3(this$UserControlPanel) {
     return function (event) {
-      this$UserControlPanel.show_za3lpa$(30000);
+      this$UserControlPanel.show_za3lpa$(500);
     };
   }
   function UserControlPanel_init$lambda_4(this$UserControlPanel) {
+    return function (event) {
+      event.stopPropagation();
+      this$UserControlPanel.show_za3lpa$(30000);
+    };
+  }
+  function UserControlPanel_init$lambda_5(this$UserControlPanel) {
+    return function (event) {
+      this$UserControlPanel.show_za3lpa$(30000);
+    };
+  }
+  function UserControlPanel_init$lambda_6(this$UserControlPanel) {
     return function () {
       this$UserControlPanel.hide();
+    };
+  }
+  function UserControlPanel_init$lambda_7(event) {
+    FullScreenButton_getInstance().enterExitFullScreenAlternately();
+  }
+  function UserControlPanel_init$lambda_8(this$UserControlPanel) {
+    return function (event) {
+      event.preventDefault();
+      if (this$UserControlPanel.panel_0.style.display === 'block') {
+        this$UserControlPanel.hide();
+      }
+       else {
+        this$UserControlPanel.show_za3lpa$(15000);
+      }
     };
   }
   UserControlPanel.$metadata$ = {

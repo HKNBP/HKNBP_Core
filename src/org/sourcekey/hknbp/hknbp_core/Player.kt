@@ -260,7 +260,9 @@ class Player(private val tvChannel: TVChannel) {
      *  播放
      */
     fun play(){
-        iframePlayer?.contentWindow?.onSetIframePlayerPlay()
+        try{
+            iframePlayer?.contentWindow?.onSetIframePlayerPlay()
+        }catch (e: dynamic){}
     }
 
     /******************************************************************************************************************/
