@@ -114,4 +114,14 @@
         </source>
         <information epgid="vh1-europe.music" src="http://tvprofil.net/xmltv/data/vh1-europe.music/weekly_vh1-europe.music_tvprofil.net.xml"/>
     </channel>
+    <channel>
+        <number>999</number>
+        <name>T</name>
+        <source>
+            <description>HLSSource</description>
+            <iframeplayersrc>iframePlayer/videojs_hls.html</iframeplayersrc>
+            <link>https://bitmovin-a.akamaihd.net/content/MI201109210084_1/mpds/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.mpd</link>
+        </source>
+        <information epgid="vh1-europe.music" src="http://tvprofil.net/xmltv/data/vh1-europe.music/weekly_vh1-europe.music_tvprofil.net.xml"/>
+    </channel>
 </tvchannellist>
