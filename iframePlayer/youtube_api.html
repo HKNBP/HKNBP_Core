@@ -110,45 +110,16 @@
         return obj;
     }
 
-    /**
-     * 呢個value係個function()
-     * 呢個function()初始化會響HKNBP_Core開啟呢個IframePlayer時初始化
-     * 當播放器播放緊頻道時
-     * 需要設定call呢個function()
-     * 向HKNBP_Core發送呢個IframePlayer嘅播放器正播放緊頻道
-     * */
-    var onIframePlayerPlaying;
-
-    /**
-     * 呢個value係個function()
-     * 呢個function()初始化會響HKNBP_Core開啟呢個IframePlayer時初始化
-     * 當播放器冇播放頻道時
-     * 需要設定call呢個function()
-     * 向HKNBP_Core發送呢個IframePlayer嘅播放器依家冇播放緊頻道
-     * 如call左一次onIframePlayerNotPlaying()
-     * 響15之內冇再call onIframePlayerPlaying()嘅話
-     * 將會刷新此IframePlayer
-     * */
-    var onIframePlayerNotPlaying;
-
-    /**
-     * 由HKNBP_Core發出初始化IframePlayer
-     * @param {String} source 頻道源
-     * */
-    function onIframePlayerInit(sourceSrc){
-        youtubeVideoId = sourceSrc;
-        tag.src = "https://www.youtube.com/iframe_api";
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        player.playVideo();
-    }
 
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去將Player播放
      * 由於因依家啲瀏覽器唔準(出聲)自動播放
      * 並且對開發程式人員講: "唔好諗住一定可以自動播放"
      * 基於此 為有增加一個按扭備不時之需讓觀眾點擊播放
+     *
+     * @param {()=>{})} onReturn 無作用
      * */
-    function onSetIframePlayerPlay(){
+    function onSetIframePlayerPlay(onReturn){
         player.playVideo();
     }
 
@@ -156,145 +127,258 @@
     /******************************************************************************************************************/
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去設定videoTrack
-     * @param {TrackDescription} videoTrack 當執行設定videoTrack時嘅videoTrack參數
+     *
+     * @param {()=>{})} onReturn 無作用
+     * @param {videoTrack: TrackDescription} videoTrack 當執行設定videoTrack時嘅videoTrack參數
      * */
-    function onSetIframePlayerVideoTrack(videoTrack) {
+    function onSetIframePlayerVideoTrack(onReturn, videoTrack) {
 
     }
 
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去獲取videoTrack
-     * @returns {TrackDescription} videoTrack
+     *
+     * @param {(videoTrack: TrackDescription)=>{})} onReturn 執行此CallBackFunction去return個videoTrack
      * */
-    function onGetIframePlayerVideoTrack() {
+    function onGetIframePlayerVideoTrack(onReturn) {
         return TrackDescription(-1, "自動");
     }
 
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去獲取所有videoTrack資訊
-     * @returns {TrackDescription[]} 所有videoTrack資訊
+     *
+     * @param {(videoTracks: TrackDescription[])=>{})} onReturn 執行此CallBackFunction去return所有videoTrack資訊
      * */
-    function onGetIframePlayerVideoTracks() {
+    function onGetIframePlayerVideoTracks(onReturn) {
 
     }
 
     /******************************************************************************************************************/
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去設定audioTrack
-     * @param {TrackDescription} audioTrack 當執行設定audioTrack時嘅audioTrack參數
+     *
+     * @param {()=>{})} onReturn 無作用
+     * @param {audioTrack: TrackDescription} audioTrack 當執行設定audioTrack時嘅audioTrack參數
      * */
-    function onSetIframePlayerAudioTrack(audioTrack) {
+    function onSetIframePlayerAudioTrack(onReturn, audioTrack) {
 
     }
 
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去獲取audioTrack
-     * @returns {TrackDescription} audioTrack
+     *
+     * @param {(audioTrack: TrackDescription)=>{})} onReturn 執行此CallBackFunction去return個audioTrack
      * */
-    function onGetIframePlayerAudioTrack() {
+    function onGetIframePlayerAudioTrack(onReturn) {
         return TrackDescription(0, "聲道1");
     }
 
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去獲取所有audioTrack資訊
-     * @returns {TrackDescription} 所有audioTrack資訊
+     *
+     * @param {(audioTracks: TrackDescription[])=>{})} onReturn 執行此CallBackFunction去return所有audioTrack資訊
      * */
-    function onGetIframePlayerAudioTracks() {
+    function onGetIframePlayerAudioTracks(onReturn) {
 
     }
 
     /******************************************************************************************************************/
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去設定subtitleTrack
-     * @param {TrackDescription} subtitleTrack 當執行設定subtitleTrack時嘅subtitleTrack參數
+     *
+     * @param {()=>{})} onReturn 無作用
+     * @param {subtitleTrack: TrackDescription} subtitleTrack 當執行設定subtitleTrack時嘅subtitleTrack參數
      * */
-    function onSetIframePlayerSubtitleTrack(subtitleTrack) {
-        //直接i由1開始上, 因第0係選項無字幕, 唔需要作"showing"設定
-        for(var i=1; i<player.textTracks().length; i++){
-            //i-1係因為textTracks由0開始為第1個字幕
+    function onSetIframePlayerSubtitleTrack(onReturn, subtitleTrack) {
+        for(var i=0; i<player.textTracks().length; i++){
             if(i === subtitleTrack.id){
-                player.textTracks()[i-1].mode = "showing";
+                player.textTracks()[i].mode = "showing";
             }else{
-                player.textTracks()[i-1].mode = "hidden";
+                player.textTracks()[i].mode = "hidden";
             }
         }
     }
 
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去獲取subtitleTrack
-     * @returns {TrackDescription} subtitleTrack
+     *
+     * @param {(subtitleTrack: TrackDescription)=>{})} onReturn 執行此CallBackFunction去return個subtitleTrack
      * */
-    function onGetIframePlayerSubtitleTrack() {
+    function onGetIframePlayerSubtitleTrack(onReturn) {
         for(var i=0; i<player.textTracks().length; i++){
             if(player.textTracks()[i].mode === "showing"){
-                return TrackDescription(i, player.textTracks()[i].label);
+                onReturn(TrackDescription(i, player.textTracks()[i].label));
             }
         }
-        return TrackDescription(0, "無字幕");
+        onReturn(TrackDescription(-10, "無字幕"));//如果搵唔到依家係邊條Track就設第0條Track
     }
 
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去獲取所有subtitleTrack資訊
-     * @returns {TrackDescription[]} 所有subtitleTrack資訊
+     *
+     * @param {(subtitleTracks: TrackDescription[])=>{})} onReturn 執行此CallBackFunction去return所有subtitleTrack資訊
      * */
-    function onGetIframePlayerSubtitleTracks() {
+    function onGetIframePlayerSubtitleTracks(onReturn) {
         //console.log(player.textTracks()[0].activeCues);
         var subtitleTracks = [];
-        subtitleTracks[0] = TrackDescription(0, "無字幕");//設定無字幕選項
-        var j = 1;
+
+        //設置所有Track選項
         for(var i=0; i<player.textTracks().length; i++){
             if(player.textTracks()[i].kind === "subtitles" || player.textTracks()[i].kind === "caption"){
-                subtitleTracks[j] = TrackDescription(i+1, player.textTracks()[i].label);//因有無字幕選項響0, 所以之後字幕為i+1
-                j++;
+                subtitleTracks.push(TrackDescription(i, player.textTracks()[i].label));
             }
         }
-        return subtitleTracks;
+
+        //設置無字幕選項
+        subtitleTracks.push(TrackDescription(-10, "無字幕"));
+
+        onReturn(subtitleTracks);
     }
 
 
     /**
      * 由HKNBP_Core發出音量值讀取
-     * @returns {Number} 現在音量 數值由0-100之間,100為最大音量
+     *
+     * @param {()=>{})} onReturn 無作用
+     * @param {volume: Number} volume 欲設音量 數值由0-100之間,100為最大音量
      * */
-    function onGetIframePlayerVolume() {
-        return player.getVolume();
+    function onSetIframePlayerVolume(onReturn, volume) {
+        player.setVolume(volume);
     }
 
     /**
      * 由HKNBP_Core發出音量值讀取
-     * @param {Number} value 欲設音量 數值由0-100之間,100為最大音量
+     *
+     * @param {(volume: Number)=>{})} onReturn 執行此CallBackFunction去return現在音量 數值由0-100之間,100為最大音量
      * */
-    function onSetIframePlayerVolume(value) {
-        player.setVolume(value);
+    function onGetIframePlayerVolume(onReturn) {
+        onReturn(player.getVolume());
     }
 
     /**
      * 由HKNBP_Core發出靜音值讀取
-     * @returns {Boolean} 靜左音(true) 或 未靜音(false)
+     *
+     * @param {()=>{})} onReturn 無作用
+     * @param {muted: Boolean} muted 欲設靜音
      * */
-    function onGetIframePlayerMuted() {
-        return player.isMuted();
+    function onSetIframePlayerMuted(onReturn, muted) {
+        if(muted){player.mute();}else{player.unMute();}
     }
 
     /**
      * 由HKNBP_Core發出靜音值讀取
-     * @param {Boolean} value 欲設靜音
+     *
+     * @param {(muted: Boolean)=>{})} onReturn 執行此CallBackFunction去return個靜音值 靜左音(true) 或 未靜音(false)
      * */
-    function onSetIframePlayerMuted(value) {
-        if(value){player.mute();}else{player.unMute();}
+    function onGetIframePlayerMuted(onReturn) {
+        onReturn(player.isMuted());
     }
 
     /**
      * 由HKNBP_Core發出片源解像度值讀取
-     * @returns {Array} array[0]為寬 array[1]為高
+     *
+     * @param {(resolution: Number[])=>{})} onReturn 執行此CallBackFunction去return個解像度 array[0]為寬 array[1]為高
      * */
-    function onGetIframePlayerVideoResolution(){
+    function onGetIframePlayerVideoResolution(onReturn){
         ////////////////////////////////////////////////////////////
         var array = [];
         array.push(player.videoWidth());
         array.push(player.videoHeight());
-        return array;
+        onReturn(array);
     }
+
+
+    /**
+     * 當播放器播放緊頻道時
+     * 需要設定call呢個function()
+     * 向HKNBP_Core發送呢個IframePlayer嘅播放器正播放緊頻道
+     * */
+    var onIframePlayerPlaying = function(){
+      callHKNBPCoreFunction("onPlaying", "", function(){});
+    };
+
+    /**
+     * 當播放器冇播放頻道時
+     * 需要設定call呢個function()
+     * 向HKNBP_Core發送呢個IframePlayer嘅播放器依家冇播放緊頻道
+     * 如call左一次onIframePlayerNotPlaying()
+     * 響15之內冇再call onIframePlayerPlaying()嘅話
+     * 將會刷新此IframePlayer
+     * */
+    var onIframePlayerNotPlaying = function(){
+      callHKNBPCoreFunction("onNotPlaying", "", function(){});
+    };
+
+    /**
+     * 由HKNBP_Core發出初始化IframePlayer
+     *
+     * @param {()=>{})} onReturn 無作用
+     * @param {source: String} source 頻道源
+     * */
+    function onIframePlayerInit(onReturn, sourceSrc){
+        youtubeVideoId = sourceSrc;
+        tag.src = "https://www.youtube.com/iframe_api";
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        player.playVideo();
+    }
+
+    /**
+     * 存底callHKNBPCoreFunction要求
+     * 為之後return返來嘅值執行onReturn
+     * 實淺CallBackFunction原理
+     */
+    var callHKNBPCoreFunctionList = [];
+
+    /**
+     * 刪除要刪除嘅caller響callHKNBPCoreFunctionList當中
+     */
+    function removeObjFromcallHKNBPCoreFunctionList(caller){
+      for(var i = 0; i < callHKNBPCoreFunctionList.length; i++){
+         if (callHKNBPCoreFunctionList[i] === obj) {
+           callHKNBPCoreFunctionList.splice(i, 1);
+         }
+      }
+    }
+
+    /**
+     * 設定被call時要執行嘅野
+     */
+    window.addEventListener("message", function(event){
+        var callMessage = JSON.parse(event.data);
+        if(callMessage.name === "IframePlaye"){
+          for(var i = 0; i < callHKNBPCoreFunctionList.length; i++){
+             if (callHKNBPCoreFunctionList[i].id == callMessage.id) {
+               callHKNBPCoreFunctionList[i].onReturn(callMessage.returnValue)
+               removeObjFromcallHKNBPCoreFunctionList(callHKNBPCoreFunctionList[i]);
+             }
+          }
+        }else{
+          var onReturn = function(returnValue){
+              var obj = callMessage;
+              obj.returnValue = returnValue;
+              window.parent.postMessage(JSON.stringify(obj), "*");
+          }
+          eval(callMessage.functionName + "(onReturn, callMessage.value)");
+        }
+    }, false);
+
+    /**
+     * 去call HKNBPCore嘅Function
+     */
+    function callHKNBPCoreFunction(functionName, value, onReturn){
+        var caller = {};
+        caller.functionName = functionName;
+        caller.value = value;
+        caller.name = "IframePlaye";
+        caller.id = new Date().getTime().toString() + Math.random().toString();
+        caller.onReturn = onReturn;
+        callHKNBPCoreFunctionList.push(caller);
+        window.setTimeout(function(){
+          removeObjFromcallHKNBPCoreFunctionList(caller); //如果太耐冇return就響List自動清除免堆垃圾
+        }, 60000);
+        window.parent.postMessage(JSON.stringify(caller), "*");
+    }
+
 </script>
 </body>
 </html>

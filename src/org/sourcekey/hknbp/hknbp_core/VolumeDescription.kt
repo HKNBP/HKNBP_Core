@@ -22,11 +22,13 @@ import kotlin.browser.window
 object VolumeDescription: UserInterface(
         "volumeDescription",
         fun(){
-            VolumeDescription.volumeValue.innerHTML = player.volume.toInt().toString()
-            VolumeDescription.volumeIconList.innerHTML = ""
-            for(i in 0 until (player.volume/10).toInt()){
-                VolumeDescription.volumeIconList.innerHTML += VolumeDescription.volumeIcon
-            }
+            player.getVolume(fun(volume){
+                VolumeDescription.volumeValue.innerHTML = volume.toInt().toString()
+                VolumeDescription.volumeIconList.innerHTML = ""
+                for(i in 0 until (volume/10).toInt()){
+                    VolumeDescription.volumeIconList.innerHTML += VolumeDescription.volumeIcon
+                }
+            })
         }
 ) {
     private val volumeDescription: HTMLDivElement = document.getElementById("volumeDescription") as HTMLDivElement

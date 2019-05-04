@@ -22,7 +22,7 @@ import kotlin.js.Date
 
 
 val rootURL: String     = "https://hknbp.org/"
-val coreVersion: String = "0.9.9"
+val coreVersion: String = "0.9.10"
 var appVersion: String  = "0.9-Web"
 
 val jQuery: dynamic = js("\$")
@@ -153,11 +153,13 @@ fun updateChannel() {
                     VolumeDescription.show(3000)
                 }
                 Player.OnPlayerEvent.mutedChanged -> {
-                    if(player.muted){
-                        MutedDescription.show()
-                    }else{
-                        MutedDescription.hide()
-                    }
+                    player.getMuted(fun(muted){
+                        if(muted){
+                            MutedDescription.show()
+                        }else{
+                            MutedDescription.hide()
+                        }
+                    })
                 }
             }
         }

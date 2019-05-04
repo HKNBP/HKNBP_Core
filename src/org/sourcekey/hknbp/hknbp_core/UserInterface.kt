@@ -45,16 +45,18 @@ abstract class UserInterface(
         }
 
     open fun show(){
-        if(!isShow){
-            htmlElement.style.display = "block"
-            lastTimeFocusElement?.focus()
-            onShow()
-            update()
-        }
+        htmlElement.style.display = "block"
+        lastTimeFocusElement?.focus()
+        onShow()
+        update()
+    }
+
+    private fun setHideTimer(showTime: Int){
+        hideTimer = window.setTimeout(fun(){ hide() }, showTime)
     }
 
     fun show(showTime: Int){
-        hideTimer = window.setTimeout(fun(){ hide() }, showTime)
+        setHideTimer(showTime)
         show()
     }
 
@@ -80,7 +82,7 @@ abstract class UserInterface(
                 //設定依家Focus邊粒element為之後再Show呢個介面時Focus返對上個次嘅element
                 lastTimeFocusElement = jQuery(js("this"))
                 //當focus就重新倒數介面顯示時間
-                show(15000)
+                setHideTimer(15000)
             }
         })
         jQuery(

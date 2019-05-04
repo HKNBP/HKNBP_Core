@@ -17,10 +17,33 @@ package org.sourcekey.hknbp.hknbp_core
 import kotlin.browser.document
 import kotlin.browser.localStorage
 import kotlin.browser.window
+import kotlin.js.Date
+import kotlin.js.Math
+import kotlin.random.Random
 
 class Player(private val tvChannel: TVChannel) {
     private val iframePlayer: dynamic = document.getElementById("iframePlayer")
     private val watchingCounter: WatchingCounter = WatchingCounter(tvChannel)
+
+    enum class OnPlayerEvent{
+        playing,
+        notPlaying,
+        videoTrackChanged,
+        audioTrackChanged,
+        subtitleTrackChanged,
+        volumeChanged,
+        mutedChanged
+    }
+
+    interface OnPlayerEventListener{
+        fun on(onPlayerEvent: OnPlayerEvent)
+    }
+
+    private var onPlayerEvents: ArrayList<OnPlayerEventListener> = ArrayList()
+
+    fun addOnPlayerEventListener(onPlayerEventListener: OnPlayerEventListener) {
+        onPlayerEvents.add(onPlayerEventListener)
+    }
 
     /**
      * 片源表
@@ -52,6 +75,7 @@ class Player(private val tvChannel: TVChannel) {
     var subtitleTracks: ArrayLinkList<TrackDescription> = ArrayLinkList(TrackDescription(-5, "-------"))
         private set
 
+
     /**
      * 確保音量值已設定Timer
      *
@@ -67,37 +91,42 @@ class Player(private val tvChannel: TVChannel) {
         }
 
     /**
-     * 音量
-     *
-     * 當get()會直接去iframePlayer度攞音量資訊
-     * 當set()會直接設定iframePlayer嘅音量
-     * 呢度個<值>可以話冇用
-     * 順水設個值可以畀其他地方容易get()同set()
-     * var volume: Double 等於 100.0 <- 係冇意思,順水初始化之用
+     * 設定iframePlayer嘅音量資訊
      *
      * 注:音量值用Double原因係因為有啲IframePlayer嘅音量值有小數
      * 小數中有取捨使到有機會調教唔到音量值
      * */
-    var volume: Double = 100.0
-        get() {
-            return iframePlayer?.contentWindow?.onGetIframePlayerVolume()?.toString()?.toDoubleOrNull()?:100.0
-        }
-        set(value) {
-            val script = fun(){
-                iframePlayer?.contentWindow?.onSetIframePlayerVolume(value)
-                var v = value
-                if(100 < v){v = 100.0}
-                if(v < 0){v = 0.0}
-                if(volume == v){
-                    window.clearInterval(makeSureIframePlayerVolumeValueIsChangedTimer)
-                    localStorage.setItem("RecentlyVolume", field.toString())//儲存低返最近設定音量
-                    field = v
+    fun setVolume(volume: Double) {
+        val script = fun(){
+            callIframePlayerFunction("onSetIframePlayerVolume", volume)
+            var _volume = volume
+            if(100 < _volume){_volume = 100.0}
+            if(_volume < 0){_volume = 0.0}
+            getVolume(fun(iframePlayerVolume){
+                if(iframePlayerVolume == _volume){
+                    window.clearInterval(makeSureIframePlayerVolumeValueIsChangedTimer)//取消確保值已更檢查
+                    localStorage.setItem("RecentlyVolume", _volume.toString())//儲存低返最近設定音量
+                    for(event in onPlayerEvents){ event.on(OnPlayerEvent.volumeChanged) }
                 }
-                for(event in onPlayerEvents){ event.on(OnPlayerEvent.volumeChanged) }
-            }
-            script()
-            makeSureIframePlayerVolumeValueIsChangedTimer = window.setInterval(script, 200)
+            })
+            for(event in onPlayerEvents){ event.on(OnPlayerEvent.volumeChanged) }
         }
+        script()
+        makeSureIframePlayerVolumeValueIsChangedTimer = window.setInterval(script, 250)//設置確保值已更檢查
+    }
+
+    /**
+     * 獲取iframePlayer嘅音量資訊
+     *
+     * 注:音量值用Double原因係因為有啲IframePlayer嘅音量值有小數
+     * 小數中有取捨使到有機會調教唔到音量值
+     * */
+    fun getVolume(onReturn: (volume: Double)->Unit) {
+        callIframePlayerFunction("onGetIframePlayerVolume", "", fun(returnValue){
+            onReturn(returnValue?.toString()?.toDoubleOrNull()?:100.0)
+        })
+    }
+
 
     /**
      * 確保靜音值已設定Timer
@@ -114,49 +143,38 @@ class Player(private val tvChannel: TVChannel) {
         }
 
     /**
-     * 靜音
-     *
-     * 當get()會直接去iframePlayer度攞靜音資訊
-     * 當set()會直接設定iframePlayer嘅靜音
-     * 呢度個<值>可以話冇用
-     * 順水設個值可以畀其他地方容易get()同set()
-     * var volume: Boolean 等於 false <- 係冇意思,順水初始化之用
+     * 設定iframePlayer嘅靜音資訊
      * */
-    var muted: Boolean = true
-        get() {
-            return iframePlayer?.contentWindow?.onGetIframePlayerMuted()?.toString()?.toBoolean()?:true
-        }
-        set(value) {
-            val script = fun(){
-                iframePlayer?.contentWindow?.onSetIframePlayerMuted(value)
-                if(muted == value){
-                    window.clearInterval(makeSureIframePlayerMutedValueIsChangedTimer)
-                    field = value
+    fun setMuted(muted: Boolean) {
+        val script = fun(){
+            callIframePlayerFunction("onSetIframePlayerMuted", muted)
+            getMuted(fun(iframePlayerMuted){
+                if(iframePlayerMuted == muted){
+                    window.clearInterval(makeSureIframePlayerMutedValueIsChangedTimer)//取消確保值已更檢查
+                    for(event in onPlayerEvents){ event.on(OnPlayerEvent.mutedChanged) }
                 }
-                for(event in onPlayerEvents){ event.on(OnPlayerEvent.mutedChanged) }
-            }
-            script()
-            makeSureIframePlayerMutedValueIsChangedTimer = window.setInterval(script, 200)
+            })
+            for(event in onPlayerEvents){ event.on(OnPlayerEvent.mutedChanged) }
         }
-
-    enum class OnPlayerEvent{
-        playing,
-        notPlaying,
-        videoTrackChanged,
-        audioTrackChanged,
-        subtitleTrackChanged,
-        volumeChanged,
-        mutedChanged
+        script()
+        makeSureIframePlayerMutedValueIsChangedTimer = window.setInterval(script, 250)//設置確保值已更檢查
     }
 
-    interface OnPlayerEventListener{
-        fun on(onPlayerEvent: OnPlayerEvent)
+    /**
+     * 獲取iframePlayer嘅靜音資訊
+     * */
+    fun getMuted(onReturn: (muted: Boolean)->Unit) {
+        callIframePlayerFunction("onGetIframePlayerMuted", "", fun(returnValue){
+            onReturn(returnValue?.toString()?.toBoolean()?:true)
+        })
     }
 
-    private var onPlayerEvents: ArrayList<OnPlayerEventListener> = ArrayList()
 
-    fun addOnPlayerEventListener(onPlayerEventListener: OnPlayerEventListener) {
-        onPlayerEvents.add(onPlayerEventListener)
+    /**
+     *  播放
+     */
+    fun play(){
+        callIframePlayerFunction("onSetIframePlayerPlay", "")
     }
 
     /**
@@ -165,85 +183,61 @@ class Player(private val tvChannel: TVChannel) {
      * 即iframePlayer正確地播放緊
      * 有關資料可讀取
      * */
-    private fun onPlaying(){
-        try{
-            videoTracks = TrackDescription.fromIframePlayerReturnTrackDescriptionsToKotilnUseableTrackDescriptions(
-                    iframePlayer?.contentWindow?.onGetIframePlayerVideoTracks(),
-                    iframePlayer?.contentWindow?.onGetIframePlayerVideoTrack()
-            )
-            videoTracks.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<TrackDescription> {
-                override fun OnNodeIDChanged(preChangeNodeID: Int?, postChangeNodeID: Int?, preChangeNode: TrackDescription?, postChangeNode: TrackDescription?) {
-                    iframePlayer?.contentWindow?.onSetIframePlayerVideoTrack(postChangeNode)
-                    localStorage.setItem("RecentlyChannel${tvChannel.number}VideoTrackID", postChangeNodeID.toString())
-                    for(event in onPlayerEvents){ event.on(OnPlayerEvent.videoTrackChanged) }
-                }
+    private val onPlaying = fun(){
+        //設定VideoTracks值
+        callIframePlayerFunction("onGetIframePlayerVideoTracks", "", fun(tracks){
+            callIframePlayerFunction("onGetIframePlayerVideoTrack", "", fun(track){
+                videoTracks = TrackDescription.fromIframePlayerReturnTrackDescriptionsToKotilnUseableTrackDescriptions(tracks, track)
+                videoTracks.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<TrackDescription> {
+                    override fun OnNodeIDChanged(preChangeNodeID: Int?, postChangeNodeID: Int?, preChangeNode: TrackDescription?, postChangeNode: TrackDescription?) {
+                        callIframePlayerFunction("onSetIframePlayerVideoTrack", postChangeNode)
+                        localStorage.setItem("RecentlyChannel${tvChannel.number}VideoTrackID", postChangeNodeID.toString())
+                        for(event in onPlayerEvents){ event.on(OnPlayerEvent.videoTrackChanged) }
+                    }
+                })
+                videoTracks.designated(
+                        localStorage.getItem("RecentlyChannel${tvChannel.number}VideoTrackID")?.toIntOrNull()?:0
+                )
             })
-            videoTracks.designated(
-                    localStorage.getItem("RecentlyChannel${tvChannel.number}VideoTrackID")?.toIntOrNull()?:0
-            )
-        }catch (e: dynamic) {
-            println("頻道響iframe程序未行完好 或者 Get唔到片源資訊: "+e.toString())
-            videoTracks = ArrayLinkList(TrackDescription(-5, "-------"))
-        }
-
-        try{
-            audioTracks = TrackDescription.fromIframePlayerReturnTrackDescriptionsToKotilnUseableTrackDescriptions(
-                    iframePlayer?.contentWindow?.onGetIframePlayerAudioTracks(),
-                    iframePlayer?.contentWindow?.onGetIframePlayerAudioTrack()
-            )
-            audioTracks.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<TrackDescription> {
-                override fun OnNodeIDChanged(preChangeNodeID: Int?, postChangeNodeID: Int?, preChangeNode: TrackDescription?, postChangeNode: TrackDescription?) {
-                    iframePlayer?.contentWindow?.onSetIframePlayerAudioTrack(postChangeNode)
-                    localStorage.setItem("RecentlyChannel${tvChannel.number}AudioTrackID", postChangeNodeID.toString())
-                    for(event in onPlayerEvents){ event.on(OnPlayerEvent.audioTrackChanged) }
-                }
+        })
+        //設定AudioTracks值
+        callIframePlayerFunction("onGetIframePlayerAudioTracks", "", fun(tracks){
+            callIframePlayerFunction("onGetIframePlayerAudioTrack", "", fun(track){
+                audioTracks = TrackDescription.fromIframePlayerReturnTrackDescriptionsToKotilnUseableTrackDescriptions(tracks, track)
+                audioTracks.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<TrackDescription> {
+                    override fun OnNodeIDChanged(preChangeNodeID: Int?, postChangeNodeID: Int?, preChangeNode: TrackDescription?, postChangeNode: TrackDescription?) {
+                        callIframePlayerFunction("onSetIframePlayerAudioTrack", postChangeNode)
+                        localStorage.setItem("RecentlyChannel${tvChannel.number}AudioTrackID", postChangeNodeID.toString())
+                        for(event in onPlayerEvents){ event.on(OnPlayerEvent.audioTrackChanged) }
+                    }
+                })
+                audioTracks.designated(
+                        localStorage.getItem("RecentlyChannel${tvChannel.number}AudioTrackID")?.toIntOrNull()?:0
+                )
             })
-            audioTracks.designated(
-                    localStorage.getItem("RecentlyChannel${tvChannel.number}AudioTrackID")?.toIntOrNull()?:0
-            )
-        }catch (e: dynamic) {
-            println("頻道響iframe程序未行完好 或者 Get唔到聲道資訊: "+e.toString())
-            audioTracks = ArrayLinkList(TrackDescription(-5, "-------"))
-        }
-
-        try{
-            subtitleTracks = TrackDescription.fromIframePlayerReturnTrackDescriptionsToKotilnUseableTrackDescriptions(
-                    iframePlayer?.contentWindow?.onGetIframePlayerSubtitleTracks(),
-                    iframePlayer?.contentWindow?.onGetIframePlayerSubtitleTrack()
-            )
-            subtitleTracks.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<TrackDescription> {
-                override fun OnNodeIDChanged(preChangeNodeID: Int?, postChangeNodeID: Int?, preChangeNode: TrackDescription?, postChangeNode: TrackDescription?) {
-                    iframePlayer?.contentWindow?.onSetIframePlayerSubtitleTrack(postChangeNode)
-                    localStorage.setItem("RecentlyChannel${tvChannel.number}SubtitleTrackID", postChangeNodeID.toString())
-                    for(event in onPlayerEvents){ event.on(OnPlayerEvent.subtitleTrackChanged) }
-                }
+        })
+        //設定SubtitleTracks值
+        callIframePlayerFunction("onGetIframePlayerSubtitleTracks", "", fun(tracks){
+            callIframePlayerFunction("onGetIframePlayerSubtitleTrack", "", fun(track){
+                subtitleTracks = TrackDescription.fromIframePlayerReturnTrackDescriptionsToKotilnUseableTrackDescriptions(tracks, track)
+                subtitleTracks.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<TrackDescription> {
+                    override fun OnNodeIDChanged(preChangeNodeID: Int?, postChangeNodeID: Int?, preChangeNode: TrackDescription?, postChangeNode: TrackDescription?) {
+                        callIframePlayerFunction("onSetIframePlayerSubtitleTrack", postChangeNode)
+                        localStorage.setItem("RecentlyChannel${tvChannel.number}SubtitleTrackID", postChangeNodeID.toString())
+                        for(event in onPlayerEvents){ event.on(OnPlayerEvent.subtitleTrackChanged) }
+                    }
+                })
+                subtitleTracks.designated(
+                        localStorage.getItem("RecentlyChannel${tvChannel.number}SubtitleTrackID")?.toIntOrNull()?:0
+                )
             })
-            subtitleTracks.designated(
-                    localStorage.getItem("RecentlyChannel${tvChannel.number}SubtitleTrackID")?.toIntOrNull()?:0
-            )
-        }catch (e: dynamic) {
-            println("頻道響iframe程序未行完好 或者 Get唔到字幕資訊 或者 頻道冇字幕: "+e.toString())
-            subtitleTracks = ArrayLinkList(TrackDescription(-5, "-------"))
-        }
-
-        try{
-            //讀取最近設定音量再去設定IframePlayer音量
-            iframePlayer?.contentWindow?.onSetIframePlayerVolume(
-                    localStorage.getItem("RecentlyVolume")?.toDoubleOrNull()?:100.0
-            )
-        }catch (e: dynamic) {println("頻道響iframe程序未行完好 或者 Get唔到音量資訊: "+e.toString())}
-
-        try{
-            /**
-             * 因依家大部分 <瀏覽器> 唔畀自動播放
-             * 如果要自動播放一定要將Player設為 <靜音>
-             **/
-            CanAutoplay.checkVideoAutoPlayNeedToMute(
-                    fun(){ muted = false },
-                    fun(){ muted = true }
-            )
-            muted = true
-        }catch (e: dynamic) {println("頻道響iframe程序未行完好 或者 Get唔到靜音資訊: "+e.toString())}
+        })
+        //讀取最近設定音量再去設定IframePlayer音量
+        callIframePlayerFunction("onSetIframePlayerVolume",
+                localStorage.getItem("RecentlyVolume")?.toDoubleOrNull()?:100.0
+        )
+        //因依家大部分 <瀏覽器> 唔畀自動播放, 如果要自動播放一定要將Player設為 <靜音>
+        CanAutoplay.checkVideoAutoPlayNeedToMute(fun(){ setMuted(false) }, fun(){ setMuted(true) })
 
         for(event in onPlayerEvents){ event.on(OnPlayerEvent.playing) }
     }
@@ -252,17 +246,8 @@ class Player(private val tvChannel: TVChannel) {
      * 當iframePlayer冇進行播放頻道時
      * 會執行此function
      * */
-    private fun onNotPlaying(){
+    private val onNotPlaying = fun(){
         for(event in onPlayerEvents){ event.on(OnPlayerEvent.notPlaying) }
-    }
-
-    /**
-     *  播放
-     */
-    fun play(){
-        try{
-            iframePlayer?.contentWindow?.onSetIframePlayerPlay()
-        }catch (e: dynamic){}
     }
 
     /******************************************************************************************************************/
@@ -398,9 +383,10 @@ class Player(private val tvChannel: TVChannel) {
      * 因此此值可被修改成學合其他平台嘅程序
      * @returns Double 現在音量
      * */
-    var volumeUp = fun(): Double{
-        player.volume = player.volume + 1.0
-        return player.volume
+    var volumeUp = fun(){
+        getVolume(fun(volume){
+            setVolume(volume + 1.0)
+        })
     }
 
     /**
@@ -410,9 +396,10 @@ class Player(private val tvChannel: TVChannel) {
      * 因此此值可被修改成學合其他平台嘅程序
      * @returns Double 現在音量
      * */
-    var volumeDown = fun(): Double{
-        player.volume = player.volume - 1.0
-        return player.volume
+    var volumeDown = fun(){
+        getVolume(fun(volume){
+            setVolume(volume - 1.0)
+        })
     }
 
     /**
@@ -423,7 +410,9 @@ class Player(private val tvChannel: TVChannel) {
      * 因此此值可被修改成學合其他平台嘅程序
      * */
     var volumeMute = fun(){
-        player.muted = !player.muted
+        getMuted(fun(volume){
+            setMuted(!volume)
+        })
     }
 
     /******************************************************************************************************************/
@@ -460,17 +449,63 @@ class Player(private val tvChannel: TVChannel) {
     }
 
     /******************************************************************************************************************/
+    private val callIframePlayerFunctionList = ArrayList<dynamic>()
+
+    private fun setListenIframePlayer(){
+        window.addEventListener("message", fun(event: dynamic){
+            try{
+                val callMessage = JSON.parse<dynamic>(event.data.toString())
+                if(callMessage.name == "HKNBPCore"){
+                    // 之前callIframePlayerFunction嘅Return
+                    for(obj in callIframePlayerFunctionList){
+                        if(obj.id == callMessage.id){
+                            obj.onReturn(callMessage.returnValue)
+                            callIframePlayerFunctionList.remove(obj)
+                        }
+                    }
+                }else{
+                    // IframePlayer個度call呢度啲Function
+                    val onPlaying = onPlaying
+                    val onNotPlaying = onNotPlaying
+                    /**
+                    var onReturn = fun(returnValue: dynamic){
+                    val obj = callMessage
+                    obj.returnValue = returnValue
+                    window.parent.postMessage(JSON.stringify(obj), "*")
+                    }*/
+                    eval(callMessage.functionName + "()")
+                }
+            }catch(e: dynamic){println("callIframePlayerFunction衰左: ${e}")}
+        }, false)
+    }
+
+    private fun callIframePlayerFunction(
+            functionName: String, value: dynamic = "", onReturn: (returnValue: dynamic)->Unit = fun(returnValue){}
+    ){
+        val caller = js("{}")
+        caller.functionName = functionName
+        caller.value = value
+        caller.name = "HKNBPCore"
+        caller.id = Date().getTime().toString() + Random.nextInt(0, 99999999)
+        caller.onReturn = onReturn
+        callIframePlayerFunctionList.add(caller)
+        window.setTimeout(fun(){
+            callIframePlayerFunctionList.remove(caller) //如果太耐冇return就響List自動清除免堆垃圾
+        }, 60000)
+        try {
+            iframePlayer.contentWindow.postMessage(JSON.stringify(caller), "*")
+        } catch (e: dynamic){ println("iframePlayer有啲Function搵唔到或發生問題: $e") }
+    }
+
     init {
-        iframePlayer?.src = tvChannel.sources.node?.iFramePlayerSrc ?: "iframePlayer/videojs_hls.html"
+        iframePlayer?.src = tvChannel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
         iframePlayer?.onload = fun(){
-            try {
-                iframePlayer?.contentWindow?.onIframePlayerPlaying = fun(){ onPlaying() }
-                iframePlayer?.contentWindow?.onIframePlayerNotPlaying = fun(){ onNotPlaying() }
-                iframePlayer?.contentWindow?.onIframePlayerInit(
-                        tvChannel.sources.node?.link?:
-                        "https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8"
-                )
-            } catch (e: dynamic){ println("iframePlayer有啲Function搵唔到或發生問題: $e") }
+            setListenIframePlayer()
+            callIframePlayerFunction(
+                    "onIframePlayerInit",
+                    tvChannel.sources.node?.link?:
+                    "https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8"
+            )
         }
     }
 }

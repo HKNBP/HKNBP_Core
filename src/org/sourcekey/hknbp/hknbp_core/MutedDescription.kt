@@ -23,6 +23,10 @@ object MutedDescription: UserInterface("mutedDescription") {
     private val mutedDescriptionButton: HTMLButtonElement = document.getElementById("mutedDescriptionButton") as HTMLButtonElement
 
     init {
-        mutedDescriptionButton.onclick = fun(event){player.muted = !player.muted}
+        mutedDescriptionButton.onclick = fun(event){
+            player.getMuted(fun(muted){
+                player.setMuted(!muted)
+            })
+        }
     }
 }
