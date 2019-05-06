@@ -49,11 +49,12 @@
                 'enablejsapi'       : 1,
                 'fs'                : 0,    // Hide the full screen button
                 'frameborder'       : 0,
-                'showinfo'          : 0,    // Hide the video title
+                'iv_load_policy'    : 3,    // Hide the Video Annotations
+                'loop'              : 1,    // Run the video in a loop
                 'mute'              : 1,
                 'modestbranding'    : 1,    // Hide the Youtube Logo
-                'loop'              : 1,    // Run the video in a loop
-                'iv_load_policy'    : 3     // Hide the Video Annotations
+                'playsinline'       : 1,    // Use inline Video (iOS need this can be play in web)
+                'showinfo'          : 0     // Hide the video title
             },
             events : {
                 'onReady' : onPlayerReady,
@@ -132,7 +133,7 @@
      * @param {videoTrack: TrackDescription} videoTrack 當執行設定videoTrack時嘅videoTrack參數
      * */
     function onSetIframePlayerVideoTrack(onReturn, videoTrack) {
-
+        //player.setPlaybackQuality(suggestedQuality:String):Void
     }
 
     /**
@@ -141,6 +142,7 @@
      * @param {(videoTrack: TrackDescription)=>{})} onReturn 執行此CallBackFunction去return個videoTrack
      * */
     function onGetIframePlayerVideoTrack(onReturn) {
+        //player.getPlaybackQuality():String
         return TrackDescription(-1, "自動");
     }
 
