@@ -1421,6 +1421,29 @@ var HKNBP_Core = function (_, Kotlin) {
   function set_player(player_0) {
     player = player_0;
   }
+  function getOS() {
+    var tmp$;
+    var _getOS = typeof (tmp$ = function () {
+      var userAgent = window.navigator.userAgent, platform = window.navigator.platform, macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'], windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'], iosPlatforms = ['iPhone', 'iPad', 'iPod'], os = '';
+      if (macosPlatforms.indexOf(platform) !== -1) {
+        os = 'Mac OS';
+      }
+       else if (iosPlatforms.indexOf(platform) !== -1) {
+        os = 'iOS';
+      }
+       else if (windowsPlatforms.indexOf(platform) !== -1) {
+        os = 'Windows';
+      }
+       else if (/Android/.test(userAgent)) {
+        os = 'Android';
+      }
+       else if (!os && /Linux/.test(platform)) {
+        os = 'Linux';
+      }
+      return os;
+    }) === 'function' ? tmp$ : throwCCE();
+    return _getOS();
+  }
   function reductionTo(w, h) {
     var arr = new Int32Array(2);
     var p = w;
@@ -3094,15 +3117,18 @@ var HKNBP_Core = function (_, Kotlin) {
     VirtualRemote_getInstance();
     FullScreenButton_getInstance();
     PictureInPictureButton_getInstance();
-    this.setIframeOnClick_a4mwiz$('iframePlayer', UserControlPanel_init$lambda_1(this));
-    this.shower_0.onclick = UserControlPanel_init$lambda_2(this);
-    this.shower_0.onmousemove = UserControlPanel_init$lambda_3(this);
-    this.panel_0.onmousemove = UserControlPanel_init$lambda_4(this);
-    this.panel_0.onscroll = UserControlPanel_init$lambda_5(this);
-    jQuery('body').mouseleave(UserControlPanel_init$lambda_6(this));
-    this.shower_0.ondblclick = UserControlPanel_init$lambda_7;
+    this.shower_0.onclick = UserControlPanel_init$lambda_1(this);
+    this.shower_0.onmousemove = UserControlPanel_init$lambda_2(this);
+    this.panel_0.onmousemove = UserControlPanel_init$lambda_3(this);
+    this.panel_0.onscroll = UserControlPanel_init$lambda_4(this);
+    jQuery('body').mouseleave(UserControlPanel_init$lambda_5(this));
+    this.shower_0.ondblclick = UserControlPanel_init$lambda_6;
     var _shower = this.shower_0;
-    _shower.ontouchstart = UserControlPanel_init$lambda_8(this);
+    _shower.ontouchstart = UserControlPanel_init$lambda_7(this);
+    if (equals(getOS(), 'iOS')) {
+      this.shower_0.style.zIndex = '0';
+    }
+    this.setIframeOnClick_a4mwiz$('iframePlayer', UserControlPanel_init$lambda_8(this));
   }
   Object.defineProperty(UserControlPanel.prototype, 'hideMouseTimer_0', {
     get: function () {
@@ -3113,14 +3139,16 @@ var HKNBP_Core = function (_, Kotlin) {
       this.hideMouseTimer_r29tyc$_0 = value;
     }
   });
-  function UserControlPanel$setIframeOnClick$lambda$lambda() {
-    jQuery(this).focus();
-  }
-  function UserControlPanel$setIframeOnClick$lambda(closure$onClick) {
+  function UserControlPanel$setIframeOnClick$lambda$lambda(this$UserControlPanel) {
     return function () {
-      println('a');
+      jQuery(this).focus();
+      this$UserControlPanel.shower_0.focus();
+    };
+  }
+  function UserControlPanel$setIframeOnClick$lambda(closure$onClick, this$UserControlPanel) {
+    return function () {
       closure$onClick();
-      window.setTimeout(UserControlPanel$setIframeOnClick$lambda$lambda, 0);
+      window.setTimeout(UserControlPanel$setIframeOnClick$lambda$lambda(this$UserControlPanel), 0);
     };
   }
   function UserControlPanel$setIframeOnClick$lambda_0(closure$iframeId, closure$obj) {
@@ -3129,8 +3157,9 @@ var HKNBP_Core = function (_, Kotlin) {
     };
   }
   UserControlPanel.prototype.setIframeOnClick_a4mwiz$ = function (iframeId, onClick) {
+    this.shower_0.focus();
     var obj = {v: {}};
-    obj.v.blurCallback = UserControlPanel$setIframeOnClick$lambda(onClick);
+    obj.v.blurCallback = UserControlPanel$setIframeOnClick$lambda(onClick, this);
     jQuery(document).ready(UserControlPanel$setIframeOnClick$lambda_0(iframeId, obj));
   };
   function UserControlPanel_init$lambda() {
@@ -3149,42 +3178,36 @@ var HKNBP_Core = function (_, Kotlin) {
   function UserControlPanel$onHideUserControlPanel$lambda() {
   }
   function UserControlPanel_init$lambda_1(this$UserControlPanel) {
-    return function () {
+    return function (event) {
       this$UserControlPanel.showHideAlternately();
       get_player().play();
     };
   }
   function UserControlPanel_init$lambda_2(this$UserControlPanel) {
     return function (event) {
-      this$UserControlPanel.showHideAlternately();
-      get_player().play();
-    };
-  }
-  function UserControlPanel_init$lambda_3(this$UserControlPanel) {
-    return function (event) {
       this$UserControlPanel.show_za3lpa$(500);
     };
   }
-  function UserControlPanel_init$lambda_4(this$UserControlPanel) {
+  function UserControlPanel_init$lambda_3(this$UserControlPanel) {
     return function (event) {
       event.stopPropagation();
       this$UserControlPanel.show_za3lpa$(30000);
     };
   }
-  function UserControlPanel_init$lambda_5(this$UserControlPanel) {
+  function UserControlPanel_init$lambda_4(this$UserControlPanel) {
     return function (event) {
       this$UserControlPanel.show_za3lpa$(30000);
     };
   }
-  function UserControlPanel_init$lambda_6(this$UserControlPanel) {
+  function UserControlPanel_init$lambda_5(this$UserControlPanel) {
     return function () {
       this$UserControlPanel.hide();
     };
   }
-  function UserControlPanel_init$lambda_7(event) {
+  function UserControlPanel_init$lambda_6(event) {
     FullScreenButton_getInstance().enterExitFullScreenAlternately();
   }
-  function UserControlPanel_init$lambda_8(this$UserControlPanel) {
+  function UserControlPanel_init$lambda_7(this$UserControlPanel) {
     return function (event) {
       event.preventDefault();
       if (this$UserControlPanel.panel_0.style.display === 'block') {
@@ -3193,6 +3216,11 @@ var HKNBP_Core = function (_, Kotlin) {
        else {
         this$UserControlPanel.show_za3lpa$(15000);
       }
+    };
+  }
+  function UserControlPanel_init$lambda_8(this$UserControlPanel) {
+    return function () {
+      this$UserControlPanel.showHideAlternately();
     };
   }
   UserControlPanel.$metadata$ = {
@@ -5533,6 +5561,7 @@ var HKNBP_Core = function (_, Kotlin) {
     get: get_player,
     set: set_player
   });
+  package$hknbp_core.getOS = getOS;
   package$hknbp_core.reductionTo_vux9f0$ = reductionTo;
   package$hknbp_core.updateURLParameter_puj7f4$ = updateURLParameter;
   package$hknbp_core.designatedChannel = designatedChannel;

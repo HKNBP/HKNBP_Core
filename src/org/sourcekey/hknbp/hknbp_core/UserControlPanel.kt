@@ -73,12 +73,13 @@ object UserControlPanel: UserInterface(
     var onHideUserControlPanel: ()->Unit = fun(){}
 
     fun setIframeOnClick(iframeId: String, onClick: ()->Unit){
+        shower.focus()
         var obj = js("{}")
         obj.blurCallback = fun(){
-            println("a")
             onClick()
             window.setTimeout(fun() {
                 jQuery(js("this")).focus()
+                shower.focus()
             }, 0)
         }
         jQuery(js("document")).ready(fun(){
@@ -93,10 +94,6 @@ object UserControlPanel: UserInterface(
         PictureInPictureButton
 
         //設定使用者控制界面顯示方法
-        setIframeOnClick("iframePlayer", fun(){
-            showHideAlternately()
-            player.play()
-        })
         shower.onclick = fun(event){
             showHideAlternately()
             player.play()
@@ -129,5 +126,14 @@ object UserControlPanel: UserInterface(
                 show(15000)
             }
         }
+
+        //如果系統係iOS就開iframePlayer畀人撳Play制播放頻道
+        //由於iOS唔允唔全螢幕播放Video
+        //好似有解決方法, 有待研究
+        //https://stackoverflow.com/questions/5054560/can-i-avoid-the-native-fullscreen-video-player-with-html5-on-iphone-or-android
+        if(getOS() == "iOS"){ shower.style.zIndex = "0"}
+        setIframeOnClick("iframePlayer", fun(){
+            showHideAlternately()
+        })
     }
 }
