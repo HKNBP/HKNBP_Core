@@ -30,12 +30,12 @@ object UserControlPanel: UserInterface(
         "userControlPanel",
         fun(){
             UserControlPanel.onShowUserControlPanel()
-            jQuery("#panelShower").css("cursor", "auto")
+            jQuery("#userControlPanelShower").css("cursor", "auto")
         },
         fun(){
             UserControlPanel.onHideUserControlPanel()
             UserControlPanel.hideMouseTimer = window.setTimeout(fun(){
-                jQuery("#panelShower").css("cursor", "none")
+                jQuery("#userControlPanelShower").css("cursor", "none")
             }, 2000)
         },
         "onHeadNextAudioButton"
@@ -129,11 +129,15 @@ object UserControlPanel: UserInterface(
 
         //如果系統係iOS就開iframePlayer畀人撳Play制播放頻道
         //由於iOS唔允唔全螢幕播放Video
+        //所以要畀iOS用戶直接點擊iframePlayer
         //好似有解決方法, 有待研究
         //https://stackoverflow.com/questions/5054560/can-i-avoid-the-native-fullscreen-video-player-with-html5-on-iphone-or-android
-        if(getOS() == "iOS"){ shower.style.zIndex = "0"}
-        setIframeOnClick("iframePlayer", fun(){
-            showHideAlternately()
-        })
+        if(getOS() == "iOS"){
+            shower.style.right = "auto"
+            shower.style.width = "10vh"
+            shower.style.backgroundColor = "#303030"
+            shower.innerHTML = "<i class=\"icon-font\" style=\"font-size: 5vh;\">&#xe825;</i>"
+        }
+        setIframeOnClick("iframePlayer", fun(){ showHideAlternately() })
     }
 }

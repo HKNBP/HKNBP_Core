@@ -1909,7 +1909,6 @@ var HKNBP_Core = function (_, Kotlin) {
   function Player$setVolume$lambda(closure$volume, this$Player) {
     return function () {
       var tmp$;
-      this$Player.callIframePlayerFunction_0('onSetIframePlayerVolume', closure$volume);
       var _volume = {v: closure$volume};
       if (100 < _volume.v) {
         _volume.v = 100.0;
@@ -1917,6 +1916,8 @@ var HKNBP_Core = function (_, Kotlin) {
       if (_volume.v < 0) {
         _volume.v = 0.0;
       }
+      println(_volume.v);
+      this$Player.callIframePlayerFunction_0('onSetIframePlayerVolume', _volume.v);
       this$Player.getVolume_huw4wd$(Player$setVolume$lambda$lambda(_volume, this$Player));
       tmp$ = this$Player.onPlayerEvents_0.iterator();
       while (tmp$.hasNext()) {
@@ -2130,7 +2131,7 @@ var HKNBP_Core = function (_, Kotlin) {
             }
           }
         }
-         else {
+         else if (callMessage.name == 'IframePlaye') {
           var onPlaying = this$Player.onPlaying_0;
           var onNotPlaying = this$Player.onNotPlaying_0;
           eval(callMessage.functionName + '()');
@@ -3126,7 +3127,10 @@ var HKNBP_Core = function (_, Kotlin) {
     var _shower = this.shower_0;
     _shower.ontouchstart = UserControlPanel_init$lambda_7(this);
     if (equals(getOS(), 'iOS')) {
-      this.shower_0.style.zIndex = '0';
+      this.shower_0.style.right = 'auto';
+      this.shower_0.style.width = '10vh';
+      this.shower_0.style.backgroundColor = '#303030';
+      this.shower_0.innerHTML = '<i class="icon-font" style="font-size: 5vh;">&#xe825;<\/i>';
     }
     this.setIframeOnClick_a4mwiz$('iframePlayer', UserControlPanel_init$lambda_8(this));
   }
@@ -3164,10 +3168,10 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function UserControlPanel_init$lambda() {
     UserControlPanel_getInstance().onShowUserControlPanel();
-    jQuery('#panelShower').css('cursor', 'auto');
+    jQuery('#userControlPanelShower').css('cursor', 'auto');
   }
   function UserControlPanel_init$lambda$lambda() {
-    jQuery('#panelShower').css('cursor', 'none');
+    jQuery('#userControlPanelShower').css('cursor', 'none');
   }
   function UserControlPanel_init$lambda_0() {
     UserControlPanel_getInstance().onHideUserControlPanel();
@@ -3288,8 +3292,8 @@ var HKNBP_Core = function (_, Kotlin) {
     this.hideTimer_1c3smv$_0 = window.setTimeout(UserInterface$setHideTimer$lambda(this), showTime);
   };
   UserInterface.prototype.show_za3lpa$ = function (showTime) {
-    this.setHideTimer_djwtaz$_0(showTime);
     this.show();
+    this.setHideTimer_djwtaz$_0(showTime);
   };
   UserInterface.prototype.hide = function () {
     this.htmlElement_sdspbr$_0.style.display = 'none';

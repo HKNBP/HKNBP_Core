@@ -56,8 +56,8 @@ abstract class UserInterface(
     }
 
     fun show(showTime: Int){
-        setHideTimer(showTime)
         show()
+        setHideTimer(showTime)
     }
 
     open fun hide(){

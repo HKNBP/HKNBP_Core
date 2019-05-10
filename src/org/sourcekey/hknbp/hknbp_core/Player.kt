@@ -98,10 +98,11 @@ class Player(private val tvChannel: TVChannel) {
      * */
     fun setVolume(volume: Double) {
         val script = fun(){
-            callIframePlayerFunction("onSetIframePlayerVolume", volume)
             var _volume = volume
             if(100 < _volume){_volume = 100.0}
             if(_volume < 0){_volume = 0.0}
+            println(_volume)
+            callIframePlayerFunction("onSetIframePlayerVolume", _volume)
             getVolume(fun(iframePlayerVolume){
                 if(iframePlayerVolume == _volume){
                     window.clearInterval(makeSureIframePlayerVolumeValueIsChangedTimer)//取消確保值已更檢查
@@ -463,7 +464,7 @@ class Player(private val tvChannel: TVChannel) {
                             callIframePlayerFunctionList.remove(obj)
                         }
                     }
-                }else{
+                }else if(callMessage.name == "IframePlaye"){
                     // IframePlayer個度call呢度啲Function
                     val onPlaying = onPlaying
                     val onNotPlaying = onNotPlaying

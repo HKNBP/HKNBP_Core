@@ -253,7 +253,6 @@ updateChannel()
 }
  */
 
-
 /**
  * 用onmousedown加onmouseup實現<長撳>功能
  *

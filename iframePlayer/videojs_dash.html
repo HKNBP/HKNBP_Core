@@ -348,7 +348,7 @@
      */
     function removeObjFromcallHKNBPCoreFunctionList(caller){
       for(var i = 0; i < callHKNBPCoreFunctionList.length; i++){
-         if (callHKNBPCoreFunctionList[i] === obj) {
+         if (callHKNBPCoreFunctionList[i] === caller) {
            callHKNBPCoreFunctionList.splice(i, 1);
          }
       }
@@ -366,7 +366,7 @@
                removeObjFromcallHKNBPCoreFunctionList(callHKNBPCoreFunctionList[i]);
              }
           }
-        }else{
+        }else if(callMessage.name === "HKNBPCore"){
           var onReturn = function(returnValue){
               var obj = callMessage;
               obj.returnValue = returnValue;
