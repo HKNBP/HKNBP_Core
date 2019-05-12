@@ -101,7 +101,6 @@ class Player(private val tvChannel: TVChannel) {
             var _volume = volume
             if(100 < _volume){_volume = 100.0}
             if(_volume < 0){_volume = 0.0}
-            println(_volume)
             callIframePlayerFunction("onSetIframePlayerVolume", _volume)
             getVolume(fun(iframePlayerVolume){
                 if(iframePlayerVolume == _volume){

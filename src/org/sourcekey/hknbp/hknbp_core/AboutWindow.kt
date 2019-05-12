@@ -28,11 +28,13 @@ object AboutWindow: UserInterface(
     private val aboutWindow: HTMLDivElement = document.getElementById("aboutWindow") as HTMLDivElement
     private val hideButton: HTMLButtonElement = document.getElementById("aboutWindowHideButton") as HTMLButtonElement
     private val coreVersionText: HTMLDivElement = document.getElementById("aboutWindowCoreVersionText") as HTMLDivElement
+    private val appVersionText: HTMLDivElement = document.getElementById("aboutWindowAppVersionText") as HTMLDivElement
     private val consentText: HTMLElement = document.getElementById("aboutWindowConsentText") as HTMLElement
 
     init {
         hideButton.onclick = fun(event){hide()}
         consentText.onclick = fun(event){ConsentPanel.show()}
         coreVersionText.innerHTML = coreVersion
+        appVersionText.innerHTML = appVersion
     }
 }
