@@ -1648,6 +1648,20 @@ var HKNBP_Core = function (_, Kotlin) {
   function setAllBuutonOnLongClickFeatures() {
     jQuery('button').mousedown(setAllBuutonOnLongClickFeatures$lambda).mouseup(setAllBuutonOnLongClickFeatures$lambda_0).mouseout(setAllBuutonOnLongClickFeatures$lambda_1);
   }
+  function setListenHKNBPBridgeCall$lambda(event) {
+    try {
+      var callMessage = JSON.parse(event.data.toString());
+      if (callMessage.name == 'HKNBP_Bridge') {
+        eval(callMessage.expr);
+      }
+    }
+     catch (e) {
+      println('callIframePlayerFunction\u8870\u5DE6: ' + e.toString());
+    }
+  }
+  function setListenHKNBPBridgeCall() {
+    window.addEventListener('message', setListenHKNBPBridgeCall$lambda, false);
+  }
   function main$lambda$ObjectLiteral() {
   }
   main$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
@@ -1667,6 +1681,7 @@ var HKNBP_Core = function (_, Kotlin) {
     TVChannelDescription_getInstance().update();
   }
   function main(args) {
+    setListenHKNBPBridgeCall();
     try {
       UserControlPanel_getInstance();
       ConsentPanel_getInstance();

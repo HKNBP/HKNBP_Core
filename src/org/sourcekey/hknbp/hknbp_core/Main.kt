@@ -306,12 +306,23 @@ private fun setAllBuutonOnLongClickFeatures(){
     })
 }
 
+private fun setListenHKNBPBridgeCall(){
+    window.addEventListener("message", fun(event: dynamic){
+        try{
+            val callMessage = JSON.parse<dynamic>(event.data.toString())
+            if(callMessage.name == "HKNBP_Bridge"){ eval(callMessage.expr) }
+        }catch(e: dynamic){println("callIframePlayerFunction衰左: ${e}")}
+    }, false)
+}
+
 /**
  * ****************************** *
  * 成個HKNBP_Core嘅Kotlin部分嘅開始 *
  * ****************************** *
  * */
 fun main(args: Array<String>) {
+    setListenHKNBPBridgeCall()
+
     try {
         UserControlPanel
         ConsentPanel
