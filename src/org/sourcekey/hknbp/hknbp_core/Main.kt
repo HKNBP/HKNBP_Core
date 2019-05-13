@@ -22,7 +22,7 @@ import kotlin.js.Date
 
 
 val rootURL: String     = "https://hknbp.org/"
-val coreVersion: String = "0.9.10"
+val coreVersion: String = "0.10.10"
 var appVersion: String  = "0.9-Web"
 
 val jQuery: dynamic = js("\$")
@@ -309,6 +309,7 @@ private fun setAllBuutonOnLongClickFeatures(){
 private fun setListenHKNBPBridgeCall(){
     window.addEventListener("message", fun(event: dynamic){
         try{
+            println("ex"+event.data.toString())
             val callMessage = JSON.parse<dynamic>(event.data.toString())
             if(callMessage.name == "HKNBP_Bridge"){ eval(callMessage.expr) }
         }catch(e: dynamic){println("callIframePlayerFunction衰左: ${e}")}
