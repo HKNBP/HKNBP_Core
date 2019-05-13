@@ -1650,7 +1650,6 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function setListenHKNBPBridgeCall$lambda(event) {
     try {
-      println('ex' + event.data.toString());
       var callMessage = JSON.parse(event.data.toString());
       if (callMessage.name == 'HKNBP_Bridge') {
         eval(callMessage.expr);

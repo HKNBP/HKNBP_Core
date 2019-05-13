@@ -309,7 +309,6 @@ private fun setAllBuutonOnLongClickFeatures(){
 private fun setListenHKNBPBridgeCall(){
     window.addEventListener("message", fun(event: dynamic){
         try{
-            println("ex"+event.data.toString())
             val callMessage = JSON.parse<dynamic>(event.data.toString())
             if(callMessage.name == "HKNBP_Bridge"){ eval(callMessage.expr) }
         }catch(e: dynamic){println("callIframePlayerFunction衰左: ${e}")}
