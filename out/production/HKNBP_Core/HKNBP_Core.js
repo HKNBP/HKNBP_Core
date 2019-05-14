@@ -94,24 +94,26 @@ var HKNBP_Core = function (_, Kotlin) {
   XMLTV$Programme$ProgrammeList.prototype.constructor = XMLTV$Programme$ProgrammeList;
   function AboutWindow() {
     AboutWindow_instance = this;
-    UserInterface.call(this, 'aboutWindow', void 0, void 0, 'aboutWindowHideButton', true);
+    UserInterface.call(this, 'aboutWindow', AboutWindow_init$lambda, void 0, 'aboutWindowHideButton', true);
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3;
     this.aboutWindow_0 = Kotlin.isType(tmp$ = document.getElementById('aboutWindow'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('aboutWindowHideButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.coreVersionText_0 = Kotlin.isType(tmp$_1 = document.getElementById('aboutWindowCoreVersionText'), HTMLDivElement) ? tmp$_1 : throwCCE();
     this.appVersionText_0 = Kotlin.isType(tmp$_2 = document.getElementById('aboutWindowAppVersionText'), HTMLDivElement) ? tmp$_2 : throwCCE();
     this.consentText_0 = Kotlin.isType(tmp$_3 = document.getElementById('aboutWindowConsentText'), HTMLElement) ? tmp$_3 : throwCCE();
-    this.hideButton_0.onclick = AboutWindow_init$lambda(this);
-    this.consentText_0.onclick = AboutWindow_init$lambda_0;
-    this.coreVersionText_0.innerHTML = coreVersion;
-    this.appVersionText_0.innerHTML = appVersion;
+    this.hideButton_0.onclick = AboutWindow_init$lambda_0(this);
+    this.consentText_0.onclick = AboutWindow_init$lambda_1;
   }
-  function AboutWindow_init$lambda(this$AboutWindow) {
+  function AboutWindow_init$lambda() {
+    AboutWindow_getInstance().coreVersionText_0.innerHTML = coreVersion;
+    AboutWindow_getInstance().appVersionText_0.innerHTML = appVersion;
+  }
+  function AboutWindow_init$lambda_0(this$AboutWindow) {
     return function (event) {
       this$AboutWindow.hide();
     };
   }
-  function AboutWindow_init$lambda_0(event) {
+  function AboutWindow_init$lambda_1(event) {
     ConsentPanel_getInstance().show();
   }
   AboutWindow.$metadata$ = {
