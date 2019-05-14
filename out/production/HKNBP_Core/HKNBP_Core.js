@@ -1658,7 +1658,7 @@ var HKNBP_Core = function (_, Kotlin) {
       }
     }
      catch (e) {
-      println('ListenHKNBPBridgeCall\u8870\u5DE6: ' + e.toString() + ' ' + event.data.toString());
+      println('ListenHKNBPBridgeCall\u8870\u5DE6: ' + e.toString() + '\n' + event.data.toString());
     }
   }
   function setListenHKNBPBridgeCall() {
@@ -2156,7 +2156,7 @@ var HKNBP_Core = function (_, Kotlin) {
         }
       }
        catch (e) {
-        println('callIframePlayerFunction\u8870\u5DE6: ' + e.toString());
+        println('callIframePlayerFunction\u8870\u5DE6: ' + e.toString() + '\n' + event.data.toString());
       }
     };
   }
@@ -5721,7 +5721,7 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   package$hknbp_core.XMLTV = XMLTV;
   rootURL = 'https://hknbp.org/';
-  coreVersion = '0.9.12';
+  coreVersion = '0.9.13';
   appVersion = '0.9-Web';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();

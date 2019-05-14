@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="439dc076-fa64-48ca-946e-6d20fa2781e4" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,12 +38,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-306">
-              <caret line="1" selection-start-line="1" selection-end-line="13" selection-end-column="5" />
+            <state relative-caret-position="1818">
+              <caret line="1165" column="86" lean-forward="true" selection-start-line="1165" selection-start-column="86" selection-end-line="1165" selection-end-column="86" />
               <folding>
                 <element signature="n#head#0;n#html#0;n#!!top" />
                 <element signature="n#script#0;n#head#0;n#html#0;n#!!top" />
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
+                <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#iframe#0;n#div#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#button#0;n#div#1;n#body#0;n#html#0;n#!!top" />
@@ -327,7 +330,7 @@
         <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
-              <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
+              <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="n#!!block;n#getOS#0" />
@@ -355,8 +358,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1281">
-              <caret line="495" column="50" selection-start-line="495" selection-start-column="50" selection-end-line="495" selection-end-column="79" />
+            <state relative-caret-position="2790">
+              <caret line="495" column="50" selection-start-line="495" selection-start-column="39" selection-end-line="495" selection-end-column="50" />
               <folding>
                 <element signature="n#!!block;n#OnPlayerEvent#0;n#!!block;n#Player#0" />
                 <element signature="n#!!block;n#OnPlayerEventListener#0;n#!!block;n#Player#0" />
@@ -459,7 +462,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iframePlayer/youtube_api.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5958">
+            <state relative-caret-position="18">
               <caret line="331" column="56" selection-start-line="331" selection-start-column="56" selection-end-line="331" selection-end-column="56" />
               <folding>
                 <element signature="n#style#0;n#video#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -471,7 +474,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VirtualRemote.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
+            <state relative-caret-position="164">
               <caret line="46" column="8" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="24" />
               <folding>
                 <element signature="n#!!block;n#updateTVChannelDescription#0;n#!!block;n#VirtualRemote#0" />
@@ -615,9 +618,9 @@
         <option value="$PROJECT_DIR$/iframePlayer/videojs_hls.html" />
         <option value="$PROJECT_DIR$/iframePlayer/videojs_dash.html" />
         <option value="$PROJECT_DIR$/iframePlayer/youtube_api.html" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/AboutWindow.kt" />
+        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt" />
+        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" />
       </list>
     </option>
@@ -1458,19 +1461,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/iframePlayer/youtube_api.html">
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/AboutWindow.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5958">
-          <caret line="331" column="56" selection-start-line="331" selection-start-column="56" selection-end-line="331" selection-end-column="56" />
-          <folding>
-            <element signature="n#style#0;n#video#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="450">
+          <caret line="41" column="1" lean-forward="true" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VirtualRemote.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
+        <state relative-caret-position="164">
           <caret line="46" column="8" selection-start-line="46" selection-start-column="8" selection-end-line="46" selection-end-column="24" />
           <folding>
             <element signature="n#!!block;n#updateTVChannelDescription#0;n#!!block;n#VirtualRemote#0" />
@@ -1514,8 +1514,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1281">
-          <caret line="495" column="50" selection-start-line="495" selection-start-column="50" selection-end-line="495" selection-end-column="79" />
+        <state relative-caret-position="2790">
+          <caret line="495" column="50" selection-start-line="495" selection-start-column="39" selection-end-line="495" selection-end-column="50" />
           <folding>
             <element signature="n#!!block;n#OnPlayerEvent#0;n#!!block;n#Player#0" />
             <element signature="n#!!block;n#OnPlayerEventListener#0;n#!!block;n#Player#0" />
@@ -1614,21 +1614,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/AboutWindow.kt">
+    <entry file="file://$PROJECT_DIR$/iframePlayer/youtube_api.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="41" column="1" lean-forward="true" selection-start-line="41" selection-start-column="1" selection-end-line="41" selection-end-column="1" />
+        <state relative-caret-position="18">
+          <caret line="331" column="56" selection-start-line="331" selection-start-column="56" selection-end-line="331" selection-end-column="56" />
+          <folding>
+            <element signature="n#style#0;n#video#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-306">
-          <caret line="1" selection-start-line="1" selection-end-line="13" selection-end-column="5" />
+        <state relative-caret-position="1818">
+          <caret line="1165" column="86" lean-forward="true" selection-start-line="1165" selection-start-column="86" selection-end-line="1165" selection-end-column="86" />
           <folding>
             <element signature="n#head#0;n#html#0;n#!!top" />
             <element signature="n#script#0;n#head#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#iframe#0;n#div#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#button#0;n#div#1;n#body#0;n#html#0;n#!!top" />
@@ -1912,7 +1916,7 @@
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="24" column="30" selection-start-line="24" selection-start-column="30" selection-end-line="24" selection-end-column="30" />
+          <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="n#!!block;n#getOS#0" />

@@ -475,7 +475,7 @@ class Player(private val tvChannel: TVChannel) {
                     }*/
                     eval(callMessage.functionName + "()")
                 }
-            }catch(e: dynamic){println("callIframePlayerFunction衰左: ${e}")}
+            }catch(e: dynamic){println("callIframePlayerFunction衰左: ${e}\n${event.data.toString()}")}
         }, false)
     }
 

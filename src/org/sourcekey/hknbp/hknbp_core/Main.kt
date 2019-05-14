@@ -22,7 +22,7 @@ import kotlin.js.Date
 
 
 val rootURL: String     = "https://hknbp.org/"
-val coreVersion: String = "0.9.12"
+val coreVersion: String = "0.9.13"
 var appVersion: String  = "0.9-Web"
 
 val jQuery: dynamic = js("\$")
@@ -311,7 +311,7 @@ private fun setListenHKNBPBridgeCall(){
         try{
             val callMessage = JSON.parse<dynamic>(event.data.toString())
             if(callMessage.name == "HKNBP_Bridge"){ eval(callMessage.expr) }
-        }catch(e: dynamic){println("ListenHKNBPBridgeCall衰左: ${e} ${event.data.toString()}")}
+        }catch(e: dynamic){println("ListenHKNBPBridgeCall衰左: ${e}\n${event.data.toString()}")}
     }, false)
 }
 
