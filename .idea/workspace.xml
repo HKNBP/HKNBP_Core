@@ -5,9 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="439dc076-fa64-48ca-946e-6d20fa2781e4" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/HKNBPCoreManagerBridge.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LongClick.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.meta.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.meta.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,8 +43,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1818">
-              <caret line="1165" column="86" lean-forward="true" selection-start-line="1165" selection-start-column="86" selection-end-line="1165" selection-end-column="86" />
+            <state relative-caret-position="655">
+              <caret line="1165" column="31" selection-start-line="1165" selection-start-column="31" selection-end-line="1165" selection-end-column="31" />
               <folding>
                 <element signature="n#head#0;n#html#0;n#!!top" />
                 <element signature="n#script#0;n#head#0;n#html#0;n#!!top" />
@@ -326,11 +331,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+            <state relative-caret-position="259">
+              <caret line="255" selection-start-line="255" selection-end-line="255" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="n#!!block;n#getOS#0" />
@@ -342,15 +347,18 @@
                 <element signature="n#!!block;n#designatedChannel#0" />
                 <element signature="n#!!doc;n#updateChannel#0" />
                 <element signature="n#!!block;n#updateChannel#0" />
-                <element signature="n#!!doc;n#OnLongClick#0" />
-                <element signature="n#!!block;n#OnLongClick#0" />
-                <element signature="n#!!block;n#mousedown#0;n#!!block;n#OnLongClick#0" />
-                <element signature="n#!!block;n#mouseup#0;n#!!block;n#OnLongClick#0" />
-                <element signature="n#!!doc;n#onLongClick#0" />
-                <element signature="n#!!doc;n#setAllBuutonOnLongClickFeatures#0" />
-                <element signature="n#!!block;n#setAllBuutonOnLongClickFeatures#0" />
+                <element signature="e#6256#7312#0" />
                 <element signature="n#!!doc;n#main#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/HKNBPCoreManagerBridge.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -358,8 +366,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2790">
-              <caret line="495" column="50" selection-start-line="495" selection-start-column="39" selection-end-line="495" selection-end-column="50" />
+            <state relative-caret-position="-11">
+              <caret line="452" lean-forward="true" selection-start-line="452" selection-end-line="452" />
               <folding>
                 <element signature="n#!!block;n#OnPlayerEvent#0;n#!!block;n#Player#0" />
                 <element signature="n#!!block;n#OnPlayerEventListener#0;n#!!block;n#Player#0" />
@@ -462,8 +470,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/iframePlayer/youtube_api.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="331" column="56" selection-start-line="331" selection-start-column="56" selection-end-line="331" selection-end-column="56" />
+            <state relative-caret-position="223">
+              <caret line="367" column="21" selection-start-line="367" selection-start-column="21" selection-end-line="367" selection-end-column="21" />
               <folding>
                 <element signature="n#style#0;n#video#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -526,8 +534,8 @@
         <option value="Class" />
         <option value="HTML File" />
         <option value="Kotlin File" />
-        <option value="Kotlin Object" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Object" />
       </list>
     </option>
   </component>
@@ -571,8 +579,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/iframePlayer/xx.html" />
-        <option value="$PROJECT_DIR$/iframePlayer/videojs.html" />
         <option value="$PROJECT_DIR$/data/dialogue.json" />
         <option value="$PROJECT_DIR$/js/serviceWorker.js" />
         <option value="$PROJECT_DIR$/manifest.json" />
@@ -617,11 +623,13 @@
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserInterface.kt" />
         <option value="$PROJECT_DIR$/iframePlayer/videojs_hls.html" />
         <option value="$PROJECT_DIR$/iframePlayer/videojs_dash.html" />
-        <option value="$PROJECT_DIR$/iframePlayer/youtube_api.html" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/AboutWindow.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt" />
-        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/iframePlayer/youtube_api.html" />
+        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LongClick.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/HKNBPCoreManagerBridge.kt" />
       </list>
     </option>
   </component>
@@ -677,6 +685,32 @@
               <item name="HKNBP_Core" type="b2602c69:ProjectViewProjectNode" />
               <item name="HKNBP_Core" type="462c0819:PsiDirectoryNode" />
               <item name="iframePlayer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKNBP_Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKNBP_Core" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKNBP_Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKNBP_Core" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKNBP_Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKNBP_Core" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+              <item name="HKNBP_Core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKNBP_Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKNBP_Core" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+              <item name="HKNBP_Core" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HKNBP_Core" type="b2602c69:ProjectViewProjectNode" />
@@ -884,11 +918,11 @@
       <window_info id="Designer" order="1" />
       <window_info id="UI Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="4" visible="true" weight="0.12691997" />
+      <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.12691997" />
       <window_info id="Structure" order="5" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="6" />
       <window_info anchor="bottom" id="Event Log" order="0" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Messages" order="1" visible="true" weight="0.032786883" />
+      <window_info anchor="bottom" id="Messages" order="1" weight="0.032786883" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.32969433" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.084153004" />
       <window_info anchor="bottom" id="Run" order="4" weight="0.0" />
@@ -951,20 +985,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/manifest.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="31" column="2" selection-start-line="31" selection-start-column="2" selection-end-line="31" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iframePlayer/videojs_youtube.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="716">
-          <caret line="287" lean-forward="true" selection-start-line="287" selection-end-line="287" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Dialogue.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="618">
@@ -1512,122 +1532,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt">
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LongClick.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2790">
-          <caret line="495" column="50" selection-start-line="495" selection-start-column="39" selection-end-line="495" selection-end-column="50" />
+        <state relative-caret-position="540">
+          <caret line="69" column="10" lean-forward="true" selection-start-line="69" selection-start-column="10" selection-end-line="69" selection-end-column="10" />
           <folding>
-            <element signature="n#!!block;n#OnPlayerEvent#0;n#!!block;n#Player#0" />
-            <element signature="n#!!block;n#OnPlayerEventListener#0;n#!!block;n#Player#0" />
-            <element signature="n#!!block;n#addOnPlayerEventListener#0;n#!!block;n#Player#0" />
-            <element signature="n#!!doc;n#videoTracks#0;n#!!block;n#Player#0" />
-            <element signature="n#!!doc;n#audioTracks#0;n#!!block;n#Player#0" />
-            <element signature="n#!!doc;n#subtitleTracks#0;n#!!block;n#Player#0" />
-            <element signature="n#!!doc;n#makeSureIframePlayerVolumeValueIsChangedTimer#0;n#!!block;n#Player#0" />
-            <element signature="e#2455#2547#0" />
-            <element signature="n#!!doc;n#setVolume#0;n#!!block;n#Player#0" />
-            <element signature="n#!!block;n#setVolume#0;n#!!block;n#Player#0" />
-            <element signature="e#2735#3435#0" />
-            <element signature="e#2978#3342#0" />
-            <element signature="e#3029#3328#1" />
-            <element signature="n#!!doc;n#getVolume#0;n#!!block;n#Player#0" />
-            <element signature="n#!!block;n#getVolume#0;n#!!block;n#Player#0" />
-            <element signature="e#3817#3899#0" />
-            <element signature="n#!!doc;n#makeSureIframePlayerMutedValueIsChangedTimer#0;n#!!block;n#Player#0" />
-            <element signature="e#4149#4241#0" />
-            <element signature="n#!!doc;n#setMuted#0;n#!!block;n#Player#0" />
-            <element signature="n#!!block;n#setMuted#0;n#!!block;n#Player#0" />
-            <element signature="e#4349#4824#0" />
-            <element signature="e#4464#4732#0" />
-            <element signature="e#4512#4718#1" />
-            <element signature="n#!!doc;n#getMuted#0;n#!!block;n#Player#0" />
-            <element signature="n#!!block;n#getMuted#0;n#!!block;n#Player#0" />
-            <element signature="e#5124#5200#0" />
-            <element signature="n#!!doc;n#play#0;n#!!block;n#Player#0" />
-            <element signature="n#!!block;n#play#0;n#!!block;n#Player#0" />
-            <element signature="n#!!doc;n#onPlaying#0;n#!!block;n#Player#0" />
-            <element signature="e#5463#9402#0" />
-            <element signature="e#5570#6625#0" />
-            <element signature="e#5654#6614#0" />
-            <element signature="e#5902#6428#0" />
-            <element signature="e#6069#6410#0" />
-            <element signature="e#6732#7787#0" />
-            <element signature="e#6816#7776#0" />
-            <element signature="e#7064#7590#0" />
-            <element signature="e#7231#7572#0" />
-            <element signature="e#7900#8979#0" />
-            <element signature="e#7987#8968#0" />
-            <element signature="e#8241#8776#0" />
-            <element signature="e#8408#8758#0" />
-            <element signature="n#!!doc;n#onNotPlaying#0;n#!!block;n#Player#0" />
-            <element signature="e#9507#9589#0" />
-            <element signature="e#9716#10206#0" />
-            <element signature="n#!!doc;n#nextVideoTrack#0;n#!!block;n#Player#0" />
-            <element signature="n#!!block;n#nextVideoTrack#0;n#!!block;n#Player#0" />
-            <element signature="n#!!doc;n#previousVideoTrack#0;n#!!block;n#Player#0" />
-            <element signature="n#!!block;n#previousVideoTrack#0;n#!!block;n#Player#0" />
-            <element signature="n#!!doc;n#designatedVideoTrack#0;n#!!block;n#Player#0" />
-            <element signature="n#!!block;n#designatedVideoTrack#0;n#!!block;n#Player#0" />
-            <element signature="e#10717#10813#1" />
-            <element signature="e#10819#10995#1" />
-            <element signature="e#10870#10959#0" />
-            <element signature="n#!!doc;n#nextAudioTrack#0;n#!!block;n#Player#0" />
-            <element signature="n#!!block;n#nextAudioTrack#0;n#!!block;n#Player#0" />
-            <element signature="n#!!doc;n#previousAudioTrack#0;n#!!block;n#Player#0" />
-            <element signature="n#!!block;n#previousAudioTrack#0;n#!!block;n#Player#0" />
-            <element signature="n#!!doc;n#designatedAudioTrack#0;n#!!block;n#Player#0" />
-            <element signature="n#!!block;n#designatedAudioTrack#0;n#!!block;n#Player#0" />
-            <element signature="e#11513#11609#1" />
-            <element signature="e#11615#11791#1" />
-            <element signature="e#11666#11755#0" />
-            <element signature="n#!!doc;n#nextSubtitleTrack#0;n#!!block;n#Player#0" />
-            <element signature="n#!!block;n#nextSubtitleTrack#0;n#!!block;n#Player#0" />
-            <element signature="n#!!doc;n#previousSubtitleTrack#0;n#!!block;n#Player#0" />
-            <element signature="n#!!block;n#previousSubtitleTrack#0;n#!!block;n#Player#0" />
-            <element signature="n#!!doc;n#designatedSubtitleTrack#0;n#!!block;n#Player#0" />
-            <element signature="n#!!block;n#designatedSubtitleTrack#0;n#!!block;n#Player#0" />
-            <element signature="e#12345#12447#1" />
-            <element signature="e#12453#12629#1" />
-            <element signature="e#12504#12593#0" />
-            <element signature="n#!!doc;n#volumeUp#0;n#!!block;n#Player#0" />
-            <element signature="e#12899#12984#0" />
-            <element signature="e#12930#12977#0" />
-            <element signature="n#!!doc;n#volumeDown#0;n#!!block;n#Player#0" />
-            <element signature="e#13129#13214#0" />
-            <element signature="e#13160#13207#0" />
-            <element signature="n#!!doc;n#volumeMute#0;n#!!block;n#Player#0" />
-            <element signature="e#13357#13435#0" />
-            <element signature="e#13387#13428#0" />
-            <element signature="n#!!doc;n#programmable#0;n#!!block;n#Player#0" />
-            <element signature="n#!!block;n#programmable#0;n#!!block;n#Player#0" />
-            <element signature="n#!!doc;n#enableProgrammable#0;n#!!block;n#Player#0" />
-            <element signature="n#!!block;n#enableProgrammable#0;n#!!block;n#Player#0" />
-            <element signature="n#!!doc;n#disableProgrammable#0;n#!!block;n#Player#0" />
-            <element signature="n#!!block;n#disableProgrammable#0;n#!!block;n#Player#0" />
-            <element signature="n#!!doc;n#ProgrammableColor#0;n#!!block;n#Player#0" />
-            <element signature="n#!!block;n#ProgrammableColor#0;n#!!block;n#Player#0" />
-            <element signature="e#15043#15296#0" />
-            <element signature="e#15967#16062#0" />
-            <element signature="e#16259#16698#0" />
-            <element signature="e#16399#16692#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/iframePlayer/youtube_api.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="331" column="56" selection-start-line="331" selection-start-column="56" selection-end-line="331" selection-end-column="56" />
-          <folding>
-            <element signature="n#style#0;n#video#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#!!doc;n#OnLongClick#0;n#!!block;n#LongClick#0" />
+            <element signature="n#!!block;n#OnLongClick#0;n#!!block;n#LongClick#0" />
+            <element signature="n#!!block;n#mousedown#0;n#!!block;n#OnLongClick#0;n#!!block;n#LongClick#0" />
+            <element signature="n#!!block;n#mouseup#0;n#!!block;n#OnLongClick#0;n#!!block;n#LongClick#0" />
+            <element signature="n#!!doc;n#onLongClick#0;n#!!block;n#LongClick#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1818">
-          <caret line="1165" column="86" lean-forward="true" selection-start-line="1165" selection-start-column="86" selection-end-line="1165" selection-end-column="86" />
+        <state relative-caret-position="655">
+          <caret line="1165" column="31" selection-start-line="1165" selection-start-column="31" selection-end-line="1165" selection-end-column="31" />
           <folding>
             <element signature="n#head#0;n#html#0;n#!!top" />
             <element signature="n#script#0;n#head#0;n#html#0;n#!!top" />
@@ -1915,8 +1837,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="33" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
+        <state relative-caret-position="259">
+          <caret line="255" selection-start-line="255" selection-end-line="255" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="n#!!block;n#getOS#0" />
@@ -1928,15 +1850,128 @@
             <element signature="n#!!block;n#designatedChannel#0" />
             <element signature="n#!!doc;n#updateChannel#0" />
             <element signature="n#!!block;n#updateChannel#0" />
-            <element signature="n#!!doc;n#OnLongClick#0" />
-            <element signature="n#!!block;n#OnLongClick#0" />
-            <element signature="n#!!block;n#mousedown#0;n#!!block;n#OnLongClick#0" />
-            <element signature="n#!!block;n#mouseup#0;n#!!block;n#OnLongClick#0" />
-            <element signature="n#!!doc;n#onLongClick#0" />
-            <element signature="n#!!doc;n#setAllBuutonOnLongClickFeatures#0" />
-            <element signature="n#!!block;n#setAllBuutonOnLongClickFeatures#0" />
+            <element signature="e#6256#7312#0" />
             <element signature="n#!!doc;n#main#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/iframePlayer/youtube_api.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="367" column="21" selection-start-line="367" selection-start-column="21" selection-end-line="367" selection-end-column="21" />
+          <folding>
+            <element signature="n#style#0;n#video#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11">
+          <caret line="452" lean-forward="true" selection-start-line="452" selection-end-line="452" />
+          <folding>
+            <element signature="n#!!block;n#OnPlayerEvent#0;n#!!block;n#Player#0" />
+            <element signature="n#!!block;n#OnPlayerEventListener#0;n#!!block;n#Player#0" />
+            <element signature="n#!!block;n#addOnPlayerEventListener#0;n#!!block;n#Player#0" />
+            <element signature="n#!!doc;n#videoTracks#0;n#!!block;n#Player#0" />
+            <element signature="n#!!doc;n#audioTracks#0;n#!!block;n#Player#0" />
+            <element signature="n#!!doc;n#subtitleTracks#0;n#!!block;n#Player#0" />
+            <element signature="n#!!doc;n#makeSureIframePlayerVolumeValueIsChangedTimer#0;n#!!block;n#Player#0" />
+            <element signature="e#2455#2547#0" />
+            <element signature="n#!!doc;n#setVolume#0;n#!!block;n#Player#0" />
+            <element signature="n#!!block;n#setVolume#0;n#!!block;n#Player#0" />
+            <element signature="e#2735#3435#0" />
+            <element signature="e#2978#3342#0" />
+            <element signature="e#3029#3328#1" />
+            <element signature="n#!!doc;n#getVolume#0;n#!!block;n#Player#0" />
+            <element signature="n#!!block;n#getVolume#0;n#!!block;n#Player#0" />
+            <element signature="e#3817#3899#0" />
+            <element signature="n#!!doc;n#makeSureIframePlayerMutedValueIsChangedTimer#0;n#!!block;n#Player#0" />
+            <element signature="e#4149#4241#0" />
+            <element signature="n#!!doc;n#setMuted#0;n#!!block;n#Player#0" />
+            <element signature="n#!!block;n#setMuted#0;n#!!block;n#Player#0" />
+            <element signature="e#4349#4824#0" />
+            <element signature="e#4464#4732#0" />
+            <element signature="e#4512#4718#1" />
+            <element signature="n#!!doc;n#getMuted#0;n#!!block;n#Player#0" />
+            <element signature="n#!!block;n#getMuted#0;n#!!block;n#Player#0" />
+            <element signature="e#5124#5200#0" />
+            <element signature="n#!!doc;n#play#0;n#!!block;n#Player#0" />
+            <element signature="n#!!block;n#play#0;n#!!block;n#Player#0" />
+            <element signature="n#!!doc;n#onPlaying#0;n#!!block;n#Player#0" />
+            <element signature="e#5463#9402#0" />
+            <element signature="e#5570#6625#0" />
+            <element signature="e#5654#6614#0" />
+            <element signature="e#5902#6428#0" />
+            <element signature="e#6069#6410#0" />
+            <element signature="e#6732#7787#0" />
+            <element signature="e#6816#7776#0" />
+            <element signature="e#7064#7590#0" />
+            <element signature="e#7231#7572#0" />
+            <element signature="e#7900#8979#0" />
+            <element signature="e#7987#8968#0" />
+            <element signature="e#8241#8776#0" />
+            <element signature="e#8408#8758#0" />
+            <element signature="n#!!doc;n#onNotPlaying#0;n#!!block;n#Player#0" />
+            <element signature="e#9507#9589#0" />
+            <element signature="e#9716#10206#0" />
+            <element signature="n#!!doc;n#nextVideoTrack#0;n#!!block;n#Player#0" />
+            <element signature="n#!!block;n#nextVideoTrack#0;n#!!block;n#Player#0" />
+            <element signature="n#!!doc;n#previousVideoTrack#0;n#!!block;n#Player#0" />
+            <element signature="n#!!block;n#previousVideoTrack#0;n#!!block;n#Player#0" />
+            <element signature="n#!!doc;n#designatedVideoTrack#0;n#!!block;n#Player#0" />
+            <element signature="n#!!block;n#designatedVideoTrack#0;n#!!block;n#Player#0" />
+            <element signature="e#10717#10813#1" />
+            <element signature="e#10819#10995#1" />
+            <element signature="e#10870#10959#0" />
+            <element signature="n#!!doc;n#nextAudioTrack#0;n#!!block;n#Player#0" />
+            <element signature="n#!!block;n#nextAudioTrack#0;n#!!block;n#Player#0" />
+            <element signature="n#!!doc;n#previousAudioTrack#0;n#!!block;n#Player#0" />
+            <element signature="n#!!block;n#previousAudioTrack#0;n#!!block;n#Player#0" />
+            <element signature="n#!!doc;n#designatedAudioTrack#0;n#!!block;n#Player#0" />
+            <element signature="n#!!block;n#designatedAudioTrack#0;n#!!block;n#Player#0" />
+            <element signature="e#11513#11609#1" />
+            <element signature="e#11615#11791#1" />
+            <element signature="e#11666#11755#0" />
+            <element signature="n#!!doc;n#nextSubtitleTrack#0;n#!!block;n#Player#0" />
+            <element signature="n#!!block;n#nextSubtitleTrack#0;n#!!block;n#Player#0" />
+            <element signature="n#!!doc;n#previousSubtitleTrack#0;n#!!block;n#Player#0" />
+            <element signature="n#!!block;n#previousSubtitleTrack#0;n#!!block;n#Player#0" />
+            <element signature="n#!!doc;n#designatedSubtitleTrack#0;n#!!block;n#Player#0" />
+            <element signature="n#!!block;n#designatedSubtitleTrack#0;n#!!block;n#Player#0" />
+            <element signature="e#12345#12447#1" />
+            <element signature="e#12453#12629#1" />
+            <element signature="e#12504#12593#0" />
+            <element signature="n#!!doc;n#volumeUp#0;n#!!block;n#Player#0" />
+            <element signature="e#12899#12984#0" />
+            <element signature="e#12930#12977#0" />
+            <element signature="n#!!doc;n#volumeDown#0;n#!!block;n#Player#0" />
+            <element signature="e#13129#13214#0" />
+            <element signature="e#13160#13207#0" />
+            <element signature="n#!!doc;n#volumeMute#0;n#!!block;n#Player#0" />
+            <element signature="e#13357#13435#0" />
+            <element signature="e#13387#13428#0" />
+            <element signature="n#!!doc;n#programmable#0;n#!!block;n#Player#0" />
+            <element signature="n#!!block;n#programmable#0;n#!!block;n#Player#0" />
+            <element signature="n#!!doc;n#enableProgrammable#0;n#!!block;n#Player#0" />
+            <element signature="n#!!block;n#enableProgrammable#0;n#!!block;n#Player#0" />
+            <element signature="n#!!doc;n#disableProgrammable#0;n#!!block;n#Player#0" />
+            <element signature="n#!!block;n#disableProgrammable#0;n#!!block;n#Player#0" />
+            <element signature="n#!!doc;n#ProgrammableColor#0;n#!!block;n#Player#0" />
+            <element signature="n#!!block;n#ProgrammableColor#0;n#!!block;n#Player#0" />
+            <element signature="e#15043#15296#0" />
+            <element signature="e#15967#16062#0" />
+            <element signature="e#16259#16698#0" />
+            <element signature="e#16399#16692#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/HKNBPCoreManagerBridge.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="26" column="44" selection-start-line="26" selection-start-column="44" selection-end-line="26" selection-end-column="44" />
         </state>
       </provider>
     </entry>

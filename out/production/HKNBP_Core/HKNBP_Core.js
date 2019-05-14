@@ -1327,6 +1327,39 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return FullScreenButton_instance;
   }
+  function HKNBPCoreManagerBridge() {
+    HKNBPCoreManagerBridge_instance = this;
+    window.addEventListener('message', HKNBPCoreManagerBridge_init$lambda, false);
+  }
+  HKNBPCoreManagerBridge.prototype.confirmHKNBPCoreLoaded = function () {
+    var responder = {};
+    responder.name = 'HKNBP_Core';
+    responder.message = true;
+    window.parent.postMessage(JSON.stringify(responder), '*');
+  };
+  function HKNBPCoreManagerBridge_init$lambda(event) {
+    try {
+      var callMessage = JSON.parse(event.data.toString());
+      if (callMessage.name == 'HKNBP_CoreManager') {
+        eval(callMessage.expr);
+      }
+    }
+     catch (e) {
+      println('ListenHKNBPCoreManagerCall\u8870\u5DE6: ' + e.toString() + '\n' + event.data.toString());
+    }
+  }
+  HKNBPCoreManagerBridge.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'HKNBPCoreManagerBridge',
+    interfaces: []
+  };
+  var HKNBPCoreManagerBridge_instance = null;
+  function HKNBPCoreManagerBridge_getInstance() {
+    if (HKNBPCoreManagerBridge_instance === null) {
+      new HKNBPCoreManagerBridge();
+    }
+    return HKNBPCoreManagerBridge_instance;
+  }
   function LoadFile() {
     LoadFile_instance = this;
   }
@@ -1401,6 +1434,88 @@ var HKNBP_Core = function (_, Kotlin) {
       new LoadFile();
     }
     return LoadFile_instance;
+  }
+  function LongClick() {
+    LongClick_instance = this;
+    this.onLongClick_jwnwa9$_0 = new LongClick$OnLongClick(LongClick$onLongClick$lambda);
+    jQuery('button').mousedown(LongClick_init$lambda(this)).mouseup(LongClick_init$lambda_0(this)).mouseout(LongClick_init$lambda_1(this));
+  }
+  function LongClick$OnLongClick(onLongClickProgram) {
+    this.onLongClickProgram = onLongClickProgram;
+    this.pressTimer_0 = 0;
+    this.isPressDown = false;
+  }
+  function LongClick$OnLongClick$mousedown$lambda$lambda(this$OnLongClick) {
+    return function () {
+      this$OnLongClick.onLongClickProgram();
+    };
+  }
+  function LongClick$OnLongClick$mousedown$lambda(this$OnLongClick) {
+    return function () {
+      if (this$OnLongClick.isPressDown) {
+        this$OnLongClick.pressTimer_0 = window.setInterval(LongClick$OnLongClick$mousedown$lambda$lambda(this$OnLongClick), 100);
+      }
+    };
+  }
+  LongClick$OnLongClick.prototype.mousedown = function () {
+    this.isPressDown = true;
+    window.setTimeout(LongClick$OnLongClick$mousedown$lambda(this), 500);
+    return false;
+  };
+  LongClick$OnLongClick.prototype.mouseup = function () {
+    this.isPressDown = false;
+    window.clearInterval(this.pressTimer_0);
+    return false;
+  };
+  LongClick$OnLongClick.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'OnLongClick',
+    interfaces: []
+  };
+  Object.defineProperty(LongClick.prototype, 'onLongClick_0', {
+    get: function () {
+      return this.onLongClick_jwnwa9$_0;
+    },
+    set: function (value) {
+      this.onLongClick_jwnwa9$_0.mouseup();
+      this.onLongClick_jwnwa9$_0 = value;
+    }
+  });
+  function LongClick$onLongClick$lambda() {
+  }
+  function LongClick_init$lambda$lambda(closure$button) {
+    return function () {
+      closure$button.click();
+    };
+  }
+  function LongClick_init$lambda(this$LongClick) {
+    return function () {
+      var button = jQuery(this);
+      this$LongClick.onLongClick_0 = new LongClick$OnLongClick(LongClick_init$lambda$lambda(button));
+      this$LongClick.onLongClick_0.mousedown();
+    };
+  }
+  function LongClick_init$lambda_0(this$LongClick) {
+    return function () {
+      this$LongClick.onLongClick_0.mouseup();
+    };
+  }
+  function LongClick_init$lambda_1(this$LongClick) {
+    return function () {
+      this$LongClick.onLongClick_0.mouseup();
+    };
+  }
+  LongClick.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'LongClick',
+    interfaces: []
+  };
+  var LongClick_instance = null;
+  function LongClick_getInstance() {
+    if (LongClick_instance === null) {
+      new LongClick();
+    }
+    return LongClick_instance;
   }
   var rootURL;
   var coreVersion;
@@ -1589,81 +1704,6 @@ var HKNBP_Core = function (_, Kotlin) {
     get_player().play();
     VirtualRemote_getInstance().update();
   }
-  function OnLongClick(onLongClickProgram) {
-    this.onLongClickProgram = onLongClickProgram;
-    this.pressTimer_0 = 0;
-    this.isPressDown = false;
-  }
-  function OnLongClick$mousedown$lambda$lambda(this$OnLongClick) {
-    return function () {
-      this$OnLongClick.onLongClickProgram();
-    };
-  }
-  function OnLongClick$mousedown$lambda(this$OnLongClick) {
-    return function () {
-      if (this$OnLongClick.isPressDown) {
-        this$OnLongClick.pressTimer_0 = window.setInterval(OnLongClick$mousedown$lambda$lambda(this$OnLongClick), 100);
-      }
-    };
-  }
-  OnLongClick.prototype.mousedown = function () {
-    this.isPressDown = true;
-    window.setTimeout(OnLongClick$mousedown$lambda(this), 500);
-    return false;
-  };
-  OnLongClick.prototype.mouseup = function () {
-    this.isPressDown = false;
-    window.clearInterval(this.pressTimer_0);
-    return false;
-  };
-  OnLongClick.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'OnLongClick',
-    interfaces: []
-  };
-  function onLongClick$lambda() {
-  }
-  var onLongClick;
-  function get_onLongClick() {
-    return onLongClick;
-  }
-  function set_onLongClick(value) {
-    onLongClick.mouseup();
-    onLongClick = value;
-  }
-  function setAllBuutonOnLongClickFeatures$lambda$lambda(closure$button) {
-    return function () {
-      closure$button.click();
-    };
-  }
-  function setAllBuutonOnLongClickFeatures$lambda() {
-    var button = jQuery(this);
-    set_onLongClick(new OnLongClick(setAllBuutonOnLongClickFeatures$lambda$lambda(button)));
-    get_onLongClick().mousedown();
-  }
-  function setAllBuutonOnLongClickFeatures$lambda_0() {
-    get_onLongClick().mouseup();
-  }
-  function setAllBuutonOnLongClickFeatures$lambda_1() {
-    get_onLongClick().mouseup();
-  }
-  function setAllBuutonOnLongClickFeatures() {
-    jQuery('button').mousedown(setAllBuutonOnLongClickFeatures$lambda).mouseup(setAllBuutonOnLongClickFeatures$lambda_0).mouseout(setAllBuutonOnLongClickFeatures$lambda_1);
-  }
-  function setListenHKNBPBridgeCall$lambda(event) {
-    try {
-      var callMessage = JSON.parse(event.data.toString());
-      if (callMessage.name == 'HKNBP_Bridge') {
-        eval(callMessage.expr);
-      }
-    }
-     catch (e) {
-      println('ListenHKNBPBridgeCall\u8870\u5DE6: ' + e.toString() + '\n' + event.data.toString());
-    }
-  }
-  function setListenHKNBPBridgeCall() {
-    window.addEventListener('message', setListenHKNBPBridgeCall$lambda, false);
-  }
   function main$lambda$ObjectLiteral() {
   }
   main$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
@@ -1683,11 +1723,11 @@ var HKNBP_Core = function (_, Kotlin) {
     TVChannelDescription_getInstance().update();
   }
   function main(args) {
-    setListenHKNBPBridgeCall();
+    HKNBPCoreManagerBridge_getInstance();
     try {
       UserControlPanel_getInstance();
       ConsentPanel_getInstance();
-      setAllBuutonOnLongClickFeatures();
+      LongClick_getInstance();
     }
      catch (e) {
       println('\u4ECB\u9762\u521D\u59CB\u5316\u54C0\u5DE6: ' + e.toString());
@@ -5541,8 +5581,14 @@ var HKNBP_Core = function (_, Kotlin) {
   Object.defineProperty(package$hknbp_core, 'FullScreenButton', {
     get: FullScreenButton_getInstance
   });
+  Object.defineProperty(package$hknbp_core, 'HKNBPCoreManagerBridge', {
+    get: HKNBPCoreManagerBridge_getInstance
+  });
   Object.defineProperty(package$hknbp_core, 'LoadFile', {
     get: LoadFile_getInstance
+  });
+  Object.defineProperty(package$hknbp_core, 'LongClick', {
+    get: LongClick_getInstance
   });
   Object.defineProperty(package$hknbp_core, 'rootURL', {
     get: function () {
@@ -5725,7 +5771,6 @@ var HKNBP_Core = function (_, Kotlin) {
   appVersion = '0.9-Web';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();
-  onLongClick = new OnLongClick(onLongClick$lambda);
   main([]);
   Kotlin.defineModule('HKNBP_Core', _);
   return _;
