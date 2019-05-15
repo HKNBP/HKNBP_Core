@@ -20,7 +20,8 @@ import kotlin.browser.window
  * 設置所有Button擁有<長撳>功能
  * 設置所有制當長撳制時不斷重複執行onClick程序
  * */
-object LongClick {
+object LongClickEvent {
+
     /**
      * 用onmousedown加onmouseup實現<長撳>功能
      *

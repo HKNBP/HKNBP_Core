@@ -21,15 +21,15 @@ import kotlin.browser.window
 import kotlin.js.Date
 
 
+
 val rootURL: String     = "https://hknbp.org/"
-val coreVersion: String = "0.9.14"
+val coreVersion: String = "0.9.15"
 var appVersion: String  = "0.9-Web"
 
 val jQuery: dynamic = js("\$")
 var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
 lateinit var tvChannels: ArrayLinkList<TVChannel>
 lateinit var player: Player
-
 
 
 fun getOS(): String{
@@ -264,7 +264,7 @@ fun main(args: Array<String>) {
     try {
         UserControlPanel
         ConsentPanel
-        LongClick
+        LongClickEvent
     } catch (e: dynamic) { println("介面初始化哀左: $e") }
 
     TVChannel.getTVChannels(fun(tvChannels_) {

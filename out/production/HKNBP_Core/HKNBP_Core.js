@@ -1440,87 +1440,87 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return LoadFile_instance;
   }
-  function LongClick() {
-    LongClick_instance = this;
-    this.onLongClick_jwnwa9$_0 = new LongClick$OnLongClick(LongClick$onLongClick$lambda);
-    jQuery('button').mousedown(LongClick_init$lambda(this)).mouseup(LongClick_init$lambda_0(this)).mouseout(LongClick_init$lambda_1(this));
+  function LongClickEvent() {
+    LongClickEvent_instance = this;
+    this.onLongClick_kh28lv$_0 = new LongClickEvent$OnLongClick(LongClickEvent$onLongClick$lambda);
+    jQuery('button').mousedown(LongClickEvent_init$lambda(this)).mouseup(LongClickEvent_init$lambda_0(this)).mouseout(LongClickEvent_init$lambda_1(this));
   }
-  function LongClick$OnLongClick(onLongClickProgram) {
+  function LongClickEvent$OnLongClick(onLongClickProgram) {
     this.onLongClickProgram = onLongClickProgram;
     this.pressTimer_0 = 0;
     this.isPressDown = false;
   }
-  function LongClick$OnLongClick$mousedown$lambda$lambda(this$OnLongClick) {
+  function LongClickEvent$OnLongClick$mousedown$lambda$lambda(this$OnLongClick) {
     return function () {
       this$OnLongClick.onLongClickProgram();
     };
   }
-  function LongClick$OnLongClick$mousedown$lambda(this$OnLongClick) {
+  function LongClickEvent$OnLongClick$mousedown$lambda(this$OnLongClick) {
     return function () {
       if (this$OnLongClick.isPressDown) {
-        this$OnLongClick.pressTimer_0 = window.setInterval(LongClick$OnLongClick$mousedown$lambda$lambda(this$OnLongClick), 100);
+        this$OnLongClick.pressTimer_0 = window.setInterval(LongClickEvent$OnLongClick$mousedown$lambda$lambda(this$OnLongClick), 100);
       }
     };
   }
-  LongClick$OnLongClick.prototype.mousedown = function () {
+  LongClickEvent$OnLongClick.prototype.mousedown = function () {
     this.isPressDown = true;
-    window.setTimeout(LongClick$OnLongClick$mousedown$lambda(this), 500);
+    window.setTimeout(LongClickEvent$OnLongClick$mousedown$lambda(this), 500);
     return false;
   };
-  LongClick$OnLongClick.prototype.mouseup = function () {
+  LongClickEvent$OnLongClick.prototype.mouseup = function () {
     this.isPressDown = false;
     window.clearInterval(this.pressTimer_0);
     return false;
   };
-  LongClick$OnLongClick.$metadata$ = {
+  LongClickEvent$OnLongClick.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'OnLongClick',
     interfaces: []
   };
-  Object.defineProperty(LongClick.prototype, 'onLongClick_0', {
+  Object.defineProperty(LongClickEvent.prototype, 'onLongClick_0', {
     get: function () {
-      return this.onLongClick_jwnwa9$_0;
+      return this.onLongClick_kh28lv$_0;
     },
     set: function (value) {
-      this.onLongClick_jwnwa9$_0.mouseup();
-      this.onLongClick_jwnwa9$_0 = value;
+      this.onLongClick_kh28lv$_0.mouseup();
+      this.onLongClick_kh28lv$_0 = value;
     }
   });
-  function LongClick$onLongClick$lambda() {
+  function LongClickEvent$onLongClick$lambda() {
   }
-  function LongClick_init$lambda$lambda(closure$button) {
+  function LongClickEvent_init$lambda$lambda(closure$button) {
     return function () {
       closure$button.click();
     };
   }
-  function LongClick_init$lambda(this$LongClick) {
+  function LongClickEvent_init$lambda(this$LongClickEvent) {
     return function () {
       var button = jQuery(this);
-      this$LongClick.onLongClick_0 = new LongClick$OnLongClick(LongClick_init$lambda$lambda(button));
-      this$LongClick.onLongClick_0.mousedown();
+      this$LongClickEvent.onLongClick_0 = new LongClickEvent$OnLongClick(LongClickEvent_init$lambda$lambda(button));
+      this$LongClickEvent.onLongClick_0.mousedown();
     };
   }
-  function LongClick_init$lambda_0(this$LongClick) {
+  function LongClickEvent_init$lambda_0(this$LongClickEvent) {
     return function () {
-      this$LongClick.onLongClick_0.mouseup();
+      this$LongClickEvent.onLongClick_0.mouseup();
     };
   }
-  function LongClick_init$lambda_1(this$LongClick) {
+  function LongClickEvent_init$lambda_1(this$LongClickEvent) {
     return function () {
-      this$LongClick.onLongClick_0.mouseup();
+      this$LongClickEvent.onLongClick_0.mouseup();
     };
   }
-  LongClick.$metadata$ = {
+  LongClickEvent.$metadata$ = {
     kind: Kind_OBJECT,
-    simpleName: 'LongClick',
+    simpleName: 'LongClickEvent',
     interfaces: []
   };
-  var LongClick_instance = null;
-  function LongClick_getInstance() {
-    if (LongClick_instance === null) {
-      new LongClick();
+  var LongClickEvent_instance = null;
+  function LongClickEvent_getInstance() {
+    if (LongClickEvent_instance === null) {
+      new LongClickEvent();
     }
-    return LongClick_instance;
+    return LongClickEvent_instance;
   }
   var rootURL;
   var coreVersion;
@@ -1732,7 +1732,7 @@ var HKNBP_Core = function (_, Kotlin) {
     try {
       UserControlPanel_getInstance();
       ConsentPanel_getInstance();
-      LongClick_getInstance();
+      LongClickEvent_getInstance();
     }
      catch (e) {
       println('\u4ECB\u9762\u521D\u59CB\u5316\u54C0\u5DE6: ' + e.toString());
@@ -2442,6 +2442,25 @@ var HKNBP_Core = function (_, Kotlin) {
       new PromptBox();
     }
     return PromptBox_instance;
+  }
+  function RealRemote() {
+    RealRemote_instance = this;
+    window.addEventListener('keypress', RealRemote_init$lambda);
+  }
+  function RealRemote_init$lambda(event) {
+    event.keyCode;
+  }
+  RealRemote.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'RealRemote',
+    interfaces: []
+  };
+  var RealRemote_instance = null;
+  function RealRemote_getInstance() {
+    if (RealRemote_instance === null) {
+      new RealRemote();
+    }
+    return RealRemote_instance;
   }
   function SettingWindow() {
     SettingWindow_instance = this;
@@ -5592,8 +5611,8 @@ var HKNBP_Core = function (_, Kotlin) {
   Object.defineProperty(package$hknbp_core, 'LoadFile', {
     get: LoadFile_getInstance
   });
-  Object.defineProperty(package$hknbp_core, 'LongClick', {
-    get: LongClick_getInstance
+  Object.defineProperty(package$hknbp_core, 'LongClickEvent', {
+    get: LongClickEvent_getInstance
   });
   Object.defineProperty(package$hknbp_core, 'rootURL', {
     get: function () {
@@ -5686,6 +5705,9 @@ var HKNBP_Core = function (_, Kotlin) {
   Object.defineProperty(package$hknbp_core, 'PromptBox', {
     get: PromptBox_getInstance
   });
+  Object.defineProperty(package$hknbp_core, 'RealRemote', {
+    get: RealRemote_getInstance
+  });
   Object.defineProperty(package$hknbp_core, 'SettingWindow', {
     get: SettingWindow_getInstance
   });
@@ -5772,7 +5794,7 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   package$hknbp_core.XMLTV = XMLTV;
   rootURL = 'https://hknbp.org/';
-  coreVersion = '0.9.14';
+  coreVersion = '0.9.15';
   appVersion = '0.9-Web';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();

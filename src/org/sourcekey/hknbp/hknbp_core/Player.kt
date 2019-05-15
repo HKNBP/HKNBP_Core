@@ -464,9 +464,10 @@ class Player(private val tvChannel: TVChannel) {
                         }
                     }
                 }else if(callMessage.name == "IframePlaye"){
-                    // IframePlayer個度call呢度啲Function
+                    // 畀IframePlayer方便Call
                     val onPlaying = onPlaying
                     val onNotPlaying = onNotPlaying
+
                     /**
                     var onReturn = fun(returnValue: dynamic){
                     val obj = callMessage
