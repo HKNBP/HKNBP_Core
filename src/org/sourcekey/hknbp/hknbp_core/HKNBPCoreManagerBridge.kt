@@ -26,7 +26,7 @@ object HKNBPCoreManagerBridge {
     /**
      * 回應HKNBP_CoreManager個HKNBP_Core成功Load到
      * */
-    fun confirmHKNBPCoreLoaded(){
+    val confirmHKNBPCoreLoaded = fun(){
         val responder = js("{}")
         responder.name = "HKNBP_Core"
         responder.message = true
@@ -36,6 +36,8 @@ object HKNBPCoreManagerBridge {
     init {
         window.addEventListener("message", fun(event: dynamic){
             try{
+                val confirmHKNBPCoreLoaded = confirmHKNBPCoreLoaded //畀HKNBP_CoreManager方便Call
+
                 val callMessage = JSON.parse<dynamic>(event.data.toString())
                 if(callMessage.name == "HKNBP_CoreManager"){ eval(callMessage.expr) }
             }catch(e: dynamic){println("ListenHKNBPCoreManagerCall衰左: ${e}\n${event.data.toString()}")}

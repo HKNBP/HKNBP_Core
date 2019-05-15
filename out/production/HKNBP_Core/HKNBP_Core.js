@@ -1329,24 +1329,28 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function HKNBPCoreManagerBridge() {
     HKNBPCoreManagerBridge_instance = this;
-    window.addEventListener('message', HKNBPCoreManagerBridge_init$lambda, false);
+    this.confirmHKNBPCoreLoaded = HKNBPCoreManagerBridge$confirmHKNBPCoreLoaded$lambda;
+    window.addEventListener('message', HKNBPCoreManagerBridge_init$lambda(this), false);
   }
-  HKNBPCoreManagerBridge.prototype.confirmHKNBPCoreLoaded = function () {
+  function HKNBPCoreManagerBridge$confirmHKNBPCoreLoaded$lambda() {
     var responder = {};
     responder.name = 'HKNBP_Core';
     responder.message = true;
     window.parent.postMessage(JSON.stringify(responder), '*');
-  };
-  function HKNBPCoreManagerBridge_init$lambda(event) {
-    try {
-      var callMessage = JSON.parse(event.data.toString());
-      if (callMessage.name == 'HKNBP_CoreManager') {
-        eval(callMessage.expr);
+  }
+  function HKNBPCoreManagerBridge_init$lambda(this$HKNBPCoreManagerBridge) {
+    return function (event) {
+      try {
+        var confirmHKNBPCoreLoaded = this$HKNBPCoreManagerBridge.confirmHKNBPCoreLoaded;
+        var callMessage = JSON.parse(event.data.toString());
+        if (callMessage.name == 'HKNBP_CoreManager') {
+          eval(callMessage.expr);
+        }
       }
-    }
-     catch (e) {
-      println('ListenHKNBPCoreManagerCall\u8870\u5DE6: ' + e.toString() + '\n' + event.data.toString());
-    }
+       catch (e) {
+        println('ListenHKNBPCoreManagerCall\u8870\u5DE6: ' + e.toString() + '\n' + event.data.toString());
+      }
+    };
   }
   HKNBPCoreManagerBridge.$metadata$ = {
     kind: Kind_OBJECT,
