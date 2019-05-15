@@ -4,19 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/index.html" line="1125" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="439dc076-fa64-48ca-946e-6d20fa2781e4" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/RealRemote.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.meta.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/lib/kotlin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/lib/kotlin.meta.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LongClick.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt" afterDir="false" />
-    </list>
+    <list default="true" id="439dc076-fa64-48ca-946e-6d20fa2781e4" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -342,10 +330,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../HKNBP_CoreManager/index.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/HKNBPCoreManagerBridge.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="468">
-              <caret line="38" column="68" lean-forward="true" selection-start-line="38" selection-start-column="68" selection-end-line="38" selection-end-column="94" />
+              <caret line="38" column="94" lean-forward="true" selection-start-line="38" selection-start-column="94" selection-end-line="38" selection-end-column="94" />
             </state>
           </provider>
         </entry>
@@ -404,7 +397,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/manifest.json" />
         <option value="$PROJECT_DIR$/watchingCounter.html" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/X.kt" />
         <option value="$PROJECT_DIR$/iframePlayer/videojs_youtube.html" />
@@ -455,6 +447,7 @@
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LongClickEvent.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt" />
+        <option value="$PROJECT_DIR$/../HKNBP_CoreManager/index.html" />
       </list>
     </option>
   </component>
@@ -470,7 +463,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="4">
+  <component name="ProjectFrameBounds" extendedState="5">
     <option name="x" value="1281" />
     <option name="width" value="1279" />
     <option name="height" value="1039" />
@@ -784,7 +777,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/InDisplayMutedButton.kt" />
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ChannelInformation.kt" />
     <entry file="file://$PROJECT_DIR$/js/jquery.tabbable.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -1602,54 +1594,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="61" selection-start-line="61" selection-end-line="61" />
-          <folding>
-            <element signature="n#!!block;n#getOS#0" />
-            <element signature="e#1120#1956#1" />
-            <element signature="n#!!doc;n#reductionTo#0" />
-            <element signature="n#!!block;n#reductionTo#0" />
-            <element signature="e#2276#2442#1" />
-            <element signature="e#2310#2436#1" />
-            <element signature="e#2355#2426#1" />
-            <element signature="n#!!doc;n#updateURLParameter#0" />
-            <element signature="n#!!block;n#updateURLParameter#0" />
-            <element signature="e#2901#3392#1" />
-            <element signature="e#3191#3386#1" />
-            <element signature="e#3268#3376#1" />
-            <element signature="e#3398#3594#1" />
-            <element signature="n#!!doc;n#designatedChannel#0" />
-            <element signature="n#!!block;n#designatedChannel#0" />
-            <element signature="e#4084#4162#1" />
-            <element signature="e#4168#4324#1" />
-            <element signature="e#4215#4296#0" />
-            <element signature="n#!!doc;n#updateChannel#0" />
-            <element signature="n#!!block;n#updateChannel#0" />
-            <element signature="e#4492#6205#0" />
-            <element signature="e#4652#6199#0" />
-            <element signature="e#4737#4879#0" />
-            <element signature="e#4931#5295#0" />
-            <element signature="e#5103#5269#0" />
-            <element signature="e#5176#5247#1" />
-            <element signature="e#5354#5432#0" />
-            <element signature="e#5491#5569#0" />
-            <element signature="e#5631#5712#0" />
-            <element signature="e#5767#5835#0" />
-            <element signature="e#5889#6175#0" />
-            <element signature="e#5937#6156#0" />
-            <element signature="e#5972#6051#1" />
-            <element signature="e#6055#6134#1" />
-            <element signature="e#6255#7311#0" />
-            <element signature="n#!!doc;n#main#0" />
-            <element signature="e#7657#8247#0" />
-            <element signature="e#7788#8138#0" />
-            <element signature="e#7987#8128#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LongClickEvent.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -1764,9 +1708,60 @@
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/HKNBPCoreManagerBridge.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
-          <caret line="38" column="68" lean-forward="true" selection-start-line="38" selection-start-column="68" selection-end-line="38" selection-end-column="94" />
+          <caret line="38" column="94" lean-forward="true" selection-start-line="38" selection-start-column="94" selection-end-line="38" selection-end-column="94" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="61" selection-start-line="61" selection-end-line="61" />
+          <folding>
+            <element signature="n#!!block;n#getOS#0" />
+            <element signature="e#1120#1956#1" />
+            <element signature="n#!!doc;n#reductionTo#0" />
+            <element signature="n#!!block;n#reductionTo#0" />
+            <element signature="e#2276#2442#1" />
+            <element signature="e#2310#2436#1" />
+            <element signature="e#2355#2426#1" />
+            <element signature="n#!!doc;n#updateURLParameter#0" />
+            <element signature="n#!!block;n#updateURLParameter#0" />
+            <element signature="e#2901#3392#1" />
+            <element signature="e#3191#3386#1" />
+            <element signature="e#3268#3376#1" />
+            <element signature="e#3398#3594#1" />
+            <element signature="n#!!doc;n#designatedChannel#0" />
+            <element signature="n#!!block;n#designatedChannel#0" />
+            <element signature="e#4084#4162#1" />
+            <element signature="e#4168#4324#1" />
+            <element signature="e#4215#4296#0" />
+            <element signature="n#!!doc;n#updateChannel#0" />
+            <element signature="n#!!block;n#updateChannel#0" />
+            <element signature="e#4492#6205#0" />
+            <element signature="e#4652#6199#0" />
+            <element signature="e#4737#4879#0" />
+            <element signature="e#4931#5295#0" />
+            <element signature="e#5103#5269#0" />
+            <element signature="e#5176#5247#1" />
+            <element signature="e#5354#5432#0" />
+            <element signature="e#5491#5569#0" />
+            <element signature="e#5631#5712#0" />
+            <element signature="e#5767#5835#0" />
+            <element signature="e#5889#6175#0" />
+            <element signature="e#5937#6156#0" />
+            <element signature="e#5972#6051#1" />
+            <element signature="e#6055#6134#1" />
+            <element signature="e#6255#7311#0" />
+            <element signature="n#!!doc;n#main#0" />
+            <element signature="e#7657#8247#0" />
+            <element signature="e#7788#8138#0" />
+            <element signature="e#7987#8128#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../HKNBP_CoreManager/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">
