@@ -1342,6 +1342,7 @@ var HKNBP_Core = function (_, Kotlin) {
     return function (event) {
       try {
         var confirmHKNBPCoreLoaded = this$HKNBPCoreManagerBridge.confirmHKNBPCoreLoaded;
+        println(event.data.toString());
         var callMessage = JSON.parse(event.data.toString());
         if (callMessage.name == 'HKNBP_CoreManager') {
           eval(callMessage.expr);
@@ -5771,7 +5772,7 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   package$hknbp_core.XMLTV = XMLTV;
   rootURL = 'https://hknbp.org/';
-  coreVersion = '0.9.13';
+  coreVersion = '0.9.14';
   appVersion = '0.9-Web';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();

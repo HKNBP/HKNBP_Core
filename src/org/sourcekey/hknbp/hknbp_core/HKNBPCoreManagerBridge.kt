@@ -38,6 +38,7 @@ object HKNBPCoreManagerBridge {
             try{
                 val confirmHKNBPCoreLoaded = confirmHKNBPCoreLoaded //畀HKNBP_CoreManager方便Call
 
+                println(event.data.toString())
                 val callMessage = JSON.parse<dynamic>(event.data.toString())
                 if(callMessage.name == "HKNBP_CoreManager"){ eval(callMessage.expr) }
             }catch(e: dynamic){println("ListenHKNBPCoreManagerCall衰左: ${e}\n${event.data.toString()}")}
