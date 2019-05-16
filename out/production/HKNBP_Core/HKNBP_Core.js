@@ -1327,6 +1327,43 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return FullScreenButton_instance;
   }
+  function HKNBPAppBridge() {
+    HKNBPAppBridge_instance = this;
+    this.confirmHKNBPCoreLoaded = HKNBPAppBridge$confirmHKNBPCoreLoaded$lambda;
+    window.addEventListener('message', HKNBPAppBridge_init$lambda(this), false);
+  }
+  function HKNBPAppBridge$confirmHKNBPCoreLoaded$lambda() {
+    var responder = {};
+    responder.name = 'HKNBP_Core';
+    responder.message = true;
+    window.parent.postMessage(JSON.stringify(responder), '*');
+  }
+  function HKNBPAppBridge_init$lambda(this$HKNBPAppBridge) {
+    return function (event) {
+      try {
+        var confirmHKNBPCoreLoaded = this$HKNBPAppBridge.confirmHKNBPCoreLoaded;
+        var callMessage = JSON.parse(event.data.toString());
+        if (callMessage.name == 'HKNBP_App') {
+          eval(callMessage.expr);
+        }
+      }
+       catch (e) {
+        println('ListenHKNBPAppCall\u8870\u5DE6: ' + e.toString() + '\n' + event.data.toString());
+      }
+    };
+  }
+  HKNBPAppBridge.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'HKNBPAppBridge',
+    interfaces: []
+  };
+  var HKNBPAppBridge_instance = null;
+  function HKNBPAppBridge_getInstance() {
+    if (HKNBPAppBridge_instance === null) {
+      new HKNBPAppBridge();
+    }
+    return HKNBPAppBridge_instance;
+  }
   function HKNBPCoreManagerBridge() {
     HKNBPCoreManagerBridge_instance = this;
     this.confirmHKNBPCoreLoaded = HKNBPCoreManagerBridge$confirmHKNBPCoreLoaded$lambda;
@@ -1342,7 +1379,6 @@ var HKNBP_Core = function (_, Kotlin) {
     return function (event) {
       try {
         var confirmHKNBPCoreLoaded = this$HKNBPCoreManagerBridge.confirmHKNBPCoreLoaded;
-        println(event.data.toString());
         var callMessage = JSON.parse(event.data.toString());
         if (callMessage.name == 'HKNBP_CoreManager') {
           eval(callMessage.expr);
@@ -5604,6 +5640,9 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   Object.defineProperty(package$hknbp_core, 'FullScreenButton', {
     get: FullScreenButton_getInstance
+  });
+  Object.defineProperty(package$hknbp_core, 'HKNBPAppBridge', {
+    get: HKNBPAppBridge_getInstance
   });
   Object.defineProperty(package$hknbp_core, 'HKNBPCoreManagerBridge', {
     get: HKNBPCoreManagerBridge_getInstance
