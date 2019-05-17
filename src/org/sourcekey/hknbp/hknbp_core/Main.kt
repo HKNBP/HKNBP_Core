@@ -23,7 +23,7 @@ import kotlin.js.Date
 
 
 val rootURL: String     = "https://hknbp.org/"
-val coreVersion: String = "0.9.15"
+val coreVersion: String = "0.9.16"
 var appVersion: String  = "0.9-Web"
 
 val jQuery: dynamic = js("\$")
@@ -259,7 +259,7 @@ updateChannel()
  * ****************************** *
  * */
 fun main(args: Array<String>) {
-    HKNBPCoreManagerBridge
+    HKNBPAppLayerBridge
 
     try {
         UserControlPanel

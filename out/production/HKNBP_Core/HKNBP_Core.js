@@ -1327,42 +1327,42 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return FullScreenButton_instance;
   }
-  function HKNBPAppBridge() {
-    HKNBPAppBridge_instance = this;
-    this.confirmHKNBPCoreLoaded = HKNBPAppBridge$confirmHKNBPCoreLoaded$lambda;
-    window.addEventListener('message', HKNBPAppBridge_init$lambda(this), false);
+  function HKNBPAppLayerBridge() {
+    HKNBPAppLayerBridge_instance = this;
+    this.confirmHKNBPCoreLoaded = HKNBPAppLayerBridge$confirmHKNBPCoreLoaded$lambda;
+    window.addEventListener('message', HKNBPAppLayerBridge_init$lambda(this), false);
   }
-  function HKNBPAppBridge$confirmHKNBPCoreLoaded$lambda() {
+  function HKNBPAppLayerBridge$confirmHKNBPCoreLoaded$lambda() {
     var responder = {};
     responder.name = 'HKNBP_Core';
     responder.message = true;
     window.parent.postMessage(JSON.stringify(responder), '*');
   }
-  function HKNBPAppBridge_init$lambda(this$HKNBPAppBridge) {
+  function HKNBPAppLayerBridge_init$lambda(this$HKNBPAppLayerBridge) {
     return function (event) {
       try {
-        var confirmHKNBPCoreLoaded = this$HKNBPAppBridge.confirmHKNBPCoreLoaded;
+        var confirmHKNBPCoreLoaded = this$HKNBPAppLayerBridge.confirmHKNBPCoreLoaded;
         var callMessage = JSON.parse(event.data.toString());
-        if (callMessage.name == 'HKNBP_App') {
+        if (callMessage.name == 'HKNBP_AppLayer') {
           eval(callMessage.expr);
         }
       }
        catch (e) {
-        println('ListenHKNBPAppCall\u8870\u5DE6: ' + e.toString() + '\n' + event.data.toString());
+        println('ListenHKNBPAppLayerCall\u8870\u5DE6: ' + e.toString() + '\n' + event.data.toString());
       }
     };
   }
-  HKNBPAppBridge.$metadata$ = {
+  HKNBPAppLayerBridge.$metadata$ = {
     kind: Kind_OBJECT,
-    simpleName: 'HKNBPAppBridge',
+    simpleName: 'HKNBPAppLayerBridge',
     interfaces: []
   };
-  var HKNBPAppBridge_instance = null;
-  function HKNBPAppBridge_getInstance() {
-    if (HKNBPAppBridge_instance === null) {
-      new HKNBPAppBridge();
+  var HKNBPAppLayerBridge_instance = null;
+  function HKNBPAppLayerBridge_getInstance() {
+    if (HKNBPAppLayerBridge_instance === null) {
+      new HKNBPAppLayerBridge();
     }
-    return HKNBPAppBridge_instance;
+    return HKNBPAppLayerBridge_instance;
   }
   function HKNBPCoreManagerBridge() {
     HKNBPCoreManagerBridge_instance = this;
@@ -1764,7 +1764,7 @@ var HKNBP_Core = function (_, Kotlin) {
     TVChannelDescription_getInstance().update();
   }
   function main(args) {
-    HKNBPCoreManagerBridge_getInstance();
+    HKNBPAppLayerBridge_getInstance();
     try {
       UserControlPanel_getInstance();
       ConsentPanel_getInstance();
@@ -4104,16 +4104,9 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return WatchingCounter$Companion_instance;
   }
-  function WatchingCounter_init$lambda$lambda(this$WatchingCounter) {
-    return function () {
-      this$WatchingCounter.iframeWatchingCounter_0.contentWindow.coreVersion = coreVersion;
-      this$WatchingCounter.iframeWatchingCounter_0.contentWindow.appVersion = appVersion;
-    };
-  }
   function WatchingCounter_init$lambda(this$WatchingCounter) {
     return function () {
-      this$WatchingCounter.iframeWatchingCounter_0.src = '/watching-counter.html?tvchannel=' + this$WatchingCounter.tvChannel_0.number;
-      this$WatchingCounter.iframeWatchingCounter_0.onload = WatchingCounter_init$lambda$lambda(this$WatchingCounter);
+      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + 'coreVersion=0.9.16' + '&' + ('appVersion=' + appVersion);
     };
   }
   WatchingCounter.$metadata$ = {
@@ -5641,8 +5634,8 @@ var HKNBP_Core = function (_, Kotlin) {
   Object.defineProperty(package$hknbp_core, 'FullScreenButton', {
     get: FullScreenButton_getInstance
   });
-  Object.defineProperty(package$hknbp_core, 'HKNBPAppBridge', {
-    get: HKNBPAppBridge_getInstance
+  Object.defineProperty(package$hknbp_core, 'HKNBPAppLayerBridge', {
+    get: HKNBPAppLayerBridge_getInstance
   });
   Object.defineProperty(package$hknbp_core, 'HKNBPCoreManagerBridge', {
     get: HKNBPCoreManagerBridge_getInstance
@@ -5833,7 +5826,7 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   package$hknbp_core.XMLTV = XMLTV;
   rootURL = 'https://hknbp.org/';
-  coreVersion = '0.9.15';
+  coreVersion = '0.9.16';
   appVersion = '0.9-Web';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();

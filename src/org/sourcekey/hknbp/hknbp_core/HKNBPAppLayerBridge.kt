@@ -16,17 +16,16 @@ package org.sourcekey.hknbp.hknbp_core
 
 import kotlin.browser.window
 
-
 /**
  * 關於有可能有時一啲原因響網上Load唔到HKNBP_Core
- * 所以要畀一啲訊息HKNBP_App知道
- * 令HKNBP_App當Load網上嘅HKNBP_Core時
+ * 所以要畀一啲訊息HKNBP_AppLayer知道
+ * 令HKNBP_AppLayer當Load網上嘅HKNBP_Core時
  * 直接使用App本身內置嘅HKNBP_Core
  * */
-object HKNBPAppBridge {
+object HKNBPAppLayerBridge {
 
     /**
-     * 回應HKNBP_App個HKNBP_Core成功Load到
+     * 回應HKNBP_AppLayer個HKNBP_Core成功Load到
      * */
     val confirmHKNBPCoreLoaded = fun(){
         val responder = js("{}")
@@ -38,11 +37,11 @@ object HKNBPAppBridge {
     init {
         window.addEventListener("message", fun(event: dynamic){
             try{
-                val confirmHKNBPCoreLoaded = confirmHKNBPCoreLoaded //畀HKNBP_App方便Call
+                val confirmHKNBPCoreLoaded = confirmHKNBPCoreLoaded //畀HKNBP_AppLayer方便Call
 
                 val callMessage = JSON.parse<dynamic>(event.data.toString())
-                if(callMessage.name == "HKNBP_App"){ eval(callMessage.expr) }
-            }catch(e: dynamic){println("ListenHKNBPAppCall衰左: ${e}\n${event.data.toString()}")}
+                if(callMessage.name == "HKNBP_AppLayer"){ eval(callMessage.expr) }
+            }catch(e: dynamic){println("ListenHKNBPAppLayerCall衰左: ${e}\n${event.data.toString()}")}
         }, false)
     }
 }

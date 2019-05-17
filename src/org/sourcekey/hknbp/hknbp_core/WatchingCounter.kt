@@ -34,11 +34,10 @@ class WatchingCounter(private val tvChannel: TVChannel) {
 
     init {
         timer = window.setTimeout(fun(){
-            iframeWatchingCounter.src = "/watching-counter.html?tvchannel=${tvChannel.number}"
-            iframeWatchingCounter.onload = fun(){
-                iframeWatchingCounter.contentWindow.coreVersion = coreVersion
-                iframeWatchingCounter.contentWindow.appVersion = appVersion
-            }
+            iframeWatchingCounter.src = "${rootURL}/watching-counter.html?" +
+                    "tvchannel=${tvChannel.number}" + "&" +
+                    "coreVersion=${coreVersion}" + "&" +
+                    "appVersion=${appVersion}"
         }, 60000)//1分鐘作起計收睇緊
     }
 }
