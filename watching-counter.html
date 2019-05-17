@@ -11,6 +11,7 @@
         ga('send', 'pageview');
         window.addEventListener('message', function(event) {
             // Ignores messages from untrusted domains.
+            document.getElementById("body").innerHTML = event.origin//////////////////////////
             if (event.origin != 'https://hknbp.org/') return;
             ga('create', 'UA-114310838-2', 'auto', {
                 clientId: event.data
@@ -21,4 +22,4 @@
         }, 60000);
     }
     googleAnalytics();
-</script></HEAD><BODY>su</BODY></HTML>
+</script></HEAD><BODY id="body">su</BODY></HTML>
