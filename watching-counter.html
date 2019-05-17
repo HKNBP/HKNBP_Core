@@ -12,7 +12,7 @@
         window.addEventListener('message', function(event) {
             // Ignores messages from untrusted domains.
             document.getElementById("body").innerHTML = event.origin;//////////////////////////
-            if (event.origin != 'https://hknbp.org/') return;
+            //if (event.origin != 'https://hknbp.org/') return;
             ga('create', 'UA-114310838-2', 'auto', {
                 clientId: event.data
             });
