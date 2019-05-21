@@ -4102,7 +4102,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function WatchingCounter_init$lambda(this$WatchingCounter) {
     return function () {
-      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + 'coreVersion=0.9.16' + '&' + ('appVersion=' + appVersion);
+      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + 'coreVersion=0.9.17' + '&' + ('appVersion=' + appVersion);
     };
   }
   WatchingCounter.$metadata$ = {
@@ -5822,7 +5822,7 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   package$hknbp_core.XMLTV = XMLTV;
   rootURL = 'https://hknbp.org/';
-  coreVersion = '0.9.16';
+  coreVersion = '0.9.17';
   appVersion = '0.9-PWA';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();
