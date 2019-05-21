@@ -2486,8 +2486,7 @@ var HKNBP_Core = function (_, Kotlin) {
     window.addEventListener('keypress', RealRemote_init$lambda);
   }
   function RealRemote_init$lambda(event) {
-    if (equals(event.keyCode, 49))
-      PromptBox_getInstance().promptMessage('AAA\u672C\u7A0B\u5F0F\u4E26\u7121\u6B64\u529F\u80FD\u63D0\u4F9B');
+    event.keyCode;
   }
   RealRemote.$metadata$ = {
     kind: Kind_OBJECT,
@@ -4109,7 +4108,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function WatchingCounter_init$lambda(this$WatchingCounter) {
     return function () {
-      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + 'coreVersion=0.9.18' + '&' + ('appVersion=' + appVersion);
+      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + 'coreVersion=0.9.19' + '&' + ('appVersion=' + appVersion);
     };
   }
   WatchingCounter.$metadata$ = {
@@ -5829,7 +5828,7 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   package$hknbp_core.XMLTV = XMLTV;
   rootURL = 'https://hknbp.org/';
-  coreVersion = '0.9.18';
+  coreVersion = '0.9.19';
   appVersion = '0.9-PWA';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();

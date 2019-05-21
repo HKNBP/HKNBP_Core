@@ -21,7 +21,7 @@ object RealRemote {
     init {
         window.addEventListener("keypress", fun(event: dynamic){
             when(event.keyCode){
-                49 -> {PromptBox.promptMessage("AAA本程式並無此功能提供");}
+                ///////////
             }
         })
     }
