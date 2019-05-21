@@ -2481,10 +2481,6 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function RealRemote() {
     RealRemote_instance = this;
-    window.addEventListener('keypress', RealRemote_init$lambda);
-  }
-  function RealRemote_init$lambda(event) {
-    event.keyCode;
   }
   RealRemote.$metadata$ = {
     kind: Kind_OBJECT,
@@ -5827,7 +5823,7 @@ var HKNBP_Core = function (_, Kotlin) {
   package$hknbp_core.XMLTV = XMLTV;
   rootURL = 'https://hknbp.org/';
   coreVersion = '0.9.16';
-  appVersion = '0.9-Web';
+  appVersion = '0.9-PWA';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();
   main([]);

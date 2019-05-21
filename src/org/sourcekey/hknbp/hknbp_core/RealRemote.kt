@@ -19,10 +19,11 @@ import kotlin.browser.window
 object RealRemote {
 
     init {
+        /**
         window.addEventListener("keypress", fun(event: dynamic){
             when(event.keyCode){
                 ///////////
             }
-        })
+        })*/
     }
 }

@@ -24,7 +24,7 @@ import kotlin.js.Date
 
 val rootURL: String     = "https://hknbp.org/"
 val coreVersion: String = "0.9.16"
-var appVersion: String  = "0.9-Web"
+var appVersion: String  = "0.9-PWA"
 
 val jQuery: dynamic = js("\$")
 var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
