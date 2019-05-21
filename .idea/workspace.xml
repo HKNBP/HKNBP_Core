@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="439dc076-fa64-48ca-946e-6d20fa2781e4" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/RealRemote.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/RealRemote.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,7 +37,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="830">
+            <state relative-caret-position="-827">
               <caret line="501" column="67" selection-start-line="501" selection-start-column="67" selection-end-line="501" selection-end-column="67" />
               <folding>
                 <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
@@ -278,8 +279,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+            <state relative-caret-position="433">
+              <caret line="267" column="18" lean-forward="true" selection-start-line="267" selection-start-column="18" selection-end-line="267" selection-end-column="18" />
               <folding>
                 <element signature="n#!!block;n#getOS#0" />
                 <element signature="e#1120#1956#1" />
@@ -325,8 +326,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/RealRemote.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+            <state relative-caret-position="198">
+              <caret line="23" column="64" selection-start-line="23" selection-start-column="64" selection-end-line="23" selection-end-column="64" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/HKNBPAppLayerBridge.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="38" column="16" selection-start-line="38" selection-start-column="16" selection-end-line="38" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -334,7 +344,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2304">
+            <state relative-caret-position="606">
               <caret line="469" selection-start-line="469" selection-end-line="469" />
               <folding>
                 <element signature="n#!!block;n#OnPlayerEvent#0;n#!!block;n#Player#0" />
@@ -434,62 +444,6 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VirtualRemote.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="48" column="24" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="24" />
-              <folding>
-                <element signature="n#!!block;n#updateTVChannelDescription#0;n#!!block;n#VirtualRemote#0" />
-                <element signature="e#7489#7725#1" />
-                <element signature="n#!!block;n#updateVideoInformation#0;n#!!block;n#VirtualRemote#0" />
-                <element signature="e#8017#8128#1" />
-                <element signature="n#!!block;n#updateAudioInformation#0;n#!!block;n#VirtualRemote#0" />
-                <element signature="e#8425#8536#1" />
-                <element signature="n#!!block;n#updateSubtitleInformation#0;n#!!block;n#VirtualRemote#0" />
-                <element signature="e#8845#8965#1" />
-                <element signature="n#!!block;n#update#0;n#!!block;n#VirtualRemote#0" />
-                <element signature="n#!!block;n#show#0;n#!!block;n#VirtualRemote#0" />
-                <element signature="n#!!block;n#hide#0;n#!!block;n#VirtualRemote#0" />
-                <element signature="e#13845#14022#0" />
-                <element signature="e#14183#14417#0" />
-                <element signature="e#14558#17011#0" />
-                <element signature="e#14922#15346#1" />
-                <element signature="e#15143#15332#1" />
-                <element signature="e#15208#15314#1" />
-                <element signature="e#15598#15692#0" />
-                <element signature="e#15749#15901#1" />
-                <element signature="e#16025#16190#0" />
-                <element signature="e#16074#16147#1" />
-                <element signature="e#16331#16950#1" />
-                <element signature="e#16546#16936#1" />
-                <element signature="e#16611#16717#1" />
-                <element signature="e#16854#16918#1" />
-                <element signature="e#17068#19363#0" />
-                <element signature="e#17480#17904#1" />
-                <element signature="e#17701#17890#1" />
-                <element signature="e#17766#17872#1" />
-                <element signature="e#18146#18240#0" />
-                <element signature="e#18297#18416#1" />
-                <element signature="e#18540#18705#0" />
-                <element signature="e#18589#18662#1" />
-                <element signature="e#18847#19302#1" />
-                <element signature="e#19062#19288#1" />
-                <element signature="e#19127#19233#1" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/PromptBox.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="19" column="16" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -506,9 +460,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setProgrammeListTimeLine()</find>
-      <find>firstFocusProgramme</find>
-      <find>onNotSupportAutoplay</find>
       <find>onSupportAutoplay</find>
       <find>show()</find>
       <find>pri</find>
@@ -536,6 +487,9 @@
       <find>CoreManager</find>
       <find>npm</find>
       <find>vir</find>
+      <find>keydown</find>
+      <find>keypress</find>
+      <find>addEventListener</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -613,7 +567,7 @@
   <component name="ProjectFrameBounds" extendedState="4">
     <option name="x" value="1281" />
     <option name="width" value="1279" />
-    <option name="height" value="1040" />
+    <option name="height" value="1039" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -640,6 +594,24 @@
               <item name="HKNBP_Core" type="b2602c69:ProjectViewProjectNode" />
               <item name="HKNBP_Core" type="462c0819:PsiDirectoryNode" />
               <item name="iframePlayer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKNBP_Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKNBP_Core" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKNBP_Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKNBP_Core" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="HKNBP_Core" type="b2602c69:ProjectViewProjectNode" />
+              <item name="HKNBP_Core" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="production" type="462c0819:PsiDirectoryNode" />
+              <item name="HKNBP_Core" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="HKNBP_Core" type="b2602c69:ProjectViewProjectNode" />
@@ -850,7 +822,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1281" y="0" width="1279" height="1040" extended-state="4" />
+    <frame x="1281" y="0" width="1279" height="1039" extended-state="4" />
+    <editor active="true" />
     <layout>
       <window_info id="Capture Tool" order="0" />
       <window_info id="Designer" order="1" />
@@ -860,7 +833,7 @@
       <window_info id="Structure" order="5" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="6" />
       <window_info anchor="bottom" id="Event Log" order="0" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Messages" order="1" visible="true" weight="0.03275109" />
+      <window_info active="true" anchor="bottom" id="Messages" order="1" visible="true" weight="0.032786883" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.32969433" />
       <window_info anchor="bottom" id="Terminal" order="3" weight="0.08406114" />
       <window_info anchor="bottom" id="Run" order="4" weight="0.0" />
@@ -923,23 +896,6 @@
     </ignored-roots>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Tab3dIndex.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="16" column="3" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/AudioDescription.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="84" selection-start-line="24" selection-start-column="84" selection-end-line="24" selection-end-column="84" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/FullScreenButton.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -1434,6 +1390,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.meta.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44784">
+          <caret line="2488" selection-start-line="2488" selection-end-line="2488" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/HKNBPAppLayerBridge.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
@@ -1441,9 +1407,61 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VirtualRemote.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="48" column="24" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="24" />
+          <folding>
+            <element signature="n#!!block;n#updateTVChannelDescription#0;n#!!block;n#VirtualRemote#0" />
+            <element signature="e#7489#7725#1" />
+            <element signature="n#!!block;n#updateVideoInformation#0;n#!!block;n#VirtualRemote#0" />
+            <element signature="e#8017#8128#1" />
+            <element signature="n#!!block;n#updateAudioInformation#0;n#!!block;n#VirtualRemote#0" />
+            <element signature="e#8425#8536#1" />
+            <element signature="n#!!block;n#updateSubtitleInformation#0;n#!!block;n#VirtualRemote#0" />
+            <element signature="e#8845#8965#1" />
+            <element signature="n#!!block;n#update#0;n#!!block;n#VirtualRemote#0" />
+            <element signature="n#!!block;n#show#0;n#!!block;n#VirtualRemote#0" />
+            <element signature="n#!!block;n#hide#0;n#!!block;n#VirtualRemote#0" />
+            <element signature="e#13845#14022#0" />
+            <element signature="e#14183#14417#0" />
+            <element signature="e#14558#17011#0" />
+            <element signature="e#14922#15346#1" />
+            <element signature="e#15143#15332#1" />
+            <element signature="e#15208#15314#1" />
+            <element signature="e#15598#15692#0" />
+            <element signature="e#15749#15901#1" />
+            <element signature="e#16025#16190#0" />
+            <element signature="e#16074#16147#1" />
+            <element signature="e#16331#16950#1" />
+            <element signature="e#16546#16936#1" />
+            <element signature="e#16611#16717#1" />
+            <element signature="e#16854#16918#1" />
+            <element signature="e#17068#19363#0" />
+            <element signature="e#17480#17904#1" />
+            <element signature="e#17701#17890#1" />
+            <element signature="e#17766#17872#1" />
+            <element signature="e#18146#18240#0" />
+            <element signature="e#18297#18416#1" />
+            <element signature="e#18540#18705#0" />
+            <element signature="e#18589#18662#1" />
+            <element signature="e#18847#19302#1" />
+            <element signature="e#19062#19288#1" />
+            <element signature="e#19127#19233#1" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/PromptBox.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="19" column="16" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2304">
+        <state relative-caret-position="606">
           <caret line="469" selection-start-line="469" selection-end-line="469" />
           <folding>
             <element signature="n#!!block;n#OnPlayerEvent#0;n#!!block;n#Player#0" />
@@ -1542,68 +1560,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/PromptBox.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="19" column="16" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VirtualRemote.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="48" column="24" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="24" />
-          <folding>
-            <element signature="n#!!block;n#updateTVChannelDescription#0;n#!!block;n#VirtualRemote#0" />
-            <element signature="e#7489#7725#1" />
-            <element signature="n#!!block;n#updateVideoInformation#0;n#!!block;n#VirtualRemote#0" />
-            <element signature="e#8017#8128#1" />
-            <element signature="n#!!block;n#updateAudioInformation#0;n#!!block;n#VirtualRemote#0" />
-            <element signature="e#8425#8536#1" />
-            <element signature="n#!!block;n#updateSubtitleInformation#0;n#!!block;n#VirtualRemote#0" />
-            <element signature="e#8845#8965#1" />
-            <element signature="n#!!block;n#update#0;n#!!block;n#VirtualRemote#0" />
-            <element signature="n#!!block;n#show#0;n#!!block;n#VirtualRemote#0" />
-            <element signature="n#!!block;n#hide#0;n#!!block;n#VirtualRemote#0" />
-            <element signature="e#13845#14022#0" />
-            <element signature="e#14183#14417#0" />
-            <element signature="e#14558#17011#0" />
-            <element signature="e#14922#15346#1" />
-            <element signature="e#15143#15332#1" />
-            <element signature="e#15208#15314#1" />
-            <element signature="e#15598#15692#0" />
-            <element signature="e#15749#15901#1" />
-            <element signature="e#16025#16190#0" />
-            <element signature="e#16074#16147#1" />
-            <element signature="e#16331#16950#1" />
-            <element signature="e#16546#16936#1" />
-            <element signature="e#16611#16717#1" />
-            <element signature="e#16854#16918#1" />
-            <element signature="e#17068#19363#0" />
-            <element signature="e#17480#17904#1" />
-            <element signature="e#17701#17890#1" />
-            <element signature="e#17766#17872#1" />
-            <element signature="e#18146#18240#0" />
-            <element signature="e#18297#18416#1" />
-            <element signature="e#18540#18705#0" />
-            <element signature="e#18589#18662#1" />
-            <element signature="e#18847#19302#1" />
-            <element signature="e#19062#19288#1" />
-            <element signature="e#19127#19233#1" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/RealRemote.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="830">
+        <state relative-caret-position="-827">
           <caret line="501" column="67" selection-start-line="501" selection-start-column="67" selection-end-line="501" selection-end-column="67" />
           <folding>
             <element signature="n#style#0;n#head#0;n#html#0;n#!!top" />
@@ -1841,10 +1800,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/RealRemote.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="23" column="64" selection-start-line="23" selection-start-column="64" selection-end-line="23" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="25" column="33" selection-start-line="25" selection-start-column="33" selection-end-line="25" selection-end-column="33" />
+        <state relative-caret-position="433">
+          <caret line="267" column="18" lean-forward="true" selection-start-line="267" selection-start-column="18" selection-end-line="267" selection-end-column="18" />
           <folding>
             <element signature="n#!!block;n#getOS#0" />
             <element signature="e#1120#1956#1" />

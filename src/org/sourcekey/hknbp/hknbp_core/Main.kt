@@ -23,7 +23,7 @@ import kotlin.js.Date
 
 
 val rootURL: String     = "https://hknbp.org/"
-val coreVersion: String = "0.9.17"
+val coreVersion: String = "0.9.18"
 var appVersion: String  = "0.9-PWA"
 
 val jQuery: dynamic = js("\$")
@@ -264,6 +264,8 @@ fun main(args: Array<String>) {
     try {
         UserControlPanel
         ConsentPanel
+        VirtualRemote
+        RealRemote
         LongClickEvent
     } catch (e: dynamic) { println("介面初始化哀左: $e") }
 
