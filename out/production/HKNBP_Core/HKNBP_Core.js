@@ -1852,6 +1852,7 @@ var HKNBP_Core = function (_, Kotlin) {
     return PictureInPictureButton_instance;
   }
   function Player(tvChannel) {
+    Player$Companion_getInstance();
     this.tvChannel_0 = tvChannel;
     this.iframePlayer_0 = document.getElementById('iframePlayer');
     this.watchingCounter_0 = new WatchingCounter(this.tvChannel_0);
@@ -1870,6 +1871,22 @@ var HKNBP_Core = function (_, Kotlin) {
     var tmp$, tmp$_0, tmp$_1, tmp$_2;
     (tmp$_1 = this.iframePlayer_0) != null ? (tmp$_1.src = (tmp$_0 = (tmp$ = this.tvChannel_0.sources.node) != null ? tmp$.iFramePlayerSrc : null) != null ? tmp$_0 : 'iframePlayer/videojs_hls.html') : null;
     (tmp$_2 = this.iframePlayer_0) != null ? (tmp$_2.onload = Player_init$lambda(this)) : null;
+  }
+  function Player$Companion() {
+    Player$Companion_instance = this;
+    this.isCheckVideoAutoPlayNeedToMute = true;
+  }
+  Player$Companion.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'Companion',
+    interfaces: []
+  };
+  var Player$Companion_instance = null;
+  function Player$Companion_getInstance() {
+    if (Player$Companion_instance === null) {
+      new Player$Companion();
+    }
+    return Player$Companion_instance;
   }
   function Player$OnPlayerEvent(name, ordinal) {
     Enum.call(this);
@@ -2381,7 +2398,12 @@ var HKNBP_Core = function (_, Kotlin) {
       this$Player.callIframePlayerFunction_0('onGetIframePlayerSubtitleTracks', '', Player$onPlaying$lambda$lambda_1(this$Player));
       tmp$_1 = (tmp$_0 = (tmp$ = localStorage.getItem('RecentlyVolume')) != null ? toDoubleOrNull(tmp$) : null) != null ? tmp$_0 : 100.0;
       this$Player.callIframePlayerFunction_0('onSetIframePlayerVolume', tmp$_1);
-      CanAutoplay_getInstance().checkVideoAutoPlayNeedToMute_9dmrm4$(Player$onPlaying$lambda$lambda_2(this$Player), Player$onPlaying$lambda$lambda_3(this$Player));
+      if (Player$Companion_getInstance().isCheckVideoAutoPlayNeedToMute) {
+        CanAutoplay_getInstance().checkVideoAutoPlayNeedToMute_9dmrm4$(Player$onPlaying$lambda$lambda_2(this$Player), Player$onPlaying$lambda$lambda_3(this$Player));
+      }
+       else {
+        this$Player.setMuted_6taknv$(false);
+      }
       tmp$_2 = this$Player.onPlayerEvents_0.iterator();
       while (tmp$_2.hasNext()) {
         var event = tmp$_2.next();
@@ -4108,7 +4130,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function WatchingCounter_init$lambda(this$WatchingCounter) {
     return function () {
-      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + 'coreVersion=0.9.19' + '&' + ('appVersion=' + appVersion);
+      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + 'coreVersion=0.9.20' + '&' + ('appVersion=' + appVersion);
     };
   }
   WatchingCounter.$metadata$ = {
@@ -5699,6 +5721,9 @@ var HKNBP_Core = function (_, Kotlin) {
   Object.defineProperty(package$hknbp_core, 'PictureInPictureButton', {
     get: PictureInPictureButton_getInstance
   });
+  Object.defineProperty(Player, 'Companion', {
+    get: Player$Companion_getInstance
+  });
   Object.defineProperty(Player$OnPlayerEvent, 'playing', {
     get: Player$OnPlayerEvent$playing_getInstance
   });
@@ -5828,7 +5853,7 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   package$hknbp_core.XMLTV = XMLTV;
   rootURL = 'https://hknbp.org/';
-  coreVersion = '0.9.19';
+  coreVersion = '0.9.20';
   appVersion = '0.9-PWA';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();

@@ -22,6 +22,13 @@ import kotlin.js.Math
 import kotlin.random.Random
 
 class Player(private val tvChannel: TVChannel) {
+    companion object{
+        /**
+         * 係米檢查自動播放需要靜音
+         * */
+        var isCheckVideoAutoPlayNeedToMute = true
+    }
+
     private val iframePlayer: dynamic = document.getElementById("iframePlayer")
     private val watchingCounter: WatchingCounter = WatchingCounter(tvChannel)
 
@@ -237,7 +244,11 @@ class Player(private val tvChannel: TVChannel) {
                 localStorage.getItem("RecentlyVolume")?.toDoubleOrNull()?:100.0
         )
         //因依家大部分 <瀏覽器> 唔畀自動播放, 如果要自動播放一定要將Player設為 <靜音>
-        CanAutoplay.checkVideoAutoPlayNeedToMute(fun(){ setMuted(false) }, fun(){ setMuted(true) })
+        if(isCheckVideoAutoPlayNeedToMute){
+            CanAutoplay.checkVideoAutoPlayNeedToMute(fun(){ setMuted(false) }, fun(){ setMuted(true) })
+        }else{
+            setMuted(false)
+        }
 
         for(event in onPlayerEvents){ event.on(OnPlayerEvent.playing) }
     }
