@@ -64,7 +64,7 @@ object VirtualRemote: UserInterface("virtualRemote"){
     val refreshButton               = document.getElementById("refreshButton")              as HTMLButtonElement
     val tvChannelDescriptionButton  = document.getElementById("tvChannelDescriptionButton") as HTMLButtonElement
     val aboutWindowButton           = document.getElementById("aboutWindowButton")          as HTMLButtonElement
-    val feedbackWindowButton        = document.getElementById("feedbackWindowButton")       as HTMLButtonElement
+    val feedbackWebButton           = document.getElementById("feedbackWebButton")          as HTMLButtonElement
     val shareWindowButton           = document.getElementById("shareWindowButton")          as HTMLButtonElement
     val settingWindowButton         = document.getElementById("settingWindowButton")        as HTMLButtonElement
     val appDownloadWindowButton     = document.getElementById("appDownloadWindowButton")    as HTMLButtonElement
@@ -183,7 +183,16 @@ object VirtualRemote: UserInterface("virtualRemote"){
         refreshButton.onclick               = fun(event){updateChannel()}
         tvChannelDescriptionButton.onclick  = fun(event){if(TVChannelDescription.isShow){TVChannelDescription.hide()}else{TVChannelDescription.show(60000)}}
         aboutWindowButton.onclick           = fun(evebt){AboutWindow.showHideAlternately()}
-        feedbackWindowButton.onclick        = fun(evebt){FeedbackWindow.showHideAlternately()}
+        feedbackWebButton.onclick           = fun(evebt){
+            val formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSehWsf1J8sSzPpXHRfFg7mqAsCC1q5dJpef2W6YvNFCrIW-8g/viewform?usp=pp_url"
+            val coreVersionArg = "entry.133709146=${coreVersion}"
+            val appVersionArg = "entry.759953459=${appVersion}"
+            val logArg = "entry.1270012498="/////////////////////////////////////////////////
+            window.open(
+                    formUrl+"&"+coreVersionArg+"&"+appVersionArg+"&"+logArg,
+                    "_blank" // <- This is what makes it open in a new window.
+            )
+        }
         shareWindowButton.onclick           = fun(evebt){ShareWindow.showHideAlternately()}
         settingWindowButton.onclick         = fun(event){SettingWindow.showHideAlternately()}
         appDownloadWindowButton.onclick     = fun(evebt){AppDownloadWindow.showHideAlternately()}

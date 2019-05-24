@@ -58,8 +58,6 @@ var HKNBP_Core = function (_, Kotlin) {
   EPG.prototype.constructor = EPG;
   EnteringNumberBox.prototype = Object.create(UserInterface.prototype);
   EnteringNumberBox.prototype.constructor = EnteringNumberBox;
-  FeedbackWindow.prototype = Object.create(UserInterface.prototype);
-  FeedbackWindow.prototype.constructor = FeedbackWindow;
   FullScreenButton.prototype = Object.create(UserInterface.prototype);
   FullScreenButton.prototype.constructor = FullScreenButton;
   MutedDescription.prototype = Object.create(UserInterface.prototype);
@@ -1239,24 +1237,6 @@ var HKNBP_Core = function (_, Kotlin) {
       new EnteringNumberBox();
     }
     return EnteringNumberBox_instance;
-  }
-  function FeedbackWindow() {
-    FeedbackWindow_instance = this;
-    UserInterface.call(this, 'feedbackWindow', void 0, void 0, 'feedbackWindowHideButton', true);
-    var tmp$;
-    this.feedbackWindow_0 = Kotlin.isType(tmp$ = document.getElementById('feedbackWindow'), HTMLDivElement) ? tmp$ : throwCCE();
-  }
-  FeedbackWindow.$metadata$ = {
-    kind: Kind_OBJECT,
-    simpleName: 'FeedbackWindow',
-    interfaces: [UserInterface]
-  };
-  var FeedbackWindow_instance = null;
-  function FeedbackWindow_getInstance() {
-    if (FeedbackWindow_instance === null) {
-      new FeedbackWindow();
-    }
-    return FeedbackWindow_instance;
   }
   function FullScreenButton() {
     FullScreenButton_instance = this;
@@ -3571,7 +3551,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.refreshButton = Kotlin.isType(tmp$_36 = document.getElementById('refreshButton'), HTMLButtonElement) ? tmp$_36 : throwCCE();
     this.tvChannelDescriptionButton = Kotlin.isType(tmp$_37 = document.getElementById('tvChannelDescriptionButton'), HTMLButtonElement) ? tmp$_37 : throwCCE();
     this.aboutWindowButton = Kotlin.isType(tmp$_38 = document.getElementById('aboutWindowButton'), HTMLButtonElement) ? tmp$_38 : throwCCE();
-    this.feedbackWindowButton = Kotlin.isType(tmp$_39 = document.getElementById('feedbackWindowButton'), HTMLButtonElement) ? tmp$_39 : throwCCE();
+    this.feedbackWebButton = Kotlin.isType(tmp$_39 = document.getElementById('feedbackWebButton'), HTMLButtonElement) ? tmp$_39 : throwCCE();
     this.shareWindowButton = Kotlin.isType(tmp$_40 = document.getElementById('shareWindowButton'), HTMLButtonElement) ? tmp$_40 : throwCCE();
     this.settingWindowButton = Kotlin.isType(tmp$_41 = document.getElementById('settingWindowButton'), HTMLButtonElement) ? tmp$_41 : throwCCE();
     this.appDownloadWindowButton = Kotlin.isType(tmp$_42 = document.getElementById('appDownloadWindowButton'), HTMLButtonElement) ? tmp$_42 : throwCCE();
@@ -3626,7 +3606,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.refreshButton.onclick = VirtualRemote_init$lambda_34;
     this.tvChannelDescriptionButton.onclick = VirtualRemote_init$lambda_35;
     this.aboutWindowButton.onclick = VirtualRemote_init$lambda_36;
-    this.feedbackWindowButton.onclick = VirtualRemote_init$lambda_37;
+    this.feedbackWebButton.onclick = VirtualRemote_init$lambda_37;
     this.shareWindowButton.onclick = VirtualRemote_init$lambda_38;
     this.settingWindowButton.onclick = VirtualRemote_init$lambda_39;
     this.appDownloadWindowButton.onclick = VirtualRemote_init$lambda_40;
@@ -3857,7 +3837,11 @@ var HKNBP_Core = function (_, Kotlin) {
     AboutWindow_getInstance().showHideAlternately();
   }
   function VirtualRemote_init$lambda_37(evebt) {
-    FeedbackWindow_getInstance().showHideAlternately();
+    var formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSehWsf1J8sSzPpXHRfFg7mqAsCC1q5dJpef2W6YvNFCrIW-8g/viewform?usp=pp_url';
+    var coreVersionArg = 'entry.133709146=0.9.21';
+    var appVersionArg = 'entry.759953459=' + appVersion;
+    var logArg = 'entry.1270012498=';
+    window.open(formUrl + '&' + coreVersionArg + '&' + appVersionArg + '&' + logArg, '_blank');
   }
   function VirtualRemote_init$lambda_38(evebt) {
     ShareWindow_getInstance().showHideAlternately();
@@ -4130,7 +4114,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function WatchingCounter_init$lambda(this$WatchingCounter) {
     return function () {
-      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + 'coreVersion=0.9.20' + '&' + ('appVersion=' + appVersion);
+      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + 'coreVersion=0.9.21' + '&' + ('appVersion=' + appVersion);
     };
   }
   WatchingCounter.$metadata$ = {
@@ -5652,9 +5636,6 @@ var HKNBP_Core = function (_, Kotlin) {
   Object.defineProperty(package$hknbp_core, 'EnteringNumberBox', {
     get: EnteringNumberBox_getInstance
   });
-  Object.defineProperty(package$hknbp_core, 'FeedbackWindow', {
-    get: FeedbackWindow_getInstance
-  });
   Object.defineProperty(package$hknbp_core, 'FullScreenButton', {
     get: FullScreenButton_getInstance
   });
@@ -5853,7 +5834,7 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   package$hknbp_core.XMLTV = XMLTV;
   rootURL = 'https://hknbp.org/';
-  coreVersion = '0.9.20';
+  coreVersion = '0.9.21';
   appVersion = '0.9-PWA';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();

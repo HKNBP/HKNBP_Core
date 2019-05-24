@@ -23,7 +23,7 @@ import kotlin.js.Date
 
 
 val rootURL: String     = "https://hknbp.org/"
-val coreVersion: String = "0.9.20"
+val coreVersion: String = "0.9.21"
 var appVersion: String  = "0.9-PWA"
 
 val jQuery: dynamic = js("\$")
@@ -41,7 +41,6 @@ fun getOS(): String{
               windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
               iosPlatforms = ['iPhone', 'iPad', 'iPod'],
               os = '';
-
           if (macosPlatforms.indexOf(platform) !== -1) {
             os = 'Mac OS';
           } else if (iosPlatforms.indexOf(platform) !== -1) {
