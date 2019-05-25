@@ -132,7 +132,7 @@ object UserControlPanel: UserInterface(
         //所以要畀iOS用戶直接點擊iframePlayer
         //好似有解決方法, 有待研究
         //https://stackoverflow.com/questions/5054560/can-i-avoid-the-native-fullscreen-video-player-with-html5-on-iphone-or-android
-        if(getOS() == "iOS"){
+        if(RunnerInfo.getOsFamily() == "iOS"){
             shower.style.right = "auto"
             shower.style.width = "10vh"
             shower.style.backgroundColor = "#303030"

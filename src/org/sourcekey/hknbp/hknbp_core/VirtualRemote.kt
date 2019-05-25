@@ -187,9 +187,11 @@ object VirtualRemote: UserInterface("virtualRemote"){
             val formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSehWsf1J8sSzPpXHRfFg7mqAsCC1q5dJpef2W6YvNFCrIW-8g/viewform?usp=pp_url"
             val coreVersionArg = "entry.133709146=${coreVersion}"
             val appVersionArg = "entry.759953459=${appVersion}"
+            val runningOsArg = "entry.272098163=${RunnerInfo.getOsName()}"
+            val runningBrowserArg = "entry.1391825326=${RunnerInfo.getBrowserName()}"
             val logArg = "entry.1270012498="/////////////////////////////////////////////////
             window.open(
-                    formUrl+"&"+coreVersionArg+"&"+appVersionArg+"&"+logArg,
+                    formUrl+"&"+coreVersionArg+"&"+appVersionArg+"&"+runningOsArg+"&"+runningBrowserArg+"&"+logArg,
                     "_blank" // <- This is what makes it open in a new window.
             )
         }

@@ -32,33 +32,6 @@ lateinit var tvChannels: ArrayLinkList<TVChannel>
 lateinit var player: Player
 
 
-fun getOS(): String{
-    val _getOS = js("""
-        function (){
-          var userAgent = window.navigator.userAgent,
-              platform = window.navigator.platform,
-              macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'],
-              windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'],
-              iosPlatforms = ['iPhone', 'iPad', 'iPod'],
-              os = '';
-          if (macosPlatforms.indexOf(platform) !== -1) {
-            os = 'Mac OS';
-          } else if (iosPlatforms.indexOf(platform) !== -1) {
-            os = 'iOS';
-          } else if (windowsPlatforms.indexOf(platform) !== -1) {
-            os = 'Windows';
-          } else if (/Android/.test(userAgent)) {
-            os = 'Android';
-          } else if (!os && /Linux/.test(platform)) {
-            os = 'Linux';
-          }
-
-          return os;
-        }
-    """) as ()->String
-    return _getOS()
-}
-
 /**
  *  w,h為正整數的分子和分母
  *

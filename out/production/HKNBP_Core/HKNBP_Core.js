@@ -1561,29 +1561,6 @@ var HKNBP_Core = function (_, Kotlin) {
   function set_player(player_0) {
     player = player_0;
   }
-  function getOS() {
-    var tmp$;
-    var _getOS = typeof (tmp$ = function () {
-      var userAgent = window.navigator.userAgent, platform = window.navigator.platform, macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'], windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'], iosPlatforms = ['iPhone', 'iPad', 'iPod'], os = '';
-      if (macosPlatforms.indexOf(platform) !== -1) {
-        os = 'Mac OS';
-      }
-       else if (iosPlatforms.indexOf(platform) !== -1) {
-        os = 'iOS';
-      }
-       else if (windowsPlatforms.indexOf(platform) !== -1) {
-        os = 'Windows';
-      }
-       else if (/Android/.test(userAgent)) {
-        os = 'Android';
-      }
-       else if (!os && /Linux/.test(platform)) {
-        os = 'Linux';
-      }
-      return os;
-    }) === 'function' ? tmp$ : throwCCE();
-    return _getOS();
-  }
   function reductionTo(w, h) {
     var arr = new Int32Array(2);
     var p = w;
@@ -2502,6 +2479,51 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return RealRemote_instance;
   }
+  function RunnerInfo() {
+    RunnerInfo_instance = this;
+    this.platform = platform;
+  }
+  RunnerInfo.prototype.getOsFamily = function () {
+    var tmp$;
+    var _getOS = typeof (tmp$ = function () {
+      var userAgent = window.navigator.userAgent, platform = window.navigator.platform, macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K'], windowsPlatforms = ['Win32', 'Win64', 'Windows', 'WinCE'], iosPlatforms = ['iPhone', 'iPad', 'iPod'], os = '';
+      if (macosPlatforms.indexOf(platform) !== -1) {
+        os = 'Mac OS';
+      }
+       else if (iosPlatforms.indexOf(platform) !== -1) {
+        os = 'iOS';
+      }
+       else if (windowsPlatforms.indexOf(platform) !== -1) {
+        os = 'Windows';
+      }
+       else if (/Android/.test(userAgent)) {
+        os = 'Android';
+      }
+       else if (!os && /Linux/.test(platform)) {
+        os = 'Linux';
+      }
+      return os;
+    }) === 'function' ? tmp$ : throwCCE();
+    return _getOS();
+  };
+  RunnerInfo.prototype.getOsName = function () {
+    return this.platform.os.toString();
+  };
+  RunnerInfo.prototype.getBrowserName = function () {
+    return this.platform.name.toString() + ' ' + this.platform.version.toString();
+  };
+  RunnerInfo.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'RunnerInfo',
+    interfaces: []
+  };
+  var RunnerInfo_instance = null;
+  function RunnerInfo_getInstance() {
+    if (RunnerInfo_instance === null) {
+      new RunnerInfo();
+    }
+    return RunnerInfo_instance;
+  }
   function SettingWindow() {
     SettingWindow_instance = this;
     UserInterface.call(this, 'settingWindow', void 0, void 0, 'settingWindowHideButton', true);
@@ -3248,7 +3270,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.shower_0.ondblclick = UserControlPanel_init$lambda_6;
     var _shower = this.shower_0;
     _shower.ontouchstart = UserControlPanel_init$lambda_7(this);
-    if (equals(getOS(), 'iOS')) {
+    if (equals(RunnerInfo_getInstance().getOsFamily(), 'iOS')) {
       this.shower_0.style.right = 'auto';
       this.shower_0.style.width = '10vh';
       this.shower_0.style.backgroundColor = '#303030';
@@ -3840,8 +3862,10 @@ var HKNBP_Core = function (_, Kotlin) {
     var formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSehWsf1J8sSzPpXHRfFg7mqAsCC1q5dJpef2W6YvNFCrIW-8g/viewform?usp=pp_url';
     var coreVersionArg = 'entry.133709146=0.9.21';
     var appVersionArg = 'entry.759953459=' + appVersion;
+    var runningOsArg = 'entry.272098163=' + RunnerInfo_getInstance().getOsName();
+    var runningBrowserArg = 'entry.1391825326=' + RunnerInfo_getInstance().getBrowserName();
     var logArg = 'entry.1270012498=';
-    window.open(formUrl + '&' + coreVersionArg + '&' + appVersionArg + '&' + logArg, '_blank');
+    window.open(formUrl + '&' + coreVersionArg + '&' + appVersionArg + '&' + runningOsArg + '&' + runningBrowserArg + '&' + logArg, '_blank');
   }
   function VirtualRemote_init$lambda_38(evebt) {
     ShareWindow_getInstance().showHideAlternately();
@@ -5690,7 +5714,6 @@ var HKNBP_Core = function (_, Kotlin) {
     get: get_player,
     set: set_player
   });
-  package$hknbp_core.getOS = getOS;
   package$hknbp_core.reductionTo_vux9f0$ = reductionTo;
   package$hknbp_core.updateURLParameter_puj7f4$ = updateURLParameter;
   package$hknbp_core.designatedChannel = designatedChannel;
@@ -5747,6 +5770,9 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   Object.defineProperty(package$hknbp_core, 'RealRemote', {
     get: RealRemote_getInstance
+  });
+  Object.defineProperty(package$hknbp_core, 'RunnerInfo', {
+    get: RunnerInfo_getInstance
   });
   Object.defineProperty(package$hknbp_core, 'SettingWindow', {
     get: SettingWindow_getInstance
