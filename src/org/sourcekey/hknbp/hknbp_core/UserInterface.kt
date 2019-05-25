@@ -23,7 +23,8 @@ abstract class UserInterface(
         private val onShow: ()->Unit = fun(){},
         private val onHide: ()->Unit = fun(){},
         private val firstFocusElementID: String? = null,
-        private val isFocuxOutHide: Boolean = false
+        private var isFocusCountdownHide: Boolean = true,
+        private var isFocuxOutHide: Boolean = false
 ) {
     private val htmlElement = document.getElementById(htmlElementID) as HTMLElement
     private var lastTimeFocusElement: dynamic = jQuery("#${firstFocusElementID}")
@@ -82,7 +83,7 @@ abstract class UserInterface(
                 //設定依家Focus邊粒element為之後再Show呢個介面時Focus返對上個次嘅element
                 lastTimeFocusElement = jQuery(js("this"))
                 //當focus就重新倒數介面顯示時間
-                setHideTimer(15000)
+                if(isFocusCountdownHide){setHideTimer(15000)}
             }
         })
         jQuery(
