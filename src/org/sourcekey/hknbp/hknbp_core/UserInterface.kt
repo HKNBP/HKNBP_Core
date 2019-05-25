@@ -24,7 +24,7 @@ abstract class UserInterface(
         private val onHide: ()->Unit = fun(){},
         private val firstFocusElementID: String? = null,
         private var isFocusCountdownHide: Boolean = true,
-        private var isFocuxOutHide: Boolean = false
+        private var isFocusOutHide: Boolean = false
 ) {
     private val htmlElement = document.getElementById(htmlElementID) as HTMLElement
     private var lastTimeFocusElement: dynamic = jQuery("#${firstFocusElementID}")
@@ -98,7 +98,7 @@ abstract class UserInterface(
 
         /**
         jQuery("#${htmlElementID}").blur(fun(){
-            if(isFocuxOutHide){
+            if(isFocusOutHide){
                 hide()
             }
         })*/

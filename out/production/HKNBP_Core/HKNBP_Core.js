@@ -3383,7 +3383,7 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return UserControlPanel_instance;
   }
-  function UserInterface(htmlElementID, onShow, onHide, firstFocusElementID, isFocusCountdownHide, isFocuxOutHide) {
+  function UserInterface(htmlElementID, onShow, onHide, firstFocusElementID, isFocusCountdownHide, isFocusOutHide) {
     if (onShow === void 0)
       onShow = UserInterface_init$lambda;
     if (onHide === void 0)
@@ -3392,14 +3392,14 @@ var HKNBP_Core = function (_, Kotlin) {
       firstFocusElementID = null;
     if (isFocusCountdownHide === void 0)
       isFocusCountdownHide = true;
-    if (isFocuxOutHide === void 0)
-      isFocuxOutHide = false;
+    if (isFocusOutHide === void 0)
+      isFocusOutHide = false;
     this.htmlElementID_fynci$_0 = htmlElementID;
     this.onShow_5c20oy$_0 = onShow;
     this.onHide_5i3ctj$_0 = onHide;
     this.firstFocusElementID_ydky23$_0 = firstFocusElementID;
     this.isFocusCountdownHide_768iff$_0 = isFocusCountdownHide;
-    this.isFocuxOutHide_gmfj99$_0 = isFocuxOutHide;
+    this.isFocusOutHide_o0rj94$_0 = isFocusOutHide;
     var tmp$, tmp$_0, tmp$_1;
     this.htmlElement_sdspbr$_0 = Kotlin.isType(tmp$ = document.getElementById(this.htmlElementID_fynci$_0), HTMLElement) ? tmp$ : throwCCE();
     this.lastTimeFocusElement_bd4klp$_0 = jQuery('#' + toString(this.firstFocusElementID_ydky23$_0));
@@ -3865,7 +3865,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function VirtualRemote_init$lambda_37(evebt) {
     var formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSehWsf1J8sSzPpXHRfFg7mqAsCC1q5dJpef2W6YvNFCrIW-8g/viewform?usp=pp_url';
-    var coreVersionArg = 'entry.133709146=0.9.21';
+    var coreVersionArg = 'entry.133709146=0.9.23';
     var appVersionArg = 'entry.759953459=' + appVersion;
     var runningOsArg = 'entry.272098163=' + RunnerInfo_getInstance().getOsName();
     var runningBrowserArg = 'entry.1391825326=' + RunnerInfo_getInstance().getBrowserName();
@@ -4143,7 +4143,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function WatchingCounter_init$lambda(this$WatchingCounter) {
     return function () {
-      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + 'coreVersion=0.9.21' + '&' + ('appVersion=' + appVersion);
+      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + 'coreVersion=0.9.23' + '&' + ('appVersion=' + appVersion);
     };
   }
   WatchingCounter.$metadata$ = {
@@ -5865,7 +5865,7 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   package$hknbp_core.XMLTV = XMLTV;
   rootURL = 'https://hknbp.org/';
-  coreVersion = '0.9.21';
+  coreVersion = '0.9.23';
   appVersion = '0.9-PWA';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();

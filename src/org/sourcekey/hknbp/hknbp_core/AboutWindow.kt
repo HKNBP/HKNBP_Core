@@ -27,7 +27,7 @@ object AboutWindow: UserInterface(
             AboutWindow.appVersionText.innerHTML = appVersion
         },
         firstFocusElementID = "aboutWindowHideButton",
-        isFocuxOutHide = true
+        isFocusOutHide = true
 ) {
     private val aboutWindow: HTMLDivElement = document.getElementById("aboutWindow") as HTMLDivElement
     private val hideButton: HTMLButtonElement = document.getElementById("aboutWindowHideButton") as HTMLButtonElement

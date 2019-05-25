@@ -25,7 +25,7 @@ object ShareWindow : UserInterface(
             ShareWindow.buttonList.setAttribute("data-a2a-url", window.location.href)//設定要分享嘅Link
         },
         firstFocusElementID = "shareWindowHideButton",
-        isFocuxOutHide = true
+        isFocusOutHide = true
 ) {
     private val shareWindow = document.getElementById("shareWindow") as HTMLDivElement
     private val hideButton = document.getElementById("shareWindowHideButton") as HTMLButtonElement

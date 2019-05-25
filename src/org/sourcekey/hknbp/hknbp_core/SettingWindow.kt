@@ -22,7 +22,7 @@ import kotlin.browser.window
 object SettingWindow: UserInterface(
         "settingWindow",
         firstFocusElementID = "settingWindowHideButton",
-        isFocuxOutHide = true
+        isFocusOutHide = true
 ) {
     private val settingWindow                   = document.getElementById("settingWindow") as HTMLDivElement
     private val hideButton                      = document.getElementById("settingWindowHideButton") as HTMLButtonElement
