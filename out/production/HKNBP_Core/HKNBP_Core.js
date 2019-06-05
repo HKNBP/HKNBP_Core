@@ -2129,12 +2129,6 @@ var HKNBP_Core = function (_, Kotlin) {
       return false;
     }
   };
-  Player.prototype.programmable = function (color) {
-  };
-  Player.prototype.enableProgrammable = function () {
-  };
-  Player.prototype.disableProgrammable = function () {
-  };
   function Player$ProgrammableColor(name, ordinal) {
     Enum.call(this);
     this.name$ = name;
@@ -2191,6 +2185,8 @@ var HKNBP_Core = function (_, Kotlin) {
     }
   }
   Player$ProgrammableColor.valueOf_61zpoe$ = Player$ProgrammableColor$valueOf;
+  Player.prototype.programmable = function (color) {
+  };
   function Player$setListenIframePlayer$lambda(this$Player) {
     return function (event) {
       var tmp$;

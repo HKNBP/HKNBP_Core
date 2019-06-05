@@ -428,28 +428,6 @@ class Player(private val tvChannel: TVChannel) {
 
     /******************************************************************************************************************/
     /**
-     * programmable鍵 嘅功能
-     * @param color 咩野顏色嘅programmable鍵
-     */
-    @JsName("programmable") fun programmable(color: ProgrammableColor) {
-        ///////////////////////////////////
-    }
-
-    /**
-     *
-     * */
-    fun enableProgrammable(){
-
-    }
-
-    /**
-     *
-     * */
-    fun disableProgrammable(){
-
-    }
-
-    /**
      *
      * */
     enum class ProgrammableColor {
@@ -457,6 +435,14 @@ class Player(private val tvChannel: TVChannel) {
         green,
         yellow,
         blue
+    }
+
+    /**
+     * programmable鍵 嘅功能
+     * @param color 咩野顏色嘅programmable鍵
+     */
+    @JsName("programmable") fun programmable(color: ProgrammableColor) {
+        ///////////////////////////////////
     }
 
     /******************************************************************************************************************/

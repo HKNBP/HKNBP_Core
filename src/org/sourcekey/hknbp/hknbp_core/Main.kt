@@ -22,10 +22,18 @@ import kotlin.js.Date
 
 
 
+
 val rootURL: String     = "https://hknbp.org/"
 val coreVersion: String = "0.9.23"
 var appVersion: String  = "0.9-PWA"
 
+/**
+fun includeScript(vararg files: String) {
+    for(file in files){
+        document.write("<script type=\"text/javascript\" src=\"'+${file}+'\"></script>")
+    }
+}
+val jQueryLib = includeScript("js/jquery-3.4.1.min.js")*/
 val jQuery: dynamic = js("\$")
 var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
 lateinit var tvChannels: ArrayLinkList<TVChannel>
