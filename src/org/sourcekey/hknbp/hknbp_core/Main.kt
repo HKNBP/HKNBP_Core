@@ -239,7 +239,7 @@ updateChannel()
  * ****************************** *
  * */
 fun main(args: Array<String>) {
-    HKNBPAppLayerBridge
+    //HKNBPAppLayerBridge
 
     try {
         UserControlPanel
