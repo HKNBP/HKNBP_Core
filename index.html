@@ -1144,6 +1144,16 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
+<script>
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent Chrome 67 and earlier from automatically showing the prompt
+  e.preventDefault();
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+});
+</script>
 <script src="js/jquery-3.4.1.min.js"><!--</script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
 <script src="js/jquery.tabbable.js"></script>
 <script src="js/can-autoplay.min.js"></script><!--<script src="https://video-dev.github.io/can-autoplay/build/can-autoplay.min.js"></script>-->
