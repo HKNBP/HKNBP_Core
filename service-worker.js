@@ -1,59 +1,21 @@
-var CACHE_NAME = 'static-cache-v2';
-var urlsToCache = [
-  '.',
-  'index.html',
-  'manifest.json'
-];
+//importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
 
-self.addEventListener('install', function(event) {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-    .then(function(cache) {
-      return cache.addAll(urlsToCache);
-    })
-  );
-});
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
-self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.match(event.request)
-    .then(function(response) {
-      return response || fetchAndCache(event.request);
-    })
-  );
-});
-
-function fetchAndCache(url) {
-  return fetch(url)
-  .then(function(response) {
-    // Check if we received a valid response
-    if (!response.ok) {
-      throw Error(response.statusText);
-    }
-    return caches.open(CACHE_NAME)
-    .then(function(cache) {
-      cache.put(url, response.clone());
-      return response;
-    });
-  })
-  .catch(function(error) {
-    console.log('Request failed:', error);
-    // You could return a custom offline 404 page here
-  });
+if (workbox) {
+  console.log(`Yay! Workbox is loaded 🎉`);
+} else {
+  console.log(`Boo! Workbox didn't load 😬`);
 }
 
-self.addEventListener('activate', function(event) {
-  event.waitUntil(
-    caches.keys().then(function(cacheNames) {
-      return Promise.all(
-        cacheNames.filter(function(cacheName) {
-          // Return true if you want to remove this cache,
-          // but remember that caches are shared across
-          // the whole origin
-        }).map(function(cacheName) {
-          return caches.delete(cacheName);
-        })
-      );
-    })
-  );
-});
+// 使用precache功能，在offline下也可以執行
+// 要存進cache storage裡的檔案清單
+var cacheFiles = [
+  './index.html'
+];
+workbox.precaching.precacheAndRoute(
+    cacheFiles,
+    {
+        ignoreUrlParametersMatching:[/tvchannel/]
+    }
+);
