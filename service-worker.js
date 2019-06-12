@@ -36,4 +36,4 @@ workbox.routing.registerRoute(
     })
 );
 
-workbox.precaching.cleanupOutdatedCaches();
+//workbox.precaching.cleanupOutdatedCaches();
