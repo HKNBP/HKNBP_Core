@@ -11,7 +11,7 @@ if (workbox) {
 // 使用precache功能，在offline下也可以執行
 // 要存進cache storage裡的檔案清單
 var cacheFiles = [
-  './index.html'
+  'index.html'
 ];
 workbox.precaching.precacheAndRoute(
     cacheFiles,
