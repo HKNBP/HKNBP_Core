@@ -1721,7 +1721,6 @@ var HKNBP_Core = function (_, Kotlin) {
     TVChannelDescription_getInstance().update();
   }
   function main(args) {
-    HKNBPAppLayerBridge_getInstance();
     try {
       UserControlPanel_getInstance();
       ConsentPanel_getInstance();
