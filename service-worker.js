@@ -28,7 +28,7 @@ workbox.routing.registerRoute(
       plugins: [
         new workbox.expiration.Plugin({
           // Only cache requests for a week
-          maxAgeSeconds: 1,
+          maxAgeSeconds: 7 * 24 * 60 * 60,
           // Only cache 10 requests.
           maxEntries: 100,
         }),
