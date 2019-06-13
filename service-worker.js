@@ -40,7 +40,7 @@ var cacheFiles = [
     "out/production/HKNBP_Core/HKNBP_Core.meta.js",
     "out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm",
     "out/production/HKNBP_Core/lib/kotlin.js",
-    "out/production/HKNBP_Core/lib/kotlin.meta.js",
+    "out/production/HKNBP_Core/lib/kotlin.meta.js"
 ];
 
 workbox.precaching.precacheAndRoute(
@@ -50,6 +50,7 @@ workbox.precaching.precacheAndRoute(
     }
 );
 
+/**
 workbox.routing.registerRoute(
     new RegExp('.*\.*'),
     workbox.strategies.networkFirst({
@@ -64,5 +65,5 @@ workbox.routing.registerRoute(
       ]
     })
 );
-
+*/
 //workbox.precaching.cleanupOutdatedCaches();
