@@ -42,12 +42,11 @@ var cacheFiles = [
     "out/production/HKNBP_Core/lib/kotlin.meta.js"
 ];
 
-workbox.precaching.precacheAndRoute([
-  'index.html'
-], {
+workbox.precaching.precacheAndRoute(cacheFiles, {
   // Ignore all URL parameters.
   ignoreURLParametersMatching: [/.*/]
 });
+
 /**
 workbox.routing.registerRoute(
     new RegExp('.*\.*'),
