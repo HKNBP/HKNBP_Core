@@ -1,11 +1,10 @@
+/***/
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
 
-//importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
-
 if (workbox) {
-  console.log(`Yay! Workbox is loaded 🎉`);
+  console.log("Yay! Workbox is loaded 🎉");
 } else {
-  console.log(`Boo! Workbox didn't load 😬`);
+  console.log("Boo! Workbox didn't load 😬");
 }
 
 // 使用precache功能，在offline下也可以執行
@@ -43,13 +42,12 @@ var cacheFiles = [
     "out/production/HKNBP_Core/lib/kotlin.meta.js"
 ];
 
-workbox.precaching.precacheAndRoute(
-    cacheFiles,
-    {
-        ignoreUrlParametersMatching:[/tvchannel/]
-    }
-);
-
+workbox.precaching.precacheAndRoute([
+  'index.html'
+], {
+  // Ignore all URL parameters.
+  ignoreURLParametersMatching: [/.*/]
+});
 /**
 workbox.routing.registerRoute(
     new RegExp('.*\.*'),
@@ -67,3 +65,4 @@ workbox.routing.registerRoute(
 );
 */
 //workbox.precaching.cleanupOutdatedCaches();
+
