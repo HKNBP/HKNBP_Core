@@ -1,4 +1,3 @@
-/***/
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
 
 if (workbox) {
@@ -32,14 +31,13 @@ var cacheFiles = [
     "iframePlayer/videojs_hls.html",
     "iframePlayer/youtube_api.html",
     "img/programmeNullIcon.png",
-    "js/can-autoplay.min.js",
     "js/jquery.tabbable.js",
-    "js/jquery-3.4.1.min.js",
     "out/production/HKNBP_Core/HKNBP_Core.js",
-    "out/production/HKNBP_Core/HKNBP_Core.meta.js",
-    "out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm",
-    "out/production/HKNBP_Core/lib/kotlin.js",
-    "out/production/HKNBP_Core/lib/kotlin.meta.js"
+
+    "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js",
+    "https://video-dev.github.io/can-autoplay/build/can-autoplay.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.5/platform.min.js",
+    "https://cdn.jsdelivr.net/npm/kotlin@1.3.31/kotlin.js"
 ];
 
 workbox.precaching.precacheAndRoute(cacheFiles, {
@@ -47,21 +45,5 @@ workbox.precaching.precacheAndRoute(cacheFiles, {
   ignoreURLParametersMatching: [/.*/]
 });
 
-/**
-workbox.routing.registerRoute(
-    new RegExp('.*\.*'),
-    workbox.strategies.networkFirst({
-      cacheName: 'cache',
-      plugins: [
-        new workbox.expiration.Plugin({
-          // Only cache requests for a week
-          maxAgeSeconds: 7 * 24 * 60 * 60,
-          // Only cache 10 requests.
-          maxEntries: 100,
-        }),
-      ]
-    })
-);
-*/
 //workbox.precaching.cleanupOutdatedCaches();
 
