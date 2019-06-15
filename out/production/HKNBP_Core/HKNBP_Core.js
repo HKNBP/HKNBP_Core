@@ -3294,16 +3294,10 @@ var HKNBP_Core = function (_, Kotlin) {
       window.setTimeout(UserControlPanel$setIframeOnClick$lambda$lambda(this$UserControlPanel), 0);
     };
   }
-  function UserControlPanel$setIframeOnClick$lambda_0(closure$iframeId, closure$obj) {
-    return function () {
-      jQuery('#' + closure$iframeId).iframeTracker(closure$obj.v);
-    };
-  }
   UserControlPanel.prototype.setIframeOnClick_a4mwiz$ = function (iframeId, onClick) {
     this.shower_0.focus();
-    var obj = {v: {}};
-    obj.v.blurCallback = UserControlPanel$setIframeOnClick$lambda(onClick, this);
-    jQuery(document).ready(UserControlPanel$setIframeOnClick$lambda_0(iframeId, obj));
+    var obj = {};
+    obj.blurCallback = UserControlPanel$setIframeOnClick$lambda(onClick, this);
   };
   function UserControlPanel_init$lambda() {
     UserControlPanel_getInstance().onShowUserControlPanel();
@@ -3860,7 +3854,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function VirtualRemote_init$lambda_37(evebt) {
     var formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSehWsf1J8sSzPpXHRfFg7mqAsCC1q5dJpef2W6YvNFCrIW-8g/viewform?usp=pp_url';
-    var coreVersionArg = 'entry.133709146=0.9.23';
+    var coreVersionArg = 'entry.133709146=0.9.30';
     var appVersionArg = 'entry.759953459=' + appVersion;
     var runningOsArg = 'entry.272098163=' + RunnerInfo_getInstance().getOsName();
     var runningBrowserArg = 'entry.1391825326=' + RunnerInfo_getInstance().getBrowserName();
@@ -4138,7 +4132,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function WatchingCounter_init$lambda(this$WatchingCounter) {
     return function () {
-      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + 'coreVersion=0.9.23' + '&' + ('appVersion=' + appVersion);
+      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + 'coreVersion=0.9.30' + '&' + ('appVersion=' + appVersion);
     };
   }
   WatchingCounter.$metadata$ = {
@@ -5860,7 +5854,7 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   package$hknbp_core.XMLTV = XMLTV;
   rootURL = 'https://hknbp.org/';
-  coreVersion = '0.9.23';
+  coreVersion = '0.9.30';
   appVersion = '0.9-PWA';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();

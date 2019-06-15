@@ -73,6 +73,7 @@ object UserControlPanel: UserInterface(
     var onHideUserControlPanel: ()->Unit = fun(){}
 
     fun setIframeOnClick(iframeId: String, onClick: ()->Unit){
+        /**
         shower.focus()
         var obj = js("{}")
         obj.blurCallback = fun(){
@@ -84,7 +85,7 @@ object UserControlPanel: UserInterface(
         }
         jQuery(js("document")).ready(fun(){
             jQuery("#${iframeId}").iframeTracker(obj)
-        })
+        })*/
     }
 
     init {
