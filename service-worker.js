@@ -10,7 +10,7 @@ if (workbox) {
 // Cache名 設置
 workbox.core.setCacheNameDetails({
     prefix: "HKNBP",
-    suffix: "0.9.31",
+    suffix: "0.9.32",
     precache: "precache",
     runtime: "runtime-cache"
 });
