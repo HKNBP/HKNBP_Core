@@ -24,8 +24,8 @@ import kotlin.js.Date
 
 
 val rootURL: String     = "https://hknbp.org/"
-val coreVersion: String = "0.9.30"
-var appVersion: String  = "0.9-PWA"
+val coreVersion: String = "0.9.31"
+var appVersion: String  = "${coreVersion}-PWA"
 
 /**
 fun includeScript(vararg files: String) {
