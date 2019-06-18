@@ -7,14 +7,6 @@ if (workbox) {
   console.log("Boo! Workbox didn't load 😬");
 }
 
-// Cache名 設置
-workbox.core.setCacheNameDetails({
-    prefix: "HKNBP",
-    suffix: "0.9.32",
-    precache: "precache",
-    runtime: "runtime-cache"
-});
-
 // 使用precache功能，在offline下也可以執行
 var cacheFiles = [
     ".",
@@ -48,12 +40,31 @@ var cacheFiles = [
     "https://cdn.jsdelivr.net/npm/kotlin@1.3.31/kotlin.js"
 ];
 
-// 使用precache功能，在offline下也可以執行
-workbox.precaching.precacheAndRoute(cacheFiles, {
-  // Ignore all URL parameters.
-  ignoreURLParametersMatching: [/.*/]
+/**
+// 設立Cache
+// 當接到版本名就開始設立Cache
+new BroadcastChannel('sw-messages').addEventListener('message', event => {
+    if(event.data.coreVersion){
+    console.log(event.data.coreVersion)
+
+    }
+});*/
+
+// Cache名 設置
+workbox.core.setCacheNameDetails({
+    prefix: "HKNBP",
+    suffix: "0.9.37",
+    precache: "precache",
+    runtime: "runtime-cache"
 });
 
+// 使用precache功能，在offline下也可以執行
+workbox.precaching.precacheAndRoute(cacheFiles, {
+    // Ignore all URL parameters.
+    ignoreURLParametersMatching: [/.*/]
+});
+
+// 刷新Cache
 self.addEventListener('activate', function(event) {
     event.waitUntil(
         // 揀選舊版本cache去刪除

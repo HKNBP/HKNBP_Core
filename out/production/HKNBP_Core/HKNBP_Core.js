@@ -1344,43 +1344,6 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return HKNBPAppLayerBridge_instance;
   }
-  function HKNBPCoreManagerBridge() {
-    HKNBPCoreManagerBridge_instance = this;
-    this.confirmHKNBPCoreLoaded = HKNBPCoreManagerBridge$confirmHKNBPCoreLoaded$lambda;
-    window.addEventListener('message', HKNBPCoreManagerBridge_init$lambda(this), false);
-  }
-  function HKNBPCoreManagerBridge$confirmHKNBPCoreLoaded$lambda() {
-    var responder = {};
-    responder.name = 'HKNBP_Core';
-    responder.message = true;
-    window.parent.postMessage(JSON.stringify(responder), '*');
-  }
-  function HKNBPCoreManagerBridge_init$lambda(this$HKNBPCoreManagerBridge) {
-    return function (event) {
-      try {
-        var confirmHKNBPCoreLoaded = this$HKNBPCoreManagerBridge.confirmHKNBPCoreLoaded;
-        var callMessage = JSON.parse(event.data.toString());
-        if (callMessage.name == 'HKNBP_CoreManager') {
-          eval(callMessage.expr);
-        }
-      }
-       catch (e) {
-        println('ListenHKNBPCoreManagerCall\u8870\u5DE6: ' + e.toString() + '\n' + event.data.toString());
-      }
-    };
-  }
-  HKNBPCoreManagerBridge.$metadata$ = {
-    kind: Kind_OBJECT,
-    simpleName: 'HKNBPCoreManagerBridge',
-    interfaces: []
-  };
-  var HKNBPCoreManagerBridge_instance = null;
-  function HKNBPCoreManagerBridge_getInstance() {
-    if (HKNBPCoreManagerBridge_instance === null) {
-      new HKNBPCoreManagerBridge();
-    }
-    return HKNBPCoreManagerBridge_instance;
-  }
   function LoadFile() {
     LoadFile_instance = this;
   }
@@ -2191,7 +2154,10 @@ var HKNBP_Core = function (_, Kotlin) {
       var tmp$;
       try {
         var callMessage = JSON.parse(event.data.toString());
-        if (callMessage.name == 'HKNBPCore') {
+        if (callMessage.name == null) {
+          return;
+        }
+         else if (callMessage.name == 'HKNBPCore') {
           tmp$ = this$Player.callIframePlayerFunctionList_0.iterator();
           while (tmp$.hasNext()) {
             var obj = tmp$.next();
@@ -2208,7 +2174,7 @@ var HKNBP_Core = function (_, Kotlin) {
         }
       }
        catch (e) {
-        println('callIframePlayerFunction\u8870\u5DE6: ' + e.toString() + '\n' + event.data.toString());
+        println('callIframePlayerFunction\u8870\u5DE6: ' + e.toString() + '\n' + ('JSON\u5B57\u4E32(message)\u5167\u5BB9: ' + event.data.toString()) + '\n' + ('Event\u5167\u5BB9: ' + JSON.stringify(event)));
       }
     };
   }
@@ -3839,7 +3805,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function VirtualRemote_init$lambda_37(evebt) {
     var formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSehWsf1J8sSzPpXHRfFg7mqAsCC1q5dJpef2W6YvNFCrIW-8g/viewform?usp=pp_url';
-    var coreVersionArg = 'entry.133709146=0.9.32';
+    var coreVersionArg = 'entry.133709146=0.9.37';
     var appVersionArg = 'entry.759953459=' + appVersion;
     var runningOsArg = 'entry.272098163=' + RunnerInfo_getInstance().getOsName();
     var runningBrowserArg = 'entry.1391825326=' + RunnerInfo_getInstance().getBrowserName();
@@ -4117,7 +4083,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function WatchingCounter_init$lambda(this$WatchingCounter) {
     return function () {
-      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + 'coreVersion=0.9.32' + '&' + ('appVersion=' + appVersion);
+      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + 'coreVersion=0.9.37' + '&' + ('appVersion=' + appVersion);
     };
   }
   WatchingCounter.$metadata$ = {
@@ -5645,9 +5611,6 @@ var HKNBP_Core = function (_, Kotlin) {
   Object.defineProperty(package$hknbp_core, 'HKNBPAppLayerBridge', {
     get: HKNBPAppLayerBridge_getInstance
   });
-  Object.defineProperty(package$hknbp_core, 'HKNBPCoreManagerBridge', {
-    get: HKNBPCoreManagerBridge_getInstance
-  });
   Object.defineProperty(package$hknbp_core, 'LoadFile', {
     get: LoadFile_getInstance
   });
@@ -5839,8 +5802,8 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   package$hknbp_core.XMLTV = XMLTV;
   rootURL = 'https://hknbp.org/';
-  coreVersion = '0.9.32';
-  appVersion = '0.9.32-PWA';
+  coreVersion = '0.9.37';
+  appVersion = '0.9.37-PWA';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();
   main([]);

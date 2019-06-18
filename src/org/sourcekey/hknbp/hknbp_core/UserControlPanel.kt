@@ -72,6 +72,10 @@ object UserControlPanel: UserInterface(
      * */
     var onHideUserControlPanel: ()->Unit = fun(){}
 
+    /**
+     *
+     * 應用到iframeTracker.js Lib實現
+     * */
     fun setIframeOnClick(iframeId: String, onClick: ()->Unit){
         /**
         shower.focus()

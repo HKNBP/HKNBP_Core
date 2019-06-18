@@ -452,7 +452,9 @@ class Player(private val tvChannel: TVChannel) {
         window.addEventListener("message", fun(event: dynamic){
             try{
                 val callMessage = JSON.parse<dynamic>(event.data.toString())
-                if(callMessage.name == "HKNBPCore"){
+                if (callMessage.name == null) {
+                    return
+                }else if(callMessage.name == "HKNBPCore"){
                     // 之前callIframePlayerFunction嘅Return
                     for(obj in callIframePlayerFunctionList){
                         if(obj.id == callMessage.id){
@@ -473,7 +475,12 @@ class Player(private val tvChannel: TVChannel) {
                     }*/
                     eval(callMessage.functionName + "()")
                 }
-            }catch(e: dynamic){println("callIframePlayerFunction衰左: ${e}\n${event.data.toString()}")}
+            }catch(e: dynamic){
+                println("callIframePlayerFunction衰左: ${e}" + "\n" +
+                        "JSON字串(message)內容: ${event.data.toString()}" + "\n" +
+                        "Event內容: ${JSON.stringify(event)}"
+                )
+            }
         }, false)
     }
 
