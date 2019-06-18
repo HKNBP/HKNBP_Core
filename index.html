@@ -22,7 +22,7 @@
     <!--PWA-->
     <link rel="manifest" href="manifest.json">
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <meta name =“theme-color” content="#000">
+    <meta name="theme-color" content="#000000">
     <!--iOS（safari）-->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
@@ -353,7 +353,7 @@
 <body id="body"
       style="
         background-color:#000;
-        color: #FFFFFF;
+        color: #FFF;
         //font-weight: bold;
         font-size: 4vh;
         font-family: FreeSans;
@@ -1165,6 +1165,21 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
+
+<noscript>
+    <div style="
+        position:absolute;
+        top:0; bottom:0; left:0; right:0;
+        z-index:100;
+    ">
+        <div>本平台需使用JavaScript</div>
+        <div>請開啟JavaScript功能</div>
+        <div>再重新載入</div>
+        <div>詳情可參考</div>
+        <div><a href="https://www.enable-javascript.com/">https://www.enable-javascript.com/</a></div>
+    </div>
+</noscript>
+
 </body>
 
 </html>
