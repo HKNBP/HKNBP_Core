@@ -44,8 +44,7 @@ var cacheFiles = [
     "iframePlayer/videojs_dash.html",
     "iframePlayer/videojs_hls.html",
     "iframePlayer/youtube_api.html",
-    "img/logo-192.png",
-    "img/logo-512.png",
+    "img/logo.png",
     "img/programmeNullIcon.png",
     "js/jquery.tabbable.js",
     "out/production/HKNBP_Core/HKNBP_Core.js",
@@ -69,7 +68,7 @@ new BroadcastChannel('sw-messages').addEventListener('message', event => {
 // Cache名 設置
 workbox.core.setCacheNameDetails({
     prefix: "HKNBP",
-    suffix: "0.9.37", // 控制cache版本
+    suffix: "0.9.38", // 控制cache版本
     precache: "precache",
     runtime: "runtime-cache"
 });
