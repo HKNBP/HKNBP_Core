@@ -1154,15 +1154,22 @@
 <script>var hknbpCore = HKNBP_Core.org.sourcekey.hknbp.hknbp_core;</script><!--畀其他地方方便Call-->
 
 <script>
-let deferredPrompt;
-window.addEventListener('beforeinstallprompt', (e) => {
-  // Prevent Chrome 67 and earlier from automatically showing the prompt
-  e.preventDefault();
+let installPromptEvent;
+window.addEventListener('beforeinstallprompt', (event) => {
+console.log("bIII")
+  // Prevent Chrome <= 67 from automatically showing the prompt
+  event.preventDefault();
   // Stash the event so it can be triggered later.
-  deferredPrompt = e;
+  installPromptEvent = event;
+  // Update the install UI to notify the user app can be installed
+  document.querySelector('#install-button').disabled = false;
 });
-prompt();
+function iii(){
+    console.log("iii");
+    installPromptEvent.prompt();
+}
 </script>
+<button style="position:absolute;z-index:100;" onclick="iii()">iii</button>
 <script>
 //PWA, 註冊ServiceWorker
 if ('serviceWorker' in navigator) {
