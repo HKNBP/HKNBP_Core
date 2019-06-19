@@ -1157,7 +1157,6 @@
 <script>
 let installPromptEvent;
 window.addEventListener('beforeinstallprompt', (event) => {
-console.log("bIII")
   // Prevent Chrome <= 67 from automatically showing the prompt
   event.preventDefault();
   // Stash the event so it can be triggered later.
@@ -1166,7 +1165,6 @@ console.log("bIII")
   document.querySelector('#install-button').disabled = false;
 });
 function iii(){
-    console.log("iii");
     installPromptEvent.prompt();
 }
 </script>
