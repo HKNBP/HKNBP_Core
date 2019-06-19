@@ -45,6 +45,7 @@ var cacheFiles = [
     "iframePlayer/videojs_hls.html",
     "iframePlayer/youtube_api.html",
     "img/logo-192.png",
+    "img/logo-512.png",
     "img/programmeNullIcon.png",
     "js/jquery.tabbable.js",
     "out/production/HKNBP_Core/HKNBP_Core.js",
