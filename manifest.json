@@ -3,14 +3,8 @@
   "name": "香港網路廣播平台",
   "icons": [
     {
-      "src": "img/programmeNullIcon.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "img/programmeNullIcon.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "src": "img/logo.svg",
+      "sizes": "192x192 512x512"
     }
   ],
   "start_url": "/",
@@ -26,7 +20,8 @@
       "platform": "play",
       "url": "https://play.google.com/store/apps/details?id=com.example.app1",
       "id": "org.sourcekey.hknbp"
-    }, {
+    },
+    {
       "platform": "itunes",
       "url": "https://itunes.apple.com/app/example-app1/id123456789"
     }
