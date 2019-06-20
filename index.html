@@ -603,7 +603,7 @@
                 <div class="css-table">
                     <div class="th" style="height:100%">
                         <button tabindex="100140000" id="appDownloadWindowButton" class="fourRow"><i
-                                class="icon-font">&#xe826;</i></button>
+                                class="icon-font">&#xe830;</i></button>
                     </div>
                     <div class="th" style="height:100%">
                         <button tabindex="100140001" id="githubWebButton" class="fourRow"><i
@@ -615,13 +615,39 @@
                     </div>
                     <div class="th" style="height:100%">
                         <button tabindex="100140003" id="watchingCounterWebButton" class="fourRow">
-                            <i class="icon-font">&#xe828;</i></button>
+                            <i class="icon-font">&#xf526;</i></button>
                     </div>
                 </div>
             </div>
             <div style="bottom:0;left:0;right:0;">
             </div>
         </div>
+        <button id="nativeAppInstallButton" style="
+                    font-size:4vh;
+                    background: rgba(0, 0, 0, 0);
+                    text-shadow: black 0em 0em 0.2em;
+                    display: block;
+                    top:0vh; right:14vh;
+                    overflow: auto;
+                    position:absolute;
+                    width: 7vh; height: 7vh;
+                    z-index: 50;
+                ">
+            <i class="icon-font">&#xe826;</i>
+        </button>
+        <button id="pictureInPictureButton" style="
+                    font-size:4vh;
+                    background: rgba(0, 0, 0, 0);
+                    text-shadow: black 0em 0em 0.2em;
+                    display: block;
+                    top:0vh; right:7vh;
+                    overflow: auto;
+                    position:absolute;
+                    width: 7vh; height: 7vh;
+                    z-index: 50;
+                ">
+            <i class="icon-font">&#xe829;</i>
+        </button>
         <button id="fullScreenButton" style="
                     font-size:4vh;
                     background: rgba(0, 0, 0, 0);
@@ -635,18 +661,7 @@
                 ">
             <i class="icon-font">&#xe80c;</i>
         </button>
-        <button id="pictureInPictureButton" style="
-                    background: rgba(0, 0, 0, 0);
-                    text-shadow: black 0em 0em 0.2em;
-                    display: block;
-                    top:0vh; right:7vh;
-                    overflow: auto;
-                    position:absolute;
-                    width: 7vh; height: 7vh;
-                    z-index: 50;
-                ">
-            <i class="icon-font">&#xe829;</i>
-        </button>
+
     </div>
     <div id="consentPanel" style="
         background-color:rgba(0, 0, 0, 0.6);
@@ -1154,21 +1169,6 @@
 <script src="out/production/HKNBP_Core/HKNBP_Core.js"></script>
 <script>var hknbpCore = HKNBP_Core.org.sourcekey.hknbp.hknbp_core;</script><!--畀其他地方方便Call-->
 
-<script>
-let installPromptEvent;
-window.addEventListener('beforeinstallprompt', (event) => {
-  // Prevent Chrome <= 67 from automatically showing the prompt
-  event.preventDefault();
-  // Stash the event so it can be triggered later.
-  installPromptEvent = event;
-  // Update the install UI to notify the user app can be installed
-  document.querySelector('#install-button').disabled = false;
-});
-function iii(){
-    installPromptEvent.prompt();
-}
-</script>
-<button style="position:absolute;z-index:100;" onclick="iii()">iii</button>
 <script>
 //PWA, 註冊ServiceWorker
 if ('serviceWorker' in navigator) {

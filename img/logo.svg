@@ -15,7 +15,7 @@
    version="1.1"
    id="SVGRoot"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="logo.svg">
+   sodipodi:docname="logo1.svg">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -23,17 +23,17 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.4481547"
-     inkscape:cx="-27.91451"
-     inkscape:cy="126.22829"
+     inkscape:zoom="2.048"
+     inkscape:cx="63.122081"
+     inkscape:cy="104.83005"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1279"
-     inkscape:window-height="1009"
+     inkscape:window-width="2560"
+     inkscape:window-height="1010"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="0"
+     inkscape:window-maximized="1"
      inkscape:grid-bbox="true" />
   <defs
      id="defs273" />
@@ -54,70 +54,70 @@
      inkscape:groupmode="layer"
      inkscape:label="圖層 1">
     <rect
-       style="fill:#666666;stroke-width:0.50706059"
+       style="fill:#666666;stroke-width:0.57742375"
        id="rect324-3-6-2"
-       width="39.658916"
-       height="7.5119948"
-       x="167.57074"
-       y="-19.236084"
-       transform="rotate(58.032056)" />
+       width="45.142826"
+       height="8.5580893"
+       x="171.73271"
+       y="2.0030861"
+       transform="matrix(0.53019088,0.84787831,-0.84880952,0.52869878,0,0)" />
     <rect
-       style="fill:#666666;stroke-width:0.69269711"
+       style="fill:#666666;stroke-width:0.78882045"
        id="rect324-3-6-6"
-       width="74.012985"
-       height="7.5119948"
-       x="83.898071"
-       y="55.22691"
-       transform="rotate(32.605048)" />
+       width="84.318123"
+       height="8.5508986"
+       x="68.128059"
+       y="76.285698"
+       transform="matrix(0.8428833,0.5380964,-0.5395938,0.84192549,0,0)" />
     <rect
-       style="fill:#666666;stroke-width:1.00848436"
+       style="fill:#666666;stroke-width:1.1484282"
        id="rect324-3-7-6"
-       width="156.87706"
-       height="7.5119948"
-       x="34.639027"
-       y="161.93678"
-       transform="rotate(-25.617201)" />
+       width="178.75591"
+       height="8.5491657"
+       x="13.58957"
+       y="168.049"
+       transform="matrix(0.90203233,-0.43166848,0.43304506,0.90137227,0,0)" />
     <rect
-       style="fill:#e6e6e6;stroke-width:1.15723574"
+       style="fill:#e6e6e6;stroke-width:1.31782043"
        id="rect324"
-       width="146.72507"
-       height="10.575864"
-       x="47.144833"
-       y="162.66693" />
+       width="167.24915"
+       height="12.031649"
+       x="23.359238"
+       y="181.58618" />
     <rect
-       style="fill:#666666;stroke-width:0.66802216"
+       style="fill:#666666;stroke-width:0.76072085"
        id="rect324-3"
-       width="68.833977"
-       height="7.5119948"
-       x="68.538315"
-       y="130.93941" />
+       width="78.462547"
+       height="8.546032"
+       x="47.74527"
+       y="145.4913" />
     <rect
-       style="fill:#666666;stroke-width:0.66802216"
+       style="fill:#666666;stroke-width:0.76072085"
        id="rect324-3-6"
-       width="68.833977"
-       height="7.5119948"
-       x="26.958445"
-       y="106.07799" />
+       width="78.462547"
+       height="8.546032"
+       x="0.34915876"
+       y="117.20769" />
     <rect
-       style="fill:#666666;stroke-width:0.66802216"
+       style="fill:#666666;stroke-width:0.76072085"
        id="rect324-3-7"
-       width="68.833977"
-       height="7.5119948"
-       x="119.08479"
-       y="106.07799" />
+       width="78.462547"
+       height="8.546032"
+       x="105.36223"
+       y="117.20769" />
     <rect
-       style="fill:#666666;stroke-width:0.66802216"
+       style="fill:#666666;stroke-width:0.76072085"
        id="rect324-3-5"
-       width="68.833977"
-       height="7.5119948"
-       x="169.58659"
-       y="81.216499" />
+       width="78.462547"
+       height="8.546032"
+       x="162.92828"
+       y="88.923973" />
     <rect
-       style="fill:#5599ff;stroke-width:0.98569"
+       style="fill:#5599ff;stroke-width:1.12247026"
        id="rect424"
-       width="29.938368"
-       height="18.507759"
-       x="105.53819"
-       y="158.70099" />
+       width="34.126186"
+       height="21.055382"
+       x="89.920731"
+       y="177.0743" />
   </g>
 </svg>

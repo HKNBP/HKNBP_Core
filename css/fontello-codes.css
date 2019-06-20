@@ -47,6 +47,7 @@
 .icon-github:before { content: '\e82d'; } /* '' */
 .icon-plus:before { content: '\e82e'; } /* '' */
 .icon-minus:before { content: '\e82f'; } /* '' */
+.icon-download-alt:before { content: '\e830'; } /* '' */
 .icon-spin3:before { content: '\e832'; } /* '' */
 .icon-spin4:before { content: '\e834'; } /* '' */
 .icon-firefox:before { content: '\e840'; } /* '' */
@@ -74,3 +75,4 @@
 .icon-whatsapp:before { content: '\f232'; } /* '' */
 .icon-facebook-squared:before { content: '\f308'; } /* '' */
 .icon-bandcamp:before { content: '\f32b'; } /* '' */
+.icon-chart-bar:before { content: '\f526'; } /* '' */

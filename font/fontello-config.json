@@ -479,6 +479,18 @@
       "css": "github-1",
       "code": 61715,
       "src": "fontawesome"
+    },
+    {
+      "uid": "c46c42ae95f46394bd2f9c9a9cc5f768",
+      "css": "chart-bar",
+      "code": 62758,
+      "src": "mfglabs"
+    },
+    {
+      "uid": "05a2f4c4839012434774cc1ceb4c0f9b",
+      "css": "download-alt",
+      "code": 59440,
+      "src": "elusive"
     }
   ]
 }

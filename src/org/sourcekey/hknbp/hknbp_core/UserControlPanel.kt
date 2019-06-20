@@ -95,8 +95,9 @@ object UserControlPanel: UserInterface(
     init {
         //初始化各使用者控制界面
         VirtualRemote
-        FullScreenButton
+        NativeAppInstallButton
         PictureInPictureButton
+        FullScreenButton
 
         //設定使用者控制界面顯示方法
         shower.onclick = fun(event){

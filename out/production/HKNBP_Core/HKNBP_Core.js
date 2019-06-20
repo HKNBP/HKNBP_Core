@@ -1722,6 +1722,37 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return MutedDescription_instance;
   }
+  function NativeAppInstallButton() {
+    NativeAppInstallButton_instance = this;
+    var tmp$;
+    this.nativeAppInstallButton_0 = Kotlin.isType(tmp$ = document.getElementById('nativeAppInstallButton'), HTMLButtonElement) ? tmp$ : throwCCE();
+    this.installPromptEvent_0 = null;
+    window.addEventListener('beforeinstallprompt', NativeAppInstallButton_init$lambda(this));
+    this.nativeAppInstallButton_0.onclick = NativeAppInstallButton_init$lambda_0(this);
+  }
+  function NativeAppInstallButton_init$lambda(this$NativeAppInstallButton) {
+    return function (event) {
+      event.preventDefault();
+      this$NativeAppInstallButton.installPromptEvent_0 = event;
+    };
+  }
+  function NativeAppInstallButton_init$lambda_0(this$NativeAppInstallButton) {
+    return function (event) {
+      this$NativeAppInstallButton.installPromptEvent_0.prompt();
+    };
+  }
+  NativeAppInstallButton.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'NativeAppInstallButton',
+    interfaces: []
+  };
+  var NativeAppInstallButton_instance = null;
+  function NativeAppInstallButton_getInstance() {
+    if (NativeAppInstallButton_instance === null) {
+      new NativeAppInstallButton();
+    }
+    return NativeAppInstallButton_instance;
+  }
   function PictureInPictureButton() {
     PictureInPictureButton_instance = this;
     UserInterface.call(this, 'pictureInPictureButton');
@@ -3221,8 +3252,9 @@ var HKNBP_Core = function (_, Kotlin) {
     this.onShowUserControlPanel = UserControlPanel$onShowUserControlPanel$lambda;
     this.onHideUserControlPanel = UserControlPanel$onHideUserControlPanel$lambda;
     VirtualRemote_getInstance();
-    FullScreenButton_getInstance();
+    NativeAppInstallButton_getInstance();
     PictureInPictureButton_getInstance();
+    FullScreenButton_getInstance();
     this.shower_0.onclick = UserControlPanel_init$lambda_1(this);
     this.shower_0.onmousemove = UserControlPanel_init$lambda_2(this);
     this.panel_0.onmousemove = UserControlPanel_init$lambda_3(this);
@@ -5663,6 +5695,9 @@ var HKNBP_Core = function (_, Kotlin) {
   package$hknbp_core.main_kand9s$ = main;
   Object.defineProperty(package$hknbp_core, 'MutedDescription', {
     get: MutedDescription_getInstance
+  });
+  Object.defineProperty(package$hknbp_core, 'NativeAppInstallButton', {
+    get: NativeAppInstallButton_getInstance
   });
   Object.defineProperty(package$hknbp_core, 'PictureInPictureButton', {
     get: PictureInPictureButton_getInstance
