@@ -53,7 +53,7 @@ object PictureInPictureButton: UserInterface("pictureInPictureButton"){
     }
 
     init {
-        hide()//PictureInPicture未WORK
+        pictureInPictureButton.style.color = "#444"//PictureInPicture未WORK
 
         /**
         js("" +

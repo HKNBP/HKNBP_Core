@@ -1727,14 +1727,42 @@ var HKNBP_Core = function (_, Kotlin) {
     var tmp$;
     this.nativeAppInstallButton_0 = Kotlin.isType(tmp$ = document.getElementById('nativeAppInstallButton'), HTMLButtonElement) ? tmp$ : throwCCE();
     this.installPromptEvent_0 = null;
+    this.addToHomeScreen = NativeAppInstallButton$addToHomeScreen$lambda(this);
     window.addEventListener('beforeinstallprompt', NativeAppInstallButton_init$lambda(this));
     this.nativeAppInstallButton_0.onclick = NativeAppInstallButton_init$lambda_0(this);
+  }
+  NativeAppInstallButton.prototype.showAddToHomeScreen = function () {
+    var tmp$;
+    var a2hsBtn = Kotlin.isType(tmp$ = document.querySelector('.ad2hs-prompt'), HTMLElement) ? tmp$ : throwCCE();
+    a2hsBtn.style.display = 'block';
+    a2hsBtn.addEventListener('click', this.addToHomeScreen);
+  };
+  function NativeAppInstallButton$addToHomeScreen$lambda$lambda(this$NativeAppInstallButton) {
+    return function (choiceResult) {
+      if (choiceResult.outcome === 'accepted') {
+        console.log('User accepted the A2HS prompt');
+      }
+       else {
+        console.log('User dismissed the A2HS prompt');
+      }
+      this$NativeAppInstallButton.installPromptEvent_0 = null;
+    };
+  }
+  function NativeAppInstallButton$addToHomeScreen$lambda(this$NativeAppInstallButton) {
+    return function (event) {
+      var tmp$;
+      var a2hsBtn = Kotlin.isType(tmp$ = document.querySelector('.ad2hs-prompt'), HTMLElement) ? tmp$ : throwCCE();
+      a2hsBtn.style.display = 'none';
+      this$NativeAppInstallButton.installPromptEvent_0.prompt();
+      this$NativeAppInstallButton.installPromptEvent_0.userChoice.then(NativeAppInstallButton$addToHomeScreen$lambda$lambda(this$NativeAppInstallButton));
+    };
   }
   function NativeAppInstallButton_init$lambda(this$NativeAppInstallButton) {
     return function (event) {
       println('iii');
       event.preventDefault();
       this$NativeAppInstallButton.installPromptEvent_0 = event;
+      this$NativeAppInstallButton.showAddToHomeScreen();
     };
   }
   function NativeAppInstallButton_init$lambda_0(this$NativeAppInstallButton) {
@@ -1761,7 +1789,7 @@ var HKNBP_Core = function (_, Kotlin) {
     var tmp$;
     this.pictureInPictureButton_0 = Kotlin.isType(tmp$ = document.getElementById('pictureInPictureButton'), HTMLButtonElement) ? tmp$ : throwCCE();
     this.iframePlayer_0 = document.getElementById('iframePlayer');
-    this.hide();
+    this.pictureInPictureButton_0.style.color = '#444';
   }
   function PictureInPictureButton$findIframeVideoElement$lambda(closure$iframe, closure$onFindedVideoElement, this$PictureInPictureButton) {
     return function (event) {
@@ -3839,7 +3867,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function VirtualRemote_init$lambda_37(evebt) {
     var formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSehWsf1J8sSzPpXHRfFg7mqAsCC1q5dJpef2W6YvNFCrIW-8g/viewform?usp=pp_url';
-    var coreVersionArg = 'entry.133709146=0.9.38';
+    var coreVersionArg = 'entry.133709146=0.9.40';
     var appVersionArg = 'entry.759953459=' + appVersion;
     var runningOsArg = 'entry.272098163=' + RunnerInfo_getInstance().getOsName();
     var runningBrowserArg = 'entry.1391825326=' + RunnerInfo_getInstance().getBrowserName();
@@ -4117,7 +4145,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function WatchingCounter_init$lambda(this$WatchingCounter) {
     return function () {
-      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + 'coreVersion=0.9.38' + '&' + ('appVersion=' + appVersion);
+      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + 'coreVersion=0.9.40' + '&' + ('appVersion=' + appVersion);
     };
   }
   WatchingCounter.$metadata$ = {
@@ -5839,8 +5867,8 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   package$hknbp_core.XMLTV = XMLTV;
   rootURL = 'https://hknbp.org/';
-  coreVersion = '0.9.38';
-  appVersion = '0.9.38-PWA';
+  coreVersion = '0.9.40';
+  appVersion = '0.9.40-PWA';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();
   main([]);
