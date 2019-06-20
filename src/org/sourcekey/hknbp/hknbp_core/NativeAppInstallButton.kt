@@ -25,6 +25,7 @@ object NativeAppInstallButton {
 
     init{
         window.addEventListener("beforeinstallprompt", fun(event: dynamic){
+            println("iii")
             // Prevent Chrome <= 67 from automatically showing the prompt
             event.preventDefault()
             // Stash the event so it can be triggered later.
@@ -34,6 +35,7 @@ object NativeAppInstallButton {
         })
 
         nativeAppInstallButton.onclick = fun(event){
+            println("niii")
             installPromptEvent.prompt()
         }
     }

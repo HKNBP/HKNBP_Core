@@ -1732,12 +1732,14 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function NativeAppInstallButton_init$lambda(this$NativeAppInstallButton) {
     return function (event) {
+      println('iii');
       event.preventDefault();
       this$NativeAppInstallButton.installPromptEvent_0 = event;
     };
   }
   function NativeAppInstallButton_init$lambda_0(this$NativeAppInstallButton) {
     return function (event) {
+      println('niii');
       this$NativeAppInstallButton.installPromptEvent_0.prompt();
     };
   }
