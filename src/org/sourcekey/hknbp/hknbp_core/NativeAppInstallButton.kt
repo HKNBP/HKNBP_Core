@@ -19,45 +19,22 @@ import org.w3c.dom.HTMLElement
 import kotlin.browser.document
 import kotlin.browser.window
 
-object NativeAppInstallButton {
+object NativeAppInstallButton: UserInterface("nativeAppInstallButton") {
     private val nativeAppInstallButton = document.getElementById("nativeAppInstallButton") as HTMLButtonElement
     private var installPromptEvent: dynamic = null
 
-    val addToHomeScreen = fun(event: dynamic) {
-        val a2hsBtn = document.querySelector(".ad2hs-prompt") as HTMLElement  // hide our user interface that shows our A2HS button
-        a2hsBtn.style.display = "none"  // Show the prompt
-        installPromptEvent.prompt()  // Wait for the user to respond to the prompt
-        installPromptEvent.userChoice.then(fun(choiceResult: dynamic){
-            if (choiceResult.outcome === "accepted") {
-                console.log("User accepted the A2HS prompt")
-            } else {
-                console.log("User dismissed the A2HS prompt")
-            }
-            installPromptEvent = null
-        })
-    }
-
-    fun showAddToHomeScreen() {
-        val a2hsBtn = document.querySelector(".ad2hs-prompt") as HTMLElement
-        a2hsBtn.style.display = "block"
-        a2hsBtn.addEventListener("click", addToHomeScreen)
-    }
-
     init{
+        hide()
+        window.addEventListener("appinstalled", fun(event: dynamic){ hide() })
         window.addEventListener("beforeinstallprompt", fun(event: dynamic){
-            println("iii")
+            show()
             // Prevent Chrome <= 67 from automatically showing the prompt
             event.preventDefault()
             // Stash the event so it can be triggered later.
             installPromptEvent = event
-            // Update the install UI to notify the user app can be installed
-            //document.querySelector('#install-button').disabled = false
-
-            showAddToHomeScreen()
         })
 
         nativeAppInstallButton.onclick = fun(event){
-            println("niii")
             installPromptEvent.prompt()
         }
     }

@@ -62,6 +62,8 @@ var HKNBP_Core = function (_, Kotlin) {
   FullScreenButton.prototype.constructor = FullScreenButton;
   MutedDescription.prototype = Object.create(UserInterface.prototype);
   MutedDescription.prototype.constructor = MutedDescription;
+  NativeAppInstallButton.prototype = Object.create(UserInterface.prototype);
+  NativeAppInstallButton.prototype.constructor = NativeAppInstallButton;
   PictureInPictureButton.prototype = Object.create(UserInterface.prototype);
   PictureInPictureButton.prototype.constructor = PictureInPictureButton;
   Player$OnPlayerEvent.prototype = Object.create(Enum.prototype);
@@ -1724,48 +1726,27 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function NativeAppInstallButton() {
     NativeAppInstallButton_instance = this;
+    UserInterface.call(this, 'nativeAppInstallButton');
     var tmp$;
     this.nativeAppInstallButton_0 = Kotlin.isType(tmp$ = document.getElementById('nativeAppInstallButton'), HTMLButtonElement) ? tmp$ : throwCCE();
     this.installPromptEvent_0 = null;
-    this.addToHomeScreen = NativeAppInstallButton$addToHomeScreen$lambda(this);
-    window.addEventListener('beforeinstallprompt', NativeAppInstallButton_init$lambda(this));
-    this.nativeAppInstallButton_0.onclick = NativeAppInstallButton_init$lambda_0(this);
-  }
-  NativeAppInstallButton.prototype.showAddToHomeScreen = function () {
-    var tmp$;
-    var a2hsBtn = Kotlin.isType(tmp$ = document.querySelector('.ad2hs-prompt'), HTMLElement) ? tmp$ : throwCCE();
-    a2hsBtn.style.display = 'block';
-    a2hsBtn.addEventListener('click', this.addToHomeScreen);
-  };
-  function NativeAppInstallButton$addToHomeScreen$lambda$lambda(this$NativeAppInstallButton) {
-    return function (choiceResult) {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the A2HS prompt');
-      }
-       else {
-        console.log('User dismissed the A2HS prompt');
-      }
-      this$NativeAppInstallButton.installPromptEvent_0 = null;
-    };
-  }
-  function NativeAppInstallButton$addToHomeScreen$lambda(this$NativeAppInstallButton) {
-    return function (event) {
-      var tmp$;
-      var a2hsBtn = Kotlin.isType(tmp$ = document.querySelector('.ad2hs-prompt'), HTMLElement) ? tmp$ : throwCCE();
-      a2hsBtn.style.display = 'none';
-      this$NativeAppInstallButton.installPromptEvent_0.prompt();
-      this$NativeAppInstallButton.installPromptEvent_0.userChoice.then(NativeAppInstallButton$addToHomeScreen$lambda$lambda(this$NativeAppInstallButton));
-    };
+    window.addEventListener('appinstalled', NativeAppInstallButton_init$lambda(this));
+    window.addEventListener('beforeinstallprompt', NativeAppInstallButton_init$lambda_0(this));
+    this.nativeAppInstallButton_0.onclick = NativeAppInstallButton_init$lambda_1(this);
   }
   function NativeAppInstallButton_init$lambda(this$NativeAppInstallButton) {
+    return function (event) {
+      this$NativeAppInstallButton.hide();
+    };
+  }
+  function NativeAppInstallButton_init$lambda_0(this$NativeAppInstallButton) {
     return function (event) {
       println('iii');
       event.preventDefault();
       this$NativeAppInstallButton.installPromptEvent_0 = event;
-      this$NativeAppInstallButton.showAddToHomeScreen();
     };
   }
-  function NativeAppInstallButton_init$lambda_0(this$NativeAppInstallButton) {
+  function NativeAppInstallButton_init$lambda_1(this$NativeAppInstallButton) {
     return function (event) {
       println('niii');
       this$NativeAppInstallButton.installPromptEvent_0.prompt();
@@ -1774,7 +1755,7 @@ var HKNBP_Core = function (_, Kotlin) {
   NativeAppInstallButton.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'NativeAppInstallButton',
-    interfaces: []
+    interfaces: [UserInterface]
   };
   var NativeAppInstallButton_instance = null;
   function NativeAppInstallButton_getInstance() {

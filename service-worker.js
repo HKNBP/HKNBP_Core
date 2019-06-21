@@ -32,8 +32,6 @@ var cacheFiles = [
     "css/fontello.css",
     "css/fontello-codes.css",
     "css/fontello-embedded.css",
-    "css/fontello-ie7.css",
-    "css/fontello-ie7-codes.css",
     "data/dialogue.json",
     "data/tv_channels.xml",
     "font/fontello.eot",
