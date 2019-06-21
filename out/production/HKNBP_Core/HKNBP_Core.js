@@ -1730,6 +1730,7 @@ var HKNBP_Core = function (_, Kotlin) {
     var tmp$;
     this.nativeAppInstallButton_0 = Kotlin.isType(tmp$ = document.getElementById('nativeAppInstallButton'), HTMLButtonElement) ? tmp$ : throwCCE();
     this.installPromptEvent_0 = null;
+    this.hide();
     window.addEventListener('appinstalled', NativeAppInstallButton_init$lambda(this));
     window.addEventListener('beforeinstallprompt', NativeAppInstallButton_init$lambda_0(this));
     this.nativeAppInstallButton_0.onclick = NativeAppInstallButton_init$lambda_1(this);
@@ -1741,14 +1742,13 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function NativeAppInstallButton_init$lambda_0(this$NativeAppInstallButton) {
     return function (event) {
-      println('iii');
+      this$NativeAppInstallButton.show();
       event.preventDefault();
       this$NativeAppInstallButton.installPromptEvent_0 = event;
     };
   }
   function NativeAppInstallButton_init$lambda_1(this$NativeAppInstallButton) {
     return function (event) {
-      println('niii');
       this$NativeAppInstallButton.installPromptEvent_0.prompt();
     };
   }
@@ -3848,7 +3848,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function VirtualRemote_init$lambda_37(evebt) {
     var formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSehWsf1J8sSzPpXHRfFg7mqAsCC1q5dJpef2W6YvNFCrIW-8g/viewform?usp=pp_url';
-    var coreVersionArg = 'entry.133709146=0.9.40';
+    var coreVersionArg = 'entry.133709146=0.9.41';
     var appVersionArg = 'entry.759953459=' + appVersion;
     var runningOsArg = 'entry.272098163=' + RunnerInfo_getInstance().getOsName();
     var runningBrowserArg = 'entry.1391825326=' + RunnerInfo_getInstance().getBrowserName();
@@ -4126,7 +4126,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function WatchingCounter_init$lambda(this$WatchingCounter) {
     return function () {
-      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + 'coreVersion=0.9.40' + '&' + ('appVersion=' + appVersion);
+      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + 'coreVersion=0.9.41' + '&' + ('appVersion=' + appVersion);
     };
   }
   WatchingCounter.$metadata$ = {
@@ -5848,8 +5848,8 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   package$hknbp_core.XMLTV = XMLTV;
   rootURL = 'https://hknbp.org/';
-  coreVersion = '0.9.40';
-  appVersion = '0.9.40-PWA';
+  coreVersion = '0.9.41';
+  appVersion = '0.9.41-PWA';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();
   main([]);

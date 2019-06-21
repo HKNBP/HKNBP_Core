@@ -15,7 +15,7 @@
    version="1.1"
    id="SVGRoot"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
-   sodipodi:docname="logo1.svg">
+   sodipodi:docname="logo2.svg">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -24,8 +24,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.048"
-     inkscape:cx="63.122081"
-     inkscape:cy="104.83005"
+     inkscape:cx="125.30913"
+     inkscape:cy="101.00623"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -45,7 +45,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -54,13 +54,13 @@
      inkscape:groupmode="layer"
      inkscape:label="圖層 1">
     <rect
-       style="fill:#666666;stroke-width:0.57742375"
-       id="rect324-3-6-2"
-       width="45.142826"
-       height="8.5580893"
-       x="171.73271"
-       y="2.0030861"
-       transform="matrix(0.53019088,0.84787831,-0.84880952,0.52869878,0,0)" />
+       style="fill:#666666;stroke-width:0.71765852"
+       id="rect324-3-67"
+       width="69.830872"
+       height="8.546032"
+       x="171.72818"
+       y="1.7842371"
+       transform="rotate(58.058685)" />
     <rect
        style="fill:#666666;stroke-width:0.78882045"
        id="rect324-3-6-6"
@@ -77,13 +77,6 @@
        x="13.58957"
        y="168.049"
        transform="matrix(0.90203233,-0.43166848,0.43304506,0.90137227,0,0)" />
-    <rect
-       style="fill:#e6e6e6;stroke-width:1.31782043"
-       id="rect324"
-       width="167.24915"
-       height="12.031649"
-       x="23.359238"
-       y="181.58618" />
     <rect
        style="fill:#666666;stroke-width:0.76072085"
        id="rect324-3"
@@ -113,11 +106,18 @@
        x="162.92828"
        y="88.923973" />
     <rect
+       style="fill:#e6e6e6;stroke-width:1.31782043"
+       id="rect324"
+       width="167.24915"
+       height="12.031649"
+       x="29.001984"
+       y="194.65218" />
+    <rect
        style="fill:#5599ff;stroke-width:1.12247026"
        id="rect424"
        width="34.126186"
        height="21.055382"
-       x="89.920731"
-       y="177.0743" />
+       x="95.563477"
+       y="190.14029" />
   </g>
 </svg>
