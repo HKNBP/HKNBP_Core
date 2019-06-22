@@ -27,11 +27,12 @@ object NativeAppInstallButton: UserInterface("nativeAppInstallButton") {
         hide()
         window.addEventListener("appinstalled", fun(event: dynamic){ hide() })
         window.addEventListener("beforeinstallprompt", fun(event: dynamic){
-            show()
             // Prevent Chrome <= 67 from automatically showing the prompt
             event.preventDefault()
             // Stash the event so it can be triggered later.
             installPromptEvent = event
+            // 顯示安裝Button
+            show()
         })
 
         nativeAppInstallButton.onclick = fun(event){

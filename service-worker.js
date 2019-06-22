@@ -66,7 +66,7 @@ new BroadcastChannel('sw-messages').addEventListener('message', event => {
 // Cache名 設置
 workbox.core.setCacheNameDetails({
     prefix: "HKNBP",
-    suffix: "0.9.41", // 控制cache版本
+    suffix: "0.9.42", // 控制cache版本
     precache: "precache",
     runtime: "runtime-cache"
 });
