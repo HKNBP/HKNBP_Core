@@ -22,8 +22,21 @@ import kotlin.js.Date
 
 
 
-val rootURL: String     = "https://hknbp.org/"
-val coreVersion: String = "0.9.43"
+val rootURL: String = "https://hknbp.org/"
+
+/**
+ * 核心版本
+ *
+ * 響service-worker.js度get返個coreVersion
+ * */
+val coreVersion: String = js("coreVersion")
+
+/**
+ * 程式版本
+ *
+ * 此值來得知到時係乜類型框架運行緊呢個Core程序
+ * 類型例如: Android, iOS, PWA, 等等...
+ * */
 var appVersion: String  = "${coreVersion}-PWA"
 
 /**

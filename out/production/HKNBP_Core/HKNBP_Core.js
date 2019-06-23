@@ -105,7 +105,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.consentText_0.onclick = AboutWindow_init$lambda_1;
   }
   function AboutWindow_init$lambda() {
-    AboutWindow_getInstance().coreVersionText_0.innerHTML = coreVersion;
+    AboutWindow_getInstance().coreVersionText_0.innerHTML = coreVersion_0;
     AboutWindow_getInstance().appVersionText_0.innerHTML = appVersion;
   }
   function AboutWindow_init$lambda_0(this$AboutWindow) {
@@ -1504,7 +1504,7 @@ var HKNBP_Core = function (_, Kotlin) {
     return LongClickEvent_instance;
   }
   var rootURL;
-  var coreVersion;
+  var coreVersion_0;
   var appVersion;
   var jQuery;
   var userLanguageList;
@@ -1686,6 +1686,7 @@ var HKNBP_Core = function (_, Kotlin) {
     TVChannelDescription_getInstance().update();
   }
   function main(args) {
+    println(coreVersion_0);
     try {
       UserControlPanel_getInstance();
       ConsentPanel_getInstance();
@@ -3848,7 +3849,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function VirtualRemote_init$lambda_37(evebt) {
     var formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSehWsf1J8sSzPpXHRfFg7mqAsCC1q5dJpef2W6YvNFCrIW-8g/viewform?usp=pp_url';
-    var coreVersionArg = 'entry.133709146=0.9.43';
+    var coreVersionArg = 'entry.133709146=' + coreVersion_0;
     var appVersionArg = 'entry.759953459=' + appVersion;
     var runningOsArg = 'entry.272098163=' + RunnerInfo_getInstance().getOsName();
     var runningBrowserArg = 'entry.1391825326=' + RunnerInfo_getInstance().getBrowserName();
@@ -4126,7 +4127,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function WatchingCounter_init$lambda(this$WatchingCounter) {
     return function () {
-      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + 'coreVersion=0.9.43' + '&' + ('appVersion=' + appVersion);
+      this$WatchingCounter.iframeWatchingCounter_0.src = 'https://hknbp.org//watching-counter.html?' + ('tvchannel=' + this$WatchingCounter.tvChannel_0.number) + '&' + ('coreVersion=' + coreVersion_0) + '&' + ('appVersion=' + appVersion);
     };
   }
   WatchingCounter.$metadata$ = {
@@ -5667,7 +5668,7 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   Object.defineProperty(package$hknbp_core, 'coreVersion', {
     get: function () {
-      return coreVersion;
+      return coreVersion_0;
     }
   });
   Object.defineProperty(package$hknbp_core, 'appVersion', {
@@ -5848,8 +5849,8 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   package$hknbp_core.XMLTV = XMLTV;
   rootURL = 'https://hknbp.org/';
-  coreVersion = '0.9.43';
-  appVersion = '0.9.43-PWA';
+  coreVersion_0 = coreVersion;
+  appVersion = coreVersion_0 + '-PWA';
   jQuery = $;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();
   main([]);
