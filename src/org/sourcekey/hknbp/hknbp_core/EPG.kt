@@ -22,6 +22,7 @@ import kotlin.browser.window
 import kotlin.dom.addClass
 import org.sourcekey.hknbp.hknbp_core.XMLTV.MultiLanguage.MultiLanguageList
 import org.w3c.dom.*
+import org.w3c.dom.events.FocusEvent
 
 
 object EPG: UserInterface(
@@ -399,37 +400,119 @@ object EPG: UserInterface(
         return Date(fromDate.getTime() + currentScrollValueTime)
     }
 
+    private fun newProgrammeListBlock(
+            width: String,
+            addClass: String            = "",
+            backgroundColor: String     = "#000",
+            innerHTML: String           = "",
+            tabIndex: Int               = -1,
+            onfocus: (FocusEvent)->Unit = fun(event){}
+    ): HTMLDivElement{
+        val button = document.createElement("button") as HTMLButtonElement
+        button.style.backgroundColor    = backgroundColor
+        button.style.border             = "0vh"
+        button.style.color              = "#FFFFFF"
+        button.style.fontWeight         = "bold"
+        button.style.fontSize           = "4vh"
+        button.style.padding            = "0vh"
+        button.style.overflowX          = "hidden"
+        button.style.overflowY          = "hidden"
+        button.style.textAlign          = "left"
+        button.style.width              = "inherit"
+        button.style.height             = "5.5vh"
+        button.style.margin             = "0.3vh"
+        button.style.marginLeft         = "0.6vh"
+        button.style.marginRight        = "0.6vh"
+        button.innerHTML                = innerHTML
+        button.tabIndex                 = tabIndex
+        button.onfocus                  = onfocus
+
+        val div = document.createElement("div") as HTMLDivElement
+        div.addClass(addClass)
+        div.style.display               = "inline-block"
+        div.style.width                 = width
+        div.append(button)
+
+        return div
+    }
+
+    private fun newProgrammeListBlockLine(id: String = ""): HTMLDivElement{
+        val div = document.createElement("div") as HTMLDivElement
+        div.id                  = id
+        div.style.whiteSpace    = "nowrap"
+        div.style.width         = "max-content"
+        return div
+    }
+
     private fun setProgrammeListCurrentDisplayDate(){
-        programmeListCurrentDisplayDate.innerHTML = fromDate.toLocaleDateString()
+        val updateDisplayDate = fun(innerHTML: String){
+            programmeListCurrentDisplayDate.innerHTML = ""
+            val block = newProgrammeListBlock(
+                    width = "30vh",
+                    backgroundColor = "#111111",
+                    innerHTML = innerHTML
+            )
+            val blockLine = newProgrammeListBlockLine()
+            blockLine.append(block)
+            programmeListCurrentDisplayDate.append(blockLine)
+        }
+
+        updateDisplayDate(fromDate.toLocaleDateString())
         programmeListTable.onscroll = fun(event){
-            programmeListCurrentDisplayDate.innerHTML = getDateByProgrammeListTableScrollLeft(programmeListTable.scrollLeft).toLocaleDateString()
+            updateDisplayDate(getDateByProgrammeListTableScrollLeft(programmeListTable.scrollLeft).toLocaleDateString())
         }
     }
 
     private fun setProgrammeListTimeLine(){
-        var content: String = ""
-        content += "<div>"
+        programmeListTimeLine.innerHTML = ""
+        val line = newProgrammeListBlockLine()
         var increaseHour = 0
         while (fromDate.getTime()+(increaseHour*60*60*1000) < toDate.getTime()) {
             val hour = Date(fromDate.getTime()+(increaseHour*60*60*1000)).getHours().toString().padStart(2, '0')
-            content += "<div class=\"time\"><button tabindex=\"-1\">"+hour+":00</button></div>"
-            content += "<div class=\"time\"><button tabindex=\"-1\">"+hour+":30</button></div>"
+            line.append(
+                    newProgrammeListBlock(
+                            width = "30vh",
+                            addClass = "time",
+                            backgroundColor = "#222222",
+                            innerHTML = "${hour}:00"
+                    )
+            )
+            line.append(
+                    newProgrammeListBlock(
+                            width = "30vh",
+                            addClass = "time",
+                            backgroundColor = "#222222",
+                            innerHTML = "${hour}:30"
+                    )
+            )
 
             increaseHour++
         }
-        content += "</div>"
-        programmeListTimeLine.innerHTML = content
+        programmeListTimeLine.append(line)
     }
 
     private fun setProgrammeListChannelList(){
-        var content: String = ""
+        programmeListChannelList.innerHTML = ""
         for (tvChannel in tvChannels){
-            content += "<div>"
-            content += "<div class=\"channelNumber\"><button tabindex=\"-1\">"+tvChannel.number.toString().padStart(3, '0')+"</button></div>"
-            content += "<div class=\"channelName\"><button tabindex=\"-1\">"+tvChannel.name+"</button></div>"
-            content += "</div>"
+            val line = newProgrammeListBlockLine()
+            line.append(
+                    newProgrammeListBlock(
+                            width = "8vh",
+                            addClass = "channelNumber",
+                            backgroundColor = "#222222",
+                            innerHTML = tvChannel.number.toString().padStart(3, '0')
+                    )
+            )
+            line.append(
+                    newProgrammeListBlock(
+                            width = "22vh",
+                            addClass = "channelName",
+                            backgroundColor = "#222222",
+                            innerHTML = tvChannel.name
+                    )
+            )
+            programmeListChannelList.append(line)
         }
-        programmeListChannelList.innerHTML = content
     }
 
     private fun addProgrammeOnTimeLine(timeLine: HTMLDivElement, tvChannel: TVChannel, programme: Programme){
@@ -437,36 +520,23 @@ object EPG: UserInterface(
         val addProgrammeToTime: Date = if(programme.stop.getTime() < toDate.getTime()){ programme.stop }else{ toDate }
         val timeLength = dateToDateDifferenceMinute(addProgrammeFromTime, addProgrammeToTime)
         val title = programme.titles?.getElementsByLanguage(userLanguageList)?.getOrNull(0)?.title?: ""
-        val div = document.createElement("div") as HTMLDivElement
-        val button = document.createElement("button") as HTMLButtonElement
 
-        div.addClass("programme")
-        div.style.display   = "inline-block"
-        div.style.width     = ""+timeLength+"vh"
-
-        button.style.backgroundColor    = "#333333"
-        button.style.border             = "0vh"
-        button.style.color              = "#FFFFFF"
-        button.style.fontWeight         = "bold"
-        button.style.fontSize           = "4vh"
-        button.style.overflowX          = "hidden"
-        button.style.overflowY          = "hidden"
-        button.style.textAlign          = "left"
-        button.style.width              = "inherit"
-        button.style.height             = "5.5vh"
-        button.style.margin             = "0vh"
-        button.innerHTML = title
-        button.onfocus = fun(event){ setProgrammeInformation(programme) }
-        button.tabIndex = Tab3dIndex.toUnparsedTabIndex(Tab3dIndex(
-                (programme.start.getDate().toString().padStart(2, '0') +
-                        programme.start.getHours().toString().padStart(2, '0')
-                ).toIntOrNull()?:0,
-                tvChannel.number,
-                tabIndexZ
-        )).toIntOrNull()?:0
-
-        div.append(button)
-        timeLine.append(div)
+        timeLine.append(
+                newProgrammeListBlock(
+                        width = "${timeLength}vh",
+                        addClass = "programme",
+                        backgroundColor = "#333333",
+                        innerHTML = title,
+                        tabIndex = Tab3dIndex.toUnparsedTabIndex(Tab3dIndex(
+                                (programme.start.getDate().toString().padStart(2, '0') +
+                                        programme.start.getHours().toString().padStart(2, '0')
+                                        ).toIntOrNull()?:0,
+                                tvChannel.number,
+                                tabIndexZ
+                        )).toIntOrNull()?:0,
+                        onfocus = fun(event){ setProgrammeInformation(programme) }
+                )
+        )
     }
 
     private fun loadProgrammeListTableContentChannelProgrammeTimeLine(tvChannel: TVChannel){
@@ -547,13 +617,10 @@ object EPG: UserInterface(
      * 為每頻道建立ChannelProgrammeTimeLine空間
      * */
     private fun newChannelProgrammeTimeLineArea(){
-        val programmeListTable = document.getElementById("epgProgrammeListTable") as HTMLElement
         for (tvChannel in tvChannels){
-            val area = document.createElement("div") as HTMLDivElement
-            area.id = "channel${tvChannel.number}ProgrammeTimeLine"
-            area.style.whiteSpace = "nowrap"
-            area.style.width = "max-content"
-            programmeListTable.appendChild(area)
+            programmeListTable.append(
+                    newProgrammeListBlockLine("channel${tvChannel.number}ProgrammeTimeLine")
+            )
         }
     }
 
@@ -568,6 +635,7 @@ object EPG: UserInterface(
     }
 
     private fun setProgrammeListTable(){
+        programmeListTable.innerHTML = ""
         syncScroll()
         newChannelProgrammeTimeLineArea()
         setChannelProgrammeTimeLineContent()

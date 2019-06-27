@@ -1006,40 +1006,97 @@ var HKNBP_Core = function (_, Kotlin) {
     var currentScrollValueTime = numberOfHour * 60 * 60 * 1000;
     return new Date(this.fromDate_0.getTime() + currentScrollValueTime);
   };
+  function EPG$newProgrammeListBlock$lambda(event) {
+  }
+  EPG.prototype.newProgrammeListBlock_0 = function (width, addClass_0, backgroundColor, innerHTML, tabIndex, onfocus) {
+    if (addClass_0 === void 0)
+      addClass_0 = '';
+    if (backgroundColor === void 0)
+      backgroundColor = '#000';
+    if (innerHTML === void 0)
+      innerHTML = '';
+    if (tabIndex === void 0)
+      tabIndex = -1;
+    if (onfocus === void 0)
+      onfocus = EPG$newProgrammeListBlock$lambda;
+    var tmp$, tmp$_0;
+    var button = Kotlin.isType(tmp$ = document.createElement('button'), HTMLButtonElement) ? tmp$ : throwCCE();
+    button.style.backgroundColor = backgroundColor;
+    button.style.border = '0vh';
+    button.style.color = '#FFFFFF';
+    button.style.fontWeight = 'bold';
+    button.style.fontSize = '4vh';
+    button.style.padding = '0vh';
+    button.style.overflowX = 'hidden';
+    button.style.overflowY = 'hidden';
+    button.style.textAlign = 'left';
+    button.style.width = 'inherit';
+    button.style.height = '5.5vh';
+    button.style.margin = '0.3vh';
+    button.style.marginLeft = '0.6vh';
+    button.style.marginRight = '0.6vh';
+    button.innerHTML = innerHTML;
+    button.tabIndex = tabIndex;
+    button.onfocus = onfocus;
+    var div = Kotlin.isType(tmp$_0 = document.createElement('div'), HTMLDivElement) ? tmp$_0 : throwCCE();
+    addClass(div, [addClass_0]);
+    div.style.display = 'inline-block';
+    div.style.width = width;
+    div.append(button);
+    return div;
+  };
+  EPG.prototype.newProgrammeListBlockLine_0 = function (id) {
+    if (id === void 0)
+      id = '';
+    var tmp$;
+    var div = Kotlin.isType(tmp$ = document.createElement('div'), HTMLDivElement) ? tmp$ : throwCCE();
+    div.id = id;
+    div.style.whiteSpace = 'nowrap';
+    div.style.width = 'max-content';
+    return div;
+  };
   function EPG$setProgrammeListCurrentDisplayDate$lambda(this$EPG) {
+    return function (innerHTML) {
+      this$EPG.programmeListCurrentDisplayDate_0.innerHTML = '';
+      var block = this$EPG.newProgrammeListBlock_0('30vh', void 0, '#111111', innerHTML);
+      var blockLine = this$EPG.newProgrammeListBlockLine_0();
+      blockLine.append(block);
+      this$EPG.programmeListCurrentDisplayDate_0.append(blockLine);
+    };
+  }
+  function EPG$setProgrammeListCurrentDisplayDate$lambda_0(closure$updateDisplayDate, this$EPG) {
     return function (event) {
-      this$EPG.programmeListCurrentDisplayDate_0.innerHTML = this$EPG.getDateByProgrammeListTableScrollLeft_0(this$EPG.programmeListTable_0.scrollLeft).toLocaleDateString();
+      closure$updateDisplayDate(this$EPG.getDateByProgrammeListTableScrollLeft_0(this$EPG.programmeListTable_0.scrollLeft).toLocaleDateString());
     };
   }
   EPG.prototype.setProgrammeListCurrentDisplayDate_0 = function () {
-    this.programmeListCurrentDisplayDate_0.innerHTML = this.fromDate_0.toLocaleDateString();
-    this.programmeListTable_0.onscroll = EPG$setProgrammeListCurrentDisplayDate$lambda(this);
+    var updateDisplayDate = EPG$setProgrammeListCurrentDisplayDate$lambda(this);
+    updateDisplayDate(this.fromDate_0.toLocaleDateString());
+    this.programmeListTable_0.onscroll = EPG$setProgrammeListCurrentDisplayDate$lambda_0(updateDisplayDate, this);
   };
   EPG.prototype.setProgrammeListTimeLine_0 = function () {
-    var content = '';
-    content += '<div>';
+    this.programmeListTimeLine_0.innerHTML = '';
+    var line = this.newProgrammeListBlockLine_0();
     var increaseHour = 0;
     while (this.fromDate_0.getTime() + (((increaseHour * 60 | 0) * 60 | 0) * 1000 | 0) < this.toDate_0.getTime()) {
       var hour = padStart((new Date(this.fromDate_0.getTime() + (((increaseHour * 60 | 0) * 60 | 0) * 1000 | 0))).getHours().toString(), 2, 48);
-      content += '<div class="time"><button tabindex="-1">' + hour + ':00<\/button><\/div>';
-      content += '<div class="time"><button tabindex="-1">' + hour + ':30<\/button><\/div>';
+      line.append(this.newProgrammeListBlock_0('30vh', 'time', '#222222', hour + ':00'));
+      line.append(this.newProgrammeListBlock_0('30vh', 'time', '#222222', hour + ':30'));
       increaseHour = increaseHour + 1 | 0;
     }
-    content += '<\/div>';
-    this.programmeListTimeLine_0.innerHTML = content;
+    this.programmeListTimeLine_0.append(line);
   };
   EPG.prototype.setProgrammeListChannelList_0 = function () {
     var tmp$;
-    var content = '';
+    this.programmeListChannelList_0.innerHTML = '';
     tmp$ = tvChannels.iterator();
     while (tmp$.hasNext()) {
       var tvChannel = tmp$.next();
-      content += '<div>';
-      content += '<div class="channelNumber"><button tabindex="-1">' + padStart(tvChannel.number.toString(), 3, 48) + '<\/button><\/div>';
-      content += '<div class="channelName"><button tabindex="-1">' + tvChannel.name + '<\/button><\/div>';
-      content += '<\/div>';
+      var line = this.newProgrammeListBlockLine_0();
+      line.append(this.newProgrammeListBlock_0('8vh', 'channelNumber', '#222222', padStart(tvChannel.number.toString(), 3, 48)));
+      line.append(this.newProgrammeListBlock_0('22vh', 'channelName', '#222222', tvChannel.name));
+      this.programmeListChannelList_0.append(line);
     }
-    this.programmeListChannelList_0.innerHTML = content;
   };
   function EPG$addProgrammeOnTimeLine$lambda(closure$programme, this$EPG) {
     return function (event) {
@@ -1047,7 +1104,7 @@ var HKNBP_Core = function (_, Kotlin) {
     };
   }
   EPG.prototype.addProgrammeOnTimeLine_0 = function (timeLine, tvChannel, programme) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6;
     if (this.fromDate_0.getTime() < programme.start.getTime()) {
       tmp$ = programme.start;
     }
@@ -1064,27 +1121,7 @@ var HKNBP_Core = function (_, Kotlin) {
     var addProgrammeToTime = tmp$_0;
     var timeLength = this.dateToDateDifferenceMinute_0(addProgrammeFromTime, addProgrammeToTime);
     var title = (tmp$_4 = (tmp$_3 = (tmp$_2 = (tmp$_1 = programme.titles) != null ? tmp$_1.getElementsByLanguage_qj8e4y$(userLanguageList) : null) != null ? getOrNull(tmp$_2, 0) : null) != null ? tmp$_3.title : null) != null ? tmp$_4 : '';
-    var div = Kotlin.isType(tmp$_5 = document.createElement('div'), HTMLDivElement) ? tmp$_5 : throwCCE();
-    var button = Kotlin.isType(tmp$_6 = document.createElement('button'), HTMLButtonElement) ? tmp$_6 : throwCCE();
-    addClass(div, ['programme']);
-    div.style.display = 'inline-block';
-    div.style.width = '' + toString(timeLength) + 'vh';
-    button.style.backgroundColor = '#333333';
-    button.style.border = '0vh';
-    button.style.color = '#FFFFFF';
-    button.style.fontWeight = 'bold';
-    button.style.fontSize = '4vh';
-    button.style.overflowX = 'hidden';
-    button.style.overflowY = 'hidden';
-    button.style.textAlign = 'left';
-    button.style.width = 'inherit';
-    button.style.height = '5.5vh';
-    button.style.margin = '0vh';
-    button.innerHTML = title;
-    button.onfocus = EPG$addProgrammeOnTimeLine$lambda(programme, this);
-    button.tabIndex = (tmp$_8 = toIntOrNull(Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(new Tab3dIndex((tmp$_7 = toIntOrNull(padStart(programme.start.getDate().toString(), 2, 48) + padStart(programme.start.getHours().toString(), 2, 48))) != null ? tmp$_7 : 0, tvChannel.number, this.tabIndexZ_0)))) != null ? tmp$_8 : 0;
-    div.append(button);
-    timeLine.append(div);
+    timeLine.append(this.newProgrammeListBlock_0(timeLength.toString() + 'vh', 'programme', '#333333', title, (tmp$_6 = toIntOrNull(Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(new Tab3dIndex((tmp$_5 = toIntOrNull(padStart(programme.start.getDate().toString(), 2, 48) + padStart(programme.start.getHours().toString(), 2, 48))) != null ? tmp$_5 : 0, tvChannel.number, this.tabIndexZ_0)))) != null ? tmp$_6 : 0, EPG$addProgrammeOnTimeLine$lambda(programme, this)));
   };
   function EPG$loadProgrammeListTableContentChannelProgrammeTimeLine$lambda(closure$tvChannel, this$EPG) {
     return function (xmltv) {
@@ -1152,16 +1189,11 @@ var HKNBP_Core = function (_, Kotlin) {
     }
   };
   EPG.prototype.newChannelProgrammeTimeLineArea_0 = function () {
-    var tmp$, tmp$_0, tmp$_1;
-    var programmeListTable = Kotlin.isType(tmp$ = document.getElementById('epgProgrammeListTable'), HTMLElement) ? tmp$ : throwCCE();
-    tmp$_0 = tvChannels.iterator();
-    while (tmp$_0.hasNext()) {
-      var tvChannel = tmp$_0.next();
-      var area = Kotlin.isType(tmp$_1 = document.createElement('div'), HTMLDivElement) ? tmp$_1 : throwCCE();
-      area.id = 'channel' + tvChannel.number + 'ProgrammeTimeLine';
-      area.style.whiteSpace = 'nowrap';
-      area.style.width = 'max-content';
-      programmeListTable.appendChild(area);
+    var tmp$;
+    tmp$ = tvChannels.iterator();
+    while (tmp$.hasNext()) {
+      var tvChannel = tmp$.next();
+      this.programmeListTable_0.append(this.newProgrammeListBlockLine_0('channel' + tvChannel.number + 'ProgrammeTimeLine'));
     }
   };
   function EPG$syncScroll$lambda() {
@@ -1172,6 +1204,7 @@ var HKNBP_Core = function (_, Kotlin) {
     jQuery('#epgProgrammeListTable').on('scroll', EPG$syncScroll$lambda);
   };
   EPG.prototype.setProgrammeListTable_0 = function () {
+    this.programmeListTable_0.innerHTML = '';
     this.syncScroll_0();
     this.newChannelProgrammeTimeLineArea_0();
     this.setChannelProgrammeTimeLineContent_0();
