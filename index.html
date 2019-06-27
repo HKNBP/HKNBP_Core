@@ -121,26 +121,6 @@
       width: inherit; height:5.5vh;
       margin: 0.2vh;
     }
-    #epgProgrammeListTable div{
-      white-space: nowrap;
-      width: max-content; //height: 5.4vh;
-      //border: 0vh;//padding: 0vh;//margin: 0vh;
-    }
-    #epgProgrammeListTable div .programme{
-      display: inline-block;
-    }
-    #epgProgrammeListTable div .programme button{
-      background-color: #333333;
-      border: 0vh;
-      color: #FFFFFF;
-      font-weight: bold;
-      font-size: 4vh;
-      //padding: 0vh;
-      overflow: hidden;
-      text-align: left;
-      width: inherit; height:5.5vh;
-      margin: 0vh;
-    }
     #shareWindowShareButtonList a{
         padding: 0vh;
         margin: 0vh;
@@ -1154,7 +1134,7 @@
     </div>
 </noscript>
 
-<script src="service-worker.js"></script><!---->
+<script src="service-worker.js"></script><!--此用作方便畀其他位置讀取service-worker.js內的值-->
 <script>
 //PWA, 註冊ServiceWorker
 if ('serviceWorker' in navigator) {
@@ -1162,8 +1142,6 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker.register('service-worker.js').then(function(registration) {
       // Registration was successful
       console.log('ServiceWorker registration successful with scope: ', registration.scope);
-      // Send個coreVersion去ServiceWorker
-      new BroadcastChannel('sw-messages').postMessage({coreVersion: hknbpCore.coreVersion});
     }).catch(function(err) {
       // registration failed :(
       console.log('ServiceWorker registration failed: ', err);

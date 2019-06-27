@@ -439,8 +439,23 @@ object EPG: UserInterface(
         val title = programme.titles?.getElementsByLanguage(userLanguageList)?.getOrNull(0)?.title?: ""
         val div = document.createElement("div") as HTMLDivElement
         val button = document.createElement("button") as HTMLButtonElement
+
         div.addClass("programme")
-        div.style.width = ""+timeLength+"vh"
+        div.style.display   = "inline-block"
+        div.style.width     = ""+timeLength+"vh"
+
+        button.style.backgroundColor    = "#333333"
+        button.style.border             = "0vh"
+        button.style.color              = "#FFFFFF"
+        button.style.fontWeight         = "bold"
+        button.style.fontSize           = "4vh"
+        button.style.overflowX          = "hidden"
+        button.style.overflowY          = "hidden"
+        button.style.textAlign          = "left"
+        button.style.width              = "inherit"
+        button.style.height             = "5.5vh"
+        button.style.margin             = "0vh"
+        button.innerHTML = title
         button.onfocus = fun(event){ setProgrammeInformation(programme) }
         button.tabIndex = Tab3dIndex.toUnparsedTabIndex(Tab3dIndex(
                 (programme.start.getDate().toString().padStart(2, '0') +
@@ -449,7 +464,7 @@ object EPG: UserInterface(
                 tvChannel.number,
                 tabIndexZ
         )).toIntOrNull()?:0
-        button.innerHTML = title
+
         div.append(button)
         timeLine.append(div)
     }
@@ -533,13 +548,13 @@ object EPG: UserInterface(
      * */
     private fun newChannelProgrammeTimeLineArea(){
         val programmeListTable = document.getElementById("epgProgrammeListTable") as HTMLElement
-        var content = ""
         for (tvChannel in tvChannels){
-            val id = "channel${tvChannel.number}ProgrammeTimeLine"
-            content += "<div id=\""+id+"\">"
-            content += "</div>"
+            val area = document.createElement("div") as HTMLDivElement
+            area.id = "channel${tvChannel.number}ProgrammeTimeLine"
+            area.style.whiteSpace = "nowrap"
+            area.style.width = "max-content"
+            programmeListTable.appendChild(area)
         }
-        programmeListTable.innerHTML = content
     }
 
     /**

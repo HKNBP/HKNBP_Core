@@ -24,12 +24,23 @@ abstract class UserInterface(
         private val onHide: ()->Unit = fun(){},
         private val firstFocusElementID: String? = null,
         private var isFocusCountdownHide: Boolean = true,
-        private var isFocusOutHide: Boolean = false
+        private var isFocusOutHide: Boolean = false,
+        private val conversionFocusHideTime: Int = 15000
+
 ) {
     private val htmlElement = document.getElementById(htmlElementID) as HTMLElement
     private var lastTimeFocusElement: dynamic = jQuery("#${firstFocusElementID}")
 
     open fun update(){}
+
+    /**
+     * 係顯示介面時首次Focus
+     *
+     * 每個介面當顯示出來時
+     * 都會Focus去上次Focus嘅Element度
+     * 此值   為辨別Focus類型
+     * */
+    private var isShowUserInterfaceFirstFocus: Boolean = false
 
     /**
      * 隱藏頻道訊息計時器
@@ -47,6 +58,7 @@ abstract class UserInterface(
 
     open fun show(){
         htmlElement.style.display = "block"
+        isShowUserInterfaceFirstFocus = true
         lastTimeFocusElement?.focus()
         onShow()
         update()
@@ -70,22 +82,27 @@ abstract class UserInterface(
         if(isShow){ hide() }else{ show() }
     }
 
+    fun showHideAlternately(showTime: Int){
+        if(isShow){ hide() }else{ show(showTime) }
+    }
+
     init {
         jQuery(
                 "#${htmlElementID} button" + "," +
                 "#${htmlElementID} select" + "," +
                 "#${htmlElementID} option" + "," +
                 "#${htmlElementID} input"
-        )?.focus(fun(){
-            if(!js("\$(\"this\").is(\":focus\")")){
-                //設 當onfocus 就onhover 同步
-                jQuery(js("this"))?.hover()
-                //設定依家Focus邊粒element為之後再Show呢個介面時Focus返對上個次嘅element
-                lastTimeFocusElement = jQuery(js("this"))
-                //當focus就重新倒數介面顯示時間
-                if(isFocusCountdownHide){setHideTimer(15000)}
+        )?.focus(fun(){if(!js("\$(\"this\").is(\":focus\")")){
+            //設 當onfocus 就onhover 同步
+            jQuery(js("this"))?.hover()
+            //設定依家Focus邊粒element為之後再Show呢個介面時Focus返對上個次嘅element
+            lastTimeFocusElement = jQuery(js("this"))
+            //當focus就重新倒數介面顯示時間 同 唔係顯示介面時首次Focus
+            if((!isShowUserInterfaceFirstFocus)&&isFocusCountdownHide){
+                isShowUserInterfaceFirstFocus = false
+                setHideTimer(conversionFocusHideTime)
             }
-        })
+        }})
         jQuery(
                 "#${htmlElementID} button" + "," +
                 "#${htmlElementID} select" + "," +

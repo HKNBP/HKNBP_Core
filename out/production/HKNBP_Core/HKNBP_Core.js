@@ -25,7 +25,6 @@ var HKNBP_Core = function (_, Kotlin) {
   var Math_0 = Math;
   var toShort = Kotlin.toShort;
   var startsWith = Kotlin.kotlin.text.startsWith_7epoxm$;
-  var throwUPAE = Kotlin.throwUPAE;
   var split = Kotlin.kotlin.text.split_ip8yn$;
   var ensureNotNull = Kotlin.ensureNotNull;
   var split_0 = Kotlin.kotlin.text.split_o64adg$;
@@ -355,7 +354,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function AudioDescription_init$lambda() {
     var tmp$, tmp$_0;
-    AudioDescription_getInstance().text_0.innerHTML = (tmp$_0 = (tmp$ = get_player().audioTracks.node) != null ? tmp$.name : null) != null ? tmp$_0 : '';
+    AudioDescription_getInstance().text_0.innerHTML = (tmp$_0 = (tmp$ = player.audioTracks.node) != null ? tmp$.name : null) != null ? tmp$_0 : '';
   }
   AudioDescription.$metadata$ = {
     kind: Kind_OBJECT,
@@ -1032,7 +1031,7 @@ var HKNBP_Core = function (_, Kotlin) {
   EPG.prototype.setProgrammeListChannelList_0 = function () {
     var tmp$;
     var content = '';
-    tmp$ = get_tvChannels().iterator();
+    tmp$ = tvChannels.iterator();
     while (tmp$.hasNext()) {
       var tvChannel = tmp$.next();
       content += '<div>';
@@ -1068,10 +1067,22 @@ var HKNBP_Core = function (_, Kotlin) {
     var div = Kotlin.isType(tmp$_5 = document.createElement('div'), HTMLDivElement) ? tmp$_5 : throwCCE();
     var button = Kotlin.isType(tmp$_6 = document.createElement('button'), HTMLButtonElement) ? tmp$_6 : throwCCE();
     addClass(div, ['programme']);
+    div.style.display = 'inline-block';
     div.style.width = '' + toString(timeLength) + 'vh';
+    button.style.backgroundColor = '#333333';
+    button.style.border = '0vh';
+    button.style.color = '#FFFFFF';
+    button.style.fontWeight = 'bold';
+    button.style.fontSize = '4vh';
+    button.style.overflowX = 'hidden';
+    button.style.overflowY = 'hidden';
+    button.style.textAlign = 'left';
+    button.style.width = 'inherit';
+    button.style.height = '5.5vh';
+    button.style.margin = '0vh';
+    button.innerHTML = title;
     button.onfocus = EPG$addProgrammeOnTimeLine$lambda(programme, this);
     button.tabIndex = (tmp$_8 = toIntOrNull(Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(new Tab3dIndex((tmp$_7 = toIntOrNull(padStart(programme.start.getDate().toString(), 2, 48) + padStart(programme.start.getHours().toString(), 2, 48))) != null ? tmp$_7 : 0, tvChannel.number, this.tabIndexZ_0)))) != null ? tmp$_8 : 0;
-    button.innerHTML = title;
     div.append(button);
     timeLine.append(div);
   };
@@ -1122,17 +1133,17 @@ var HKNBP_Core = function (_, Kotlin) {
         return;
       }
       var currentProgramme = tmp$_0;
-      var firstFocusTabIndex = Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(new Tab3dIndex((tmp$_1 = toIntOrNull(padStart(currentProgramme.start.getDate().toString(), 2, 48) + padStart(currentProgramme.start.getHours().toString(), 2, 48))) != null ? tmp$_1 : 0, (tmp$_3 = (tmp$_2 = get_tvChannels().node) != null ? tmp$_2.number : null) != null ? tmp$_3 : 0, this$EPG.tabIndexZ_0));
+      var firstFocusTabIndex = Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(new Tab3dIndex((tmp$_1 = toIntOrNull(padStart(currentProgramme.start.getDate().toString(), 2, 48) + padStart(currentProgramme.start.getHours().toString(), 2, 48))) != null ? tmp$_1 : 0, (tmp$_3 = (tmp$_2 = tvChannels.node) != null ? tmp$_2.number : null) != null ? tmp$_3 : 0, this$EPG.tabIndexZ_0));
       (Kotlin.isType(tmp$_4 = document.querySelector('[tabindex=' + '"' + firstFocusTabIndex + '"' + ']'), HTMLElement) ? tmp$_4 : throwCCE()).focus();
     };
   }
   EPG.prototype.focusCurrentProgramme_0 = function () {
     var tmp$, tmp$_0, tmp$_1;
-    (tmp$_1 = (tmp$_0 = (tmp$ = get_tvChannels().node) != null ? tmp$.information : null) != null ? (tmp$_0.getXMLTV_29qkou$(EPG$focusCurrentProgramme$lambda(this)), Unit) : null) != null ? tmp$_1 : jQuery('#epgHideButton').focus();
+    (tmp$_1 = (tmp$_0 = (tmp$ = tvChannels.node) != null ? tmp$.information : null) != null ? (tmp$_0.getXMLTV_29qkou$(EPG$focusCurrentProgramme$lambda(this)), Unit) : null) != null ? tmp$_1 : jQuery('#epgHideButton').focus();
   };
   EPG.prototype.setChannelProgrammeTimeLineContent_0 = function () {
     var tmp$, tmp$_0;
-    tmp$ = get_tvChannels().iterator();
+    tmp$ = tvChannels.iterator();
     while (tmp$.hasNext()) {
       var tvChannel = tmp$.next();
       var id = 'channel' + tvChannel.number + 'ProgrammeTimeLine';
@@ -1141,17 +1152,17 @@ var HKNBP_Core = function (_, Kotlin) {
     }
   };
   EPG.prototype.newChannelProgrammeTimeLineArea_0 = function () {
-    var tmp$, tmp$_0;
+    var tmp$, tmp$_0, tmp$_1;
     var programmeListTable = Kotlin.isType(tmp$ = document.getElementById('epgProgrammeListTable'), HTMLElement) ? tmp$ : throwCCE();
-    var content = '';
-    tmp$_0 = get_tvChannels().iterator();
+    tmp$_0 = tvChannels.iterator();
     while (tmp$_0.hasNext()) {
       var tvChannel = tmp$_0.next();
-      var id = 'channel' + tvChannel.number + 'ProgrammeTimeLine';
-      content += '<div id="' + id + '">';
-      content += '<\/div>';
+      var area = Kotlin.isType(tmp$_1 = document.createElement('div'), HTMLDivElement) ? tmp$_1 : throwCCE();
+      area.id = 'channel' + tvChannel.number + 'ProgrammeTimeLine';
+      area.style.whiteSpace = 'nowrap';
+      area.style.width = 'max-content';
+      programmeListTable.appendChild(area);
     }
-    programmeListTable.innerHTML = content;
   };
   function EPG$syncScroll$lambda() {
     jQuery('#epgProgrammeListChannelList').scrollTop(jQuery(this).scrollTop());
@@ -1504,27 +1515,120 @@ var HKNBP_Core = function (_, Kotlin) {
     return LongClickEvent_instance;
   }
   var rootURL;
+  function coreVersion$lambda() {
+    var tmp$, tmp$_0;
+    var value = '';
+    var savedValue = (tmp$_0 = (tmp$ = localStorage.getItem('coreVersion')) != null ? tmp$.toString() : null) != null ? tmp$_0 : '';
+    try {
+      value = coreVersion != null ? coreVersion : savedValue;
+    }
+     catch (e) {
+      value = savedValue;
+    }
+    localStorage.setItem('coreVersion', value);
+    return value;
+  }
   var coreVersion_0;
   var appVersion;
   var jQuery;
-  var userLanguageList;
+  function tvChannels$lambda$lambda$ObjectLiteral() {
+  }
+  tvChannels$lambda$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
+    updateChannel();
+    TVChannelDescription_getInstance().show_za3lpa$(3000);
+    TVChannelDescription_getInstance().update();
+  };
+  tvChannels$lambda$lambda$ObjectLiteral.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: [ArrayLinkList$OnNodeEventListener]
+  };
+  function tvChannels$lambda$lambda(tvChannels_) {
+    tvChannels = tvChannels_;
+    tvChannels.addOnNodeEventListener_ljxrtv$(new tvChannels$lambda$lambda$ObjectLiteral());
+    updateChannel();
+    TVChannelDescription_getInstance().show_za3lpa$(3000);
+    TVChannelDescription_getInstance().update();
+  }
+  function tvChannels$lambda() {
+    TVChannel$Companion_getInstance().getTVChannels_94t8aj$(tvChannels$lambda$lambda);
+    return ArrayLinkList_init([new TVChannel()]);
+  }
   var tvChannels;
-  function get_tvChannels() {
-    if (tvChannels == null)
-      return throwUPAE('tvChannels');
-    return tvChannels;
-  }
-  function set_tvChannels(tvChannels_0) {
-    tvChannels = tvChannels_0;
-  }
   var player;
-  function get_player() {
-    if (player == null)
-      return throwUPAE('player');
-    return player;
+  function designatedChannel$lambda(dialogues) {
+    var tmp$, tmp$_0;
+    PromptBox_getInstance().promptMessage((tmp$_0 = (tmp$ = dialogues.node) != null ? tmp$.canNotFind : null) != null ? tmp$_0 : '');
   }
-  function set_player(player_0) {
-    player = player_0;
+  function designatedChannel(channelNumber) {
+    var channelNumberNodeID = TVChannel$Companion_getInstance().toChannelNumberNodeID_vg1cxv$(tvChannels, channelNumber);
+    if (channelNumberNodeID != null) {
+      tvChannels.designated_za3lpa$(channelNumberNodeID);
+      return true;
+    }
+     else {
+      Dialogue$Companion_getInstance().getDialogues_fs1aqo$(designatedChannel$lambda);
+      return false;
+    }
+  }
+  function updateChannel$ObjectLiteral() {
+    this.currentPlayer_0 = null;
+    this.isPlaying_0 = false;
+  }
+  function updateChannel$ObjectLiteral$on$lambda(this$) {
+    return function () {
+      if (!this$.isPlaying_0 && equals(player, this$.currentPlayer_0)) {
+        updateChannel();
+      }
+    };
+  }
+  function updateChannel$ObjectLiteral$on$lambda_0(muted) {
+    if (muted) {
+      MutedDescription_getInstance().show();
+    }
+     else {
+      MutedDescription_getInstance().hide();
+    }
+  }
+  updateChannel$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
+    switch (onPlayerEvent.name) {
+      case 'playing':
+        this.currentPlayer_0 = player;
+        this.isPlaying_0 = true;
+        VirtualRemote_getInstance().update();
+        break;
+      case 'notPlaying':
+        this.isPlaying_0 = false;
+        window.setTimeout(updateChannel$ObjectLiteral$on$lambda(this), 15000);
+        break;
+      case 'videoTrackChanged':
+        VirtualRemote_getInstance().updateVideoInformation();
+        break;
+      case 'audioTrackChanged':
+        VirtualRemote_getInstance().updateAudioInformation();
+        break;
+      case 'subtitleTrackChanged':
+        VirtualRemote_getInstance().updateSubtitleInformation();
+        break;
+      case 'volumeChanged':
+        VolumeDescription_getInstance().show_za3lpa$(3000);
+        break;
+      case 'mutedChanged':
+        player.getMuted_y8twos$(updateChannel$ObjectLiteral$on$lambda_0);
+        break;
+      default:Kotlin.noWhenBranchMatched();
+        break;
+    }
+  };
+  updateChannel$ObjectLiteral.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: [Player$OnPlayerEventListener]
+  };
+  function updateChannel() {
+    var tmp$;
+    player = new Player((tmp$ = tvChannels.node) != null ? tmp$ : new TVChannel());
+    player.addOnPlayerEventListener_j8fzjz$(new updateChannel$ObjectLiteral());
+    player.play();
+    VirtualRemote_getInstance().update();
   }
   function reductionTo(w, h) {
     var arr = new Int32Array(2);
@@ -1592,101 +1696,8 @@ var HKNBP_Core = function (_, Kotlin) {
     var rows_txt = temp + '' + param + '=' + _paramVal;
     window.history.replaceState('', '', baseURL + '?' + newAdditionalURL + rows_txt);
   }
-  function designatedChannel$lambda(dialogues) {
-    var tmp$, tmp$_0;
-    PromptBox_getInstance().promptMessage((tmp$_0 = (tmp$ = dialogues.node) != null ? tmp$.canNotFind : null) != null ? tmp$_0 : '');
-  }
-  function designatedChannel(channelNumber) {
-    var channelNumberNodeID = TVChannel$Companion_getInstance().toChannelNumberNodeID_vg1cxv$(get_tvChannels(), channelNumber);
-    if (channelNumberNodeID != null) {
-      get_tvChannels().designated_za3lpa$(channelNumberNodeID);
-      return true;
-    }
-     else {
-      Dialogue$Companion_getInstance().getDialogues_fs1aqo$(designatedChannel$lambda);
-      return false;
-    }
-  }
-  function updateChannel$ObjectLiteral() {
-    this.currentPlayer_0 = null;
-    this.isPlaying_0 = false;
-  }
-  function updateChannel$ObjectLiteral$on$lambda(this$) {
-    return function () {
-      if (!this$.isPlaying_0 && equals(get_player(), this$.currentPlayer_0)) {
-        updateChannel();
-      }
-    };
-  }
-  function updateChannel$ObjectLiteral$on$lambda_0(muted) {
-    if (muted) {
-      MutedDescription_getInstance().show();
-    }
-     else {
-      MutedDescription_getInstance().hide();
-    }
-  }
-  updateChannel$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
-    switch (onPlayerEvent.name) {
-      case 'playing':
-        this.currentPlayer_0 = get_player();
-        this.isPlaying_0 = true;
-        VirtualRemote_getInstance().update();
-        break;
-      case 'notPlaying':
-        this.isPlaying_0 = false;
-        window.setTimeout(updateChannel$ObjectLiteral$on$lambda(this), 15000);
-        break;
-      case 'videoTrackChanged':
-        VirtualRemote_getInstance().updateVideoInformation();
-        break;
-      case 'audioTrackChanged':
-        VirtualRemote_getInstance().updateAudioInformation();
-        break;
-      case 'subtitleTrackChanged':
-        VirtualRemote_getInstance().updateSubtitleInformation();
-        break;
-      case 'volumeChanged':
-        VolumeDescription_getInstance().show_za3lpa$(3000);
-        break;
-      case 'mutedChanged':
-        get_player().getMuted_y8twos$(updateChannel$ObjectLiteral$on$lambda_0);
-        break;
-      default:Kotlin.noWhenBranchMatched();
-        break;
-    }
-  };
-  updateChannel$ObjectLiteral.$metadata$ = {
-    kind: Kind_CLASS,
-    interfaces: [Player$OnPlayerEventListener]
-  };
-  function updateChannel() {
-    var tmp$;
-    set_player(new Player((tmp$ = get_tvChannels().node) != null ? tmp$ : new TVChannel()));
-    get_player().addOnPlayerEventListener_j8fzjz$(new updateChannel$ObjectLiteral());
-    get_player().play();
-    VirtualRemote_getInstance().update();
-  }
-  function main$lambda$ObjectLiteral() {
-  }
-  main$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
-    updateChannel();
-    TVChannelDescription_getInstance().show_za3lpa$(3000);
-    TVChannelDescription_getInstance().update();
-  };
-  main$lambda$ObjectLiteral.$metadata$ = {
-    kind: Kind_CLASS,
-    interfaces: [ArrayLinkList$OnNodeEventListener]
-  };
-  function main$lambda(tvChannels_) {
-    set_tvChannels(tvChannels_);
-    get_tvChannels().addOnNodeEventListener_ljxrtv$(new main$lambda$ObjectLiteral());
-    updateChannel();
-    TVChannelDescription_getInstance().show_za3lpa$(3000);
-    TVChannelDescription_getInstance().update();
-  }
+  var userLanguageList;
   function main(args) {
-    println(coreVersion_0);
     try {
       UserControlPanel_getInstance();
       ConsentPanel_getInstance();
@@ -1697,7 +1708,6 @@ var HKNBP_Core = function (_, Kotlin) {
      catch (e) {
       println('\u4ECB\u9762\u521D\u59CB\u5316\u54C0\u5DE6: ' + e.toString());
     }
-    TVChannel$Companion_getInstance().getTVChannels_94t8aj$(main$lambda);
   }
   function MutedDescription() {
     MutedDescription_instance = this;
@@ -1708,10 +1718,10 @@ var HKNBP_Core = function (_, Kotlin) {
     this.mutedDescriptionButton_0.onclick = MutedDescription_init$lambda;
   }
   function MutedDescription_init$lambda$lambda(muted) {
-    get_player().setMuted_6taknv$(!muted);
+    player.setMuted_6taknv$(!muted);
   }
   function MutedDescription_init$lambda(event) {
-    get_player().getMuted_y8twos$(MutedDescription_init$lambda$lambda);
+    player.getMuted_y8twos$(MutedDescription_init$lambda$lambda);
   }
   MutedDescription.$metadata$ = {
     kind: Kind_OBJECT,
@@ -2072,19 +2082,19 @@ var HKNBP_Core = function (_, Kotlin) {
     this.callIframePlayerFunction_0('onSetIframePlayerPlay', '');
   };
   Player.prototype.nextVideoTrack = function () {
-    get_player().videoTracks.next();
+    player.videoTracks.next();
   };
   Player.prototype.previousVideoTrack = function () {
-    get_player().videoTracks.previous();
+    player.videoTracks.previous();
   };
   function Player$designatedVideoTrack$lambda(dialogues) {
     var tmp$, tmp$_0;
     PromptBox_getInstance().promptMessage((tmp$_0 = (tmp$ = dialogues.node) != null ? tmp$.canNotFind : null) != null ? tmp$_0 : '');
   }
   Player.prototype.designatedVideoTrack = function (videoTrackID) {
-    var videoTracksNodeID = TrackDescription$Companion_getInstance().toTracksNodeID_w1sgja$(get_player().videoTracks, videoTrackID);
+    var videoTracksNodeID = TrackDescription$Companion_getInstance().toTracksNodeID_w1sgja$(player.videoTracks, videoTrackID);
     if (videoTracksNodeID != null) {
-      get_player().videoTracks.designated_za3lpa$(videoTracksNodeID);
+      player.videoTracks.designated_za3lpa$(videoTracksNodeID);
       return true;
     }
      else {
@@ -2093,19 +2103,19 @@ var HKNBP_Core = function (_, Kotlin) {
     }
   };
   Player.prototype.nextAudioTrack = function () {
-    get_player().audioTracks.next();
+    player.audioTracks.next();
   };
   Player.prototype.previousAudioTrack = function () {
-    get_player().audioTracks.previous();
+    player.audioTracks.previous();
   };
   function Player$designatedAudioTrack$lambda(dialogues) {
     var tmp$, tmp$_0;
     PromptBox_getInstance().promptMessage((tmp$_0 = (tmp$ = dialogues.node) != null ? tmp$.canNotFind : null) != null ? tmp$_0 : '');
   }
   Player.prototype.designatedAudioTrack = function (audioTrackID) {
-    var audioTracksNodeID = TrackDescription$Companion_getInstance().toTracksNodeID_w1sgja$(get_player().audioTracks, audioTrackID);
+    var audioTracksNodeID = TrackDescription$Companion_getInstance().toTracksNodeID_w1sgja$(player.audioTracks, audioTrackID);
     if (audioTracksNodeID != null) {
-      get_player().audioTracks.designated_za3lpa$(audioTracksNodeID);
+      player.audioTracks.designated_za3lpa$(audioTracksNodeID);
       return true;
     }
      else {
@@ -2114,19 +2124,19 @@ var HKNBP_Core = function (_, Kotlin) {
     }
   };
   Player.prototype.nextSubtitleTrack = function () {
-    get_player().subtitleTracks.next();
+    player.subtitleTracks.next();
   };
   Player.prototype.previousSubtitleTrack = function () {
-    get_player().subtitleTracks.previous();
+    player.subtitleTracks.previous();
   };
   function Player$designatedSubtitleTrack$lambda(dialogues) {
     var tmp$, tmp$_0;
     PromptBox_getInstance().promptMessage((tmp$_0 = (tmp$ = dialogues.node) != null ? tmp$.canNotFind : null) != null ? tmp$_0 : '');
   }
   Player.prototype.designatedSubtitleTrack = function (subtitleTrackID) {
-    var subtitleTracksNodeID = TrackDescription$Companion_getInstance().toTracksNodeID_w1sgja$(get_player().subtitleTracks, subtitleTrackID);
+    var subtitleTracksNodeID = TrackDescription$Companion_getInstance().toTracksNodeID_w1sgja$(player.subtitleTracks, subtitleTrackID);
     if (subtitleTracksNodeID != null) {
-      get_player().subtitleTracks.designated_za3lpa$(subtitleTracksNodeID);
+      player.subtitleTracks.designated_za3lpa$(subtitleTracksNodeID);
       return true;
     }
      else {
@@ -2728,7 +2738,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function SubtitleDescription_init$lambda() {
     var tmp$, tmp$_0;
-    SubtitleDescription_getInstance().text_0.innerHTML = (tmp$_0 = (tmp$ = get_player().subtitleTracks.node) != null ? tmp$.name : null) != null ? tmp$_0 : '';
+    SubtitleDescription_getInstance().text_0.innerHTML = (tmp$_0 = (tmp$ = player.subtitleTracks.node) != null ? tmp$.name : null) != null ? tmp$_0 : '';
   }
   SubtitleDescription.$metadata$ = {
     kind: Kind_OBJECT,
@@ -2986,11 +2996,11 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   TVChannelDescription.prototype.setCurrentChannelName_0 = function () {
     var tmp$, tmp$_0;
-    this.currentChannelName_0.innerHTML = (tmp$_0 = (tmp$ = get_tvChannels().node) != null ? tmp$.name : null) != null ? tmp$_0 : '';
+    this.currentChannelName_0.innerHTML = (tmp$_0 = (tmp$ = tvChannels.node) != null ? tmp$.name : null) != null ? tmp$_0 : '';
   };
   TVChannelDescription.prototype.setCurrentChannelNumber_0 = function () {
     var tmp$;
-    this.currentChannelNumber_0.innerHTML = padStart(toString((tmp$ = get_tvChannels().node) != null ? tmp$.number : null), 3, 48);
+    this.currentChannelNumber_0.innerHTML = padStart(toString((tmp$ = tvChannels.node) != null ? tmp$.number : null), 3, 48);
   };
   function TVChannelDescription$setCurrentDate$lambda(this$TVChannelDescription) {
     return function () {
@@ -3011,7 +3021,7 @@ var HKNBP_Core = function (_, Kotlin) {
   TVChannelDescription.prototype.setCurrentProgrammeTitle_0 = function () {
     var tmp$, tmp$_0;
     this.currentProgrammeTitle_0.innerHTML = '';
-    (tmp$_0 = (tmp$ = get_tvChannels().node) != null ? tmp$.information : null) != null ? (tmp$_0.getXMLTV_29qkou$(TVChannelDescription$setCurrentProgrammeTitle$lambda(this)), Unit) : null;
+    (tmp$_0 = (tmp$ = tvChannels.node) != null ? tmp$.information : null) != null ? (tmp$_0.getXMLTV_29qkou$(TVChannelDescription$setCurrentProgrammeTitle$lambda(this)), Unit) : null;
   };
   function TVChannelDescription$setCurrentProgrammeSubTitle$lambda(this$TVChannelDescription) {
     return function (xmltv) {
@@ -3022,7 +3032,7 @@ var HKNBP_Core = function (_, Kotlin) {
   TVChannelDescription.prototype.setCurrentProgrammeSubTitle_0 = function () {
     var tmp$, tmp$_0;
     this.currentProgrammeSubTitle_0.innerHTML = '';
-    (tmp$_0 = (tmp$ = get_tvChannels().node) != null ? tmp$.information : null) != null ? (tmp$_0.getXMLTV_29qkou$(TVChannelDescription$setCurrentProgrammeSubTitle$lambda(this)), Unit) : null;
+    (tmp$_0 = (tmp$ = tvChannels.node) != null ? tmp$.information : null) != null ? (tmp$_0.getXMLTV_29qkou$(TVChannelDescription$setCurrentProgrammeSubTitle$lambda(this)), Unit) : null;
   };
   function TVChannelDescription$setCurrentProgrammeEpisode$lambda$lambda(closure$xmltv, this$TVChannelDescription) {
     return function (dialogues) {
@@ -3047,7 +3057,7 @@ var HKNBP_Core = function (_, Kotlin) {
   TVChannelDescription.prototype.setCurrentProgrammeEpisode_0 = function () {
     var tmp$, tmp$_0;
     this.currentProgrammeEpisode_0.innerHTML = '';
-    (tmp$_0 = (tmp$ = get_tvChannels().node) != null ? tmp$.information : null) != null ? (tmp$_0.getXMLTV_29qkou$(TVChannelDescription$setCurrentProgrammeEpisode$lambda(this)), Unit) : null;
+    (tmp$_0 = (tmp$ = tvChannels.node) != null ? tmp$.information : null) != null ? (tmp$_0.getXMLTV_29qkou$(TVChannelDescription$setCurrentProgrammeEpisode$lambda(this)), Unit) : null;
   };
   function TVChannelDescription$setCurrentProgrammeBroadcastTime$lambda(this$TVChannelDescription) {
     return function (xmltv) {
@@ -3066,7 +3076,7 @@ var HKNBP_Core = function (_, Kotlin) {
   TVChannelDescription.prototype.setCurrentProgrammeBroadcastTime_0 = function () {
     var tmp$, tmp$_0;
     this.currentProgrammeBroadcastTime_0.innerHTML = '';
-    (tmp$_0 = (tmp$ = get_tvChannels().node) != null ? tmp$.information : null) != null ? (tmp$_0.getXMLTV_29qkou$(TVChannelDescription$setCurrentProgrammeBroadcastTime$lambda(this)), Unit) : null;
+    (tmp$_0 = (tmp$ = tvChannels.node) != null ? tmp$.information : null) != null ? (tmp$_0.getXMLTV_29qkou$(TVChannelDescription$setCurrentProgrammeBroadcastTime$lambda(this)), Unit) : null;
   };
   function TVChannelDescription$setCurrentProgrammeDesc$lambda(this$TVChannelDescription) {
     return function (xmltv) {
@@ -3077,7 +3087,7 @@ var HKNBP_Core = function (_, Kotlin) {
   TVChannelDescription.prototype.setCurrentProgrammeDesc_0 = function () {
     var tmp$, tmp$_0;
     this.currentProgrammeDesc_0.innerHTML = '';
-    (tmp$_0 = (tmp$ = get_tvChannels().node) != null ? tmp$.information : null) != null ? (tmp$_0.getXMLTV_29qkou$(TVChannelDescription$setCurrentProgrammeDesc$lambda(this)), Unit) : null;
+    (tmp$_0 = (tmp$ = tvChannels.node) != null ? tmp$.information : null) != null ? (tmp$_0.getXMLTV_29qkou$(TVChannelDescription$setCurrentProgrammeDesc$lambda(this)), Unit) : null;
   };
   function TVChannelDescription$setCurrentProgrammeCategory$lambda(this$TVChannelDescription) {
     return function (xmltv) {
@@ -3088,7 +3098,7 @@ var HKNBP_Core = function (_, Kotlin) {
   TVChannelDescription.prototype.setCurrentProgrammeCategory_0 = function () {
     var tmp$, tmp$_0;
     this.currentProgrammeCategory_0.innerHTML = '';
-    (tmp$_0 = (tmp$ = get_tvChannels().node) != null ? tmp$.information : null) != null ? (tmp$_0.getXMLTV_29qkou$(TVChannelDescription$setCurrentProgrammeCategory$lambda(this)), Unit) : null;
+    (tmp$_0 = (tmp$ = tvChannels.node) != null ? tmp$.information : null) != null ? (tmp$_0.getXMLTV_29qkou$(TVChannelDescription$setCurrentProgrammeCategory$lambda(this)), Unit) : null;
   };
   TVChannelDescription.prototype.update = function () {
     this.setCurrentChannelName_0();
@@ -3312,7 +3322,7 @@ var HKNBP_Core = function (_, Kotlin) {
   function UserControlPanel_init$lambda_1(this$UserControlPanel) {
     return function (event) {
       this$UserControlPanel.showHideAlternately();
-      get_player().play();
+      player.play();
     };
   }
   function UserControlPanel_init$lambda_2(this$UserControlPanel) {
@@ -3367,7 +3377,7 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return UserControlPanel_instance;
   }
-  function UserInterface(htmlElementID, onShow, onHide, firstFocusElementID, isFocusCountdownHide, isFocusOutHide) {
+  function UserInterface(htmlElementID, onShow, onHide, firstFocusElementID, isFocusCountdownHide, isFocusOutHide, conversionFocusHideTime) {
     if (onShow === void 0)
       onShow = UserInterface_init$lambda;
     if (onHide === void 0)
@@ -3378,15 +3388,19 @@ var HKNBP_Core = function (_, Kotlin) {
       isFocusCountdownHide = true;
     if (isFocusOutHide === void 0)
       isFocusOutHide = false;
+    if (conversionFocusHideTime === void 0)
+      conversionFocusHideTime = 15000;
     this.htmlElementID_fynci$_0 = htmlElementID;
     this.onShow_5c20oy$_0 = onShow;
     this.onHide_5i3ctj$_0 = onHide;
     this.firstFocusElementID_ydky23$_0 = firstFocusElementID;
     this.isFocusCountdownHide_768iff$_0 = isFocusCountdownHide;
     this.isFocusOutHide_o0rj94$_0 = isFocusOutHide;
+    this.conversionFocusHideTime_igwo47$_0 = conversionFocusHideTime;
     var tmp$, tmp$_0, tmp$_1;
     this.htmlElement_sdspbr$_0 = Kotlin.isType(tmp$ = document.getElementById(this.htmlElementID_fynci$_0), HTMLElement) ? tmp$ : throwCCE();
     this.lastTimeFocusElement_bd4klp$_0 = jQuery('#' + toString(this.firstFocusElementID_ydky23$_0));
+    this.isShowUserInterfaceFirstFocus_mby111$_0 = false;
     this.hideTimer_1c3smv$_rf6tp$_0 = 0;
     (tmp$_0 = jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input'))) != null ? tmp$_0.focus(UserInterface_init$lambda_1(this)) : null;
     (tmp$_1 = jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input'))) != null ? tmp$_1.hover(UserInterface_init$lambda_2) : null;
@@ -3410,6 +3424,7 @@ var HKNBP_Core = function (_, Kotlin) {
   UserInterface.prototype.show = function () {
     var tmp$;
     this.htmlElement_sdspbr$_0.style.display = 'block';
+    this.isShowUserInterfaceFirstFocus_mby111$_0 = true;
     (tmp$ = this.lastTimeFocusElement_bd4klp$_0) != null ? tmp$.focus() : null;
     this.onShow_5c20oy$_0();
     this.update();
@@ -3438,6 +3453,14 @@ var HKNBP_Core = function (_, Kotlin) {
       this.show();
     }
   };
+  UserInterface.prototype.showHideAlternately_za3lpa$ = function (showTime) {
+    if (this.isShow) {
+      this.hide();
+    }
+     else {
+      this.show_za3lpa$(showTime);
+    }
+  };
   function UserInterface_init$lambda() {
   }
   function UserInterface_init$lambda_0() {
@@ -3448,8 +3471,9 @@ var HKNBP_Core = function (_, Kotlin) {
       if (!$('this').is(':focus')) {
         (tmp$ = jQuery(this)) != null ? tmp$.hover() : null;
         this$UserInterface.lastTimeFocusElement_bd4klp$_0 = jQuery(this);
-        if (this$UserInterface.isFocusCountdownHide_768iff$_0) {
-          this$UserInterface.setHideTimer_djwtaz$_0(15000);
+        if (!this$UserInterface.isShowUserInterfaceFirstFocus_mby111$_0 && this$UserInterface.isFocusCountdownHide_768iff$_0) {
+          this$UserInterface.isShowUserInterfaceFirstFocus_mby111$_0 = false;
+          this$UserInterface.setHideTimer_djwtaz$_0(this$UserInterface.conversionFocusHideTime_igwo47$_0);
         }
       }
     };
@@ -3472,7 +3496,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function VideoDescription_init$lambda() {
     var tmp$, tmp$_0;
-    VideoDescription_getInstance().text_0.innerHTML = (tmp$_0 = (tmp$ = get_player().videoTracks.node) != null ? tmp$.name : null) != null ? tmp$_0 : '';
+    VideoDescription_getInstance().text_0.innerHTML = (tmp$_0 = (tmp$ = player.videoTracks.node) != null ? tmp$.name : null) != null ? tmp$_0 : '';
   }
   VideoDescription.$metadata$ = {
     kind: Kind_OBJECT,
@@ -3638,46 +3662,46 @@ var HKNBP_Core = function (_, Kotlin) {
   VirtualRemote.prototype.updateTVChannelDescription = function () {
     var tmp$, tmp$_0;
     var channelOptionHTMLString = '';
-    tmp$ = get_tvChannels().iterator();
+    tmp$ = tvChannels.iterator();
     while (tmp$.hasNext()) {
       var tvChannel = tmp$.next();
       channelOptionHTMLString += '' + ('<option value=' + tvChannel.number + '>') + (padStart(tvChannel.number.toString(), 3, 48) + ' ' + tvChannel.name) + '<\/option>';
     }
     this.designateChannelSelect.innerHTML = channelOptionHTMLString;
-    this.designateChannelSelect.value = toString((tmp$_0 = get_tvChannels().node) != null ? tmp$_0.number : null);
+    this.designateChannelSelect.value = toString((tmp$_0 = tvChannels.node) != null ? tmp$_0.number : null);
   };
   VirtualRemote.prototype.updateVideoInformation = function () {
     var tmp$, tmp$_0, tmp$_1;
     var videoOptionHTMLString = '';
-    tmp$ = get_player().videoTracks.iterator();
+    tmp$ = player.videoTracks.iterator();
     while (tmp$.hasNext()) {
       var videoTracks = tmp$.next();
       videoOptionHTMLString += '<option value=' + videoTracks.id + '>' + videoTracks.name + '<\/option>';
     }
     this.designateVideoSelect.innerHTML = videoOptionHTMLString;
-    this.designateVideoSelect.value = ((tmp$_1 = (tmp$_0 = get_player().videoTracks.node) != null ? tmp$_0.id : null) != null ? tmp$_1 : 0).toString();
+    this.designateVideoSelect.value = ((tmp$_1 = (tmp$_0 = player.videoTracks.node) != null ? tmp$_0.id : null) != null ? tmp$_1 : 0).toString();
   };
   VirtualRemote.prototype.updateAudioInformation = function () {
     var tmp$, tmp$_0, tmp$_1;
     var audioOptionHTMLString = '';
-    tmp$ = get_player().audioTracks.iterator();
+    tmp$ = player.audioTracks.iterator();
     while (tmp$.hasNext()) {
       var audioTracks = tmp$.next();
       audioOptionHTMLString += '<option value=' + audioTracks.id + '>' + audioTracks.name + '<\/option>';
     }
     this.designateAudioSelect.innerHTML = audioOptionHTMLString;
-    this.designateAudioSelect.value = ((tmp$_1 = (tmp$_0 = get_player().audioTracks.node) != null ? tmp$_0.id : null) != null ? tmp$_1 : 0).toString();
+    this.designateAudioSelect.value = ((tmp$_1 = (tmp$_0 = player.audioTracks.node) != null ? tmp$_0.id : null) != null ? tmp$_1 : 0).toString();
   };
   VirtualRemote.prototype.updateSubtitleInformation = function () {
     var tmp$, tmp$_0, tmp$_1;
     var subtitleOptionHTMLString = '';
-    tmp$ = get_player().subtitleTracks.iterator();
+    tmp$ = player.subtitleTracks.iterator();
     while (tmp$.hasNext()) {
       var subtitleTracks = tmp$.next();
       subtitleOptionHTMLString += '<option value=' + subtitleTracks.id + '>' + subtitleTracks.name + '<\/option>';
     }
     this.designateSubtitleSelect.innerHTML = subtitleOptionHTMLString;
-    this.designateSubtitleSelect.value = ((tmp$_1 = (tmp$_0 = get_player().subtitleTracks.node) != null ? tmp$_0.id : null) != null ? tmp$_1 : 0).toString();
+    this.designateSubtitleSelect.value = ((tmp$_1 = (tmp$_0 = player.subtitleTracks.node) != null ? tmp$_0.id : null) != null ? tmp$_1 : 0).toString();
   };
   VirtualRemote.prototype.update = function () {
     this.updateTVChannelDescription();
@@ -3714,10 +3738,10 @@ var HKNBP_Core = function (_, Kotlin) {
     };
   }
   function VirtualRemote_init$lambda_1(event) {
-    get_tvChannels().next();
+    tvChannels.next();
   }
   function VirtualRemote_init$lambda_2(event) {
-    get_tvChannels().previous();
+    tvChannels.previous();
   }
   function VirtualRemote_init$lambda_3(this$VirtualRemote) {
     return function (event) {
@@ -3730,78 +3754,78 @@ var HKNBP_Core = function (_, Kotlin) {
     };
   }
   function VirtualRemote_init$lambda_5(event) {
-    get_tvChannels().lastTime();
+    tvChannels.lastTime();
   }
   function VirtualRemote_init$lambda_6(event) {
-    get_player().nextVideoTrack();
+    player.nextVideoTrack();
     VideoDescription_getInstance().show_za3lpa$(3000);
   }
   function VirtualRemote_init$lambda_7(event) {
-    get_player().previousVideoTrack();
+    player.previousVideoTrack();
     VideoDescription_getInstance().show_za3lpa$(3000);
   }
   function VirtualRemote_init$lambda_8(this$VirtualRemote) {
     return function (event) {
-      get_player().designatedVideoTrack(toInt(this$VirtualRemote.designateVideoSelect.value));
+      player.designatedVideoTrack(toInt(this$VirtualRemote.designateVideoSelect.value));
       VideoDescription_getInstance().show_za3lpa$(3000);
     };
   }
   function VirtualRemote_init$lambda_9(event) {
-    get_player().nextAudioTrack();
+    player.nextAudioTrack();
     AudioDescription_getInstance().show_za3lpa$(3000);
   }
   function VirtualRemote_init$lambda_10(event) {
-    get_player().previousAudioTrack();
+    player.previousAudioTrack();
     AudioDescription_getInstance().show_za3lpa$(3000);
   }
   function VirtualRemote_init$lambda_11(this$VirtualRemote) {
     return function (event) {
-      get_player().designatedAudioTrack(toInt(this$VirtualRemote.designateAudioSelect.value));
+      player.designatedAudioTrack(toInt(this$VirtualRemote.designateAudioSelect.value));
       AudioDescription_getInstance().show_za3lpa$(3000);
     };
   }
   function VirtualRemote_init$lambda_12(event) {
-    get_player().nextAudioTrack();
+    player.nextAudioTrack();
     AudioDescription_getInstance().show_za3lpa$(3000);
   }
   function VirtualRemote_init$lambda_13(event) {
-    get_player().nextSubtitleTrack();
+    player.nextSubtitleTrack();
     SubtitleDescription_getInstance().show_za3lpa$(3000);
   }
   function VirtualRemote_init$lambda_14(event) {
-    get_player().previousSubtitleTrack();
+    player.previousSubtitleTrack();
     SubtitleDescription_getInstance().show_za3lpa$(3000);
   }
   function VirtualRemote_init$lambda_15(this$VirtualRemote) {
     return function (event) {
-      get_player().designatedSubtitleTrack(toInt(this$VirtualRemote.designateSubtitleSelect.value));
+      player.designatedSubtitleTrack(toInt(this$VirtualRemote.designateSubtitleSelect.value));
       SubtitleDescription_getInstance().show_za3lpa$(3000);
     };
   }
   function VirtualRemote_init$lambda_16(event) {
-    get_player().nextSubtitleTrack();
+    player.nextSubtitleTrack();
     SubtitleDescription_getInstance().show_za3lpa$(3000);
   }
   function VirtualRemote_init$lambda_17(event) {
-    get_player().volumeMute();
+    player.volumeMute();
   }
   function VirtualRemote_init$lambda_18(event) {
-    get_player().volumeUp();
+    player.volumeUp();
   }
   function VirtualRemote_init$lambda_19(event) {
-    get_player().volumeDown();
+    player.volumeDown();
   }
   function VirtualRemote_init$lambda_20(event) {
-    get_player().programmable(Player$ProgrammableColor$red_getInstance());
+    player.programmable(Player$ProgrammableColor$red_getInstance());
   }
   function VirtualRemote_init$lambda_21(event) {
-    get_player().programmable(Player$ProgrammableColor$green_getInstance());
+    player.programmable(Player$ProgrammableColor$green_getInstance());
   }
   function VirtualRemote_init$lambda_22(event) {
-    get_player().programmable(Player$ProgrammableColor$yellow_getInstance());
+    player.programmable(Player$ProgrammableColor$yellow_getInstance());
   }
   function VirtualRemote_init$lambda_23(event) {
-    get_player().programmable(Player$ProgrammableColor$blue_getInstance());
+    player.programmable(Player$ProgrammableColor$blue_getInstance());
   }
   function VirtualRemote_init$lambda_24(event) {
     EnteringNumberBox_getInstance().show_61zpoe$('0');
@@ -4074,13 +4098,13 @@ var HKNBP_Core = function (_, Kotlin) {
     }
   }
   function VolumeDescription_init$lambda() {
-    get_player().getVolume_huw4wd$(VolumeDescription_init$lambda$lambda);
+    player.getVolume_huw4wd$(VolumeDescription_init$lambda$lambda);
   }
   function VolumeDescription_init$lambda_0(event) {
-    get_player().volumeUp;
+    player.volumeUp;
   }
   function VolumeDescription_init$lambda_1(event) {
-    get_player().volumeDown;
+    player.volumeDown;
   }
   VolumeDescription.$metadata$ = {
     kind: Kind_OBJECT,
@@ -5684,6 +5708,26 @@ var HKNBP_Core = function (_, Kotlin) {
       return jQuery;
     }
   });
+  Object.defineProperty(package$hknbp_core, 'tvChannels', {
+    get: function () {
+      return tvChannels;
+    },
+    set: function (value) {
+      tvChannels = value;
+    }
+  });
+  Object.defineProperty(package$hknbp_core, 'player', {
+    get: function () {
+      return player;
+    },
+    set: function (value) {
+      player = value;
+    }
+  });
+  package$hknbp_core.designatedChannel = designatedChannel;
+  package$hknbp_core.updateChannel = updateChannel;
+  package$hknbp_core.reductionTo_vux9f0$ = reductionTo;
+  package$hknbp_core.updateURLParameter_puj7f4$ = updateURLParameter;
   Object.defineProperty(package$hknbp_core, 'userLanguageList', {
     get: function () {
       return userLanguageList;
@@ -5692,18 +5736,6 @@ var HKNBP_Core = function (_, Kotlin) {
       userLanguageList = value;
     }
   });
-  Object.defineProperty(package$hknbp_core, 'tvChannels', {
-    get: get_tvChannels,
-    set: set_tvChannels
-  });
-  Object.defineProperty(package$hknbp_core, 'player', {
-    get: get_player,
-    set: set_player
-  });
-  package$hknbp_core.reductionTo_vux9f0$ = reductionTo;
-  package$hknbp_core.updateURLParameter_puj7f4$ = updateURLParameter;
-  package$hknbp_core.designatedChannel = designatedChannel;
-  package$hknbp_core.updateChannel = updateChannel;
   package$hknbp_core.main_kand9s$ = main;
   Object.defineProperty(package$hknbp_core, 'MutedDescription', {
     get: MutedDescription_getInstance
@@ -5849,9 +5881,12 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   package$hknbp_core.XMLTV = XMLTV;
   rootURL = 'https://hknbp.org/';
-  coreVersion_0 = coreVersion;
+  coreVersion_0 = coreVersion$lambda();
   appVersion = coreVersion_0 + '-PWA';
   jQuery = $;
+  tvChannels = tvChannels$lambda();
+  var tmp$;
+  player = new Player((tmp$ = tvChannels.node) != null ? tmp$ : new TVChannel());
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();
   main([]);
   Kotlin.defineModule('HKNBP_Core', _);
