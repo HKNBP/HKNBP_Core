@@ -181,28 +181,44 @@
       width: max-content;
     }
     button{
-      background: #292929;
-      border: 0vh solid black;
-      color: #FFFFFF;
-      width: 100%;
+        background: #292929;
+        border: 0.2vh solid rgba(0,0,0,0);
+        color: #FFF;
+        width: 100%;
     }
     select{
-      background-color: rgba(35,35,35,1);
-      border: 0vh solid #fff;
-      color: #FFFFFF;
-      padding: .5vh;
+        background-color: rgba(35,35,35,1);
+        border: 0.2vh solid rgba(0,0,0,0);
+        color: #FFF;
+        //padding: .5vh;
     }
     option{
-      background-color: rgba(20,20,20,1);
-      color: #FFFFFF;
+        background-color: rgba(20,20,20,1);
+        border: 0.2vh solid rgba(0,0,0,0);
+        color: #FFF;
     }
     input{
         background: #444444;
-        border: 0vh solid black;
-        color: #FFFFFF;
+        border: 0.2vh solid rgba(0,0,0,0);
+        color: #FFF;
     }
-    button:hover, select:hover, option:hover, input:hover{
-        filter: saturate(150%) drop-shadow(0vh 0vh 0.5vh #5AF) drop-shadow(0vh 0vh 0vh #5AF);
+    button:hover, select:hover, option:hover, input:hover, button:focus, select:focus, option:focus, input:focus{
+        border: 0.2vh solid #2196F3;
+    }
+
+    button.notice{
+        font-size:4vh;
+        background: rgba(0, 0, 0, 0);
+        border: 0vh;
+        outline:none;
+        text-shadow: black 0em 0em 0.2em;
+        overflow: hidden;
+        position:absolute;
+        width: 7vh; height: 7vh;
+        z-index: 50;
+    }
+    button.notice:hover{
+        filter: drop-shadow(0vh 0vh .3vh #FFF);
     }
 
     i.icon-font{
@@ -545,46 +561,24 @@
             <div style="bottom:0;left:0;right:0;">
             </div>
         </div>
-        <button id="nativeAppInstallButton" style="
-                    font-size:4vh;
-                    background: rgba(0, 0, 0, 0);
-                    text-shadow: black 0em 0em 0.2em;
-                    display: block;
-                    top:0vh; right:14vh;
-                    overflow: auto;
-                    position:absolute;
-                    width: 7vh; height: 7vh;
-                    z-index: 50;
+        <button id="nativeAppInstallButton" class="notice" style="
+                display: block;
+                top:0vh; right:14vh;
                 ">
             <i class="icon-font">&#xe826;</i>
         </button>
-        <button id="pictureInPictureButton" style="
-                    font-size:4vh;
-                    background: rgba(0, 0, 0, 0);
-                    text-shadow: black 0em 0em 0.2em;
-                    display: block;
-                    top:0vh; right:7vh;
-                    overflow: auto;
-                    position:absolute;
-                    width: 7vh; height: 7vh;
-                    z-index: 50;
+        <button id="pictureInPictureButton" class="notice" style="
+                display: block;
+                top:0vh; right:7vh;
                 ">
             <i class="icon-font">&#xe829;</i>
         </button>
-        <button id="fullScreenButton" style="
-                    font-size:4vh;
-                    background: rgba(0, 0, 0, 0);
-                    text-shadow: black 0em 0em 0.2em;
-                    display: block;
-                    top:0vh; right:0vh;
-                    overflow: auto;
-                    position:absolute;
-                    width: 7vh; height: 7vh;
-                    z-index: 50;
+        <button id="fullScreenButton" class="notice" style="
+                display: block;
+                top:0vh; right:0vh;
                 ">
             <i class="icon-font">&#xe80c;</i>
         </button>
-
     </div>
     <div id="consentPanel" style="
         background-color:rgba(0, 0, 0, 0.6);
@@ -604,13 +598,15 @@
               display: none;
               position: absolute;
               bottom:12vh; right:5vh;
-              width: max-content;
+              //width: max-content;
               z-index:40;
             ">
-        <button id="mutedDescriptionButton" style="
+        <button id="mutedDescriptionButton" class="notice" style="
             background-color: rgba(0, 0, 0, 0);
             text-shadow: black 0em 0em 0.2em;
             font-size: 6vh;
+            position: initial;
+            top:0; bottom:0; left:0; right:0;
         ">
             <i class="icon-font">&#xe809;</i>
         </button>
@@ -622,7 +618,7 @@
            width: 85vh; height: 6vh;
            z-index:40;
          ">
-        <button id="volumeDescriptionVolumeDownButton"
+        <button id="volumeDescriptionVolumeDownButton" class="notice"
                 style="
                   background-color: rgba(0, 0, 0, 0);
                   text-shadow: black 0em 0em 0.2em;
@@ -651,7 +647,7 @@
               top:0; bottom:0; left:18vh;
             "
         ></div>
-        <button id="volumeDescriptionVolumeUpButton"
+        <button id="volumeDescriptionVolumeUpButton" class="notice"
                 style="
                     background-color: rgba(0, 0, 0, 0);
                     text-shadow: black 0em 0em 0.2em;
@@ -765,7 +761,7 @@
                             style="
                       background-color: rgba(0, 0, 0, 0);
                       padding: 0vh; border: 0vh;
-                      color: #FFFFFF;
+                      color: #FFF;
                       font-weight: bold;
                       font-size: 4vh;
                     "
@@ -914,7 +910,7 @@
 
         </div>
         <div style="position:absolute;top:0;right:0;">
-            <button id="aboutWindowHideButton" style="padding:0vh;border:0vh;color:#FFFFFF;font-weight:bold;font-size:4vh;">
+            <button id="aboutWindowHideButton" style="padding:0vh;border:0vh;color:#FFF;font-weight:bold;font-size:4vh;">
                 <i class="icon-font" style="font-size:6vh;">&#xe801;</i>
             </button>
         </div>
@@ -968,7 +964,7 @@
             </div>
         </div>
         <div style="position:absolute;top:0;right:0;">
-            <button id="shareWindowHideButton" style="padding:0vh;border:0vh;color:#FFFFFF;font-weight:bold;font-size:4vh;">
+            <button id="shareWindowHideButton" style="padding:0vh;border:0vh;color:#FFF;font-weight:bold;font-size:4vh;">
                 <i class="icon-font" style="font-size:6vh;">&#xe801;</i>
             </button>
         </div>
@@ -1027,7 +1023,7 @@
             <i class="icon-font">&#xe802;</i> 設定
         </div>
         <div style="position:absolute;top:0;right:0;">
-            <button id="settingWindowHideButton" style="padding:0vh;border:0vh;color:#FFFFFF;font-weight:bold;font-size:4vh;">
+            <button id="settingWindowHideButton" style="padding:0vh;border:0vh;color:#FFF;font-weight:bold;font-size:4vh;">
                 <i class="icon-font" style="font-size:6vh;">&#xe801;</i>
             </button>
         </div>
@@ -1039,7 +1035,7 @@
             </div>
         </div>
         <div style="position:absolute;top:0;right:0;">
-            <button id="appDownloadWindowHideButton" style="padding:0vh;border:0vh;color:#FFFFFF;font-weight:bold;font-size:4vh;">
+            <button id="appDownloadWindowHideButton" style="padding:0vh;border:0vh;color:#FFF;font-weight:bold;font-size:4vh;">
                 <i class="icon-font" style="font-size:6vh;">&#xe801;</i>
             </button>
         </div>
@@ -1104,7 +1100,6 @@ if ('serviceWorker' in navigator) {
 <script src="https://cdn.jsdelivr.net/npm/kotlin@1.3.31/kotlin.js"></script><!--<script src="out/production/HKNBP_Core/lib/kotlin.js"></script>-->
 <script src="out/production/HKNBP_Core/HKNBP_Core.js"></script>
 <script>var hknbpCore = HKNBP_Core.org.sourcekey.hknbp.hknbp_core;</script><!--畀其他地方方便Call-->
-
 
 </body>
 

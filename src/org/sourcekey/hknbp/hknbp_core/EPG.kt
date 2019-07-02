@@ -410,19 +410,18 @@ object EPG: UserInterface(
     ): HTMLDivElement{
         val button = document.createElement("button") as HTMLButtonElement
         button.style.backgroundColor    = backgroundColor
-        button.style.border             = "0vh"
         button.style.color              = "#FFFFFF"
         button.style.fontWeight         = "bold"
-        button.style.fontSize           = "4vh"
-        button.style.padding            = "0vh"
+        button.style.fontSize           = "3.5vh"
         button.style.overflowX          = "hidden"
         button.style.overflowY          = "hidden"
         button.style.textAlign          = "left"
         button.style.width              = "inherit"
         button.style.height             = "5.5vh"
-        button.style.margin             = "0.3vh"
-        button.style.marginLeft         = "0.6vh"
-        button.style.marginRight        = "0.6vh"
+        //button.style.padding            = "0vh"
+        button.style.margin             = "0.25vh"
+        button.style.marginLeft         = "0.5vh"
+        button.style.marginRight        = "0.5vh"
         button.innerHTML                = innerHTML
         button.tabIndex                 = tabIndex
         button.onfocus                  = onfocus
@@ -449,7 +448,7 @@ object EPG: UserInterface(
             programmeListCurrentDisplayDate.innerHTML = ""
             val block = newProgrammeListBlock(
                     width = "30vh",
-                    backgroundColor = "#111111",
+                    backgroundColor = "#111",
                     innerHTML = innerHTML
             )
             val blockLine = newProgrammeListBlockLine()
@@ -499,7 +498,7 @@ object EPG: UserInterface(
                     newProgrammeListBlock(
                             width = "8vh",
                             addClass = "channelNumber",
-                            backgroundColor = "#222222",
+                            backgroundColor = "#222",
                             innerHTML = tvChannel.number.toString().padStart(3, '0')
                     )
             )
@@ -507,7 +506,7 @@ object EPG: UserInterface(
                     newProgrammeListBlock(
                             width = "22vh",
                             addClass = "channelName",
-                            backgroundColor = "#222222",
+                            backgroundColor = "#222",
                             innerHTML = tvChannel.name
                     )
             )
@@ -525,7 +524,7 @@ object EPG: UserInterface(
                 newProgrammeListBlock(
                         width = "${timeLength}vh",
                         addClass = "programme",
-                        backgroundColor = "#333333",
+                        backgroundColor = "#333",
                         innerHTML = title,
                         tabIndex = Tab3dIndex.toUnparsedTabIndex(Tab3dIndex(
                                 (programme.start.getDate().toString().padStart(2, '0') +

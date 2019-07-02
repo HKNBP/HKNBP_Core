@@ -1022,19 +1022,17 @@ var HKNBP_Core = function (_, Kotlin) {
     var tmp$, tmp$_0;
     var button = Kotlin.isType(tmp$ = document.createElement('button'), HTMLButtonElement) ? tmp$ : throwCCE();
     button.style.backgroundColor = backgroundColor;
-    button.style.border = '0vh';
     button.style.color = '#FFFFFF';
     button.style.fontWeight = 'bold';
-    button.style.fontSize = '4vh';
-    button.style.padding = '0vh';
+    button.style.fontSize = '3.5vh';
     button.style.overflowX = 'hidden';
     button.style.overflowY = 'hidden';
     button.style.textAlign = 'left';
     button.style.width = 'inherit';
     button.style.height = '5.5vh';
-    button.style.margin = '0.3vh';
-    button.style.marginLeft = '0.6vh';
-    button.style.marginRight = '0.6vh';
+    button.style.margin = '0.25vh';
+    button.style.marginLeft = '0.5vh';
+    button.style.marginRight = '0.5vh';
     button.innerHTML = innerHTML;
     button.tabIndex = tabIndex;
     button.onfocus = onfocus;
@@ -1058,7 +1056,7 @@ var HKNBP_Core = function (_, Kotlin) {
   function EPG$setProgrammeListCurrentDisplayDate$lambda(this$EPG) {
     return function (innerHTML) {
       this$EPG.programmeListCurrentDisplayDate_0.innerHTML = '';
-      var block = this$EPG.newProgrammeListBlock_0('30vh', void 0, '#111111', innerHTML);
+      var block = this$EPG.newProgrammeListBlock_0('30vh', void 0, '#111', innerHTML);
       var blockLine = this$EPG.newProgrammeListBlockLine_0();
       blockLine.append(block);
       this$EPG.programmeListCurrentDisplayDate_0.append(blockLine);
@@ -1093,8 +1091,8 @@ var HKNBP_Core = function (_, Kotlin) {
     while (tmp$.hasNext()) {
       var tvChannel = tmp$.next();
       var line = this.newProgrammeListBlockLine_0();
-      line.append(this.newProgrammeListBlock_0('8vh', 'channelNumber', '#222222', padStart(tvChannel.number.toString(), 3, 48)));
-      line.append(this.newProgrammeListBlock_0('22vh', 'channelName', '#222222', tvChannel.name));
+      line.append(this.newProgrammeListBlock_0('8vh', 'channelNumber', '#222', padStart(tvChannel.number.toString(), 3, 48)));
+      line.append(this.newProgrammeListBlock_0('22vh', 'channelName', '#222', tvChannel.name));
       this.programmeListChannelList_0.append(line);
     }
   };
@@ -1121,7 +1119,7 @@ var HKNBP_Core = function (_, Kotlin) {
     var addProgrammeToTime = tmp$_0;
     var timeLength = this.dateToDateDifferenceMinute_0(addProgrammeFromTime, addProgrammeToTime);
     var title = (tmp$_4 = (tmp$_3 = (tmp$_2 = (tmp$_1 = programme.titles) != null ? tmp$_1.getElementsByLanguage_qj8e4y$(userLanguageList) : null) != null ? getOrNull(tmp$_2, 0) : null) != null ? tmp$_3.title : null) != null ? tmp$_4 : '';
-    timeLine.append(this.newProgrammeListBlock_0(timeLength.toString() + 'vh', 'programme', '#333333', title, (tmp$_6 = toIntOrNull(Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(new Tab3dIndex((tmp$_5 = toIntOrNull(padStart(programme.start.getDate().toString(), 2, 48) + padStart(programme.start.getHours().toString(), 2, 48))) != null ? tmp$_5 : 0, tvChannel.number, this.tabIndexZ_0)))) != null ? tmp$_6 : 0, EPG$addProgrammeOnTimeLine$lambda(programme, this)));
+    timeLine.append(this.newProgrammeListBlock_0(timeLength.toString() + 'vh', 'programme', '#333', title, (tmp$_6 = toIntOrNull(Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(new Tab3dIndex((tmp$_5 = toIntOrNull(padStart(programme.start.getDate().toString(), 2, 48) + padStart(programme.start.getHours().toString(), 2, 48))) != null ? tmp$_5 : 0, tvChannel.number, this.tabIndexZ_0)))) != null ? tmp$_6 : 0, EPG$addProgrammeOnTimeLine$lambda(programme, this)));
   };
   function EPG$loadProgrammeListTableContentChannelProgrammeTimeLine$lambda(closure$tvChannel, this$EPG) {
     return function (xmltv) {
@@ -1568,7 +1566,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   tvChannels$lambda$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
     updateChannel();
-    TVChannelDescription_getInstance().show_za3lpa$(3000);
+    TVChannelDescription_getInstance().show_za3lpa$(5000);
     TVChannelDescription_getInstance().update();
   };
   tvChannels$lambda$lambda$ObjectLiteral.$metadata$ = {
@@ -1579,7 +1577,7 @@ var HKNBP_Core = function (_, Kotlin) {
     tvChannels = tvChannels_;
     tvChannels.addOnNodeEventListener_ljxrtv$(new tvChannels$lambda$lambda$ObjectLiteral());
     updateChannel();
-    TVChannelDescription_getInstance().show_za3lpa$(3000);
+    TVChannelDescription_getInstance().show_za3lpa$(5000);
     TVChannelDescription_getInstance().update();
   }
   function tvChannels$lambda() {

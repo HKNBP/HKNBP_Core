@@ -73,12 +73,12 @@ var tvChannels: ArrayLinkList<TVChannel> = {
                     preChangeNode: TVChannel?, postChangeNode: TVChannel?
             ) {
                 updateChannel()
-                TVChannelDescription.show(3000)
+                TVChannelDescription.show(5000)
                 TVChannelDescription.update()
             }
         })
         updateChannel()
-        TVChannelDescription.show(3000)
+        TVChannelDescription.show(5000)
         TVChannelDescription.update()
     })
 
@@ -293,7 +293,7 @@ var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
  * */
 fun main(args: Array<String>) {
     //HKNBPAppLayerBridge
-
+    
     try {
         UserControlPanel
         ConsentPanel
