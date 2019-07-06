@@ -1545,6 +1545,12 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return LongClickEvent_instance;
   }
+  function v0$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v0') : null;
+    return '';
+  }
+  var v0;
   var rootURL;
   function coreVersion$lambda() {
     var tmp$, tmp$_0;
@@ -1729,24 +1735,18 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   var userLanguageList;
   function main(args) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = '0') : null;
+    var tmp$;
     try {
       UserControlPanel_getInstance();
-      (tmp$_0 = document.getElementById('sss')) != null ? (tmp$_0.innerHTML = '1') : null;
       ConsentPanel_getInstance();
-      (tmp$_1 = document.getElementById('sss')) != null ? (tmp$_1.innerHTML = '2') : null;
       VirtualRemote_getInstance();
-      (tmp$_2 = document.getElementById('sss')) != null ? (tmp$_2.innerHTML = '3') : null;
       RealRemote_getInstance();
-      (tmp$_3 = document.getElementById('sss')) != null ? (tmp$_3.innerHTML = '4') : null;
       LongClickEvent_getInstance();
-      (tmp$_4 = document.getElementById('sss')) != null ? (tmp$_4.innerHTML = '5') : null;
     }
      catch (e) {
       println('\u4ECB\u9762\u521D\u59CB\u5316\u54C0\u5DE6: ' + e.toString());
-      tmp$_5 = document.getElementById('sss');
-      tmp$_5 != null ? (tmp$_5.innerHTML = (tmp$_5 != null ? tmp$_5.innerHTML : null) + 'E') : null;
+      tmp$ = document.getElementById('sss');
+      tmp$ != null ? (tmp$.innerHTML = (tmp$ != null ? tmp$.innerHTML : null) + 'E') : null;
     }
   }
   function MutedDescription() {
@@ -5725,6 +5725,11 @@ var HKNBP_Core = function (_, Kotlin) {
   Object.defineProperty(package$hknbp_core, 'LongClickEvent', {
     get: LongClickEvent_getInstance
   });
+  Object.defineProperty(package$hknbp_core, 'v0', {
+    get: function () {
+      return v0;
+    }
+  });
   Object.defineProperty(package$hknbp_core, 'rootURL', {
     get: function () {
       return rootURL;
@@ -5920,6 +5925,7 @@ var HKNBP_Core = function (_, Kotlin) {
     get: XMLTV$Companion_getInstance
   });
   package$hknbp_core.XMLTV = XMLTV;
+  v0 = v0$lambda();
   rootURL = 'https://hknbp.org/';
   coreVersion_0 = coreVersion$lambda();
   appVersion = coreVersion_0 + '-PWA';

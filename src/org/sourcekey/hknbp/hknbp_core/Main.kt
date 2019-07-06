@@ -21,7 +21,10 @@ import kotlin.browser.localStorage
 import kotlin.browser.window
 import kotlin.js.Date
 
-
+val v0 = {
+    document.getElementById("sss")?.innerHTML = "v0"
+    ""
+}()
 
 val rootURL: String = "https://hknbp.org/"
 
@@ -293,18 +296,18 @@ var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
  * */
 fun main(args: Array<String>) {
     //HKNBPAppLayerBridge
-    document.getElementById("sss")?.innerHTML = "0"
+    //document.getElementById("sss")?.innerHTML = "0"
     try {
         UserControlPanel
-        document.getElementById("sss")?.innerHTML = "1"
+        //document.getElementById("sss")?.innerHTML = "1"
         ConsentPanel
-        document.getElementById("sss")?.innerHTML = "2"
+        //document.getElementById("sss")?.innerHTML = "2"
         VirtualRemote
-        document.getElementById("sss")?.innerHTML = "3"
+        //document.getElementById("sss")?.innerHTML = "3"
         RealRemote
-        document.getElementById("sss")?.innerHTML = "4"
+        //document.getElementById("sss")?.innerHTML = "4"
         LongClickEvent
-        document.getElementById("sss")?.innerHTML = "5"
+        //document.getElementById("sss")?.innerHTML = "5"
     } catch (e: dynamic) { println("介面初始化哀左: $e")
         document.getElementById("sss")?.innerHTML += "E"}
 }
