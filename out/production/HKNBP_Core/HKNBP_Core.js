@@ -1574,14 +1574,20 @@ var HKNBP_Core = function (_, Kotlin) {
     interfaces: [ArrayLinkList$OnNodeEventListener]
   };
   function tvChannels$lambda$lambda(tvChannels_) {
+    var tmp$, tmp$_0;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 't2') : null;
     tvChannels = tvChannels_;
     tvChannels.addOnNodeEventListener_ljxrtv$(new tvChannels$lambda$lambda$ObjectLiteral());
     updateChannel();
     TVChannelDescription_getInstance().show_za3lpa$(5000);
     TVChannelDescription_getInstance().update();
+    (tmp$_0 = document.getElementById('sss')) != null ? (tmp$_0.innerHTML = 't3') : null;
   }
   function tvChannels$lambda() {
+    var tmp$, tmp$_0;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 't0') : null;
     TVChannel$Companion_getInstance().getTVChannels_94t8aj$(tvChannels$lambda$lambda);
+    (tmp$_0 = document.getElementById('sss')) != null ? (tmp$_0.innerHTML = 't1') : null;
     return ArrayLinkList_init([new TVChannel()]);
   }
   var tvChannels;
