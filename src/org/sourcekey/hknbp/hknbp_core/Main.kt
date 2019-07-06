@@ -296,6 +296,10 @@ fun main(args: Array<String>) {
 
     try {
         document.getElementById("sss")?.innerHTML = "v13"
+        T1
+        document.getElementById("sss")?.innerHTML = "v13T1"
+        T2
+        document.getElementById("sss")?.innerHTML = "v13T2"
         UserControlPanel
         document.getElementById("sss")?.innerHTML = "v14"
         ConsentPanel

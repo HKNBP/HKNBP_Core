@@ -77,6 +77,8 @@ var HKNBP_Core = function (_, Kotlin) {
   ShareWindow.prototype.constructor = ShareWindow;
   SubtitleDescription.prototype = Object.create(UserInterface.prototype);
   SubtitleDescription.prototype.constructor = SubtitleDescription;
+  T2.prototype = Object.create(UserInterface.prototype);
+  T2.prototype.constructor = T2;
   TVChannelDescription.prototype = Object.create(UserInterface.prototype);
   TVChannelDescription.prototype.constructor = TVChannelDescription;
   UserControlPanel.prototype = Object.create(UserInterface.prototype);
@@ -1741,24 +1743,28 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   var v12;
   function main(args) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7;
     try {
       (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v13') : null;
+      T1_getInstance();
+      (tmp$_0 = document.getElementById('sss')) != null ? (tmp$_0.innerHTML = 'v13T1') : null;
+      T2_getInstance();
+      (tmp$_1 = document.getElementById('sss')) != null ? (tmp$_1.innerHTML = 'v13T2') : null;
       UserControlPanel_getInstance();
-      (tmp$_0 = document.getElementById('sss')) != null ? (tmp$_0.innerHTML = 'v14') : null;
+      (tmp$_2 = document.getElementById('sss')) != null ? (tmp$_2.innerHTML = 'v14') : null;
       ConsentPanel_getInstance();
-      (tmp$_1 = document.getElementById('sss')) != null ? (tmp$_1.innerHTML = 'v15') : null;
+      (tmp$_3 = document.getElementById('sss')) != null ? (tmp$_3.innerHTML = 'v15') : null;
       VirtualRemote_getInstance();
-      (tmp$_2 = document.getElementById('sss')) != null ? (tmp$_2.innerHTML = 'v16') : null;
+      (tmp$_4 = document.getElementById('sss')) != null ? (tmp$_4.innerHTML = 'v16') : null;
       RealRemote_getInstance();
-      (tmp$_3 = document.getElementById('sss')) != null ? (tmp$_3.innerHTML = 'v17') : null;
+      (tmp$_5 = document.getElementById('sss')) != null ? (tmp$_5.innerHTML = 'v17') : null;
       LongClickEvent_getInstance();
-      (tmp$_4 = document.getElementById('sss')) != null ? (tmp$_4.innerHTML = 'v18') : null;
+      (tmp$_6 = document.getElementById('sss')) != null ? (tmp$_6.innerHTML = 'v18') : null;
     }
      catch (e) {
       println('\u4ECB\u9762\u521D\u59CB\u5316\u54C0\u5DE6: ' + e.toString());
-      tmp$_5 = document.getElementById('sss');
-      tmp$_5 != null ? (tmp$_5.innerHTML = (tmp$_5 != null ? tmp$_5.innerHTML : null) + 'E') : null;
+      tmp$_7 = document.getElementById('sss');
+      tmp$_7 != null ? (tmp$_7.innerHTML = (tmp$_7 != null ? tmp$_7.innerHTML : null) + 'E') : null;
     }
   }
   function MutedDescription() {
@@ -2804,6 +2810,37 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return SubtitleDescription_instance;
   }
+  function T1() {
+    T1_instance = this;
+  }
+  T1.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'T1',
+    interfaces: []
+  };
+  var T1_instance = null;
+  function T1_getInstance() {
+    if (T1_instance === null) {
+      new T1();
+    }
+    return T1_instance;
+  }
+  function T2() {
+    T2_instance = this;
+    UserInterface.call(this, 'userControlPanel');
+  }
+  T2.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'T2',
+    interfaces: [UserInterface]
+  };
+  var T2_instance = null;
+  function T2_getInstance() {
+    if (T2_instance === null) {
+      new T2();
+    }
+    return T2_instance;
+  }
   function Comparator$ObjectLiteral(closure$comparison) {
     this.closure$comparison = closure$comparison;
   }
@@ -3467,28 +3504,13 @@ var HKNBP_Core = function (_, Kotlin) {
     this.isFocusCountdownHide_768iff$_0 = isFocusCountdownHide;
     this.isFocusOutHide_o0rj94$_0 = isFocusOutHide;
     this.conversionFocusHideTime_igwo47$_0 = conversionFocusHideTime;
-    this.u0 = UserInterface$u0$lambda();
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
+    var tmp$, tmp$_0, tmp$_1;
     this.htmlElement_sdspbr$_0 = Kotlin.isType(tmp$ = document.getElementById(this.htmlElementID_fynci$_0), HTMLElement) ? tmp$ : throwCCE();
     this.lastTimeFocusElement_bd4klp$_0 = jQuery('#' + toString(this.firstFocusElementID_ydky23$_0));
-    this.u1 = UserInterface$u1$lambda();
-    this.u2 = UserInterface$u2$lambda();
     this.isShowUserInterfaceFirstFocus_mby111$_0 = false;
-    this.u3 = UserInterface$u3$lambda();
     this.hideTimer_1c3smv$_rf6tp$_0 = 0;
-    this.u4 = UserInterface$u4$lambda();
-    this.u5 = UserInterface$u5$lambda();
-    this.u6 = UserInterface$u6$lambda();
-    this.u7 = UserInterface$u7$lambda();
-    this.u8 = UserInterface$u8$lambda();
-    this.u9 = UserInterface$u9$lambda();
-    this.u10 = UserInterface$u10$lambda();
-    this.u11 = UserInterface$u11$lambda();
-    (tmp$_0 = document.getElementById('sss')) != null ? (tmp$_0.innerHTML = 'u12') : null;
-    (tmp$_1 = jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input'))) != null ? tmp$_1.focus(UserInterface_init$lambda_1(this)) : null;
-    (tmp$_2 = document.getElementById('sss')) != null ? (tmp$_2.innerHTML = 'u13') : null;
-    (tmp$_3 = jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input'))) != null ? tmp$_3.hover(UserInterface_init$lambda_2) : null;
-    (tmp$_4 = document.getElementById('sss')) != null ? (tmp$_4.innerHTML = 'u14') : null;
+    (tmp$_0 = jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input'))) != null ? tmp$_0.focus(UserInterface_init$lambda_1(this)) : null;
+    (tmp$_1 = jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input'))) != null ? tmp$_1.hover(UserInterface_init$lambda_2) : null;
   }
   UserInterface.prototype.update = function () {
   };
@@ -3549,66 +3571,6 @@ var HKNBP_Core = function (_, Kotlin) {
   function UserInterface_init$lambda() {
   }
   function UserInterface_init$lambda_0() {
-  }
-  function UserInterface$u0$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u0') : null;
-    return Unit;
-  }
-  function UserInterface$u1$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u1') : null;
-    return Unit;
-  }
-  function UserInterface$u2$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u02') : null;
-    return Unit;
-  }
-  function UserInterface$u3$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u3') : null;
-    return Unit;
-  }
-  function UserInterface$u4$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u4') : null;
-    return Unit;
-  }
-  function UserInterface$u5$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u5') : null;
-    return Unit;
-  }
-  function UserInterface$u6$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u6') : null;
-    return Unit;
-  }
-  function UserInterface$u7$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u7') : null;
-    return Unit;
-  }
-  function UserInterface$u8$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u8') : null;
-    return Unit;
-  }
-  function UserInterface$u9$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u9') : null;
-    return Unit;
-  }
-  function UserInterface$u10$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u10') : null;
-    return Unit;
-  }
-  function UserInterface$u11$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u11') : null;
-    return Unit;
   }
   function UserInterface_init$lambda_1(this$UserInterface) {
     return function () {
@@ -5958,6 +5920,12 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   Object.defineProperty(package$hknbp_core, 'SubtitleDescription', {
     get: SubtitleDescription_getInstance
+  });
+  Object.defineProperty(package$hknbp_core, 'T1', {
+    get: T1_getInstance
+  });
+  Object.defineProperty(package$hknbp_core, 'T2', {
+    get: T2_getInstance
   });
   TVChannel.Source = TVChannel$Source;
   TVChannel.Information = TVChannel$Information;
