@@ -3440,28 +3440,13 @@ var HKNBP_Core = function (_, Kotlin) {
     this.isFocusCountdownHide_768iff$_0 = isFocusCountdownHide;
     this.isFocusOutHide_o0rj94$_0 = isFocusOutHide;
     this.conversionFocusHideTime_igwo47$_0 = conversionFocusHideTime;
-    this.u0 = UserInterface$u0$lambda();
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
+    var tmp$, tmp$_0, tmp$_1;
     this.htmlElement_sdspbr$_0 = Kotlin.isType(tmp$ = document.getElementById(this.htmlElementID_fynci$_0), HTMLElement) ? tmp$ : throwCCE();
     this.lastTimeFocusElement_bd4klp$_0 = jQuery('#' + toString(this.firstFocusElementID_ydky23$_0));
-    this.u1 = UserInterface$u1$lambda();
-    this.u2 = UserInterface$u2$lambda();
     this.isShowUserInterfaceFirstFocus_mby111$_0 = false;
-    this.u3 = UserInterface$u3$lambda();
     this.hideTimer_1c3smv$_rf6tp$_0 = 0;
-    this.u4 = UserInterface$u4$lambda();
-    this.u5 = UserInterface$u5$lambda();
-    this.u6 = UserInterface$u6$lambda();
-    this.u7 = UserInterface$u7$lambda();
-    this.u8 = UserInterface$u8$lambda();
-    this.u9 = UserInterface$u9$lambda();
-    this.u10 = UserInterface$u10$lambda();
-    this.u11 = UserInterface$u11$lambda();
-    (tmp$_0 = document.getElementById('sss')) != null ? (tmp$_0.innerHTML = 'u12') : null;
-    (tmp$_1 = jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input'))) != null ? tmp$_1.focus(UserInterface_init$lambda_1(this)) : null;
-    (tmp$_2 = document.getElementById('sss')) != null ? (tmp$_2.innerHTML = 'u13') : null;
-    (tmp$_3 = jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input'))) != null ? tmp$_3.hover(UserInterface_init$lambda_2) : null;
-    (tmp$_4 = document.getElementById('sss')) != null ? (tmp$_4.innerHTML = 'u14') : null;
+    (tmp$_0 = jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input'))) != null ? tmp$_0.focus(UserInterface_init$lambda_1(this)) : null;
+    (tmp$_1 = jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input'))) != null ? tmp$_1.hover(UserInterface_init$lambda_2) : null;
   }
   UserInterface.prototype.update = function () {
   };
@@ -3522,66 +3507,6 @@ var HKNBP_Core = function (_, Kotlin) {
   function UserInterface_init$lambda() {
   }
   function UserInterface_init$lambda_0() {
-  }
-  function UserInterface$u0$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u0') : null;
-    return Unit;
-  }
-  function UserInterface$u1$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u1') : null;
-    return Unit;
-  }
-  function UserInterface$u2$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u02') : null;
-    return Unit;
-  }
-  function UserInterface$u3$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u3') : null;
-    return Unit;
-  }
-  function UserInterface$u4$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u4') : null;
-    return Unit;
-  }
-  function UserInterface$u5$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u5') : null;
-    return Unit;
-  }
-  function UserInterface$u6$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u6') : null;
-    return Unit;
-  }
-  function UserInterface$u7$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u7') : null;
-    return Unit;
-  }
-  function UserInterface$u8$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u8') : null;
-    return Unit;
-  }
-  function UserInterface$u9$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u9') : null;
-    return Unit;
-  }
-  function UserInterface$u10$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u10') : null;
-    return Unit;
-  }
-  function UserInterface$u11$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u11') : null;
-    return Unit;
   }
   function UserInterface_init$lambda_1(this$UserInterface) {
     return function () {
@@ -6016,7 +5941,7 @@ var HKNBP_Core = function (_, Kotlin) {
   var tmp$;
   player = new Player((tmp$ = tvChannels.node) != null ? tmp$ : new TVChannel());
   v11 = v11$lambda();
-  userLanguageList = SettingWindow_getInstance().getLanguageSetting();
+  userLanguageList = ArrayList_init();
   v12 = v12$lambda();
   main([]);
   Kotlin.defineModule('HKNBP_Core', _);

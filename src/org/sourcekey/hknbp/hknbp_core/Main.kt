@@ -283,7 +283,7 @@ val v11 = { document.getElementById("sss")?.innerHTML = "v11" }()
 /**
  * 使用者語言讀取優先排列表
  * */
-var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
+var userLanguageList: ArrayList<String?> = ArrayList()//SettingWindow.getLanguageSetting()
 val v12 = { document.getElementById("sss")?.innerHTML = "v12" }()
 
 /**
