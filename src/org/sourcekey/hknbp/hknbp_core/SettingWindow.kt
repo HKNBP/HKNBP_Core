@@ -24,6 +24,10 @@ object SettingWindow: UserInterface(
         firstFocusElementID = "settingWindowHideButton",
         isFocusOutHide = true
 ) {
+    val v11v0 = {
+        document.getElementById("sss")?.innerHTML = "v11v0"
+        ""
+    }()
     private val settingWindow                   = document.getElementById("settingWindow") as HTMLDivElement
     private val hideButton                      = document.getElementById("settingWindowHideButton") as HTMLButtonElement
     private val languageSetHonJyutElegantSet    = document.getElementById("settingWindowLanguageSetHonJyutElegantSet") as HTMLButtonElement
@@ -36,9 +40,15 @@ object SettingWindow: UserInterface(
     private val languageRemoveLanguage          = document.getElementById("settingWindowLanguageRemoveLanguage") as HTMLButtonElement
     private val languageMoveUpLanguage          = document.getElementById("settingWindowLanguageMoveUpLanguage") as HTMLButtonElement
     private val languageMoveDownLanguage        = document.getElementById("settingWindowLanguageMoveDownLanguage") as HTMLButtonElement
-
+    val v11v1 = {
+        document.getElementById("sss")?.innerHTML = "v11v1"
+        ""
+    }()
     private val currentUserLanguage = js("navigator.language || navigator.userLanguage;") as String
-
+    val v11v2 = {
+        document.getElementById("sss")?.innerHTML = "v11v2"
+        ""
+    }()
     fun getLanguageSetting(): ArrayList<String?>{
         val userLanguageList = ArrayList<String?>()
         for(index in 0 until languageSelectSequenceList.length){
@@ -46,14 +56,20 @@ object SettingWindow: UserInterface(
         }
         return userLanguageList
     }
-
+    val v11v3 = {
+        document.getElementById("sss")?.innerHTML = "v11v3"
+        ""
+    }()
     private fun createLanguageOption(isoCode: String): HTMLOptionElement{
         val option = document.createElement("option") as HTMLOptionElement
         option.text = isoCode
         option.value = isoCode
         return option
     }
-
+    val v11v4 = {
+        document.getElementById("sss")?.innerHTML = "v11v4"
+        ""
+    }()
     fun initLangugeSetting(){
         languageAddLanguage.onclick = fun(event){
             if(languageSetLanguageISOCodeInput.value != ""){
@@ -170,14 +186,17 @@ object SettingWindow: UserInterface(
                 localStorage.getItem("RecentlyLanguageSelectSequence")?:
                         "<option value=\"${currentUserLanguage}\">${currentUserLanguage}</option>"
     }
-
+    val v11v5 = {
+        document.getElementById("sss")?.innerHTML = "v11v5"
+        ""
+    }()
     init {
-        document.getElementById("sss")?.innerHTML = "v12.0"
+        document.getElementById("sss")?.innerHTML = "v11.0"
         settingWindow.style.cursor = "auto"
-        document.getElementById("sss")?.innerHTML = "v12.1"
+        document.getElementById("sss")?.innerHTML = "v11.1"
         hideButton.onclick = fun(event){ hide() }
-        document.getElementById("sss")?.innerHTML = "v12.2"
+        document.getElementById("sss")?.innerHTML = "v11.2"
         initLangugeSetting()
-        document.getElementById("sss")?.innerHTML = "v12.3"
+        document.getElementById("sss")?.innerHTML = "v11.3"
     }
 }

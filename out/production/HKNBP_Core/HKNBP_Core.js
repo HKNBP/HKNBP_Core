@@ -2584,6 +2584,7 @@ var HKNBP_Core = function (_, Kotlin) {
   function SettingWindow() {
     SettingWindow_instance = this;
     UserInterface.call(this, 'settingWindow', void 0, void 0, 'settingWindowHideButton', void 0, true);
+    this.v11v0 = SettingWindow$v11v0$lambda();
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15;
     this.settingWindow_0 = Kotlin.isType(tmp$ = document.getElementById('settingWindow'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('settingWindowHideButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
@@ -2597,14 +2598,19 @@ var HKNBP_Core = function (_, Kotlin) {
     this.languageRemoveLanguage_0 = Kotlin.isType(tmp$_8 = document.getElementById('settingWindowLanguageRemoveLanguage'), HTMLButtonElement) ? tmp$_8 : throwCCE();
     this.languageMoveUpLanguage_0 = Kotlin.isType(tmp$_9 = document.getElementById('settingWindowLanguageMoveUpLanguage'), HTMLButtonElement) ? tmp$_9 : throwCCE();
     this.languageMoveDownLanguage_0 = Kotlin.isType(tmp$_10 = document.getElementById('settingWindowLanguageMoveDownLanguage'), HTMLButtonElement) ? tmp$_10 : throwCCE();
+    this.v11v1 = SettingWindow$v11v1$lambda();
     this.currentUserLanguage_0 = typeof (tmp$_11 = navigator.language || navigator.userLanguage) === 'string' ? tmp$_11 : throwCCE();
-    (tmp$_12 = document.getElementById('sss')) != null ? (tmp$_12.innerHTML = 'v12.0') : null;
+    this.v11v2 = SettingWindow$v11v2$lambda();
+    this.v11v3 = SettingWindow$v11v3$lambda();
+    this.v11v4 = SettingWindow$v11v4$lambda();
+    this.v11v5 = SettingWindow$v11v5$lambda();
+    (tmp$_12 = document.getElementById('sss')) != null ? (tmp$_12.innerHTML = 'v11.0') : null;
     this.settingWindow_0.style.cursor = 'auto';
-    (tmp$_13 = document.getElementById('sss')) != null ? (tmp$_13.innerHTML = 'v12.1') : null;
+    (tmp$_13 = document.getElementById('sss')) != null ? (tmp$_13.innerHTML = 'v11.1') : null;
     this.hideButton_0.onclick = SettingWindow_init$lambda(this);
-    (tmp$_14 = document.getElementById('sss')) != null ? (tmp$_14.innerHTML = 'v12.2') : null;
+    (tmp$_14 = document.getElementById('sss')) != null ? (tmp$_14.innerHTML = 'v11.2') : null;
     this.initLangugeSetting();
-    (tmp$_15 = document.getElementById('sss')) != null ? (tmp$_15.innerHTML = 'v12.3') : null;
+    (tmp$_15 = document.getElementById('sss')) != null ? (tmp$_15.innerHTML = 'v11.3') : null;
   }
   SettingWindow.prototype.getLanguageSetting = function () {
     var tmp$, tmp$_0;
@@ -2730,6 +2736,36 @@ var HKNBP_Core = function (_, Kotlin) {
     this.languageSetPresetSet_0.onclick = SettingWindow$initLangugeSetting$lambda_6(this);
     this.languageSelectSequenceList_0.innerHTML = (tmp$ = localStorage.getItem('RecentlyLanguageSelectSequence')) != null ? tmp$ : '<option value=' + '"' + this.currentUserLanguage_0 + '"' + '>' + this.currentUserLanguage_0 + '<\/option>';
   };
+  function SettingWindow$v11v0$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v11v0') : null;
+    return '';
+  }
+  function SettingWindow$v11v1$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v11v1') : null;
+    return '';
+  }
+  function SettingWindow$v11v2$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v11v2') : null;
+    return '';
+  }
+  function SettingWindow$v11v3$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v11v3') : null;
+    return '';
+  }
+  function SettingWindow$v11v4$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v11v4') : null;
+    return '';
+  }
+  function SettingWindow$v11v5$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v11v5') : null;
+    return '';
+  }
   function SettingWindow_init$lambda(this$SettingWindow) {
     return function (event) {
       this$SettingWindow.hide();
