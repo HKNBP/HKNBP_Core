@@ -37,8 +37,7 @@ object UserControlPanel: UserInterface(
             UserControlPanel.hideMouseTimer = window.setTimeout(fun(){
                 jQuery("#userControlPanelShower").css("cursor", "none")
             }, 2000)
-        },
-        "onHeadNextAudioButton"
+        }
 ) {
     val ucp0 = { document.getElementById("sss")?.innerHTML = "ucp0" }()
     private val panel: HTMLElement   = document.getElementById("userControlPanel") as HTMLElement

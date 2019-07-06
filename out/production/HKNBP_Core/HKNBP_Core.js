@@ -3355,7 +3355,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function UserControlPanel() {
     UserControlPanel_instance = this;
-    UserInterface.call(this, 'userControlPanel', UserControlPanel_init$lambda, UserControlPanel_init$lambda_0, 'onHeadNextAudioButton');
+    UserInterface.call(this, 'userControlPanel', UserControlPanel_init$lambda, UserControlPanel_init$lambda_0);
     this.ucp0 = UserControlPanel$ucp0$lambda();
     var tmp$, tmp$_0;
     this.panel_0 = Kotlin.isType(tmp$ = document.getElementById('userControlPanel'), HTMLElement) ? tmp$ : throwCCE();

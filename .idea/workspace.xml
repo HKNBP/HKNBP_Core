@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="439dc076-fa64-48ca-946e-6d20fa2781e4" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/T1.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/T2.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.meta.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.meta.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,8 +37,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="1069" column="8" selection-start-line="1069" selection-start-column="8" selection-end-line="1069" selection-end-column="8" />
+            <state relative-caret-position="219">
+              <caret line="1065" column="20" selection-start-line="1065" selection-start-column="20" selection-end-line="1065" selection-end-column="20" />
               <folding>
                 <element signature="e#23#619#0" />
                 <element signature="n#head#0;n#html#0;n#!!top" />
@@ -340,7 +334,6 @@
                 <element signature="e#46488#46496#1" />
                 <element signature="n#div#15;n#div#1;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#16;n#div#1;n#body#0;n#html#0;n#!!top" />
-                <element signature="n#style#0;n#button#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#noscript#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#0;n#noscript#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
@@ -353,7 +346,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/service-worker.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="864">
+            <state relative-caret-position="-108">
               <caret line="66" column="50" selection-start-line="66" selection-start-column="50" selection-end-line="66" selection-end-column="50" />
             </state>
           </provider>
@@ -368,11 +361,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="301" column="58" selection-start-line="301" selection-start-column="58" selection-end-line="301" selection-end-column="58" />
+            <state relative-caret-position="426">
+              <caret line="302" column="24" lean-forward="true" selection-start-line="302" selection-start-column="24" selection-end-line="302" selection-end-column="24" />
               <folding>
                 <element signature="n#!!doc;n#coreVersion#0" />
                 <element signature="e#936#1230#1" />
@@ -429,7 +422,7 @@
         <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/T1.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="108">
-              <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
@@ -438,77 +431,18 @@
         <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/T2.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="108">
-              <caret line="18" column="8" lean-forward="true" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
+              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="29" column="25" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="25" />
+            <state relative-caret-position="324">
+              <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
               <folding>
                 <element signature="n#!!doc;n#UserControlPanel#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/EPG.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2574">
-              <caret line="419" column="49" selection-start-line="419" selection-start-column="49" selection-end-line="419" selection-end-column="49" />
-              <folding>
-                <element signature="n#!!block;n#setDisplayCurrentDateBox#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationTitle#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationSubTitle#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationDesc#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationCredit#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationDate#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationCategory#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationKeyword#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationLanguage#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationOrigLanguage#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationLength#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationIcon#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationUrl#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationCountry#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationEpisodeNum#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationVideo#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationAudio#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationPreviouslyShown#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationPremiere#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationLastChance#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationNew#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationSubtitles#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationRating#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationStarRating#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationReview#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationBroadcastDateSlot#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformationBroadcastTimeSlot#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeInformation#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#nowDateWithoutMinute#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#addDay#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#dateToDateDifferenceMinute#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#oneHourLengthPX#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#getDateByProgrammeListTableScrollLeft#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeListCurrentDisplayDate#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeListTimeLine#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeListChannelList#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#addProgrammeOnTimeLine#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#loadProgrammeListTableContentChannelProgrammeTimeLine#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!doc;n#focusCurrentProgramme#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#focusCurrentProgramme#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!doc;n#setChannelProgrammeTimeLineContent#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setChannelProgrammeTimeLineContent#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!doc;n#newChannelProgrammeTimeLineArea#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#newChannelProgrammeTimeLineArea#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!doc;n#syncScroll#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#syncScroll#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeListTable#0;n#!!block;n#EPG#0" />
-                <element signature="n#!!block;n#setProgrammeList#0;n#!!block;n#EPG#0" />
               </folding>
             </state>
           </provider>
@@ -614,13 +548,13 @@
         <option value="$PROJECT_DIR$/service-worker.js" />
         <option value="$PROJECT_DIR$/data/tv_channels.xml" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/SettingWindow.kt" />
-        <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserInterface.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/T1.kts" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/T1.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/T2.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt" />
       </list>
     </option>
   </component>
@@ -881,8 +815,8 @@
       <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.15266559" />
       <window_info id="Structure" order="5" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5573506" side_tool="true" visible="true" weight="0.09716157" />
-      <window_info anchor="bottom" id="Messages" order="1" sideWeight="0.44264942" visible="true" weight="0.09716157" />
+      <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.55815834" side_tool="true" visible="true" weight="0.09716157" />
+      <window_info anchor="bottom" id="Messages" order="1" sideWeight="0.4418417" visible="true" weight="0.09716157" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.32969433" />
       <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.48546043" weight="0.12445415" />
       <window_info anchor="bottom" id="Run" order="4" weight="0.0" />
@@ -1380,63 +1314,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/EPG.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2574">
-          <caret line="419" column="49" selection-start-line="419" selection-start-column="49" selection-end-line="419" selection-end-column="49" />
-          <folding>
-            <element signature="n#!!block;n#setDisplayCurrentDateBox#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationTitle#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationSubTitle#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationDesc#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationCredit#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationDate#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationCategory#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationKeyword#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationLanguage#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationOrigLanguage#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationLength#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationIcon#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationUrl#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationCountry#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationEpisodeNum#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationVideo#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationAudio#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationPreviouslyShown#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationPremiere#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationLastChance#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationNew#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationSubtitles#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationRating#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationStarRating#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationReview#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationBroadcastDateSlot#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformationBroadcastTimeSlot#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeInformation#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#nowDateWithoutMinute#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#addDay#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#dateToDateDifferenceMinute#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#oneHourLengthPX#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#getDateByProgrammeListTableScrollLeft#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeListCurrentDisplayDate#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeListTimeLine#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeListChannelList#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#addProgrammeOnTimeLine#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#loadProgrammeListTableContentChannelProgrammeTimeLine#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!doc;n#focusCurrentProgramme#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#focusCurrentProgramme#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!doc;n#setChannelProgrammeTimeLineContent#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setChannelProgrammeTimeLineContent#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!doc;n#newChannelProgrammeTimeLineArea#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#newChannelProgrammeTimeLineArea#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!doc;n#syncScroll#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#syncScroll#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeListTable#0;n#!!block;n#EPG#0" />
-            <element signature="n#!!block;n#setProgrammeList#0;n#!!block;n#EPG#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VirtualRemote.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
@@ -1592,10 +1469,84 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/T1.kts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/EPG.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="741">
+          <caret line="419" column="49" selection-start-line="419" selection-start-column="49" selection-end-line="419" selection-end-column="49" />
+          <folding>
+            <element signature="n#!!block;n#setDisplayCurrentDateBox#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationTitle#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationSubTitle#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationDesc#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationCredit#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationDate#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationCategory#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationKeyword#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationLanguage#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationOrigLanguage#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationLength#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationIcon#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationUrl#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationCountry#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationEpisodeNum#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationVideo#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationAudio#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationPreviouslyShown#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationPremiere#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationLastChance#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationNew#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationSubtitles#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationRating#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationStarRating#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationReview#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationBroadcastDateSlot#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformationBroadcastTimeSlot#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeInformation#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#nowDateWithoutMinute#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#addDay#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#dateToDateDifferenceMinute#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#oneHourLengthPX#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#getDateByProgrammeListTableScrollLeft#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeListCurrentDisplayDate#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeListTimeLine#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeListChannelList#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#addProgrammeOnTimeLine#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#loadProgrammeListTableContentChannelProgrammeTimeLine#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!doc;n#focusCurrentProgramme#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#focusCurrentProgramme#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!doc;n#setChannelProgrammeTimeLineContent#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setChannelProgrammeTimeLineContent#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!doc;n#newChannelProgrammeTimeLineArea#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#newChannelProgrammeTimeLineArea#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!doc;n#syncScroll#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#syncScroll#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeListTable#0;n#!!block;n#EPG#0" />
+            <element signature="n#!!block;n#setProgrammeList#0;n#!!block;n#EPG#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/T1.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/T2.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="1069" column="8" selection-start-line="1069" selection-start-column="8" selection-end-line="1069" selection-end-column="8" />
+        <state relative-caret-position="219">
+          <caret line="1065" column="20" selection-start-line="1065" selection-start-column="20" selection-end-line="1065" selection-end-column="20" />
           <folding>
             <element signature="e#23#619#0" />
             <element signature="n#head#0;n#html#0;n#!!top" />
@@ -1891,12 +1842,18 @@
             <element signature="e#46488#46496#1" />
             <element signature="n#div#15;n#div#1;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#16;n#div#1;n#body#0;n#html#0;n#!!top" />
-            <element signature="n#style#0;n#button#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#noscript#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#0;n#noscript#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
             <element signature="e#47921#48051#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-worker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-108">
+          <caret line="66" column="50" selection-start-line="66" selection-start-column="50" selection-end-line="66" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -1907,44 +1864,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service-worker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="66" column="50" selection-start-line="66" selection-start-column="50" selection-end-line="66" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/T1.kts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="29" column="25" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="25" />
-          <folding>
-            <element signature="n#!!doc;n#UserControlPanel#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/T2.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="18" column="8" lean-forward="true" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/T1.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="18" column="8" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="301" column="58" selection-start-line="301" selection-start-column="58" selection-end-line="301" selection-end-column="58" />
+        <state relative-caret-position="426">
+          <caret line="302" column="24" lean-forward="true" selection-start-line="302" selection-start-column="24" selection-end-line="302" selection-end-column="24" />
           <folding>
             <element signature="n#!!doc;n#coreVersion#0" />
             <element signature="e#936#1230#1" />
@@ -1992,6 +1915,16 @@
             <element signature="e#7347#7543#1" />
             <element signature="n#!!doc;n#userLanguageList#0" />
             <element signature="n#!!doc;n#main#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+          <folding>
+            <element signature="n#!!doc;n#UserControlPanel#0" />
           </folding>
         </state>
       </provider>
