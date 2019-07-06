@@ -32,9 +32,7 @@ abstract class UserInterface(
     private var lastTimeFocusElement: dynamic? = {
         if(firstFocusElementID != null){
             try {
-                document.getElementById("sss")?.innerHTML = "f0"
                 jQuery("#${firstFocusElementID}")
-                document.getElementById("sss")?.innerHTML = "f1"
             }catch (e: dynamic){ null }
         }else{ null }
     }()

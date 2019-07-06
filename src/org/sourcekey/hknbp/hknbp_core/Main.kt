@@ -311,5 +311,5 @@ fun main(args: Array<String>) {
         LongClickEvent
         document.getElementById("sss")?.innerHTML = "v18"
     } catch (e: dynamic) { println("介面初始化哀左: $e")
-        document.getElementById("sss")?.innerHTML += "E"}
+        document.getElementById("sss")?.innerHTML += "E${e}"}
 }

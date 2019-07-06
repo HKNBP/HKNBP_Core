@@ -1764,7 +1764,7 @@ var HKNBP_Core = function (_, Kotlin) {
      catch (e) {
       println('\u4ECB\u9762\u521D\u59CB\u5316\u54C0\u5DE6: ' + e.toString());
       tmp$_7 = document.getElementById('sss');
-      tmp$_7 != null ? (tmp$_7.innerHTML = (tmp$_7 != null ? tmp$_7.innerHTML : null) + 'E') : null;
+      tmp$_7 != null ? (tmp$_7.innerHTML = (tmp$_7 != null ? tmp$_7.innerHTML : null) + ('E' + e.toString())) : null;
     }
   }
   function MutedDescription() {
@@ -3574,12 +3574,9 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function UserInterface$lastTimeFocusElement$lambda(this$UserInterface) {
     return function () {
-      var tmp$, tmp$_0;
       if (this$UserInterface.firstFocusElementID_ydky23$_0 != null) {
         try {
-          (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'f0') : null;
-          jQuery('#' + toString(this$UserInterface.firstFocusElementID_ydky23$_0));
-          return (tmp$_0 = document.getElementById('sss')) != null && (tmp$_0.innerHTML = 'f1'), Unit;
+          return jQuery('#' + toString(this$UserInterface.firstFocusElementID_ydky23$_0));
         }
          catch (e) {
           return null;
