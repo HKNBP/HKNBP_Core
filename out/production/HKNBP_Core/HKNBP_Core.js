@@ -458,7 +458,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function ConsentPanel() {
     ConsentPanel_instance = this;
-    UserInterface.call(this, 'consentPanel', void 0, void 0, 'consentPanelAgreeConsentButton', false);
+    UserInterface.call(this, 'consentPanel', void 0, void 0, void 0, false);
     var tmp$, tmp$_0, tmp$_1;
     this.consentPanel_0 = Kotlin.isType(tmp$ = document.getElementById('consentPanel'), HTMLDivElement) ? tmp$ : throwCCE();
     this.agreeConsentButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('consentPanelAgreeConsentButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
@@ -3355,7 +3355,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function UserControlPanel() {
     UserControlPanel_instance = this;
-    UserInterface.call(this, 'userControlPanel', UserControlPanel_init$lambda, UserControlPanel_init$lambda_0);
+    UserInterface.call(this, 'userControlPanel', UserControlPanel_init$lambda, UserControlPanel_init$lambda_0, 'onHeadNextAudioButton');
     this.ucp0 = UserControlPanel$ucp0$lambda();
     var tmp$, tmp$_0;
     this.panel_0 = Kotlin.isType(tmp$ = document.getElementById('userControlPanel'), HTMLElement) ? tmp$ : throwCCE();

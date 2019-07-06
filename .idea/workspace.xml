@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="439dc076-fa64-48ca-946e-6d20fa2781e4" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ConsentPanel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ConsentPanel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -34,11 +37,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="219">
-              <caret line="1065" column="20" selection-start-line="1065" selection-start-column="20" selection-end-line="1065" selection-end-column="20" />
+            <state relative-caret-position="291">
+              <caret line="1069" column="8" selection-start-line="1069" selection-start-column="8" selection-end-line="1069" selection-end-column="8" />
               <folding>
                 <element signature="e#23#619#0" />
                 <element signature="n#head#0;n#html#0;n#!!top" />
@@ -334,6 +337,7 @@
                 <element signature="e#46488#46496#1" />
                 <element signature="n#div#15;n#div#1;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#16;n#div#1;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#style#0;n#button#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#noscript#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#div#0;n#noscript#0;n#body#0;n#html#0;n#!!top" />
                 <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
@@ -364,8 +368,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="302" column="24" lean-forward="true" selection-start-line="302" selection-start-column="24" selection-end-line="302" selection-end-column="24" />
+            <state relative-caret-position="462">
+              <caret line="304" column="20" lean-forward="true" selection-start-line="304" selection-start-column="20" selection-end-line="304" selection-end-column="20" />
               <folding>
                 <element signature="n#!!doc;n#coreVersion#0" />
                 <element signature="e#936#1230#1" />
@@ -419,28 +423,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/T1.kt">
+        <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ConsentPanel.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+            <state relative-caret-position="144">
+              <caret line="23" selection-start-line="23" selection-end-line="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/T2.kt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="324">
-              <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+              <caret line="39" column="9" lean-forward="true" selection-start-line="39" selection-start-column="9" selection-end-line="40" selection-end-column="31" />
               <folding>
                 <element signature="n#!!doc;n#UserControlPanel#0" />
               </folding>
@@ -529,7 +524,6 @@
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/RealRemote.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/x.html" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/RunnerInfo.kt" />
-        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ConsentPanel.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/AboutWindow.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ShareWindow.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/AppDownloadWindow.kt" />
@@ -553,8 +547,9 @@
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/T1.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/T2.kt" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt" />
+        <option value="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ConsentPanel.kt" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -815,8 +810,8 @@
       <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.15266559" />
       <window_info id="Structure" order="5" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.55815834" side_tool="true" visible="true" weight="0.09716157" />
-      <window_info anchor="bottom" id="Messages" order="1" sideWeight="0.4418417" visible="true" weight="0.09716157" />
+      <window_info anchor="bottom" id="Event Log" order="0" sideWeight="0.5597738" side_tool="true" visible="true" weight="0.09716157" />
+      <window_info anchor="bottom" id="Messages" order="1" sideWeight="0.44022617" visible="true" weight="0.09716157" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.32969433" />
       <window_info anchor="bottom" id="Terminal" order="3" sideWeight="0.48546043" weight="0.12445415" />
       <window_info anchor="bottom" id="Run" order="4" weight="0.0" />
@@ -1152,13 +1147,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="21" column="20" lean-forward="true" selection-start-line="21" selection-start-column="3" selection-end-line="21" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ConsentPanel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="24" column="36" selection-start-line="24" selection-start-column="36" selection-end-line="24" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -1529,6 +1517,75 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/service-worker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-108">
+          <caret line="66" column="50" selection-start-line="66" selection-start-column="50" selection-end-line="66" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/tv_channels.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-378">
+          <caret line="26" selection-start-line="26" selection-end-line="95" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="304" column="20" lean-forward="true" selection-start-line="304" selection-start-column="20" selection-end-line="304" selection-end-column="20" />
+          <folding>
+            <element signature="n#!!doc;n#coreVersion#0" />
+            <element signature="e#936#1230#1" />
+            <element signature="e#1055#1109#0" />
+            <element signature="e#1127#1161#0" />
+            <element signature="n#!!doc;n#appVersion#0" />
+            <element signature="e#1391#1615#0" />
+            <element signature="n#!!doc;n#jQuery#0" />
+            <element signature="e#1721#2393#1" />
+            <element signature="e#1768#2358#0" />
+            <element signature="e#1899#2249#0" />
+            <element signature="e#2098#2239#0" />
+            <element signature="n#!!doc;n#designatedChannel#0" />
+            <element signature="n#!!block;n#designatedChannel#0" />
+            <element signature="e#2715#2793#1" />
+            <element signature="e#2799#2955#1" />
+            <element signature="e#2846#2927#0" />
+            <element signature="n#!!doc;n#updateChannel#0" />
+            <element signature="n#!!block;n#updateChannel#0" />
+            <element signature="e#3123#4836#0" />
+            <element signature="e#3283#4830#0" />
+            <element signature="e#3368#3510#0" />
+            <element signature="e#3562#3926#0" />
+            <element signature="e#3734#3900#0" />
+            <element signature="e#3807#3878#1" />
+            <element signature="e#3985#4063#0" />
+            <element signature="e#4122#4200#0" />
+            <element signature="e#4262#4343#0" />
+            <element signature="e#4398#4466#0" />
+            <element signature="e#4520#4806#0" />
+            <element signature="e#4568#4787#0" />
+            <element signature="e#4603#4682#1" />
+            <element signature="e#4686#4765#1" />
+            <element signature="e#4886#5942#0" />
+            <element signature="n#!!doc;n#reductionTo#0" />
+            <element signature="n#!!block;n#reductionTo#0" />
+            <element signature="e#6225#6391#1" />
+            <element signature="e#6259#6385#1" />
+            <element signature="e#6304#6375#1" />
+            <element signature="n#!!doc;n#updateURLParameter#0" />
+            <element signature="n#!!block;n#updateURLParameter#0" />
+            <element signature="e#6850#7341#1" />
+            <element signature="e#7140#7335#1" />
+            <element signature="e#7217#7325#1" />
+            <element signature="e#7347#7543#1" />
+            <element signature="n#!!doc;n#userLanguageList#0" />
+            <element signature="n#!!doc;n#main#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/T1.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -1543,10 +1600,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="39" column="9" lean-forward="true" selection-start-line="39" selection-start-column="9" selection-end-line="40" selection-end-column="31" />
+          <folding>
+            <element signature="n#!!doc;n#UserControlPanel#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ConsentPanel.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="1065" column="20" selection-start-line="1065" selection-start-column="20" selection-end-line="1065" selection-end-column="20" />
+        <state relative-caret-position="291">
+          <caret line="1069" column="8" selection-start-line="1069" selection-start-column="8" selection-end-line="1069" selection-end-column="8" />
           <folding>
             <element signature="e#23#619#0" />
             <element signature="n#head#0;n#html#0;n#!!top" />
@@ -1842,89 +1916,11 @@
             <element signature="e#46488#46496#1" />
             <element signature="n#div#15;n#div#1;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#16;n#div#1;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#button#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#noscript#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#div#0;n#noscript#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
             <element signature="e#47921#48051#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/service-worker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-108">
-          <caret line="66" column="50" selection-start-line="66" selection-start-column="50" selection-end-line="66" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/tv_channels.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-378">
-          <caret line="26" selection-start-line="26" selection-end-line="95" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="302" column="24" lean-forward="true" selection-start-line="302" selection-start-column="24" selection-end-line="302" selection-end-column="24" />
-          <folding>
-            <element signature="n#!!doc;n#coreVersion#0" />
-            <element signature="e#936#1230#1" />
-            <element signature="e#1055#1109#0" />
-            <element signature="e#1127#1161#0" />
-            <element signature="n#!!doc;n#appVersion#0" />
-            <element signature="e#1391#1615#0" />
-            <element signature="n#!!doc;n#jQuery#0" />
-            <element signature="e#1721#2393#1" />
-            <element signature="e#1768#2358#0" />
-            <element signature="e#1899#2249#0" />
-            <element signature="e#2098#2239#0" />
-            <element signature="n#!!doc;n#designatedChannel#0" />
-            <element signature="n#!!block;n#designatedChannel#0" />
-            <element signature="e#2715#2793#1" />
-            <element signature="e#2799#2955#1" />
-            <element signature="e#2846#2927#0" />
-            <element signature="n#!!doc;n#updateChannel#0" />
-            <element signature="n#!!block;n#updateChannel#0" />
-            <element signature="e#3123#4836#0" />
-            <element signature="e#3283#4830#0" />
-            <element signature="e#3368#3510#0" />
-            <element signature="e#3562#3926#0" />
-            <element signature="e#3734#3900#0" />
-            <element signature="e#3807#3878#1" />
-            <element signature="e#3985#4063#0" />
-            <element signature="e#4122#4200#0" />
-            <element signature="e#4262#4343#0" />
-            <element signature="e#4398#4466#0" />
-            <element signature="e#4520#4806#0" />
-            <element signature="e#4568#4787#0" />
-            <element signature="e#4603#4682#1" />
-            <element signature="e#4686#4765#1" />
-            <element signature="e#4886#5942#0" />
-            <element signature="n#!!doc;n#reductionTo#0" />
-            <element signature="n#!!block;n#reductionTo#0" />
-            <element signature="e#6225#6391#1" />
-            <element signature="e#6259#6385#1" />
-            <element signature="e#6304#6375#1" />
-            <element signature="n#!!doc;n#updateURLParameter#0" />
-            <element signature="n#!!block;n#updateURLParameter#0" />
-            <element signature="e#6850#7341#1" />
-            <element signature="e#7140#7335#1" />
-            <element signature="e#7217#7325#1" />
-            <element signature="e#7347#7543#1" />
-            <element signature="n#!!doc;n#userLanguageList#0" />
-            <element signature="n#!!doc;n#main#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
-          <folding>
-            <element signature="n#!!doc;n#UserControlPanel#0" />
           </folding>
         </state>
       </provider>
