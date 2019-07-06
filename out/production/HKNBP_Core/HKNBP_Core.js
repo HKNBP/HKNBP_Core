@@ -3441,7 +3441,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.isFocusOutHide_o0rj94$_0 = isFocusOutHide;
     this.conversionFocusHideTime_igwo47$_0 = conversionFocusHideTime;
     this.u0 = UserInterface$u0$lambda();
-    var tmp$, tmp$_0, tmp$_1;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
     this.htmlElement_sdspbr$_0 = Kotlin.isType(tmp$ = document.getElementById(this.htmlElementID_fynci$_0), HTMLElement) ? tmp$ : throwCCE();
     this.lastTimeFocusElement_bd4klp$_0 = jQuery('#' + toString(this.firstFocusElementID_ydky23$_0));
     this.u1 = UserInterface$u1$lambda();
@@ -3457,8 +3457,11 @@ var HKNBP_Core = function (_, Kotlin) {
     this.u9 = UserInterface$u9$lambda();
     this.u10 = UserInterface$u10$lambda();
     this.u11 = UserInterface$u11$lambda();
-    (tmp$_0 = jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input'))) != null ? tmp$_0.focus(UserInterface_init$lambda_1(this)) : null;
-    (tmp$_1 = jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input'))) != null ? tmp$_1.hover(UserInterface_init$lambda_2) : null;
+    (tmp$_0 = document.getElementById('sss')) != null ? (tmp$_0.innerHTML = 'u12') : null;
+    (tmp$_1 = jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input'))) != null ? tmp$_1.focus(UserInterface_init$lambda_1(this)) : null;
+    (tmp$_2 = document.getElementById('sss')) != null ? (tmp$_2.innerHTML = 'u13') : null;
+    (tmp$_3 = jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input'))) != null ? tmp$_3.hover(UserInterface_init$lambda_2) : null;
+    (tmp$_4 = document.getElementById('sss')) != null ? (tmp$_4.innerHTML = 'u14') : null;
   }
   UserInterface.prototype.update = function () {
   };

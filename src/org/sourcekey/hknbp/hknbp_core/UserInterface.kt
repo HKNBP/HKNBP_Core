@@ -88,6 +88,7 @@ abstract class UserInterface(
     }
     val u11 = { document.getElementById("sss")?.innerHTML = "u11" }()
     init {
+        document.getElementById("sss")?.innerHTML = "u12"
         jQuery(
                 "#${htmlElementID} button" + "," +
                 "#${htmlElementID} select" + "," +
@@ -104,6 +105,7 @@ abstract class UserInterface(
                 setHideTimer(conversionFocusHideTime)
             }
         }})
+        document.getElementById("sss")?.innerHTML = "u13"
         jQuery(
                 "#${htmlElementID} button" + "," +
                 "#${htmlElementID} select" + "," +
@@ -113,7 +115,7 @@ abstract class UserInterface(
             //設 當onhover 就onfocus 同步
             jQuery(js("this"))?.focus()
         })
-
+        document.getElementById("sss")?.innerHTML = "u14"
         /**
         jQuery("#${htmlElementID}").blur(fun(){
             if(isFocusOutHide){
