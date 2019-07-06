@@ -293,12 +293,18 @@ var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
  * */
 fun main(args: Array<String>) {
     //HKNBPAppLayerBridge
-    
+    document.getElementById("sss")?.innerHTML = "0"
     try {
         UserControlPanel
+        document.getElementById("sss")?.innerHTML = "1"
         ConsentPanel
+        document.getElementById("sss")?.innerHTML = "2"
         VirtualRemote
+        document.getElementById("sss")?.innerHTML = "3"
         RealRemote
+        document.getElementById("sss")?.innerHTML = "4"
         LongClickEvent
-    } catch (e: dynamic) { println("介面初始化哀左: $e") }
+        document.getElementById("sss")?.innerHTML = "5"
+    } catch (e: dynamic) { println("介面初始化哀左: $e")
+        document.getElementById("sss")?.innerHTML += "E"}
 }
