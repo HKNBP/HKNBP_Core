@@ -1730,14 +1730,14 @@ var HKNBP_Core = function (_, Kotlin) {
   function v11$lambda() {
     var tmp$;
     (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v11') : null;
-    return '';
+    return Unit;
   }
   var v11;
   var userLanguageList;
   function v12$lambda() {
     var tmp$;
     (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v12') : null;
-    return '';
+    return Unit;
   }
   var v12;
   function main(args) {
@@ -2584,8 +2584,7 @@ var HKNBP_Core = function (_, Kotlin) {
   function SettingWindow() {
     SettingWindow_instance = this;
     UserInterface.call(this, 'settingWindow', void 0, void 0, 'settingWindowHideButton', void 0, true);
-    this.v11v0 = SettingWindow$v11v0$lambda();
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11;
     this.settingWindow_0 = Kotlin.isType(tmp$ = document.getElementById('settingWindow'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('settingWindowHideButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.languageSetHonJyutElegantSet_0 = Kotlin.isType(tmp$_1 = document.getElementById('settingWindowLanguageSetHonJyutElegantSet'), HTMLButtonElement) ? tmp$_1 : throwCCE();
@@ -2598,19 +2597,10 @@ var HKNBP_Core = function (_, Kotlin) {
     this.languageRemoveLanguage_0 = Kotlin.isType(tmp$_8 = document.getElementById('settingWindowLanguageRemoveLanguage'), HTMLButtonElement) ? tmp$_8 : throwCCE();
     this.languageMoveUpLanguage_0 = Kotlin.isType(tmp$_9 = document.getElementById('settingWindowLanguageMoveUpLanguage'), HTMLButtonElement) ? tmp$_9 : throwCCE();
     this.languageMoveDownLanguage_0 = Kotlin.isType(tmp$_10 = document.getElementById('settingWindowLanguageMoveDownLanguage'), HTMLButtonElement) ? tmp$_10 : throwCCE();
-    this.v11v1 = SettingWindow$v11v1$lambda();
     this.currentUserLanguage_0 = typeof (tmp$_11 = navigator.language || navigator.userLanguage) === 'string' ? tmp$_11 : throwCCE();
-    this.v11v2 = SettingWindow$v11v2$lambda();
-    this.v11v3 = SettingWindow$v11v3$lambda();
-    this.v11v4 = SettingWindow$v11v4$lambda();
-    this.v11v5 = SettingWindow$v11v5$lambda();
-    (tmp$_12 = document.getElementById('sss')) != null ? (tmp$_12.innerHTML = 'v11.0') : null;
     this.settingWindow_0.style.cursor = 'auto';
-    (tmp$_13 = document.getElementById('sss')) != null ? (tmp$_13.innerHTML = 'v11.1') : null;
     this.hideButton_0.onclick = SettingWindow_init$lambda(this);
-    (tmp$_14 = document.getElementById('sss')) != null ? (tmp$_14.innerHTML = 'v11.2') : null;
     this.initLangugeSetting();
-    (tmp$_15 = document.getElementById('sss')) != null ? (tmp$_15.innerHTML = 'v11.3') : null;
   }
   SettingWindow.prototype.getLanguageSetting = function () {
     var tmp$, tmp$_0;
@@ -2736,36 +2726,6 @@ var HKNBP_Core = function (_, Kotlin) {
     this.languageSetPresetSet_0.onclick = SettingWindow$initLangugeSetting$lambda_6(this);
     this.languageSelectSequenceList_0.innerHTML = (tmp$ = localStorage.getItem('RecentlyLanguageSelectSequence')) != null ? tmp$ : '<option value=' + '"' + this.currentUserLanguage_0 + '"' + '>' + this.currentUserLanguage_0 + '<\/option>';
   };
-  function SettingWindow$v11v0$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v11v0') : null;
-    return '';
-  }
-  function SettingWindow$v11v1$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v11v1') : null;
-    return '';
-  }
-  function SettingWindow$v11v2$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v11v2') : null;
-    return '';
-  }
-  function SettingWindow$v11v3$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v11v3') : null;
-    return '';
-  }
-  function SettingWindow$v11v4$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v11v4') : null;
-    return '';
-  }
-  function SettingWindow$v11v5$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v11v5') : null;
-    return '';
-  }
   function SettingWindow_init$lambda(this$SettingWindow) {
     return function (event) {
       this$SettingWindow.hide();
@@ -3480,11 +3440,23 @@ var HKNBP_Core = function (_, Kotlin) {
     this.isFocusCountdownHide_768iff$_0 = isFocusCountdownHide;
     this.isFocusOutHide_o0rj94$_0 = isFocusOutHide;
     this.conversionFocusHideTime_igwo47$_0 = conversionFocusHideTime;
+    this.u0 = UserInterface$u0$lambda();
     var tmp$, tmp$_0, tmp$_1;
     this.htmlElement_sdspbr$_0 = Kotlin.isType(tmp$ = document.getElementById(this.htmlElementID_fynci$_0), HTMLElement) ? tmp$ : throwCCE();
     this.lastTimeFocusElement_bd4klp$_0 = jQuery('#' + toString(this.firstFocusElementID_ydky23$_0));
+    this.u1 = UserInterface$u1$lambda();
+    this.u2 = UserInterface$u2$lambda();
     this.isShowUserInterfaceFirstFocus_mby111$_0 = false;
+    this.u3 = UserInterface$u3$lambda();
     this.hideTimer_1c3smv$_rf6tp$_0 = 0;
+    this.u4 = UserInterface$u4$lambda();
+    this.u5 = UserInterface$u5$lambda();
+    this.u6 = UserInterface$u6$lambda();
+    this.u7 = UserInterface$u7$lambda();
+    this.u8 = UserInterface$u8$lambda();
+    this.u9 = UserInterface$u9$lambda();
+    this.u10 = UserInterface$u10$lambda();
+    this.u11 = UserInterface$u11$lambda();
     (tmp$_0 = jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input'))) != null ? tmp$_0.focus(UserInterface_init$lambda_1(this)) : null;
     (tmp$_1 = jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input'))) != null ? tmp$_1.hover(UserInterface_init$lambda_2) : null;
   }
@@ -3547,6 +3519,66 @@ var HKNBP_Core = function (_, Kotlin) {
   function UserInterface_init$lambda() {
   }
   function UserInterface_init$lambda_0() {
+  }
+  function UserInterface$u0$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u0') : null;
+    return Unit;
+  }
+  function UserInterface$u1$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u1') : null;
+    return Unit;
+  }
+  function UserInterface$u2$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u02') : null;
+    return Unit;
+  }
+  function UserInterface$u3$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u3') : null;
+    return Unit;
+  }
+  function UserInterface$u4$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u4') : null;
+    return Unit;
+  }
+  function UserInterface$u5$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u5') : null;
+    return Unit;
+  }
+  function UserInterface$u6$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u6') : null;
+    return Unit;
+  }
+  function UserInterface$u7$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u7') : null;
+    return Unit;
+  }
+  function UserInterface$u8$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u8') : null;
+    return Unit;
+  }
+  function UserInterface$u9$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u9') : null;
+    return Unit;
+  }
+  function UserInterface$u10$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u10') : null;
+    return Unit;
+  }
+  function UserInterface$u11$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'u11') : null;
+    return Unit;
   }
   function UserInterface_init$lambda_1(this$UserInterface) {
     return function () {

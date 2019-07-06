@@ -279,18 +279,12 @@ fun updateURLParameter(param: String, paramVal: String){
     val rows_txt = temp + "" + param + "=" + _paramVal
     window.history.replaceState("", "", baseURL + "?" + newAdditionalURL + rows_txt)
 }
-val v11 = {
-    document.getElementById("sss")?.innerHTML = "v11"
-    ""
-}()
+val v11 = { document.getElementById("sss")?.innerHTML = "v11" }()
 /**
  * 使用者語言讀取優先排列表
  * */
 var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
-val v12 = {
-    document.getElementById("sss")?.innerHTML = "v12"
-    ""
-}()
+val v12 = { document.getElementById("sss")?.innerHTML = "v12" }()
 
 /**
  * ****************************** *

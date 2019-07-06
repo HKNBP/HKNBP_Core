@@ -28,11 +28,12 @@ abstract class UserInterface(
         private val conversionFocusHideTime: Int = 15000
 
 ) {
+    val u0 = { document.getElementById("sss")?.innerHTML = "u0" }()
     private val htmlElement = document.getElementById(htmlElementID) as HTMLElement
     private var lastTimeFocusElement: dynamic = jQuery("#${firstFocusElementID}")
-
+    val u1 = { document.getElementById("sss")?.innerHTML = "u1" }()
     open fun update(){}
-
+    val u2 = { document.getElementById("sss")?.innerHTML = "u02" }()
     /**
      * 係顯示介面時首次Focus
      *
@@ -41,7 +42,7 @@ abstract class UserInterface(
      * 此值   為辨別Focus類型
      * */
     private var isShowUserInterfaceFirstFocus: Boolean = false
-
+    val u3 = { document.getElementById("sss")?.innerHTML = "u3" }()
     /**
      * 隱藏頻道訊息計時器
      * */
@@ -50,12 +51,12 @@ abstract class UserInterface(
             window.clearTimeout(field)
             field = value
         }
-
+    val u4 = { document.getElementById("sss")?.innerHTML = "u4" }()
     open val isShow: Boolean
         get(){
             return htmlElement.style.display == "block"
         }
-
+    val u5 = { document.getElementById("sss")?.innerHTML = "u5" }()
     open fun show(){
         htmlElement.style.display = "block"
         isShowUserInterfaceFirstFocus = true
@@ -63,29 +64,29 @@ abstract class UserInterface(
         onShow()
         update()
     }
-
+    val u6 = { document.getElementById("sss")?.innerHTML = "u6" }()
     private fun setHideTimer(showTime: Int){
         hideTimer = window.setTimeout(fun(){ hide() }, showTime)
     }
-
+    val u7 = { document.getElementById("sss")?.innerHTML = "u7" }()
     fun show(showTime: Int){
         show()
         setHideTimer(showTime)
     }
-
+    val u8 = { document.getElementById("sss")?.innerHTML = "u8" }()
     open fun hide(){
         htmlElement.style.display = "none"
         onHide()
     }
-
+    val u9 = { document.getElementById("sss")?.innerHTML = "u9" }()
     fun showHideAlternately(){
         if(isShow){ hide() }else{ show() }
     }
-
+    val u10 = { document.getElementById("sss")?.innerHTML = "u10" }()
     fun showHideAlternately(showTime: Int){
         if(isShow){ hide() }else{ show(showTime) }
     }
-
+    val u11 = { document.getElementById("sss")?.innerHTML = "u11" }()
     init {
         jQuery(
                 "#${htmlElementID} button" + "," +
