@@ -1741,15 +1741,24 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   var v12;
   function main(args) {
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5;
     try {
+      (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v13') : null;
       UserControlPanel_getInstance();
+      (tmp$_0 = document.getElementById('sss')) != null ? (tmp$_0.innerHTML = 'v14') : null;
       ConsentPanel_getInstance();
+      (tmp$_1 = document.getElementById('sss')) != null ? (tmp$_1.innerHTML = 'v15') : null;
       VirtualRemote_getInstance();
+      (tmp$_2 = document.getElementById('sss')) != null ? (tmp$_2.innerHTML = 'v16') : null;
       RealRemote_getInstance();
+      (tmp$_3 = document.getElementById('sss')) != null ? (tmp$_3.innerHTML = 'v17') : null;
       LongClickEvent_getInstance();
+      (tmp$_4 = document.getElementById('sss')) != null ? (tmp$_4.innerHTML = 'v18') : null;
     }
      catch (e) {
       println('\u4ECB\u9762\u521D\u59CB\u5316\u54C0\u5DE6: ' + e.toString());
+      tmp$_5 = document.getElementById('sss');
+      tmp$_5 != null ? (tmp$_5.innerHTML = (tmp$_5 != null ? tmp$_5.innerHTML : null) + 'E') : null;
     }
   }
   function MutedDescription() {

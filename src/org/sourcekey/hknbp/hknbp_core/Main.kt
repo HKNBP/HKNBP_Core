@@ -295,10 +295,17 @@ fun main(args: Array<String>) {
     //HKNBPAppLayerBridge
 
     try {
+        document.getElementById("sss")?.innerHTML = "v13"
         UserControlPanel
+        document.getElementById("sss")?.innerHTML = "v14"
         ConsentPanel
+        document.getElementById("sss")?.innerHTML = "v15"
         VirtualRemote
+        document.getElementById("sss")?.innerHTML = "v16"
         RealRemote
+        document.getElementById("sss")?.innerHTML = "v17"
         LongClickEvent
-    } catch (e: dynamic) { println("介面初始化哀左: $e") }
+        document.getElementById("sss")?.innerHTML = "v18"
+    } catch (e: dynamic) { println("介面初始化哀左: $e")
+        document.getElementById("sss")?.innerHTML += "E"}
 }
