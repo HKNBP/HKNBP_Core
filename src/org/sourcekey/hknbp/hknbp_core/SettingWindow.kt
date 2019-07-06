@@ -172,9 +172,12 @@ object SettingWindow: UserInterface(
     }
 
     init {
+        document.getElementById("sss")?.innerHTML = "v12.0"
         settingWindow.style.cursor = "auto"
+        document.getElementById("sss")?.innerHTML = "v12.1"
         hideButton.onclick = fun(event){ hide() }
-
+        document.getElementById("sss")?.innerHTML = "v12.2"
         initLangugeSetting()
+        document.getElementById("sss")?.innerHTML = "v12.3"
     }
 }
