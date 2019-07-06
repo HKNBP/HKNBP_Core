@@ -27,7 +27,10 @@ val v0 = {
 }()
 
 val rootURL: String = "https://hknbp.org/"
-
+val v1 = {
+    document.getElementById("sss")?.innerHTML = "v1"
+    ""
+}()
 /**
  * 核心版本
  *
@@ -44,7 +47,10 @@ val coreVersion: String = {
     localStorage.setItem("coreVersion", value)//儲底畀離線時讀取
     value
 }()
-
+val v2 = {
+    document.getElementById("sss")?.innerHTML = "v2"
+    ""
+}()
 /**
  * 程式版本
  *
@@ -53,7 +59,10 @@ val coreVersion: String = {
  * 此值會畀其他框架所改至該框架嘅Version
  * */
 var appVersion: String  = "${coreVersion}-PWA"
-
+val v3 = {
+    document.getElementById("sss")?.innerHTML = "v3"
+    ""
+}()
 /**
 fun includeScript(vararg files: String) {
     for(file in files){
@@ -66,7 +75,10 @@ val jQueryLib = includeScript("js/jquery-3.4.1.min.js")*/
  * 畀Kotlin使用JQuery
  * */
 val jQuery: dynamic = js("\$")
-
+val v4 = {
+    document.getElementById("sss")?.innerHTML = "v4"
+    ""
+}()
 var tvChannels: ArrayLinkList<TVChannel> = {
     TVChannel.getTVChannels(fun(tvChannels_) {
         tvChannels = tvChannels_
@@ -87,9 +99,15 @@ var tvChannels: ArrayLinkList<TVChannel> = {
 
     ArrayLinkList(TVChannel())
 }()
-
+val v5 = {
+    document.getElementById("sss")?.innerHTML = "v5"
+    ""
+}()
 var player: Player = Player(tvChannels.node ?: TVChannel())
-
+val v6 = {
+    document.getElementById("sss")?.innerHTML = "v6"
+    ""
+}()
 /**
  * 去特定頻道
  * @param channelNumber 要轉去頻道冧把
@@ -106,7 +124,10 @@ var player: Player = Player(tvChannels.node ?: TVChannel())
         return false
     }
 }
-
+val v7 = {
+    document.getElementById("sss")?.innerHTML = "v7"
+    ""
+}()
 /**
  * 刷新頻道
  */
@@ -159,7 +180,10 @@ fun updateChannel() {
     player.play()
     VirtualRemote.update()
 }
-
+val v8 = {
+    document.getElementById("sss")?.innerHTML = "v8"
+    ""
+}()
 /**
 private var autoTransformEngineTimerSecond = 12000
 
@@ -214,7 +238,10 @@ updateChannel()
 }
 }
  */
-
+val v9 = {
+    document.getElementById("sss")?.innerHTML = "v9"
+    ""
+}()
 /**
  *  w,h為正整數的分子和分母
  *
@@ -239,7 +266,10 @@ fun reductionTo(w: Int, h: Int): IntArray{
     arr[1] = q
     return arr
 }
-
+val v10 = {
+    document.getElementById("sss")?.innerHTML = "v10"
+    ""
+}()
 /**
  * 更新URL參數
  * @param param 參數名
@@ -282,12 +312,18 @@ fun updateURLParameter(param: String, paramVal: String){
     val rows_txt = temp + "" + param + "=" + _paramVal
     window.history.replaceState("", "", baseURL + "?" + newAdditionalURL + rows_txt)
 }
-
+val v11 = {
+    document.getElementById("sss")?.innerHTML = "v11"
+    ""
+}()
 /**
  * 使用者語言讀取優先排列表
  * */
 var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
-
+val v12 = {
+    document.getElementById("sss")?.innerHTML = "v12"
+    ""
+}()
 
 /**
  * ****************************** *

@@ -1552,6 +1552,12 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   var v0;
   var rootURL;
+  function v1$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v1') : null;
+    return '';
+  }
+  var v1;
   function coreVersion$lambda() {
     var tmp$, tmp$_0;
     var value = '';
@@ -1566,8 +1572,26 @@ var HKNBP_Core = function (_, Kotlin) {
     return value;
   }
   var coreVersion_0;
+  function v2$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v2') : null;
+    return '';
+  }
+  var v2;
   var appVersion;
+  function v3$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v3') : null;
+    return '';
+  }
+  var v3;
   var jQuery;
+  function v4$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v4') : null;
+    return '';
+  }
+  var v4;
   function tvChannels$lambda$lambda$ObjectLiteral() {
   }
   tvChannels$lambda$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
@@ -1591,7 +1615,19 @@ var HKNBP_Core = function (_, Kotlin) {
     return ArrayLinkList_init([new TVChannel()]);
   }
   var tvChannels;
+  function v5$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v5') : null;
+    return '';
+  }
+  var v5;
   var player;
+  function v6$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v6') : null;
+    return '';
+  }
+  var v6;
   function designatedChannel$lambda(dialogues) {
     var tmp$, tmp$_0;
     PromptBox_getInstance().promptMessage((tmp$_0 = (tmp$ = dialogues.node) != null ? tmp$.canNotFind : null) != null ? tmp$_0 : '');
@@ -1607,6 +1643,12 @@ var HKNBP_Core = function (_, Kotlin) {
       return false;
     }
   }
+  function v7$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v7') : null;
+    return '';
+  }
+  var v7;
   function updateChannel$ObjectLiteral() {
     this.currentPlayer_0 = null;
     this.isPlaying_0 = false;
@@ -1667,6 +1709,18 @@ var HKNBP_Core = function (_, Kotlin) {
     player.play();
     VirtualRemote_getInstance().update();
   }
+  function v8$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v8') : null;
+    return '';
+  }
+  var v8;
+  function v9$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v9') : null;
+    return '';
+  }
+  var v9;
   function reductionTo(w, h) {
     var arr = new Int32Array(2);
     var p = w;
@@ -1693,6 +1747,12 @@ var HKNBP_Core = function (_, Kotlin) {
     arr[1] = q;
     return arr;
   }
+  function v10$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v10') : null;
+    return '';
+  }
+  var v10;
   function updateURLParameter(param, paramVal) {
     var tmp$, tmp$_0, tmp$_1;
     var url = window.location.href;
@@ -1733,7 +1793,19 @@ var HKNBP_Core = function (_, Kotlin) {
     var rows_txt = temp + '' + param + '=' + _paramVal;
     window.history.replaceState('', '', baseURL + '?' + newAdditionalURL + rows_txt);
   }
+  function v11$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v11') : null;
+    return '';
+  }
+  var v11;
   var userLanguageList;
+  function v12$lambda() {
+    var tmp$;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v12') : null;
+    return '';
+  }
+  var v12;
   function main(args) {
     var tmp$;
     try {
@@ -5735,9 +5807,19 @@ var HKNBP_Core = function (_, Kotlin) {
       return rootURL;
     }
   });
+  Object.defineProperty(package$hknbp_core, 'v1', {
+    get: function () {
+      return v1;
+    }
+  });
   Object.defineProperty(package$hknbp_core, 'coreVersion', {
     get: function () {
       return coreVersion_0;
+    }
+  });
+  Object.defineProperty(package$hknbp_core, 'v2', {
+    get: function () {
+      return v2;
     }
   });
   Object.defineProperty(package$hknbp_core, 'appVersion', {
@@ -5748,9 +5830,19 @@ var HKNBP_Core = function (_, Kotlin) {
       appVersion = value;
     }
   });
+  Object.defineProperty(package$hknbp_core, 'v3', {
+    get: function () {
+      return v3;
+    }
+  });
   Object.defineProperty(package$hknbp_core, 'jQuery', {
     get: function () {
       return jQuery;
+    }
+  });
+  Object.defineProperty(package$hknbp_core, 'v4', {
+    get: function () {
+      return v4;
     }
   });
   Object.defineProperty(package$hknbp_core, 'tvChannels', {
@@ -5761,6 +5853,11 @@ var HKNBP_Core = function (_, Kotlin) {
       tvChannels = value;
     }
   });
+  Object.defineProperty(package$hknbp_core, 'v5', {
+    get: function () {
+      return v5;
+    }
+  });
   Object.defineProperty(package$hknbp_core, 'player', {
     get: function () {
       return player;
@@ -5769,16 +5866,51 @@ var HKNBP_Core = function (_, Kotlin) {
       player = value;
     }
   });
+  Object.defineProperty(package$hknbp_core, 'v6', {
+    get: function () {
+      return v6;
+    }
+  });
   package$hknbp_core.designatedChannel = designatedChannel;
+  Object.defineProperty(package$hknbp_core, 'v7', {
+    get: function () {
+      return v7;
+    }
+  });
   package$hknbp_core.updateChannel = updateChannel;
+  Object.defineProperty(package$hknbp_core, 'v8', {
+    get: function () {
+      return v8;
+    }
+  });
+  Object.defineProperty(package$hknbp_core, 'v9', {
+    get: function () {
+      return v9;
+    }
+  });
   package$hknbp_core.reductionTo_vux9f0$ = reductionTo;
+  Object.defineProperty(package$hknbp_core, 'v10', {
+    get: function () {
+      return v10;
+    }
+  });
   package$hknbp_core.updateURLParameter_puj7f4$ = updateURLParameter;
+  Object.defineProperty(package$hknbp_core, 'v11', {
+    get: function () {
+      return v11;
+    }
+  });
   Object.defineProperty(package$hknbp_core, 'userLanguageList', {
     get: function () {
       return userLanguageList;
     },
     set: function (value) {
       userLanguageList = value;
+    }
+  });
+  Object.defineProperty(package$hknbp_core, 'v12', {
+    get: function () {
+      return v12;
     }
   });
   package$hknbp_core.main_kand9s$ = main;
@@ -5927,13 +6059,25 @@ var HKNBP_Core = function (_, Kotlin) {
   package$hknbp_core.XMLTV = XMLTV;
   v0 = v0$lambda();
   rootURL = 'https://hknbp.org/';
+  v1 = v1$lambda();
   coreVersion_0 = coreVersion$lambda();
+  v2 = v2$lambda();
   appVersion = coreVersion_0 + '-PWA';
+  v3 = v3$lambda();
   jQuery = $;
+  v4 = v4$lambda();
   tvChannels = tvChannels$lambda();
+  v5 = v5$lambda();
   var tmp$;
   player = new Player((tmp$ = tvChannels.node) != null ? tmp$ : new TVChannel());
+  v6 = v6$lambda();
+  v7 = v7$lambda();
+  v8 = v8$lambda();
+  v9 = v9$lambda();
+  v10 = v10$lambda();
+  v11 = v11$lambda();
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();
+  v12 = v12$lambda();
   main([]);
   Kotlin.defineModule('HKNBP_Core', _);
   return _;
