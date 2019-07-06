@@ -77,8 +77,6 @@ var HKNBP_Core = function (_, Kotlin) {
   ShareWindow.prototype.constructor = ShareWindow;
   SubtitleDescription.prototype = Object.create(UserInterface.prototype);
   SubtitleDescription.prototype.constructor = SubtitleDescription;
-  T2.prototype = Object.create(UserInterface.prototype);
-  T2.prototype.constructor = T2;
   TVChannelDescription.prototype = Object.create(UserInterface.prototype);
   TVChannelDescription.prototype.constructor = TVChannelDescription;
   UserControlPanel.prototype = Object.create(UserInterface.prototype);
@@ -1729,42 +1727,17 @@ var HKNBP_Core = function (_, Kotlin) {
     var rows_txt = temp + '' + param + '=' + _paramVal;
     window.history.replaceState('', '', baseURL + '?' + newAdditionalURL + rows_txt);
   }
-  function v11$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v11') : null;
-    return Unit;
-  }
-  var v11;
   var userLanguageList;
-  function v12$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v12') : null;
-    return Unit;
-  }
-  var v12;
   function main(args) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7;
     try {
-      (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'v13') : null;
-      T1_getInstance();
-      (tmp$_0 = document.getElementById('sss')) != null ? (tmp$_0.innerHTML = 'v13T1') : null;
-      T2_getInstance();
-      (tmp$_1 = document.getElementById('sss')) != null ? (tmp$_1.innerHTML = 'v13T2') : null;
       UserControlPanel_getInstance();
-      (tmp$_2 = document.getElementById('sss')) != null ? (tmp$_2.innerHTML = 'v14') : null;
       ConsentPanel_getInstance();
-      (tmp$_3 = document.getElementById('sss')) != null ? (tmp$_3.innerHTML = 'v15') : null;
       VirtualRemote_getInstance();
-      (tmp$_4 = document.getElementById('sss')) != null ? (tmp$_4.innerHTML = 'v16') : null;
       RealRemote_getInstance();
-      (tmp$_5 = document.getElementById('sss')) != null ? (tmp$_5.innerHTML = 'v17') : null;
       LongClickEvent_getInstance();
-      (tmp$_6 = document.getElementById('sss')) != null ? (tmp$_6.innerHTML = 'v18') : null;
     }
      catch (e) {
       println('\u4ECB\u9762\u521D\u59CB\u5316\u54C0\u5DE6: ' + e.toString());
-      tmp$_7 = document.getElementById('sss');
-      tmp$_7 != null ? (tmp$_7.innerHTML = (tmp$_7 != null ? tmp$_7.innerHTML : null) + ('E' + e.toString())) : null;
     }
   }
   function MutedDescription() {
@@ -2810,37 +2783,6 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return SubtitleDescription_instance;
   }
-  function T1() {
-    T1_instance = this;
-  }
-  T1.$metadata$ = {
-    kind: Kind_OBJECT,
-    simpleName: 'T1',
-    interfaces: []
-  };
-  var T1_instance = null;
-  function T1_getInstance() {
-    if (T1_instance === null) {
-      new T1();
-    }
-    return T1_instance;
-  }
-  function T2() {
-    T2_instance = this;
-    UserInterface.call(this, 'userControlPanel');
-  }
-  T2.$metadata$ = {
-    kind: Kind_OBJECT,
-    simpleName: 'T2',
-    interfaces: [UserInterface]
-  };
-  var T2_instance = null;
-  function T2_getInstance() {
-    if (T2_instance === null) {
-      new T2();
-    }
-    return T2_instance;
-  }
   function Comparator$ObjectLiteral(closure$comparison) {
     this.closure$comparison = closure$comparison;
   }
@@ -3356,14 +3298,12 @@ var HKNBP_Core = function (_, Kotlin) {
   function UserControlPanel() {
     UserControlPanel_instance = this;
     UserInterface.call(this, 'userControlPanel', UserControlPanel_init$lambda, UserControlPanel_init$lambda_0, 'onHeadNextAudioButton');
-    this.ucp0 = UserControlPanel$ucp0$lambda();
     var tmp$, tmp$_0;
     this.panel_0 = Kotlin.isType(tmp$ = document.getElementById('userControlPanel'), HTMLElement) ? tmp$ : throwCCE();
     this.shower_0 = Kotlin.isType(tmp$_0 = document.getElementById('userControlPanelShower'), HTMLElement) ? tmp$_0 : throwCCE();
     this.hideMouseTimer_r29tyc$_0 = 0;
     this.onShowUserControlPanel = UserControlPanel$onShowUserControlPanel$lambda;
     this.onHideUserControlPanel = UserControlPanel$onHideUserControlPanel$lambda;
-    this.ucp1 = UserControlPanel$ucp1$lambda();
     VirtualRemote_getInstance();
     NativeAppInstallButton_getInstance();
     PictureInPictureButton_getInstance();
@@ -3383,7 +3323,6 @@ var HKNBP_Core = function (_, Kotlin) {
       this.shower_0.innerHTML = '<i class="icon-font" style="font-size: 5vh;">&#xe825;<\/i>';
     }
     this.setIframeOnClick_a4mwiz$('iframePlayer', UserControlPanel_init$lambda_8(this));
-    var ucp2 = UserControlPanel_init$lambda_9();
   }
   Object.defineProperty(UserControlPanel.prototype, 'hideMouseTimer_0', {
     get: function () {
@@ -3407,19 +3346,9 @@ var HKNBP_Core = function (_, Kotlin) {
     UserControlPanel_getInstance().onHideUserControlPanel();
     UserControlPanel_getInstance().hideMouseTimer_0 = window.setTimeout(UserControlPanel_init$lambda$lambda, 2000);
   }
-  function UserControlPanel$ucp0$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'ucp0') : null;
-    return Unit;
-  }
   function UserControlPanel$onShowUserControlPanel$lambda() {
   }
   function UserControlPanel$onHideUserControlPanel$lambda() {
-  }
-  function UserControlPanel$ucp1$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'ucp1') : null;
-    return Unit;
   }
   function UserControlPanel_init$lambda_1(this$UserControlPanel) {
     return function (event) {
@@ -3466,11 +3395,6 @@ var HKNBP_Core = function (_, Kotlin) {
     return function () {
       this$UserControlPanel.showHideAlternately();
     };
-  }
-  function UserControlPanel_init$lambda_9() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'ucp2') : null;
-    return Unit;
   }
   UserControlPanel.$metadata$ = {
     kind: Kind_OBJECT,
@@ -5850,22 +5774,12 @@ var HKNBP_Core = function (_, Kotlin) {
   package$hknbp_core.updateChannel = updateChannel;
   package$hknbp_core.reductionTo_vux9f0$ = reductionTo;
   package$hknbp_core.updateURLParameter_puj7f4$ = updateURLParameter;
-  Object.defineProperty(package$hknbp_core, 'v11', {
-    get: function () {
-      return v11;
-    }
-  });
   Object.defineProperty(package$hknbp_core, 'userLanguageList', {
     get: function () {
       return userLanguageList;
     },
     set: function (value) {
       userLanguageList = value;
-    }
-  });
-  Object.defineProperty(package$hknbp_core, 'v12', {
-    get: function () {
-      return v12;
     }
   });
   package$hknbp_core.main_kand9s$ = main;
@@ -5935,12 +5849,6 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   Object.defineProperty(package$hknbp_core, 'SubtitleDescription', {
     get: SubtitleDescription_getInstance
-  });
-  Object.defineProperty(package$hknbp_core, 'T1', {
-    get: T1_getInstance
-  });
-  Object.defineProperty(package$hknbp_core, 'T2', {
-    get: T2_getInstance
   });
   TVChannel.Source = TVChannel$Source;
   TVChannel.Information = TVChannel$Information;
@@ -6025,9 +5933,7 @@ var HKNBP_Core = function (_, Kotlin) {
   tvChannels = tvChannels$lambda();
   var tmp$;
   player = new Player((tmp$ = tvChannels.node) != null ? tmp$ : new TVChannel());
-  v11 = v11$lambda();
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();
-  v12 = v12$lambda();
   main([]);
   Kotlin.defineModule('HKNBP_Core', _);
   return _;

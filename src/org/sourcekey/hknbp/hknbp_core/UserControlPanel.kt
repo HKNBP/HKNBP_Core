@@ -40,7 +40,6 @@ object UserControlPanel: UserInterface(
         },
         firstFocusElementID = "onHeadNextAudioButton"
 ) {
-    val ucp0 = { document.getElementById("sss")?.innerHTML = "ucp0" }()
     private val panel: HTMLElement   = document.getElementById("userControlPanel") as HTMLElement
     private val shower: HTMLElement  = document.getElementById("userControlPanelShower") as HTMLElement
 
@@ -92,7 +91,7 @@ object UserControlPanel: UserInterface(
             jQuery("#${iframeId}").iframeTracker(obj)
         })*/
     }
-    val ucp1 = { document.getElementById("sss")?.innerHTML = "ucp1" }()
+
     init {
         //初始化各使用者控制界面
         VirtualRemote
@@ -146,6 +145,5 @@ object UserControlPanel: UserInterface(
             shower.innerHTML = "<i class=\"icon-font\" style=\"font-size: 5vh;\">&#xe825;</i>"
         }
         setIframeOnClick("iframePlayer", fun(){ showHideAlternately() })
-        val ucp2 = { document.getElementById("sss")?.innerHTML = "ucp2" }()
     }
 }

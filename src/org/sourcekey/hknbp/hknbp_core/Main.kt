@@ -14,6 +14,7 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
+import jquery.jq
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.events.Event
 import kotlin.browser.document
@@ -279,12 +280,12 @@ fun updateURLParameter(param: String, paramVal: String){
     val rows_txt = temp + "" + param + "=" + _paramVal
     window.history.replaceState("", "", baseURL + "?" + newAdditionalURL + rows_txt)
 }
-val v11 = { document.getElementById("sss")?.innerHTML = "v11" }()
+
 /**
  * 使用者語言讀取優先排列表
  * */
 var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
-val v12 = { document.getElementById("sss")?.innerHTML = "v12" }()
+
 
 /**
  * ****************************** *
@@ -295,21 +296,12 @@ fun main(args: Array<String>) {
     //HKNBPAppLayerBridge
 
     try {
-        document.getElementById("sss")?.innerHTML = "v13"
-        T1
-        document.getElementById("sss")?.innerHTML = "v13T1"
-        T2
-        document.getElementById("sss")?.innerHTML = "v13T2"
         UserControlPanel
-        document.getElementById("sss")?.innerHTML = "v14"
         ConsentPanel
-        document.getElementById("sss")?.innerHTML = "v15"
         VirtualRemote
-        document.getElementById("sss")?.innerHTML = "v16"
         RealRemote
-        document.getElementById("sss")?.innerHTML = "v17"
         LongClickEvent
-        document.getElementById("sss")?.innerHTML = "v18"
     } catch (e: dynamic) { println("介面初始化哀左: $e")
-        document.getElementById("sss")?.innerHTML += "E${e}"}
+        //document.getElementById("sss")?.innerHTML += "E${e}"
+    }
 }
