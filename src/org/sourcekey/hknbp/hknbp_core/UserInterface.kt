@@ -31,7 +31,11 @@ abstract class UserInterface(
     private val htmlElement = document.getElementById(htmlElementID) as HTMLElement
     private var lastTimeFocusElement: dynamic? = {
         if(firstFocusElementID != null){
-            jQuery("#${firstFocusElementID}")
+            try {
+                document.getElementById("sss")?.innerHTML = "f0"
+                jQuery("#${firstFocusElementID}")
+                document.getElementById("sss")?.innerHTML = "f1"
+            }catch (e: dynamic){ null }
         }else{ null }
     }()
 

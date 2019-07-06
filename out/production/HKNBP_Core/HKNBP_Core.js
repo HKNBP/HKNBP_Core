@@ -3574,8 +3574,16 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function UserInterface$lastTimeFocusElement$lambda(this$UserInterface) {
     return function () {
+      var tmp$, tmp$_0;
       if (this$UserInterface.firstFocusElementID_ydky23$_0 != null) {
-        return jQuery('#' + toString(this$UserInterface.firstFocusElementID_ydky23$_0));
+        try {
+          (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'f0') : null;
+          jQuery('#' + toString(this$UserInterface.firstFocusElementID_ydky23$_0));
+          return (tmp$_0 = document.getElementById('sss')) != null && (tmp$_0.innerHTML = 'f1'), Unit;
+        }
+         catch (e) {
+          return null;
+        }
       }
        else {
         return null;
