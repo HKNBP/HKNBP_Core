@@ -21,7 +21,7 @@ import kotlin.browser.localStorage
 
 object ConsentPanel: UserInterface(
         "consentPanel",
-
+        firstFocusElementID = "consentPanelAgreeConsentButton",
         isFocusCountdownHide = false
 ){
     private val consentPanel       = document.getElementById("consentPanel") as HTMLDivElement

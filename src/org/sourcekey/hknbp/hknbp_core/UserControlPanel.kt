@@ -28,16 +28,17 @@ import kotlin.js.Math
  * */
 object UserControlPanel: UserInterface(
         "userControlPanel",
-        fun(){
+        onShow = fun(){
             UserControlPanel.onShowUserControlPanel()
             jQuery("#userControlPanelShower").css("cursor", "auto")
         },
-        fun(){
+        onHide = fun(){
             UserControlPanel.onHideUserControlPanel()
             UserControlPanel.hideMouseTimer = window.setTimeout(fun(){
                 jQuery("#userControlPanelShower").css("cursor", "none")
             }, 2000)
-        }
+        },
+        firstFocusElementID = "onHeadNextAudioButton"
 ) {
     val ucp0 = { document.getElementById("sss")?.innerHTML = "ucp0" }()
     private val panel: HTMLElement   = document.getElementById("userControlPanel") as HTMLElement

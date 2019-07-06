@@ -458,7 +458,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function ConsentPanel() {
     ConsentPanel_instance = this;
-    UserInterface.call(this, 'consentPanel', void 0, void 0, void 0, false);
+    UserInterface.call(this, 'consentPanel', void 0, void 0, 'consentPanelAgreeConsentButton', false);
     var tmp$, tmp$_0, tmp$_1;
     this.consentPanel_0 = Kotlin.isType(tmp$ = document.getElementById('consentPanel'), HTMLDivElement) ? tmp$ : throwCCE();
     this.agreeConsentButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('consentPanelAgreeConsentButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
@@ -3355,7 +3355,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function UserControlPanel() {
     UserControlPanel_instance = this;
-    UserInterface.call(this, 'userControlPanel', UserControlPanel_init$lambda, UserControlPanel_init$lambda_0);
+    UserInterface.call(this, 'userControlPanel', UserControlPanel_init$lambda, UserControlPanel_init$lambda_0, 'onHeadNextAudioButton');
     this.ucp0 = UserControlPanel$ucp0$lambda();
     var tmp$, tmp$_0;
     this.panel_0 = Kotlin.isType(tmp$ = document.getElementById('userControlPanel'), HTMLElement) ? tmp$ : throwCCE();
@@ -3506,7 +3506,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.conversionFocusHideTime_igwo47$_0 = conversionFocusHideTime;
     var tmp$, tmp$_0, tmp$_1;
     this.htmlElement_sdspbr$_0 = Kotlin.isType(tmp$ = document.getElementById(this.htmlElementID_fynci$_0), HTMLElement) ? tmp$ : throwCCE();
-    this.lastTimeFocusElement_bd4klp$_0 = jQuery('#' + toString(this.firstFocusElementID_ydky23$_0));
+    this.lastTimeFocusElement_bd4klp$_0 = UserInterface$lastTimeFocusElement$lambda(this)();
     this.isShowUserInterfaceFirstFocus_mby111$_0 = false;
     this.hideTimer_1c3smv$_rf6tp$_0 = 0;
     (tmp$_0 = jQuery('#' + this.htmlElementID_fynci$_0 + ' button' + ',' + ('#' + this.htmlElementID_fynci$_0 + ' select') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' option') + ',' + ('#' + this.htmlElementID_fynci$_0 + ' input'))) != null ? tmp$_0.focus(UserInterface_init$lambda_1(this)) : null;
@@ -3571,6 +3571,16 @@ var HKNBP_Core = function (_, Kotlin) {
   function UserInterface_init$lambda() {
   }
   function UserInterface_init$lambda_0() {
+  }
+  function UserInterface$lastTimeFocusElement$lambda(this$UserInterface) {
+    return function () {
+      if (this$UserInterface.firstFocusElementID_ydky23$_0 != null) {
+        return jQuery('#' + toString(this$UserInterface.firstFocusElementID_ydky23$_0));
+      }
+       else {
+        return null;
+      }
+    };
   }
   function UserInterface_init$lambda_1(this$UserInterface) {
     return function () {
@@ -6011,7 +6021,7 @@ var HKNBP_Core = function (_, Kotlin) {
   var tmp$;
   player = new Player((tmp$ = tvChannels.node) != null ? tmp$ : new TVChannel());
   v11 = v11$lambda();
-  userLanguageList = ArrayList_init();
+  userLanguageList = SettingWindow_getInstance().getLanguageSetting();
   v12 = v12$lambda();
   main([]);
   Kotlin.defineModule('HKNBP_Core', _);
