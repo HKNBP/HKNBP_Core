@@ -87,10 +87,11 @@ object VirtualRemote: UserInterface("virtualRemote"){
         //顯示頻道選項
         var channelOptionHTMLString = ""
         for(tvChannel in tvChannels){
-            channelOptionHTMLString += "" +
+            channelOptionHTMLString = "" +
                     "<option value=${tvChannel.number}>" +
                     "${tvChannel.number.toString().padStart(3, '0')} ${tvChannel.name}" +
-                    "</option>"
+                    "</option>" +
+                    channelOptionHTMLString
         }
         designateChannelSelect.innerHTML = channelOptionHTMLString
         designateChannelSelect.value = tvChannels.node?.number.toString()

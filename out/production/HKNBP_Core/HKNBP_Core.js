@@ -3696,7 +3696,7 @@ var HKNBP_Core = function (_, Kotlin) {
     tmp$ = tvChannels.iterator();
     while (tmp$.hasNext()) {
       var tvChannel = tmp$.next();
-      channelOptionHTMLString += '' + ('<option value=' + tvChannel.number + '>') + (padStart(tvChannel.number.toString(), 3, 48) + ' ' + tvChannel.name) + '<\/option>';
+      channelOptionHTMLString = '' + ('<option value=' + tvChannel.number + '>') + (padStart(tvChannel.number.toString(), 3, 48) + ' ' + tvChannel.name) + '<\/option>' + channelOptionHTMLString;
     }
     this.designateChannelSelect.innerHTML = channelOptionHTMLString;
     this.designateChannelSelect.value = toString((tmp$_0 = tvChannels.node) != null ? tmp$_0.number : null);
