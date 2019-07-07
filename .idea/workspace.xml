@@ -4,12 +4,7 @@
     <bookmark url="file://$PROJECT_DIR$/index.html" line="1047" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="439dc076-fa64-48ca-946e-6d20fa2781e4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" afterDir="false" />
-    </list>
+    <list default="true" id="439dc076-fa64-48ca-946e-6d20fa2781e4" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +31,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="302">
@@ -355,7 +350,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="540">
@@ -860,7 +855,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="0" width="1280" height="1040" extended-state="4" />
-    <editor active="true" />
     <layout>
       <window_info id="Capture Tool" order="0" />
       <window_info id="Designer" order="1" />
@@ -1521,13 +1515,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/service-worker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-108">
-          <caret line="66" column="50" selection-start-line="66" selection-start-column="50" selection-end-line="66" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2934">
@@ -1614,59 +1601,6 @@
             <element signature="e#13587#13665#0" />
             <element signature="e#13617#13658#0" />
             <element signature="n#!!doc;n#ProgrammableColor#0;n#!!block;n#Player#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="85" column="55" selection-start-line="85" selection-start-column="55" selection-end-line="85" selection-end-column="55" />
-          <folding>
-            <element signature="n#!!doc;n#coreVersion#0" />
-            <element signature="e#936#1230#1" />
-            <element signature="e#1055#1109#0" />
-            <element signature="e#1127#1161#0" />
-            <element signature="n#!!doc;n#appVersion#0" />
-            <element signature="e#1391#1615#0" />
-            <element signature="n#!!doc;n#jQuery#0" />
-            <element signature="e#1899#2249#0" />
-            <element signature="e#2098#2239#0" />
-            <element signature="n#!!doc;n#designatedChannel#0" />
-            <element signature="n#!!block;n#designatedChannel#0" />
-            <element signature="e#2715#2793#1" />
-            <element signature="e#2799#2955#1" />
-            <element signature="e#2846#2927#0" />
-            <element signature="n#!!doc;n#updateChannel#0" />
-            <element signature="n#!!block;n#updateChannel#0" />
-            <element signature="e#3123#4836#0" />
-            <element signature="e#3283#4830#0" />
-            <element signature="e#3368#3510#0" />
-            <element signature="e#3562#3926#0" />
-            <element signature="e#3734#3900#0" />
-            <element signature="e#3807#3878#1" />
-            <element signature="e#3985#4063#0" />
-            <element signature="e#4122#4200#0" />
-            <element signature="e#4262#4343#0" />
-            <element signature="e#4398#4466#0" />
-            <element signature="e#4520#4806#0" />
-            <element signature="e#4568#4787#0" />
-            <element signature="e#4603#4682#1" />
-            <element signature="e#4686#4765#1" />
-            <element signature="e#4886#5942#0" />
-            <element signature="n#!!doc;n#reductionTo#0" />
-            <element signature="n#!!block;n#reductionTo#0" />
-            <element signature="e#6225#6391#1" />
-            <element signature="e#6259#6385#1" />
-            <element signature="e#6304#6375#1" />
-            <element signature="n#!!doc;n#updateURLParameter#0" />
-            <element signature="n#!!block;n#updateURLParameter#0" />
-            <element signature="e#6850#7341#1" />
-            <element signature="e#7140#7335#1" />
-            <element signature="e#7217#7325#1" />
-            <element signature="e#7347#7543#1" />
-            <element signature="n#!!doc;n#userLanguageList#0" />
-            <element signature="n#!!doc;n#main#0" />
           </folding>
         </state>
       </provider>
@@ -1975,6 +1909,66 @@
             <element signature="n#div#0;n#noscript#0;n#body#0;n#html#0;n#!!top" />
             <element signature="n#script#1;n#body#0;n#html#0;n#!!top" />
             <element signature="e#47921#48051#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/service-worker.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-108">
+          <caret line="66" column="50" selection-start-line="66" selection-start-column="50" selection-end-line="66" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="85" column="55" selection-start-line="85" selection-start-column="55" selection-end-line="85" selection-end-column="55" />
+          <folding>
+            <element signature="n#!!doc;n#coreVersion#0" />
+            <element signature="e#936#1230#1" />
+            <element signature="e#1055#1109#0" />
+            <element signature="e#1127#1161#0" />
+            <element signature="n#!!doc;n#appVersion#0" />
+            <element signature="e#1391#1615#0" />
+            <element signature="n#!!doc;n#jQuery#0" />
+            <element signature="e#1899#2249#0" />
+            <element signature="e#2098#2239#0" />
+            <element signature="n#!!doc;n#designatedChannel#0" />
+            <element signature="n#!!block;n#designatedChannel#0" />
+            <element signature="e#2715#2793#1" />
+            <element signature="e#2799#2955#1" />
+            <element signature="e#2846#2927#0" />
+            <element signature="n#!!doc;n#updateChannel#0" />
+            <element signature="n#!!block;n#updateChannel#0" />
+            <element signature="e#3123#4836#0" />
+            <element signature="e#3283#4830#0" />
+            <element signature="e#3368#3510#0" />
+            <element signature="e#3562#3926#0" />
+            <element signature="e#3734#3900#0" />
+            <element signature="e#3807#3878#1" />
+            <element signature="e#3985#4063#0" />
+            <element signature="e#4122#4200#0" />
+            <element signature="e#4262#4343#0" />
+            <element signature="e#4398#4466#0" />
+            <element signature="e#4520#4806#0" />
+            <element signature="e#4568#4787#0" />
+            <element signature="e#4603#4682#1" />
+            <element signature="e#4686#4765#1" />
+            <element signature="e#4886#5942#0" />
+            <element signature="n#!!doc;n#reductionTo#0" />
+            <element signature="n#!!block;n#reductionTo#0" />
+            <element signature="e#6225#6391#1" />
+            <element signature="e#6259#6385#1" />
+            <element signature="e#6304#6375#1" />
+            <element signature="n#!!doc;n#updateURLParameter#0" />
+            <element signature="n#!!block;n#updateURLParameter#0" />
+            <element signature="e#6850#7341#1" />
+            <element signature="e#7140#7335#1" />
+            <element signature="e#7217#7325#1" />
+            <element signature="e#7347#7543#1" />
+            <element signature="n#!!doc;n#userLanguageList#0" />
+            <element signature="n#!!doc;n#main#0" />
           </folding>
         </state>
       </provider>

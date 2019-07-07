@@ -66,9 +66,7 @@ val jQueryLib = includeScript("js/jquery-3.4.1.min.js")*/
 val jQuery: dynamic = js("\$")
 
 var tvChannels: ArrayLinkList<TVChannel> = {
-    document.getElementById("sss")?.innerHTML = "t0"
     TVChannel.getTVChannels(fun(tvChannels_) {
-        document.getElementById("sss")?.innerHTML = "t2"
         tvChannels = tvChannels_
         tvChannels.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<TVChannel> {
             override fun OnNodeIDChanged(
@@ -83,10 +81,8 @@ var tvChannels: ArrayLinkList<TVChannel> = {
         updateChannel()
         TVChannelDescription.show(5000)
         TVChannelDescription.update()
-        document.getElementById("sss")?.innerHTML = "t3"
     })
 
-    document.getElementById("sss")?.innerHTML = "t1"
     ArrayLinkList(TVChannel())
 }()
 
