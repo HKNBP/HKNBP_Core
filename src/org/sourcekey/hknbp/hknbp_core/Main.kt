@@ -116,7 +116,6 @@ fun updateChannel() {
         override fun on(onPlayerEvent: Player.OnPlayerEvent) {
             when (onPlayerEvent) {
                 Player.OnPlayerEvent.playing -> {
-                    document.getElementById("sss")?.innerHTML = "1 ${JSON.stringify(tvChannels.node)}"
                     currentPlayer = player
                     isPlaying = true
                     VirtualRemote.update()
@@ -302,7 +301,5 @@ fun main(args: Array<String>) {
         VirtualRemote
         RealRemote
         LongClickEvent
-    } catch (e: dynamic) { println("介面初始化哀左: $e")
-        //document.getElementById("sss")?.innerHTML += "E${e}"
-    }
+    } catch (e: dynamic) { println("介面初始化哀左: $e") }
 }

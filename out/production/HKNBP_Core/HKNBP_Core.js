@@ -1621,10 +1621,8 @@ var HKNBP_Core = function (_, Kotlin) {
     }
   }
   updateChannel$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
-    var tmp$;
     switch (onPlayerEvent.name) {
       case 'playing':
-        (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = '1 ' + JSON.stringify(tvChannels.node)) : null;
         this.currentPlayer_0 = player;
         this.isPlaying_0 = true;
         VirtualRemote_getInstance().update();
@@ -2237,17 +2235,16 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function Player$setListenIframePlayer$lambda(this$Player) {
     return function (event) {
-      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3;
+      var tmp$;
       try {
-        (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'p2') : null;
         var callMessage = JSON.parse(event.data.toString());
         if (callMessage.name == null) {
           return;
         }
          else if (callMessage.name == 'HKNBPCore') {
-          tmp$_0 = this$Player.callIframePlayerFunctionList_0.iterator();
-          while (tmp$_0.hasNext()) {
-            var obj = tmp$_0.next();
+          tmp$ = this$Player.callIframePlayerFunctionList_0.iterator();
+          while (tmp$.hasNext()) {
+            var obj = tmp$.next();
             if (obj.id == callMessage.id) {
               obj.onReturn(callMessage.returnValue);
               this$Player.callIframePlayerFunctionList_0.remove_11rb$(obj);
@@ -2255,22 +2252,17 @@ var HKNBP_Core = function (_, Kotlin) {
           }
         }
          else if (callMessage.name == 'IframePlaye') {
-          (tmp$_1 = document.getElementById('sss')) != null ? (tmp$_1.innerHTML = 'p3') : null;
           var onPlaying = this$Player.onPlaying_0;
           var onNotPlaying = this$Player.onNotPlaying_0;
           eval(callMessage.functionName + '()');
-          (tmp$_2 = document.getElementById('sss')) != null ? (tmp$_2.innerHTML = 'p4') : null;
         }
       }
        catch (e) {
-        (tmp$_3 = document.getElementById('sss')) != null ? (tmp$_3.innerHTML = 'pslipE') : null;
         println('callIframePlayerFunction\u8870\u5DE6: ' + e.toString() + '\n' + ('JSON\u5B57\u4E32(message)\u5167\u5BB9: ' + event.data.toString()) + '\n' + ('Event\u5167\u5BB9: ' + JSON.stringify(event)));
       }
     };
   }
   Player.prototype.setListenIframePlayer_0 = function () {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'p1') : null;
     window.addEventListener('message', Player$setListenIframePlayer$lambda(this), false);
   };
   function Player$callIframePlayerFunction$lambda(returnValue) {
@@ -2285,27 +2277,19 @@ var HKNBP_Core = function (_, Kotlin) {
       value = '';
     if (onReturn === void 0)
       onReturn = Player$callIframePlayerFunction$lambda;
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'p1.0.0') : null;
     var caller = {};
     caller.functionName = functionName;
     caller.value = value;
     caller.name = 'HKNBPCore';
     caller.id = (new Date()).getTime().toString() + toString(Random.Default.nextInt_vux9f0$(0, 99999999));
     caller.onReturn = onReturn;
-    (tmp$_0 = document.getElementById('sss')) != null ? (tmp$_0.innerHTML = 'p1.0.1') : null;
     this.callIframePlayerFunctionList_0.add_11rb$(caller);
-    (tmp$_1 = document.getElementById('sss')) != null ? (tmp$_1.innerHTML = 'p1.0.2') : null;
     window.setTimeout(Player$callIframePlayerFunction$lambda_0(this, caller), 60000);
-    (tmp$_2 = document.getElementById('sss')) != null ? (tmp$_2.innerHTML = 'p1.0.3') : null;
     try {
-      (tmp$_3 = document.getElementById('sss')) != null ? (tmp$_3.innerHTML = 'p1.0.4') : null;
       this.iframePlayer_0.contentWindow.postMessage(JSON.stringify(caller), '*');
-      (tmp$_4 = document.getElementById('sss')) != null ? (tmp$_4.innerHTML = 'p1.0.5') : null;
     }
      catch (e) {
       println('iframePlayer\u6709\u5572Function\u6435\u5514\u5230\u6216\u767C\u751F\u554F\u984C: ' + e.toString());
-      (tmp$_5 = document.getElementById('sss')) != null ? (tmp$_5.innerHTML = 'p1.0.E') : null;
     }
   };
   function Player$onPlaying$lambda$lambda$lambda$ObjectLiteral(this$Player) {
@@ -2410,25 +2394,23 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function Player$onPlaying$lambda(this$Player) {
     return function () {
-      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
-      (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'p5') : null;
+      var tmp$, tmp$_0, tmp$_1, tmp$_2;
       this$Player.callIframePlayerFunction_0('onGetIframePlayerVideoTracks', '', Player$onPlaying$lambda$lambda(this$Player));
       this$Player.callIframePlayerFunction_0('onGetIframePlayerAudioTracks', '', Player$onPlaying$lambda$lambda_0(this$Player));
       this$Player.callIframePlayerFunction_0('onGetIframePlayerSubtitleTracks', '', Player$onPlaying$lambda$lambda_1(this$Player));
-      tmp$_2 = (tmp$_1 = (tmp$_0 = localStorage.getItem('RecentlyVolume')) != null ? toDoubleOrNull(tmp$_0) : null) != null ? tmp$_1 : 100.0;
-      this$Player.callIframePlayerFunction_0('onSetIframePlayerVolume', tmp$_2);
+      tmp$_1 = (tmp$_0 = (tmp$ = localStorage.getItem('RecentlyVolume')) != null ? toDoubleOrNull(tmp$) : null) != null ? tmp$_0 : 100.0;
+      this$Player.callIframePlayerFunction_0('onSetIframePlayerVolume', tmp$_1);
       if (Player$Companion_getInstance().isCheckVideoAutoPlayNeedToMute) {
         CanAutoplay_getInstance().checkVideoAutoPlayNeedToMute_9dmrm4$(Player$onPlaying$lambda$lambda_2(this$Player), Player$onPlaying$lambda$lambda_3(this$Player));
       }
        else {
         this$Player.setMuted_6taknv$(false);
       }
-      tmp$_3 = this$Player.onPlayerEvents_0.iterator();
-      while (tmp$_3.hasNext()) {
-        var event = tmp$_3.next();
+      tmp$_2 = this$Player.onPlayerEvents_0.iterator();
+      while (tmp$_2.hasNext()) {
+        var event = tmp$_2.next();
         event.on_mdxcb7$(Player$OnPlayerEvent$playing_getInstance());
       }
-      (tmp$_4 = document.getElementById('sss')) != null ? (tmp$_4.innerHTML = 'p6') : null;
     };
   }
   function Player$onNotPlaying$lambda(this$Player) {
@@ -2473,13 +2455,10 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function Player_init$lambda(this$Player) {
     return function () {
-      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
-      (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'p0') : null;
+      var tmp$, tmp$_0, tmp$_1;
       this$Player.setListenIframePlayer_0();
-      (tmp$_0 = document.getElementById('sss')) != null ? (tmp$_0.innerHTML = 'p1.0') : null;
-      tmp$_3 = (tmp$_2 = (tmp$_1 = this$Player.tvChannel_0.sources.node) != null ? tmp$_1.link : null) != null ? tmp$_2 : 'https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8';
-      this$Player.callIframePlayerFunction_0('onIframePlayerInit', tmp$_3);
-      (tmp$_4 = document.getElementById('sss')) != null ? (tmp$_4.innerHTML = 'p1.1') : null;
+      tmp$_1 = (tmp$_0 = (tmp$ = this$Player.tvChannel_0.sources.node) != null ? tmp$.link : null) != null ? tmp$_0 : 'https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8';
+      this$Player.callIframePlayerFunction_0('onIframePlayerInit', tmp$_1);
     };
   }
   Player.$metadata$ = {

@@ -191,7 +191,6 @@ class Player(private val tvChannel: TVChannel) {
      * 有關資料可讀取
      * */
     private val onPlaying = fun(){
-        document.getElementById("sss")?.innerHTML = "p5"
         //設定VideoTracks值
         callIframePlayerFunction("onGetIframePlayerVideoTracks", "", fun(tracks){
             callIframePlayerFunction("onGetIframePlayerVideoTrack", "", fun(track){
@@ -252,7 +251,6 @@ class Player(private val tvChannel: TVChannel) {
         }
 
         for(event in onPlayerEvents){ event.on(OnPlayerEvent.playing) }
-        document.getElementById("sss")?.innerHTML = "p6"
     }
 
     /**
@@ -451,10 +449,8 @@ class Player(private val tvChannel: TVChannel) {
     private val callIframePlayerFunctionList = ArrayList<dynamic>()
 
     private fun setListenIframePlayer(){
-        document.getElementById("sss")?.innerHTML = "p1"
         window.addEventListener("message", fun(event: dynamic){
             try{
-                document.getElementById("sss")?.innerHTML = "p2"
                 val callMessage = JSON.parse<dynamic>(event.data.toString())
                 if (callMessage.name == null) {
                     return
@@ -467,7 +463,6 @@ class Player(private val tvChannel: TVChannel) {
                         }
                     }
                 }else if(callMessage.name == "IframePlaye"){
-                    document.getElementById("sss")?.innerHTML = "p3"
                     // 畀IframePlayer方便Call
                     val onPlaying = onPlaying
                     val onNotPlaying = onNotPlaying
@@ -479,10 +474,8 @@ class Player(private val tvChannel: TVChannel) {
                     window.parent.postMessage(JSON.stringify(obj), "*")
                     }*/
                     eval(callMessage.functionName + "()")
-                    document.getElementById("sss")?.innerHTML = "p4"
                 }
             }catch(e: dynamic){
-                document.getElementById("sss")?.innerHTML = "pslipE"
                 println("callIframePlayerFunction衰左: ${e}" + "\n" +
                         "JSON字串(message)內容: ${event.data.toString()}" + "\n" +
                         "Event內容: ${JSON.stringify(event)}"
@@ -494,40 +487,30 @@ class Player(private val tvChannel: TVChannel) {
     private fun callIframePlayerFunction(
             functionName: String, value: dynamic = "", onReturn: (returnValue: dynamic)->Unit = fun(returnValue){}
     ){
-        document.getElementById("sss")?.innerHTML = "p1.0.0"
         val caller = js("{}")
         caller.functionName = functionName
         caller.value = value
         caller.name = "HKNBPCore"
         caller.id = Date().getTime().toString() + Random.nextInt(0, 99999999)
         caller.onReturn = onReturn
-        document.getElementById("sss")?.innerHTML = "p1.0.1"
         callIframePlayerFunctionList.add(caller)
-        document.getElementById("sss")?.innerHTML = "p1.0.2"
         window.setTimeout(fun(){
             callIframePlayerFunctionList.remove(caller) //如果太耐冇return就響List自動清除免堆垃圾
         }, 60000)
-        document.getElementById("sss")?.innerHTML = "p1.0.3"
         try {
-            document.getElementById("sss")?.innerHTML = "p1.0.4"
             iframePlayer.contentWindow.postMessage(JSON.stringify(caller), "*")
-            document.getElementById("sss")?.innerHTML = "p1.0.5"
-        } catch (e: dynamic){ println("iframePlayer有啲Function搵唔到或發生問題: $e")
-            document.getElementById("sss")?.innerHTML = "p1.0.E"}
+        } catch (e: dynamic){ println("iframePlayer有啲Function搵唔到或發生問題: $e") }
     }
 
     init {
         iframePlayer?.src = tvChannel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
         iframePlayer?.onload = fun(){
-            document.getElementById("sss")?.innerHTML = "p0"
             setListenIframePlayer()
-            document.getElementById("sss")?.innerHTML = "p1.0"
             callIframePlayerFunction(
                     "onIframePlayerInit",
                     tvChannel.sources.node?.link?:
                     "https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8"
             )
-            document.getElementById("sss")?.innerHTML = "p1.1"
         }
     }
 }
