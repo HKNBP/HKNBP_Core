@@ -1655,9 +1655,9 @@ var HKNBP_Core = function (_, Kotlin) {
     interfaces: [Player$OnPlayerEventListener]
   };
   function updateChannel() {
-    var tmp$, tmp$_0, tmp$_1;
-    (tmp$_0 = document.getElementById('sss')) != null ? (tmp$_0.innerHTML = toString((tmp$ = tvChannels.node) != null ? tmp$.number : null)) : null;
-    player = new Player((tmp$_1 = tvChannels.node) != null ? tmp$_1 : new TVChannel());
+    var tmp$, tmp$_0;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = JSON.stringify(tvChannels.node)) : null;
+    player = new Player((tmp$_0 = tvChannels.node) != null ? tmp$_0 : new TVChannel());
     player.addOnPlayerEventListener_j8fzjz$(new updateChannel$ObjectLiteral());
     player.play();
     VirtualRemote_getInstance().update();
