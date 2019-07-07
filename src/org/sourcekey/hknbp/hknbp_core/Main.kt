@@ -109,6 +109,7 @@ var player: Player = Player(tvChannels.node ?: TVChannel())
  * 刷新頻道
  */
 fun updateChannel() {
+    document.getElementById("sss")?.innerHTML = "${tvChannels.node?.number}"
     player = Player(tvChannels.node ?: TVChannel())
     player.addOnPlayerEventListener(object : Player.OnPlayerEventListener {
         private var currentPlayer: Player? = null

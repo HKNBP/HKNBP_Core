@@ -1655,8 +1655,9 @@ var HKNBP_Core = function (_, Kotlin) {
     interfaces: [Player$OnPlayerEventListener]
   };
   function updateChannel() {
-    var tmp$;
-    player = new Player((tmp$ = tvChannels.node) != null ? tmp$ : new TVChannel());
+    var tmp$, tmp$_0, tmp$_1;
+    (tmp$_0 = document.getElementById('sss')) != null ? (tmp$_0.innerHTML = toString((tmp$ = tvChannels.node) != null ? tmp$.number : null)) : null;
+    player = new Player((tmp$_1 = tvChannels.node) != null ? tmp$_1 : new TVChannel());
     player.addOnPlayerEventListener_j8fzjz$(new updateChannel$ObjectLiteral());
     player.play();
     VirtualRemote_getInstance().update();
@@ -1857,7 +1858,6 @@ var HKNBP_Core = function (_, Kotlin) {
   function Player(tvChannel) {
     Player$Companion_getInstance();
     this.tvChannel_0 = tvChannel;
-    this.p0 = Player$p0$lambda();
     this.iframePlayer_0 = document.getElementById('iframePlayer');
     this.watchingCounter_0 = new WatchingCounter(this.tvChannel_0);
     this.onPlayerEvents_0 = ArrayList_init();
@@ -1872,11 +1872,9 @@ var HKNBP_Core = function (_, Kotlin) {
     this.volumeDown = Player$volumeDown$lambda(this);
     this.volumeMute = Player$volumeMute$lambda(this);
     this.callIframePlayerFunctionList_0 = ArrayList_init();
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'p1') : null;
-    (tmp$_2 = this.iframePlayer_0) != null ? (tmp$_2.src = (tmp$_1 = (tmp$_0 = this.tvChannel_0.sources.node) != null ? tmp$_0.iFramePlayerSrc : null) != null ? tmp$_1 : 'iframePlayer/videojs_hls.html') : null;
-    (tmp$_3 = this.iframePlayer_0) != null ? (tmp$_3.onload = Player_init$lambda(this)) : null;
-    (tmp$_4 = document.getElementById('sss')) != null ? (tmp$_4.innerHTML = 'p2') : null;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2;
+    (tmp$_1 = this.iframePlayer_0) != null ? (tmp$_1.src = (tmp$_0 = (tmp$ = this.tvChannel_0.sources.node) != null ? tmp$.iFramePlayerSrc : null) != null ? tmp$_0 : 'iframePlayer/videojs_hls.html') : null;
+    (tmp$_2 = this.iframePlayer_0) != null ? (tmp$_2.onload = Player_init$lambda(this)) : null;
   }
   function Player$Companion() {
     Player$Companion_instance = this;
@@ -2295,11 +2293,6 @@ var HKNBP_Core = function (_, Kotlin) {
       println('iframePlayer\u6709\u5572Function\u6435\u5514\u5230\u6216\u767C\u751F\u554F\u984C: ' + e.toString());
     }
   };
-  function Player$p0$lambda() {
-    var tmp$;
-    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'p0') : null;
-    return Unit;
-  }
   function Player$onPlaying$lambda$lambda$lambda$ObjectLiteral(this$Player) {
     this.this$Player = this$Player;
   }
@@ -2463,12 +2456,10 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function Player_init$lambda(this$Player) {
     return function () {
-      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3;
-      (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'p3') : null;
+      var tmp$, tmp$_0, tmp$_1;
       this$Player.setListenIframePlayer_0();
-      tmp$_2 = (tmp$_1 = (tmp$_0 = this$Player.tvChannel_0.sources.node) != null ? tmp$_0.link : null) != null ? tmp$_1 : 'https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8';
-      this$Player.callIframePlayerFunction_0('onIframePlayerInit', tmp$_2);
-      (tmp$_3 = document.getElementById('sss')) != null ? (tmp$_3.innerHTML = 'p4') : null;
+      tmp$_1 = (tmp$_0 = (tmp$ = this$Player.tvChannel_0.sources.node) != null ? tmp$.link : null) != null ? tmp$_0 : 'https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8';
+      this$Player.callIframePlayerFunction_0('onIframePlayerInit', tmp$_1);
     };
   }
   Player.$metadata$ = {

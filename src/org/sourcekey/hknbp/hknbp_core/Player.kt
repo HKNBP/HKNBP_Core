@@ -22,7 +22,6 @@ import kotlin.js.Math
 import kotlin.random.Random
 
 class Player(private val tvChannel: TVChannel) {
-    val p0 = {document.getElementById("sss")?.innerHTML = "p0"}()
     companion object{
         /**
          * 係米檢查自動播放需要靜音
@@ -504,18 +503,14 @@ class Player(private val tvChannel: TVChannel) {
     }
 
     init {
-        document.getElementById("sss")?.innerHTML = "p1"
         iframePlayer?.src = tvChannel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
         iframePlayer?.onload = fun(){
-            document.getElementById("sss")?.innerHTML = "p3"
             setListenIframePlayer()
             callIframePlayerFunction(
                     "onIframePlayerInit",
                     tvChannel.sources.node?.link?:
                     "https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8"
             )
-            document.getElementById("sss")?.innerHTML = "p4"
         }
-        document.getElementById("sss")?.innerHTML = "p2"
     }
 }
