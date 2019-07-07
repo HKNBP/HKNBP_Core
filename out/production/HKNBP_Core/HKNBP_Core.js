@@ -2285,19 +2285,27 @@ var HKNBP_Core = function (_, Kotlin) {
       value = '';
     if (onReturn === void 0)
       onReturn = Player$callIframePlayerFunction$lambda;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5;
+    (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'p1.0.0') : null;
     var caller = {};
     caller.functionName = functionName;
     caller.value = value;
     caller.name = 'HKNBPCore';
     caller.id = (new Date()).getTime().toString() + toString(Random.Default.nextInt_vux9f0$(0, 99999999));
     caller.onReturn = onReturn;
+    (tmp$_0 = document.getElementById('sss')) != null ? (tmp$_0.innerHTML = 'p1.0.1') : null;
     this.callIframePlayerFunctionList_0.add_11rb$(caller);
+    (tmp$_1 = document.getElementById('sss')) != null ? (tmp$_1.innerHTML = 'p1.0.2') : null;
     window.setTimeout(Player$callIframePlayerFunction$lambda_0(this, caller), 60000);
+    (tmp$_2 = document.getElementById('sss')) != null ? (tmp$_2.innerHTML = 'p1.0.3') : null;
     try {
+      (tmp$_3 = document.getElementById('sss')) != null ? (tmp$_3.innerHTML = 'p1.0.4') : null;
       this.iframePlayer_0.contentWindow.postMessage(JSON.stringify(caller), '*');
+      (tmp$_4 = document.getElementById('sss')) != null ? (tmp$_4.innerHTML = 'p1.0.5') : null;
     }
      catch (e) {
       println('iframePlayer\u6709\u5572Function\u6435\u5514\u5230\u6216\u767C\u751F\u554F\u984C: ' + e.toString());
+      (tmp$_5 = document.getElementById('sss')) != null ? (tmp$_5.innerHTML = 'p1.0.E') : null;
     }
   };
   function Player$onPlaying$lambda$lambda$lambda$ObjectLiteral(this$Player) {
@@ -2465,11 +2473,13 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function Player_init$lambda(this$Player) {
     return function () {
-      var tmp$, tmp$_0, tmp$_1, tmp$_2;
+      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
       (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = 'p0') : null;
       this$Player.setListenIframePlayer_0();
-      tmp$_2 = (tmp$_1 = (tmp$_0 = this$Player.tvChannel_0.sources.node) != null ? tmp$_0.link : null) != null ? tmp$_1 : 'https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8';
-      this$Player.callIframePlayerFunction_0('onIframePlayerInit', tmp$_2);
+      (tmp$_0 = document.getElementById('sss')) != null ? (tmp$_0.innerHTML = 'p1.0') : null;
+      tmp$_3 = (tmp$_2 = (tmp$_1 = this$Player.tvChannel_0.sources.node) != null ? tmp$_1.link : null) != null ? tmp$_2 : 'https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8';
+      this$Player.callIframePlayerFunction_0('onIframePlayerInit', tmp$_3);
+      (tmp$_4 = document.getElementById('sss')) != null ? (tmp$_4.innerHTML = 'p1.1') : null;
     };
   }
   Player.$metadata$ = {

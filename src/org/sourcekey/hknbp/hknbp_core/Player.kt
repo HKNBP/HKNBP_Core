@@ -494,19 +494,26 @@ class Player(private val tvChannel: TVChannel) {
     private fun callIframePlayerFunction(
             functionName: String, value: dynamic = "", onReturn: (returnValue: dynamic)->Unit = fun(returnValue){}
     ){
+        document.getElementById("sss")?.innerHTML = "p1.0.0"
         val caller = js("{}")
         caller.functionName = functionName
         caller.value = value
         caller.name = "HKNBPCore"
         caller.id = Date().getTime().toString() + Random.nextInt(0, 99999999)
         caller.onReturn = onReturn
+        document.getElementById("sss")?.innerHTML = "p1.0.1"
         callIframePlayerFunctionList.add(caller)
+        document.getElementById("sss")?.innerHTML = "p1.0.2"
         window.setTimeout(fun(){
             callIframePlayerFunctionList.remove(caller) //如果太耐冇return就響List自動清除免堆垃圾
         }, 60000)
+        document.getElementById("sss")?.innerHTML = "p1.0.3"
         try {
+            document.getElementById("sss")?.innerHTML = "p1.0.4"
             iframePlayer.contentWindow.postMessage(JSON.stringify(caller), "*")
-        } catch (e: dynamic){ println("iframePlayer有啲Function搵唔到或發生問題: $e") }
+            document.getElementById("sss")?.innerHTML = "p1.0.5"
+        } catch (e: dynamic){ println("iframePlayer有啲Function搵唔到或發生問題: $e")
+            document.getElementById("sss")?.innerHTML = "p1.0.E"}
     }
 
     init {
@@ -514,11 +521,13 @@ class Player(private val tvChannel: TVChannel) {
         iframePlayer?.onload = fun(){
             document.getElementById("sss")?.innerHTML = "p0"
             setListenIframePlayer()
+            document.getElementById("sss")?.innerHTML = "p1.0"
             callIframePlayerFunction(
                     "onIframePlayerInit",
                     tvChannel.sources.node?.link?:
                     "https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8"
             )
+            document.getElementById("sss")?.innerHTML = "p1.1"
         }
     }
 }
