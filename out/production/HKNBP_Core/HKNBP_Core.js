@@ -1621,8 +1621,10 @@ var HKNBP_Core = function (_, Kotlin) {
     }
   }
   updateChannel$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
+    var tmp$;
     switch (onPlayerEvent.name) {
       case 'playing':
+        (tmp$ = document.getElementById('sss')) != null ? (tmp$.innerHTML = '1 ' + JSON.stringify(tvChannels.node)) : null;
         this.currentPlayer_0 = player;
         this.isPlaying_0 = true;
         VirtualRemote_getInstance().update();

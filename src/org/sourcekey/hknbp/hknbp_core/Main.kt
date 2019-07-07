@@ -117,6 +117,7 @@ fun updateChannel() {
         override fun on(onPlayerEvent: Player.OnPlayerEvent) {
             when (onPlayerEvent) {
                 Player.OnPlayerEvent.playing -> {
+                    document.getElementById("sss")?.innerHTML = "1 ${JSON.stringify(tvChannels.node)}"
                     currentPlayer = player
                     isPlaying = true
                     VirtualRemote.update()
