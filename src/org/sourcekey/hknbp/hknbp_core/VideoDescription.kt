@@ -18,12 +18,14 @@ import org.w3c.dom.HTMLDivElement
 import kotlin.browser.document
 import kotlin.browser.window
 
-object VideoDescription: UserInterface(
-        "videoDescription",
-        fun(){ VideoDescription.text.innerHTML = player.videoTracks.node?.name?:""}
-) {
+object VideoDescription: UserInterface("videoDescription") {
     private val videoDescription: HTMLDivElement = document.getElementById("videoDescription") as HTMLDivElement
     private val text: HTMLDivElement = document.getElementById("videoDescriptionText") as HTMLDivElement
+
+    override fun show() {
+        super.show()
+        VideoDescription.text.innerHTML = player.videoTracks.node?.name?:""
+    }
 
     init { }
 }

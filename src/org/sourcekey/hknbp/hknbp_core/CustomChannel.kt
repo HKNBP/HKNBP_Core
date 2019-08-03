@@ -14,18 +14,17 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
-import org.w3c.dom.HTMLDivElement
-import kotlin.browser.document
-import kotlin.browser.window
+import kotlin.browser.localStorage
 
-object SubtitleDescription: UserInterface("subtitleDescription") {
-    private val subtitleDescription: HTMLDivElement = document.getElementById("subtitleDescription") as HTMLDivElement
-    private val text: HTMLDivElement = document.getElementById("subtitleDescriptionText") as HTMLDivElement
+object CustomChannel {
 
-    override fun show() {
-        super.show()
-        SubtitleDescription.text.innerHTML = player.subtitleTracks.node?.name?:""
+    fun getCustomChannels(): ArrayLinkList<Channel>?{
+        val customChannelsString = localStorage.getItem("customChannels")
+        if(customChannelsString != null){ return JSON.parse(customChannelsString) }
+        return null
     }
 
-    init {  }
+    init{
+
+    }
 }

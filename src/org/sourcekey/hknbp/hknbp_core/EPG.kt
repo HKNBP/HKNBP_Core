@@ -25,17 +25,7 @@ import org.w3c.dom.*
 import org.w3c.dom.events.FocusEvent
 
 
-object EPG: UserInterface(
-        "epg",
-        fun(){
-            EPG.setDisplayCurrentDateBox()
-            EPG.setProgrammeList()
-        },
-        fun(){
-            window.clearTimeout(EPG.updateDisplayCurrentDateBoxTimer)
-        },
-        "epgHideButton"
-) {
+object EPG: UserInterface("epg", firstFocusElementID = "epgHideButton") {
     private val epg                             = document.getElementById("epg") as HTMLElement
     private val displayCurrentDateBox           = document.getElementById("epgDisplayCurrentDateBox") as HTMLElement
     private val hideButton                      = document.getElementById("epgHideButton") as HTMLElement
@@ -492,14 +482,14 @@ object EPG: UserInterface(
 
     private fun setProgrammeListChannelList(){
         programmeListChannelList.innerHTML = ""
-        for (tvChannel in tvChannels){
+        for (channel in channels){
             val line = newProgrammeListBlockLine()
             line.append(
                     newProgrammeListBlock(
                             width = "8vh",
                             addClass = "channelNumber",
                             backgroundColor = "#222",
-                            innerHTML = tvChannel.number.toString().padStart(3, '0')
+                            innerHTML = channel.number.toString().padStart(3, '0')
                     )
             )
             line.append(
@@ -507,14 +497,14 @@ object EPG: UserInterface(
                             width = "22vh",
                             addClass = "channelName",
                             backgroundColor = "#222",
-                            innerHTML = tvChannel.name
+                            innerHTML = channel.name
                     )
             )
             programmeListChannelList.append(line)
         }
     }
 
-    private fun addProgrammeOnTimeLine(timeLine: HTMLDivElement, tvChannel: TVChannel, programme: Programme){
+    private fun addProgrammeOnTimeLine(timeLine: HTMLDivElement, channel: Channel, programme: Programme){
         val addProgrammeFromTime: Date = if(fromDate.getTime() < programme.start.getTime()){ programme.start }else{ fromDate }
         val addProgrammeToTime: Date = if(programme.stop.getTime() < toDate.getTime()){ programme.stop }else{ toDate }
         val timeLength = dateToDateDifferenceMinute(addProgrammeFromTime, addProgrammeToTime)
@@ -530,7 +520,7 @@ object EPG: UserInterface(
                                 (programme.start.getDate().toString().padStart(2, '0') +
                                         programme.start.getHours().toString().padStart(2, '0')
                                         ).toIntOrNull()?:0,
-                                tvChannel.number,
+                                channel.number,
                                 tabIndexZ
                         )).toIntOrNull()?:0,
                         onfocus = fun(event){ setProgrammeInformation(programme) }
@@ -538,11 +528,11 @@ object EPG: UserInterface(
         )
     }
 
-    private fun loadProgrammeListTableContentChannelProgrammeTimeLine(tvChannel: TVChannel){
-        tvChannel.information.getXMLTV(fun(xmltv){
+    private fun loadProgrammeListTableContentChannelProgrammeTimeLine(channel: Channel){
+        channel.information.getXMLTV(fun(xmltv){
             if(xmltv.programmes == null){return}
 
-            val id = "channel${tvChannel.number}ProgrammeTimeLine"
+            val id = "channel${channel.number}ProgrammeTimeLine"
             val timeLine = (document.getElementById(id) as HTMLDivElement)
             timeLine.innerHTML = ""//清空此ID嘅TimeLine所有Programme
 
@@ -574,7 +564,7 @@ object EPG: UserInterface(
                             titles = MultiLanguageList(Programme.Title(title = "此時段無資訊"))
                     )
                 }
-                addProgrammeOnTimeLine(timeLine, tvChannel, addToShowProgramme)
+                addProgrammeOnTimeLine(timeLine, channel, addToShowProgramme)
                 currentSettedLastTime = nextProgrammeStartTime
             }
         })
@@ -584,13 +574,13 @@ object EPG: UserInterface(
      * Focus到依家頻道嘅節目
      * */
     private fun focusCurrentProgramme(){
-        tvChannels.node?.information?.getXMLTV(fun(xmltv){
+        channels.node?.information?.getXMLTV(fun(xmltv){
             val currentProgramme: Programme = xmltv.programmes?.getProgrammeByTime()?: return
             val firstFocusTabIndex: String = Tab3dIndex.toUnparsedTabIndex(Tab3dIndex(
                     (currentProgramme.start.getDate().toString().padStart(2, '0') +
                             currentProgramme.start.getHours().toString().padStart(2, '0')
                             ).toIntOrNull()?:0,
-                    tvChannels.node?.number?:0,
+                    channels.node?.number?:0,
                     tabIndexZ
             ))
             (document.querySelector("[tabindex=\"${firstFocusTabIndex}\"]") as HTMLElement).focus()
@@ -601,14 +591,14 @@ object EPG: UserInterface(
      * 設定ChannelProgrammeTimeLine內容
      * */
     private fun setChannelProgrammeTimeLineContent(){
-        for (tvChannel in tvChannels){
-            val id = "channel${tvChannel.number}ProgrammeTimeLine"
-            addProgrammeOnTimeLine((document.getElementById(id) as HTMLDivElement), tvChannel,
+        for (channel in channels){
+            val id = "channel${channel.number}ProgrammeTimeLine"
+            addProgrammeOnTimeLine((document.getElementById(id) as HTMLDivElement), channel,
                     Programme(start = fromDate, stop = toDate,
                             titles = MultiLanguageList(Programme.Title(title = "暫無資訊"))//////////
                     )
             )
-            loadProgrammeListTableContentChannelProgrammeTimeLine(tvChannel)
+            loadProgrammeListTableContentChannelProgrammeTimeLine(channel)
         }
     }
 
@@ -616,9 +606,9 @@ object EPG: UserInterface(
      * 為每頻道建立ChannelProgrammeTimeLine空間
      * */
     private fun newChannelProgrammeTimeLineArea(){
-        for (tvChannel in tvChannels){
+        for (channel in channels){
             programmeListTable.append(
-                    newProgrammeListBlockLine("channel${tvChannel.number}ProgrammeTimeLine")
+                    newProgrammeListBlockLine("channel${channel.number}ProgrammeTimeLine")
             )
         }
     }
@@ -646,6 +636,17 @@ object EPG: UserInterface(
         setProgrammeListTimeLine()
         setProgrammeListChannelList()
         setProgrammeListTable()
+    }
+
+    override fun show() {
+        super.show()
+        setDisplayCurrentDateBox()
+        setProgrammeList()
+    }
+
+    override fun hide() {
+        super.hide()
+        window.clearTimeout(updateDisplayCurrentDateBoxTimer)
     }
 
     init {

@@ -26,20 +26,7 @@ import kotlin.js.Math
 /**
  * 操作使用者介面器
  * */
-object UserControlPanel: UserInterface(
-        "userControlPanel",
-        onShow = fun(){
-            UserControlPanel.onShowUserControlPanel()
-            jQuery("#userControlPanelShower").css("cursor", "auto")
-        },
-        onHide = fun(){
-            UserControlPanel.onHideUserControlPanel()
-            UserControlPanel.hideMouseTimer = window.setTimeout(fun(){
-                jQuery("#userControlPanelShower").css("cursor", "none")
-            }, 2000)
-        },
-        firstFocusElementID = "onHeadNextAudioButton"
-) {
+object UserControlPanel: UserInterface("userControlPanel", firstFocusElementID = "onHeadNextAudioButton") {
     private val panel: HTMLElement   = document.getElementById("userControlPanel") as HTMLElement
     private val shower: HTMLElement  = document.getElementById("userControlPanelShower") as HTMLElement
 
@@ -90,6 +77,20 @@ object UserControlPanel: UserInterface(
         jQuery(js("document")).ready(fun(){
             jQuery("#${iframeId}").iframeTracker(obj)
         })*/
+    }
+
+    override fun show() {
+        super.show()
+        UserControlPanel.onShowUserControlPanel()
+        jQuery("#userControlPanelShower").css("cursor", "auto")
+    }
+
+    override fun hide() {
+        super.hide()
+        UserControlPanel.onHideUserControlPanel()
+        UserControlPanel.hideMouseTimer = window.setTimeout(fun(){
+            jQuery("#userControlPanelShower").css("cursor", "none")
+        }, 2000)
     }
 
     init {

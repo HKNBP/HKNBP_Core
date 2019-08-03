@@ -19,18 +19,7 @@ import org.w3c.dom.HTMLDivElement
 import kotlin.browser.document
 import kotlin.browser.window
 
-object VolumeDescription: UserInterface(
-        "volumeDescription",
-        fun(){
-            player.getVolume(fun(volume){
-                VolumeDescription.volumeValue.innerHTML = volume.toInt().toString()
-                VolumeDescription.volumeIconList.innerHTML = ""
-                for(i in 0 until (volume/10).toInt()){
-                    VolumeDescription.volumeIconList.innerHTML += VolumeDescription.volumeIcon
-                }
-            })
-        }
-) {
+object VolumeDescription: UserInterface("volumeDescription") {
     private val volumeDescription: HTMLDivElement = document.getElementById("volumeDescription") as HTMLDivElement
     private val volumeUpButton: HTMLButtonElement = document.getElementById("volumeDescriptionVolumeUpButton") as HTMLButtonElement
     private val volumeDownButton: HTMLButtonElement = document.getElementById("volumeDescriptionVolumeDownButton") as HTMLButtonElement
@@ -38,6 +27,18 @@ object VolumeDescription: UserInterface(
     private val volumeIconList: HTMLDivElement = document.getElementById("volumeDescriptionVolumeIconList") as HTMLDivElement
 
     private val volumeIcon = "<i class=\"icon-font\">&#xe82a;</i>"
+
+    override fun show() {
+        super.show()
+        println("VolumeDescriptionShow")
+        player.getVolume(fun(volume){
+            VolumeDescription.volumeValue.innerHTML = volume.toInt().toString()
+            VolumeDescription.volumeIconList.innerHTML = ""
+            for(i in 0 until (volume/10).toInt()){
+                VolumeDescription.volumeIconList.innerHTML += VolumeDescription.volumeIcon
+            }
+        })
+    }
 
     init {
         volumeUpButton.onclick = fun(event){player.volumeUp}

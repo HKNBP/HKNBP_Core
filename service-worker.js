@@ -18,7 +18,7 @@
  * 控制更新cache版本
  * 修改版本名今用戶進行更新新版
  */
-var coreVersion = "0.9.51";
+var coreVersion = "V2019.08.62";
 
 /**
  * 檢查依家運行係米ServiceWorker
@@ -47,7 +47,7 @@ if(self){
         "css/fontello-codes.css",
         "css/fontello-embedded.css",
         "data/dialogue.json",
-        "data/tv_channels.xml",
+        "data/official_channels.xml",
         "font/fontello.eot",
         "font/fontello.svg",
         "font/fontello.ttf",

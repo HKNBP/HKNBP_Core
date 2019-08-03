@@ -19,16 +19,13 @@ import kotlin.browser.document
 import kotlin.browser.window
 
 abstract class UserInterface(
-        private val htmlElementID: String,
-        private val onShow: ()->Unit = fun(){},
-        private val onHide: ()->Unit = fun(){},
+        private val mainFrameElementID: String,
         private val firstFocusElementID: String? = null,
         private var isFocusCountdownHide: Boolean = true,
         private var isFocusOutHide: Boolean = false,
         private val conversionFocusHideTime: Int = 15000
-
 ) {
-    private val htmlElement = document.getElementById(htmlElementID) as HTMLElement
+    private val htmlElement = document.getElementById(mainFrameElementID) as HTMLElement
     private var lastTimeFocusElement: dynamic? = {
         if(firstFocusElementID != null){
             try {
@@ -66,8 +63,6 @@ abstract class UserInterface(
         htmlElement.style.display = "block"
         isShowUserInterfaceFirstFocus = true
         lastTimeFocusElement?.focus()
-        onShow()
-        update()
     }
 
     private fun setHideTimer(showTime: Int){
@@ -81,7 +76,6 @@ abstract class UserInterface(
 
     open fun hide(){
         htmlElement.style.display = "none"
-        onHide()
     }
 
     fun showHideAlternately(){
@@ -94,10 +88,10 @@ abstract class UserInterface(
 
     init {
         jQuery(
-                "#${htmlElementID} button" + "," +
-                "#${htmlElementID} select" + "," +
-                "#${htmlElementID} option" + "," +
-                "#${htmlElementID} input"
+                "#${mainFrameElementID} button" + "," +
+                "#${mainFrameElementID} select" + "," +
+                "#${mainFrameElementID} option" + "," +
+                "#${mainFrameElementID} input"
         )?.focus(fun(){if(!js("\$(\"this\").is(\":focus\")")){
             //設 當onfocus 就onhover 同步
             jQuery(js("this"))?.hover()
@@ -110,17 +104,17 @@ abstract class UserInterface(
             }
         }})
         jQuery(
-                "#${htmlElementID} button" + "," +
-                "#${htmlElementID} select" + "," +
-                "#${htmlElementID} option" + "," +
-                "#${htmlElementID} input"
+                "#${mainFrameElementID} button" + "," +
+                "#${mainFrameElementID} select" + "," +
+                "#${mainFrameElementID} option" + "," +
+                "#${mainFrameElementID} input"
         )?.hover(fun(){
             //設 當onhover 就onfocus 同步
             jQuery(js("this"))?.focus()
         })
 
         /**
-        jQuery("#${htmlElementID}").blur(fun(){
+        jQuery("#${mainFrameElementID}").blur(fun(){
             if(isFocusOutHide){
                 hide()
             }

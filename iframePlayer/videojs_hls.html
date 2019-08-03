@@ -55,7 +55,7 @@
 
 <body>
 <div id="player-display" style="position:absolute; top:0; bottom:0; left:0; right:0; overflow:hidden;"></div>
-<script src="https://vjs.zencdn.net/7.4.1/video.min.js"></script>
+<script src="https://vjs.zencdn.net/7.6.0/video.min.js"></script>
 <script src="https://unpkg.com/@videojs/http-streaming@1.10.1/dist/videojs-http-streaming.min.js"></script>
 <script>
     /**
@@ -127,6 +127,7 @@
         //return依家使用緊邊條VideoTrack
         for(var i=0; i<player.tech_.hls.representations().length; i++){
             if(player.tech_.hls.representations()[i].enabled() === true){
+              console.log(TrackDescription(i, readVideoTrackName(player.tech_.hls.representations()[i])));
                 onReturn(TrackDescription(i, readVideoTrackName(player.tech_.hls.representations()[i])));
                 return;
             }

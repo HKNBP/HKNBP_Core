@@ -19,7 +19,7 @@ import org.w3c.dom.HTMLIFrameElement
 import kotlin.browser.document
 import kotlin.browser.window
 
-class WatchingCounter(private val tvChannel: TVChannel) {
+class WatchingCounter(private val channel: Channel) {
     companion object {
         private var timer = 0
             set(value) {
@@ -35,7 +35,7 @@ class WatchingCounter(private val tvChannel: TVChannel) {
     init {
         timer = window.setTimeout(fun(){
             iframeWatchingCounter.src = "${rootURL}/watching-counter.html?" +
-                    "tvchannel=${tvChannel.number}" + "&" +
+                    "channel=${channel.number}" + "&" +
                     "coreVersion=${coreVersion}" + "&" +
                     "appVersion=${appVersion}"
         }, 60000)//1分鐘作起計收睇緊

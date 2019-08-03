@@ -62,7 +62,7 @@ object VirtualRemote: UserInterface("virtualRemote"){
     val number8Button               = document.getElementById("number8Button")              as HTMLButtonElement
     val number9Button               = document.getElementById("number9Button")              as HTMLButtonElement
     val refreshButton               = document.getElementById("refreshButton")              as HTMLButtonElement
-    val tvChannelDescriptionButton  = document.getElementById("tvChannelDescriptionButton") as HTMLButtonElement
+    val channelDescriptionButton    = document.getElementById("channelDescriptionButton")   as HTMLButtonElement
     val aboutWindowButton           = document.getElementById("aboutWindowButton")          as HTMLButtonElement
     val feedbackWebButton           = document.getElementById("feedbackWebButton")          as HTMLButtonElement
     val shareWindowButton           = document.getElementById("shareWindowButton")          as HTMLButtonElement
@@ -83,18 +83,18 @@ object VirtualRemote: UserInterface("virtualRemote"){
     val volumeDescriptionButton     = document.createElement("button")                      as HTMLButtonElement
 
 
-    fun updateTVChannelDescription(){
+    fun updateChannelDescription(){
         //顯示頻道選項
         var channelOptionHTMLString = ""
-        for(tvChannel in tvChannels){
+        for(channel in channels){
             channelOptionHTMLString = "" +
-                    "<option value=${tvChannel.number}>" +
-                    "${tvChannel.number.toString().padStart(3, '0')} ${tvChannel.name}" +
+                    "<option value=${channel.number}>" +
+                    "${channel.number.toString().padStart(3, '0')} ${channel.name}" +
                     "</option>" +
                     channelOptionHTMLString
         }
         designateChannelSelect.innerHTML = channelOptionHTMLString
-        designateChannelSelect.value = tvChannels.node?.number.toString()
+        designateChannelSelect.value = channels.node?.number.toString()
     }
 
     fun updateVideoInformation(){
@@ -128,7 +128,7 @@ object VirtualRemote: UserInterface("virtualRemote"){
     }
 
     override fun update(){
-        updateTVChannelDescription()
+        updateChannelDescription()
         updateVideoInformation()
         updateAudioInformation()
         updateSubtitleInformation()
@@ -148,11 +148,11 @@ object VirtualRemote: UserInterface("virtualRemote"){
     init {
         hideVirtualRemoteButton.onclick     = fun(event){event.stopPropagation();hide()}
         epgButton.onclick                   = fun(event){if(EPG.isShow){EPG.hide()}else{EPG.show();hide()}}
-        nextChannelButton.onclick           = fun(event){tvChannels.next()}
-        previousChannelButton.onclick       = fun(event){tvChannels.previous()}
+        nextChannelButton.onclick           = fun(event){channels.next()}
+        previousChannelButton.onclick       = fun(event){channels.previous()}
         designateChannelSelect.onchange     = fun(event){designatedChannel(designateChannelSelect.value.toInt())}
         designateChannelButton.onclick      = fun(event){designatedChannel(designateChannelInputText.value.toInt())}
-        lastTimeChannelButton.onclick       = fun(event){tvChannels.lastTime()}
+        lastTimeChannelButton.onclick       = fun(event){channels.lastTime()}
         nextVideoButton.onclick             = fun(event){player.nextVideoTrack();VideoDescription.show(3000)}
         previousVideoButton.onclick         = fun(event){player.previousVideoTrack();VideoDescription.show(3000)}
         designateVideoSelect.onchange       = fun(event){player.designatedVideoTrack(designateVideoSelect.value.toInt());VideoDescription.show(3000)}
@@ -182,7 +182,7 @@ object VirtualRemote: UserInterface("virtualRemote"){
         number8Button.onclick               = fun(event){EnteringNumberBox.show("8")}
         number9Button.onclick               = fun(event){EnteringNumberBox.show("9")}
         refreshButton.onclick               = fun(event){updateChannel()}
-        tvChannelDescriptionButton.onclick  = fun(event){if(TVChannelDescription.isShow){TVChannelDescription.hide()}else{TVChannelDescription.show(60000)}}
+        channelDescriptionButton.onclick    = fun(event){if(ChannelDescription.isShow){ChannelDescription.hide()}else{ChannelDescription.show(60000)}}
         aboutWindowButton.onclick           = fun(evebt){AboutWindow.showHideAlternately()}
         feedbackWebButton.onclick           = fun(evebt){
             val formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSehWsf1J8sSzPpXHRfFg7mqAsCC1q5dJpef2W6YvNFCrIW-8g/viewform?usp=pp_url"

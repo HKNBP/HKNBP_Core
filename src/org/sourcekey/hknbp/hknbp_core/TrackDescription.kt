@@ -68,15 +68,15 @@ class TrackDescription(
          * 響iframe return返來嘅由TrackDescription[]轉成ArrayLinkList<TrackDescription>
          */
         fun fromIframePlayerReturnTrackDescriptionsToKotilnUseableTrackDescriptions(
-                fromIframePlayerGetTracksValue: dynamic, fromIframePlayerGetTrackValue: dynamic)
-                : ArrayLinkList<TrackDescription> {
+                fromIframePlayerGetTracksValue: dynamic, fromIframePlayerGetTrackValue: dynamic
+        ): ArrayLinkList<TrackDescription> {
             try {
                 //讀取TrackDescriptions
                 val trackDescriptions = sortTrackDescriptions(
                         ArrayLinkList(JSON.parse<Array<TrackDescription>>(JSON.stringify(fromIframePlayerGetTracksValue)))
                 )
                 trackDescriptions.designated(
-                        TrackDescription.toTracksNodeID(
+                        toTracksNodeID(
                                 trackDescriptions,
                                 JSON.parse<TrackDescription>(JSON.stringify(fromIframePlayerGetTrackValue)).id
                         )?:0

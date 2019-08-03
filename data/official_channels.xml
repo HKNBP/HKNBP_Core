@@ -13,7 +13,7 @@
   ~ along with HKNBP_Core.  If not, see <https://www.gnu.org/licenses/>.
   -->
 
-<tvchannellist>
+<officialchannel>
     <channel>
         <number>000</number>
         <name>測試頻道0</name>
@@ -94,4 +94,4 @@
         </source>
         <information epgid="vh1-europe.music" src="http://tvprofil.net/xmltv/data/vh1-europe.music/weekly_vh1-europe.music_tvprofil.net.xml"/>
     </channel>
-</tvchannellist>
+</officialchannel>

@@ -17,11 +17,7 @@ package org.sourcekey.hknbp.hknbp_core
 import kotlin.browser.document
 import kotlin.browser.window
 
-object PromptBox: UserInterface(
-        "promptBox",
-        fun(){},
-        fun(){}
-) {
+object PromptBox: UserInterface("promptBox") {
     private val promptBox: dynamic = document.getElementById("promptBox")
 
     /**

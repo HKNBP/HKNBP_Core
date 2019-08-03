@@ -17,11 +17,12 @@ package org.sourcekey.hknbp.hknbp_core
 import jquery.jq
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.events.Event
+import org.w3c.dom.url.URL
 import kotlin.browser.document
 import kotlin.browser.localStorage
 import kotlin.browser.window
 import kotlin.js.Date
-
+import kotlin.random.Random
 
 
 val rootURL: String = "https://hknbp.org/"
@@ -33,13 +34,13 @@ val rootURL: String = "https://hknbp.org/"
  * */
 val coreVersion: String = {
     var value: String = ""
-    val savedValue: String = localStorage.getItem("coreVersion")?.toString()?: ""
+    val savedValue: String = localStorage.getItem("CoreVersion")?.toString()?: ""
     try {
         value = js("coreVersion")?: savedValue
     }catch (e: dynamic){
         value = savedValue
     }
-    localStorage.setItem("coreVersion", value)//儲底畀離線時讀取
+    localStorage.setItem("CoreVersion", value)//儲底畀離線時讀取
     value
 }()
 
@@ -65,37 +66,54 @@ val jQueryLib = includeScript("js/jquery-3.4.1.min.js")*/
  * */
 val jQuery: dynamic = js("\$")
 
-var tvChannels: ArrayLinkList<TVChannel> = {
-    TVChannel.getTVChannels(fun(tvChannels_) {
-        tvChannels = tvChannels_
-        tvChannels.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<TVChannel> {
-            override fun OnNodeIDChanged(
-                    preChangeNodeID: Int?, postChangeNodeID: Int?,
-                    preChangeNode: TVChannel?, postChangeNode: TVChannel?
-            ) {
-                updateChannel()
-                TVChannelDescription.show(5000)
-                TVChannelDescription.update()
-            }
-        })
-        updateChannel()
-        TVChannelDescription.show(5000)
-        TVChannelDescription.update()
-    })
+var channels: ArrayLinkList<Channel> = {
+    channels = ArrayLinkList<Channel>()
+    channels.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<Channel> {
+        override fun OnNodeIDChanged(
+                preChangeNodeID: Int?, postChangeNodeID: Int?,
+                preChangeNode: Channel?, postChangeNode: Channel?
+        ) {
+            //儲存低返最近睇過嘅頻道
+            localStorage.setItem("RecentlyWatchedChannel", postChangeNodeID.toString())
+            //更新URL嘅channel參數
+            updateURLParameter("channel", postChangeNode?.number.toString())
 
-    ArrayLinkList(TVChannel())
+            updateChannel()
+        }
+    })
+    channels.addAll(CustomChannel.getCustomChannels()?:ArrayLinkList())
+    OfficialChannel.getOfficialChannels(fun(officialChannels){
+        channels.addAll(officialChannels)
+
+        //讀返最近睇過嘅頻道
+        channels.designated(
+                //URL參數指定嘅道
+                {
+                    val channelParam = URL(window.location.href).searchParams.get("channel")?.toIntOrNull()
+                    channels.indexOfOrNull(channels.find{channel -> channel.number == channelParam})
+                }()?:
+                //上次收睇緊嘅頻道
+                localStorage.getItem("RecentlyWatchedChannel")?.toInt() ?:
+                //隨機一個頻道
+                if(channels.size <= 0){ 0 }else{ Random.nextInt(0, channels.size) }
+        )
+    })
+    updateChannel()
+
+    channels
 }()
 
-var player: Player = Player(tvChannels.node ?: TVChannel())
+var player: Player = Player(channels.node ?: Channel())
+
 
 /**
  * 去特定頻道
  * @param channelNumber 要轉去頻道冧把
  */
 @JsName("designatedChannel") fun designatedChannel(channelNumber: Int): Boolean {
-    val channelNumberNodeID = TVChannel.toChannelNumberNodeID(tvChannels, channelNumber)
+    val channelNumberNodeID = channels.indexOfOrNull(channels.find{ channel -> channel.number == channelNumber })
     if (channelNumberNodeID != null) {
-        tvChannels.designated(channelNumberNodeID)
+        channels.designated(channelNumberNodeID)
         return true
     } else {
         Dialogue.getDialogues(fun(dialogues) {
@@ -109,7 +127,7 @@ var player: Player = Player(tvChannels.node ?: TVChannel())
  * 刷新頻道
  */
 fun updateChannel() {
-    player = Player(tvChannels.node ?: TVChannel())
+    player = Player(channels.node?: Channel())
     player.addOnPlayerEventListener(object : Player.OnPlayerEventListener {
         private var currentPlayer: Player? = null
         private var isPlaying: Boolean = false
@@ -130,32 +148,13 @@ fun updateChannel() {
                         }
                     }, 15000)
                 }
-                Player.OnPlayerEvent.videoTrackChanged -> {
-                    VirtualRemote.updateVideoInformation()
-                }
-                Player.OnPlayerEvent.audioTrackChanged -> {
-                    VirtualRemote.updateAudioInformation()
-                }
-                Player.OnPlayerEvent.subtitleTrackChanged -> {
-                    VirtualRemote.updateSubtitleInformation()
-                }
-                Player.OnPlayerEvent.volumeChanged -> {
-                    VolumeDescription.show(3000)
-                }
-                Player.OnPlayerEvent.mutedChanged -> {
-                    player.getMuted(fun(muted){
-                        if(muted){
-                            MutedDescription.show()
-                        }else{
-                            MutedDescription.hide()
-                        }
-                    })
-                }
             }
         }
     })
     player.play()
     VirtualRemote.update()
+    ChannelDescription.show(5000)
+    ChannelDescription.update()
 }
 
 /**
@@ -207,7 +206,7 @@ timer(autoTransformEngineTimerSecond)
 */
 private fun autoTransformEngineRun() {
 if (!p]layer.isPlaying()) {
-tvChannels.node.getSources().next()
+channels.node.getSources().next()
 updateChannel()
 }
 }

@@ -14,18 +14,21 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
+import kotlinx.serialization.ImplicitReflectionSerializer
 import org.w3c.dom.HTMLButtonElement
 import org.w3c.dom.HTMLDivElement
 import org.w3c.dom.Window
 import kotlin.browser.document
 import kotlin.browser.window
 
-object AudioDescription: UserInterface(
-        "audioDescription",
-        fun(){ AudioDescription.text.innerHTML = player.audioTracks.node?.name?:"" }
-) {
+object AudioDescription: UserInterface("audioDescription") {
     private val audioDescription: HTMLDivElement = document.getElementById("audioDescription") as HTMLDivElement
     private val text: HTMLDivElement = document.getElementById("audioDescriptionText") as HTMLDivElement
+
+    override fun show() {
+        super.show()
+        AudioDescription.text.innerHTML = player.audioTracks.node?.name?:""
+    }
 
     init {  }
 }

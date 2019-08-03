@@ -21,15 +21,17 @@ import kotlin.browser.window
 
 object ShareWindow : UserInterface(
         "shareWindow",
-        fun(){
-            ShareWindow.buttonList.setAttribute("data-a2a-url", window.location.href)//設定要分享嘅Link
-        },
         firstFocusElementID = "shareWindowHideButton",
         isFocusOutHide = true
 ) {
     private val shareWindow = document.getElementById("shareWindow") as HTMLDivElement
     private val hideButton = document.getElementById("shareWindowHideButton") as HTMLButtonElement
     private val buttonList = document.getElementById("shareWindowShareButtonList") as HTMLDivElement
+
+    override fun show() {
+        super.show()
+        ShareWindow.buttonList.setAttribute("data-a2a-url", window.location.href)//設定要分享嘅Link
+    }
 
     init {
         hideButton.onclick = fun(event){hide()}
