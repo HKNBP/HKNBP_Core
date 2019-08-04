@@ -1934,7 +1934,6 @@ var HKNBP_Core = function (_, Kotlin) {
       case 'playing':
         this.currentPlayer_0 = player;
         this.isPlaying_0 = true;
-        VirtualRemote_getInstance().update();
         break;
       case 'notPlaying':
         this.isPlaying_0 = false;
@@ -1954,8 +1953,6 @@ var HKNBP_Core = function (_, Kotlin) {
     player.addOnPlayerEventListener_j8fzjz$(new updateChannel$ObjectLiteral());
     player.play();
     VirtualRemote_getInstance().update();
-    ChannelDescription_getInstance().show_za3lpa$(5000);
-    ChannelDescription_getInstance().update();
   }
   function reductionTo(w, h) {
     var arr = new Int32Array(2);
@@ -2363,6 +2360,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.volumeMute = Player$volumeMute$lambda(this);
     this.callIframePlayerFunctionList_0 = ArrayList_init();
     var tmp$, tmp$_0, tmp$_1, tmp$_2;
+    this.addOnPlayerEventListener_j8fzjz$(new Player_init$ObjectLiteral());
     (tmp$_1 = this.iframePlayer_0) != null ? (tmp$_1.src = (tmp$_0 = (tmp$ = this.channel_0.sources.node) != null ? tmp$.iFramePlayerSrc : null) != null ? tmp$_0 : 'iframePlayer/videojs_hls.html') : null;
     (tmp$_2 = this.iframePlayer_0) != null ? (tmp$_2.onload = Player_init$lambda(this)) : null;
   }
@@ -2921,6 +2919,53 @@ var HKNBP_Core = function (_, Kotlin) {
       this$Player.getMuted_y8twos$(Player$volumeMute$lambda$lambda(this$Player));
     };
   }
+  function Player_init$ObjectLiteral() {
+    this.isPlaying_0 = false;
+    this.numberOfPlaying_0 = 0;
+    ChannelDescription_getInstance().show_za3lpa$(5000);
+    ChannelDescription_getInstance().update();
+    window.setTimeout(Player_init$Player_init$ObjectLiteral_init$lambda(this), 10000);
+  }
+  function Player_init$ObjectLiteral$on$lambda(this$) {
+    return function () {
+      if (!this$.isPlaying_0) {
+        ChannelDescription_getInstance().show();
+        PromptBox_getInstance().promptMessage('\u8A0A\u865F\u63A5\u6536\u4E0D\u826F');
+      }
+    };
+  }
+  Player_init$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
+    switch (onPlayerEvent.name) {
+      case 'playing':
+        this.isPlaying_0 = true;
+        if (0 < this.numberOfPlaying_0) {
+          ChannelDescription_getInstance().hide();
+        }
+
+        this.numberOfPlaying_0 = this.numberOfPlaying_0 + 1 | 0;
+        UserControlPanel_getInstance().cannotTouchIframePlayerMode();
+        break;
+      case 'notPlaying':
+        this.isPlaying_0 = false;
+        if (0 < this.numberOfPlaying_0) {
+          window.setTimeout(Player_init$ObjectLiteral$on$lambda(this), 10000);
+        }
+
+        break;
+    }
+  };
+  function Player_init$Player_init$ObjectLiteral_init$lambda(this$) {
+    return function () {
+      if (!this$.isPlaying_0 && this$.numberOfPlaying_0 === 0) {
+        UserControlPanel_getInstance().canTouchIframePlayerMode();
+        PromptBox_getInstance().promptMessage('\u5DF2\u5207\u63DB\u5230\u624B\u52D5\u64AD\u653E\u6A21\u5F0F');
+      }
+    };
+  }
+  Player_init$ObjectLiteral.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: [Player$OnPlayerEventListener]
+  };
   function Player_init$lambda(this$Player) {
     return function () {
       var tmp$, tmp$_0, tmp$_1;
@@ -2938,24 +2983,11 @@ var HKNBP_Core = function (_, Kotlin) {
     PromptBox_instance = this;
     UserInterface.call(this, 'promptBox');
     this.promptBox_0 = document.getElementById('promptBox');
-    this.canHideOnPromptMessage_0 = 0;
-  }
-  function PromptBox$promptMessage$lambda(this$PromptBox) {
-    return function () {
-      var tmp$;
-      tmp$ = this$PromptBox.canHideOnPromptMessage_0;
-      this$PromptBox.canHideOnPromptMessage_0 = tmp$ - 1 | 0;
-      if (this$PromptBox.canHideOnPromptMessage_0 <= 0) {
-        this$PromptBox.hide();
-        this$PromptBox.canHideOnPromptMessage_0 = 0;
-      }
-    };
   }
   PromptBox.prototype.promptMessage = function (promptMessage) {
-    this.show();
     this.promptBox_0.innerHTML = promptMessage;
-    this.canHideOnPromptMessage_0 = this.canHideOnPromptMessage_0 + 1 | 0;
-    window.setTimeout(PromptBox$promptMessage$lambda(this), 3500);
+    this.show_za3lpa$(3500);
+    return 0;
   };
   PromptBox.$metadata$ = {
     kind: Kind_OBJECT,
@@ -3412,10 +3444,7 @@ var HKNBP_Core = function (_, Kotlin) {
     var _shower = this.shower_0;
     _shower.ontouchstart = UserControlPanel_init$lambda_5(this);
     if (equals(RunnerInfo_getInstance().getOsFamily(), 'iOS')) {
-      this.shower_0.style.right = 'auto';
-      this.shower_0.style.width = '10vh';
-      this.shower_0.style.backgroundColor = '#303030';
-      this.shower_0.innerHTML = '<i class="icon-font" style="font-size: 5vh;">&#xe825;<\/i>';
+      this.canTouchIframePlayerMode();
     }
     this.setIframeOnClick_a4mwiz$('iframePlayer', UserControlPanel_init$lambda_6(this));
   }
@@ -3428,8 +3457,6 @@ var HKNBP_Core = function (_, Kotlin) {
       this.hideMouseTimer_r29tyc$_0 = value;
     }
   });
-  UserControlPanel.prototype.setIframeOnClick_a4mwiz$ = function (iframeId, onClick) {
-  };
   UserControlPanel.prototype.show = function () {
     UserInterface.prototype.show.call(this);
     UserControlPanel_getInstance().onShowUserControlPanel();
@@ -3442,6 +3469,22 @@ var HKNBP_Core = function (_, Kotlin) {
     UserInterface.prototype.hide.call(this);
     UserControlPanel_getInstance().onHideUserControlPanel();
     UserControlPanel_getInstance().hideMouseTimer_0 = window.setTimeout(UserControlPanel$hide$lambda, 2000);
+  };
+  UserControlPanel.prototype.setIframeOnClick_a4mwiz$ = function (iframeId, onClick) {
+  };
+  UserControlPanel.prototype.canTouchIframePlayerMode = function () {
+    this.shower_0.style.right = 'auto';
+    this.shower_0.style.width = '10vh';
+    this.shower_0.style.backgroundColor = '#303030';
+    this.shower_0.innerHTML = '<i class="icon-font" style="font-size: 5vh;">&#xe825;<\/i>';
+  };
+  UserControlPanel.prototype.cannotTouchIframePlayerMode = function () {
+    if (!equals(RunnerInfo_getInstance().getOsFamily(), 'iOS')) {
+      this.shower_0.style.right = '0';
+      this.shower_0.style.width = '100%';
+      this.shower_0.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+      this.shower_0.innerHTML = '';
+    }
   };
   function UserControlPanel$onShowUserControlPanel$lambda() {
   }

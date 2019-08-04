@@ -537,6 +537,45 @@ class Player(private val channel: Channel) {
     }
 
     init {
+        addOnPlayerEventListener(object : OnPlayerEventListener {
+            private var isPlaying: Boolean = false
+            private var numberOfPlaying: Int = 0
+            override fun on(onPlayerEvent: OnPlayerEvent) {
+                when (onPlayerEvent) {
+                    OnPlayerEvent.playing -> {
+                        isPlaying = true
+                        if(0 < numberOfPlaying){
+                            ChannelDescription.hide()
+                        }
+                        numberOfPlaying++
+                        //VirtualRemote.update()
+                        UserControlPanel.cannotTouchIframePlayerMode()
+                    }
+                    OnPlayerEvent.notPlaying -> {
+                        isPlaying = false
+                        if(0 < numberOfPlaying){
+                            window.setTimeout(fun(){
+                                if(!isPlaying){
+                                    ChannelDescription.show()
+                                    PromptBox.promptMessage("訊號接收不良")
+                                }
+                            }, 10000)
+                        }
+                    }
+                }
+            }
+            init {
+                ChannelDescription.show(5000)
+                ChannelDescription.update()
+                //如果冇自動播放就換到手動播放模式
+                window.setTimeout(fun() {
+                    if (!isPlaying && numberOfPlaying == 0) {
+                        UserControlPanel.canTouchIframePlayerMode()
+                        PromptBox.promptMessage("已切換到手動播放模式")
+                    }
+                }, 10000)
+            }
+        })
         iframePlayer?.src = channel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
         iframePlayer?.onload = fun(){
             setListenIframePlayer()
@@ -546,5 +585,6 @@ class Player(private val channel: Channel) {
                     "https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8"
             )
         }
+
     }
 }

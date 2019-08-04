@@ -136,10 +136,8 @@ fun updateChannel() {
                 Player.OnPlayerEvent.playing -> {
                     currentPlayer = player
                     isPlaying = true
-                    VirtualRemote.update()
                 }
                 Player.OnPlayerEvent.notPlaying -> {
-                    //15秒後刷新頻道
                     isPlaying = false
                     //檢查呢15秒內Player有冇再繼續正常播放,若冇就刷新Player
                     window.setTimeout(fun() {
@@ -153,8 +151,6 @@ fun updateChannel() {
     })
     player.play()
     VirtualRemote.update()
-    ChannelDescription.show(5000)
-    ChannelDescription.update()
 }
 
 /**

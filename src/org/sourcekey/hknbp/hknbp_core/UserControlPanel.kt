@@ -59,26 +59,6 @@ object UserControlPanel: UserInterface("userControlPanel", firstFocusElementID =
      * */
     var onHideUserControlPanel: ()->Unit = fun(){}
 
-    /**
-     *
-     * 應用到iframeTracker.js Lib實現
-     * */
-    fun setIframeOnClick(iframeId: String, onClick: ()->Unit){
-        /**
-        shower.focus()
-        var obj = js("{}")
-        obj.blurCallback = fun(){
-            onClick()
-            window.setTimeout(fun() {
-                jQuery(js("this")).focus()
-                shower.focus()
-            }, 0)
-        }
-        jQuery(js("document")).ready(fun(){
-            jQuery("#${iframeId}").iframeTracker(obj)
-        })*/
-    }
-
     override fun show() {
         super.show()
         UserControlPanel.onShowUserControlPanel()
@@ -91,6 +71,42 @@ object UserControlPanel: UserInterface("userControlPanel", firstFocusElementID =
         UserControlPanel.hideMouseTimer = window.setTimeout(fun(){
             jQuery("#userControlPanelShower").css("cursor", "none")
         }, 2000)
+    }
+
+    /**
+     *
+     * 應用到iframeTracker.js Lib實現
+     * */
+    fun setIframeOnClick(iframeId: String, onClick: ()->Unit){
+        /**
+        shower.focus()
+        var obj = js("{}")
+        obj.blurCallback = fun(){
+        onClick()
+        window.setTimeout(fun() {
+        jQuery(js("this")).focus()
+        shower.focus()
+        }, 0)
+        }
+        jQuery(js("document")).ready(fun(){
+        jQuery("#${iframeId}").iframeTracker(obj)
+        })*/
+    }
+
+    fun canTouchIframePlayerMode(){
+        shower.style.right = "auto"
+        shower.style.width = "10vh"
+        shower.style.backgroundColor = "#303030"
+        shower.innerHTML = "<i class=\"icon-font\" style=\"font-size: 5vh;\">&#xe825;</i>"
+    }
+
+    fun cannotTouchIframePlayerMode(){
+        if(RunnerInfo.getOsFamily() != "iOS"){//當iOS時唔會切換到"不可觸摸IframePlayer模式"
+            shower.style.right = "0"
+            shower.style.width = "100%"
+            shower.style.backgroundColor = "rgba(0, 0, 0, 0)"
+            shower.innerHTML = ""
+        }
     }
 
     init {
@@ -140,10 +156,7 @@ object UserControlPanel: UserInterface("userControlPanel", firstFocusElementID =
         //好似有解決方法, 有待研究
         //https://stackoverflow.com/questions/5054560/can-i-avoid-the-native-fullscreen-video-player-with-html5-on-iphone-or-android
         if(RunnerInfo.getOsFamily() == "iOS"){
-            shower.style.right = "auto"
-            shower.style.width = "10vh"
-            shower.style.backgroundColor = "#303030"
-            shower.innerHTML = "<i class=\"icon-font\" style=\"font-size: 5vh;\">&#xe825;</i>"
+            canTouchIframePlayerMode()
         }
         setIframeOnClick("iframePlayer", fun(){ showHideAlternately() })
     }

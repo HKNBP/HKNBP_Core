@@ -20,27 +20,14 @@ import kotlin.browser.window
 object PromptBox: UserInterface("promptBox") {
     private val promptBox: dynamic = document.getElementById("promptBox")
 
-    /**
-     * 呢個值係為左防止未夠時間隱藏 訊息提示
-     * 有第二個地方Call onPromptMessage(promptMessage: String)
-     * 會造成第二個 訊息提示 短時間出現就消失
-     */
-    private var canHideOnPromptMessage: Int = 0
 
     /**
      * 輸出 提示訊息 提示觀眾
      * @param promptMessage 提示訊息
      */
-    @JsName("promptMessage") fun promptMessage(promptMessage: String){
-        show()
+    @JsName("promptMessage") fun promptMessage(promptMessage: String): Int{
         promptBox.innerHTML = promptMessage
-        canHideOnPromptMessage++
-        window.setTimeout(fun(){
-            canHideOnPromptMessage--
-            if(canHideOnPromptMessage <= 0){
-                hide()
-                canHideOnPromptMessage = 0 //初始化
-            }
-        }, 3500)
+        show(3500)
+        return 0/////////
     }
 }
