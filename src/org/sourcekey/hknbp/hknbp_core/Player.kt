@@ -29,7 +29,11 @@ class Player(private val channel: Channel) {
         private var isCheckVideoAutoPlayNeedToMute = true
 
         /**
+         * 檢查需唔需要可直接點擊IframePlayer模式嘅Timer
          *
+         * 此值為清除之前Player嘅Timer
+         * 因當觀眾轉台後
+         * 上一台Player嘅Timer仍在計時
          * */
         private var checkNeedCanTouchIframePlayerModeTimer = 0
             set(value) {
@@ -38,7 +42,11 @@ class Player(private val channel: Channel) {
             }
 
         /**
+         * 檢查係米低訊號而去顯示ChannelDescription嘅Timer
          *
+         * 此值為清除之前Player嘅Timer
+         * 因當觀眾轉台後
+         * 上一台Player嘅Timer仍在計時
          * */
         private var checkIsLowSignalShowChannelDescriptionTimer = 0
             set(value) {
@@ -600,6 +608,7 @@ class Player(private val channel: Channel) {
                     if (!isPlaying && numberOfPlaying == 0) {
                         UserControlPanel.canTouchIframePlayerMode()
                         PromptBox.promptMessage("已切換到手動播放模式")
+                        on(OnPlayerEvent.notPlaying)
                     }
                 }, 10000)
             }

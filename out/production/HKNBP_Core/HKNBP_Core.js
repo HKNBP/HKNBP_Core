@@ -2999,6 +2999,7 @@ var HKNBP_Core = function (_, Kotlin) {
       if (!this$.isPlaying_0 && this$.numberOfPlaying_0 === 0) {
         UserControlPanel_getInstance().canTouchIframePlayerMode();
         PromptBox_getInstance().promptMessage('\u5DF2\u5207\u63DB\u5230\u624B\u52D5\u64AD\u653E\u6A21\u5F0F');
+        this$.on_mdxcb7$(Player$OnPlayerEvent$notPlaying_getInstance());
       }
     };
   }
