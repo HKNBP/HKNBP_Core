@@ -2366,8 +2366,28 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function Player$Companion() {
     Player$Companion_instance = this;
-    this.isCheckVideoAutoPlayNeedToMute = true;
+    this.isCheckVideoAutoPlayNeedToMute_0 = true;
+    this.checkNeedCanTouchIframePlayerModeTimer_r3xwh1$_0 = 0;
+    this.checkIsLowSignalShowChannelDescriptionTimer_nk3s78$_0 = 0;
   }
+  Object.defineProperty(Player$Companion.prototype, 'checkNeedCanTouchIframePlayerModeTimer_0', {
+    get: function () {
+      return this.checkNeedCanTouchIframePlayerModeTimer_r3xwh1$_0;
+    },
+    set: function (value) {
+      window.clearTimeout(this.checkNeedCanTouchIframePlayerModeTimer_0);
+      this.checkNeedCanTouchIframePlayerModeTimer_r3xwh1$_0 = value;
+    }
+  });
+  Object.defineProperty(Player$Companion.prototype, 'checkIsLowSignalShowChannelDescriptionTimer_0', {
+    get: function () {
+      return this.checkIsLowSignalShowChannelDescriptionTimer_nk3s78$_0;
+    },
+    set: function (value) {
+      window.clearTimeout(this.checkIsLowSignalShowChannelDescriptionTimer_0);
+      this.checkIsLowSignalShowChannelDescriptionTimer_nk3s78$_0 = value;
+    }
+  });
   Player$Companion.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'Companion',
@@ -2611,6 +2631,22 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   Player$ProgrammableColor.valueOf_61zpoe$ = Player$ProgrammableColor$valueOf;
   Player.prototype.programmable = function (color) {
+    var colorString = '';
+    switch (color.name) {
+      case 'red':
+        colorString = 'red';
+        break;
+      case 'green':
+        colorString = 'green';
+        break;
+      case 'yellow':
+        colorString = 'yellow';
+        break;
+      case 'blue':
+        colorString = 'blue';
+        break;
+    }
+    this.callIframePlayerFunction_0('onClickProgrammableButton', colorString);
   };
   function Player$setListenIframePlayer$lambda(this$Player) {
     return function (event) {
@@ -2850,7 +2886,7 @@ var HKNBP_Core = function (_, Kotlin) {
   Player$mutedInit$lambda$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
     if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance()))
       if (!this.isInit) {
-        if (Player$Companion_getInstance().isCheckVideoAutoPlayNeedToMute) {
+        if (Player$Companion_getInstance().isCheckVideoAutoPlayNeedToMute_0) {
           CanAutoplay_getInstance().checkVideoAutoPlayNeedToMute_9dmrm4$(Player$mutedInit$lambda$ObjectLiteral$on$lambda(this.this$Player), Player$mutedInit$lambda$ObjectLiteral$on$lambda_0(this.this$Player));
         }
          else {
@@ -2922,13 +2958,15 @@ var HKNBP_Core = function (_, Kotlin) {
   function Player_init$ObjectLiteral() {
     this.isPlaying_0 = false;
     this.numberOfPlaying_0 = 0;
+    this.isLowSignalShowChannelDescription_0 = false;
     ChannelDescription_getInstance().show_za3lpa$(5000);
     ChannelDescription_getInstance().update();
-    window.setTimeout(Player_init$Player_init$ObjectLiteral_init$lambda(this), 10000);
+    Player$Companion_getInstance().checkNeedCanTouchIframePlayerModeTimer_0 = window.setTimeout(Player_init$Player_init$ObjectLiteral_init$lambda(this), 10000);
   }
   function Player_init$ObjectLiteral$on$lambda(this$) {
     return function () {
       if (!this$.isPlaying_0) {
+        this$.isLowSignalShowChannelDescription_0 = true;
         ChannelDescription_getInstance().show();
         PromptBox_getInstance().promptMessage('\u8A0A\u865F\u63A5\u6536\u4E0D\u826F');
       }
@@ -2938,17 +2976,19 @@ var HKNBP_Core = function (_, Kotlin) {
     switch (onPlayerEvent.name) {
       case 'playing':
         this.isPlaying_0 = true;
-        if (0 < this.numberOfPlaying_0) {
+        this.numberOfPlaying_0 = this.numberOfPlaying_0 + 1 | 0;
+        if (this.isLowSignalShowChannelDescription_0) {
+          this.isLowSignalShowChannelDescription_0 = false;
           ChannelDescription_getInstance().hide();
         }
 
-        this.numberOfPlaying_0 = this.numberOfPlaying_0 + 1 | 0;
+        VirtualRemote_getInstance().update();
         UserControlPanel_getInstance().cannotTouchIframePlayerMode();
         break;
       case 'notPlaying':
         this.isPlaying_0 = false;
         if (0 < this.numberOfPlaying_0) {
-          window.setTimeout(Player_init$ObjectLiteral$on$lambda(this), 10000);
+          Player$Companion_getInstance().checkIsLowSignalShowChannelDescriptionTimer_0 = window.setTimeout(Player_init$ObjectLiteral$on$lambda(this), 10000);
         }
 
         break;

@@ -26,7 +26,25 @@ class Player(private val channel: Channel) {
         /**
          * 係米檢查自動播放需要靜音
          * */
-        var isCheckVideoAutoPlayNeedToMute = true
+        private var isCheckVideoAutoPlayNeedToMute = true
+
+        /**
+         *
+         * */
+        private var checkNeedCanTouchIframePlayerModeTimer = 0
+            set(value) {
+                window.clearTimeout(checkNeedCanTouchIframePlayerModeTimer)
+                field = value
+            }
+
+        /**
+         *
+         * */
+        private var checkIsLowSignalShowChannelDescriptionTimer = 0
+            set(value) {
+                window.clearTimeout(checkIsLowSignalShowChannelDescriptionTimer)
+                field = value
+            }
     }
 
     private val iframePlayer: dynamic = document.getElementById("iframePlayer")
@@ -476,7 +494,14 @@ class Player(private val channel: Channel) {
      * @param color 咩野顏色嘅programmable鍵
      */
     @JsName("programmable") fun programmable(color: ProgrammableColor) {
-        ///////////////////////////////////
+        var colorString = ""
+        when(color){
+            ProgrammableColor.red       -> {colorString = "red"}
+            ProgrammableColor.green     -> {colorString = "green"}
+            ProgrammableColor.yellow    -> {colorString = "yellow"}
+            ProgrammableColor.blue      -> {colorString = "blue"}
+        }
+        callIframePlayerFunction("onClickProgrammableButton", colorString)
     }
 
     /******************************************************************************************************************/
@@ -540,22 +565,25 @@ class Player(private val channel: Channel) {
         addOnPlayerEventListener(object : OnPlayerEventListener {
             private var isPlaying: Boolean = false
             private var numberOfPlaying: Int = 0
+            private var isLowSignalShowChannelDescription = false
             override fun on(onPlayerEvent: OnPlayerEvent) {
                 when (onPlayerEvent) {
                     OnPlayerEvent.playing -> {
                         isPlaying = true
-                        if(0 < numberOfPlaying){
+                        numberOfPlaying++
+                        if(isLowSignalShowChannelDescription){
+                            isLowSignalShowChannelDescription = false
                             ChannelDescription.hide()
                         }
-                        numberOfPlaying++
-                        //VirtualRemote.update()
+                        VirtualRemote.update()
                         UserControlPanel.cannotTouchIframePlayerMode()
                     }
                     OnPlayerEvent.notPlaying -> {
                         isPlaying = false
                         if(0 < numberOfPlaying){
-                            window.setTimeout(fun(){
+                            checkIsLowSignalShowChannelDescriptionTimer = window.setTimeout(fun(){
                                 if(!isPlaying){
+                                    isLowSignalShowChannelDescription = true
                                     ChannelDescription.show()
                                     PromptBox.promptMessage("訊號接收不良")
                                 }
@@ -568,7 +596,7 @@ class Player(private val channel: Channel) {
                 ChannelDescription.show(5000)
                 ChannelDescription.update()
                 //如果冇自動播放就換到手動播放模式
-                window.setTimeout(fun() {
+                checkNeedCanTouchIframePlayerModeTimer = window.setTimeout(fun() {
                     if (!isPlaying && numberOfPlaying == 0) {
                         UserControlPanel.canTouchIframePlayerMode()
                         PromptBox.promptMessage("已切換到手動播放模式")

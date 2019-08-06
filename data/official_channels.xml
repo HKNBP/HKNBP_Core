@@ -25,6 +25,16 @@
         <information epgid="vinkovacka-tv.hr" src="http://tvprofil.net/xmltv/data/vinkovacka-tv.hr/weekly_vinkovacka-tv.hr_tvprofil.net.xml"/>
     </channel>
     <channel>
+        <number>001</number>
+        <name>測試頻道1-無訊號測試</name>
+        <source>
+            <description>HLSSource</description>
+            <iframeplayersrc>iframePlayer/videojs_hls.html</iframeplayersrc>
+            <link></link>
+        </source>
+        <information epgid="vinkovacka-tv.hr" src="http://tvprofil.net/xmltv/data/vinkovacka-tv.hr/weekly_vinkovacka-tv.hr_tvprofil.net.xml"/>
+    </channel>
+    <channel>
         <number>002</number>
         <name>mp4 File</name>
         <source>
