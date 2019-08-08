@@ -114,14 +114,4 @@
         </source>
         <information epgid="vh1-europe.music" src="http://tvprofil.net/xmltv/data/vh1-europe.music/weekly_vh1-europe.music_tvprofil.net.xml"/>
     </channel>
-    <channel>
-        <number>019</number>
-        <name>T</name>
-        <source>
-            <description>HLSSource</description>
-            <iframeplayersrc>iframePlayer/videojs_hls.html</iframeplayersrc>
-            <link>http://cdn.theoplayer.com/video/elephants-dream/playlist.m3u8</link>
-        </source>
-        <information epgid="vh1-europe.music" src="http://tvprofil.net/xmltv/data/vh1-europe.music/weekly_vh1-europe.music_tvprofil.net.xml"/>
-    </channel>
 </officialchannel>
