@@ -1657,12 +1657,12 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function LoadFile() {
     LoadFile_instance = this;
-    this.cacheShelfLife = 604800;
+    this.cacheShelfLife = 300;
   }
   LoadFile.prototype.load_61zpoe$ = function (filePath) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open('GET', filePath, false);
-    xmlhttp.setRequestHeader('cache-control', 'max-age=604800');
+    xmlhttp.setRequestHeader('cache-control', 'max-age=300');
     xmlhttp.send();
     return xmlhttp;
   };
@@ -1712,7 +1712,7 @@ var HKNBP_Core = function (_, Kotlin) {
       path = cors_api_url + path;
     }
     xmlhttp.open('GET', path, true);
-    xmlhttp.setRequestHeader('cache-control', 'max-age=604800');
+    xmlhttp.setRequestHeader('cache-control', 'max-age=300');
     xmlhttp.send();
   };
   LoadFile.prototype.load_y8xsdy$ = function (onLoadedFile, onFailedLoadFile, filePath) {
