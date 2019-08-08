@@ -1657,10 +1657,12 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function LoadFile() {
     LoadFile_instance = this;
+    this.cacheShelfLife = 604800;
   }
   LoadFile.prototype.load_61zpoe$ = function (filePath) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open('GET', filePath, false);
+    xmlhttp.setRequestHeader('cache-control', 'max-age=604800');
     xmlhttp.send();
     return xmlhttp;
   };
@@ -1710,6 +1712,7 @@ var HKNBP_Core = function (_, Kotlin) {
       path = cors_api_url + path;
     }
     xmlhttp.open('GET', path, true);
+    xmlhttp.setRequestHeader('cache-control', 'max-age=604800');
     xmlhttp.send();
   };
   LoadFile.prototype.load_y8xsdy$ = function (onLoadedFile, onFailedLoadFile, filePath) {
@@ -2959,7 +2962,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.isPlaying_0 = false;
     this.numberOfPlaying_0 = 0;
     this.isLowSignalShowChannelDescription_0 = false;
-    ChannelDescription_getInstance().show_za3lpa$(5000);
+    ChannelDescription_getInstance().show();
     ChannelDescription_getInstance().update();
     Player$Companion_getInstance().checkNeedCanTouchIframePlayerModeTimer_0 = window.setTimeout(Player_init$Player_init$ObjectLiteral_init$lambda(this), 10000);
   }
@@ -2982,6 +2985,7 @@ var HKNBP_Core = function (_, Kotlin) {
           ChannelDescription_getInstance().hide();
         }
 
+        ChannelDescription_getInstance().show_za3lpa$(5000);
         VirtualRemote_getInstance().update();
         UserControlPanel_getInstance().cannotTouchIframePlayerMode();
         break;
@@ -2999,7 +3003,6 @@ var HKNBP_Core = function (_, Kotlin) {
       if (!this$.isPlaying_0 && this$.numberOfPlaying_0 === 0) {
         UserControlPanel_getInstance().canTouchIframePlayerMode();
         PromptBox_getInstance().promptMessage('\u5DF2\u5207\u63DB\u5230\u624B\u52D5\u64AD\u653E\u6A21\u5F0F');
-        this$.on_mdxcb7$(Player$OnPlayerEvent$notPlaying_getInstance());
       }
     };
   }

@@ -583,6 +583,7 @@ class Player(private val channel: Channel) {
                             isLowSignalShowChannelDescription = false
                             ChannelDescription.hide()
                         }
+                        ChannelDescription.show(5000)
                         VirtualRemote.update()
                         UserControlPanel.cannotTouchIframePlayerMode()
                     }
@@ -601,14 +602,13 @@ class Player(private val channel: Channel) {
                 }
             }
             init {
-                ChannelDescription.show(5000)
+                ChannelDescription.show()
                 ChannelDescription.update()
                 //如果冇自動播放就換到手動播放模式
                 checkNeedCanTouchIframePlayerModeTimer = window.setTimeout(fun() {
                     if (!isPlaying && numberOfPlaying == 0) {
                         UserControlPanel.canTouchIframePlayerMode()
                         PromptBox.promptMessage("已切換到手動播放模式")
-                        on(OnPlayerEvent.notPlaying)
                     }
                 }, 10000)
             }

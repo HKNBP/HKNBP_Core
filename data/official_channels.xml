@@ -26,7 +26,7 @@
     </channel>
     <channel>
         <number>001</number>
-        <name>測試頻道1-無訊號測試</name>
+        <name>無訊號測試</name>
         <source>
             <description>HLSSource</description>
             <iframeplayersrc>iframePlayer/videojs_hls.html</iframeplayersrc>
@@ -75,6 +75,16 @@
         <information epgid="rtrs.ba" src="http://tvprofil.net/xmltv/data/rtrs.ba/weekly_rtrs.ba_tvprofil.net.xml"/>
     </channel>
     <channel>
+        <number>006</number>
+        <name>H.265</name>
+        <source>
+            <description>YoutubeSource</description>
+            <iframeplayersrc>iframePlayer/youtube_api.html</iframeplayersrc>
+            <link>4kf8X3_sWh8</link>
+        </source>
+        <information epgid="rtrs.ba" src="http://tvprofil.net/xmltv/data/rtrs.ba/weekly_rtrs.ba_tvprofil.net.xml"/>
+    </channel>
+    <channel>
         <number>007</number>
         <name>Dash 1</name>
         <source>
@@ -85,7 +95,7 @@
         <information epgid="b92.sr" src="http://tvprofil.net/xmltv/data/b92.sr/weekly_b92.sr_tvprofil.net.xml"/>
     </channel>
     <channel>
-        <number>048</number>
+        <number>008</number>
         <name>Dash 2</name>
         <source>
             <description>HLSSource</description>
@@ -95,7 +105,7 @@
         <information epgid="tv-istra.hr" src="http://tvprofil.net/xmltv/data/tv-istra.hr/weekly_tv-istra.hr_tvprofil.net.xml"/>
     </channel>
     <channel>
-        <number>998</number>
+        <number>009</number>
         <name>T</name>
         <source>
             <description>HLSSource</description>

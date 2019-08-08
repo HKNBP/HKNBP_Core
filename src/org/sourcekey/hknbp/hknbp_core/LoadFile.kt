@@ -23,9 +23,12 @@ import kotlin.browser.document
 import kotlin.browser.window
 
 object LoadFile {
+    val cacheShelfLife = 60 * 60 * 24 * 7
+
     fun load(filePath: String): XMLHttpRequest{
         val xmlhttp = XMLHttpRequest()
         xmlhttp.open("GET", filePath, false)
+        xmlhttp.setRequestHeader("cache-control", "max-age=${cacheShelfLife}")//以秒為單位
         xmlhttp.send()
         return xmlhttp
     }
@@ -62,6 +65,7 @@ object LoadFile {
             path = cors_api_url + path //完全唔明點解做到,要將呢個+文件位置就得
         }
         xmlhttp.open("GET", path, true)
+        xmlhttp.setRequestHeader("cache-control", "max-age=${cacheShelfLife}")//以秒為單位
         xmlhttp.send()
     }
 
