@@ -75,16 +75,6 @@
         <information epgid="rtrs.ba" src="http://tvprofil.net/xmltv/data/rtrs.ba/weekly_rtrs.ba_tvprofil.net.xml"/>
     </channel>
     <channel>
-        <number>006</number>
-        <name>H.265</name>
-        <source>
-            <description>YoutubeSource</description>
-            <iframeplayersrc>iframePlayer/youtube_api.html</iframeplayersrc>
-            <link>4kf8X3_sWh8</link>
-        </source>
-        <information epgid="rtrs.ba" src="http://tvprofil.net/xmltv/data/rtrs.ba/weekly_rtrs.ba_tvprofil.net.xml"/>
-    </channel>
-    <channel>
         <number>007</number>
         <name>Dash 1</name>
         <source>
