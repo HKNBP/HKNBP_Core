@@ -24,7 +24,7 @@ object VideoDescription: UserInterface("videoDescription") {
 
     override fun show() {
         super.show()
-        VideoDescription.text.innerHTML = player.videoTracks.node?.name?:""
+        VideoDescription.text.innerHTML = player?.videoTracks?.node?.name?:""
     }
 
     init { }

@@ -24,7 +24,7 @@ object SubtitleDescription: UserInterface("subtitleDescription") {
 
     override fun show() {
         super.show()
-        SubtitleDescription.text.innerHTML = player.subtitleTracks.node?.name?:""
+        SubtitleDescription.text.innerHTML = player?.subtitleTracks?.node?.name?:""
     }
 
     init {  }

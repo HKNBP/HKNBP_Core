@@ -25,7 +25,7 @@ object MutedDescription: UserInterface("mutedDescription") {
 
     override fun update() {
         val script = fun(){
-            player.getMuted(fun(muted){
+            player?.getMuted(fun(muted){
                 if(muted){
                     show()
                 }else{
@@ -44,8 +44,8 @@ object MutedDescription: UserInterface("mutedDescription") {
 
     init {
         mutedDescriptionButton.onclick = fun(event){
-            player.getMuted(fun(muted){
-                player.setMuted(!muted)
+            player?.getMuted(fun(muted){
+                player?.setMuted(!muted)
             })
         }
     }

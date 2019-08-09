@@ -27,7 +27,7 @@ object AudioDescription: UserInterface("audioDescription") {
 
     override fun show() {
         super.show()
-        AudioDescription.text.innerHTML = player.audioTracks.node?.name?:""
+        AudioDescription.text.innerHTML = player?.audioTracks?.node?.name?:""
     }
 
     init {  }

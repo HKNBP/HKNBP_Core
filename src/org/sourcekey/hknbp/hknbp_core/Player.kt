@@ -352,14 +352,14 @@ class Player(private val channel: Channel) {
      * 去依家嘅片源嘅下一個片源
      */
     fun nextVideoTrack() {
-        player.videoTracks.next()
+        videoTracks.next()
     }
 
     /**
      * 去依家嘅片源嘅上一個片源
      */
     fun previousVideoTrack() {
-        player.videoTracks.previous()
+        videoTracks.previous()
     }
 
     /**
@@ -367,10 +367,10 @@ class Player(private val channel: Channel) {
      * @param videoTrackID 要轉去片源ID
      */
     @JsName("designatedVideoTrack") fun designatedVideoTrack(videoTrackID: Int): Boolean {
-        val videoTracksNodeID = TrackDescription.toTracksNodeID(player.videoTracks, videoTrackID)
+        val videoTracksNodeID = TrackDescription.toTracksNodeID(videoTracks, videoTrackID)
 
         if (videoTracksNodeID != null) {
-            player.videoTracks.designated(videoTracksNodeID)
+            videoTracks.designated(videoTracksNodeID)
             return true
         } else {
             Dialogue.getDialogues(fun(dialogues) {
@@ -385,14 +385,14 @@ class Player(private val channel: Channel) {
      * 去依家嘅聲道嘅下一個聲道
      */
     fun nextAudioTrack() {
-        player.audioTracks.next()
+        audioTracks.next()
     }
 
     /**
      * 去依家嘅聲道嘅上一個聲道
      */
     fun previousAudioTrack() {
-        player.audioTracks.previous()
+        audioTracks.previous()
     }
 
     /**
@@ -400,10 +400,10 @@ class Player(private val channel: Channel) {
      * @param audioTrackID 要轉去聲道ID
      */
     @JsName("designatedAudioTrack") fun designatedAudioTrack(audioTrackID: Int): Boolean {
-        val audioTracksNodeID = TrackDescription.toTracksNodeID(player.audioTracks, audioTrackID)
+        val audioTracksNodeID = TrackDescription.toTracksNodeID(audioTracks, audioTrackID)
 
         if (audioTracksNodeID != null) {
-            player.audioTracks.designated(audioTracksNodeID)
+            audioTracks.designated(audioTracksNodeID)
             return true
         } else {
             Dialogue.getDialogues(fun(dialogues) {
@@ -418,14 +418,14 @@ class Player(private val channel: Channel) {
      * 去依家嘅字幕嘅下一個字幕
      */
     fun nextSubtitleTrack() {
-        player.subtitleTracks.next()
+        subtitleTracks.next()
     }
 
     /**
      * 去依家嘅字幕嘅上一個字幕
      */
     fun previousSubtitleTrack() {
-        player.subtitleTracks.previous()
+        subtitleTracks.previous()
     }
 
     /**
@@ -433,10 +433,10 @@ class Player(private val channel: Channel) {
      * @param subtitleTrackID 要轉去字幕ID
      */
     @JsName("designatedSubtitleTrack") fun designatedSubtitleTrack(subtitleTrackID: Int): Boolean {
-        val subtitleTracksNodeID = TrackDescription.toTracksNodeID(player.subtitleTracks, subtitleTrackID)
+        val subtitleTracksNodeID = TrackDescription.toTracksNodeID(subtitleTracks, subtitleTrackID)
 
         if (subtitleTracksNodeID != null) {
-            player.subtitleTracks.designated(subtitleTracksNodeID)
+            subtitleTracks.designated(subtitleTracksNodeID)
             return true
         } else {
             Dialogue.getDialogues(fun(dialogues) {

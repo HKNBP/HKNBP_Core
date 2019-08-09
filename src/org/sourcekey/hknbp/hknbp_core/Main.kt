@@ -81,9 +81,9 @@ var channels: ArrayLinkList<Channel> = {
             updateChannel()
         }
     })
-    channels.addAll(CustomChannel.getCustomChannels()?:ArrayLinkList())
     OfficialChannel.getOfficialChannels(fun(officialChannels){
-        channels.addAll(officialChannels)
+        channels.addAll(CustomChannel.getCustomChannels()?:ArrayLinkList<Channel>())//載入自定頻道
+        channels.addAll(officialChannels)//載入官方頻道
 
         //讀返最近睇過嘅頻道
         channels.designated(
@@ -93,7 +93,7 @@ var channels: ArrayLinkList<Channel> = {
                     channels.indexOfOrNull(channels.find{channel -> channel.number == channelParam})
                 }()?:
                 //上次收睇緊嘅頻道
-                localStorage.getItem("RecentlyWatchedChannel")?.toInt() ?:
+                localStorage.getItem("RecentlyWatchedChannel")?.toInt()?:
                 //隨機一個頻道
                 if(channels.size <= 0){ 0 }else{ Random.nextInt(0, channels.size) }
         )
@@ -103,7 +103,7 @@ var channels: ArrayLinkList<Channel> = {
     channels
 }()
 
-var player: Player = Player(channels.node ?: Channel())
+var player: Player? = null
 
 
 /**
@@ -128,7 +128,7 @@ var player: Player = Player(channels.node ?: Channel())
  */
 fun updateChannel() {
     player = Player(channels.node?: Channel())
-    player.addOnPlayerEventListener(object : Player.OnPlayerEventListener {
+    player?.addOnPlayerEventListener(object : Player.OnPlayerEventListener {
         private var currentPlayer: Player? = null
         private var isPlaying: Boolean = false
         override fun on(onPlayerEvent: Player.OnPlayerEvent) {
@@ -149,7 +149,7 @@ fun updateChannel() {
             }
         }
     })
-    player.play()
+    player?.play()
     VirtualRemote.update()
 }
 

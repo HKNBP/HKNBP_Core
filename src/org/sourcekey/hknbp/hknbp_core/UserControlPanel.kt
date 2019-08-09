@@ -119,7 +119,7 @@ object UserControlPanel: UserInterface("userControlPanel", firstFocusElementID =
         //設定使用者控制界面顯示方法
         shower.onclick = fun(event){
             showHideAlternately()
-            player.play()
+            player?.play()
         }
         shower.onmousemove = fun(event){
             show(500)

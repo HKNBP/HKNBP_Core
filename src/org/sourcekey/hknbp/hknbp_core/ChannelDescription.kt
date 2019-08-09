@@ -40,7 +40,7 @@ object ChannelDescription: UserInterface("channelDescription") {
     }
 
     private fun setCurrentChannelNumber(){
-        currentChannelNumber.innerHTML = channels.node?.number.toString().padStart(3, '0')
+        currentChannelNumber.innerHTML = (channels.node?.number?:"").toString().padStart(3, '0')
     }
 
     private var currentDateTimer = 0
