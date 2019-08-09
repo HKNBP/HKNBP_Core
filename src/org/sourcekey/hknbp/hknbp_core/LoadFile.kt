@@ -23,7 +23,7 @@ import kotlin.browser.document
 import kotlin.browser.window
 
 object LoadFile {
-    val cacheShelfLife = 0
+    val cacheShelfLife = 60 * 60 * 24 * 7 //7日
 
     fun load(filePath: String): XMLHttpRequest{
         val xmlhttp = XMLHttpRequest()

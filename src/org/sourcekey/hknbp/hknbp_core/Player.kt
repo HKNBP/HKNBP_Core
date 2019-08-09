@@ -583,7 +583,9 @@ class Player(private val channel: Channel) {
                             isLowSignalShowChannelDescription = false
                             ChannelDescription.hide()
                         }
-                        ChannelDescription.show(5000)
+                        if(numberOfPlaying <= 1){
+                            ChannelDescription.show(5000)
+                        }
                         VirtualRemote.update()
                         UserControlPanel.cannotTouchIframePlayerMode()
                     }
@@ -596,7 +598,7 @@ class Player(private val channel: Channel) {
                                     ChannelDescription.show()
                                     PromptBox.promptMessage("訊號接收不良")
                                 }
-                            }, 10000)
+                            }, 2000)
                         }
                     }
                 }
@@ -616,12 +618,7 @@ class Player(private val channel: Channel) {
         iframePlayer?.src = channel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
         iframePlayer?.onload = fun(){
             setListenIframePlayer()
-            callIframePlayerFunction(
-                    "onIframePlayerInit",
-                    channel.sources.node?.link?:
-                    "https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8"
-            )
+            callIframePlayerFunction("onIframePlayerInit", channel.sources.node?.link?: "")
         }
-
     }
 }

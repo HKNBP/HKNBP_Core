@@ -93,7 +93,12 @@ var channels: ArrayLinkList<Channel> = {
                     channels.indexOfOrNull(channels.find{channel -> channel.number == channelParam})
                 }()?:
                 //上次收睇緊嘅頻道
-                localStorage.getItem("RecentlyWatchedChannel")?.toInt()?:
+                {
+                    val recentlyWatchedChannel = localStorage.getItem("RecentlyWatchedChannel")?.toInt()
+                    if(recentlyWatchedChannel != null){
+                        if(recentlyWatchedChannel < channels.size){ recentlyWatchedChannel }else{ channels.lastIndex }
+                    }else{ null }
+                }()?:
                 //隨機一個頻道
                 if(channels.size <= 0){ 0 }else{ Random.nextInt(0, channels.size) }
         )

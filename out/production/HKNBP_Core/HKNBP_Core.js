@@ -1657,12 +1657,12 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function LoadFile() {
     LoadFile_instance = this;
-    this.cacheShelfLife = 0;
+    this.cacheShelfLife = 604800;
   }
   LoadFile.prototype.load_61zpoe$ = function (filePath) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open('GET', filePath, false);
-    xmlhttp.setRequestHeader('cache-control', 'max-age=0');
+    xmlhttp.setRequestHeader('cache-control', 'max-age=604800');
     xmlhttp.send();
     return xmlhttp;
   };
@@ -1712,7 +1712,7 @@ var HKNBP_Core = function (_, Kotlin) {
       path = cors_api_url + path;
     }
     xmlhttp.open('GET', path, true);
-    xmlhttp.setRequestHeader('cache-control', 'max-age=0');
+    xmlhttp.setRequestHeader('cache-control', 'max-age=604800');
     xmlhttp.send();
   };
   LoadFile.prototype.load_y8xsdy$ = function (onLoadedFile, onFailedLoadFile, filePath) {
@@ -1864,21 +1864,36 @@ var HKNBP_Core = function (_, Kotlin) {
      while (false);
     return tmp$_0.indexOfOrNull_11rb$(firstOrNull$result);
   }
-  function channels$lambda$lambda(officialChannels) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3;
-    channels.addAll_brywnq$((tmp$ = CustomChannel_getInstance().getCustomChannels()) != null ? tmp$ : ArrayLinkList_init([]));
-    channels.addAll_brywnq$(officialChannels);
-    tmp$_3 = (tmp$_1 = channels$lambda$lambda$lambda()) != null ? tmp$_1 : (tmp$_0 = localStorage.getItem('RecentlyWatchedChannel')) != null ? toInt(tmp$_0) : null;
-    if (tmp$_3 == null) {
-      if (channels.size <= 0) {
-        tmp$_2 = 0;
+  function channels$lambda$lambda$lambda_0() {
+    var tmp$;
+    var recentlyWatchedChannel = (tmp$ = localStorage.getItem('RecentlyWatchedChannel')) != null ? toInt(tmp$) : null;
+    if (recentlyWatchedChannel != null) {
+      if (recentlyWatchedChannel < channels.size) {
+        return recentlyWatchedChannel;
       }
        else {
-        tmp$_2 = Random.Default.nextInt_vux9f0$(0, channels.size);
+        return get_lastIndex(channels);
       }
-      tmp$_3 = tmp$_2;
     }
-    channels.designated_za3lpa$(tmp$_3);
+     else {
+      return null;
+    }
+  }
+  function channels$lambda$lambda(officialChannels) {
+    var tmp$, tmp$_0, tmp$_1, tmp$_2;
+    channels.addAll_brywnq$((tmp$ = CustomChannel_getInstance().getCustomChannels()) != null ? tmp$ : ArrayLinkList_init([]));
+    channels.addAll_brywnq$(officialChannels);
+    tmp$_2 = (tmp$_0 = channels$lambda$lambda$lambda()) != null ? tmp$_0 : channels$lambda$lambda$lambda_0();
+    if (tmp$_2 == null) {
+      if (channels.size <= 0) {
+        tmp$_1 = 0;
+      }
+       else {
+        tmp$_1 = Random.Default.nextInt_vux9f0$(0, channels.size);
+      }
+      tmp$_2 = tmp$_1;
+    }
+    channels.designated_za3lpa$(tmp$_2);
   }
   function channels$lambda() {
     channels = ArrayLinkList_init([]);
@@ -2984,14 +2999,17 @@ var HKNBP_Core = function (_, Kotlin) {
           ChannelDescription_getInstance().hide();
         }
 
-        ChannelDescription_getInstance().show_za3lpa$(5000);
+        if (this.numberOfPlaying_0 <= 1) {
+          ChannelDescription_getInstance().show_za3lpa$(5000);
+        }
+
         VirtualRemote_getInstance().update();
         UserControlPanel_getInstance().cannotTouchIframePlayerMode();
         break;
       case 'notPlaying':
         this.isPlaying_0 = false;
         if (0 < this.numberOfPlaying_0) {
-          Player$Companion_getInstance().checkIsLowSignalShowChannelDescriptionTimer_0 = window.setTimeout(Player_init$ObjectLiteral$on$lambda(this), 10000);
+          Player$Companion_getInstance().checkIsLowSignalShowChannelDescriptionTimer_0 = window.setTimeout(Player_init$ObjectLiteral$on$lambda(this), 2000);
         }
 
         break;
@@ -3013,7 +3031,7 @@ var HKNBP_Core = function (_, Kotlin) {
     return function () {
       var tmp$, tmp$_0, tmp$_1;
       this$Player.setListenIframePlayer_0();
-      tmp$_1 = (tmp$_0 = (tmp$ = this$Player.channel_0.sources.node) != null ? tmp$.link : null) != null ? tmp$_0 : 'https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8';
+      tmp$_1 = (tmp$_0 = (tmp$ = this$Player.channel_0.sources.node) != null ? tmp$.link : null) != null ? tmp$_0 : '';
       this$Player.callIframePlayerFunction_0('onIframePlayerInit', tmp$_1);
     };
   }
