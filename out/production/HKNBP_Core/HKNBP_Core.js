@@ -3009,7 +3009,7 @@ var HKNBP_Core = function (_, Kotlin) {
       case 'notPlaying':
         this.isPlaying_0 = false;
         if (0 < this.numberOfPlaying_0) {
-          Player$Companion_getInstance().checkIsLowSignalShowChannelDescriptionTimer_0 = window.setTimeout(Player_init$ObjectLiteral$on$lambda(this), 2000);
+          Player$Companion_getInstance().checkIsLowSignalShowChannelDescriptionTimer_0 = window.setTimeout(Player_init$ObjectLiteral$on$lambda(this), 5000);
         }
 
         break;

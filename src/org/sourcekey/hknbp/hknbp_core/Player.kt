@@ -598,7 +598,7 @@ class Player(private val channel: Channel) {
                                     ChannelDescription.show()
                                     PromptBox.promptMessage("訊號接收不良")
                                 }
-                            }, 2000)
+                            }, 5000)
                         }
                     }
                 }
