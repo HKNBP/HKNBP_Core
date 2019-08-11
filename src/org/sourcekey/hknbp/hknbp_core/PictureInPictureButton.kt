@@ -20,101 +20,11 @@ import kotlin.browser.document
 
 object PictureInPictureButton: UserInterface("pictureInPictureButton"){
     private val pictureInPictureButton = document.getElementById("pictureInPictureButton") as HTMLButtonElement
-    //val body = document.getElementById("body") as HTMLVideoElement
-    private val iframePlayer: dynamic = document.getElementById("iframePlayer")
-
-    fun findIframeVideoElement(iframe: HTMLIFrameElement, onFindedVideoElement: (video: HTMLVideoElement)->Unit){
-        val find = fun(event: Event){
-            if(iframe.contentWindow?.document?.getElementsByTagName("video")?.length?:0 <= 0){
-                if(iframe.contentWindow?.document?.getElementsByTagName("iframe")?.length?:0 <= 0){
-                    console.log("Not find VideoElement")
-                } else {
-                    val subIframe = iframe.contentWindow?.document?.getElementsByTagName("iframe")?.get(0)
-                    if(subIframe != null){
-                        findIframeVideoElement(
-                                subIframe as HTMLIFrameElement,
-                                onFindedVideoElement
-                        )
-                    }else{
-                        //console.log("Not find VideoElement")
-                    }
-                }
-            }else{
-                val video = iframe.contentWindow?.document?.getElementsByTagName("video")?.get(0)
-                if(video != null){
-                    onFindedVideoElement(video as HTMLVideoElement)
-                }else{
-                    //console.log("Not find VideoElement")
-                }
-            }
-        }
-        find(Event(String()))
-        iframe.onload = find
-    }
 
     init {
-        pictureInPictureButton.style.color = "#444"//PictureInPicture未WORK
-
-        /**
-        js("" +
-                "    var findVideoElement = function(iframe, onFindedVideoElement){\n" +
-                "      var find = function(){\n" +
-                "        if(iframe.contentWindow.document.getElementsByTagName(\"video\").length <= 0){\n" +
-                "          if(iframe.contentWindow.document.getElementsByTagName(\"iframe\").length <= 0){\n" +
-                "            console.log(\"findVideoElement\");\n" +
-                "          } else {\n" +
-                "            findVideoElement(iframe.contentWindow.document.getElementsByTagName(\"iframe\")[0], onFindedVideoElement);\n" +
-                "          }\n" +
-                "        }else{\n" +
-                "          onFindedVideoElement(iframe.contentWindow.document.getElementsByTagName(\"video\")[0]);\n" +
-                "        }\n" +
-                "      }\n" +
-                "      find();\n" +
-                "      iframe.onload = find;\n" +
-                "    }\n" +
-                "\n" +
-                "    var iframePlayer = document.getElementById(\"iframePlayer\")\n" +
-                "    findVideoElement(iframePlayer, function(video){\n" +
-                "      pictureInPictureButton.addEventListener(\"click\", function(event) {\n" +
-                "        pictureInPictureButton.disabled = true;\n" +
-                "        try {\n" +
-                "          if (video !== document.pictureInPictureElement)\n" +
-                "            video.requestPictureInPicture();\n" +
-                "          else\n" +
-                "            document.exitPictureInPicture();\n" +
-                "        } catch(error) {\n" +
-                "          console.log(error);\n" +
-                "        } finally {\n" +
-                "          pictureInPictureButton.disabled = false;\n" +
-                "        }\n" +
-                "      });\n" +
-                "    });"
-        )
-        */
-
-        /***
-        println("i")
-        iframePlayer.onload = fun(){
-            println(iframePlayer)
+        pictureInPictureButton.style.display = "none"//youtube嘅iframeplayer唔WORK,所以推出呢個功能住
+        pictureInPictureButton.onclick = fun(event){
+            player?.pictureInPictureModeSwitch()
         }
-        findIframeVideoElement(iframePlayer as HTMLIFrameElement, fun(video){
-            pictureInPictureButton.onclick = fun (event){
-                var v = video
-                var pipB = pictureInPictureButton
-                js("pipB.disabled = true;\n" +
-                        "        try {\n" +
-                        "          if (v !== document.pictureInPictureElement)\n" +
-                        "            v.requestPictureInPicture();\n" +
-                        "          else\n" +
-                        "            document.exitPictureInPicture();\n" +
-                        "        } catch(error) {\n" +
-                        "          console.log(error);\n" +
-                        "        } finally {\n" +
-                        "          pipB.disabled = false;\n" +
-                        "        }"
-                )
-            }
-        })
-        */
     }
 }

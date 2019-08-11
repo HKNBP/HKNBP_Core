@@ -118,10 +118,8 @@
      * 由於因依家啲瀏覽器唔準(出聲)自動播放
      * 並且對開發程式人員講: "唔好諗住一定可以自動播放"
      * 基於此 為有增加一個按扭備不時之需讓觀眾點擊播放
-     *
-     * @param {()=>{})} onReturn 無作用
      * */
-    function onSetIframePlayerPlay(onReturn){
+    function onSetIframePlayerPlay(){
         player.playVideo();
     }
 
@@ -130,10 +128,9 @@
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去設定videoTrack
      *
-     * @param {()=>{})} onReturn 無作用
      * @param {videoTrack: TrackDescription} videoTrack 當執行設定videoTrack時嘅videoTrack參數
      * */
-    function onSetIframePlayerVideoTrack(onReturn, videoTrack) {
+    function onSetIframePlayerVideoTrack(videoTrack) {
         //player.setPlaybackQuality(suggestedQuality:String):Void
     }
 
@@ -160,10 +157,9 @@
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去設定audioTrack
      *
-     * @param {()=>{})} onReturn 無作用
      * @param {audioTrack: TrackDescription} audioTrack 當執行設定audioTrack時嘅audioTrack參數
      * */
-    function onSetIframePlayerAudioTrack(onReturn, audioTrack) {
+    function onSetIframePlayerAudioTrack(audioTrack) {
 
     }
 
@@ -189,10 +185,9 @@
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去設定subtitleTrack
      *
-     * @param {()=>{})} onReturn 無作用
      * @param {subtitleTrack: TrackDescription} subtitleTrack 當執行設定subtitleTrack時嘅subtitleTrack參數
      * */
-    function onSetIframePlayerSubtitleTrack(onReturn, subtitleTrack) {
+    function onSetIframePlayerSubtitleTrack(subtitleTrack) {
         /**
         for(var i=0; i<player.textTracks().length; i++){
             if(i === subtitleTrack.id){
@@ -245,10 +240,9 @@
     /**
      * 由HKNBP_Core發出音量值讀取
      *
-     * @param {()=>{})} onReturn 無作用
      * @param {volume: Number} volume 欲設音量 數值由0-100之間,100為最大音量
      * */
-    function onSetIframePlayerVolume(onReturn, volume) {
+    function onSetIframePlayerVolume(volume) {
         player.setVolume(volume);
     }
 
@@ -264,10 +258,9 @@
     /**
      * 由HKNBP_Core發出靜音值讀取
      *
-     * @param {()=>{})} onReturn 無作用
      * @param {muted: Boolean} muted 欲設靜音
      * */
-    function onSetIframePlayerMuted(onReturn, muted) {
+    function onSetIframePlayerMuted(muted) {
         if(muted){player.mute();}else{player.unMute();}
     }
 
@@ -297,10 +290,9 @@
     /**
      * 由HKNBP_Core發出當觀眾按Programmable鍵
      *
-     * @param {()=>{})} onReturn 無作用
      * @param {color: String} color Programmable鍵顏色
      * */
-    function onClickProgrammableButton(onReturn, color){
+    function onClickProgrammableButton(color){
 
     }
 
@@ -328,10 +320,9 @@
     /**
      * 由HKNBP_Core發出初始化IframePlayer
      *
-     * @param {()=>{})} onReturn 無作用
      * @param {source: String} source 頻道源
      * */
-    function onIframePlayerInit(onReturn, sourceSrc){
+    function onIframePlayerInit(sourceSrc){
         youtubeVideoId = sourceSrc;
         tag.src = "https://www.youtube.com/iframe_api";
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
@@ -379,7 +370,7 @@
               obj.returnValue = returnValue;
               window.parent.postMessage(JSON.stringify(obj), "*");
           }
-          eval(callMessage.functionName + "(onReturn, callMessage.value)");
+          eval(callMessage.evalScript);
         }
     }, false);
 

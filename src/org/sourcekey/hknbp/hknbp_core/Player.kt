@@ -58,6 +58,69 @@ class Player(private val channel: Channel) {
     private val iframePlayer: dynamic = document.getElementById("iframePlayer")
     private val watchingCounter: WatchingCounter = WatchingCounter(channel)
 
+    /******************************************************************************************************************/
+    private val callIframePlayerFunctionList = ArrayList<dynamic>()
+
+    private fun setListenIframePlayer(){
+        window.addEventListener("message", fun(event: dynamic){
+            try{
+                val callMessage = JSON.parse<dynamic>(event.data.toString())
+                if (callMessage.name == null){
+                    return
+                }else if(callMessage.name == "HKNBPCore"){
+                    // 之前callIframePlayerFunction嘅Return
+                    for(obj in callIframePlayerFunctionList){
+                        if(obj.id == callMessage.id){
+                            obj.onReturn(callMessage.returnValue)
+                            callIframePlayerFunctionList.remove(obj)
+                        }
+                    }
+                }else if(callMessage.name == "IframePlaye"){
+                    // 畀IframePlayer方便Call
+                    val onPlaying = onPlaying
+                    val onNotPlaying = onNotPlaying
+
+                    /**
+                    var onReturn = fun(returnValue: dynamic){
+                    val obj = callMessage
+                    obj.returnValue = returnValue
+                    window.parent.postMessage(JSON.stringify(obj), "*")
+                    }*/
+                    eval(callMessage.functionName + "()")
+                }
+            }catch(e: dynamic){
+                println("callIframePlayerFunction衰左: ${e}" + "\n" +
+                        "JSON字串(message)內容: ${event.data.toString()}" + "\n" +
+                        "Event內容: ${JSON.stringify(event)}"
+                )
+            }
+        }, false)
+    }
+
+    private fun callIframePlayerFunction(
+            evalScript: String, onReturn: (returnValue: dynamic)->Unit = fun(returnValue){}
+    ){
+        val caller = js("{}")
+        caller.evalScript = evalScript
+        caller.name = "HKNBPCore"
+        caller.id = Date().getTime().toString() + Random.nextInt(0, 99999999)
+        caller.onReturn = onReturn
+        callIframePlayerFunctionList.add(caller)
+        window.setTimeout(fun(){
+            callIframePlayerFunctionList.remove(caller) //如果太耐冇return就響List自動清除免堆垃圾
+        }, 60000)
+        try {
+            iframePlayer.contentWindow.postMessage(JSON.stringify(caller), "*")
+        } catch (e: dynamic){ println("iframePlayer有啲Function搵唔到或發生問題: $e") }
+    }
+
+    /******************************************************************************************************************/
+    private fun kotlinValueToEvalScriptUseableValue(kotlinValue: dynamic): String{
+        val obj = js("{}")
+        obj.value = kotlinValue
+        return "JSON.parse(\'${JSON.stringify(obj)}\').value"
+    }
+
     enum class OnPlayerEvent{
         playing,
         notPlaying
@@ -73,7 +136,7 @@ class Player(private val channel: Channel) {
         onPlayerEvents.add(onPlayerEventListener)
     }
 
-
+    /******************************************************************************************************************/
     /**
      * 片源表
      *
@@ -89,8 +152,8 @@ class Player(private val channel: Channel) {
                     OnPlayerEvent.playing -> {
                         if(!isInit){
                             //設定VideoTracks值
-                            callIframePlayerFunction("onGetIframePlayerVideoTracks", "", fun(tracks){
-                                callIframePlayerFunction("onGetIframePlayerVideoTrack", "", fun(track){
+                            callIframePlayerFunction("onGetIframePlayerVideoTracks(onReturn)", fun(tracks){
+                                callIframePlayerFunction("onGetIframePlayerVideoTrack(onReturn)", fun(track){
                                     videoTracks = TrackDescription.fromIframePlayerReturnTrackDescriptionsToKotilnUseableTrackDescriptions(
                                             tracks, track
                                     )
@@ -99,7 +162,9 @@ class Player(private val channel: Channel) {
                                                 preChangeNodeID: Int?, postChangeNodeID: Int?,
                                                 preChangeNode: TrackDescription?, postChangeNode: TrackDescription?
                                         ) {
-                                            callIframePlayerFunction("onSetIframePlayerVideoTrack", postChangeNode)
+                                            callIframePlayerFunction("onSetIframePlayerVideoTrack(${
+                                                    kotlinValueToEvalScriptUseableValue(postChangeNode)
+                                            })")
                                             localStorage.setItem("RecentlyChannel${channel.number}VideoTrackID", postChangeNodeID.toString())
                                             VirtualRemote.updateVideoInformation()
                                         }
@@ -137,8 +202,8 @@ class Player(private val channel: Channel) {
                             isInit = true
                         }
                         //設定AudioTracks值
-                        callIframePlayerFunction("onGetIframePlayerAudioTracks", "", fun(tracks){
-                            callIframePlayerFunction("onGetIframePlayerAudioTrack", "", fun(track){
+                        callIframePlayerFunction("onGetIframePlayerAudioTracks(onReturn)", fun(tracks){
+                            callIframePlayerFunction("onGetIframePlayerAudioTrack(onReturn)", fun(track){
                                 audioTracks = TrackDescription.fromIframePlayerReturnTrackDescriptionsToKotilnUseableTrackDescriptions(
                                         tracks, track
                                 )
@@ -147,7 +212,9 @@ class Player(private val channel: Channel) {
                                             preChangeNodeID: Int?, postChangeNodeID: Int?,
                                             preChangeNode: TrackDescription?, postChangeNode: TrackDescription?
                                     ) {
-                                        callIframePlayerFunction("onSetIframePlayerAudioTrack", postChangeNode)
+                                        callIframePlayerFunction("onSetIframePlayerAudioTrack(${
+                                                kotlinValueToEvalScriptUseableValue(postChangeNode)
+                                        })")
                                         localStorage.setItem("RecentlyChannel${channel.number}AudioTrackID", postChangeNodeID.toString())
                                         VirtualRemote.updateAudioInformation()
                                     }
@@ -180,8 +247,8 @@ class Player(private val channel: Channel) {
                     OnPlayerEvent.playing -> {
                         if(!isInit){
                             //設定SubtitleTracks值
-                            callIframePlayerFunction("onGetIframePlayerSubtitleTracks", "", fun(tracks){
-                                callIframePlayerFunction("onGetIframePlayerSubtitleTrack", "", fun(track){
+                            callIframePlayerFunction("onGetIframePlayerSubtitleTracks(onReturn)", fun(tracks){
+                                callIframePlayerFunction("onGetIframePlayerSubtitleTrack(onReturn)", fun(track){
                                     subtitleTracks = TrackDescription.fromIframePlayerReturnTrackDescriptionsToKotilnUseableTrackDescriptions(
                                             tracks, track
                                     )
@@ -190,7 +257,9 @@ class Player(private val channel: Channel) {
                                                 preChangeNodeID: Int?, postChangeNodeID: Int?,
                                                 preChangeNode: TrackDescription?, postChangeNode: TrackDescription?
                                         ) {
-                                            callIframePlayerFunction("onSetIframePlayerSubtitleTrack", postChangeNode)
+                                            callIframePlayerFunction("onSetIframePlayerSubtitleTrack(${
+                                                    kotlinValueToEvalScriptUseableValue(postChangeNode)
+                                            })")
                                             localStorage.setItem("RecentlyChannel${channel.number}SubtitleTrackID", postChangeNodeID.toString())
                                             VirtualRemote.updateSubtitleInformation()
                                         }
@@ -220,8 +289,10 @@ class Player(private val channel: Channel) {
                     OnPlayerEvent.playing -> {
                         if(!isInit){
                             //讀取最近設定音量再去設定IframePlayer音量
-                            callIframePlayerFunction("onSetIframePlayerVolume",
-                                    localStorage.getItem("RecentlyVolume")?.toDoubleOrNull()?:100.0
+                            callIframePlayerFunction(
+                                    "onSetIframePlayerVolume(${kotlinValueToEvalScriptUseableValue(
+                                            localStorage.getItem("RecentlyVolume")?.toDoubleOrNull()?:100.0
+                                    )})"
                             )
                             isInit = true
                         }
@@ -241,7 +312,7 @@ class Player(private val channel: Channel) {
         var _volume = volume
         if(100 < _volume){_volume = 100.0}
         if(_volume < 0){_volume = 0.0}
-        callIframePlayerFunction("onSetIframePlayerVolume", _volume)
+        callIframePlayerFunction("onSetIframePlayerVolume(${kotlinValueToEvalScriptUseableValue(_volume)})")
         localStorage.setItem("RecentlyVolume", _volume.toString())//儲存低返最近設定音量
         VolumeDescription.show(3000)
     }
@@ -253,7 +324,7 @@ class Player(private val channel: Channel) {
      * 小數中有取捨使到有機會調教唔到音量值
      * */
     fun getVolume(onReturn: (volume: Double)->Unit) {
-        callIframePlayerFunction("onGetIframePlayerVolume", "", fun(returnValue){
+        callIframePlayerFunction("onGetIframePlayerVolume(onReturn)", fun(returnValue){
             onReturn(returnValue?.toString()?.toDoubleOrNull()?:100.0)
         })
     }
@@ -284,7 +355,7 @@ class Player(private val channel: Channel) {
      * 設定iframePlayer嘅靜音資訊
      * */
     fun setMuted(muted: Boolean) {
-        callIframePlayerFunction("onSetIframePlayerMuted", muted)
+        callIframePlayerFunction("onSetIframePlayerMuted(${kotlinValueToEvalScriptUseableValue(muted)})")
         MutedDescription.update()
     }
 
@@ -292,7 +363,7 @@ class Player(private val channel: Channel) {
      * 獲取iframePlayer嘅靜音資訊
      * */
     fun getMuted(onReturn: (muted: Boolean)->Unit) {
-        callIframePlayerFunction("onGetIframePlayerMuted", "", fun(returnValue){
+        callIframePlayerFunction("onGetIframePlayerMuted(onReturn)", fun(returnValue){
             onReturn(returnValue?.toString()?.toBoolean()?:true)
         })
     }
@@ -304,7 +375,7 @@ class Player(private val channel: Channel) {
      *  此Function防止Player冇自動播放時手動播放
      */
     fun play(){
-        callIframePlayerFunction("onSetIframePlayerPlay", "")
+        callIframePlayerFunction("onSetIframePlayerPlay()")
     }
 
     /**
@@ -509,64 +580,26 @@ class Player(private val channel: Channel) {
             ProgrammableColor.yellow    -> {colorString = "yellow"}
             ProgrammableColor.blue      -> {colorString = "blue"}
         }
-        callIframePlayerFunction("onClickProgrammableButton", colorString)
+        callIframePlayerFunction("onClickProgrammableButton(${kotlinValueToEvalScriptUseableValue(colorString)})")
     }
 
     /******************************************************************************************************************/
-    private val callIframePlayerFunctionList = ArrayList<dynamic>()
 
-    private fun setListenIframePlayer(){
-        window.addEventListener("message", fun(event: dynamic){
-            try{
-                val callMessage = JSON.parse<dynamic>(event.data.toString())
-                if (callMessage.name == null){
-                    return
-                }else if(callMessage.name == "HKNBPCore"){
-                    // 之前callIframePlayerFunction嘅Return
-                    for(obj in callIframePlayerFunctionList){
-                        if(obj.id == callMessage.id){
-                            obj.onReturn(callMessage.returnValue)
-                            callIframePlayerFunctionList.remove(obj)
-                        }
+    fun pictureInPictureModeSwitch(){
+        callIframePlayerFunction("""
+            async function pictureInPictureModeSwitch(){
+                try {
+                //console.log(document.pictureInPictureEnabled);
+                    var video = document.getElementsByTagName("video")[0]
+                    if (video !== document.pictureInPictureElement){
+                        await video.requestPictureInPicture();
+                    }else{
+                        await document.exitPictureInPicture();
                     }
-                }else if(callMessage.name == "IframePlaye"){
-                    // 畀IframePlayer方便Call
-                    val onPlaying = onPlaying
-                    val onNotPlaying = onNotPlaying
-
-                    /**
-                    var onReturn = fun(returnValue: dynamic){
-                    val obj = callMessage
-                    obj.returnValue = returnValue
-                    window.parent.postMessage(JSON.stringify(obj), "*")
-                    }*/
-                    eval(callMessage.functionName + "()")
-                }
-            }catch(e: dynamic){
-                println("callIframePlayerFunction衰左: ${e}" + "\n" +
-                        "JSON字串(message)內容: ${event.data.toString()}" + "\n" +
-                        "Event內容: ${JSON.stringify(event)}"
-                )
+                }catch(error){console.log(error);}
             }
-        }, false)
-    }
-
-    private fun callIframePlayerFunction(
-            functionName: String, value: dynamic = "", onReturn: (returnValue: dynamic)->Unit = fun(returnValue){}
-    ){
-        val caller = js("{}")
-        caller.functionName = functionName
-        caller.value = value
-        caller.name = "HKNBPCore"
-        caller.id = Date().getTime().toString() + Random.nextInt(0, 99999999)
-        caller.onReturn = onReturn
-        callIframePlayerFunctionList.add(caller)
-        window.setTimeout(fun(){
-            callIframePlayerFunctionList.remove(caller) //如果太耐冇return就響List自動清除免堆垃圾
-        }, 60000)
-        try {
-            iframePlayer.contentWindow.postMessage(JSON.stringify(caller), "*")
-        } catch (e: dynamic){ println("iframePlayer有啲Function搵唔到或發生問題: $e") }
+            pictureInPictureModeSwitch();
+        """)
     }
 
     init {
@@ -618,7 +651,9 @@ class Player(private val channel: Channel) {
         iframePlayer?.src = channel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
         iframePlayer?.onload = fun(){
             setListenIframePlayer()
-            callIframePlayerFunction("onIframePlayerInit", channel.sources.node?.link?: "")
+            callIframePlayerFunction("onIframePlayerInit(${
+                    kotlinValueToEvalScriptUseableValue(channel.sources.node?.link?:"")
+            })")
         }
     }
 }
