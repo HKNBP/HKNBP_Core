@@ -346,45 +346,6 @@
         callHKNBPCoreFunction("onNotPlaying", "", function(){});
     };
 
-    /**
-     * 由HKNBP_Core發出初始化IframePlayer
-     *
-     * @param {source: String} source 頻道源
-     * */
-    function onIframePlayerInit(sourceSrc){
-        document.getElementById("player-display").innerHTML = "" +
-            "<video " +
-            "   id=\"player\" " +
-            "   class=\"video-js vjs-default-skin\" " +
-            "   controls preload=\"auto\" " +
-            "   onplaying=\"onIframePlayerPlaying()\" " +
-            "   onpause=\"onIframePlayerNotPlaying()\" " +
-            "   onstop=\"onIframePlayerNotPlaying()\" " +
-            "   onended=\"onIframePlayerNotPlaying()\" " +
-            "   onerror=\"onIframePlayerNotPlaying()\" " +
-            "   onwaiting=\"onIframePlayerNotPlaying()\" " +
-            "   oncanplaythrough=\"this.play()\" " +
-            "   data-setup='{}' " +
-            "   style=\"position:absolute; top:0; bottom:0; left:0; right:0; width:100%; height:100%; overflow:hidden;\"" +
-            "   frameBorder=\"0\"" +
-            "   allow=\"autoplay; fullscreen;\" muted playsinline>" +
-            "</video>";
-        player = videojs('player', {
-            autoplay: true,
-            controls: false,
-            poster: ''
-        });
-        player.ready(function(){
-            var settings = this.textTrackSettings;
-            settings.setValues({
-                //"backgroundColor": "#000"
-                "backgroundOpacity": "0"
-                //"edgeStyle": "none"
-            });
-            settings.updateDisplay();
-        });
-        player.src(sourceSrc);
-    }
 
     /**
      * 存底callHKNBPCoreFunction要求
@@ -443,6 +404,38 @@
         window.parent.postMessage(JSON.stringify(caller), "*");
     }
 
+    document.getElementById("player-display").innerHTML = "" +
+        "<video " +
+        "   id=\"player\" " +
+        "   class=\"video-js vjs-default-skin\" " +
+        "   controls preload=\"auto\" " +
+        "   onplaying=\"onIframePlayerPlaying()\" " +
+        "   onpause=\"onIframePlayerNotPlaying()\" " +
+        "   onstop=\"onIframePlayerNotPlaying()\" " +
+        "   onended=\"onIframePlayerNotPlaying()\" " +
+        "   onerror=\"onIframePlayerNotPlaying()\" " +
+        "   onwaiting=\"onIframePlayerNotPlaying()\" " +
+        "   oncanplaythrough=\"this.play()\" " +
+        "   data-setup='{}' " +
+        "   style=\"position:absolute; top:0; bottom:0; left:0; right:0; width:100%; height:100%; overflow:hidden;\"" +
+        "   frameBorder=\"0\"" +
+        "   allow=\"autoplay; fullscreen;\" muted playsinline>" +
+        "</video>";
+    player = videojs('player', {
+        autoplay: true,
+        controls: false,
+        poster: ''
+    });
+    player.ready(function(){
+        var settings = this.textTrackSettings;
+        settings.setValues({
+            //"backgroundColor": "#000"
+            "backgroundOpacity": "0"
+            //"edgeStyle": "none"
+        });
+        settings.updateDisplay();
+    });
+    player.src(decodeURIComponent(new URL(window.location.href).searchParams.get("src")));
 </script>
 </body>
 </html>

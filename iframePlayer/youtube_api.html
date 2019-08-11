@@ -31,12 +31,15 @@
      */
     var tag = document.createElement('script');
     var firstScriptTag = document.getElementsByTagName('script')[0];
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     /**
      * This function creates an <iframe> (and YouTube player)
      * after the API code downloads.
      */
     var player;
-    var youtubeVideoId;
+    var youtubeVideoId = decodeURIComponent(new URL(window.location.href).searchParams.get("src"));
 
     function onYouTubeIframeAPIReady() {
         player = new YT.Player('player-display', {
@@ -317,22 +320,6 @@
       callHKNBPCoreFunction("onNotPlaying", "", function(){});
     };
 
-    /**
-     * 由HKNBP_Core發出初始化IframePlayer
-     *
-     * @param {source: String} source 頻道源
-     * */
-    function onIframePlayerInit(sourceSrc){
-        youtubeVideoId = sourceSrc;
-        tag.src = "https://www.youtube.com/iframe_api";
-        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        var count = 0;
-        var timer = window.setInterval(function(){
-            player.playVideo();
-            count++;
-            if(count == 60){window.clearInterval(timer)}
-        }, 1000)
-    }
 
     /**
      * 存底callHKNBPCoreFunction要求

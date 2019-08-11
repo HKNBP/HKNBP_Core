@@ -582,17 +582,15 @@
         </button>
     </div>
     <div id="consentPanel" style="
-        background-color:rgba(0, 0, 0, 0.6);
+        background-color:rgba(0, 0, 0, 0);
         display:none;
         position:absolute;
         top:0;bottom:0;left:0;right:0;
-        z-index:100;
+        z-index:120;
     ">
-        <div style="position:absolute;top:8vh;bottom:8vh;left:8vh;right:8vh;">
-            <div style="position:absolute;top:0;bottom:8vh;left:0;right:0;">
-                <iframe id="iframeConsent" style="height:100%;width:100%;" src="consent.html" frameBorder="0">你嘅瀏覽器唔支援iframe</iframe>
-            </div>
-            <button id="consentPanelAgreeConsentButton" style="position:absolute;bottom:0;left:0;right:0;font-size:5vh;">同意</button>
+        <div style="position:absolute;bottom:0;left:0;right:0;height:6vh;background:#333;">
+            <a href="consent.html" target="_blank" style="position:absolute;top:0;bottom:0;left:0;right:20vh;">請按此詳細閱讀《私隱政策》及《條款和條件》</a>
+            <button id="consentPanelAgreeConsentButton" style="border:0;padding:0;position:absolute;top:0;bottom:0;right:0;width:20vh;font-size:4vh;">同意</button>
         </div>
     </div>
     <div id="mutedDescription" style="
@@ -1081,7 +1079,6 @@
             z-index: 0;
          ">
         <iframe id="iframeWatchingCounter">你嘅瀏覽器唔支援iframe</iframe>
-    </div>
     </div>
 </div>
 

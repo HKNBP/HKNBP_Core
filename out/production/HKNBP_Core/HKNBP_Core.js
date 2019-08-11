@@ -2350,10 +2350,13 @@ var HKNBP_Core = function (_, Kotlin) {
     this.volumeUp = Player$volumeUp$lambda(this);
     this.volumeDown = Player$volumeDown$lambda(this);
     this.volumeMute = Player$volumeMute$lambda(this);
-    var tmp$, tmp$_0, tmp$_1, tmp$_2;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6;
     this.addOnPlayerEventListener_j8fzjz$(new Player_init$ObjectLiteral());
-    (tmp$_1 = this.iframePlayer_0) != null ? (tmp$_1.src = (tmp$_0 = (tmp$ = this.channel_0.sources.node) != null ? tmp$.iFramePlayerSrc : null) != null ? tmp$_0 : 'iframePlayer/videojs_hls.html') : null;
-    (tmp$_2 = this.iframePlayer_0) != null ? (tmp$_2.onload = Player_init$lambda(this)) : null;
+    tmp$_5 = this.iframePlayer_0;
+    tmp$_4 = ((tmp$_0 = (tmp$ = this.channel_0.sources.node) != null ? tmp$.iFramePlayerSrc : null) != null ? tmp$_0 : 'iframePlayer/videojs_hls.html') + '?src=';
+    tmp$_3 = encodeURIComponent((tmp$_2 = (tmp$_1 = this.channel_0.sources.node) != null ? tmp$_1.link : null) != null ? tmp$_2 : '');
+    tmp$_5 != null ? (tmp$_5.src = tmp$_4 + tmp$_3) : null;
+    (tmp$_6 = this.iframePlayer_0) != null ? (tmp$_6.onload = Player_init$lambda(this)) : null;
   }
   function Player$Companion() {
     Player$Companion_instance = this;
@@ -3009,11 +3012,7 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function Player_init$lambda(this$Player) {
     return function () {
-      var tmp$, tmp$_0, tmp$_1, tmp$_2;
       this$Player.setListenIframePlayer_0();
-      tmp$_1 = (tmp$_0 = (tmp$ = this$Player.channel_0.sources.node) != null ? tmp$.link : null) != null ? tmp$_0 : '';
-      tmp$_2 = 'onIframePlayerInit(' + this$Player.kotlinValueToEvalScriptUseableValue_0(tmp$_1) + ')';
-      this$Player.callIframePlayerFunction_0(tmp$_2);
     };
   }
   Player.$metadata$ = {

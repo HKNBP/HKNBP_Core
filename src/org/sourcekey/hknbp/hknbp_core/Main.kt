@@ -110,6 +110,9 @@ var channels: ArrayLinkList<Channel> = {
 
 var player: Player? = null
 
+external fun decodeURIComponent(encodedURI: String): String
+
+external fun encodeURIComponent(encodedURI: String): String
 
 /**
  * 去特定頻道
