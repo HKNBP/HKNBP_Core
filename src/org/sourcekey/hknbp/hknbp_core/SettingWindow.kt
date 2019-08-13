@@ -26,6 +26,7 @@ object SettingWindow: UserInterface(
 ) {
     private val settingWindow                   = document.getElementById("settingWindow") as HTMLDivElement
     private val hideButton                      = document.getElementById("settingWindowHideButton") as HTMLButtonElement
+
     private val languageSetHonJyutElegantSet    = document.getElementById("settingWindowLanguageSetHonJyutElegantSet") as HTMLButtonElement
     private val languageSetHonJyutColloquialSet = document.getElementById("settingWindowLanguageSetHonJyutColloquialSet") as HTMLButtonElement
     private val languageSetEnglishSet           = document.getElementById("settingWindowLanguageSetEnglishSet") as HTMLButtonElement
@@ -36,8 +37,7 @@ object SettingWindow: UserInterface(
     private val languageRemoveLanguage          = document.getElementById("settingWindowLanguageRemoveLanguage") as HTMLButtonElement
     private val languageMoveUpLanguage          = document.getElementById("settingWindowLanguageMoveUpLanguage") as HTMLButtonElement
     private val languageMoveDownLanguage        = document.getElementById("settingWindowLanguageMoveDownLanguage") as HTMLButtonElement
-
-    private val currentUserLanguage = js("navigator.language || navigator.userLanguage;") as String
+    private val currentUserLanguage             = js("navigator.language || navigator.userLanguage;") as String
 
     fun getLanguageSetting(): ArrayList<String?>{
         val userLanguageList = ArrayList<String?>()
@@ -171,10 +171,19 @@ object SettingWindow: UserInterface(
                         "<option value=\"${currentUserLanguage}\">${currentUserLanguage}</option>"
     }
 
+
+    private val clearSettingButton = document.getElementById("clearSettingButton") as HTMLButtonElement
+
+    fun initClearSetting(){
+        clearSettingButton.onclick = fun(event){localStorage.clear();js("location.reload();")}
+    }
+
+
     init {
         settingWindow.style.cursor = "auto"
         hideButton.onclick = fun(event){ hide() }
 
         initLangugeSetting()
+        initClearSetting()
     }
 }

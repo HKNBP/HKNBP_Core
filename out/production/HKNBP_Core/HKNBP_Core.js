@@ -3109,7 +3109,7 @@ var HKNBP_Core = function (_, Kotlin) {
   function SettingWindow() {
     SettingWindow_instance = this;
     UserInterface.call(this, 'settingWindow', 'settingWindowHideButton', void 0, true);
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12;
     this.settingWindow_0 = Kotlin.isType(tmp$ = document.getElementById('settingWindow'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('settingWindowHideButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.languageSetHonJyutElegantSet_0 = Kotlin.isType(tmp$_1 = document.getElementById('settingWindowLanguageSetHonJyutElegantSet'), HTMLButtonElement) ? tmp$_1 : throwCCE();
@@ -3123,9 +3123,11 @@ var HKNBP_Core = function (_, Kotlin) {
     this.languageMoveUpLanguage_0 = Kotlin.isType(tmp$_9 = document.getElementById('settingWindowLanguageMoveUpLanguage'), HTMLButtonElement) ? tmp$_9 : throwCCE();
     this.languageMoveDownLanguage_0 = Kotlin.isType(tmp$_10 = document.getElementById('settingWindowLanguageMoveDownLanguage'), HTMLButtonElement) ? tmp$_10 : throwCCE();
     this.currentUserLanguage_0 = typeof (tmp$_11 = navigator.language || navigator.userLanguage) === 'string' ? tmp$_11 : throwCCE();
+    this.clearSettingButton_0 = Kotlin.isType(tmp$_12 = document.getElementById('clearSettingButton'), HTMLButtonElement) ? tmp$_12 : throwCCE();
     this.settingWindow_0.style.cursor = 'auto';
     this.hideButton_0.onclick = SettingWindow_init$lambda(this);
     this.initLangugeSetting();
+    this.initClearSetting();
   }
   SettingWindow.prototype.getLanguageSetting = function () {
     var tmp$, tmp$_0;
@@ -3250,6 +3252,13 @@ var HKNBP_Core = function (_, Kotlin) {
     this.languageSetEnglishSet_0.onclick = SettingWindow$initLangugeSetting$lambda_5(this);
     this.languageSetPresetSet_0.onclick = SettingWindow$initLangugeSetting$lambda_6(this);
     this.languageSelectSequenceList_0.innerHTML = (tmp$ = localStorage.getItem('RecentlyLanguageSelectSequence')) != null ? tmp$ : '<option value=' + '"' + this.currentUserLanguage_0 + '"' + '>' + this.currentUserLanguage_0 + '<\/option>';
+  };
+  function SettingWindow$initClearSetting$lambda(event) {
+    localStorage.clear();
+    location.reload();
+  }
+  SettingWindow.prototype.initClearSetting = function () {
+    this.clearSettingButton_0.onclick = SettingWindow$initClearSetting$lambda;
   };
   function SettingWindow_init$lambda(this$SettingWindow) {
     return function (event) {
@@ -3806,7 +3815,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.settingWindowButton = Kotlin.isType(tmp$_41 = document.getElementById('settingWindowButton'), HTMLButtonElement) ? tmp$_41 : throwCCE();
     this.appDownloadWindowButton = Kotlin.isType(tmp$_42 = document.getElementById('appDownloadWindowButton'), HTMLButtonElement) ? tmp$_42 : throwCCE();
     this.githubWebButton = Kotlin.isType(tmp$_43 = document.getElementById('githubWebButton'), HTMLButtonElement) ? tmp$_43 : throwCCE();
-    this.clearSettingButton = Kotlin.isType(tmp$_44 = document.getElementById('clearSettingButton'), HTMLButtonElement) ? tmp$_44 : throwCCE();
+    this.documentStoreButton = Kotlin.isType(tmp$_44 = document.getElementById('documentStoreButton'), HTMLButtonElement) ? tmp$_44 : throwCCE();
     this.watchingCounterWebButton = Kotlin.isType(tmp$_45 = document.getElementById('watchingCounterWebButton'), HTMLButtonElement) ? tmp$_45 : throwCCE();
     this.centerButton = Kotlin.isType(tmp$_46 = document.createElement('button'), HTMLButtonElement) ? tmp$_46 : throwCCE();
     this.upButton = Kotlin.isType(tmp$_47 = document.createElement('button'), HTMLButtonElement) ? tmp$_47 : throwCCE();
@@ -3861,7 +3870,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.settingWindowButton.onclick = VirtualRemote_init$lambda_39;
     this.appDownloadWindowButton.onclick = VirtualRemote_init$lambda_40;
     this.githubWebButton.onclick = VirtualRemote_init$lambda_41;
-    this.clearSettingButton.onclick = VirtualRemote_init$lambda_42;
+    this.documentStoreButton.onclick = VirtualRemote_init$lambda_42;
     this.watchingCounterWebButton.onclick = VirtualRemote_init$lambda_43;
     this.centerButton.onclick = VirtualRemote_init$lambda_44;
     this.upButton.onclick = VirtualRemote_init$lambda_45;
@@ -4111,8 +4120,7 @@ var HKNBP_Core = function (_, Kotlin) {
     window.open('https://github.com/HKNBP', '_blank');
   }
   function VirtualRemote_init$lambda_42(event) {
-    localStorage.clear();
-    location.reload();
+    window.open('https://drive.google.com/drive/folders/1c8rb7Yrfe8IV_32pSDGF9oP5n-7Qs3PO', '_blank');
   }
   function VirtualRemote_init$lambda_43(evebt) {
     window.open('https://datastudio.google.com/reporting/1GKlAWHEsDdryWh2PRdQFmWzQ_ksRQ8BK/page/1M', '_blank');

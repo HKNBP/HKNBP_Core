@@ -69,7 +69,7 @@ object VirtualRemote: UserInterface("virtualRemote"){
     val settingWindowButton         = document.getElementById("settingWindowButton")        as HTMLButtonElement
     val appDownloadWindowButton     = document.getElementById("appDownloadWindowButton")    as HTMLButtonElement
     val githubWebButton             = document.getElementById("githubWebButton")            as HTMLButtonElement
-    val clearSettingButton          = document.getElementById("clearSettingButton")         as HTMLButtonElement
+    val documentStoreButton         = document.getElementById("documentStoreButton")        as HTMLButtonElement
     val watchingCounterWebButton    = document.getElementById("watchingCounterWebButton")   as HTMLButtonElement
     val centerButton                = document.createElement("button")                      as HTMLButtonElement
     val upButton                    = document.createElement("button")                      as HTMLButtonElement
@@ -205,7 +205,12 @@ object VirtualRemote: UserInterface("virtualRemote"){
                     "_blank" // <- This is what makes it open in a new window.
             )
         }
-        clearSettingButton.onclick          = fun(event){localStorage.clear();js("location.reload();")}
+        documentStoreButton.onclick         = fun(event){
+            window.open(
+                    "https://drive.google.com/drive/folders/1c8rb7Yrfe8IV_32pSDGF9oP5n-7Qs3PO",
+                    "_blank" // <- This is what makes it open in a new window.
+            )
+        }
         watchingCounterWebButton.onclick    = fun(evebt){
             window.open(
                     "https://datastudio.google.com/reporting/1GKlAWHEsDdryWh2PRdQFmWzQ_ksRQ8BK/page/1M",
