@@ -23,7 +23,10 @@ object AppDownloadWindow: UserInterface(
         firstFocusElementID = "appDownloadWindowHideButton",
         isFocusOutHide = true
 ) {
-    private val appDownloadWindow: HTMLDivElement = document.getElementById("appDownloadWindow") as HTMLDivElement
+    private val appDownloadWindow = document.getElementById("appDownloadWindow") as HTMLDivElement
+    private val hideButton = document.getElementById("appDownloadWindowHideButton") as HTMLDivElement
 
-    init { }
+    init {
+        hideButton.onclick = fun(event){ hide() }
+    }
 }

@@ -130,8 +130,15 @@ var HKNBP_Core = function (_, Kotlin) {
   function AppDownloadWindow() {
     AppDownloadWindow_instance = this;
     UserInterface.call(this, 'appDownloadWindow', 'appDownloadWindowHideButton', void 0, true);
-    var tmp$;
+    var tmp$, tmp$_0;
     this.appDownloadWindow_0 = Kotlin.isType(tmp$ = document.getElementById('appDownloadWindow'), HTMLDivElement) ? tmp$ : throwCCE();
+    this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('appDownloadWindowHideButton'), HTMLDivElement) ? tmp$_0 : throwCCE();
+    this.hideButton_0.onclick = AppDownloadWindow_init$lambda(this);
+  }
+  function AppDownloadWindow_init$lambda(this$AppDownloadWindow) {
+    return function (event) {
+      this$AppDownloadWindow.hide();
+    };
   }
   AppDownloadWindow.$metadata$ = {
     kind: Kind_OBJECT,
