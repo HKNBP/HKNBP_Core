@@ -2302,7 +2302,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   OfficialChannel.prototype.getOfficialChannels_u69gef$ = function (onLoadedChannelsListener) {
     if (this.channelsCache_0 == null) {
-      this.parseChannels_0(OfficialChannel$getOfficialChannels$lambda(this, onLoadedChannelsListener), OfficialChannel$getOfficialChannels$lambda_0, ['data/official_channels.xml']);
+      this.parseChannels_0(OfficialChannel$getOfficialChannels$lambda(this, onLoadedChannelsListener), OfficialChannel$getOfficialChannels$lambda_0, ['https://hknbp.org/data/official_channels.xml', 'data/official_channels.xml']);
     }
      else {
       onLoadedChannelsListener(channels != null ? channels : ArrayLinkList_init([]));
