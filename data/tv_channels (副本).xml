@@ -22,21 +22,21 @@
             <iframeplayersrc>iframePlayer/videojs_hls.html</iframeplayersrc>
             <link>https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8</link>
         </source>
-        <information epgid="vinkovacka-tv.hr" src="http://tvprofil.net/xmltv/data/vinkovacka-tv.hr/weekly_vinkovacka-tv.hr_tvprofil.net.xml"/>
-    </channel>
-    <channel>
-        <number>002</number>
-        <name>mp4 File</name>
-        <source>
-            <description>HLSSource</description>
-            <iframeplayersrc>iframePlayer/videojs_hls.html</iframeplayersrc>
-            <link>https://interactive-examples.mdn.mozilla.net/media/examples/friday.mp4</link>
-        </source>
         <information epgid="htv2.hr" src="http://tvprofil.net/xmltv/data/htv2.hr/weekly_htv2.hr_tvprofil.net.xml"/>
     </channel>
     <channel>
+        <number>002</number>
+        <name>.mp4測試頻道</name>
+        <source>
+            <description>YoutubeSource</description>
+            <iframeplayersrc>iframePlayer/youtube_api.html</iframeplayersrc>
+            <link>YE7VzlLtp-4</link>
+        </source>
+        <information epgid="vinkovacka-tv.hr" src="http://tvprofil.net/xmltv/data/vinkovacka-tv.hr/weekly_vinkovacka-tv.hr_tvprofil.net.xml"/>
+    </channel>
+    <channel>
         <number>003</number>
-        <name>4K</name>
+        <name>4K測試頻道</name>
         <source>
             <description>YoutubeSource</description>
             <iframeplayersrc>iframePlayer/youtube_api.html</iframeplayersrc>
@@ -46,7 +46,7 @@
     </channel>
     <channel>
         <number>004</number>
-        <name>64:27</name>
+        <name>64:27測試頻道</name>
         <source>
             <description>YoutubeSource</description>
             <iframeplayersrc>iframePlayer/youtube_api.html</iframeplayersrc>
@@ -56,27 +56,27 @@
     </channel>
     <channel>
         <number>005</number>
-        <name>H.265</name>
+        <name>H.265測試頻道</name>
         <source>
             <description>YoutubeSource</description>
             <iframeplayersrc>iframePlayer/youtube_api.html</iframeplayersrc>
             <link>4kf8X3_sWh8</link>
         </source>
-        <information epgid="rtrs.ba" src="http://tvprofil.net/xmltv/data/rtrs.ba/weekly_rtrs.ba_tvprofil.net.xml"/>
+        <information epgid="vh1-europe.music" src="http://tvprofil.net/xmltv/data/vh1-europe.music/weekly_vh1-europe.music_tvprofil.net.xml"/>
     </channel>
     <channel>
         <number>007</number>
-        <name>Dash 1</name>
+        <name>Dash測試頻道</name>
         <source>
             <description>HLSSource</description>
             <iframeplayersrc>iframePlayer/videojs_dash.html</iframeplayersrc>
             <link>https://bitmovin-a.akamaihd.net/content/MI201109210084_1/mpds/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.mpd</link>
         </source>
-        <information epgid="b92.sr" src="http://tvprofil.net/xmltv/data/b92.sr/weekly_b92.sr_tvprofil.net.xml"/>
+        <information epgid="vinkovacka-tv.hr" src="http://tvprofil.net/xmltv/data/vinkovacka-tv.hr/weekly_vinkovacka-tv.hr_tvprofil.net.xml"/>
     </channel>
     <channel>
-        <number>048</number>
-        <name>Dash 2</name>
+        <number>008</number>
+        <name>測試頻道8</name>
         <source>
             <description>HLSSource</description>
             <iframeplayersrc>iframePlayer/videojs_dash.html</iframeplayersrc>
@@ -85,8 +85,8 @@
         <information epgid="tv-istra.hr" src="http://tvprofil.net/xmltv/data/tv-istra.hr/weekly_tv-istra.hr_tvprofil.net.xml"/>
     </channel>
     <channel>
-        <number>998</number>
-        <name>T</name>
+        <number>009</number>
+        <name>測試頻道9</name>
         <source>
             <description>HLSSource</description>
             <iframeplayersrc>iframePlayer/videojs_hls.html</iframeplayersrc>

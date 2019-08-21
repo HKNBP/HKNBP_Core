@@ -18,7 +18,7 @@
  * 控制更新cache版本
  * 修改版本名今用戶進行更新新版
  */
-var coreVersion = "v2019.08.70";
+var coreVersion = "v2019.08.71";
 
 /**
  * 檢查依家運行係米ServiceWorker
@@ -34,7 +34,7 @@ var coreVersion = "v2019.08.70";
  * 所以此if()係檢查到時係邊個方法去Call
  * 作不同情況下使用
  */
-if(self){
+if(self.registration){
     // 使用precache功能，在offline下也可以執行
     var cacheFiles = [
         ".",

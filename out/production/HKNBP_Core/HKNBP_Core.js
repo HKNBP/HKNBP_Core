@@ -1516,30 +1516,46 @@ var HKNBP_Core = function (_, Kotlin) {
     UserInterface.call(this, 'enteringNumberBox');
     this.enteringNumberBox_0 = document.getElementById('enteringNumberBox');
     this.text_0 = document.getElementById('enteringNumberBoxText');
-    this.enteringNumberNumber_0 = '';
-    this.isenteringNumber_0 = false;
+    this.enteringNumber_0 = 0;
+    this.enteringMinus_0 = '';
+    this.isEnteringNumber_0 = false;
     this.enteringNumberWaitingTime_0 = 3500;
   }
   EnteringNumberBox.prototype.update = function () {
-    this.text_0.innerHTML = this.enteringNumberNumber_0;
+    this.text_0.innerHTML = this.enteringMinus_0 + toString(this.enteringNumber_0);
   };
   EnteringNumberBox.prototype.enteringNumberToDesignatedChannelRun_0 = function () {
     this.hide();
-    designatedChannel(toInt(this.enteringNumberNumber_0));
-    this.enteringNumberNumber_0 = '';
-    this.isenteringNumber_0 = false;
+    var channelNumber = toIntOrNull(this.enteringMinus_0 + toString(this.enteringNumber_0));
+    if (channelNumber != null) {
+      designatedChannel(channelNumber);
+    }
+    this.enteringNumber_0 = 0;
+    this.enteringMinus_0 = '';
+    this.isEnteringNumber_0 = false;
   };
-  function EnteringNumberBox$show$lambda(this$EnteringNumberBox) {
+  function EnteringNumberBox$enter$lambda(this$EnteringNumberBox) {
     return function () {
       this$EnteringNumberBox.enteringNumberToDesignatedChannelRun_0();
     };
   }
-  EnteringNumberBox.prototype.show_61zpoe$ = function (enteringNumberNumber) {
-    if (!this.isenteringNumber_0) {
-      window.setTimeout(EnteringNumberBox$show$lambda(this), this.enteringNumberWaitingTime_0);
+  EnteringNumberBox.prototype.enter_61zpoe$ = function (numberString) {
+    if (!this.isEnteringNumber_0) {
+      window.setTimeout(EnteringNumberBox$enter$lambda(this), this.enteringNumberWaitingTime_0);
     }
-    this.enteringNumberNumber_0 = this.enteringNumberNumber_0 + enteringNumberNumber;
-    this.isenteringNumber_0 = true;
+    var number = toIntOrNull(numberString);
+    if (number != null) {
+      this.enteringNumber_0 = (this.enteringNumber_0 * 10 | 0) + number | 0;
+    }
+     else if (equals(numberString, '-')) {
+      if (equals(this.enteringMinus_0, '')) {
+        this.enteringMinus_0 = '-';
+      }
+       else {
+        this.enteringMinus_0 = '';
+      }
+    }
+    this.isEnteringNumber_0 = true;
     this.update();
     this.show();
   };
@@ -2286,7 +2302,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   OfficialChannel.prototype.getOfficialChannels_u69gef$ = function (onLoadedChannelsListener) {
     if (this.channelsCache_0 == null) {
-      this.parseChannels_0(OfficialChannel$getOfficialChannels$lambda(this, onLoadedChannelsListener), OfficialChannel$getOfficialChannels$lambda_0, ['https://hknbp.org/data/official_channels.xml', 'data/official_channels.xml']);
+      this.parseChannels_0(OfficialChannel$getOfficialChannels$lambda(this, onLoadedChannelsListener), OfficialChannel$getOfficialChannels$lambda_0, ['data/official_channels.xml']);
     }
      else {
       onLoadedChannelsListener(channels != null ? channels : ArrayLinkList_init([]));
@@ -3776,7 +3792,7 @@ var HKNBP_Core = function (_, Kotlin) {
   function VirtualRemote() {
     VirtualRemote_instance = this;
     UserInterface.call(this, 'virtualRemote');
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22, tmp$_23, tmp$_24, tmp$_25, tmp$_26, tmp$_27, tmp$_28, tmp$_29, tmp$_30, tmp$_31, tmp$_32, tmp$_33, tmp$_34, tmp$_35, tmp$_36, tmp$_37, tmp$_38, tmp$_39, tmp$_40, tmp$_41, tmp$_42, tmp$_43, tmp$_44, tmp$_45, tmp$_46, tmp$_47, tmp$_48, tmp$_49, tmp$_50, tmp$_51, tmp$_52, tmp$_53, tmp$_54, tmp$_55;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22, tmp$_23, tmp$_24, tmp$_25, tmp$_26, tmp$_27, tmp$_28, tmp$_29, tmp$_30, tmp$_31, tmp$_32, tmp$_33, tmp$_34, tmp$_35, tmp$_36, tmp$_37, tmp$_38, tmp$_39, tmp$_40, tmp$_41, tmp$_42, tmp$_43, tmp$_44, tmp$_45, tmp$_46, tmp$_47, tmp$_48, tmp$_49, tmp$_50, tmp$_51, tmp$_52, tmp$_53, tmp$_54, tmp$_55, tmp$_56;
     this.virtualRemote_0 = Kotlin.isType(tmp$ = document.getElementById('virtualRemote'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideVirtualRemoteButton = Kotlin.isType(tmp$_0 = document.getElementById('hideVirtualRemoteButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.epgButton = Kotlin.isType(tmp$_1 = document.getElementById('epgButton'), HTMLButtonElement) ? tmp$_1 : throwCCE();
@@ -3814,26 +3830,27 @@ var HKNBP_Core = function (_, Kotlin) {
     this.number7Button = Kotlin.isType(tmp$_33 = document.getElementById('number7Button'), HTMLButtonElement) ? tmp$_33 : throwCCE();
     this.number8Button = Kotlin.isType(tmp$_34 = document.getElementById('number8Button'), HTMLButtonElement) ? tmp$_34 : throwCCE();
     this.number9Button = Kotlin.isType(tmp$_35 = document.getElementById('number9Button'), HTMLButtonElement) ? tmp$_35 : throwCCE();
-    this.refreshButton = Kotlin.isType(tmp$_36 = document.getElementById('refreshButton'), HTMLButtonElement) ? tmp$_36 : throwCCE();
-    this.channelDescriptionButton = Kotlin.isType(tmp$_37 = document.getElementById('channelDescriptionButton'), HTMLButtonElement) ? tmp$_37 : throwCCE();
-    this.aboutWindowButton = Kotlin.isType(tmp$_38 = document.getElementById('aboutWindowButton'), HTMLButtonElement) ? tmp$_38 : throwCCE();
-    this.feedbackWebButton = Kotlin.isType(tmp$_39 = document.getElementById('feedbackWebButton'), HTMLButtonElement) ? tmp$_39 : throwCCE();
-    this.shareWindowButton = Kotlin.isType(tmp$_40 = document.getElementById('shareWindowButton'), HTMLButtonElement) ? tmp$_40 : throwCCE();
-    this.settingWindowButton = Kotlin.isType(tmp$_41 = document.getElementById('settingWindowButton'), HTMLButtonElement) ? tmp$_41 : throwCCE();
-    this.appDownloadWindowButton = Kotlin.isType(tmp$_42 = document.getElementById('appDownloadWindowButton'), HTMLButtonElement) ? tmp$_42 : throwCCE();
-    this.githubWebButton = Kotlin.isType(tmp$_43 = document.getElementById('githubWebButton'), HTMLButtonElement) ? tmp$_43 : throwCCE();
-    this.documentStoreButton = Kotlin.isType(tmp$_44 = document.getElementById('documentStoreButton'), HTMLButtonElement) ? tmp$_44 : throwCCE();
-    this.watchingCounterWebButton = Kotlin.isType(tmp$_45 = document.getElementById('watchingCounterWebButton'), HTMLButtonElement) ? tmp$_45 : throwCCE();
-    this.centerButton = Kotlin.isType(tmp$_46 = document.createElement('button'), HTMLButtonElement) ? tmp$_46 : throwCCE();
-    this.upButton = Kotlin.isType(tmp$_47 = document.createElement('button'), HTMLButtonElement) ? tmp$_47 : throwCCE();
-    this.downButton = Kotlin.isType(tmp$_48 = document.createElement('button'), HTMLButtonElement) ? tmp$_48 : throwCCE();
-    this.leftButton = Kotlin.isType(tmp$_49 = document.createElement('button'), HTMLButtonElement) ? tmp$_49 : throwCCE();
-    this.rightButton = Kotlin.isType(tmp$_50 = document.createElement('button'), HTMLButtonElement) ? tmp$_50 : throwCCE();
-    this.menuButton = Kotlin.isType(tmp$_51 = document.createElement('button'), HTMLButtonElement) ? tmp$_51 : throwCCE();
-    this.videoDescriptionButton = Kotlin.isType(tmp$_52 = document.createElement('button'), HTMLButtonElement) ? tmp$_52 : throwCCE();
-    this.audioDescriptionButton = Kotlin.isType(tmp$_53 = document.createElement('button'), HTMLButtonElement) ? tmp$_53 : throwCCE();
-    this.subtitleDescriptionButton = Kotlin.isType(tmp$_54 = document.createElement('button'), HTMLButtonElement) ? tmp$_54 : throwCCE();
-    this.volumeDescriptionButton = Kotlin.isType(tmp$_55 = document.createElement('button'), HTMLButtonElement) ? tmp$_55 : throwCCE();
+    this.minusButton = Kotlin.isType(tmp$_36 = document.getElementById('minusButton'), HTMLButtonElement) ? tmp$_36 : throwCCE();
+    this.refreshButton = Kotlin.isType(tmp$_37 = document.getElementById('refreshButton'), HTMLButtonElement) ? tmp$_37 : throwCCE();
+    this.channelDescriptionButton = Kotlin.isType(tmp$_38 = document.getElementById('channelDescriptionButton'), HTMLButtonElement) ? tmp$_38 : throwCCE();
+    this.aboutWindowButton = Kotlin.isType(tmp$_39 = document.getElementById('aboutWindowButton'), HTMLButtonElement) ? tmp$_39 : throwCCE();
+    this.feedbackWebButton = Kotlin.isType(tmp$_40 = document.getElementById('feedbackWebButton'), HTMLButtonElement) ? tmp$_40 : throwCCE();
+    this.shareWindowButton = Kotlin.isType(tmp$_41 = document.getElementById('shareWindowButton'), HTMLButtonElement) ? tmp$_41 : throwCCE();
+    this.settingWindowButton = Kotlin.isType(tmp$_42 = document.getElementById('settingWindowButton'), HTMLButtonElement) ? tmp$_42 : throwCCE();
+    this.appDownloadWindowButton = Kotlin.isType(tmp$_43 = document.getElementById('appDownloadWindowButton'), HTMLButtonElement) ? tmp$_43 : throwCCE();
+    this.githubWebButton = Kotlin.isType(tmp$_44 = document.getElementById('githubWebButton'), HTMLButtonElement) ? tmp$_44 : throwCCE();
+    this.documentStoreButton = Kotlin.isType(tmp$_45 = document.getElementById('documentStoreButton'), HTMLButtonElement) ? tmp$_45 : throwCCE();
+    this.watchingCounterWebButton = Kotlin.isType(tmp$_46 = document.getElementById('watchingCounterWebButton'), HTMLButtonElement) ? tmp$_46 : throwCCE();
+    this.centerButton = Kotlin.isType(tmp$_47 = document.createElement('button'), HTMLButtonElement) ? tmp$_47 : throwCCE();
+    this.upButton = Kotlin.isType(tmp$_48 = document.createElement('button'), HTMLButtonElement) ? tmp$_48 : throwCCE();
+    this.downButton = Kotlin.isType(tmp$_49 = document.createElement('button'), HTMLButtonElement) ? tmp$_49 : throwCCE();
+    this.leftButton = Kotlin.isType(tmp$_50 = document.createElement('button'), HTMLButtonElement) ? tmp$_50 : throwCCE();
+    this.rightButton = Kotlin.isType(tmp$_51 = document.createElement('button'), HTMLButtonElement) ? tmp$_51 : throwCCE();
+    this.menuButton = Kotlin.isType(tmp$_52 = document.createElement('button'), HTMLButtonElement) ? tmp$_52 : throwCCE();
+    this.videoDescriptionButton = Kotlin.isType(tmp$_53 = document.createElement('button'), HTMLButtonElement) ? tmp$_53 : throwCCE();
+    this.audioDescriptionButton = Kotlin.isType(tmp$_54 = document.createElement('button'), HTMLButtonElement) ? tmp$_54 : throwCCE();
+    this.subtitleDescriptionButton = Kotlin.isType(tmp$_55 = document.createElement('button'), HTMLButtonElement) ? tmp$_55 : throwCCE();
+    this.volumeDescriptionButton = Kotlin.isType(tmp$_56 = document.createElement('button'), HTMLButtonElement) ? tmp$_56 : throwCCE();
     this.hideVirtualRemoteButton.onclick = VirtualRemote_init$lambda(this);
     this.epgButton.onclick = VirtualRemote_init$lambda_0(this);
     this.nextChannelButton.onclick = VirtualRemote_init$lambda_1;
@@ -3869,26 +3886,27 @@ var HKNBP_Core = function (_, Kotlin) {
     this.number7Button.onclick = VirtualRemote_init$lambda_31;
     this.number8Button.onclick = VirtualRemote_init$lambda_32;
     this.number9Button.onclick = VirtualRemote_init$lambda_33;
-    this.refreshButton.onclick = VirtualRemote_init$lambda_34;
-    this.channelDescriptionButton.onclick = VirtualRemote_init$lambda_35;
-    this.aboutWindowButton.onclick = VirtualRemote_init$lambda_36;
-    this.feedbackWebButton.onclick = VirtualRemote_init$lambda_37;
-    this.shareWindowButton.onclick = VirtualRemote_init$lambda_38;
-    this.settingWindowButton.onclick = VirtualRemote_init$lambda_39;
-    this.appDownloadWindowButton.onclick = VirtualRemote_init$lambda_40;
-    this.githubWebButton.onclick = VirtualRemote_init$lambda_41;
-    this.documentStoreButton.onclick = VirtualRemote_init$lambda_42;
-    this.watchingCounterWebButton.onclick = VirtualRemote_init$lambda_43;
-    this.centerButton.onclick = VirtualRemote_init$lambda_44;
-    this.upButton.onclick = VirtualRemote_init$lambda_45;
-    this.downButton.onclick = VirtualRemote_init$lambda_46;
-    this.leftButton.onclick = VirtualRemote_init$lambda_47;
-    this.rightButton.onclick = VirtualRemote_init$lambda_48;
-    this.menuButton.onclick = VirtualRemote_init$lambda_49(this);
-    this.videoDescriptionButton.onclick = VirtualRemote_init$lambda_50;
-    this.audioDescriptionButton.onclick = VirtualRemote_init$lambda_51;
-    this.subtitleDescriptionButton.onclick = VirtualRemote_init$lambda_52;
-    this.volumeDescriptionButton.onclick = VirtualRemote_init$lambda_53;
+    this.minusButton.onclick = VirtualRemote_init$lambda_34;
+    this.refreshButton.onclick = VirtualRemote_init$lambda_35;
+    this.channelDescriptionButton.onclick = VirtualRemote_init$lambda_36;
+    this.aboutWindowButton.onclick = VirtualRemote_init$lambda_37;
+    this.feedbackWebButton.onclick = VirtualRemote_init$lambda_38;
+    this.shareWindowButton.onclick = VirtualRemote_init$lambda_39;
+    this.settingWindowButton.onclick = VirtualRemote_init$lambda_40;
+    this.appDownloadWindowButton.onclick = VirtualRemote_init$lambda_41;
+    this.githubWebButton.onclick = VirtualRemote_init$lambda_42;
+    this.documentStoreButton.onclick = VirtualRemote_init$lambda_43;
+    this.watchingCounterWebButton.onclick = VirtualRemote_init$lambda_44;
+    this.centerButton.onclick = VirtualRemote_init$lambda_45;
+    this.upButton.onclick = VirtualRemote_init$lambda_46;
+    this.downButton.onclick = VirtualRemote_init$lambda_47;
+    this.leftButton.onclick = VirtualRemote_init$lambda_48;
+    this.rightButton.onclick = VirtualRemote_init$lambda_49;
+    this.menuButton.onclick = VirtualRemote_init$lambda_50(this);
+    this.videoDescriptionButton.onclick = VirtualRemote_init$lambda_51;
+    this.audioDescriptionButton.onclick = VirtualRemote_init$lambda_52;
+    this.subtitleDescriptionButton.onclick = VirtualRemote_init$lambda_53;
+    this.volumeDescriptionButton.onclick = VirtualRemote_init$lambda_54;
   }
   VirtualRemote.prototype.updateChannelDescription = function () {
     var tmp$, tmp$_0;
@@ -4062,39 +4080,42 @@ var HKNBP_Core = function (_, Kotlin) {
     player != null ? (player.programmable(Player$ProgrammableColor$blue_getInstance()), Unit) : null;
   }
   function VirtualRemote_init$lambda_24(event) {
-    EnteringNumberBox_getInstance().show_61zpoe$('0');
+    EnteringNumberBox_getInstance().enter_61zpoe$('0');
   }
   function VirtualRemote_init$lambda_25(event) {
-    EnteringNumberBox_getInstance().show_61zpoe$('1');
+    EnteringNumberBox_getInstance().enter_61zpoe$('1');
   }
   function VirtualRemote_init$lambda_26(event) {
-    EnteringNumberBox_getInstance().show_61zpoe$('2');
+    EnteringNumberBox_getInstance().enter_61zpoe$('2');
   }
   function VirtualRemote_init$lambda_27(event) {
-    EnteringNumberBox_getInstance().show_61zpoe$('3');
+    EnteringNumberBox_getInstance().enter_61zpoe$('3');
   }
   function VirtualRemote_init$lambda_28(event) {
-    EnteringNumberBox_getInstance().show_61zpoe$('4');
+    EnteringNumberBox_getInstance().enter_61zpoe$('4');
   }
   function VirtualRemote_init$lambda_29(event) {
-    EnteringNumberBox_getInstance().show_61zpoe$('5');
+    EnteringNumberBox_getInstance().enter_61zpoe$('5');
   }
   function VirtualRemote_init$lambda_30(event) {
-    EnteringNumberBox_getInstance().show_61zpoe$('6');
+    EnteringNumberBox_getInstance().enter_61zpoe$('6');
   }
   function VirtualRemote_init$lambda_31(event) {
-    EnteringNumberBox_getInstance().show_61zpoe$('7');
+    EnteringNumberBox_getInstance().enter_61zpoe$('7');
   }
   function VirtualRemote_init$lambda_32(event) {
-    EnteringNumberBox_getInstance().show_61zpoe$('8');
+    EnteringNumberBox_getInstance().enter_61zpoe$('8');
   }
   function VirtualRemote_init$lambda_33(event) {
-    EnteringNumberBox_getInstance().show_61zpoe$('9');
+    EnteringNumberBox_getInstance().enter_61zpoe$('9');
   }
   function VirtualRemote_init$lambda_34(event) {
-    updateChannel();
+    EnteringNumberBox_getInstance().enter_61zpoe$('-');
   }
   function VirtualRemote_init$lambda_35(event) {
+    updateChannel();
+  }
+  function VirtualRemote_init$lambda_36(event) {
     if (ChannelDescription_getInstance().isShow) {
       ChannelDescription_getInstance().hide();
     }
@@ -4102,10 +4123,10 @@ var HKNBP_Core = function (_, Kotlin) {
       ChannelDescription_getInstance().show_za3lpa$(60000);
     }
   }
-  function VirtualRemote_init$lambda_36(evebt) {
+  function VirtualRemote_init$lambda_37(evebt) {
     AboutWindow_getInstance().showHideAlternately();
   }
-  function VirtualRemote_init$lambda_37(evebt) {
+  function VirtualRemote_init$lambda_38(evebt) {
     var formUrl = 'https://docs.google.com/forms/d/e/1FAIpQLSehWsf1J8sSzPpXHRfFg7mqAsCC1q5dJpef2W6YvNFCrIW-8g/viewform?usp=pp_url';
     var coreVersionArg = 'entry.133709146=' + coreVersion_0;
     var appVersionArg = 'entry.759953459=' + appVersion;
@@ -4114,25 +4135,25 @@ var HKNBP_Core = function (_, Kotlin) {
     var logArg = 'entry.1270012498=';
     window.open(formUrl + '&' + coreVersionArg + '&' + appVersionArg + '&' + runningOsArg + '&' + runningBrowserArg + '&' + logArg, '_blank');
   }
-  function VirtualRemote_init$lambda_38(evebt) {
+  function VirtualRemote_init$lambda_39(evebt) {
     ShareWindow_getInstance().showHideAlternately();
   }
-  function VirtualRemote_init$lambda_39(event) {
+  function VirtualRemote_init$lambda_40(event) {
     SettingWindow_getInstance().showHideAlternately();
   }
-  function VirtualRemote_init$lambda_40(evebt) {
+  function VirtualRemote_init$lambda_41(evebt) {
     AppDownloadWindow_getInstance().showHideAlternately();
   }
-  function VirtualRemote_init$lambda_41(evebt) {
+  function VirtualRemote_init$lambda_42(evebt) {
     window.open('https://github.com/HKNBP', '_blank');
   }
-  function VirtualRemote_init$lambda_42(event) {
+  function VirtualRemote_init$lambda_43(event) {
     window.open('https://drive.google.com/drive/folders/1c8rb7Yrfe8IV_32pSDGF9oP5n-7Qs3PO', '_blank');
   }
-  function VirtualRemote_init$lambda_43(evebt) {
+  function VirtualRemote_init$lambda_44(evebt) {
     window.open('https://datastudio.google.com/reporting/1GKlAWHEsDdryWh2PRdQFmWzQ_ksRQ8BK/page/1M', '_blank');
   }
-  function VirtualRemote_init$lambda_44(event) {
+  function VirtualRemote_init$lambda_45(event) {
     var tmp$;
     (tmp$ = jQuery(':focus')) != null ? tmp$.click() : null;
   }
@@ -4140,7 +4161,7 @@ var HKNBP_Core = function (_, Kotlin) {
     var tmp$;
     return (tmp$ = toIntOrNull(Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(element))) != null ? tmp$ : 0;
   }
-  function VirtualRemote_init$lambda_45(event) {
+  function VirtualRemote_init$lambda_46(event) {
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19;
     var selectables = jQuery(':tabbable');
     var current = jQuery(':focus');
@@ -4206,7 +4227,7 @@ var HKNBP_Core = function (_, Kotlin) {
     var tmp$;
     return (tmp$ = toIntOrNull(Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(element))) != null ? tmp$ : 0;
   }
-  function VirtualRemote_init$lambda_46(event) {
+  function VirtualRemote_init$lambda_47(event) {
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19;
     var selectables = jQuery(':tabbable');
     var current = jQuery(':focus');
@@ -4268,13 +4289,13 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     (tmp$_19 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_19.focus() : null;
   }
-  function VirtualRemote_init$lambda_47(event) {
+  function VirtualRemote_init$lambda_48(event) {
     jQuery != null ? jQuery.tabPrev() : null;
   }
-  function VirtualRemote_init$lambda_48(event) {
+  function VirtualRemote_init$lambda_49(event) {
     jQuery != null ? jQuery.tabNext() : null;
   }
-  function VirtualRemote_init$lambda_49(this$VirtualRemote) {
+  function VirtualRemote_init$lambda_50(this$VirtualRemote) {
     return function (event) {
       if (this$VirtualRemote.isShow) {
         this$VirtualRemote.hide();
@@ -4284,16 +4305,16 @@ var HKNBP_Core = function (_, Kotlin) {
       }
     };
   }
-  function VirtualRemote_init$lambda_50(event) {
+  function VirtualRemote_init$lambda_51(event) {
     VideoDescription_getInstance().show_za3lpa$(5000);
   }
-  function VirtualRemote_init$lambda_51(event) {
+  function VirtualRemote_init$lambda_52(event) {
     AudioDescription_getInstance().show_za3lpa$(5000);
   }
-  function VirtualRemote_init$lambda_52(event) {
+  function VirtualRemote_init$lambda_53(event) {
     SubtitleDescription_getInstance().show_za3lpa$(5000);
   }
-  function VirtualRemote_init$lambda_53(event) {
+  function VirtualRemote_init$lambda_54(event) {
     VolumeDescription_getInstance().show_za3lpa$(5000);
   }
   VirtualRemote.$metadata$ = {
