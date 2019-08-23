@@ -180,7 +180,8 @@ object OfficialChannel {
                 channels.sortBy{ channel -> channel.number }
                 channelsCache = channels
                 onLoadedChannelsListener(channelsCache?:ArrayLinkList<Channel>())
-            }, fun(){}, "${rootURL}data/official_channels.xml", "data/official_channels.xml")
+                println(JSON.stringify(channels))
+            }, fun(){}, /**"${rootURL}data/official_channels.xml",*/ "data/official_channels.xml")
         }else{
             onLoadedChannelsListener(channels?:ArrayLinkList<Channel>())
         }

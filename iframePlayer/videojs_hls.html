@@ -49,7 +49,6 @@
                 .18vh -.1vh 0 #000,
                 -.18vh -.1vh 0 #000;
         }
-
     </style>
 </head>
 
@@ -62,7 +61,6 @@
      * 播放器
      * */
     var player;
-
     /**
      * Track嘅class
      * @param {String} id Track嘅編號,用來識別
@@ -72,10 +70,8 @@
         var obj = {};
         obj.id = id;
         obj.name = name;
-
         return obj;
     }
-
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去將Player播放
      * 由於因依家啲瀏覽器唔準(出聲)自動播放
@@ -85,8 +81,6 @@
     function onSetIframePlayerPlay(){
         player.play();
     }
-
-
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去設定videoTrack
      *
@@ -102,7 +96,6 @@
             }
         }
     }
-
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去獲取videoTrack
      *
@@ -120,7 +113,6 @@
             onReturn(TrackDescription(-1, "自動"));
             return;
         }
-
         //return依家使用緊邊條VideoTrack
         for(var i=0; i<player.tech_.hls.representations().length; i++){
             if(player.tech_.hls.representations()[i].enabled() === true){
@@ -129,12 +121,10 @@
                 return;
             }
         }
-
         //如果搵唔到依家係邊條Track就return第0條Track
         onReturn(TrackDescription(0, readVideoTrackName(player.tech_.hls.representations()[0])));
         return;
     }
-
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去獲取所有videoTrack資訊
      *
@@ -142,18 +132,14 @@
      * */
     function onGetIframePlayerVideoTracks(onReturn) {
         var videoTracks = [];
-
         //設置 "自動" 選項
         videoTracks.push(TrackDescription(-1, "自動"));
-
         //設置所有Track選項
         for(var i=0; i<player.tech_.hls.representations().length; i++){
             videoTracks.push(TrackDescription(i, readVideoTrackName(player.tech_.hls.representations()[i])));
         }
-
         onReturn(videoTracks);
     }
-
     /**
      * 攝取videoTrack資訊編寫videoTrack名稱
      *
@@ -168,8 +154,6 @@
         name += (playerHlsRepresentation.bandwidth !== undefined)? " - "+playerHlsRepresentation.bandwidth+"bps":"";
         return name;
     }
-
-
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去設定audioTrack
      *
@@ -184,7 +168,6 @@
             }
         }
     }
-
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去獲取audioTrack
      *
@@ -198,7 +181,6 @@
         }
         onReturn(TrackDescription(0, player.audioTracks()[0].label));//如果搵唔到依家係邊條Track就設第0條Track
     }
-
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去獲取所有audioTrack資訊
      *
@@ -211,8 +193,6 @@
         }
         onReturn(audioTracks);
     }
-
-
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去設定subtitleTrack
      *
@@ -227,7 +207,6 @@
             }
         }
     }
-
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去獲取subtitleTrack
      *
@@ -241,7 +220,6 @@
         }
         onReturn(TrackDescription(-10, "無字幕"));//如果搵唔到依家係邊條Track就設第0條Track
     }
-
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去獲取所有subtitleTrack資訊
      *
@@ -250,21 +228,16 @@
     function onGetIframePlayerSubtitleTracks(onReturn) {
         //console.log(player.textTracks()[0].activeCues);
         var subtitleTracks = [];
-
         //設置所有Track選項
         for(var i=0; i<player.textTracks().length; i++){
             if(player.textTracks()[i].kind === "subtitles" || player.textTracks()[i].kind === "caption"){
                 subtitleTracks.push(TrackDescription(i, player.textTracks()[i].label));
             }
         }
-
         //設置無字幕選項
         subtitleTracks.push(TrackDescription(-10, "無字幕"));
-
         onReturn(subtitleTracks);
     }
-
-
     /**
      * 由HKNBP_Core發出音量值讀取
      *
@@ -273,7 +246,6 @@
     function onSetIframePlayerVolume(volume) {
         player.volume(volume/100);
     }
-
     /**
      * 由HKNBP_Core發出音量值讀取
      *
@@ -282,8 +254,6 @@
     function onGetIframePlayerVolume(onReturn) {
         onReturn(player.volume()*100);
     }
-
-
     /**
      * 由HKNBP_Core發出靜音值讀取
      *
@@ -292,7 +262,6 @@
     function onSetIframePlayerMuted(muted) {
         player.muted(muted);
     }
-
     /**
      * 由HKNBP_Core發出靜音值讀取
      *
@@ -301,8 +270,6 @@
     function onGetIframePlayerMuted(onReturn) {
         onReturn(player.muted());
     }
-
-
     /**
      * 由HKNBP_Core發出片源解像度值讀取
      *
@@ -314,17 +281,13 @@
         array.push(player.videoHeight());
         onReturn(array);
     }
-
-
     /**
      * 由HKNBP_Core發出當觀眾按Programmable鍵
      *
      * @param {color: String} color Programmable鍵顏色
      * */
     function onClickProgrammableButton(color){
-
     }
-
     /**
      * 當播放器播放緊頻道時
      * 需要設定call呢個function()
@@ -333,7 +296,6 @@
     var onIframePlayerPlaying = function(){
         callHKNBPCoreFunction("onPlaying", "", function(){});
     };
-
     /**
      * 當播放器冇播放頻道時
      * 需要設定call呢個function()
@@ -345,15 +307,51 @@
     var onIframePlayerNotPlaying = function(){
         callHKNBPCoreFunction("onNotPlaying", "", function(){});
     };
-
-
+    /**
+     * 由HKNBP_Core發出初始化IframePlayer
+     *
+     * @param {source: String} source 頻道源
+     * */
+    function onIframePlayerInit(sourceSrc){
+        document.getElementById("player-display").innerHTML = "" +
+            "<video " +
+            "   id=\"player\" " +
+            "   class=\"video-js vjs-default-skin\" " +
+            "   controls preload=\"auto\" " +
+            "   onplaying=\"onIframePlayerPlaying()\" " +
+            "   onpause=\"onIframePlayerNotPlaying()\" " +
+            "   onstop=\"onIframePlayerNotPlaying()\" " +
+            "   onended=\"onIframePlayerNotPlaying()\" " +
+            "   onerror=\"onIframePlayerNotPlaying()\" " +
+            "   onwaiting=\"onIframePlayerNotPlaying()\" " +
+            "   oncanplaythrough=\"this.play()\" " +
+            "   data-setup='{}' " +
+            "   style=\"position:absolute; top:0; bottom:0; left:0; right:0; width:100%; height:100%; overflow:hidden;\"" +
+            "   frameBorder=\"0\"" +
+            "   allow=\"autoplay; fullscreen;\" muted playsinline>" +
+            "</video>";
+        player = videojs('player', {
+            autoplay: true,
+            controls: false,
+            poster: ''
+        });
+        player.ready(function(){
+            var settings = this.textTrackSettings;
+            settings.setValues({
+                //"backgroundColor": "#000"
+                "backgroundOpacity": "0"
+                //"edgeStyle": "none"
+            });
+            settings.updateDisplay();
+        });
+        player.src(sourceSrc);
+    }
     /**
      * 存底callHKNBPCoreFunction要求
      * 為之後return返來嘅值執行onReturn
      * 實淺CallBackFunction原理
      */
     var callHKNBPCoreFunctionList = [];
-
     /**
      * 刪除要刪除嘅caller響callHKNBPCoreFunctionList當中
      */
@@ -364,7 +362,6 @@
          }
       }
     }
-
     /**
      * 設定被call時要執行嘅野
      */
@@ -386,7 +383,6 @@
           eval(callMessage.evalScript);
         }
     }, false);
-
     /**
      * 去call HKNBPCore嘅Function
      */
@@ -403,39 +399,6 @@
         }, 60000);
         window.parent.postMessage(JSON.stringify(caller), "*");
     }
-
-    document.getElementById("player-display").innerHTML = "" +
-        "<video " +
-        "   id=\"player\" " +
-        "   class=\"video-js vjs-default-skin\" " +
-        "   controls preload=\"auto\" " +
-        "   onplaying=\"onIframePlayerPlaying()\" " +
-        "   onpause=\"onIframePlayerNotPlaying()\" " +
-        "   onstop=\"onIframePlayerNotPlaying()\" " +
-        "   onended=\"onIframePlayerNotPlaying()\" " +
-        "   onerror=\"onIframePlayerNotPlaying()\" " +
-        "   onwaiting=\"onIframePlayerNotPlaying()\" " +
-        "   oncanplaythrough=\"this.play()\" " +
-        "   data-setup='{}' " +
-        "   style=\"position:absolute; top:0; bottom:0; left:0; right:0; width:100%; height:100%; overflow:hidden;\"" +
-        "   frameBorder=\"0\"" +
-        "   allow=\"autoplay; fullscreen;\" muted playsinline>" +
-        "</video>";
-    player = videojs('player', {
-        autoplay: true,
-        controls: false,
-        poster: ''
-    });
-    player.ready(function(){
-        var settings = this.textTrackSettings;
-        settings.setValues({
-            //"backgroundColor": "#000"
-            "backgroundOpacity": "0"
-            //"edgeStyle": "none"
-        });
-        settings.updateDisplay();
-    });
-    player.src(decodeURIComponent(new URL(window.location.href).searchParams.get("src")));
 </script>
 </body>
 </html>

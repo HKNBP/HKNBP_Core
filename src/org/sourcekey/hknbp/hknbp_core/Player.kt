@@ -651,8 +651,13 @@ class Player(private val channel: Channel) {
                 }, 10000)
             }
         })
-        iframePlayer?.src = (channel.sources.node?.iFramePlayerSrc?:"iframePlayer/videojs_hls.html")+
-                "?src="+(encodeURIComponent(channel.sources.node?.link?:""))
-        iframePlayer?.onload = fun(){ setListenIframePlayer() }
+        iframePlayer?.src = channel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
+        iframePlayer?.onload = fun() {
+            setListenIframePlayer()
+            callIframePlayerFunction("onIframePlayerInit(${
+                kotlinValueToEvalScriptUseableValue(channel.sources.node?.link ?: "")
+            })")
+        }
+        println("Playing Channel: ${channel.number}")
     }
 }

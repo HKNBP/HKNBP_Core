@@ -2296,13 +2296,14 @@ var HKNBP_Core = function (_, Kotlin) {
       }
       this$OfficialChannel.channelsCache_0 = channels;
       closure$onLoadedChannelsListener((tmp$ = this$OfficialChannel.channelsCache_0) != null ? tmp$ : ArrayLinkList_init([]));
+      println(JSON.stringify(channels));
     };
   }
   function OfficialChannel$getOfficialChannels$lambda_0() {
   }
   OfficialChannel.prototype.getOfficialChannels_u69gef$ = function (onLoadedChannelsListener) {
     if (this.channelsCache_0 == null) {
-      this.parseChannels_0(OfficialChannel$getOfficialChannels$lambda(this, onLoadedChannelsListener), OfficialChannel$getOfficialChannels$lambda_0, ['https://hknbp.org/data/official_channels.xml', 'data/official_channels.xml']);
+      this.parseChannels_0(OfficialChannel$getOfficialChannels$lambda(this, onLoadedChannelsListener), OfficialChannel$getOfficialChannels$lambda_0, ['data/official_channels.xml']);
     }
      else {
       onLoadedChannelsListener(channels != null ? channels : ArrayLinkList_init([]));
@@ -2373,13 +2374,11 @@ var HKNBP_Core = function (_, Kotlin) {
     this.volumeUp = Player$volumeUp$lambda(this);
     this.volumeDown = Player$volumeDown$lambda(this);
     this.volumeMute = Player$volumeMute$lambda(this);
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2;
     this.addOnPlayerEventListener_j8fzjz$(new Player_init$ObjectLiteral());
-    tmp$_5 = this.iframePlayer_0;
-    tmp$_4 = ((tmp$_0 = (tmp$ = this.channel_0.sources.node) != null ? tmp$.iFramePlayerSrc : null) != null ? tmp$_0 : 'iframePlayer/videojs_hls.html') + '?src=';
-    tmp$_3 = encodeURIComponent((tmp$_2 = (tmp$_1 = this.channel_0.sources.node) != null ? tmp$_1.link : null) != null ? tmp$_2 : '');
-    tmp$_5 != null ? (tmp$_5.src = tmp$_4 + tmp$_3) : null;
-    (tmp$_6 = this.iframePlayer_0) != null ? (tmp$_6.onload = Player_init$lambda(this)) : null;
+    (tmp$_1 = this.iframePlayer_0) != null ? (tmp$_1.src = (tmp$_0 = (tmp$ = this.channel_0.sources.node) != null ? tmp$.iFramePlayerSrc : null) != null ? tmp$_0 : 'iframePlayer/videojs_hls.html') : null;
+    (tmp$_2 = this.iframePlayer_0) != null ? (tmp$_2.onload = Player_init$lambda(this)) : null;
+    println('Playing Channel: ' + this.channel_0.number);
   }
   function Player$Companion() {
     Player$Companion_instance = this;
@@ -3035,7 +3034,11 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function Player_init$lambda(this$Player) {
     return function () {
+      var tmp$, tmp$_0, tmp$_1, tmp$_2;
       this$Player.setListenIframePlayer_0();
+      tmp$_1 = (tmp$_0 = (tmp$ = this$Player.channel_0.sources.node) != null ? tmp$.link : null) != null ? tmp$_0 : '';
+      tmp$_2 = 'onIframePlayerInit(' + this$Player.kotlinValueToEvalScriptUseableValue_0(tmp$_1) + ')';
+      this$Player.callIframePlayerFunction_0(tmp$_2);
     };
   }
   Player.$metadata$ = {
@@ -3660,10 +3663,8 @@ var HKNBP_Core = function (_, Kotlin) {
     }
   });
   UserInterface.prototype.show = function () {
-    var tmp$;
     this.htmlElement_sdspbr$_0.style.display = 'block';
     this.isShowUserInterfaceFirstFocus_mby111$_0 = true;
-    (tmp$ = this.lastTimeFocusElement_bd4klp$_0) != null ? tmp$.focus() : null;
   };
   function UserInterface$setHideTimer$lambda(this$UserInterface) {
     return function () {

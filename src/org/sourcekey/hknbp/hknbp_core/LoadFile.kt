@@ -52,9 +52,7 @@ object LoadFile {
             if (xmlhttp.readyState == 4.toShort() && xmlhttp.status == 200.toShort()) {
                 isLoaded = true
                 onLoadedFile(xmlhttp)
-            }else{
-                onFailedLoadFileProgram()
-            }
+            }else{ onFailedLoadFileProgram() }
         }
         xmlhttp.ontimeout = onFailedLoadFileProgram
         xmlhttp.onerror = onFailedLoadFileProgram

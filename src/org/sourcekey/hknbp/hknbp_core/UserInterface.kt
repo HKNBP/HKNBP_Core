@@ -62,7 +62,7 @@ abstract class UserInterface(
     open fun show(){
         htmlElement.style.display = "block"
         isShowUserInterfaceFirstFocus = true
-        lastTimeFocusElement?.focus()
+        //lastTimeFocusElement?.focus()
     }
 
     private fun setHideTimer(showTime: Int){
