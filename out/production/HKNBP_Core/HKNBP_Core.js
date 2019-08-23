@@ -3663,8 +3663,12 @@ var HKNBP_Core = function (_, Kotlin) {
     }
   });
   UserInterface.prototype.show = function () {
+    var tmp$;
     this.htmlElement_sdspbr$_0.style.display = 'block';
     this.isShowUserInterfaceFirstFocus_mby111$_0 = true;
+    if (this.isShow) {
+      (tmp$ = this.lastTimeFocusElement_bd4klp$_0) != null ? tmp$.focus() : null;
+    }
   };
   function UserInterface$setHideTimer$lambda(this$UserInterface) {
     return function () {
