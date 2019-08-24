@@ -2303,7 +2303,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   OfficialChannel.prototype.getOfficialChannels_u69gef$ = function (onLoadedChannelsListener) {
     if (this.channelsCache_0 == null) {
-      this.parseChannels_0(OfficialChannel$getOfficialChannels$lambda(this, onLoadedChannelsListener), OfficialChannel$getOfficialChannels$lambda_0, ['data/official_channels.xml']);
+      this.parseChannels_0(OfficialChannel$getOfficialChannels$lambda(this, onLoadedChannelsListener), OfficialChannel$getOfficialChannels$lambda_0, ['https://hknbp.org/data/official_channels.xml', 'data/official_channels.xml']);
     }
      else {
       onLoadedChannelsListener(channels != null ? channels : ArrayLinkList_init([]));
@@ -3736,9 +3736,10 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function UserInterface_init$lambda(this$UserInterface) {
     return function () {
-      var tmp$;
+      var tmp$, tmp$_0;
       if (!$('this').is(':focus')) {
-        (tmp$ = jQuery(this)) != null ? tmp$.hover() : null;
+        println((tmp$ = jQuery(this)) != null ? tmp$.html() : null);
+        (tmp$_0 = jQuery(this)) != null ? tmp$_0.hover() : null;
         this$UserInterface.lastTimeFocusElement_bd4klp$_0 = jQuery(this);
         if (!this$UserInterface.isShowUserInterfaceFirstFocus_mby111$_0 && this$UserInterface.isFocusCountdownHide_768iff$_0) {
           this$UserInterface.isShowUserInterfaceFirstFocus_mby111$_0 = false;
@@ -4343,13 +4344,14 @@ var HKNBP_Core = function (_, Kotlin) {
     VolumeDescription_getInstance().show_za3lpa$(5000);
   }
   function VirtualRemote_init$lambda_55(event) {
-    var tmp$;
-    println('ret');
+    var tmp$, tmp$_0;
     tmp$ = UserInterface$Companion_getInstance().allUserInterfaceList.iterator();
     while (tmp$.hasNext()) {
       var userInterface = tmp$.next();
       userInterface.hide();
     }
+    var userControlPanelShower = Kotlin.isType(tmp$_0 = document.getElementById('userControlPanelShower'), HTMLDivElement) ? tmp$_0 : throwCCE();
+    userControlPanelShower.focus();
   }
   VirtualRemote.$metadata$ = {
     kind: Kind_OBJECT,
