@@ -3625,6 +3625,7 @@ var HKNBP_Core = function (_, Kotlin) {
     return UserControlPanel_instance;
   }
   function UserInterface(mainFrameElementID, firstFocusElementID, isFocusCountdownHide, isFocusOutHide, conversionFocusHideTime) {
+    UserInterface$Companion_getInstance();
     if (firstFocusElementID === void 0)
       firstFocusElementID = null;
     if (isFocusCountdownHide === void 0)
@@ -3645,6 +3646,23 @@ var HKNBP_Core = function (_, Kotlin) {
     this.hideTimer_1c3smv$_rf6tp$_0 = 0;
     (tmp$_0 = jQuery('#' + this.mainFrameElementID_lg8aaf$_0 + ' button' + ',' + ('#' + this.mainFrameElementID_lg8aaf$_0 + ' select') + ',' + ('#' + this.mainFrameElementID_lg8aaf$_0 + ' option') + ',' + ('#' + this.mainFrameElementID_lg8aaf$_0 + ' input'))) != null ? tmp$_0.focus(UserInterface_init$lambda(this)) : null;
     (tmp$_1 = jQuery('#' + this.mainFrameElementID_lg8aaf$_0 + ' button' + ',' + ('#' + this.mainFrameElementID_lg8aaf$_0 + ' select') + ',' + ('#' + this.mainFrameElementID_lg8aaf$_0 + ' option') + ',' + ('#' + this.mainFrameElementID_lg8aaf$_0 + ' input'))) != null ? tmp$_1.hover(UserInterface_init$lambda_0) : null;
+    UserInterface$Companion_getInstance().allUserInterfaceList.add_11rb$(this);
+  }
+  function UserInterface$Companion() {
+    UserInterface$Companion_instance = this;
+    this.allUserInterfaceList = ArrayList_init();
+  }
+  UserInterface$Companion.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'Companion',
+    interfaces: []
+  };
+  var UserInterface$Companion_instance = null;
+  function UserInterface$Companion_getInstance() {
+    if (UserInterface$Companion_instance === null) {
+      new UserInterface$Companion();
+    }
+    return UserInterface$Companion_instance;
   }
   UserInterface.prototype.update = function () {
   };
@@ -3797,7 +3815,7 @@ var HKNBP_Core = function (_, Kotlin) {
   function VirtualRemote() {
     VirtualRemote_instance = this;
     UserInterface.call(this, 'virtualRemote');
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22, tmp$_23, tmp$_24, tmp$_25, tmp$_26, tmp$_27, tmp$_28, tmp$_29, tmp$_30, tmp$_31, tmp$_32, tmp$_33, tmp$_34, tmp$_35, tmp$_36, tmp$_37, tmp$_38, tmp$_39, tmp$_40, tmp$_41, tmp$_42, tmp$_43, tmp$_44, tmp$_45, tmp$_46, tmp$_47, tmp$_48, tmp$_49, tmp$_50, tmp$_51, tmp$_52, tmp$_53, tmp$_54, tmp$_55, tmp$_56;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22, tmp$_23, tmp$_24, tmp$_25, tmp$_26, tmp$_27, tmp$_28, tmp$_29, tmp$_30, tmp$_31, tmp$_32, tmp$_33, tmp$_34, tmp$_35, tmp$_36, tmp$_37, tmp$_38, tmp$_39, tmp$_40, tmp$_41, tmp$_42, tmp$_43, tmp$_44, tmp$_45, tmp$_46, tmp$_47, tmp$_48, tmp$_49, tmp$_50, tmp$_51, tmp$_52, tmp$_53, tmp$_54, tmp$_55, tmp$_56, tmp$_57;
     this.virtualRemote_0 = Kotlin.isType(tmp$ = document.getElementById('virtualRemote'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideVirtualRemoteButton = Kotlin.isType(tmp$_0 = document.getElementById('hideVirtualRemoteButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.epgButton = Kotlin.isType(tmp$_1 = document.getElementById('epgButton'), HTMLButtonElement) ? tmp$_1 : throwCCE();
@@ -3856,6 +3874,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.audioDescriptionButton = Kotlin.isType(tmp$_54 = document.createElement('button'), HTMLButtonElement) ? tmp$_54 : throwCCE();
     this.subtitleDescriptionButton = Kotlin.isType(tmp$_55 = document.createElement('button'), HTMLButtonElement) ? tmp$_55 : throwCCE();
     this.volumeDescriptionButton = Kotlin.isType(tmp$_56 = document.createElement('button'), HTMLButtonElement) ? tmp$_56 : throwCCE();
+    this.returnButton = Kotlin.isType(tmp$_57 = document.createElement('button'), HTMLButtonElement) ? tmp$_57 : throwCCE();
     this.hideVirtualRemoteButton.onclick = VirtualRemote_init$lambda(this);
     this.epgButton.onclick = VirtualRemote_init$lambda_0(this);
     this.nextChannelButton.onclick = VirtualRemote_init$lambda_1;
@@ -3912,6 +3931,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.audioDescriptionButton.onclick = VirtualRemote_init$lambda_52;
     this.subtitleDescriptionButton.onclick = VirtualRemote_init$lambda_53;
     this.volumeDescriptionButton.onclick = VirtualRemote_init$lambda_54;
+    this.returnButton.onclick = VirtualRemote_init$lambda_55;
   }
   VirtualRemote.prototype.updateChannelDescription = function () {
     var tmp$, tmp$_0;
@@ -4321,6 +4341,14 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function VirtualRemote_init$lambda_54(event) {
     VolumeDescription_getInstance().show_za3lpa$(5000);
+  }
+  function VirtualRemote_init$lambda_55(event) {
+    var tmp$;
+    tmp$ = UserInterface$Companion_getInstance().allUserInterfaceList.iterator();
+    while (tmp$.hasNext()) {
+      var userInterface = tmp$.next();
+      userInterface.hide();
+    }
   }
   VirtualRemote.$metadata$ = {
     kind: Kind_OBJECT,
@@ -6075,6 +6103,9 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   Object.defineProperty(package$hknbp_core, 'UserControlPanel', {
     get: UserControlPanel_getInstance
+  });
+  Object.defineProperty(UserInterface, 'Companion', {
+    get: UserInterface$Companion_getInstance
   });
   package$hknbp_core.UserInterface = UserInterface;
   Object.defineProperty(package$hknbp_core, 'VideoDescription', {

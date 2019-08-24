@@ -82,6 +82,7 @@ object VirtualRemote: UserInterface("virtualRemote"){
     val audioDescriptionButton      = document.createElement("button")                      as HTMLButtonElement
     val subtitleDescriptionButton   = document.createElement("button")                      as HTMLButtonElement
     val volumeDescriptionButton     = document.createElement("button")                      as HTMLButtonElement
+    val returnButton                = document.createElement("button")                      as HTMLButtonElement
 
 
     fun updateChannelDescription(){
@@ -323,5 +324,6 @@ object VirtualRemote: UserInterface("virtualRemote"){
         audioDescriptionButton.onclick      = fun(event){AudioDescription.show(5000)}
         subtitleDescriptionButton.onclick   = fun(event){SubtitleDescription.show(5000)}
         volumeDescriptionButton.onclick     = fun(event){VolumeDescription.show(5000)}
+        returnButton.onclick                = fun(event){for(userInterface in allUserInterfaceList){userInterface.hide()}}
     }
 }

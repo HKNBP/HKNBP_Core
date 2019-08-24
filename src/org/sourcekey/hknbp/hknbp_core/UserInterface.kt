@@ -25,6 +25,10 @@ abstract class UserInterface(
         private var isFocusOutHide: Boolean = false,
         private val conversionFocusHideTime: Int = 15000
 ) {
+    companion object{
+        val allUserInterfaceList = ArrayList<UserInterface>()
+    }
+
     private val htmlElement = document.getElementById(mainFrameElementID) as HTMLElement
     private var lastTimeFocusElement: dynamic? = {
         if(firstFocusElementID != null){
@@ -119,5 +123,8 @@ abstract class UserInterface(
                 hide()
             }
         })*/
+
+        //
+        allUserInterfaceList.add(this)
     }
 }
