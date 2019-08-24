@@ -18,7 +18,7 @@
  * 控制更新cache版本
  * 修改版本名今用戶進行更新新版
  */
-var coreVersion = "v2019.08.71-1";
+var coreVersion = "v2019.08.71-2";
 
 /**
  * 檢查依家運行係米ServiceWorker

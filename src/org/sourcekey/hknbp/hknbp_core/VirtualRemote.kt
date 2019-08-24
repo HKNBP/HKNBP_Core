@@ -324,6 +324,6 @@ object VirtualRemote: UserInterface("virtualRemote"){
         audioDescriptionButton.onclick      = fun(event){AudioDescription.show(5000)}
         subtitleDescriptionButton.onclick   = fun(event){SubtitleDescription.show(5000)}
         volumeDescriptionButton.onclick     = fun(event){VolumeDescription.show(5000)}
-        returnButton.onclick                = fun(event){for(userInterface in allUserInterfaceList){userInterface.hide()}}
+        returnButton.onclick                = fun(event){ println("ret");for(userInterface in allUserInterfaceList){userInterface.hide()}}
     }
 }

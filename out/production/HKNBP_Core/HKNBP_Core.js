@@ -4344,6 +4344,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function VirtualRemote_init$lambda_55(event) {
     var tmp$;
+    println('ret');
     tmp$ = UserInterface$Companion_getInstance().allUserInterfaceList.iterator();
     while (tmp$.hasNext()) {
       var userInterface = tmp$.next();
