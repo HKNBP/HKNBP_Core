@@ -64,6 +64,7 @@
         for(var i=currentIndex+1; i<selectables.length; i++){
             if(tabIndexToInt(selectables.eq(i).attr("tabIndex")) === currentTabIndex){
                 selectables.eq(i).focus();
+                console.log(selectables.eq(i).attr("tabIndex"))
                 return;
             }
         }
@@ -79,6 +80,7 @@
         for(var i=0; i<selectables.length; i++){
             if(tabIndexToInt(selectables.eq(i).attr("tabIndex")) === nextTabIndex){
                 selectables.eq(i).focus();
+                console.log(selectables.eq(i).attr("tabIndex"))
                 return;
             }
         }
@@ -94,6 +96,7 @@
         for(var i=currentIndex-1; 0<=i; i--){
             if(tabIndexToInt(selectables.eq(i).attr("tabIndex")) === currentTabIndex){
                 selectables.eq(i).focus();
+                console.log(selectables.eq(i).attr("tabIndex"))
                 return;
             }
         }
@@ -109,6 +112,7 @@
         for(var i=selectables.length-1; 0<=i; i--){
             if(tabIndexToInt(selectables.eq(i).attr("tabIndex")) === prevTabIndex){
                 selectables.eq(i).focus();
+                console.log(selectables.eq(i).attr("tabIndex"))
                 return;
             }
         }

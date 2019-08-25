@@ -3736,10 +3736,9 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function UserInterface_init$lambda(this$UserInterface) {
     return function () {
-      var tmp$, tmp$_0, tmp$_1, tmp$_2;
+      var tmp$;
       if (!$('this').is(':focus')) {
-        println('T:' + ((tmp$_0 = (tmp$ = jQuery(this)) != null ? tmp$.attr('tabIndex') : null) != null ? tmp$_0.toString() : null) + ' ' + toString((tmp$_1 = jQuery(this)) != null ? tmp$_1.html() : null));
-        (tmp$_2 = jQuery(this)) != null ? tmp$_2.hover() : null;
+        (tmp$ = jQuery(this)) != null ? tmp$.hover() : null;
         this$UserInterface.lastTimeFocusElement_bd4klp$_0 = jQuery(this);
         if (!this$UserInterface.isShowUserInterfaceFirstFocus_mby111$_0 && this$UserInterface.isFocusCountdownHide_768iff$_0) {
           this$UserInterface.isShowUserInterfaceFirstFocus_mby111$_0 = false;
