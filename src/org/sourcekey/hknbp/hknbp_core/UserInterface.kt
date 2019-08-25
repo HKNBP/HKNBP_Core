@@ -97,7 +97,7 @@ abstract class UserInterface(
                 "#${mainFrameElementID} option" + "," +
                 "#${mainFrameElementID} input"
         )?.focus(fun(){if(!js("\$(\"this\").is(\":focus\")")){
-            println(jQuery(js("this"))?.html())
+            println("T:"+jQuery(js("this"))?.attr("tabIndex")?.toString()+" "+jQuery(js("this"))?.html())
             //設 當onfocus 就onhover 同步
             jQuery(js("this"))?.hover()
             //設定依家Focus邊粒element為之後再Show呢個介面時Focus返對上個次嘅element

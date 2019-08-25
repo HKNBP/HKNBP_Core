@@ -245,7 +245,12 @@ object VirtualRemote: UserInterface("virtualRemote"){
                 return Tab3dIndex.toUnparsedTabIndex(element).toIntOrNull()?:0
             })
             if(needTabIndex.y == tabIndexList.last().y){
-                needTabIndex = Tab3dIndex(currentTabIndex.x, (tabIndexList.getOrNull(0)?.y?:0)+1, currentTabIndex.z)//由最大<TabIndex嘅Y>開始搵
+                //由最大<TabIndex嘅Y>開始搵
+                needTabIndex = Tab3dIndex(
+                        currentTabIndex.x,
+                        (tabIndexList.getOrNull(0)?.y?:0)+1,
+                        currentTabIndex.z
+                )
             }
 
             //搵上個<TabIndex嘅Y>響所有element
@@ -294,7 +299,8 @@ object VirtualRemote: UserInterface("virtualRemote"){
                 return Tab3dIndex.toUnparsedTabIndex(element).toIntOrNull()?:0
             })
             if(needTabIndex.y == tabIndexList.last().y){
-                needTabIndex = Tab3dIndex(currentTabIndex.x, -1, currentTabIndex.z)//由最細<TabIndex嘅Y>開始搵
+                //由最細<TabIndex嘅Y>開始搵
+                needTabIndex = Tab3dIndex(currentTabIndex.x, -1, currentTabIndex.z)
             }
 
             //搵下個<TabIndex嘅Y>響所有element
@@ -328,8 +334,7 @@ object VirtualRemote: UserInterface("virtualRemote"){
             //隱藏所有UI,只電視畫面
             for(userInterface in allUserInterfaceList){userInterface.hide()}
             //focus到userControlPanelShower,為左之後撳centerButton可以顯示VirtualRemote
-            val userControlPanelShower = document.getElementById("userControlPanelShower") as HTMLDivElement
-            userControlPanelShower.focus()
+            (document.getElementById("userControlPanelShower") as HTMLDivElement).focus()
         }
     }
 }
