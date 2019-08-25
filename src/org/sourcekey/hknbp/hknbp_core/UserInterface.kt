@@ -91,6 +91,13 @@ abstract class UserInterface(
     }
 
     init {
+        println("u")
+        try {
+            jQuery(":focus")?.focus(
+                    println("T:"+jQuery(js("this"))?.attr("tabIndex")?.toString()+" "+jQuery(js("this"))?.html())
+            )
+        }catch (e:dynamic){}
+
         jQuery(
                 "#${mainFrameElementID} button" + "," +
                 "#${mainFrameElementID} select" + "," +

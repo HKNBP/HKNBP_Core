@@ -61,14 +61,14 @@ object UserControlPanel: UserInterface("userControlPanel", firstFocusElementID =
 
     override fun show() {
         super.show()
-        UserControlPanel.onShowUserControlPanel()
+        onShowUserControlPanel()
         jQuery("#userControlPanelShower").css("cursor", "auto")
     }
 
     override fun hide() {
         super.hide()
-        UserControlPanel.onHideUserControlPanel()
-        UserControlPanel.hideMouseTimer = window.setTimeout(fun(){
+        onHideUserControlPanel()
+        hideMouseTimer = window.setTimeout(fun(){
             jQuery("#userControlPanelShower").css("cursor", "none")
         }, 2000)
     }
@@ -97,6 +97,7 @@ object UserControlPanel: UserInterface("userControlPanel", firstFocusElementID =
         shower.style.right = "auto"
         shower.style.width = "10vh"
         shower.style.backgroundColor = "#303030"
+        shower.style.outline = "none"
         shower.innerHTML = "<i class=\"icon-font\" style=\"font-size: 5vh;\">&#xe825;</i>"
     }
 
@@ -105,6 +106,7 @@ object UserControlPanel: UserInterface("userControlPanel", firstFocusElementID =
             shower.style.right = "0"
             shower.style.width = "100%"
             shower.style.backgroundColor = "rgba(0, 0, 0, 0)"
+            shower.style.outline = "none"
             shower.innerHTML = ""
         }
     }
