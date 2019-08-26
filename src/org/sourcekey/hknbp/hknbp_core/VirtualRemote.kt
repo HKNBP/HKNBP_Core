@@ -272,6 +272,7 @@ object VirtualRemote: UserInterface("virtualRemote"){
                     }
                     if(Tab3dIndex.toTab3dIndex(selectables?.eq(closestIndex)?.attr("tabIndex")?.toString()?:"").x <= tabIndexForCheck.x){
                         closestIndex = i//////////////////////
+                        println("XXX: ${selectables?.eq(closestIndex)?.attr("tabIndex")?.toString()}")
                     }
                 }
             }
