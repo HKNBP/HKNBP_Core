@@ -4245,8 +4245,8 @@ var HKNBP_Core = function (_, Kotlin) {
         }
         if (Tab3dIndex$Companion_getInstance().toTab3dIndex_61zpoe$((tmp$_22 = (tmp$_21 = (tmp$_20 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_20.attr('tabIndex') : null) != null ? tmp$_21.toString() : null) != null ? tmp$_22 : '').x <= tabIndexForCheck_0.x) {
           closestIndex = i_0;
-          println('XXX: ' + toString((tmp$_24 = (tmp$_23 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_23.attr('tabIndex') : null) != null ? tmp$_24.toString() : null));
         }
+        println('XXXXXXX: ' + toString((tmp$_24 = (tmp$_23 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_23.attr('tabIndex') : null) != null ? tmp$_24.toString() : null));
       }
     }
     (tmp$_25 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_25.focus() : null;
