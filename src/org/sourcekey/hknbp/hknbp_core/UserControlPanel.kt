@@ -97,7 +97,7 @@ object UserControlPanel: UserInterface("userControlPanel", firstFocusElementID =
         shower.style.right = "auto"
         shower.style.width = "10vh"
         shower.style.backgroundColor = "#303030"
-        shower.style.outline = "none"
+        //shower.style.outline = "1vh"
         shower.innerHTML = "<i class=\"icon-font\" style=\"font-size: 5vh;\">&#xe825;</i>"
     }
 
@@ -106,7 +106,7 @@ object UserControlPanel: UserInterface("userControlPanel", firstFocusElementID =
             shower.style.right = "0"
             shower.style.width = "100%"
             shower.style.backgroundColor = "rgba(0, 0, 0, 0)"
-            shower.style.outline = "none"
+            //shower.style.outline = "0"
             shower.innerHTML = ""
         }
     }

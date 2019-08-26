@@ -233,7 +233,7 @@ object VirtualRemote: UserInterface("virtualRemote"){
                 if(tabIndexForCheck.y == currentTabIndex.y && tabIndexForCheck.z == currentTabIndex.z){
                     if(tabIndexForCheck.x >= currentTabIndex.x){
                         selectables?.eq(i)?.focus()
-                        println("相同: ${selectables?.eq(i)?.attr("tabIndex")?.toString()}")
+                        println("相同A: ${selectables?.eq(i)?.attr("tabIndex")?.toString()}")
                         return
                     }
                 }
@@ -267,16 +267,16 @@ object VirtualRemote: UserInterface("virtualRemote"){
                 if(tabIndexForCheck.y == nextTabIndex.y && tabIndexForCheck.z == nextTabIndex.z){
                     if(tabIndexForCheck.x == currentTabIndex.x){
                         selectables?.eq(i)?.focus()
-                        println("上面: ${selectables?.eq(i)?.attr("tabIndex")?.toString()}")
+                        println("相同Y: ${selectables?.eq(i)?.attr("tabIndex")?.toString()}")
                         return
                     }
                     if(Tab3dIndex.toTab3dIndex(selectables?.eq(closestIndex)?.attr("tabIndex")?.toString()?:"").x <= tabIndexForCheck.x){
-                        closestIndex = i
+                        closestIndex = i//////////////////////
                     }
                 }
             }
             selectables?.eq(closestIndex)?.focus()
-            println("最低: ${selectables?.eq(closestIndex)?.attr("tabIndex")?.toString()}")
+            println("唔同Y: ${selectables?.eq(closestIndex)?.attr("tabIndex")?.toString()}")
         }
         downButton.onclick                  = fun(event){
             val selectables = jQuery(":tabbable")

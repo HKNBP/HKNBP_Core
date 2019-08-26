@@ -91,20 +91,12 @@ abstract class UserInterface(
     }
 
     init {
-        println("u")
-        try {
-            jQuery(":focus")?.focus(
-                    println("T:"+jQuery(js("this"))?.attr("tabIndex")?.toString()+" "+jQuery(js("this"))?.html())
-            )
-        }catch (e:dynamic){}
-
         jQuery(
                 "#${mainFrameElementID} button" + "," +
                 "#${mainFrameElementID} select" + "," +
                 "#${mainFrameElementID} option" + "," +
                 "#${mainFrameElementID} input"
         )?.focus(fun(){if(!js("\$(\"this\").is(\":focus\")")){
-            //println("T:"+jQuery(js("this"))?.attr("tabIndex")?.toString()+" "+jQuery(js("this"))?.html())
             //設 當onfocus 就onhover 同步
             jQuery(js("this"))?.hover()
             //記住依家Focus邊粒element為之後再Show呢個介面時Focus返對上個次嘅element

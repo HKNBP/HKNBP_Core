@@ -3552,7 +3552,6 @@ var HKNBP_Core = function (_, Kotlin) {
     this.shower_0.style.right = 'auto';
     this.shower_0.style.width = '10vh';
     this.shower_0.style.backgroundColor = '#303030';
-    this.shower_0.style.outline = 'none';
     this.shower_0.innerHTML = '<i class="icon-font" style="font-size: 5vh;">&#xe825;<\/i>';
   };
   UserControlPanel.prototype.cannotTouchIframePlayerMode = function () {
@@ -3560,7 +3559,6 @@ var HKNBP_Core = function (_, Kotlin) {
       this.shower_0.style.right = '0';
       this.shower_0.style.width = '100%';
       this.shower_0.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-      this.shower_0.style.outline = 'none';
       this.shower_0.innerHTML = '';
     }
   };
@@ -3641,21 +3639,13 @@ var HKNBP_Core = function (_, Kotlin) {
     this.isFocusCountdownHide_768iff$_0 = isFocusCountdownHide;
     this.isFocusOutHide_o0rj94$_0 = isFocusOutHide;
     this.conversionFocusHideTime_igwo47$_0 = conversionFocusHideTime;
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6;
+    var tmp$, tmp$_0, tmp$_1;
     this.htmlElement_sdspbr$_0 = Kotlin.isType(tmp$ = document.getElementById(this.mainFrameElementID_lg8aaf$_0), HTMLElement) ? tmp$ : throwCCE();
     this.lastTimeFocusElement_bd4klp$_0 = UserInterface$lastTimeFocusElement$lambda(this)();
     this.isShowUserInterfaceFirstFocus_mby111$_0 = false;
     this.hideTimer_1c3smv$_rf6tp$_0 = 0;
-    println('u');
-    try {
-      tmp$_4 = jQuery(':focus');
-      tmp$_3 = println('T:' + ((tmp$_1 = (tmp$_0 = jQuery(this)) != null ? tmp$_0.attr('tabIndex') : null) != null ? tmp$_1.toString() : null) + ' ' + toString((tmp$_2 = jQuery(this)) != null ? tmp$_2.html() : null));
-      tmp$_4 != null ? tmp$_4.focus(tmp$_3) : null;
-    }
-     catch (e) {
-    }
-    (tmp$_5 = jQuery('#' + this.mainFrameElementID_lg8aaf$_0 + ' button' + ',' + ('#' + this.mainFrameElementID_lg8aaf$_0 + ' select') + ',' + ('#' + this.mainFrameElementID_lg8aaf$_0 + ' option') + ',' + ('#' + this.mainFrameElementID_lg8aaf$_0 + ' input'))) != null ? tmp$_5.focus(UserInterface_init$lambda(this)) : null;
-    (tmp$_6 = jQuery('#' + this.mainFrameElementID_lg8aaf$_0 + ' button' + ',' + ('#' + this.mainFrameElementID_lg8aaf$_0 + ' select') + ',' + ('#' + this.mainFrameElementID_lg8aaf$_0 + ' option') + ',' + ('#' + this.mainFrameElementID_lg8aaf$_0 + ' input'))) != null ? tmp$_6.hover(UserInterface_init$lambda_0) : null;
+    (tmp$_0 = jQuery('#' + this.mainFrameElementID_lg8aaf$_0 + ' button' + ',' + ('#' + this.mainFrameElementID_lg8aaf$_0 + ' select') + ',' + ('#' + this.mainFrameElementID_lg8aaf$_0 + ' option') + ',' + ('#' + this.mainFrameElementID_lg8aaf$_0 + ' input'))) != null ? tmp$_0.focus(UserInterface_init$lambda(this)) : null;
+    (tmp$_1 = jQuery('#' + this.mainFrameElementID_lg8aaf$_0 + ' button' + ',' + ('#' + this.mainFrameElementID_lg8aaf$_0 + ' select') + ',' + ('#' + this.mainFrameElementID_lg8aaf$_0 + ' option') + ',' + ('#' + this.mainFrameElementID_lg8aaf$_0 + ' input'))) != null ? tmp$_1.hover(UserInterface_init$lambda_0) : null;
     UserInterface$Companion_getInstance().allUserInterfaceList.add_11rb$(this);
   }
   function UserInterface$Companion() {
@@ -4207,7 +4197,7 @@ var HKNBP_Core = function (_, Kotlin) {
       if (tabIndexForCheck.y === currentTabIndex.y && tabIndexForCheck.z === currentTabIndex.z) {
         if (tabIndexForCheck.x >= currentTabIndex.x) {
           (tmp$_5 = selectables != null ? selectables.eq(i) : null) != null ? tmp$_5.focus() : null;
-          println('\u76F8\u540C: ' + toString((tmp$_7 = (tmp$_6 = selectables != null ? selectables.eq(i) : null) != null ? tmp$_6.attr('tabIndex') : null) != null ? tmp$_7.toString() : null));
+          println('\u76F8\u540CA: ' + toString((tmp$_7 = (tmp$_6 = selectables != null ? selectables.eq(i) : null) != null ? tmp$_6.attr('tabIndex') : null) != null ? tmp$_7.toString() : null));
           return;
         }
       }
@@ -4250,7 +4240,7 @@ var HKNBP_Core = function (_, Kotlin) {
       if (tabIndexForCheck_0.y === nextTabIndex.y && tabIndexForCheck_0.z === nextTabIndex.z) {
         if (tabIndexForCheck_0.x === currentTabIndex.x) {
           (tmp$_17 = selectables != null ? selectables.eq(i_0) : null) != null ? tmp$_17.focus() : null;
-          println('\u4E0A\u9762: ' + toString((tmp$_19 = (tmp$_18 = selectables != null ? selectables.eq(i_0) : null) != null ? tmp$_18.attr('tabIndex') : null) != null ? tmp$_19.toString() : null));
+          println('\u76F8\u540CY: ' + toString((tmp$_19 = (tmp$_18 = selectables != null ? selectables.eq(i_0) : null) != null ? tmp$_18.attr('tabIndex') : null) != null ? tmp$_19.toString() : null));
           return;
         }
         if (Tab3dIndex$Companion_getInstance().toTab3dIndex_61zpoe$((tmp$_22 = (tmp$_21 = (tmp$_20 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_20.attr('tabIndex') : null) != null ? tmp$_21.toString() : null) != null ? tmp$_22 : '').x <= tabIndexForCheck_0.x) {
@@ -4259,7 +4249,7 @@ var HKNBP_Core = function (_, Kotlin) {
       }
     }
     (tmp$_23 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_23.focus() : null;
-    println('\u6700\u4F4E: ' + toString((tmp$_25 = (tmp$_24 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_24.attr('tabIndex') : null) != null ? tmp$_25.toString() : null));
+    println('\u5514\u540CY: ' + toString((tmp$_25 = (tmp$_24 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_24.attr('tabIndex') : null) != null ? tmp$_25.toString() : null));
   }
   function VirtualRemote_init$lambda$lambda_0(element) {
     var tmp$;
