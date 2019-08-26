@@ -4187,7 +4187,7 @@ var HKNBP_Core = function (_, Kotlin) {
     return (tmp$ = toIntOrNull(Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(element))) != null ? tmp$ : 0;
   }
   function VirtualRemote_init$lambda_46(event) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22, tmp$_23, tmp$_24, tmp$_25, tmp$_26, tmp$_27;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22, tmp$_23, tmp$_24;
     var selectables = jQuery(':tabbable');
     var current = jQuery(':focus');
     var currentIndex = (tmp$ = selectables != null ? selectables.index(current) : null) != null ? tmp$ : 0;
@@ -4212,10 +4212,10 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     var firstOrNull$result;
     firstOrNull$break: do {
-      var tmp$_28;
-      tmp$_28 = tabIndexList.iterator();
-      loop_label: while (tmp$_28.hasNext()) {
-        var element = tmp$_28.next();
+      var tmp$_25;
+      tmp$_25 = tabIndexList.iterator();
+      loop_label: while (tmp$_25.hasNext()) {
+        var element = tmp$_25.next();
         var predicate$result;
         predicate$break: do {
           if (needTabIndex.v.z === element.z) {
@@ -4243,14 +4243,12 @@ var HKNBP_Core = function (_, Kotlin) {
           println('\u76F8\u540CY: ' + toString((tmp$_19 = (tmp$_18 = selectables != null ? selectables.eq(i_0) : null) != null ? tmp$_18.attr('tabIndex') : null) != null ? tmp$_19.toString() : null));
           return;
         }
-        if (Tab3dIndex$Companion_getInstance().toTab3dIndex_61zpoe$((tmp$_22 = (tmp$_21 = (tmp$_20 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_20.attr('tabIndex') : null) != null ? tmp$_21.toString() : null) != null ? tmp$_22 : '').x <= tabIndexForCheck_0.x) {
-          closestIndex = i_0;
-        }
-        println('XXXXXXX: ' + toString((tmp$_24 = (tmp$_23 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_23.attr('tabIndex') : null) != null ? tmp$_24.toString() : null));
+        closestIndex = i_0;
+        println('XXXXXXX: ' + toString((tmp$_21 = (tmp$_20 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_20.attr('tabIndex') : null) != null ? tmp$_21.toString() : null));
       }
     }
-    (tmp$_25 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_25.focus() : null;
-    println('\u5514\u540CY: ' + toString((tmp$_27 = (tmp$_26 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_26.attr('tabIndex') : null) != null ? tmp$_27.toString() : null));
+    (tmp$_22 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_22.focus() : null;
+    println('\u5514\u540CY: ' + toString((tmp$_24 = (tmp$_23 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_23.attr('tabIndex') : null) != null ? tmp$_24.toString() : null));
   }
   function VirtualRemote_init$lambda$lambda_0(element) {
     var tmp$;

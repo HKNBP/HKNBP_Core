@@ -270,9 +270,7 @@ object VirtualRemote: UserInterface("virtualRemote"){
                         println("相同Y: ${selectables?.eq(i)?.attr("tabIndex")?.toString()}")
                         return
                     }
-                    if(Tab3dIndex.toTab3dIndex(selectables?.eq(closestIndex)?.attr("tabIndex")?.toString()?:"").x <= tabIndexForCheck.x){
-                        closestIndex = i//////////////////////
-                    }
+                    closestIndex = i
                     println("XXXXXXX: ${selectables?.eq(closestIndex)?.attr("tabIndex")?.toString()}")
                 }
             }
