@@ -4186,8 +4186,14 @@ var HKNBP_Core = function (_, Kotlin) {
     var tmp$;
     return (tmp$ = toIntOrNull(Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(element))) != null ? tmp$ : 0;
   }
+  function VirtualRemote_init$lambda$lambda_0(closure$i, closure$closestIndex) {
+    return function () {
+      closure$closestIndex.v = closure$i;
+      return Unit;
+    };
+  }
   function VirtualRemote_init$lambda_46(event) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22, tmp$_23, tmp$_24, tmp$_25, tmp$_26, tmp$_27, tmp$_28, tmp$_29, tmp$_30;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22, tmp$_23;
     var selectables = jQuery(':tabbable');
     var current = jQuery(':focus');
     var currentIndex = (tmp$ = selectables != null ? selectables.index(current) : null) != null ? tmp$ : 0;
@@ -4212,10 +4218,10 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     var firstOrNull$result;
     firstOrNull$break: do {
-      var tmp$_31;
-      tmp$_31 = tabIndexList.iterator();
-      loop_label: while (tmp$_31.hasNext()) {
-        var element = tmp$_31.next();
+      var tmp$_24;
+      tmp$_24 = tabIndexList.iterator();
+      loop_label: while (tmp$_24.hasNext()) {
+        var element = tmp$_24.next();
         var predicate$result;
         predicate$break: do {
           if (needTabIndex.v.z === element.z) {
@@ -4234,7 +4240,7 @@ var HKNBP_Core = function (_, Kotlin) {
     }
      while (false);
     var nextTabIndex = (tmp$_10 = firstOrNull$result) != null ? tmp$_10 : new Tab3dIndex(0, 0, 0);
-    var closestIndex = 0;
+    var closestIndex = {v: null};
     for (var i_0 = (tmp$_13 = (tmp$_12 = (tmp$_11 = selectables != null ? selectables.length : null) != null ? tmp$_11.toString() : null) != null ? toIntOrNull(tmp$_12) : null) != null ? tmp$_13 : 0; i_0 >= 0; i_0--) {
       var tabIndexForCheck_0 = Tab3dIndex$Companion_getInstance().toTab3dIndex_61zpoe$((tmp$_16 = (tmp$_15 = (tmp$_14 = selectables != null ? selectables.eq(i_0) : null) != null ? tmp$_14.attr('tabIndex') : null) != null ? tmp$_15.toString() : null) != null ? tmp$_16 : '');
       if (tabIndexForCheck_0.y === nextTabIndex.y && tabIndexForCheck_0.z === nextTabIndex.z) {
@@ -4243,18 +4249,13 @@ var HKNBP_Core = function (_, Kotlin) {
           println('\u76F8\u540CY: ' + toString((tmp$_19 = (tmp$_18 = selectables != null ? selectables.eq(i_0) : null) != null ? tmp$_18.attr('tabIndex') : null) != null ? tmp$_19.toString() : null));
           return;
         }
-        println('0' + toString(Tab3dIndex$Companion_getInstance().toTab3dIndex_61zpoe$((tmp$_22 = (tmp$_21 = (tmp$_20 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_20.attr('tabIndex') : null) != null ? tmp$_21.toString() : null) != null ? tmp$_22 : '').x));
-        println('1' + toString(tabIndexForCheck_0.x));
-        if (Tab3dIndex$Companion_getInstance().toTab3dIndex_61zpoe$((tmp$_25 = (tmp$_24 = (tmp$_23 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_23.attr('tabIndex') : null) != null ? tmp$_24.toString() : null) != null ? tmp$_25 : '').x <= tabIndexForCheck_0.x) {
-          closestIndex = i_0;
-        }
-        println('XXXXXXX: ' + toString((tmp$_27 = (tmp$_26 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_26.attr('tabIndex') : null) != null ? tmp$_27.toString() : null));
+        (tmp$_20 = closestIndex.v) != null ? tmp$_20 : (VirtualRemote_init$lambda$lambda_0(i_0, closestIndex)(), Unit);
       }
     }
-    (tmp$_28 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_28.focus() : null;
-    println('\u5514\u540CY: ' + toString((tmp$_30 = (tmp$_29 = selectables != null ? selectables.eq(closestIndex) : null) != null ? tmp$_29.attr('tabIndex') : null) != null ? tmp$_30.toString() : null));
+    (tmp$_21 = selectables != null ? selectables.eq(closestIndex.v) : null) != null ? tmp$_21.focus() : null;
+    println('\u5514\u540CY: ' + toString((tmp$_23 = (tmp$_22 = selectables != null ? selectables.eq(closestIndex.v) : null) != null ? tmp$_22.attr('tabIndex') : null) != null ? tmp$_23.toString() : null));
   }
-  function VirtualRemote_init$lambda$lambda_0(element) {
+  function VirtualRemote_init$lambda$lambda_1(element) {
     var tmp$;
     return (tmp$ = toIntOrNull(Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(element))) != null ? tmp$ : 0;
   }
@@ -4277,7 +4278,7 @@ var HKNBP_Core = function (_, Kotlin) {
     var needTabIndex = {v: currentTabIndex};
     var tabIndexList = Tab3dIndex$Companion_getInstance().getTab3dIndexList_za3rmp$(selectables);
     if (tabIndexList.size > 1) {
-      sortWith(tabIndexList, new Comparator$ObjectLiteral_1(compareBy$lambda_0(VirtualRemote_init$lambda$lambda_0)));
+      sortWith(tabIndexList, new Comparator$ObjectLiteral_1(compareBy$lambda_0(VirtualRemote_init$lambda$lambda_1)));
     }
     if (needTabIndex.v.y === last(tabIndexList).y) {
       needTabIndex.v = new Tab3dIndex(currentTabIndex.x, -1, currentTabIndex.z);

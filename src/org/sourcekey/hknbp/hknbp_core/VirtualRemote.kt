@@ -261,7 +261,7 @@ object VirtualRemote: UserInterface("virtualRemote"){
                 }
                 return false
             })?:Tab3dIndex(0,0,0)
-            var closestIndex: Int = 0
+            var closestIndex: Int? = null
             for(i in (selectables?.length?.toString()?.toIntOrNull()?:0) downTo 0){
                 val tabIndexForCheck = Tab3dIndex.toTab3dIndex(selectables?.eq(i)?.attr("tabIndex")?.toString()?:"")
                 if(tabIndexForCheck.y == nextTabIndex.y && tabIndexForCheck.z == nextTabIndex.z){
@@ -270,12 +270,7 @@ object VirtualRemote: UserInterface("virtualRemote"){
                         println("相同Y: ${selectables?.eq(i)?.attr("tabIndex")?.toString()}")
                         return
                     }
-                    println("0"+Tab3dIndex.toTab3dIndex(selectables?.eq(closestIndex)?.attr("tabIndex")?.toString()?:"").x)
-                    println("1"+tabIndexForCheck.x)
-                    if(Tab3dIndex.toTab3dIndex(selectables?.eq(closestIndex)?.attr("tabIndex")?.toString()?:"").x <= tabIndexForCheck.x){
-                        closestIndex = i//////////////////////
-                    }
-                    println("XXXXXXX: ${selectables?.eq(closestIndex)?.attr("tabIndex")?.toString()}")
+                    closestIndex?: {closestIndex = i}()
                 }
             }
             selectables?.eq(closestIndex)?.focus()
