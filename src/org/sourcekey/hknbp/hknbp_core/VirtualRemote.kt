@@ -14,11 +14,8 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
-import org.w3c.dom.HTMLButtonElement
-import org.w3c.dom.HTMLDivElement
+import org.w3c.dom.*
 import kotlin.browser.document
-import org.w3c.dom.HTMLInputElement
-import org.w3c.dom.HTMLSelectElement
 import kotlin.browser.localStorage
 import kotlin.browser.window
 
@@ -233,7 +230,6 @@ object VirtualRemote: UserInterface("virtualRemote"){
                 if(tabIndexForCheck.y == currentTabIndex.y && tabIndexForCheck.z == currentTabIndex.z){
                     if(tabIndexForCheck.x >= currentTabIndex.x){
                         selectables?.eq(i)?.focus()
-                        println("相同A: ${selectables?.eq(i)?.attr("tabIndex")?.toString()}")
                         return
                     }
                 }
@@ -267,14 +263,12 @@ object VirtualRemote: UserInterface("virtualRemote"){
                 if(tabIndexForCheck.y == nextTabIndex.y && tabIndexForCheck.z == nextTabIndex.z){
                     if(tabIndexForCheck.x == currentTabIndex.x){
                         selectables?.eq(i)?.focus()
-                        println("相同Y: ${selectables?.eq(i)?.attr("tabIndex")?.toString()}")
                         return
                     }
                     closestIndex?: {closestIndex = i}()
                 }
             }
             selectables?.eq(closestIndex)?.focus()
-            println("唔同Y: ${selectables?.eq(closestIndex)?.attr("tabIndex")?.toString()}")
         }
         downButton.onclick                  = fun(event){
             val selectables = jQuery(":tabbable")
@@ -335,7 +329,8 @@ object VirtualRemote: UserInterface("virtualRemote"){
             //隱藏所有UI,只電視畫面
             for(userInterface in allUserInterfaceList){userInterface.hide()}
             //focus到userControlPanelShower,為左之後撳centerButton可以顯示VirtualRemote
-            (document.getElementById("userControlPanelShower") as HTMLDivElement).focus()
+            (document.getElementById("userControlPanelShower") as HTMLElement).focus()
+
         }
     }
 }
