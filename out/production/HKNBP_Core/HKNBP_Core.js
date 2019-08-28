@@ -863,7 +863,7 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function EPG() {
     EPG_instance = this;
-    UserInterface.call(this, 'epg', 'epgHideButton');
+    UserInterface.call(this, 'epg');
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22;
     this.epg_0 = Kotlin.isType(tmp$ = document.getElementById('epg'), HTMLElement) ? tmp$ : throwCCE();
     this.displayCurrentDateBox_0 = Kotlin.isType(tmp$_0 = document.getElementById('epgDisplayCurrentDateBox'), HTMLElement) ? tmp$_0 : throwCCE();
@@ -1434,18 +1434,24 @@ var HKNBP_Core = function (_, Kotlin) {
   function EPG$focusCurrentProgramme$lambda(this$EPG) {
     return function (xmltv) {
       var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
-      tmp$_0 = (tmp$ = xmltv.programmes) != null ? tmp$.getProgrammeByTime() : null;
-      if (tmp$_0 == null) {
+      var currentProgrammeOrNull = (tmp$ = xmltv.programmes) != null ? tmp$.getProgrammeByTime() : null;
+      println(currentProgrammeOrNull);
+      if (currentProgrammeOrNull != null) {
+        tmp$_0 = currentProgrammeOrNull;
+      }
+       else {
+        this$EPG.hideButton_0.focus();
         return;
       }
       var currentProgramme = tmp$_0;
       var firstFocusTabIndex = Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(new Tab3dIndex((tmp$_1 = toIntOrNull(padStart(currentProgramme.start.getDate().toString(), 2, 48) + padStart(currentProgramme.start.getHours().toString(), 2, 48))) != null ? tmp$_1 : 0, (tmp$_3 = (tmp$_2 = channels.node) != null ? tmp$_2.number : null) != null ? tmp$_3 : 0, this$EPG.tabIndexZ_0));
+      println(firstFocusTabIndex);
       (Kotlin.isType(tmp$_4 = document.querySelector('[tabindex=' + '"' + firstFocusTabIndex + '"' + ']'), HTMLElement) ? tmp$_4 : throwCCE()).focus();
     };
   }
   EPG.prototype.focusCurrentProgramme_0 = function () {
-    var tmp$, tmp$_0, tmp$_1;
-    (tmp$_1 = (tmp$_0 = (tmp$ = channels.node) != null ? tmp$.information : null) != null ? (tmp$_0.getXMLTV_29qkou$(EPG$focusCurrentProgramme$lambda(this)), Unit) : null) != null ? tmp$_1 : jQuery('#epgHideButton').focus();
+    var tmp$, tmp$_0;
+    (tmp$_0 = (tmp$ = channels.node) != null ? tmp$.information : null) != null ? (tmp$_0.getXMLTV_29qkou$(EPG$focusCurrentProgramme$lambda(this)), Unit) : null;
   };
   EPG.prototype.setChannelProgrammeTimeLineContent_0 = function () {
     var tmp$, tmp$_0;
@@ -3700,7 +3706,9 @@ var HKNBP_Core = function (_, Kotlin) {
     this.setHideTimer_djwtaz$_0(showTime);
   };
   UserInterface.prototype.hide = function () {
+    var tmp$;
     this.htmlElement_sdspbr$_0.style.display = 'none';
+    (Kotlin.isType(tmp$ = document.getElementById('userControlPanelShower'), HTMLElement) ? tmp$ : throwCCE()).focus();
   };
   UserInterface.prototype.showHideAlternately = function () {
     if (this.isShow) {
@@ -4346,13 +4354,12 @@ var HKNBP_Core = function (_, Kotlin) {
     VolumeDescription_getInstance().show_za3lpa$(5000);
   }
   function VirtualRemote_init$lambda_55(event) {
-    var tmp$, tmp$_0;
+    var tmp$;
     tmp$ = UserInterface$Companion_getInstance().allUserInterfaceList.iterator();
     while (tmp$.hasNext()) {
       var userInterface = tmp$.next();
       userInterface.hide();
     }
-    (Kotlin.isType(tmp$_0 = document.getElementById('userControlPanelShower'), HTMLElement) ? tmp$_0 : throwCCE()).focus();
   }
   VirtualRemote.$metadata$ = {
     kind: Kind_OBJECT,

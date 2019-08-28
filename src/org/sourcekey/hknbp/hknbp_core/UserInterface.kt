@@ -80,6 +80,8 @@ abstract class UserInterface(
 
     open fun hide(){
         htmlElement.style.display = "none"
+        //focus到userControlPanelShower,為左之後撳centerButton可以顯示VirtualRemote
+        (document.getElementById("userControlPanelShower") as HTMLElement).focus()
     }
 
     fun showHideAlternately(){

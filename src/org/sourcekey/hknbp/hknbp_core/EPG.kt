@@ -25,7 +25,7 @@ import org.w3c.dom.*
 import org.w3c.dom.events.FocusEvent
 
 
-object EPG: UserInterface("epg", firstFocusElementID = "epgHideButton") {
+object EPG: UserInterface("epg") {
     private val epg                             = document.getElementById("epg") as HTMLElement
     private val displayCurrentDateBox           = document.getElementById("epgDisplayCurrentDateBox") as HTMLElement
     private val hideButton                      = document.getElementById("epgHideButton") as HTMLElement
@@ -575,16 +575,21 @@ object EPG: UserInterface("epg", firstFocusElementID = "epgHideButton") {
      * */
     private fun focusCurrentProgramme(){
         channels.node?.information?.getXMLTV(fun(xmltv){
-            val currentProgramme: Programme = xmltv.programmes?.getProgrammeByTime()?: return
+            val currentProgrammeOrNull = xmltv.programmes?.getProgrammeByTime()
+            println(currentProgrammeOrNull)
+            val currentProgramme: Programme = if(null != currentProgrammeOrNull){ currentProgrammeOrNull }else{
+                hideButton.focus()
+                return
+            }
             val firstFocusTabIndex: String = Tab3dIndex.toUnparsedTabIndex(Tab3dIndex(
                     (currentProgramme.start.getDate().toString().padStart(2, '0') +
-                            currentProgramme.start.getHours().toString().padStart(2, '0')
-                            ).toIntOrNull()?:0,
+                            currentProgramme.start.getHours().toString().padStart(2, '0')).toIntOrNull()?:0,
                     channels.node?.number?:0,
                     tabIndexZ
             ))
+            println(firstFocusTabIndex)
             (document.querySelector("[tabindex=\"${firstFocusTabIndex}\"]") as HTMLElement).focus()
-        })?: jQuery("#epgHideButton").focus()
+        })
     }
 
     /**

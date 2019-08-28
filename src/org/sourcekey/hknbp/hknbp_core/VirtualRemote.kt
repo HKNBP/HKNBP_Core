@@ -325,12 +325,6 @@ object VirtualRemote: UserInterface("virtualRemote"){
         audioDescriptionButton.onclick      = fun(event){AudioDescription.show(5000)}
         subtitleDescriptionButton.onclick   = fun(event){SubtitleDescription.show(5000)}
         volumeDescriptionButton.onclick     = fun(event){VolumeDescription.show(5000)}
-        returnButton.onclick                = fun(event){
-            //隱藏所有UI,只電視畫面
-            for(userInterface in allUserInterfaceList){userInterface.hide()}
-            //focus到userControlPanelShower,為左之後撳centerButton可以顯示VirtualRemote
-            (document.getElementById("userControlPanelShower") as HTMLElement).focus()
-
-        }
+        returnButton.onclick                = fun(event){for(userInterface in allUserInterfaceList){userInterface.hide()}}
     }
 }
