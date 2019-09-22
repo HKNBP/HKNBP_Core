@@ -25,10 +25,10 @@ var HKNBP_Core = function (_, Kotlin) {
   var Math_0 = Math;
   var toShort = Kotlin.toShort;
   var startsWith = Kotlin.kotlin.text.startsWith_7epoxm$;
-  var Random = Kotlin.kotlin.random.Random;
   var split = Kotlin.kotlin.text.split_ip8yn$;
   var ensureNotNull = Kotlin.ensureNotNull;
   var split_0 = Kotlin.kotlin.text.split_o64adg$;
+  var Random = Kotlin.kotlin.random.Random;
   var sortWith = Kotlin.kotlin.collections.sortWith_nqfjgj$;
   var wrapFunction = Kotlin.wrapFunction;
   var Comparator = Kotlin.kotlin.Comparator;
@@ -1687,12 +1687,15 @@ var HKNBP_Core = function (_, Kotlin) {
     LoadFile_instance = this;
     this.cacheShelfLife = 604800;
   }
-  LoadFile.prototype.load_61zpoe$ = function (filePath) {
+  LoadFile.prototype.load_19mbxw$ = function (cacheShelfLife, filePath) {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.open('GET', filePath, false);
-    xmlhttp.setRequestHeader('cache-control', 'max-age=604800');
+    xmlhttp.setRequestHeader('cache-control', 'max-age=' + cacheShelfLife);
     xmlhttp.send();
     return xmlhttp;
+  };
+  LoadFile.prototype.load_61zpoe$ = function (filePath) {
+    return this.load_19mbxw$(this.cacheShelfLife, filePath);
   };
   function LoadFile$load$lambda$lambda(closure$isLoaded, closure$onFailedLoadFile, closure$filePaths, closure$onLoadedFile, this$LoadFile) {
     return function () {
@@ -1726,7 +1729,7 @@ var HKNBP_Core = function (_, Kotlin) {
       }
     };
   }
-  LoadFile.prototype.load_uq4zwc$ = function (onLoadedFile, onFailedLoadFile, filePaths) {
+  LoadFile.prototype.load_duo3m8$ = function (onLoadedFile, onFailedLoadFile, cacheShelfLife, filePaths) {
     var tmp$;
     var xmlhttp = new XMLHttpRequest();
     var isLoaded = {v: false};
@@ -1740,14 +1743,23 @@ var HKNBP_Core = function (_, Kotlin) {
       path = cors_api_url + path;
     }
     xmlhttp.open('GET', path, true);
-    xmlhttp.setRequestHeader('cache-control', 'max-age=604800');
+    xmlhttp.setRequestHeader('cache-control', 'max-age=' + cacheShelfLife);
     xmlhttp.send();
   };
+  LoadFile.prototype.load_1ihi1i$ = function (onLoadedFile, onFailedLoadFile, cacheShelfLife, filePath) {
+    this.load_duo3m8$(onLoadedFile, onFailedLoadFile, cacheShelfLife, ArrayLinkList_init_1(filePath));
+  };
+  LoadFile.prototype.load_q2uuwa$ = function (onLoadedFile, onFailedLoadFile, cacheShelfLife, filePath) {
+    this.load_1ihi1i$(onLoadedFile, onFailedLoadFile, cacheShelfLife, filePath);
+  };
+  LoadFile.prototype.load_uq4zwc$ = function (onLoadedFile, onFailedLoadFile, filePaths) {
+    this.load_duo3m8$(onLoadedFile, onFailedLoadFile, this.cacheShelfLife, filePaths);
+  };
   LoadFile.prototype.load_y8xsdy$ = function (onLoadedFile, onFailedLoadFile, filePath) {
-    LoadFile_getInstance().load_uq4zwc$(onLoadedFile, onFailedLoadFile, ArrayLinkList_init_1(filePath));
+    this.load_duo3m8$(onLoadedFile, onFailedLoadFile, this.cacheShelfLife, ArrayLinkList_init_1(filePath));
   };
   LoadFile.prototype.load_h2maru$ = function (onLoadedFile, onFailedLoadFile, filePath) {
-    LoadFile_getInstance().load_y8xsdy$(onLoadedFile, onFailedLoadFile, filePath);
+    this.load_1ihi1i$(onLoadedFile, onFailedLoadFile, this.cacheShelfLife, filePath);
   };
   LoadFile.$metadata$ = {
     kind: Kind_OBJECT,
@@ -1843,6 +1855,79 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return LongClickEvent_instance;
   }
+  function setConsoleLogsListener$lambda() {
+    try {
+      console.stdlog = console.log.bind(console);
+      console.logs = [];
+      return console.log = function () {
+        console.logs.push(Array.from(arguments));
+        console.stdlog.apply(console, arguments);
+      };
+    }
+     catch (e) {
+      return println('setConsoleLogListener\u54C0\u5DE6: ' + e.toString()), Unit;
+    }
+  }
+  var setConsoleLogsListener;
+  function getConsoleLogs$lambda() {
+    var tmp$;
+    try {
+      var consoleLogs = console.logs;
+      var logs = '';
+      var i = 0;
+      while (i < ((tmp$ = toIntOrNull(consoleLogs.length.toString())) != null ? tmp$ : 0)) {
+        logs += consoleLogs[i] + '\n';
+        i = i + 1 | 0;
+      }
+      return logs;
+    }
+     catch (e) {
+      println('getConsoleLog\u54C0\u5DE6: ' + e.toString());
+    }
+    return '';
+  }
+  var getConsoleLogs;
+  var jQuery;
+  function updateURLParameter(param, paramVal) {
+    var tmp$, tmp$_0, tmp$_1;
+    var url = window.location.href;
+    var TheAnchor = null;
+    var newAdditionalURL = '';
+    var tempArray = split(url, ['?']);
+    var baseURL = getOrNull(tempArray, 0);
+    var additionalURL = getOrNull(tempArray, 1);
+    var temp = '';
+    if (additionalURL != null) {
+      var tmpAnchor = split(additionalURL, ['#']);
+      var TheParams = getOrNull(tmpAnchor, 0);
+      TheAnchor = getOrNull(tmpAnchor, 1);
+      if (TheAnchor != null) {
+        additionalURL = TheParams;
+      }
+      tempArray = split(ensureNotNull(additionalURL), ['&']);
+      tmp$ = tempArray.size;
+      for (var i = 0; i < tmp$; i++) {
+        if (!equals((tmp$_1 = (tmp$_0 = getOrNull(tempArray, i)) != null ? split_0(tmp$_0, Kotlin.charArrayOf(61)) : null) != null ? getOrNull(tmp$_1, 0) : null, param)) {
+          newAdditionalURL += temp + getOrNull(tempArray, i);
+          temp = '&';
+        }
+      }
+    }
+     else {
+      var tmpAnchor_0 = split(ensureNotNull(baseURL), ['#']);
+      var TheParams_0 = getOrNull(tmpAnchor_0, 0);
+      TheAnchor = getOrNull(tmpAnchor_0, 1);
+      if (TheParams_0 != null) {
+        baseURL = TheParams_0;
+      }
+    }
+    var _paramVal = paramVal;
+    if (TheAnchor != null) {
+      _paramVal += '#' + TheAnchor;
+    }
+    var rows_txt = temp + '' + param + '=' + _paramVal;
+    window.history.replaceState('', '', baseURL + '?' + newAdditionalURL + rows_txt);
+  }
   var rootURL;
   function coreVersion$lambda() {
     var tmp$, tmp$_0;
@@ -1859,7 +1944,6 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   var coreVersion_0;
   var appVersion;
-  var jQuery;
   function channels$lambda$ObjectLiteral() {
   }
   channels$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
@@ -2025,54 +2109,17 @@ var HKNBP_Core = function (_, Kotlin) {
     arr[1] = q;
     return arr;
   }
-  function updateURLParameter(param, paramVal) {
-    var tmp$, tmp$_0, tmp$_1;
-    var url = window.location.href;
-    var TheAnchor = null;
-    var newAdditionalURL = '';
-    var tempArray = split(url, ['?']);
-    var baseURL = getOrNull(tempArray, 0);
-    var additionalURL = getOrNull(tempArray, 1);
-    var temp = '';
-    if (additionalURL != null) {
-      var tmpAnchor = split(additionalURL, ['#']);
-      var TheParams = getOrNull(tmpAnchor, 0);
-      TheAnchor = getOrNull(tmpAnchor, 1);
-      if (TheAnchor != null) {
-        additionalURL = TheParams;
-      }
-      tempArray = split(ensureNotNull(additionalURL), ['&']);
-      tmp$ = tempArray.size;
-      for (var i = 0; i < tmp$; i++) {
-        if (!equals((tmp$_1 = (tmp$_0 = getOrNull(tempArray, i)) != null ? split_0(tmp$_0, Kotlin.charArrayOf(61)) : null) != null ? getOrNull(tmp$_1, 0) : null, param)) {
-          newAdditionalURL += temp + getOrNull(tempArray, i);
-          temp = '&';
-        }
-      }
-    }
-     else {
-      var tmpAnchor_0 = split(ensureNotNull(baseURL), ['#']);
-      var TheParams_0 = getOrNull(tmpAnchor_0, 0);
-      TheAnchor = getOrNull(tmpAnchor_0, 1);
-      if (TheParams_0 != null) {
-        baseURL = TheParams_0;
-      }
-    }
-    var _paramVal = paramVal;
-    if (TheAnchor != null) {
-      _paramVal += '#' + TheAnchor;
-    }
-    var rows_txt = temp + '' + param + '=' + _paramVal;
-    window.history.replaceState('', '', baseURL + '?' + newAdditionalURL + rows_txt);
-  }
   var userLanguageList;
   function main(args) {
+    println('coreVersion: ' + coreVersion_0);
+    println('appVersion: ' + appVersion);
     try {
       UserControlPanel_getInstance();
       ConsentPanel_getInstance();
       VirtualRemote_getInstance();
       RealRemote_getInstance();
       LongClickEvent_getInstance();
+      println('\u4ECB\u9762\u521D\u59CB\u5316\u5B8C\u6210');
     }
      catch (e) {
       println('\u4ECB\u9762\u521D\u59CB\u5316\u54C0\u5DE6: ' + e.toString());
@@ -2199,9 +2246,6 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   function OfficialChannel() {
     OfficialChannel_instance = this;
-    this.channelsInfoExpireTime_0 = 604800000;
-    this.channelsInfoSaveDate_ikk64l$_0 = OfficialChannel$channelsInfoSaveDate$lambda();
-    this.channelsCache_9x1q7y$_0 = OfficialChannel$channelsCache$lambda();
   }
   function OfficialChannel$parseChannels$lambda(closure$onParsedChannelsListener, this$OfficialChannel) {
     return function (xmlHttp) {
@@ -2273,60 +2317,24 @@ var HKNBP_Core = function (_, Kotlin) {
     var tmp$, tmp$_0, tmp$_1;
     return (tmp$_1 = (tmp$_0 = (tmp$ = element != null ? element.getElementsByTagName('link') : null) != null ? tmp$[0] : null) != null ? tmp$_0.innerHTML : null) != null ? tmp$_1 : '';
   };
-  Object.defineProperty(OfficialChannel.prototype, 'channelsInfoSaveDate_0', {
-    get: function () {
-      return this.channelsInfoSaveDate_ikk64l$_0;
-    },
-    set: function (value) {
-      localStorage.setItem('channelsInfoSaveDate', JSON.stringify(value));
-      this.channelsInfoSaveDate_ikk64l$_0 = value;
-    }
-  });
-  Object.defineProperty(OfficialChannel.prototype, 'channelsCache_0', {
-    get: function () {
-      return this.channelsCache_9x1q7y$_0;
-    },
-    set: function (value) {
-      localStorage.setItem('OfficialChannels', JSON.stringify(value));
-      this.channelsCache_9x1q7y$_0 = value;
-    }
-  });
   function OfficialChannel$getOfficialChannels$lambda$lambda(channel) {
     return channel.number;
   }
-  function OfficialChannel$getOfficialChannels$lambda(this$OfficialChannel, closure$onLoadedChannelsListener) {
+  function OfficialChannel$getOfficialChannels$lambda(closure$onLoadedChannelsListener) {
     return function (channels) {
-      var tmp$;
       if (channels.size > 1) {
         sortWith(channels, new Comparator$ObjectLiteral(compareBy$lambda(OfficialChannel$getOfficialChannels$lambda$lambda)));
       }
-      this$OfficialChannel.channelsCache_0 = channels;
-      closure$onLoadedChannelsListener((tmp$ = this$OfficialChannel.channelsCache_0) != null ? tmp$ : ArrayLinkList_init([]));
+      println('\u6210\u529F\u8B80\u53D6official_channels.xml' + '\n' + '\u6B64OfficialChannels\u6709' + channels.size + '\u689D\u983B\u9053');
+      closure$onLoadedChannelsListener(channels);
     };
   }
   function OfficialChannel$getOfficialChannels$lambda_0() {
+    println('\u672A\u80FD\u8B80\u53D6official_channels.xml');
   }
   OfficialChannel.prototype.getOfficialChannels_u69gef$ = function (onLoadedChannelsListener) {
-    if (this.channelsCache_0 == null) {
-      this.parseChannels_0(OfficialChannel$getOfficialChannels$lambda(this, onLoadedChannelsListener), OfficialChannel$getOfficialChannels$lambda_0, ['https://hknbp.org/data/official_channels.xml', 'data/official_channels.xml']);
-    }
-     else {
-      onLoadedChannelsListener(channels != null ? channels : ArrayLinkList_init([]));
-    }
+    this.parseChannels_0(OfficialChannel$getOfficialChannels$lambda(onLoadedChannelsListener), OfficialChannel$getOfficialChannels$lambda_0, ['https://hknbp.org/data/official_channels.xml', 'data/official_channels.xml']);
   };
-  function OfficialChannel$channelsInfoSaveDate$lambda() {
-    var channelsInfoSaveDateJsonString = localStorage.getItem('channelsInfoSaveDate');
-    if (channelsInfoSaveDateJsonString != null) {
-      return JSON.parse(channelsInfoSaveDateJsonString);
-    }
-     else {
-      return new Date();
-    }
-  }
-  function OfficialChannel$channelsCache$lambda() {
-    var officialChannels = null;
-    return officialChannels;
-  }
   OfficialChannel.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'OfficialChannel',
@@ -2380,10 +2388,10 @@ var HKNBP_Core = function (_, Kotlin) {
     this.volumeDown = Player$volumeDown$lambda(this);
     this.volumeMute = Player$volumeMute$lambda(this);
     var tmp$, tmp$_0, tmp$_1, tmp$_2;
-    this.addOnPlayerEventListener_j8fzjz$(new Player_init$ObjectLiteral());
+    println('\u8F49\u81F3\u983B\u9053' + this.channel_0.number);
+    this.addOnPlayerEventListener_j8fzjz$(new Player_init$ObjectLiteral(this));
     (tmp$_1 = this.iframePlayer_0) != null ? (tmp$_1.src = (tmp$_0 = (tmp$ = this.channel_0.sources.node) != null ? tmp$.iFramePlayerSrc : null) != null ? tmp$_0 : 'iframePlayer/videojs_hls.html') : null;
     (tmp$_2 = this.iframePlayer_0) != null ? (tmp$_2.onload = Player_init$lambda(this)) : null;
-    println('Playing Channel: ' + this.channel_0.number);
   }
   function Player$Companion() {
     Player$Companion_instance = this;
@@ -2982,7 +2990,8 @@ var HKNBP_Core = function (_, Kotlin) {
       this$Player.getMuted_y8twos$(Player$volumeMute$lambda$lambda(this$Player));
     };
   }
-  function Player_init$ObjectLiteral() {
+  function Player_init$ObjectLiteral(this$Player) {
+    this.this$Player = this$Player;
     this.isPlaying_0 = false;
     this.numberOfPlaying_0 = 0;
     this.isLowSignalShowChannelDescription_0 = false;
@@ -3015,6 +3024,7 @@ var HKNBP_Core = function (_, Kotlin) {
 
         VirtualRemote_getInstance().update();
         UserControlPanel_getInstance().cannotTouchIframePlayerMode();
+        println('\u64AD\u653E\u7DCA\u983B\u9053' + this.this$Player.channel_0.number);
         break;
       case 'notPlaying':
         this.isPlaying_0 = false;
@@ -3140,7 +3150,7 @@ var HKNBP_Core = function (_, Kotlin) {
   function SettingWindow() {
     SettingWindow_instance = this;
     UserInterface.call(this, 'settingWindow', 'settingWindowHideButton', void 0, true);
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14;
     this.settingWindow_0 = Kotlin.isType(tmp$ = document.getElementById('settingWindow'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('settingWindowHideButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.languageSetHonJyutElegantSet_0 = Kotlin.isType(tmp$_1 = document.getElementById('settingWindowLanguageSetHonJyutElegantSet'), HTMLButtonElement) ? tmp$_1 : throwCCE();
@@ -3155,10 +3165,13 @@ var HKNBP_Core = function (_, Kotlin) {
     this.languageMoveDownLanguage_0 = Kotlin.isType(tmp$_10 = document.getElementById('settingWindowLanguageMoveDownLanguage'), HTMLButtonElement) ? tmp$_10 : throwCCE();
     this.currentUserLanguage_0 = typeof (tmp$_11 = navigator.language || navigator.userLanguage) === 'string' ? tmp$_11 : throwCCE();
     this.clearSettingButton_0 = Kotlin.isType(tmp$_12 = document.getElementById('clearSettingButton'), HTMLButtonElement) ? tmp$_12 : throwCCE();
+    this.devConsole_0 = Kotlin.isType(tmp$_13 = document.getElementById('devConsole'), HTMLDivElement) ? tmp$_13 : throwCCE();
+    this.devModeCheckbox_0 = Kotlin.isType(tmp$_14 = document.getElementById('DevModeCheckbox'), HTMLInputElement) ? tmp$_14 : throwCCE();
     this.settingWindow_0.style.cursor = 'auto';
     this.hideButton_0.onclick = SettingWindow_init$lambda(this);
     this.initLangugeSetting();
     this.initClearSetting();
+    this.initDevModeCheckbox();
   }
   SettingWindow.prototype.getLanguageSetting = function () {
     var tmp$, tmp$_0;
@@ -3290,6 +3303,33 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   SettingWindow.prototype.initClearSetting = function () {
     this.clearSettingButton_0.onclick = SettingWindow$initClearSetting$lambda;
+  };
+  function SettingWindow$initDevModeCheckbox$lambda(this$SettingWindow) {
+    return function (event) {
+      if (this$SettingWindow.devModeCheckbox_0.checked) {
+        this$SettingWindow.devConsole_0.style.display = 'block';
+        try {
+          var _devConsole = this$SettingWindow.devConsole_0;
+          var _getConsoleLogs = getConsoleLogs;
+          _devConsole.innerHTML = _getConsoleLogs();
+          console.log = function () {
+            console.logs.push(Array.from(arguments));
+            console.stdlog.apply(console, arguments);
+            _devConsole.innerHTML = _getConsoleLogs();
+            _devConsole.scrollTop = _devConsole.scrollHeight;
+          };
+        }
+         catch (e) {
+          println('DevModeCheckbox\u54C0\u5DE6: ' + e.toString());
+        }
+      }
+       else {
+        this$SettingWindow.devConsole_0.style.display = 'none';
+      }
+    };
+  }
+  SettingWindow.prototype.initDevModeCheckbox = function () {
+    this.devModeCheckbox_0.onchange = SettingWindow$initDevModeCheckbox$lambda(this);
   };
   function SettingWindow_init$lambda(this$SettingWindow) {
     return function (event) {
@@ -4164,7 +4204,7 @@ var HKNBP_Core = function (_, Kotlin) {
     var appVersionArg = 'entry.759953459=' + appVersion;
     var runningOsArg = 'entry.272098163=' + RunnerInfo_getInstance().getOsName();
     var runningBrowserArg = 'entry.1391825326=' + RunnerInfo_getInstance().getBrowserName();
-    var logArg = 'entry.1270012498=';
+    var logArg = 'entry.1270012498=' + encodeURIComponent(getConsoleLogs());
     window.open(formUrl + '&' + coreVersionArg + '&' + appVersionArg + '&' + runningOsArg + '&' + runningBrowserArg + '&' + logArg, '_blank');
   }
   function VirtualRemote_init$lambda_39(evebt) {
@@ -5994,6 +6034,17 @@ var HKNBP_Core = function (_, Kotlin) {
   Object.defineProperty(package$hknbp_core, 'LongClickEvent', {
     get: LongClickEvent_getInstance
   });
+  Object.defineProperty(package$hknbp_core, 'getConsoleLogs', {
+    get: function () {
+      return getConsoleLogs;
+    }
+  });
+  Object.defineProperty(package$hknbp_core, 'jQuery', {
+    get: function () {
+      return jQuery;
+    }
+  });
+  package$hknbp_core.updateURLParameter_puj7f4$ = updateURLParameter;
   Object.defineProperty(package$hknbp_core, 'rootURL', {
     get: function () {
       return rootURL;
@@ -6010,11 +6061,6 @@ var HKNBP_Core = function (_, Kotlin) {
     },
     set: function (value) {
       appVersion = value;
-    }
-  });
-  Object.defineProperty(package$hknbp_core, 'jQuery', {
-    get: function () {
-      return jQuery;
     }
   });
   Object.defineProperty(package$hknbp_core, 'channels', {
@@ -6036,7 +6082,6 @@ var HKNBP_Core = function (_, Kotlin) {
   package$hknbp_core.designatedChannel = designatedChannel;
   package$hknbp_core.updateChannel = updateChannel;
   package$hknbp_core.reductionTo_vux9f0$ = reductionTo;
-  package$hknbp_core.updateURLParameter_puj7f4$ = updateURLParameter;
   Object.defineProperty(package$hknbp_core, 'userLanguageList', {
     get: function () {
       return userLanguageList;
@@ -6171,10 +6216,12 @@ var HKNBP_Core = function (_, Kotlin) {
     get: XMLTV$Companion_getInstance
   });
   package$hknbp_core.XMLTV = XMLTV;
+  setConsoleLogsListener = setConsoleLogsListener$lambda();
+  getConsoleLogs = getConsoleLogs$lambda;
+  jQuery = $;
   rootURL = 'https://hknbp.org/';
   coreVersion_0 = coreVersion$lambda();
   appVersion = coreVersion_0 + '-PWA';
-  jQuery = $;
   channels = channels$lambda();
   player = null;
   userLanguageList = SettingWindow_getInstance().getLanguageSetting();

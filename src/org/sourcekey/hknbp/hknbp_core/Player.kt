@@ -606,6 +606,7 @@ class Player(private val channel: Channel) {
     }
 
     init {
+        println("轉至頻道${channel.number}")
         addOnPlayerEventListener(object : OnPlayerEventListener {
             private var isPlaying: Boolean = false
             private var numberOfPlaying: Int = 0
@@ -624,6 +625,7 @@ class Player(private val channel: Channel) {
                         }
                         VirtualRemote.update()
                         UserControlPanel.cannotTouchIframePlayerMode()
+                        println("播放緊頻道${channel.number}")
                     }
                     OnPlayerEvent.notPlaying -> {
                         isPlaying = false
@@ -658,6 +660,5 @@ class Player(private val channel: Channel) {
                 kotlinValueToEvalScriptUseableValue(channel.sources.node?.link ?: "")
             })")
         }
-        println("Playing Channel: ${channel.number}")
     }
 }

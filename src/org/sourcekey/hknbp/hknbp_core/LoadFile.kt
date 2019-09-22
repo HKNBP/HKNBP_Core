@@ -25,7 +25,7 @@ import kotlin.browser.window
 object LoadFile {
     val cacheShelfLife = 60 * 60 * 24 * 7 //7日
 
-    fun load(filePath: String): XMLHttpRequest{
+    fun load(cacheShelfLife: Int, filePath: String): XMLHttpRequest{
         val xmlhttp = XMLHttpRequest()
         xmlhttp.open("GET", filePath, false)
         xmlhttp.setRequestHeader("cache-control", "max-age=${cacheShelfLife}")//以秒為單位
@@ -33,7 +33,11 @@ object LoadFile {
         return xmlhttp
     }
 
-    fun load(onLoadedFile: (xmlhttp: XMLHttpRequest)->Unit, onFailedLoadFile: ()->Unit, filePaths: ArrayLinkList<String>){
+    fun load(filePath: String): XMLHttpRequest{
+        return load(cacheShelfLife, filePath)
+    }
+
+    fun load(onLoadedFile: (xmlhttp: XMLHttpRequest)->Unit, onFailedLoadFile: ()->Unit, cacheShelfLife: Int, filePaths: ArrayLinkList<String>){
         val xmlhttp = XMLHttpRequest()
         var isLoaded = false
         val onFailedLoadFileProgram: dynamic = fun(){
@@ -63,15 +67,27 @@ object LoadFile {
             path = cors_api_url + path //完全唔明點解做到,要將呢個+文件位置就得
         }
         xmlhttp.open("GET", path, true)
-        xmlhttp.setRequestHeader("cache-control", "max-age=${cacheShelfLife}")//以秒為單位
+        xmlhttp.setRequestHeader("cache-control", "max-age=${cacheShelfLife}")//以秒為單位///////////////////////////////整個可以強制響線上讀取唔用Cache
         xmlhttp.send()
     }
 
+    fun load(onLoadedFile: (xmlhttp: XMLHttpRequest)->Unit, onFailedLoadFile: ()->Unit, cacheShelfLife: Int, filePath: Array<out String>){
+        load(onLoadedFile, onFailedLoadFile, cacheShelfLife, ArrayLinkList(filePath))
+    }
+
+    fun load(onLoadedFile: (xmlhttp: XMLHttpRequest)->Unit, onFailedLoadFile: ()->Unit, cacheShelfLife: Int, vararg filePath: String){
+        load(onLoadedFile, onFailedLoadFile, cacheShelfLife, filePath)
+    }
+
+    fun load(onLoadedFile: (xmlhttp: XMLHttpRequest)->Unit, onFailedLoadFile: ()->Unit, filePaths: ArrayLinkList<String>){
+        load(onLoadedFile, onFailedLoadFile, cacheShelfLife, filePaths)
+    }
+
     fun load(onLoadedFile: (xmlhttp: XMLHttpRequest)->Unit, onFailedLoadFile: ()->Unit, filePath: Array<out String>){
-        LoadFile.load(onLoadedFile, onFailedLoadFile, ArrayLinkList(filePath))
+        load(onLoadedFile, onFailedLoadFile, cacheShelfLife, ArrayLinkList(filePath))
     }
 
     fun load(onLoadedFile: (xmlhttp: XMLHttpRequest)->Unit, onFailedLoadFile: ()->Unit, vararg filePath: String){
-        LoadFile.load(onLoadedFile, onFailedLoadFile, filePath)
+        load(onLoadedFile, onFailedLoadFile, cacheShelfLife, filePath)
     }
 }

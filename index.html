@@ -326,6 +326,16 @@
     </iframe>
 </div>
 <div id="userInterface">
+    <div id="devConsole" style="
+            background-color: rgba(0,0,0,0);
+            font-size: 1vh;
+            display: none;
+            text-align: left;
+            white-space: pre-line;
+            position: absolute;
+            top:0; bottom:0; left:0;
+            z-index: 29;
+    "></div>
     <button id="userControlPanelShower" tabindex="000000001" style="
               //display: none;
               background: rgba(0, 0, 0, 0);
@@ -1072,7 +1082,14 @@
                             class="icon-font">&#xe82b;</i></button>
                 </div>
             </div>
-
+            <div style="display:flex;">
+                <div style="width:20vh;">
+                    Dev模式:
+                </div>
+                <div style="width:15vh;">
+                        <input id="DevModeCheckbox" type="checkbox" style="width:3vh;height:3vh;">
+                </div>
+            </div>
         </div>
         <div style="position:absolute;top:0;left:0;">
             <i class="icon-font">&#xe802;</i> 設定

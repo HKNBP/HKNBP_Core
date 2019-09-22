@@ -113,80 +113,19 @@ object OfficialChannel {
     }
 
     /**************************************************************************************************************/
-    private val channelsInfoExpireTime: Int = 7 * 24 * 60 * 60 * 1000 //7日
-
-    private var channelsInfoSaveDate: Date = {
-        val channelsInfoSaveDateJsonString = localStorage.getItem("channelsInfoSaveDate")
-        if(channelsInfoSaveDateJsonString != null){
-            JSON.parse<Date>(channelsInfoSaveDateJsonString)
-        }else{
-            Date()
-        }
-    }()
-    set(value) {
-        localStorage.setItem("channelsInfoSaveDate", JSON.stringify(value))
-        field = value
-    }
-
-    private var channelsCache: ArrayLinkList<Channel>? = {
-        var officialChannels: ArrayLinkList<Channel>? = null/**
-        val officialChannelsJsonString = localStorage.getItem("OfficialChannels")
-        if(officialChannelsJsonString != null){
-            val officialChannelsArray = JSON.parse<Array<Channel>>(officialChannelsJsonString)
-            officialChannels = ArrayLinkList<Channel>(officialChannelsArray)
-        }*/
-        officialChannels
-    }()
-    set(value) {
-        localStorage.setItem("OfficialChannels", JSON.stringify(value))
-        field = value
-    }
 
     /**
      * 讀取電視頻道表資料
      */
     fun getOfficialChannels(onLoadedChannelsListener: (channels: ArrayLinkList<Channel>)->Unit){
-        /**
-        try {
-            println(channelsCache?.toString())
-            println(JSON.stringify(channelsCache))
-            println(channelsCache?.toJSON())
-
-            val json = Json(JsonConfiguration.Stable)
-            val _channelsCache = channelsCache
-            if(_channelsCache != null){
-                val sss = json.stringify(_channelsCache.toList())
-                println(sss)
-                val obj = json.parse<ArrayLinkList<Channel>>(sss)
-                println(obj.size)
-                println(obj.node)
-                println(obj.node?.name)
-            }
-
-            println("======")
-            println(channelsCache?.size)
-            println(channelsCache?.node)
-            println(channelsCache?.node?.name)
-            println(JSON.stringify(channelsCache))
-
-            println(channelsInfoSaveDate.getTime()+channelsInfoExpireTime)
-            println(Date().getTime())
-            println(channelsInfoSaveDate.getTime()+channelsInfoExpireTime < Date().getTime())
-            println(channelsCache == null)
-        }catch (e:dynamic){ println("XXX")}
-        */
-        if(channelsCache == null /**|| channelsInfoSaveDate.getTime()+channelsInfoExpireTime < Date().getTime()*/){
-            parseChannels(fun(channels){
-                channels.sortBy{ channel -> channel.number }
-                channelsCache = channels
-                onLoadedChannelsListener(channelsCache?:ArrayLinkList<Channel>())
-            }, fun(){}, "${rootURL}data/official_channels.xml", "data/official_channels.xml")
-        }else{
-            onLoadedChannelsListener(channels?:ArrayLinkList<Channel>())
-        }
+        parseChannels(fun(channels){
+            channels.sortBy{ channel -> channel.number }
+            println("成功讀取official_channels.xml\n此OfficialChannels有${channels.size}條頻道")
+            onLoadedChannelsListener(channels)
+        }, fun(){
+            println("未能讀取official_channels.xml")
+        }, "${rootURL}data/official_channels.xml", "data/official_channels.xml")
     }
 
-    init{
-
-    }
+    init{ }
 }

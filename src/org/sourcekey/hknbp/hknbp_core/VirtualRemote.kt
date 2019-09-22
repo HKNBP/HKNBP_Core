@@ -190,7 +190,7 @@ object VirtualRemote: UserInterface("virtualRemote"){
             val appVersionArg = "entry.759953459=${appVersion}"
             val runningOsArg = "entry.272098163=${RunnerInfo.getOsName()}"
             val runningBrowserArg = "entry.1391825326=${RunnerInfo.getBrowserName()}"
-            val logArg = "entry.1270012498="/////////////////////////////////////////////////
+            val logArg = "entry.1270012498=${encodeURIComponent(getConsoleLogs())}"
             window.open(
                     formUrl+"&"+coreVersionArg+"&"+appVersionArg+"&"+runningOsArg+"&"+runningBrowserArg+"&"+logArg,
                     "_blank" // <- This is what makes it open in a new window.

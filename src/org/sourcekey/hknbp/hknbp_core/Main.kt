@@ -25,6 +25,91 @@ import kotlin.js.Date
 import kotlin.random.Random
 
 
+/**
+ * 設置ConsoleLog監聽器
+ * */
+private val setConsoleLogsListener = {
+    try {
+        js("""
+            console.stdlog = console.log.bind(console);
+            console.logs = [];
+            console.log = function(){
+                console.logs.push(Array.from(arguments));
+                console.stdlog.apply(console, arguments);
+            }
+        """)
+    }catch (e: dynamic){println("setConsoleLogListener哀左: ${e}")}
+}()
+
+/**
+ * 獲取ConsoleLog
+ * */
+val getConsoleLogs = fun(): String{
+    try {
+        val consoleLogs = js("console").logs
+        var logs = ""
+        var i = 0
+        while (i < consoleLogs.length.toString().toIntOrNull()?:0){
+            logs += consoleLogs[i] + "\n"
+            i++
+        }
+        return logs
+    }catch (e: dynamic){println("getConsoleLog哀左: ${e}")}
+    return ""
+}
+
+/**
+ * 畀Kotlin使用JQuery
+ * */
+val jQuery: dynamic = js("\$")
+
+external fun decodeURIComponent(encodedURI: String): String
+
+external fun encodeURIComponent(encodedURI: String): String
+
+/**
+ * 更新URL參數
+ * @param param 參數名
+ * @param paramVal 參數值
+ * */
+fun updateURLParameter(param: String, paramVal: String){
+    val url: String = window.location.href
+    var TheAnchor: String? = null
+    var newAdditionalURL = ""
+    var tempArray = url.split("?")
+    var baseURL = tempArray.getOrNull(0)
+    var additionalURL: String? = tempArray.getOrNull(1)
+    var temp = ""
+
+    if (additionalURL != null) {
+        val tmpAnchor = additionalURL.split("#")
+        val TheParams = tmpAnchor.getOrNull(0)
+        TheAnchor = tmpAnchor.getOrNull(1)
+        if (TheAnchor != null) {additionalURL = TheParams}
+
+        tempArray = additionalURL!!.split("&")
+
+        for (i in 0 until tempArray.size){
+            if (tempArray.getOrNull(i)?.split('=')?.getOrNull(0) != param) {
+                newAdditionalURL += temp + tempArray.getOrNull(i)
+                temp = "&"
+            }
+        }
+    } else {
+        val tmpAnchor = baseURL!!.split("#")
+        val TheParams = tmpAnchor.getOrNull(0)
+        TheAnchor = tmpAnchor.getOrNull(1)
+
+        if (TheParams != null) {baseURL = TheParams}
+    }
+
+    var _paramVal = paramVal
+    if (TheAnchor != null) {_paramVal += "#" + TheAnchor}
+
+    val rows_txt = temp + "" + param + "=" + _paramVal
+    window.history.replaceState("", "", baseURL + "?" + newAdditionalURL + rows_txt)
+}
+
 val rootURL: String = "https://hknbp.org/"
 
 /**
@@ -60,11 +145,6 @@ fun includeScript(vararg files: String) {
     }
 }
 val jQueryLib = includeScript("js/jquery-3.4.1.min.js")*/
-
-/**
- * 畀Kotlin使用JQuery
- * */
-val jQuery: dynamic = js("\$")
 
 var channels: ArrayLinkList<Channel> = {
     channels = ArrayLinkList<Channel>()
@@ -109,10 +189,6 @@ var channels: ArrayLinkList<Channel> = {
 }()
 
 var player: Player? = null
-
-external fun decodeURIComponent(encodedURI: String): String
-
-external fun encodeURIComponent(encodedURI: String): String
 
 /**
  * 去特定頻道
@@ -242,49 +318,6 @@ fun reductionTo(w: Int, h: Int): IntArray{
 }
 
 /**
- * 更新URL參數
- * @param param 參數名
- * @param paramVal 參數值
- * */
-fun updateURLParameter(param: String, paramVal: String){
-    val url: String = window.location.href
-    var TheAnchor: String? = null
-    var newAdditionalURL = ""
-    var tempArray = url.split("?")
-    var baseURL = tempArray.getOrNull(0)
-    var additionalURL: String? = tempArray.getOrNull(1)
-    var temp = ""
-
-    if (additionalURL != null) {
-        val tmpAnchor = additionalURL.split("#")
-        val TheParams = tmpAnchor.getOrNull(0)
-        TheAnchor = tmpAnchor.getOrNull(1)
-        if (TheAnchor != null) {additionalURL = TheParams}
-
-        tempArray = additionalURL!!.split("&")
-
-        for (i in 0 until tempArray.size){
-            if (tempArray.getOrNull(i)?.split('=')?.getOrNull(0) != param) {
-                newAdditionalURL += temp + tempArray.getOrNull(i)
-                temp = "&"
-            }
-        }
-    } else {
-        val tmpAnchor = baseURL!!.split("#")
-        val TheParams = tmpAnchor.getOrNull(0)
-        TheAnchor = tmpAnchor.getOrNull(1)
-
-        if (TheParams != null) {baseURL = TheParams}
-    }
-
-    var _paramVal = paramVal
-    if (TheAnchor != null) {_paramVal += "#" + TheAnchor}
-
-    val rows_txt = temp + "" + param + "=" + _paramVal
-    window.history.replaceState("", "", baseURL + "?" + newAdditionalURL + rows_txt)
-}
-
-/**
  * 使用者語言讀取優先排列表
  * */
 var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
@@ -296,6 +329,8 @@ var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
  * ****************************** *
  * */
 fun main(args: Array<String>) {
+    println("coreVersion: ${coreVersion}")
+    println("appVersion: ${appVersion}")
     //HKNBPAppLayerBridge
 
     try {
@@ -304,5 +339,6 @@ fun main(args: Array<String>) {
         VirtualRemote
         RealRemote
         LongClickEvent
+        println("介面初始化完成")
     } catch (e: dynamic) { println("介面初始化哀左: $e") }
 }

@@ -179,11 +179,38 @@ object SettingWindow: UserInterface(
     }
 
 
+    private val devConsole = document.getElementById("devConsole") as HTMLDivElement
+    private val devModeCheckbox = document.getElementById("DevModeCheckbox") as HTMLInputElement
+
+    fun initDevModeCheckbox(){
+        devModeCheckbox.onchange = fun(event){
+            if(devModeCheckbox.checked){
+                devConsole.style.display = "block"
+                try {
+                    val _devConsole = devConsole
+                    val _getConsoleLogs: ()->String = getConsoleLogs
+                    _devConsole.innerHTML = _getConsoleLogs()
+                    js("""
+                        console.log = function(){
+                            console.logs.push(Array.from(arguments));
+                            console.stdlog.apply(console, arguments);
+                            _devConsole.innerHTML = _getConsoleLogs();
+                            _devConsole.scrollTop = _devConsole.scrollHeight
+                        }
+                    """)
+                }catch (e: dynamic){println("DevModeCheckbox哀左: ${e}")}
+            }else{
+                devConsole.style.display = "none"
+            }
+        }
+    }
+
     init {
         settingWindow.style.cursor = "auto"
         hideButton.onclick = fun(event){ hide() }
 
         initLangugeSetting()
         initClearSetting()
+        initDevModeCheckbox()
     }
 }
