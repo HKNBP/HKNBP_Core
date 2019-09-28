@@ -329,8 +329,6 @@ var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
  * ****************************** *
  * */
 fun main(args: Array<String>) {
-    println("coreVersion: ${coreVersion}")
-    println("appVersion: ${appVersion}")
     //HKNBPAppLayerBridge
 
     try {
