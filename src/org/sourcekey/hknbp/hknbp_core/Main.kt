@@ -330,9 +330,9 @@ var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
  * */
 fun main(args: Array<String>) {
     //HKNBPAppLayerBridge
-
+    println("H0 init")
     window.history.pushState("", "", "")
-    println("H init")
+    println("H1 init")
     println(window.history.length)
     window.addEventListener("popstate", fun (event) {
         window.history.pushState("", "", "")

@@ -2115,8 +2115,9 @@ var HKNBP_Core = function (_, Kotlin) {
     println('history pop test');
   }
   function main(args) {
+    println('H0 init');
     window.history.pushState('', '', '');
-    println('H init');
+    println('H1 init');
     println(window.history.length);
     window.addEventListener('popstate', main$lambda, false);
     try {
