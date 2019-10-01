@@ -122,7 +122,7 @@ class Player(private val channel: Channel) {
          *
          * 此值使所有Player使用同一音量
          * */
-        private var muted: Boolean = localStorage.getItem("RecentlyMuted")?.toBoolean()?:true
+        private var muted: Boolean = localStorage.getItem("RecentlyMuted")?.toBoolean()?:false
             set(value) {
                 localStorage.setItem("RecentlyMuted", muted.toString())//儲存低返最近設定音量
                 field = value

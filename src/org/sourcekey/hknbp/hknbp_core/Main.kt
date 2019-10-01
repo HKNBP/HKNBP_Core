@@ -331,6 +331,13 @@ var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
 fun main(args: Array<String>) {
     //HKNBPAppLayerBridge
 
+    window.history.pushState("", "", "")
+    window.addEventListener("popstate", fun (event) {
+        window.history.pushState("", "", "")
+
+        println("history pop test")
+    }, false)
+
     try {
         UserControlPanel
         ConsentPanel

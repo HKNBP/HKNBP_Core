@@ -2110,7 +2110,13 @@ var HKNBP_Core = function (_, Kotlin) {
     return arr;
   }
   var userLanguageList;
+  function main$lambda(event) {
+    window.history.pushState('', '', '');
+    println('history pop test');
+  }
   function main(args) {
+    window.history.pushState('', '', '');
+    window.addEventListener('popstate', main$lambda, false);
     try {
       UserControlPanel_getInstance();
       ConsentPanel_getInstance();
@@ -2397,7 +2403,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.volume_xu8cq7$_0 = (tmp$_0 = (tmp$ = localStorage.getItem('RecentlyVolume')) != null ? toDoubleOrNull(tmp$) : null) != null ? tmp$_0 : 100.0;
     this.volumeUp = Player$Companion$volumeUp$lambda(this);
     this.volumeDown = Player$Companion$volumeDown$lambda(this);
-    this.muted_oj2db2$_0 = (tmp$_2 = (tmp$_1 = localStorage.getItem('RecentlyMuted')) != null ? toBoolean(tmp$_1) : null) != null ? tmp$_2 : true;
+    this.muted_oj2db2$_0 = (tmp$_2 = (tmp$_1 = localStorage.getItem('RecentlyMuted')) != null ? toBoolean(tmp$_1) : null) != null ? tmp$_2 : false;
     this.volumeMute = Player$Companion$volumeMute$lambda(this);
     this.isCheckVideoAutoPlayNeedToMute_0 = true;
     this.checkNeedCanTouchIframePlayerModeTimer_r3xwh1$_0 = 0;
