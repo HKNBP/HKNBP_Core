@@ -99,6 +99,8 @@ abstract class UserInterface(
                 "#${mainFrameElementID} option" + "," +
                 "#${mainFrameElementID} input"
         )?.focus(fun(){if(!js("\$(\"this\").is(\":focus\")")){
+            println("focus")
+            println(jQuery(js("this"))?.attr("tabIndex")?.toString())
             //設 當onfocus 就onhover 同步
             jQuery(js("this"))?.hover()
             //記住依家Focus邊粒element為之後再Show呢個介面時Focus返對上個次嘅element
@@ -115,6 +117,8 @@ abstract class UserInterface(
                 "#${mainFrameElementID} option" + "," +
                 "#${mainFrameElementID} input"
         )?.hover(fun(){
+            println("hover")
+            println(jQuery(js("this"))?.attr("tabIndex")?.toString())
             //設 當onhover 就onfocus 同步
             jQuery(js("this"))?.focus()
         })

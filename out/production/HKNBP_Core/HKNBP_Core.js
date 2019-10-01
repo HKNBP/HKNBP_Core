@@ -2110,16 +2110,7 @@ var HKNBP_Core = function (_, Kotlin) {
     return arr;
   }
   var userLanguageList;
-  function main$lambda(event) {
-    window.history.pushState('', '', '');
-    println('history pop test');
-  }
   function main(args) {
-    println('H0 init');
-    window.history.pushState('', '', '');
-    println('H1 init');
-    println(window.history.length);
-    window.addEventListener('popstate', main$lambda, false);
     try {
       UserControlPanel_getInstance();
       ConsentPanel_getInstance();
@@ -3821,9 +3812,11 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function UserInterface_init$lambda(this$UserInterface) {
     return function () {
-      var tmp$;
+      var tmp$, tmp$_0, tmp$_1;
       if (!$('this').is(':focus')) {
-        (tmp$ = jQuery(this)) != null ? tmp$.hover() : null;
+        println('focus');
+        println((tmp$_0 = (tmp$ = jQuery(this)) != null ? tmp$.attr('tabIndex') : null) != null ? tmp$_0.toString() : null);
+        (tmp$_1 = jQuery(this)) != null ? tmp$_1.hover() : null;
         this$UserInterface.lastTimeFocusElement_bd4klp$_0 = jQuery(this);
         if (!this$UserInterface.isShowUserInterfaceFirstFocus_mby111$_0 && this$UserInterface.isFocusCountdownHide_768iff$_0) {
           this$UserInterface.isShowUserInterfaceFirstFocus_mby111$_0 = false;
@@ -3833,8 +3826,10 @@ var HKNBP_Core = function (_, Kotlin) {
     };
   }
   function UserInterface_init$lambda_0() {
-    var tmp$;
-    (tmp$ = jQuery(this)) != null ? tmp$.focus() : null;
+    var tmp$, tmp$_0, tmp$_1;
+    println('hover');
+    println((tmp$_0 = (tmp$ = jQuery(this)) != null ? tmp$.attr('tabIndex') : null) != null ? tmp$_0.toString() : null);
+    (tmp$_1 = jQuery(this)) != null ? tmp$_1.focus() : null;
   }
   UserInterface.$metadata$ = {
     kind: Kind_CLASS,
