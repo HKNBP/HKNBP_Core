@@ -2116,6 +2116,8 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function main(args) {
     window.history.pushState('', '', '');
+    println('H init');
+    println(window.history.length);
     window.addEventListener('popstate', main$lambda, false);
     try {
       UserControlPanel_getInstance();
