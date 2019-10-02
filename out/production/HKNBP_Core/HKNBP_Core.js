@@ -3814,8 +3814,7 @@ var HKNBP_Core = function (_, Kotlin) {
     return function () {
       var tmp$, tmp$_0, tmp$_1;
       if (!$('this').is(':focus')) {
-        println('focus');
-        println((tmp$_0 = (tmp$ = jQuery(this)) != null ? tmp$.attr('tabIndex') : null) != null ? tmp$_0.toString() : null);
+        println('focus ' + toString((tmp$_0 = (tmp$ = jQuery(this)) != null ? tmp$.attr('tabIndex') : null) != null ? tmp$_0.toString() : null));
         (tmp$_1 = jQuery(this)) != null ? tmp$_1.hover() : null;
         this$UserInterface.lastTimeFocusElement_bd4klp$_0 = jQuery(this);
         if (!this$UserInterface.isShowUserInterfaceFirstFocus_mby111$_0 && this$UserInterface.isFocusCountdownHide_768iff$_0) {
@@ -3827,8 +3826,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function UserInterface_init$lambda_0() {
     var tmp$, tmp$_0, tmp$_1;
-    println('hover');
-    println((tmp$_0 = (tmp$ = jQuery(this)) != null ? tmp$.attr('tabIndex') : null) != null ? tmp$_0.toString() : null);
+    println('hover ' + toString((tmp$_0 = (tmp$ = jQuery(this)) != null ? tmp$.attr('tabIndex') : null) != null ? tmp$_0.toString() : null));
     (tmp$_1 = jQuery(this)) != null ? tmp$_1.focus() : null;
   }
   UserInterface.$metadata$ = {
