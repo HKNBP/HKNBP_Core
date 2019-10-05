@@ -152,8 +152,8 @@ object VirtualRemote: UserInterface("virtualRemote"){
         designateChannelSelect.onchange     = fun(event){designatedChannel(designateChannelSelect.value.toInt())}
         designateChannelButton.onclick      = fun(event){designatedChannel(designateChannelInputText.value.toInt())}
         lastTimeChannelButton.onclick       = fun(event){channels.lastTime()}
-        nextVideoButton.onclick             = fun(event){player?.nextVideoTrack();VideoDescription.show(3000)}
-        previousVideoButton.onclick         = fun(event){player?.previousVideoTrack();VideoDescription.show(3000)}
+        nextVideoButton.onclick             = fun(event){player?.nextVideoTrack();VideoDescription.show(3000);window.history.pushState("12134","","")}
+        previousVideoButton.onclick         = fun(event){player?.previousVideoTrack();VideoDescription.show(3000);window.history.back()}
         designateVideoSelect.onchange       = fun(event){player?.designatedVideoTrack(designateVideoSelect.value.toInt());VideoDescription.show(3000)}
         nextAudioButton.onclick             = fun(event){player?.nextAudioTrack();AudioDescription.show(3000)}
         previousAudioButton.onclick         = fun(event){player?.previousAudioTrack();AudioDescription.show(3000)}

@@ -2110,7 +2110,18 @@ var HKNBP_Core = function (_, Kotlin) {
     return arr;
   }
   var userLanguageList;
+  function main$lambda(event) {
+    try {
+      var _event = event;
+      var data = _event != null ? _event.state : null;
+      console.log(data);
+    }
+     catch (e) {
+      console.log(e);
+    }
+  }
   function main(args) {
+    window.addEventListener('popstate', main$lambda, false);
     try {
       UserControlPanel_getInstance();
       ConsentPanel_getInstance();
@@ -4111,10 +4122,12 @@ var HKNBP_Core = function (_, Kotlin) {
   function VirtualRemote_init$lambda_6(event) {
     player != null ? (player.nextVideoTrack(), Unit) : null;
     VideoDescription_getInstance().show_za3lpa$(3000);
+    window.history.pushState('12134', '', '');
   }
   function VirtualRemote_init$lambda_7(event) {
     player != null ? (player.previousVideoTrack(), Unit) : null;
     VideoDescription_getInstance().show_za3lpa$(3000);
+    window.history.back();
   }
   function VirtualRemote_init$lambda_8(this$VirtualRemote) {
     return function (event) {
