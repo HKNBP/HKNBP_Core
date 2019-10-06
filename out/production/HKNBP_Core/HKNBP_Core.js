@@ -1312,7 +1312,7 @@ var HKNBP_Core = function (_, Kotlin) {
     addClass(div, [addClass_0]);
     div.style.display = 'inline-block';
     div.style.width = width;
-    div.append(button);
+    div.appendChild(button);
     return div;
   };
   EPG.prototype.newProgrammeListBlockLine_0 = function (id) {
@@ -1330,8 +1330,8 @@ var HKNBP_Core = function (_, Kotlin) {
       this$EPG.programmeListCurrentDisplayDate_0.innerHTML = '';
       var block = this$EPG.newProgrammeListBlock_0('30vh', void 0, '#111', innerHTML);
       var blockLine = this$EPG.newProgrammeListBlockLine_0();
-      blockLine.append(block);
-      this$EPG.programmeListCurrentDisplayDate_0.append(blockLine);
+      blockLine.appendChild(block);
+      this$EPG.programmeListCurrentDisplayDate_0.appendChild(blockLine);
     };
   }
   function EPG$setProgrammeListCurrentDisplayDate$lambda_0(closure$updateDisplayDate, this$EPG) {
@@ -1350,11 +1350,11 @@ var HKNBP_Core = function (_, Kotlin) {
     var increaseHour = 0;
     while (this.fromDate_0.getTime() + (((increaseHour * 60 | 0) * 60 | 0) * 1000 | 0) < this.toDate_0.getTime()) {
       var hour = padStart((new Date(this.fromDate_0.getTime() + (((increaseHour * 60 | 0) * 60 | 0) * 1000 | 0))).getHours().toString(), 2, 48);
-      line.append(this.newProgrammeListBlock_0('30vh', 'time', '#222222', hour + ':00'));
-      line.append(this.newProgrammeListBlock_0('30vh', 'time', '#222222', hour + ':30'));
+      line.appendChild(this.newProgrammeListBlock_0('30vh', 'time', '#222222', hour + ':00'));
+      line.appendChild(this.newProgrammeListBlock_0('30vh', 'time', '#222222', hour + ':30'));
       increaseHour = increaseHour + 1 | 0;
     }
-    this.programmeListTimeLine_0.append(line);
+    this.programmeListTimeLine_0.appendChild(line);
   };
   EPG.prototype.setProgrammeListChannelList_0 = function () {
     var tmp$;
@@ -1363,9 +1363,9 @@ var HKNBP_Core = function (_, Kotlin) {
     while (tmp$.hasNext()) {
       var channel = tmp$.next();
       var line = this.newProgrammeListBlockLine_0();
-      line.append(this.newProgrammeListBlock_0('8vh', 'channelNumber', '#222', padStart(channel.number.toString(), 3, 48)));
-      line.append(this.newProgrammeListBlock_0('22vh', 'channelName', '#222', channel.name));
-      this.programmeListChannelList_0.append(line);
+      line.appendChild(this.newProgrammeListBlock_0('8vh', 'channelNumber', '#222', padStart(channel.number.toString(), 3, 48)));
+      line.appendChild(this.newProgrammeListBlock_0('22vh', 'channelName', '#222', channel.name));
+      this.programmeListChannelList_0.appendChild(line);
     }
   };
   function EPG$addProgrammeOnTimeLine$lambda(closure$programme, this$EPG) {
@@ -1391,7 +1391,7 @@ var HKNBP_Core = function (_, Kotlin) {
     var addProgrammeToTime = tmp$_0;
     var timeLength = this.dateToDateDifferenceMinute_0(addProgrammeFromTime, addProgrammeToTime);
     var title = (tmp$_4 = (tmp$_3 = (tmp$_2 = (tmp$_1 = programme.titles) != null ? tmp$_1.getElementsByLanguage_qj8e4y$(userLanguageList) : null) != null ? getOrNull(tmp$_2, 0) : null) != null ? tmp$_3.title : null) != null ? tmp$_4 : '';
-    timeLine.append(this.newProgrammeListBlock_0(timeLength.toString() + 'vh', 'programme', '#333', title, (tmp$_6 = toIntOrNull(Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(new Tab3dIndex((tmp$_5 = toIntOrNull(padStart(programme.start.getDate().toString(), 2, 48) + padStart(programme.start.getHours().toString(), 2, 48))) != null ? tmp$_5 : 0, channel.number, this.tabIndexZ_0)))) != null ? tmp$_6 : 0, EPG$addProgrammeOnTimeLine$lambda(programme, this)));
+    timeLine.appendChild(this.newProgrammeListBlock_0(timeLength.toString() + 'vh', 'programme', '#333', title, (tmp$_6 = toIntOrNull(Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(new Tab3dIndex((tmp$_5 = toIntOrNull(padStart(programme.start.getDate().toString(), 2, 48) + padStart(programme.start.getHours().toString(), 2, 48))) != null ? tmp$_5 : 0, channel.number, this.tabIndexZ_0)))) != null ? tmp$_6 : 0, EPG$addProgrammeOnTimeLine$lambda(programme, this)));
   };
   function EPG$loadProgrammeListTableContentChannelProgrammeTimeLine$lambda(closure$channel, this$EPG) {
     return function (xmltv) {
@@ -1469,7 +1469,7 @@ var HKNBP_Core = function (_, Kotlin) {
     tmp$ = channels.iterator();
     while (tmp$.hasNext()) {
       var channel = tmp$.next();
-      this.programmeListTable_0.append(this.newProgrammeListBlockLine_0('channel' + channel.number + 'ProgrammeTimeLine'));
+      this.programmeListTable_0.appendChild(this.newProgrammeListBlockLine_0('channel' + channel.number + 'ProgrammeTimeLine'));
     }
   };
   function EPG$syncScroll$lambda() {

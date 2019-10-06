@@ -419,7 +419,7 @@ object EPG: UserInterface("epg") {
         div.addClass(addClass)
         div.style.display               = "inline-block"
         div.style.width                 = width
-        div.append(button)
+        div.appendChild(button)
 
         return div
     }
@@ -441,8 +441,8 @@ object EPG: UserInterface("epg") {
                     innerHTML = innerHTML
             )
             val blockLine = newProgrammeListBlockLine()
-            blockLine.append(block)
-            programmeListCurrentDisplayDate.append(blockLine)
+            blockLine.appendChild(block)
+            programmeListCurrentDisplayDate.appendChild(blockLine)
         }
 
         updateDisplayDate(fromDate.toLocaleDateString())
@@ -457,7 +457,7 @@ object EPG: UserInterface("epg") {
         var increaseHour = 0
         while (fromDate.getTime()+(increaseHour*60*60*1000) < toDate.getTime()) {
             val hour = Date(fromDate.getTime()+(increaseHour*60*60*1000)).getHours().toString().padStart(2, '0')
-            line.append(
+            line.appendChild(
                     newProgrammeListBlock(
                             width = "30vh",
                             addClass = "time",
@@ -465,7 +465,7 @@ object EPG: UserInterface("epg") {
                             innerHTML = "${hour}:00"
                     )
             )
-            line.append(
+            line.appendChild(
                     newProgrammeListBlock(
                             width = "30vh",
                             addClass = "time",
@@ -476,14 +476,14 @@ object EPG: UserInterface("epg") {
 
             increaseHour++
         }
-        programmeListTimeLine.append(line)
+        programmeListTimeLine.appendChild(line)
     }
 
     private fun setProgrammeListChannelList(){
         programmeListChannelList.innerHTML = ""
         for (channel in channels){
             val line = newProgrammeListBlockLine()
-            line.append(
+            line.appendChild(
                     newProgrammeListBlock(
                             width = "8vh",
                             addClass = "channelNumber",
@@ -491,7 +491,7 @@ object EPG: UserInterface("epg") {
                             innerHTML = channel.number.toString().padStart(3, '0')
                     )
             )
-            line.append(
+            line.appendChild(
                     newProgrammeListBlock(
                             width = "22vh",
                             addClass = "channelName",
@@ -499,7 +499,7 @@ object EPG: UserInterface("epg") {
                             innerHTML = channel.name
                     )
             )
-            programmeListChannelList.append(line)
+            programmeListChannelList.appendChild(line)
         }
     }
 
@@ -509,7 +509,7 @@ object EPG: UserInterface("epg") {
         val timeLength = dateToDateDifferenceMinute(addProgrammeFromTime, addProgrammeToTime)
         val title = programme.titles?.getElementsByLanguage(userLanguageList)?.getOrNull(0)?.title?: ""
 
-        timeLine.append(
+        timeLine.appendChild(
                 newProgrammeListBlock(
                         width = "${timeLength}vh",
                         addClass = "programme",
@@ -611,7 +611,7 @@ object EPG: UserInterface("epg") {
      * */
     private fun newChannelProgrammeTimeLineArea(){
         for (channel in channels){
-            programmeListTable.append(
+            programmeListTable.appendChild(
                     newProgrammeListBlockLine("channel${channel.number}ProgrammeTimeLine")
             )
         }
