@@ -893,6 +893,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.updateDisplayCurrentDateBoxTimer_0 = 0;
     this.fromDate_0 = this.nowDateWithoutMinute_0();
     this.toDate_0 = this.addDay_0(this.nowDateWithoutMinute_0(), 2);
+    println('0');
     this.epg_0.style.cursor = 'auto';
     this.hideButton_0.onclick = EPG_init$lambda(this);
   }
@@ -1476,22 +1477,26 @@ var HKNBP_Core = function (_, Kotlin) {
     jQuery('#epgProgrammeListTimeLine').scrollLeft(jQuery(this).scrollLeft());
   }
   EPG.prototype.syncScroll_0 = function () {
+    println('4');
     jQuery('#epgProgrammeListTable').on('scroll', EPG$syncScroll$lambda);
   };
   EPG.prototype.setProgrammeListTable_0 = function () {
+    println('3');
     this.programmeListTable_0.innerHTML = '';
-    this.syncScroll_0();
     this.newChannelProgrammeTimeLineArea_0();
     this.setChannelProgrammeTimeLineContent_0();
+    this.syncScroll_0();
     this.focusCurrentProgramme_0();
   };
   EPG.prototype.setProgrammeList_0 = function () {
+    println('2');
     this.setProgrammeListCurrentDisplayDate_0();
     this.setProgrammeListTimeLine_0();
     this.setProgrammeListChannelList_0();
     this.setProgrammeListTable_0();
   };
   EPG.prototype.show = function () {
+    println('1');
     UserInterface.prototype.show.call(this);
     this.setDisplayCurrentDateBox_0();
     this.setProgrammeList_0();
@@ -3823,10 +3828,9 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function UserInterface_init$lambda(this$UserInterface) {
     return function () {
-      var tmp$, tmp$_0, tmp$_1;
+      var tmp$;
       if (!$('this').is(':focus')) {
-        println('focus ' + toString((tmp$_0 = (tmp$ = jQuery(this)) != null ? tmp$.attr('tabIndex') : null) != null ? tmp$_0.toString() : null));
-        (tmp$_1 = jQuery(this)) != null ? tmp$_1.hover() : null;
+        (tmp$ = jQuery(this)) != null ? tmp$.hover() : null;
         this$UserInterface.lastTimeFocusElement_bd4klp$_0 = jQuery(this);
         if (!this$UserInterface.isShowUserInterfaceFirstFocus_mby111$_0 && this$UserInterface.isFocusCountdownHide_768iff$_0) {
           this$UserInterface.isShowUserInterfaceFirstFocus_mby111$_0 = false;
@@ -3836,9 +3840,8 @@ var HKNBP_Core = function (_, Kotlin) {
     };
   }
   function UserInterface_init$lambda_0() {
-    var tmp$, tmp$_0, tmp$_1;
-    println('hover ' + toString((tmp$_0 = (tmp$ = jQuery(this)) != null ? tmp$.attr('tabIndex') : null) != null ? tmp$_0.toString() : null));
-    (tmp$_1 = jQuery(this)) != null ? tmp$_1.focus() : null;
+    var tmp$;
+    (tmp$ = jQuery(this)) != null ? tmp$.focus() : null;
   }
   UserInterface.$metadata$ = {
     kind: Kind_CLASS,

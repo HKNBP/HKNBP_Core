@@ -14,7 +14,6 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
-import jquery.jq
 import kotlin.browser.document
 import kotlin.js.Date
 import org.sourcekey.hknbp.hknbp_core.XMLTV.Programme
@@ -622,6 +621,7 @@ object EPG: UserInterface("epg") {
      * 將TimeLine同ChannelList同Table嘅scroll同步
      * */
     private fun syncScroll(){
+        println("4")
         jQuery("#epgProgrammeListTable").on("scroll", fun(){
             jQuery("#epgProgrammeListChannelList").scrollTop(jQuery(js("this")).scrollTop())
             jQuery("#epgProgrammeListTimeLine").scrollLeft(jQuery(js("this")).scrollLeft())
@@ -629,14 +629,16 @@ object EPG: UserInterface("epg") {
     }
 
     private fun setProgrammeListTable(){
+        println("3")
         programmeListTable.innerHTML = ""
-        syncScroll()
         newChannelProgrammeTimeLineArea()
         setChannelProgrammeTimeLineContent()
+        syncScroll()
         focusCurrentProgramme()
     }
 
     private fun setProgrammeList(){
+        println("2")
         setProgrammeListCurrentDisplayDate()
         setProgrammeListTimeLine()
         setProgrammeListChannelList()
@@ -644,6 +646,7 @@ object EPG: UserInterface("epg") {
     }
 
     override fun show() {
+        println("1")
         super.show()
         setDisplayCurrentDateBox()
         setProgrammeList()
@@ -655,6 +658,7 @@ object EPG: UserInterface("epg") {
     }
 
     init {
+        println("0")
         epg.style.cursor = "auto"
         hideButton.onclick = fun(event){ hide() }
     }
