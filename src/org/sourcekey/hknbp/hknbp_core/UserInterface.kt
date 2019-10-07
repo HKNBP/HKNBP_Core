@@ -71,11 +71,7 @@ abstract class UserInterface(
     }
 
     private fun setHideTimer(showTime: Int){
-        hideTimer = window.setTimeout(fun(){
-            println("h ${hideTimer}")
-            hide()
-        }, showTime)
-        println(hideTimer)
+        hideTimer = window.setTimeout(fun(){ hide() }, showTime)
     }
 
     fun show(showTime: Int){

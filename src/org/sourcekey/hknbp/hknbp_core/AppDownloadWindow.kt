@@ -14,6 +14,7 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
+import org.w3c.dom.HTMLButtonElement
 import org.w3c.dom.HTMLDivElement
 import kotlin.browser.document
 import kotlin.browser.window
@@ -25,7 +26,7 @@ object AppDownloadWindow: UserInterface(
         isHideFocusToUserControlPanelShower = true
 ) {
     private val appDownloadWindow = document.getElementById("appDownloadWindow") as HTMLDivElement
-    private val hideButton = document.getElementById("appDownloadWindowHideButton") as HTMLDivElement
+    private val hideButton = document.getElementById("appDownloadWindowHideButton") as HTMLButtonElement
 
     init {
         hideButton.onclick = fun(event){ hide() }

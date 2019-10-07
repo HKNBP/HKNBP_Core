@@ -16,7 +16,7 @@
 <officialchannel>
     <channel>
         <number>000</number>
-        <name>測試頻道0</name>
+        <name>HLS測試頻道</name>
         <source>
             <description>HLSSource</description>
             <iframeplayersrc>iframePlayer/videojs_hls.html</iframeplayersrc>
@@ -25,73 +25,23 @@
         <information epgid="htv2.hr" src="http://tvprofil.net/xmltv/data/htv2.hr/weekly_htv2.hr_tvprofil.net.xml"/>
     </channel>
     <channel>
-        <number>002</number>
-        <name>.mp4測試頻道</name>
+        <number>001</number>
+        <name>Dash測試頻道</name>
         <source>
-            <description>YoutubeSource</description>
-            <iframeplayersrc>iframePlayer/youtube_api.html</iframeplayersrc>
-            <link></link>
+            <description>DashSource</description>
+            <iframeplayersrc>iframePlayer/videojs_dash.html</iframeplayersrc>
+            <link>https://s3.amazonaws.com/_bc_dml/example-content/sintel_dash/sintel_vod.mpd</link>
         </source>
         <information epgid="vinkovacka-tv.hr" src="http://tvprofil.net/xmltv/data/vinkovacka-tv.hr/weekly_vinkovacka-tv.hr_tvprofil.net.xml"/>
     </channel>
     <channel>
         <number>003</number>
-        <name>4K測試頻道</name>
+        <name>Youtube測試頻道</name>
         <source>
             <description>YoutubeSource</description>
             <iframeplayersrc>iframePlayer/youtube_api.html</iframeplayersrc>
-            <link></link>
+            <link>ekthcIHDt3I</link>
         </source>
         <information epgid="hayat-tv.ba" src="http://tvprofil.net/xmltv/data/hayat-tv.ba/weekly_hayat-tv.ba_tvprofil.net.xml"/>
-    </channel>
-    <channel>
-        <number>004</number>
-        <name>64:27測試頻道</name>
-        <source>
-            <description>YoutubeSource</description>
-            <iframeplayersrc>iframePlayer/youtube_api.html</iframeplayersrc>
-            <link></link>
-        </source>
-        <information epgid="obn.ba" src="http://tvprofil.net/xmltv/data/obn.ba/weekly_obn.ba_tvprofil.net.xml"/>
-    </channel>
-    <channel>
-        <number>005</number>
-        <name>H.265測試頻道</name>
-        <source>
-            <description>YoutubeSource</description>
-            <iframeplayersrc>iframePlayer/youtube_api.html</iframeplayersrc>
-            <link></link>
-        </source>
-        <information epgid="vh1-europe.music" src="http://tvprofil.net/xmltv/data/vh1-europe.music/weekly_vh1-europe.music_tvprofil.net.xml"/>
-    </channel>
-    <channel>
-        <number>007</number>
-        <name>Dash測試頻道</name>
-        <source>
-            <description>HLSSource</description>
-            <iframeplayersrc>iframePlayer/videojs_dash.html</iframeplayersrc>
-            <link></link>
-        </source>
-        <information epgid="vinkovacka-tv.hr" src="http://tvprofil.net/xmltv/data/vinkovacka-tv.hr/weekly_vinkovacka-tv.hr_tvprofil.net.xml"/>
-    </channel>
-    <channel>
-        <number>008</number>
-        <name>測試頻道8</name>
-        <source>
-            <description>HLSSource</description>
-            <iframeplayersrc>iframePlayer/videojs_dash.html</iframeplayersrc>
-            <link></link>
-        </source>
-        <information epgid="tv-istra.hr" src="http://tvprofil.net/xmltv/data/tv-istra.hr/weekly_tv-istra.hr_tvprofil.net.xml"/>
-    </channel>
-    <channel>
-        <number>009</number>
-        <name>測試頻道9</name>
-        <source>
-            <description>HLSSource</description>
-            <iframeplayersrc>iframePlayer/videojs_hls.html</iframeplayersrc>
-            <link></link>
-        </source>
-        <information epgid="vh1-europe.music" src="http://tvprofil.net/xmltv/data/vh1-europe.music/weekly_vh1-europe.music_tvprofil.net.xml"/>
     </channel>
 </officialchannel>

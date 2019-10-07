@@ -132,7 +132,7 @@ var HKNBP_Core = function (_, Kotlin) {
     UserInterface.call(this, 'appDownloadWindow', 'appDownloadWindowHideButton', void 0, true, true);
     var tmp$, tmp$_0;
     this.appDownloadWindow_0 = Kotlin.isType(tmp$ = document.getElementById('appDownloadWindow'), HTMLDivElement) ? tmp$ : throwCCE();
-    this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('appDownloadWindowHideButton'), HTMLDivElement) ? tmp$_0 : throwCCE();
+    this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('appDownloadWindowHideButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.hideButton_0.onclick = AppDownloadWindow_init$lambda(this);
   }
   function AppDownloadWindow_init$lambda(this$AppDownloadWindow) {
@@ -3776,13 +3776,11 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function UserInterface$setHideTimer$lambda(this$UserInterface) {
     return function () {
-      println('h ' + this$UserInterface.hideTimer_1c3smv$_0);
       this$UserInterface.hide();
     };
   }
   UserInterface.prototype.setHideTimer_djwtaz$_0 = function (showTime) {
     this.hideTimer_1c3smv$_0 = window.setTimeout(UserInterface$setHideTimer$lambda(this), showTime);
-    println(this.hideTimer_1c3smv$_0);
   };
   UserInterface.prototype.show_za3lpa$ = function (showTime) {
     this.show();
