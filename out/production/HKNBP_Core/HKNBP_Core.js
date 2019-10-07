@@ -863,7 +863,7 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function EPG() {
     EPG_instance = this;
-    UserInterface.call(this, 'epg');
+    UserInterface.call(this, 'epg', void 0, void 0, void 0, true);
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22;
     this.epg_0 = Kotlin.isType(tmp$ = document.getElementById('epg'), HTMLElement) ? tmp$ : throwCCE();
     this.displayCurrentDateBox_0 = Kotlin.isType(tmp$_0 = document.getElementById('epgDisplayCurrentDateBox'), HTMLElement) ? tmp$_0 : throwCCE();
