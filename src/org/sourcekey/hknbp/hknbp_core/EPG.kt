@@ -575,7 +575,6 @@ object EPG: UserInterface("epg") {
     private fun focusCurrentProgramme(){
         channels.node?.information?.getXMLTV(fun(xmltv){
             val currentProgrammeOrNull = xmltv.programmes?.getProgrammeByTime()
-            println(currentProgrammeOrNull)
             val currentProgramme: Programme = if(null != currentProgrammeOrNull){ currentProgrammeOrNull }else{
                 hideButton.focus()
                 return
@@ -586,7 +585,6 @@ object EPG: UserInterface("epg") {
                     channels.node?.number?:0,
                     tabIndexZ
             ))
-            println(firstFocusTabIndex)
             (document.querySelector("[tabindex=\"${firstFocusTabIndex}\"]") as HTMLElement).focus()
         })
     }
@@ -621,7 +619,6 @@ object EPG: UserInterface("epg") {
      * 將TimeLine同ChannelList同Table嘅scroll同步
      * */
     private fun syncScroll(){
-        println("4")
         jQuery("#epgProgrammeListTable").on("scroll", fun(){
             jQuery("#epgProgrammeListChannelList").scrollTop(jQuery(js("this")).scrollTop())
             jQuery("#epgProgrammeListTimeLine").scrollLeft(jQuery(js("this")).scrollLeft())
@@ -629,7 +626,6 @@ object EPG: UserInterface("epg") {
     }
 
     private fun setProgrammeListTable(){
-        println("3")
         programmeListTable.innerHTML = ""
         newChannelProgrammeTimeLineArea()
         setChannelProgrammeTimeLineContent()
@@ -638,7 +634,6 @@ object EPG: UserInterface("epg") {
     }
 
     private fun setProgrammeList(){
-        println("2")
         setProgrammeListCurrentDisplayDate()
         setProgrammeListTimeLine()
         setProgrammeListChannelList()
@@ -646,7 +641,6 @@ object EPG: UserInterface("epg") {
     }
 
     override fun show() {
-        println("1")
         super.show()
         setDisplayCurrentDateBox()
         setProgrammeList()
@@ -658,7 +652,6 @@ object EPG: UserInterface("epg") {
     }
 
     init {
-        println("0")
         epg.style.cursor = "auto"
         hideButton.onclick = fun(event){ hide() }
     }

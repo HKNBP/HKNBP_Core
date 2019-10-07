@@ -92,7 +92,7 @@ var HKNBP_Core = function (_, Kotlin) {
   XMLTV$Programme$ProgrammeList.prototype.constructor = XMLTV$Programme$ProgrammeList;
   function AboutWindow() {
     AboutWindow_instance = this;
-    UserInterface.call(this, 'aboutWindow', 'aboutWindowHideButton', void 0, true);
+    UserInterface.call(this, 'aboutWindow', 'aboutWindowHideButton', void 0, true, true);
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3;
     this.aboutWindow_0 = Kotlin.isType(tmp$ = document.getElementById('aboutWindow'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('aboutWindowHideButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
@@ -104,8 +104,8 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   AboutWindow.prototype.show = function () {
     UserInterface.prototype.show.call(this);
-    AboutWindow_getInstance().coreVersionText_0.innerHTML = coreVersion_0;
-    AboutWindow_getInstance().appVersionText_0.innerHTML = appVersion;
+    this.coreVersionText_0.innerHTML = coreVersion_0;
+    this.appVersionText_0.innerHTML = appVersion;
   };
   function AboutWindow_init$lambda(this$AboutWindow) {
     return function (event) {
@@ -129,7 +129,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function AppDownloadWindow() {
     AppDownloadWindow_instance = this;
-    UserInterface.call(this, 'appDownloadWindow', 'appDownloadWindowHideButton', void 0, true);
+    UserInterface.call(this, 'appDownloadWindow', 'appDownloadWindowHideButton', void 0, true, true);
     var tmp$, tmp$_0;
     this.appDownloadWindow_0 = Kotlin.isType(tmp$ = document.getElementById('appDownloadWindow'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('appDownloadWindowHideButton'), HTMLDivElement) ? tmp$_0 : throwCCE();
@@ -705,7 +705,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function ConsentPanel() {
     ConsentPanel_instance = this;
-    UserInterface.call(this, 'consentPanel', 'consentPanelAgreeConsentButton', false);
+    UserInterface.call(this, 'consentPanel', 'consentPanelAgreeConsentButton', false, void 0, true);
     var tmp$, tmp$_0, tmp$_1;
     this.consentPanel_0 = Kotlin.isType(tmp$ = document.getElementById('consentPanel'), HTMLDivElement) ? tmp$ : throwCCE();
     this.agreeConsentButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('consentPanelAgreeConsentButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
@@ -893,7 +893,6 @@ var HKNBP_Core = function (_, Kotlin) {
     this.updateDisplayCurrentDateBoxTimer_0 = 0;
     this.fromDate_0 = this.nowDateWithoutMinute_0();
     this.toDate_0 = this.addDay_0(this.nowDateWithoutMinute_0(), 2);
-    println('0');
     this.epg_0.style.cursor = 'auto';
     this.hideButton_0.onclick = EPG_init$lambda(this);
   }
@@ -1436,7 +1435,6 @@ var HKNBP_Core = function (_, Kotlin) {
     return function (xmltv) {
       var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
       var currentProgrammeOrNull = (tmp$ = xmltv.programmes) != null ? tmp$.getProgrammeByTime() : null;
-      println(currentProgrammeOrNull);
       if (currentProgrammeOrNull != null) {
         tmp$_0 = currentProgrammeOrNull;
       }
@@ -1446,7 +1444,6 @@ var HKNBP_Core = function (_, Kotlin) {
       }
       var currentProgramme = tmp$_0;
       var firstFocusTabIndex = Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(new Tab3dIndex((tmp$_1 = toIntOrNull(padStart(currentProgramme.start.getDate().toString(), 2, 48) + padStart(currentProgramme.start.getHours().toString(), 2, 48))) != null ? tmp$_1 : 0, (tmp$_3 = (tmp$_2 = channels.node) != null ? tmp$_2.number : null) != null ? tmp$_3 : 0, this$EPG.tabIndexZ_0));
-      println(firstFocusTabIndex);
       (Kotlin.isType(tmp$_4 = document.querySelector('[tabindex=' + '"' + firstFocusTabIndex + '"' + ']'), HTMLElement) ? tmp$_4 : throwCCE()).focus();
     };
   }
@@ -1477,11 +1474,9 @@ var HKNBP_Core = function (_, Kotlin) {
     jQuery('#epgProgrammeListTimeLine').scrollLeft(jQuery(this).scrollLeft());
   }
   EPG.prototype.syncScroll_0 = function () {
-    println('4');
     jQuery('#epgProgrammeListTable').on('scroll', EPG$syncScroll$lambda);
   };
   EPG.prototype.setProgrammeListTable_0 = function () {
-    println('3');
     this.programmeListTable_0.innerHTML = '';
     this.newChannelProgrammeTimeLineArea_0();
     this.setChannelProgrammeTimeLineContent_0();
@@ -1489,14 +1484,12 @@ var HKNBP_Core = function (_, Kotlin) {
     this.focusCurrentProgramme_0();
   };
   EPG.prototype.setProgrammeList_0 = function () {
-    println('2');
     this.setProgrammeListCurrentDisplayDate_0();
     this.setProgrammeListTimeLine_0();
     this.setProgrammeListChannelList_0();
     this.setProgrammeListTable_0();
   };
   EPG.prototype.show = function () {
-    println('1');
     UserInterface.prototype.show.call(this);
     this.setDisplayCurrentDateBox_0();
     this.setProgrammeList_0();
@@ -3194,7 +3187,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function SettingWindow() {
     SettingWindow_instance = this;
-    UserInterface.call(this, 'settingWindow', 'settingWindowHideButton', void 0, true);
+    UserInterface.call(this, 'settingWindow', 'settingWindowHideButton', void 0, true, true);
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14;
     this.settingWindow_0 = Kotlin.isType(tmp$ = document.getElementById('settingWindow'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('settingWindowHideButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
@@ -3590,7 +3583,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function UserControlPanel() {
     UserControlPanel_instance = this;
-    UserInterface.call(this, 'userControlPanel', 'onHeadNextAudioButton');
+    UserInterface.call(this, 'userControlPanel', 'onHeadNextAudioButton', void 0, void 0, true);
     var tmp$, tmp$_0;
     this.panel_0 = Kotlin.isType(tmp$ = document.getElementById('userControlPanel'), HTMLElement) ? tmp$ : throwCCE();
     this.shower_0 = Kotlin.isType(tmp$_0 = document.getElementById('userControlPanelShower'), HTMLElement) ? tmp$_0 : throwCCE();
@@ -3714,7 +3707,7 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return UserControlPanel_instance;
   }
-  function UserInterface(mainFrameElementID, firstFocusElementID, isFocusCountdownHide, isFocusOutHide, conversionFocusHideTime) {
+  function UserInterface(mainFrameElementID, firstFocusElementID, isFocusCountdownHide, isFocusOutHide, isHideFocusToUserControlPanelShower, conversionFocusHideTime) {
     UserInterface$Companion_getInstance();
     if (firstFocusElementID === void 0)
       firstFocusElementID = null;
@@ -3722,12 +3715,15 @@ var HKNBP_Core = function (_, Kotlin) {
       isFocusCountdownHide = true;
     if (isFocusOutHide === void 0)
       isFocusOutHide = false;
+    if (isHideFocusToUserControlPanelShower === void 0)
+      isHideFocusToUserControlPanelShower = false;
     if (conversionFocusHideTime === void 0)
       conversionFocusHideTime = 15000;
     this.mainFrameElementID_lg8aaf$_0 = mainFrameElementID;
     this.firstFocusElementID_ydky23$_0 = firstFocusElementID;
     this.isFocusCountdownHide_768iff$_0 = isFocusCountdownHide;
     this.isFocusOutHide_o0rj94$_0 = isFocusOutHide;
+    this.isHideFocusToUserControlPanelShower_bpmi6v$_0 = isHideFocusToUserControlPanelShower;
     this.conversionFocusHideTime_igwo47$_0 = conversionFocusHideTime;
     var tmp$, tmp$_0, tmp$_1;
     this.htmlElement_sdspbr$_0 = Kotlin.isType(tmp$ = document.getElementById(this.mainFrameElementID_lg8aaf$_0), HTMLElement) ? tmp$ : throwCCE();
@@ -3780,11 +3776,13 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function UserInterface$setHideTimer$lambda(this$UserInterface) {
     return function () {
+      println('h ' + this$UserInterface.hideTimer_1c3smv$_0);
       this$UserInterface.hide();
     };
   }
   UserInterface.prototype.setHideTimer_djwtaz$_0 = function (showTime) {
     this.hideTimer_1c3smv$_0 = window.setTimeout(UserInterface$setHideTimer$lambda(this), showTime);
+    println(this.hideTimer_1c3smv$_0);
   };
   UserInterface.prototype.show_za3lpa$ = function (showTime) {
     this.show();
@@ -3793,7 +3791,9 @@ var HKNBP_Core = function (_, Kotlin) {
   UserInterface.prototype.hide = function () {
     var tmp$;
     this.htmlElement_sdspbr$_0.style.display = 'none';
-    (Kotlin.isType(tmp$ = document.getElementById('userControlPanelShower'), HTMLElement) ? tmp$ : throwCCE()).focus();
+    if (this.isHideFocusToUserControlPanelShower_bpmi6v$_0) {
+      (Kotlin.isType(tmp$ = document.getElementById('userControlPanelShower'), HTMLElement) ? tmp$ : throwCCE()).focus();
+    }
   };
   UserInterface.prototype.showHideAlternately = function () {
     if (this.isShow) {

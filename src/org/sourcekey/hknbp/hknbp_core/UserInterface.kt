@@ -23,6 +23,7 @@ abstract class UserInterface(
         private val firstFocusElementID: String? = null,
         private var isFocusCountdownHide: Boolean = true,
         private var isFocusOutHide: Boolean = false,
+        private val isHideFocusToUserControlPanelShower: Boolean = false,
         private val conversionFocusHideTime: Int = 15000
 ) {
     companion object{
@@ -70,7 +71,11 @@ abstract class UserInterface(
     }
 
     private fun setHideTimer(showTime: Int){
-        hideTimer = window.setTimeout(fun(){ hide() }, showTime)
+        hideTimer = window.setTimeout(fun(){
+            println("h ${hideTimer}")
+            hide()
+        }, showTime)
+        println(hideTimer)
     }
 
     fun show(showTime: Int){
@@ -80,8 +85,11 @@ abstract class UserInterface(
 
     open fun hide(){
         htmlElement.style.display = "none"
-        //focus到userControlPanelShower,為左之後撳centerButton可以顯示VirtualRemote
-        (document.getElementById("userControlPanelShower") as HTMLElement).focus()
+
+        if(isHideFocusToUserControlPanelShower){
+            //focus到userControlPanelShower,為左之後撳centerButton可以顯示VirtualRemote
+            (document.getElementById("userControlPanelShower") as HTMLElement).focus()
+        }
     }
 
     fun showHideAlternately(){

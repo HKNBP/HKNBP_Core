@@ -23,7 +23,8 @@ import kotlin.browser.window
 object AboutWindow: UserInterface(
         "aboutWindow",
         firstFocusElementID = "aboutWindowHideButton",
-        isFocusOutHide = true
+        isFocusOutHide = true,
+        isHideFocusToUserControlPanelShower = true
 ) {
     private val aboutWindow: HTMLDivElement = document.getElementById("aboutWindow") as HTMLDivElement
     private val hideButton: HTMLButtonElement = document.getElementById("aboutWindowHideButton") as HTMLButtonElement
@@ -33,8 +34,8 @@ object AboutWindow: UserInterface(
 
     override fun show() {
         super.show()
-        AboutWindow.coreVersionText.innerHTML = coreVersion
-        AboutWindow.appVersionText.innerHTML = appVersion
+        coreVersionText.innerHTML = coreVersion
+        appVersionText.innerHTML = appVersion
     }
 
     init {
