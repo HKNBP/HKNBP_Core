@@ -343,7 +343,9 @@
             top:0; bottom:0; left:0;
             z-index: 29;
     "></div>
-    <button id="userControlPanelShower" style="
+    <button id="userControlPanelShower"
+            tabindex="-1"
+            style="
               //display: none;
               background: rgba(0, 0, 0, 0);
               border-style: none;
@@ -353,7 +355,8 @@
               top:0; bottom:0; left:0; right:0;
               width:100%; height:100vh;
               z-index: 30;
-          " autofocus>
+            "
+            autofocus>
     </button>
     <div id="userControlPanel" style="display: none;">
         <div id="virtualRemote" style="
@@ -593,19 +596,19 @@
                 </script>
             </div>
         </div>
-        <button id="nativeAppInstallButton" class="notice" style="
+        <button id="nativeAppInstallButton" class="notice" tabindex="199999999" style="
                 display: block;
                 top:0vh; right:14vh;
                 ">
             <i class="icon-font">&#xe826;</i>
         </button>
-        <button id="pictureInPictureButton" class="notice" style="
+        <button id="pictureInPictureButton" class="notice" tabindex="199999999" style="
                 display: block;
                 top:0vh; right:7vh;
                 ">
             <i class="icon-font">&#xe829;</i>
         </button>
-        <button id="fullScreenButton" class="notice" style="
+        <button id="fullScreenButton" class="notice" tabindex="199999999" style="
                 display: block;
                 top:0vh; right:0vh;
                 ">
