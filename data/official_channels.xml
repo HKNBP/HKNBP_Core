@@ -29,13 +29,13 @@
         <name>Dash測試頻道</name>
         <source>
             <description>DashSource</description>
-            <iframeplayersrc>iframePlayer/videojs_dash.html</iframeplayersrc>
-            <link>https://s3.amazonaws.com/_bc_dml/example-content/sintel_dash/sintel_vod.mpd</link>
+            <iframeplayersrc>iframePlayer/videojs_dash.html</iframeplayersrc>http://rdmedia.bbc.co.uk/dash/ondemand/testcard/1/client_manifest-events.mpd
+            <link>https://akamai-axtest.akamaized.net/routes/lapd-v1-acceptance/www_c4/Manifest.mpd</link>
         </source>
         <information epgid="vinkovacka-tv.hr" src="http://tvprofil.net/xmltv/data/vinkovacka-tv.hr/weekly_vinkovacka-tv.hr_tvprofil.net.xml"/>
     </channel>
     <channel>
-        <number>003</number>
+        <number>002</number>
         <name>Youtube測試頻道</name>
         <source>
             <description>YoutubeSource</description>
