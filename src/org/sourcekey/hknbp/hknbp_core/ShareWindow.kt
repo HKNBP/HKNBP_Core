@@ -19,11 +19,7 @@ import org.w3c.dom.HTMLDivElement
 import kotlin.browser.document
 import kotlin.browser.window
 
-object ShareWindow : UserInterface(
-        "shareWindow",
-        firstFocusElementID = "shareWindowHideButton",
-        isFocusOutHide = true
-) {
+object ShareWindow : Window("shareWindow", firstFocusElementID = "shareWindowHideButton") {
     private val shareWindow = document.getElementById("shareWindow") as HTMLDivElement
     private val hideButton = document.getElementById("shareWindowHideButton") as HTMLButtonElement
     private val buttonList = document.getElementById("shareWindowShareButtonList") as HTMLDivElement

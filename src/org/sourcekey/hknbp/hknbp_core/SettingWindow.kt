@@ -19,12 +19,7 @@ import kotlin.browser.document
 import kotlin.browser.localStorage
 import kotlin.browser.window
 
-object SettingWindow: UserInterface(
-        "settingWindow",
-        firstFocusElementID = "settingWindowHideButton",
-        isFocusOutHide = true,
-        isHideFocusToUserControlPanelShower = true
-) {
+object SettingWindow: Window("settingWindow", firstFocusElementID = "settingWindowHideButton") {
     private val settingWindow                   = document.getElementById("settingWindow") as HTMLDivElement
     private val hideButton                      = document.getElementById("settingWindowHideButton") as HTMLButtonElement
 

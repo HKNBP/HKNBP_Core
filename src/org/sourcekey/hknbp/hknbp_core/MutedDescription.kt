@@ -23,15 +23,13 @@ object MutedDescription: UserInterface("mutedDescription") {
     private val mutedDescription: HTMLDivElement = document.getElementById("mutedDescription") as HTMLDivElement
     private val mutedDescriptionButton: HTMLButtonElement = document.getElementById("mutedDescriptionButton") as HTMLButtonElement
 
-    override fun update() {
+    fun update(muted: Boolean){
         val script = fun(){
-            Player.getMuted(fun(muted){
-                if(muted){
-                    show()
-                }else{
-                    hide()
-                }
-            })
+            if(muted){
+                show()
+            }else{
+                hide()
+            }
         }
 
         //由於有啲IframePlayer Set完個值之後唔會即時變更
@@ -40,6 +38,12 @@ object MutedDescription: UserInterface("mutedDescription") {
         window.setTimeout(fun(){ script() }, 1000)
         window.setTimeout(fun(){ script() }, 10000)
         window.setTimeout(fun(){ script() }, 60000)
+    }
+
+    override fun update() {
+        Player.getMuted(fun(muted){
+            update(muted)
+        })
     }
 
     init {

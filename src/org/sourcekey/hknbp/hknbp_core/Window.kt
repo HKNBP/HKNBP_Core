@@ -14,16 +14,23 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
-import org.w3c.dom.HTMLButtonElement
-import org.w3c.dom.HTMLDivElement
-import kotlin.browser.document
-import kotlin.browser.window
+abstract class Window(
+        mainFrameElementID: String,
+        firstFocusElementID: String? = null,
+        isFocusCountdownHide: Boolean = true,
+        isFocusOutHide: Boolean = true,
+        isHideFocusToUserControlPanelShower: Boolean = true,
+        isShowToHideUserControlPanel: Boolean = true,
+        conversionFocusHideTime: Int = 15000
+): UserInterface(
+        mainFrameElementID,
+        firstFocusElementID,
+        isFocusCountdownHide,
+        isFocusOutHide,
+        isHideFocusToUserControlPanelShower,
+        isShowToHideUserControlPanel,
+        conversionFocusHideTime
+)
 
-object AppDownloadWindow: Window("appDownloadWindow", firstFocusElementID = "appDownloadWindowHideButton") {
-    private val appDownloadWindow = document.getElementById("appDownloadWindow") as HTMLDivElement
-    private val hideButton = document.getElementById("appDownloadWindowHideButton") as HTMLButtonElement
 
-    init {
-        hideButton.onclick = fun(event){ hide() }
-    }
-}
+

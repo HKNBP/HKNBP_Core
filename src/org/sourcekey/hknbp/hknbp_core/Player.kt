@@ -85,11 +85,9 @@ class Player(private val channel: Channel) {
          * 小數中有取捨使到有機會調教唔到音量值
          * */
         fun getVolume(onReturn: (volume: Double)->Unit) {
-            onReturn(volume)
-            /**
             callIframePlayerFunction("onGetIframePlayerVolume(onReturn)", fun(returnValue){
                 onReturn(returnValue?.toString()?.toDoubleOrNull()?:100.0)
-            })*/
+            })
         }
 
         /**
@@ -132,20 +130,33 @@ class Player(private val channel: Channel) {
          * 設定iframePlayer嘅靜音資訊
          * */
         fun setMuted(muted: Boolean) {
-            callIframePlayerFunction("onSetIframePlayerMuted(${kotlinValueToEvalScriptUseableValue(muted)})")
-            Companion.muted = muted
-            MutedDescription.update()
+            //因依家大部分 <瀏覽器> 唔畀自動播放, 如果要自動播放一定要將Player設為 <靜音>
+            val setScript = fun(muted: Boolean){
+                callIframePlayerFunction(
+                        "onSetIframePlayerMuted(${kotlinValueToEvalScriptUseableValue(muted)})"
+                )
+                MutedDescription.update(muted)
+            }
+            if(isCheckVideoAutoPlayNeedToMute){
+                CanAutoplay.checkVideoAutoPlayNeedToMute(fun(){
+                    Companion.muted = muted
+                    setScript(muted)
+                }, fun(){
+                    setScript(true)
+                })
+            }else{
+                Companion.muted = muted
+                setScript(muted)
+            }
         }
 
         /**
          * 獲取iframePlayer嘅靜音資訊
          * */
         fun getMuted(onReturn: (muted: Boolean)->Unit) {
-            onReturn(muted)
-            /**
             callIframePlayerFunction("onGetIframePlayerMuted(onReturn)", fun(returnValue){
                 onReturn(returnValue?.toString()?.toBoolean()?:true)
-            })*/
+            })
         }
 
         /**
@@ -515,12 +526,7 @@ class Player(private val channel: Channel) {
                 when (onPlayerEvent) {
                     OnPlayerEvent.playing -> {
                         if(!isInit){
-                            //因依家大部分 <瀏覽器> 唔畀自動播放, 如果要自動播放一定要將Player設為 <靜音>
-                            if(isCheckVideoAutoPlayNeedToMute){
-                                CanAutoplay.checkVideoAutoPlayNeedToMute(fun(){ setMuted(muted) }, fun(){ setMuted(true) })
-                            }else{
-                                setMuted(muted)
-                            }
+                            setMuted(muted)
                             isInit = true
                         }
                     }
@@ -719,7 +725,7 @@ class Player(private val channel: Channel) {
                         UserControlPanel.canTouchIframePlayerMode()
                         PromptBox.promptMessage("已切換到手動播放模式")
                     }
-                }, 10000)
+                }, 30000)
             }
         })
         iframePlayer?.src = channel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"

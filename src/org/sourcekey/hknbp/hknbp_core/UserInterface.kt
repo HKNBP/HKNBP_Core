@@ -24,6 +24,7 @@ abstract class UserInterface(
         private var isFocusCountdownHide: Boolean = true,
         private var isFocusOutHide: Boolean = false,
         private val isHideFocusToUserControlPanelShower: Boolean = false,
+        private val isShowToHideUserControlPanel: Boolean = false,
         private val conversionFocusHideTime: Int = 15000
 ) {
     companion object{
@@ -103,7 +104,6 @@ abstract class UserInterface(
                 "#${mainFrameElementID} option" + "," +
                 "#${mainFrameElementID} input"
         )?.focus(fun(){if(!js("\$(\"this\").is(\":focus\")")){
-            console.log(jQuery(js("this"))?.html())
             //設 當onfocus 就onhover 同步
             jQuery(js("this"))?.hover()
             //記住依家Focus邊粒element為之後再Show呢個介面時Focus返對上個次嘅element

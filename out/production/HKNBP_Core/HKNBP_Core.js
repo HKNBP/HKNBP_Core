@@ -42,9 +42,11 @@ var HKNBP_Core = function (_, Kotlin) {
   var Regex_init = Kotlin.kotlin.text.Regex_init_61zpoe$;
   var toDouble = Kotlin.kotlin.text.toDouble_pdl1vz$;
   var Exception = Kotlin.kotlin.Exception;
-  AboutWindow.prototype = Object.create(UserInterface.prototype);
+  Window.prototype = Object.create(UserInterface.prototype);
+  Window.prototype.constructor = Window;
+  AboutWindow.prototype = Object.create(Window.prototype);
   AboutWindow.prototype.constructor = AboutWindow;
-  AppDownloadWindow.prototype = Object.create(UserInterface.prototype);
+  AppDownloadWindow.prototype = Object.create(Window.prototype);
   AppDownloadWindow.prototype.constructor = AppDownloadWindow;
   ArrayLinkList.prototype = Object.create(ArrayList.prototype);
   ArrayLinkList.prototype.constructor = ArrayLinkList;
@@ -54,7 +56,7 @@ var HKNBP_Core = function (_, Kotlin) {
   ChannelDescription.prototype.constructor = ChannelDescription;
   ConsentPanel.prototype = Object.create(UserInterface.prototype);
   ConsentPanel.prototype.constructor = ConsentPanel;
-  EPG.prototype = Object.create(UserInterface.prototype);
+  EPG.prototype = Object.create(Window.prototype);
   EPG.prototype.constructor = EPG;
   EnteringNumberBox.prototype = Object.create(UserInterface.prototype);
   EnteringNumberBox.prototype.constructor = EnteringNumberBox;
@@ -72,9 +74,9 @@ var HKNBP_Core = function (_, Kotlin) {
   Player$ProgrammableColor.prototype.constructor = Player$ProgrammableColor;
   PromptBox.prototype = Object.create(UserInterface.prototype);
   PromptBox.prototype.constructor = PromptBox;
-  SettingWindow.prototype = Object.create(UserInterface.prototype);
+  SettingWindow.prototype = Object.create(Window.prototype);
   SettingWindow.prototype.constructor = SettingWindow;
-  ShareWindow.prototype = Object.create(UserInterface.prototype);
+  ShareWindow.prototype = Object.create(Window.prototype);
   ShareWindow.prototype.constructor = ShareWindow;
   SubtitleDescription.prototype = Object.create(UserInterface.prototype);
   SubtitleDescription.prototype.constructor = SubtitleDescription;
@@ -92,7 +94,7 @@ var HKNBP_Core = function (_, Kotlin) {
   XMLTV$Programme$ProgrammeList.prototype.constructor = XMLTV$Programme$ProgrammeList;
   function AboutWindow() {
     AboutWindow_instance = this;
-    UserInterface.call(this, 'aboutWindow', 'aboutWindowHideButton', void 0, true, true);
+    Window.call(this, 'aboutWindow', 'aboutWindowHideButton');
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3;
     this.aboutWindow_0 = Kotlin.isType(tmp$ = document.getElementById('aboutWindow'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('aboutWindowHideButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
@@ -103,7 +105,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.consentText_0.onclick = AboutWindow_init$lambda_0;
   }
   AboutWindow.prototype.show = function () {
-    UserInterface.prototype.show.call(this);
+    Window.prototype.show.call(this);
     this.coreVersionText_0.innerHTML = coreVersion_0;
     this.appVersionText_0.innerHTML = appVersion;
   };
@@ -118,7 +120,7 @@ var HKNBP_Core = function (_, Kotlin) {
   AboutWindow.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'AboutWindow',
-    interfaces: [UserInterface]
+    interfaces: [Window]
   };
   var AboutWindow_instance = null;
   function AboutWindow_getInstance() {
@@ -129,7 +131,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function AppDownloadWindow() {
     AppDownloadWindow_instance = this;
-    UserInterface.call(this, 'appDownloadWindow', 'appDownloadWindowHideButton', void 0, true, true);
+    Window.call(this, 'appDownloadWindow', 'appDownloadWindowHideButton');
     var tmp$, tmp$_0;
     this.appDownloadWindow_0 = Kotlin.isType(tmp$ = document.getElementById('appDownloadWindow'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('appDownloadWindowHideButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
@@ -143,7 +145,7 @@ var HKNBP_Core = function (_, Kotlin) {
   AppDownloadWindow.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'AppDownloadWindow',
-    interfaces: [UserInterface]
+    interfaces: [Window]
   };
   var AppDownloadWindow_instance = null;
   function AppDownloadWindow_getInstance() {
@@ -863,7 +865,7 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function EPG() {
     EPG_instance = this;
-    UserInterface.call(this, 'epg', void 0, void 0, void 0, true);
+    Window.call(this, 'epg');
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22;
     this.epg_0 = Kotlin.isType(tmp$ = document.getElementById('epg'), HTMLElement) ? tmp$ : throwCCE();
     this.displayCurrentDateBox_0 = Kotlin.isType(tmp$_0 = document.getElementById('epgDisplayCurrentDateBox'), HTMLElement) ? tmp$_0 : throwCCE();
@@ -1490,12 +1492,12 @@ var HKNBP_Core = function (_, Kotlin) {
     this.setProgrammeListTable_0();
   };
   EPG.prototype.show = function () {
-    UserInterface.prototype.show.call(this);
+    Window.prototype.show.call(this);
     this.setDisplayCurrentDateBox_0();
     this.setProgrammeList_0();
   };
   EPG.prototype.hide = function () {
-    UserInterface.prototype.hide.call(this);
+    Window.prototype.hide.call(this);
     window.clearTimeout(this.updateDisplayCurrentDateBoxTimer_0);
   };
   function EPG_init$lambda(this$EPG) {
@@ -1506,7 +1508,7 @@ var HKNBP_Core = function (_, Kotlin) {
   EPG.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'EPG',
-    interfaces: [UserInterface]
+    interfaces: [Window]
   };
   var EPG_instance = null;
   function EPG_getInstance() {
@@ -2140,19 +2142,14 @@ var HKNBP_Core = function (_, Kotlin) {
     this.mutedDescriptionButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('mutedDescriptionButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.mutedDescriptionButton_0.onclick = MutedDescription_init$lambda;
   }
-  function MutedDescription$update$lambda$lambda(this$MutedDescription) {
-    return function (muted) {
-      if (muted) {
+  function MutedDescription$update$lambda(closure$muted, this$MutedDescription) {
+    return function () {
+      if (closure$muted) {
         this$MutedDescription.show();
       }
        else {
         this$MutedDescription.hide();
       }
-    };
-  }
-  function MutedDescription$update$lambda(this$MutedDescription) {
-    return function () {
-      Player$Companion_getInstance().getMuted_y8twos$(MutedDescription$update$lambda$lambda(this$MutedDescription));
     };
   }
   function MutedDescription$update$lambda_0(closure$script) {
@@ -2170,12 +2167,20 @@ var HKNBP_Core = function (_, Kotlin) {
       closure$script();
     };
   }
-  MutedDescription.prototype.update = function () {
-    var script = MutedDescription$update$lambda(this);
+  MutedDescription.prototype.update_6taknv$ = function (muted) {
+    var script = MutedDescription$update$lambda(muted, this);
     script();
     window.setTimeout(MutedDescription$update$lambda_0(script), 1000);
     window.setTimeout(MutedDescription$update$lambda_1(script), 10000);
     window.setTimeout(MutedDescription$update$lambda_2(script), 60000);
+  };
+  function MutedDescription$update$lambda_3(this$MutedDescription) {
+    return function (muted) {
+      this$MutedDescription.update_6taknv$(muted);
+    };
+  }
+  MutedDescription.prototype.update = function () {
+    Player$Companion_getInstance().getMuted_y8twos$(MutedDescription$update$lambda_3(this));
   };
   function MutedDescription_init$lambda$lambda(muted) {
     Player$Companion_getInstance().setMuted_6taknv$(!muted);
@@ -2462,8 +2467,14 @@ var HKNBP_Core = function (_, Kotlin) {
     Player$Companion_getInstance().volume_0 = volumeChecked;
     VolumeDescription_getInstance().show_za3lpa$(3000);
   };
+  function Player$Companion$getVolume$lambda(closure$onReturn) {
+    return function (returnValue) {
+      var tmp$, tmp$_0;
+      closure$onReturn((tmp$_0 = (tmp$ = returnValue != null ? returnValue.toString() : null) != null ? toDoubleOrNull(tmp$) : null) != null ? tmp$_0 : 100.0);
+    };
+  }
   Player$Companion.prototype.getVolume_huw4wd$ = function (onReturn) {
-    onReturn(this.volume_0);
+    this.callIframePlayerFunction_0('onGetIframePlayerVolume(onReturn)', Player$Companion$getVolume$lambda(onReturn));
   };
   Object.defineProperty(Player$Companion.prototype, 'muted_0', {
     get: function () {
@@ -2474,13 +2485,41 @@ var HKNBP_Core = function (_, Kotlin) {
       this.muted_oj2db2$_0 = value;
     }
   });
+  function Player$Companion$setMuted$lambda(this$Player$) {
+    return function (muted) {
+      this$Player$.callIframePlayerFunction_0('onSetIframePlayerMuted(' + this$Player$.kotlinValueToEvalScriptUseableValue_0(muted) + ')');
+      MutedDescription_getInstance().update_6taknv$(muted);
+    };
+  }
+  function Player$Companion$setMuted$lambda_0(closure$muted, closure$setScript) {
+    return function () {
+      Player$Companion_getInstance().muted_0 = closure$muted;
+      closure$setScript(closure$muted);
+    };
+  }
+  function Player$Companion$setMuted$lambda_1(closure$setScript) {
+    return function () {
+      closure$setScript(true);
+    };
+  }
   Player$Companion.prototype.setMuted_6taknv$ = function (muted) {
-    this.callIframePlayerFunction_0('onSetIframePlayerMuted(' + this.kotlinValueToEvalScriptUseableValue_0(muted) + ')');
-    Player$Companion_getInstance().muted_0 = muted;
-    MutedDescription_getInstance().update();
+    var setScript = Player$Companion$setMuted$lambda(this);
+    if (this.isCheckVideoAutoPlayNeedToMute_0) {
+      CanAutoplay_getInstance().checkVideoAutoPlayNeedToMute_9dmrm4$(Player$Companion$setMuted$lambda_0(muted, setScript), Player$Companion$setMuted$lambda_1(setScript));
+    }
+     else {
+      Player$Companion_getInstance().muted_0 = muted;
+      setScript(muted);
+    }
   };
+  function Player$Companion$getMuted$lambda(closure$onReturn) {
+    return function (returnValue) {
+      var tmp$, tmp$_0;
+      closure$onReturn((tmp$_0 = (tmp$ = returnValue != null ? returnValue.toString() : null) != null ? toBoolean(tmp$) : null) != null ? tmp$_0 : true);
+    };
+  }
   Player$Companion.prototype.getMuted_y8twos$ = function (onReturn) {
-    onReturn(this.muted_0);
+    this.callIframePlayerFunction_0('onGetIframePlayerMuted(onReturn)', Player$Companion$getMuted$lambda(onReturn));
   };
   Object.defineProperty(Player$Companion.prototype, 'checkNeedCanTouchIframePlayerModeTimer_0', {
     get: function () {
@@ -2980,21 +3019,10 @@ var HKNBP_Core = function (_, Kotlin) {
   function Player$iframePlayerMutedInit$lambda$ObjectLiteral() {
     this.isInit = false;
   }
-  function Player$iframePlayerMutedInit$lambda$ObjectLiteral$on$lambda() {
-    Player$Companion_getInstance().setMuted_6taknv$(Player$Companion_getInstance().muted_0);
-  }
-  function Player$iframePlayerMutedInit$lambda$ObjectLiteral$on$lambda_0() {
-    Player$Companion_getInstance().setMuted_6taknv$(true);
-  }
   Player$iframePlayerMutedInit$lambda$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
     if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance()))
       if (!this.isInit) {
-        if (Player$Companion_getInstance().isCheckVideoAutoPlayNeedToMute_0) {
-          CanAutoplay_getInstance().checkVideoAutoPlayNeedToMute_9dmrm4$(Player$iframePlayerMutedInit$lambda$ObjectLiteral$on$lambda, Player$iframePlayerMutedInit$lambda$ObjectLiteral$on$lambda_0);
-        }
-         else {
-          Player$Companion_getInstance().setMuted_6taknv$(Player$Companion_getInstance().muted_0);
-        }
+        Player$Companion_getInstance().setMuted_6taknv$(Player$Companion_getInstance().muted_0);
         this.isInit = true;
       }
   };
@@ -3035,7 +3063,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.isLowSignalShowChannelDescription_0 = false;
     ChannelDescription_getInstance().show();
     ChannelDescription_getInstance().update();
-    Player$Companion_getInstance().checkNeedCanTouchIframePlayerModeTimer_0 = window.setTimeout(Player_init$Player_init$ObjectLiteral_init$lambda(this), 10000);
+    Player$Companion_getInstance().checkNeedCanTouchIframePlayerModeTimer_0 = window.setTimeout(Player_init$Player_init$ObjectLiteral_init$lambda(this), 30000);
   }
   function Player_init$ObjectLiteral$on$lambda(this$) {
     return function () {
@@ -3187,7 +3215,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function SettingWindow() {
     SettingWindow_instance = this;
-    UserInterface.call(this, 'settingWindow', 'settingWindowHideButton', void 0, true, true);
+    Window.call(this, 'settingWindow', 'settingWindowHideButton');
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14;
     this.settingWindow_0 = Kotlin.isType(tmp$ = document.getElementById('settingWindow'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('settingWindowHideButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
@@ -3377,7 +3405,7 @@ var HKNBP_Core = function (_, Kotlin) {
   SettingWindow.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'SettingWindow',
-    interfaces: [UserInterface]
+    interfaces: [Window]
   };
   var SettingWindow_instance = null;
   function SettingWindow_getInstance() {
@@ -3388,7 +3416,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function ShareWindow() {
     ShareWindow_instance = this;
-    UserInterface.call(this, 'shareWindow', 'shareWindowHideButton', void 0, true);
+    Window.call(this, 'shareWindow', 'shareWindowHideButton');
     var tmp$, tmp$_0, tmp$_1;
     this.shareWindow_0 = Kotlin.isType(tmp$ = document.getElementById('shareWindow'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('shareWindowHideButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
@@ -3396,7 +3424,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.hideButton_0.onclick = ShareWindow_init$lambda(this);
   }
   ShareWindow.prototype.show = function () {
-    UserInterface.prototype.show.call(this);
+    Window.prototype.show.call(this);
     ShareWindow_getInstance().buttonList_0.setAttribute('data-a2a-url', window.location.href);
   };
   function ShareWindow_init$lambda(this$ShareWindow) {
@@ -3407,7 +3435,7 @@ var HKNBP_Core = function (_, Kotlin) {
   ShareWindow.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'ShareWindow',
-    interfaces: [UserInterface]
+    interfaces: [Window]
   };
   var ShareWindow_instance = null;
   function ShareWindow_getInstance() {
@@ -3707,7 +3735,7 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return UserControlPanel_instance;
   }
-  function UserInterface(mainFrameElementID, firstFocusElementID, isFocusCountdownHide, isFocusOutHide, isHideFocusToUserControlPanelShower, conversionFocusHideTime) {
+  function UserInterface(mainFrameElementID, firstFocusElementID, isFocusCountdownHide, isFocusOutHide, isHideFocusToUserControlPanelShower, isShowToHideUserControlPanel, conversionFocusHideTime) {
     UserInterface$Companion_getInstance();
     if (firstFocusElementID === void 0)
       firstFocusElementID = null;
@@ -3717,6 +3745,8 @@ var HKNBP_Core = function (_, Kotlin) {
       isFocusOutHide = false;
     if (isHideFocusToUserControlPanelShower === void 0)
       isHideFocusToUserControlPanelShower = false;
+    if (isShowToHideUserControlPanel === void 0)
+      isShowToHideUserControlPanel = false;
     if (conversionFocusHideTime === void 0)
       conversionFocusHideTime = 15000;
     this.mainFrameElementID_lg8aaf$_0 = mainFrameElementID;
@@ -3724,6 +3754,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.isFocusCountdownHide_768iff$_0 = isFocusCountdownHide;
     this.isFocusOutHide_o0rj94$_0 = isFocusOutHide;
     this.isHideFocusToUserControlPanelShower_bpmi6v$_0 = isHideFocusToUserControlPanelShower;
+    this.isShowToHideUserControlPanel_8ypqtg$_0 = isShowToHideUserControlPanel;
     this.conversionFocusHideTime_igwo47$_0 = conversionFocusHideTime;
     var tmp$, tmp$_0, tmp$_1;
     this.htmlElement_sdspbr$_0 = Kotlin.isType(tmp$ = document.getElementById(this.mainFrameElementID_lg8aaf$_0), HTMLElement) ? tmp$ : throwCCE();
@@ -3826,11 +3857,9 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function UserInterface_init$lambda(this$UserInterface) {
     return function () {
-      var tmp$, tmp$_0, tmp$_1;
+      var tmp$;
       if (!$('this').is(':focus')) {
-        tmp$_0 = (tmp$ = jQuery(this)) != null ? tmp$.html() : null;
-        console.log(tmp$_0);
-        (tmp$_1 = jQuery(this)) != null ? tmp$_1.hover() : null;
+        (tmp$ = jQuery(this)) != null ? tmp$.hover() : null;
         this$UserInterface.lastTimeFocusElement_bd4klp$_0 = jQuery(this);
         if (!this$UserInterface.isShowUserInterfaceFirstFocus_mby111$_0 && this$UserInterface.isFocusCountdownHide_768iff$_0) {
           this$UserInterface.isShowUserInterfaceFirstFocus_mby111$_0 = false;
@@ -3968,7 +3997,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.volumeDescriptionButton = Kotlin.isType(tmp$_56 = document.createElement('button'), HTMLButtonElement) ? tmp$_56 : throwCCE();
     this.returnButton = Kotlin.isType(tmp$_57 = document.createElement('button'), HTMLButtonElement) ? tmp$_57 : throwCCE();
     this.hideVirtualRemoteButton.onclick = VirtualRemote_init$lambda(this);
-    this.epgButton.onclick = VirtualRemote_init$lambda_0(this);
+    this.epgButton.onclick = VirtualRemote_init$lambda_0;
     this.nextChannelButton.onclick = VirtualRemote_init$lambda_1;
     this.previousChannelButton.onclick = VirtualRemote_init$lambda_2;
     this.designateChannelSelect.onchange = VirtualRemote_init$lambda_3(this);
@@ -4092,16 +4121,8 @@ var HKNBP_Core = function (_, Kotlin) {
       this$VirtualRemote.hide();
     };
   }
-  function VirtualRemote_init$lambda_0(this$VirtualRemote) {
-    return function (event) {
-      if (EPG_getInstance().isShow) {
-        EPG_getInstance().hide();
-      }
-       else {
-        EPG_getInstance().show();
-        this$VirtualRemote.hide();
-      }
-    };
+  function VirtualRemote_init$lambda_0(event) {
+    EPG_getInstance().showHideAlternately();
   }
   function VirtualRemote_init$lambda_1(event) {
     channels.next();
@@ -4541,6 +4562,26 @@ var HKNBP_Core = function (_, Kotlin) {
     kind: Kind_CLASS,
     simpleName: 'WatchingCounter',
     interfaces: []
+  };
+  function Window(mainFrameElementID, firstFocusElementID, isFocusCountdownHide, isFocusOutHide, isHideFocusToUserControlPanelShower, isShowToHideUserControlPanel, conversionFocusHideTime) {
+    if (firstFocusElementID === void 0)
+      firstFocusElementID = null;
+    if (isFocusCountdownHide === void 0)
+      isFocusCountdownHide = true;
+    if (isFocusOutHide === void 0)
+      isFocusOutHide = true;
+    if (isHideFocusToUserControlPanelShower === void 0)
+      isHideFocusToUserControlPanelShower = true;
+    if (isShowToHideUserControlPanel === void 0)
+      isShowToHideUserControlPanel = true;
+    if (conversionFocusHideTime === void 0)
+      conversionFocusHideTime = 15000;
+    UserInterface.call(this, mainFrameElementID, firstFocusElementID, isFocusCountdownHide, isFocusOutHide, isHideFocusToUserControlPanelShower, isShowToHideUserControlPanel, conversionFocusHideTime);
+  }
+  Window.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'Window',
+    interfaces: [UserInterface]
   };
   function Comparator$ObjectLiteral_2(closure$comparison) {
     this.closure$comparison = closure$comparison;
@@ -6220,6 +6261,7 @@ var HKNBP_Core = function (_, Kotlin) {
     get: WatchingCounter$Companion_getInstance
   });
   package$hknbp_core.WatchingCounter = WatchingCounter;
+  package$hknbp_core.Window = Window;
   XMLTV$MultiLanguage.MultiLanguageList_init_w3j80s$ = XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init;
   XMLTV$MultiLanguage.MultiLanguageList_init_s9eivz$ = XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init_0;
   XMLTV$MultiLanguage.MultiLanguageList_init_nc4jq$ = XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init_1;

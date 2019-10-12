@@ -146,7 +146,7 @@ object VirtualRemote: UserInterface("virtualRemote"){
 
     init {
         hideVirtualRemoteButton.onclick     = fun(event){event.stopPropagation();hide()}
-        epgButton.onclick                   = fun(event){if(EPG.isShow){EPG.hide()}else{EPG.show();hide()}}
+        epgButton.onclick                   = fun(event){EPG.showHideAlternately()}
         nextChannelButton.onclick           = fun(event){channels.next()}
         previousChannelButton.onclick       = fun(event){channels.previous()}
         designateChannelSelect.onchange     = fun(event){designatedChannel(designateChannelSelect.value.toInt())}
