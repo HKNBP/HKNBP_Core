@@ -59,8 +59,9 @@
 <body>
 <div id="player-display" style="position:absolute; top:0; bottom:0; left:0; right:0; overflow:hidden;"></div>
 <script src="https://vjs.zencdn.net/7.6.5/video.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dashjs/3.0.0/dash.all.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-dash/2.11.0/videojs-dash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dashjs/2.9.3/dash.all.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dashjs/2.9.3/dash.mediaplayer.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-dash/2.9.3/videojs-dash.min.js"></script>
 <script src="https://unpkg.com/silvermine-videojs-quality-selector/dist/js/silvermine-videojs-quality-selector.min.js"></script>
 
 <script>
@@ -70,6 +71,8 @@
     var player;
     /**
      * Dash.js播放器
+     *
+     * http://cdn.dashjs.org/latest/jsdoc/module-MediaPlayer.html
      * */
     var mediaPlayer;
     /**
@@ -93,11 +96,26 @@
         player.play();
     }
     /**
+     * 攝取videoTrack資訊編寫videoTrack名稱
+     *
+     * @param {object} playerHlsRepresentation videoTrack資訊
+     * @returns {String}
+     * */
+    function readVideoTrackName(playerHlsRepresentation) {
+        var name = "";
+        //name += (playerHlsRepresentation.id !== undefined)? playerHlsRepresentation.id+" - ":"";
+        name += (playerHlsRepresentation.width !== undefined)? playerHlsRepresentation.width+"x":"";
+        name += (playerHlsRepresentation.height !== undefined)? playerHlsRepresentation.height:"";
+        name += (playerHlsRepresentation.bandwidth !== undefined)? " - "+playerHlsRepresentation.bandwidth+"bps":"";
+        return name;
+    }
+    /**
      * 由HKNBP_Core開啟呢個IframePlayer去設定videoTrack
      *
      * @param {videoTrack: TrackDescription} videoTrack 當執行設定videoTrack時嘅videoTrack參數
      * */
     function onSetIframePlayerVideoTrack(videoTrack) {
+        mediaPlayer.setQualityFor("video", videoTrack.id);
     }
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去獲取videoTrack
@@ -105,6 +123,29 @@
      * @param {(videoTrack: TrackDescription)=>{})} onReturn 執行此CallBackFunction去return個videoTrack
      * */
     function onGetIframePlayerVideoTrack(onReturn) {
+      //檢查依家係米自動調節VideoTrack, 如是 onReturn("自動"
+      /**
+      var enabledMoreOneVideoTrack = 0;
+      for(var i=0; i<player.tech_.hls.representations().length; i++){
+          if(player.tech_.hls.representations()[i].enabled() === true){
+              enabledMoreOneVideoTrack++;
+          }
+      }
+      if(1<enabledMoreOneVideoTrack){
+          onReturn(TrackDescription(-1, "自動"));
+          return;
+      }*/
+      //return依家使用緊邊條VideoTrack
+      var trackList = mediaPlayer.getTracksFor("video")[0].bitrateList;
+      var trackIndex = mediaPlayer.getQualityFor("video");
+      if(trackIndex < trackList.length){
+          onReturn(TrackDescription(trackIndex, readVideoTrackName(trackList[trackIndex])));
+          return;
+      }
+
+      //如果搵唔到依家係邊條Track就return第0條Track
+      onReturn(TrackDescription(0, readVideoTrackName(trackList[0])));
+      return;
     }
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去獲取所有videoTrack資訊
@@ -112,6 +153,15 @@
      * @param {(videoTracks: TrackDescription[])=>{})} onReturn 執行此CallBackFunction去return所有videoTrack資訊
      * */
     function onGetIframePlayerVideoTracks(onReturn) {
+        var videoTracks = [];
+        //設置 "自動" 選項
+        videoTracks.push(TrackDescription(-1, "自動"));
+        //設置所有Track選項
+        var trackList = mediaPlayer.getTracksFor("video")[0].bitrateList;
+        for(var i=0; i<trackList.length; i++){
+            videoTracks.push(TrackDescription(i, readVideoTrackName(trackList[i])));
+        }
+        onReturn(videoTracks);
     }
     /**
      * 由HKNBP_Core開啟呢個IframePlayer去設定audioTrack
@@ -304,31 +354,17 @@
             });
             settings.updateDisplay();
         });
-        window.setTimeout(function(){
-            console.log(mediaPlayer.getSource());
-            mediaPlayer.setTextDefaultEnabled(true);
-            mediaPlayer.enableText(true);
-            mediaPlayer.setTextTrack(1);
-            console.log("xxx");
-            console.log(dashjs);
-            console.log(mediaPlayer);
-
-            console.log(mediaPlayer.getQualityFor("video"));
-            console.log(mediaPlayer.getTracksFor("video"));
-            console.log(mediaPlayer.getQualityFor("audio"));
-            console.log(mediaPlayer.getTracksFor("audio"));
-
-            console.log(mediaPlayer.getCurrentTextTrackIndex());
-            console.log(mediaPlayer.getTextDefaultEnabled());
-            console.log(mediaPlayer.getTextDefaultLanguage());
-            console.log(mediaPlayer.getTracksFor());
-            console.log(mediaPlayer.getQualityFor());
-        }, 10000);
         videojs.Html5DashJS.hook('beforeinitialize', function(player, _mediaPlayer) {
-             if (videojs && videojs.log) {
+            if (videojs && videojs.log) {
                 mediaPlayer = _mediaPlayer;
-             }
+            }
         });
+        /**
+        window.setInterval(function(){
+            onGetIframePlayerVideoTrack(function(r){
+                console.log(r);
+            });
+        }, 3000)*/
     }
     /**
      * 存底callHKNBPCoreFunction要求

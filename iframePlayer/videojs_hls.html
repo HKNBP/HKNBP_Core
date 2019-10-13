@@ -116,7 +116,6 @@
         //return依家使用緊邊條VideoTrack
         for(var i=0; i<player.tech_.hls.representations().length; i++){
             if(player.tech_.hls.representations()[i].enabled() === true){
-              console.log(TrackDescription(i, readVideoTrackName(player.tech_.hls.representations()[i])));
                 onReturn(TrackDescription(i, readVideoTrackName(player.tech_.hls.representations()[i])));
                 return;
             }
