@@ -30,7 +30,7 @@ object VolumeDescription: UserInterface("volumeDescription") {
 
     override fun show() {
         super.show()
-        Player.getVolume(fun(volume){
+        player?.getVolume(fun(volume){
             VolumeDescription.volumeValue.innerHTML = volume.toInt().toString()
             VolumeDescription.volumeIconList.innerHTML = ""
             for(i in 0 until (volume/10).toInt()){
@@ -40,7 +40,7 @@ object VolumeDescription: UserInterface("volumeDescription") {
     }
 
     init {
-        volumeUpButton.onclick = fun(event){Player.volumeUp}
-        volumeDownButton.onclick = fun(event){Player.volumeDown}
+        volumeUpButton.onclick = fun(event){player?.volumeUp}
+        volumeDownButton.onclick = fun(event){player?.volumeDown}
     }
 }

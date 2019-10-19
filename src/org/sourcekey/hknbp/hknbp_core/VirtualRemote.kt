@@ -163,9 +163,9 @@ object VirtualRemote: UserInterface("virtualRemote"){
         previousSubtitleButton.onclick      = fun(event){player?.previousSubtitleTrack();SubtitleDescription.show(3000)}
         designateSubtitleSelect.onchange    = fun(event){player?.designatedSubtitleTrack(designateSubtitleSelect.value.toInt());SubtitleDescription.show(3000)}
         onHeadNextSubtitleButton.onclick    = fun(event){player?.nextSubtitleTrack();SubtitleDescription.show(3000)}
-        volumeMuteButton.onclick            = fun(event){Player.volumeMute.invoke()}
-        volumeUpButton.onclick              = fun(event){Player.volumeUp.invoke()}
-        volumeDownButton.onclick            = fun(event){Player.volumeDown.invoke()}
+        volumeMuteButton.onclick            = fun(event){player?.volumeMute?.invoke()}
+        volumeUpButton.onclick              = fun(event){player?.volumeUp?.invoke()}
+        volumeDownButton.onclick            = fun(event){player?.volumeDown?.invoke()}
         programmableRedButton.onclick       = fun(event){player?.programmable(Player.ProgrammableColor.red)}
         programmableGreenButton.onclick     = fun(event){player?.programmable(Player.ProgrammableColor.green)}
         programmableYellowButton.onclick    = fun(event){player?.programmable(Player.ProgrammableColor.yellow)}

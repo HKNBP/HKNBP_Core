@@ -387,7 +387,7 @@
      */
     window.addEventListener("message", function(event){
         var callMessage = JSON.parse(event.data);
-        if(callMessage.name === "IframePlaye"){
+        if(callMessage.name === "IframePlayer"){
           for(var i = 0; i < callHKNBPCoreFunctionList.length; i++){
              if (callHKNBPCoreFunctionList[i].id == callMessage.id) {
                callHKNBPCoreFunctionList[i].onReturn(callMessage.returnValue)
@@ -410,7 +410,7 @@
         var caller = {};
         caller.functionName = functionName;
         caller.value = value;
-        caller.name = "IframePlaye";
+        caller.name = "IframePlayer";
         caller.id = new Date().getTime().toString() + Math.random().toString();
         caller.onReturn = onReturn;
         callHKNBPCoreFunctionList.push(caller);

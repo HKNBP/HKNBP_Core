@@ -51,6 +51,14 @@ class Player(private val channel: Channel) {
             return "JSON.parse(\'${JSON.stringify(obj)}\').value"
         }
 
+        private var listenIframePlayerScript = fun(event: dynamic){}
+
+        private fun setListenIframePlayer(){
+            window.addEventListener("message", fun(event: dynamic){
+                listenIframePlayerScript(event)
+            }, false)
+        }
+
 
         /**
          * 全局音量值
@@ -64,58 +72,6 @@ class Player(private val channel: Channel) {
             }
 
         /**
-         * 設定iframePlayer嘅音量資訊
-         *
-         * 注:音量值用Double原因係因為有啲IframePlayer嘅音量值有小數
-         * 小數中有取捨使到有機會調教唔到音量值
-         * */
-        fun setVolume(volume: Double) {
-            var volumeChecked = volume
-            if(100 < volumeChecked){volumeChecked = 100.0}
-            if(volumeChecked < 0){volumeChecked = 0.0}
-            callIframePlayerFunction("onSetIframePlayerVolume(${kotlinValueToEvalScriptUseableValue(volumeChecked)})")
-            Companion.volume = volumeChecked
-            VolumeDescription.show(3000)
-        }
-
-        /**
-         * 獲取iframePlayer嘅音量資訊
-         *
-         * 注:音量值用Double原因係因為有啲IframePlayer嘅音量值有小數
-         * 小數中有取捨使到有機會調教唔到音量值
-         * */
-        fun getVolume(onReturn: (volume: Double)->Unit) {
-            callIframePlayerFunction("onGetIframePlayerVolume(onReturn)", fun(returnValue){
-                onReturn(returnValue?.toString()?.toDoubleOrNull()?:100.0)
-            })
-        }
-
-        /**
-         * 提升音量
-         *
-         * 由於其他平台需要其他位置設置提升音量
-         * 因此此值可被修改成學合其他平台嘅程序
-         * */
-        var volumeUp = fun(){
-            getVolume(fun(volume){
-                setVolume(volume + 1.0)
-            })
-        }
-
-        /**
-         * 降底音量
-         *
-         * 由於其他平台需要其他位置設置降底音量
-         * 因此此值可被修改成學合其他平台嘅程序
-         * */
-        var volumeDown = fun(){
-            getVolume(fun(volume){
-                setVolume(volume - 1.0)
-            })
-        }
-
-
-        /**
          * 全局音量值
          *
          * 此值使所有Player使用同一音量
@@ -125,52 +81,6 @@ class Player(private val channel: Channel) {
                 localStorage.setItem("RecentlyMuted", muted.toString())//儲存低返最近設定音量
                 field = value
             }
-
-        /**
-         * 設定iframePlayer嘅靜音資訊
-         * */
-        fun setMuted(muted: Boolean) {
-            //因依家大部分 <瀏覽器> 唔畀自動播放, 如果要自動播放一定要將Player設為 <靜音>
-            val setScript = fun(muted: Boolean){
-                callIframePlayerFunction(
-                        "onSetIframePlayerMuted(${kotlinValueToEvalScriptUseableValue(muted)})"
-                )
-                MutedDescription.update(muted)
-            }
-            if(isCheckVideoAutoPlayNeedToMute){
-                CanAutoplay.checkVideoAutoPlayNeedToMute(fun(){
-                    Companion.muted = muted
-                    setScript(muted)
-                }, fun(){
-                    setScript(true)
-                })
-            }else{
-                Companion.muted = muted
-                setScript(muted)
-            }
-        }
-
-        /**
-         * 獲取iframePlayer嘅靜音資訊
-         * */
-        fun getMuted(onReturn: (muted: Boolean)->Unit) {
-            callIframePlayerFunction("onGetIframePlayerMuted(onReturn)", fun(returnValue){
-                onReturn(returnValue?.toString()?.toBoolean()?:true)
-            })
-        }
-
-        /**
-         * 設換靜音
-         *
-         * Call一次靜音,再Call取消靜音
-         * 由於其他平台需要其他位置設置設換靜音
-         * 因此此值可被修改成學合其他平台嘅程序
-         * */
-        var volumeMute = fun(){
-            getMuted(fun(volume){
-                setMuted(!volume)
-            })
-        }
 
 
         /**
@@ -203,6 +113,11 @@ class Player(private val channel: Channel) {
                 window.clearTimeout(checkIsLowSignalShowChannelDescriptionTimer)
                 field = value
             }
+
+
+        init {
+            setListenIframePlayer()
+        }
     }
 
     private val watchingCounter: WatchingCounter = WatchingCounter(channel)
@@ -492,16 +407,43 @@ class Player(private val channel: Channel) {
     }()
 
     /**
+     * 設定iframePlayer嘅音量資訊
+     *
+     * 注:音量值用Double原因係因為有啲IframePlayer嘅音量值有小數
+     * 小數中有取捨使到有機會調教唔到音量值
+     * */
+    fun setVolume(volume: Double) {
+        var volumeChecked = volume
+        if(100 < volumeChecked){volumeChecked = 100.0}
+        if(volumeChecked < 0){volumeChecked = 0.0}
+        callIframePlayerFunction("onSetIframePlayerVolume(${kotlinValueToEvalScriptUseableValue(volumeChecked)})")
+        Companion.volume = volumeChecked
+        VolumeDescription.show(3000)
+    }
+
+    /**
+     * 獲取iframePlayer嘅音量資訊
+     *
+     * 注:音量值用Double原因係因為有啲IframePlayer嘅音量值有小數
+     * 小數中有取捨使到有機會調教唔到音量值
+     * */
+    fun getVolume(onReturn: (volume: Double)->Unit) {
+        callIframePlayerFunction("onGetIframePlayerVolume(onReturn)", fun(returnValue){
+            onReturn(returnValue?.toString()?.toDoubleOrNull()?:100.0)
+        })
+    }
+
+    /**
      * 提升音量
      *
      * 由於其他平台需要其他位置設置提升音量
      * 因此此值可被修改成學合其他平台嘅程序
      * */
-    var volumeUp = Companion.volumeUp
-        set(value) {
-            field = value
-            Companion.volumeUp = value
-        }
+    var volumeUp = fun(){
+        getVolume(fun(volume){
+            setVolume(volume + 1.0)
+        })
+    }
 
     /**
      * 降底音量
@@ -509,11 +451,11 @@ class Player(private val channel: Channel) {
      * 由於其他平台需要其他位置設置降底音量
      * 因此此值可被修改成學合其他平台嘅程序
      * */
-    var volumeDown = Companion.volumeDown
-        set(value) {
-            field = value
-            Companion.volumeDown = value
-        }
+    var volumeDown = fun(){
+        getVolume(fun(volume){
+            setVolume(volume - 1.0)
+        })
+    }
 
 
     /**
@@ -536,17 +478,52 @@ class Player(private val channel: Channel) {
     }()
 
     /**
+     * 設定iframePlayer嘅靜音資訊
+     * */
+    fun setMuted(muted: Boolean) {
+        //因依家大部分 <瀏覽器> 唔畀自動播放, 如果要自動播放一定要將Player設為 <靜音>
+        val setScript = fun(muted: Boolean){
+            callIframePlayerFunction(
+                    "onSetIframePlayerMuted(${kotlinValueToEvalScriptUseableValue(muted)})"
+            )
+            println(muted)
+            MutedDescription.update(muted)
+        }
+
+        if(isCheckVideoAutoPlayNeedToMute){
+            CanAutoplay.checkVideoAutoPlayNeedToMute(fun(){
+                Companion.muted = muted
+                setScript(muted)
+            }, fun(){
+                setScript(true)
+            })
+        }else{
+            Companion.muted = muted
+            setScript(muted)
+        }
+    }
+
+    /**
+     * 獲取iframePlayer嘅靜音資訊
+     * */
+    fun getMuted(onReturn: (muted: Boolean)->Unit) {
+        callIframePlayerFunction("onGetIframePlayerMuted(onReturn)", fun(returnValue){
+            onReturn(returnValue?.toString()?.toBoolean()?:true)
+        })
+    }
+
+    /**
      * 設換靜音
      *
      * Call一次靜音,再Call取消靜音
      * 由於其他平台需要其他位置設置設換靜音
      * 因此此值可被修改成學合其他平台嘅程序
      * */
-    var volumeMute = Companion.volumeMute
-        set(value) {
-            field = value
-            Companion.volumeMute = value
-        }
+    var volumeMute = fun(){
+        getMuted(fun(volume){
+            setMuted(!volume)
+        })
+    }
 
 
     /**
@@ -643,8 +620,8 @@ class Player(private val channel: Channel) {
      */
 
 
-    private fun setListenIframePlayer(){
-        window.addEventListener("message", fun(event: dynamic){
+    private fun setListenIframePlayerScript(){
+        listenIframePlayerScript = fun(event: dynamic){
             try{
                 val callMessage = JSON.parse<dynamic>(event.data.toString())
                 if (callMessage.name == null){
@@ -657,10 +634,9 @@ class Player(private val channel: Channel) {
                             callIframePlayerFunctionList.remove(obj)
                         }
                     }
-                }else if(callMessage.name == "IframePlaye"){
-                    // 畀IframePlayer方便Call
-                    val onPlaying = onPlaying
-                    val onNotPlaying = onNotPlaying
+                }else if(callMessage.name == "IframePlayer"){
+                    val onPlaying = onPlaying // 畀IframePlayer方便Call
+                    val onNotPlaying = onNotPlaying // 畀IframePlayer方便Call
 
                     /**
                     var onReturn = fun(returnValue: dynamic){
@@ -676,9 +652,8 @@ class Player(private val channel: Channel) {
                         "Event內容: ${JSON.stringify(event)}"
                 )
             }
-        }, false)
+        }
     }
-
 
     init {
         println("轉至頻道${channel.number}")
@@ -730,7 +705,7 @@ class Player(private val channel: Channel) {
         })
         iframePlayer?.src = channel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
         iframePlayer?.onload = fun() {
-            setListenIframePlayer()
+            setListenIframePlayerScript()
             callIframePlayerFunction("onIframePlayerInit(${
                 kotlinValueToEvalScriptUseableValue(channel.sources.node?.link ?: "")
             })")
