@@ -117,12 +117,15 @@ object ChannelDescription: UserInterface("channelDescription") {
     override fun update(){
         setCurrentChannelName()
         setCurrentChannelNumber()
-        setCurrentDate()
         setCurrentProgrammeTitle()
         setCurrentProgrammeSubTitle()
         setCurrentProgrammeEpisode()
         setCurrentProgrammeDesc()
         setCurrentProgrammeBroadcastTime()
         setCurrentProgrammeCategory()
+    }
+
+    init {
+        setCurrentDate()
     }
 }

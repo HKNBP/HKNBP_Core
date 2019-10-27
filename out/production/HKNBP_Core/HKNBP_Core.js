@@ -575,6 +575,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.currentProgrammeDesc_0 = Kotlin.isType(tmp$_7 = document.getElementById('channelDescriptionCurrentProgrammeDesc'), HTMLDivElement) ? tmp$_7 : throwCCE();
     this.currentProgrammeCategory_0 = Kotlin.isType(tmp$_8 = document.getElementById('channelDescriptionCurrentProgrammeCategory'), HTMLDivElement) ? tmp$_8 : throwCCE();
     this.currentDateTimer_0 = 0;
+    this.setCurrentDate_0();
   }
   ChannelDescription.prototype.setCurrentChannelName_0 = function () {
     var tmp$, tmp$_0;
@@ -685,7 +686,6 @@ var HKNBP_Core = function (_, Kotlin) {
   ChannelDescription.prototype.update = function () {
     this.setCurrentChannelName_0();
     this.setCurrentChannelNumber_0();
-    this.setCurrentDate_0();
     this.setCurrentProgrammeTitle_0();
     this.setCurrentProgrammeSubTitle_0();
     this.setCurrentProgrammeEpisode_0();
