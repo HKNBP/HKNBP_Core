@@ -44,14 +44,4 @@
         </source>
         <information epgid="hayat-tv.ba" src="http://tvprofil.net/xmltv/data/hayat-tv.ba/weekly_hayat-tv.ba_tvprofil.net.xml"/>
     </channel>
-    <channel>
-        <number>003</number>
-        <name>Dash測試頻道</name>
-        <source>
-            <description>DashSource</description>
-            <iframeplayersrc>iframePlayer/videojs_dash.html</iframeplayersrc>http://rdmedia.bbc.co.uk/dash/ondemand/testcard/1/client_manifest-events.mpd
-            <link>http://irtdashreference-i.akamaihd.net/dash/live/901161/keepixo1/manifestBR2.mpd</link>
-        </source>
-        <information epgid="vinkovacka-tv.hr" src="http://tvprofil.net/xmltv/data/vinkovacka-tv.hr/weekly_vinkovacka-tv.hr_tvprofil.net.xml"/>
-    </channel>
 </officialchannel>

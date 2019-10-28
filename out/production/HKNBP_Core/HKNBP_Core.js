@@ -1584,6 +1584,12 @@ var HKNBP_Core = function (_, Kotlin) {
     this.fullScreenButton_0 = Kotlin.isType(tmp$ = document.getElementById('fullScreenButton'), HTMLButtonElement) ? tmp$ : throwCCE();
     this.enterFullscreenIcon_0 = '<i class="icon-font">&#xe80c;<\/i>';
     this.exitFullscreenIcon_0 = '<i class="icon-font">&#xe80b;<\/i>';
+    if (document.fullscreenEnabled) {
+      this.show();
+    }
+     else {
+      this.hide();
+    }
     this.fullScreenButton_0.onclick = FullScreenButton_init$lambda(this);
   }
   FullScreenButton.prototype.enterFullscreen = function () {
@@ -1776,7 +1782,8 @@ var HKNBP_Core = function (_, Kotlin) {
   function LongClickEvent() {
     LongClickEvent_instance = this;
     this.onLongClick_kh28lv$_0 = new LongClickEvent$OnLongClick(LongClickEvent$onLongClick$lambda);
-    jQuery('button').mousedown(LongClickEvent_init$lambda(this)).mouseup(LongClickEvent_init$lambda_0(this)).mouseout(LongClickEvent_init$lambda_1(this));
+    var leftKey = 1;
+    jQuery('button').mousedown(LongClickEvent_init$lambda(leftKey, this)).mouseup(LongClickEvent_init$lambda_0(leftKey, this)).mouseout(LongClickEvent_init$lambda_1(leftKey, this));
   }
   function LongClickEvent$OnLongClick(onLongClickProgram) {
     this.onLongClickProgram = onLongClickProgram;
@@ -1826,21 +1833,27 @@ var HKNBP_Core = function (_, Kotlin) {
       closure$button.click();
     };
   }
-  function LongClickEvent_init$lambda(this$LongClickEvent) {
-    return function () {
-      var button = jQuery(this);
-      this$LongClickEvent.onLongClick_0 = new LongClickEvent$OnLongClick(LongClickEvent_init$lambda$lambda(button));
-      this$LongClickEvent.onLongClick_0.mousedown();
+  function LongClickEvent_init$lambda(closure$leftKey, this$LongClickEvent) {
+    return function (event) {
+      if (equals(closure$leftKey, event.which)) {
+        var button = jQuery(this);
+        this$LongClickEvent.onLongClick_0 = new LongClickEvent$OnLongClick(LongClickEvent_init$lambda$lambda(button));
+        this$LongClickEvent.onLongClick_0.mousedown();
+      }
     };
   }
-  function LongClickEvent_init$lambda_0(this$LongClickEvent) {
-    return function () {
-      this$LongClickEvent.onLongClick_0.mouseup();
+  function LongClickEvent_init$lambda_0(closure$leftKey, this$LongClickEvent) {
+    return function (event) {
+      if (equals(closure$leftKey, event.which)) {
+        this$LongClickEvent.onLongClick_0.mouseup();
+      }
     };
   }
-  function LongClickEvent_init$lambda_1(this$LongClickEvent) {
-    return function () {
-      this$LongClickEvent.onLongClick_0.mouseup();
+  function LongClickEvent_init$lambda_1(closure$leftKey, this$LongClickEvent) {
+    return function (event) {
+      if (equals(closure$leftKey, event.which)) {
+        this$LongClickEvent.onLongClick_0.mouseup();
+      }
     };
   }
   LongClickEvent.$metadata$ = {
@@ -2110,18 +2123,7 @@ var HKNBP_Core = function (_, Kotlin) {
     return arr;
   }
   var userLanguageList;
-  function main$lambda(event) {
-    try {
-      var _event = event;
-      var data = _event != null ? _event.state : null;
-      console.log(data);
-    }
-     catch (e) {
-      console.log(e);
-    }
-  }
   function main(args) {
-    window.addEventListener('popstate', main$lambda, false);
     try {
       UserControlPanel_getInstance();
       ConsentPanel_getInstance();

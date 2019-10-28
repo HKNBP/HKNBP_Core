@@ -331,14 +331,6 @@ var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
 fun main(args: Array<String>) {
     //HKNBPAppLayerBridge
 
-    window.addEventListener("popstate", fun (event) {
-        try {
-            val _event: dynamic = event
-            val data = _event?.state
-            console.log(data)
-        }catch (e: dynamic){console.log(e)}
-    }, false)
-
     try {
         UserControlPanel
         ConsentPanel

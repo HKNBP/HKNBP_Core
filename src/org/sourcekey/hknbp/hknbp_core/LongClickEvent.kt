@@ -60,14 +60,21 @@ object LongClickEvent {
         }
 
     init {
-        jQuery("button").mousedown(fun(){
-            val button = jQuery(js("this"))
-            onLongClick = OnLongClick(fun(){button.click()})
-            onLongClick.mousedown()
-        }).mouseup(fun(){
-            onLongClick.mouseup()
-        }).mouseout(fun(){
-            onLongClick.mouseup()
+        val leftKey = 1
+        jQuery("button").mousedown(fun(event: dynamic){
+            if(leftKey == event.which){
+                val button = jQuery(js("this"))
+                onLongClick = OnLongClick(fun(){button.click()})
+                onLongClick.mousedown()
+            }
+        }).mouseup(fun(event: dynamic){
+            if(leftKey == event.which) {
+                onLongClick.mouseup()
+            }
+        }).mouseout(fun(event: dynamic){
+            if(leftKey == event.which) {
+                onLongClick.mouseup()
+            }
         })
     }
 }
