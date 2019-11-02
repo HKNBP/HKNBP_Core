@@ -122,6 +122,9 @@ object UserControlPanel: UserInterface(
         PictureInPictureButton
         FullScreenButton
 
+        //首先focus userControlPanelShower
+        jQuery("#userControlPanelShower").focus()
+
         //設定使用者控制界面顯示方法
         shower.onclick = fun(event){
             showHideAlternately()

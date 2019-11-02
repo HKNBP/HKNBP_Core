@@ -1957,6 +1957,9 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   var coreVersion_0;
   var appVersion;
+  function setAppVersion(_appVersion) {
+    appVersion = _appVersion;
+  }
   function channels$lambda$ObjectLiteral() {
   }
   channels$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
@@ -3606,6 +3609,7 @@ var HKNBP_Core = function (_, Kotlin) {
     NativeAppInstallButton_getInstance();
     PictureInPictureButton_getInstance();
     FullScreenButton_getInstance();
+    jQuery('#userControlPanelShower').focus();
     this.shower_0.onclick = UserControlPanel_init$lambda(this);
     this.shower_0.onmousemove = UserControlPanel_init$lambda_0(this);
     this.panel_0.onmousemove = UserControlPanel_init$lambda_1(this);
@@ -6134,6 +6138,7 @@ var HKNBP_Core = function (_, Kotlin) {
       appVersion = value;
     }
   });
+  package$hknbp_core.setAppVersion_61zpoe$ = setAppVersion;
   Object.defineProperty(package$hknbp_core, 'channels', {
     get: function () {
       return channels;

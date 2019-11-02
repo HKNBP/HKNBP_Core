@@ -136,7 +136,14 @@ val coreVersion: String = {
  * 類型例如: Android, iOS, PWA, 等等...
  * 此值會畀其他框架所改至該框架嘅Version
  * */
-var appVersion: String  = "${coreVersion}-PWA"
+var appVersion: String = "${coreVersion}-PWA"
+
+/**
+ * 設定程式版本名
+ * */
+fun setAppVersion(_appVersion: String){
+    appVersion = _appVersion
+}
 
 /**
 fun includeScript(vararg files: String) {
