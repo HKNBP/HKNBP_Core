@@ -41,15 +41,15 @@ object MutedDescription: UserInterface("mutedDescription") {
     }
 
     override fun update() {
-        player?.getMuted(fun(muted){
+        Player.getMuted(fun(muted){
             update(muted)
         })
     }
 
     init {
         mutedDescriptionButton.onclick = fun(event){
-            player?.getMuted(fun(muted){
-                player?.setMuted(!muted)
+            Player.getMuted(fun(muted){
+                Player.setMuted(!muted)
             })
         }
     }

@@ -30,17 +30,28 @@ object VolumeDescription: UserInterface("volumeDescription") {
 
     override fun show() {
         super.show()
-        player?.getVolume(fun(volume){
-            VolumeDescription.volumeValue.innerHTML = volume.toInt().toString()
-            VolumeDescription.volumeIconList.innerHTML = ""
-            for(i in 0 until (volume/10).toInt()){
-                VolumeDescription.volumeIconList.innerHTML += VolumeDescription.volumeIcon
-            }
-        })
+        val script = fun(){
+            Player.getVolume(fun(volume){
+                VolumeDescription.volumeValue.innerHTML = volume.toInt().toString()
+                VolumeDescription.volumeIconList.innerHTML = ""
+                for(i in 0 until (volume/10).toInt()){
+                    VolumeDescription.volumeIconList.innerHTML += VolumeDescription.volumeIcon
+                }
+            })
+        }
+
+        //由於有啲IframePlayer Set完個值之後唔會即時變更
+        //使到標示與值不同步
+        script()
+        window.setTimeout(fun(){ script() }, 100)
+        window.setTimeout(fun(){ script() }, 500)
+        window.setTimeout(fun(){ script() }, 1000)
+        window.setTimeout(fun(){ script() }, 10000)
+        window.setTimeout(fun(){ script() }, 60000)
     }
 
     init {
-        volumeUpButton.onclick = fun(event){player?.volumeUp}
-        volumeDownButton.onclick = fun(event){player?.volumeDown}
+        volumeUpButton.onclick = fun(event){Player.volumeUp()}
+        volumeDownButton.onclick = fun(event){Player.volumeDown()}
     }
 }

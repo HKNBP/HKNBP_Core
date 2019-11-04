@@ -72,6 +72,58 @@ class Player(private val channel: Channel) {
             }
 
         /**
+         * 設定iframePlayer嘅音量資訊
+         *
+         * 注:音量值用Double原因係因為有啲IframePlayer嘅音量值有小數
+         * 小數中有取捨使到有機會調教唔到音量值
+         * */
+        private fun setVolume(volume: Double) {
+            var volumeChecked = volume
+            if(100 < volumeChecked){volumeChecked = 100.0}
+            if(volumeChecked < 0){volumeChecked = 0.0}
+            callIframePlayerFunction("onSetIframePlayerVolume(${kotlinValueToEvalScriptUseableValue(volumeChecked)})")
+            Companion.volume = volumeChecked
+            VolumeDescription.show(3000)
+        }
+
+        /**
+         * 獲取iframePlayer嘅音量資訊
+         *
+         * 注:音量值用Double原因係因為有啲IframePlayer嘅音量值有小數
+         * 小數中有取捨使到有機會調教唔到音量值
+         * */
+        fun getVolume(onReturn: (volume: Double)->Unit) {
+            callIframePlayerFunction("onGetIframePlayerVolume(onReturn)", fun(returnValue){
+                onReturn(returnValue?.toString()?.toDoubleOrNull()?:100.0)
+            })
+        }
+
+        /**
+         * 提升音量
+         *
+         * 由於其他平台需要其他位置設置提升音量
+         * 因此此值可被修改成學合其他平台嘅程序
+         * */
+        var volumeUp = fun(){
+            getVolume(fun(volume){
+                setVolume(volume + 1.0)
+            })
+        }
+
+        /**
+         * 降底音量
+         *
+         * 由於其他平台需要其他位置設置降底音量
+         * 因此此值可被修改成學合其他平台嘅程序
+         * */
+        var volumeDown = fun(){
+            getVolume(fun(volume){
+                setVolume(volume - 1.0)
+            })
+        }
+
+
+        /**
          * 全局音量值
          *
          * 此值使所有Player使用同一音量
@@ -80,6 +132,78 @@ class Player(private val channel: Channel) {
             set(value) {
                 localStorage.setItem("RecentlyMuted", muted.toString())//儲存低返最近設定音量
                 field = value
+            }
+
+        /**
+         * 係米已經Mute左iframePlayer先可自動播放
+         *
+         * 此值為左識別現在(靜音行為)為CanAutoplay做成
+         * 而其他平台設置自己靜音方式後
+         * 需要能夠畀其他平台關閉CanAutoplay做成嘅(靜音行為)
+         * */
+        private var isMutedCanAutoplay = false
+
+        /**
+         * 設定iframePlayer嘅靜音資訊
+         * */
+        fun setMuted(muted: Boolean) {
+            //因依家大部分 <瀏覽器> 唔畀自動播放, 如果要自動播放一定要將Player設為 <靜音>
+            val setScript = fun(muted: Boolean){
+                callIframePlayerFunction(
+                        "onSetIframePlayerMuted(${kotlinValueToEvalScriptUseableValue(muted)})"
+                )
+                println(muted)
+                MutedDescription.update(muted)
+            }
+
+            if(isCheckVideoAutoPlayNeedToMute){
+                CanAutoplay.checkVideoAutoPlayNeedToMute(fun(){
+                    Companion.muted = muted
+                    isMutedCanAutoplay = false
+                    setScript(muted)
+                }, fun(){
+                    isMutedCanAutoplay = true
+                    setScript(true)
+                })
+            }else{
+                Companion.muted = muted
+                setScript(muted)
+            }
+        }
+
+        /**
+         * 獲取iframePlayer嘅靜音資訊
+         * */
+        fun getMuted(onReturn: (muted: Boolean)->Unit) {
+            callIframePlayerFunction("onGetIframePlayerMuted(onReturn)", fun(returnValue){
+                onReturn(returnValue?.toString()?.toBoolean()?:true)
+            })
+        }
+
+        /**
+         * 設換靜音
+         *
+         * Call一次靜音,再Call取消靜音
+         * 由於其他平台需要其他位置設置設換靜音
+         * 因此此值可被修改成學合其他平台嘅程序
+         * */
+        var volumeMute = fun(){
+            getMuted(fun(muted){
+                setMuted(!muted)
+            })
+        }
+            set(value) {
+                field = fun(){
+                    //其他平台設置自己靜音方式後
+                    if(isMutedCanAutoplay){
+                        //取消因要Mute左iframePlayer先可自動播放嘅靜音
+                        isMutedCanAutoplay = false
+                        setMuted(false)
+                    }else{
+                        //行其他平台設置自己靜音方式
+                        value()
+                    }
+                }
             }
 
 
@@ -396,7 +520,7 @@ class Player(private val channel: Channel) {
                         if(!isInit){
                             //讀取最近設定音量再去設定IframePlayer音量,呢度唔直接用setMuted()係因為唔想每次轉頻道都顯示音量值
                             callIframePlayerFunction("onSetIframePlayerVolume(${
-                                kotlinValueToEvalScriptUseableValue(volume)
+                            kotlinValueToEvalScriptUseableValue(volume)
                             })")
                             isInit = true
                         }
@@ -405,58 +529,6 @@ class Player(private val channel: Channel) {
             }
         })
     }()
-
-    /**
-     * 設定iframePlayer嘅音量資訊
-     *
-     * 注:音量值用Double原因係因為有啲IframePlayer嘅音量值有小數
-     * 小數中有取捨使到有機會調教唔到音量值
-     * */
-    fun setVolume(volume: Double) {
-        var volumeChecked = volume
-        if(100 < volumeChecked){volumeChecked = 100.0}
-        if(volumeChecked < 0){volumeChecked = 0.0}
-        callIframePlayerFunction("onSetIframePlayerVolume(${kotlinValueToEvalScriptUseableValue(volumeChecked)})")
-        Companion.volume = volumeChecked
-        VolumeDescription.show(3000)
-    }
-
-    /**
-     * 獲取iframePlayer嘅音量資訊
-     *
-     * 注:音量值用Double原因係因為有啲IframePlayer嘅音量值有小數
-     * 小數中有取捨使到有機會調教唔到音量值
-     * */
-    fun getVolume(onReturn: (volume: Double)->Unit) {
-        callIframePlayerFunction("onGetIframePlayerVolume(onReturn)", fun(returnValue){
-            onReturn(returnValue?.toString()?.toDoubleOrNull()?:100.0)
-        })
-    }
-
-    /**
-     * 提升音量
-     *
-     * 由於其他平台需要其他位置設置提升音量
-     * 因此此值可被修改成學合其他平台嘅程序
-     * */
-    var volumeUp = fun(){
-        getVolume(fun(volume){
-            setVolume(volume + 1.0)
-        })
-    }
-
-    /**
-     * 降底音量
-     *
-     * 由於其他平台需要其他位置設置降底音量
-     * 因此此值可被修改成學合其他平台嘅程序
-     * */
-    var volumeDown = fun(){
-        getVolume(fun(volume){
-            setVolume(volume - 1.0)
-        })
-    }
-
 
     /**
      * 對IframePlayer靜音值初始化
@@ -476,54 +548,6 @@ class Player(private val channel: Channel) {
             }
         })
     }()
-
-    /**
-     * 設定iframePlayer嘅靜音資訊
-     * */
-    fun setMuted(muted: Boolean) {
-        //因依家大部分 <瀏覽器> 唔畀自動播放, 如果要自動播放一定要將Player設為 <靜音>
-        val setScript = fun(muted: Boolean){
-            callIframePlayerFunction(
-                    "onSetIframePlayerMuted(${kotlinValueToEvalScriptUseableValue(muted)})"
-            )
-            println(muted)
-            MutedDescription.update(muted)
-        }
-
-        if(isCheckVideoAutoPlayNeedToMute){
-            CanAutoplay.checkVideoAutoPlayNeedToMute(fun(){
-                Companion.muted = muted
-                setScript(muted)
-            }, fun(){
-                setScript(true)
-            })
-        }else{
-            Companion.muted = muted
-            setScript(muted)
-        }
-    }
-
-    /**
-     * 獲取iframePlayer嘅靜音資訊
-     * */
-    fun getMuted(onReturn: (muted: Boolean)->Unit) {
-        callIframePlayerFunction("onGetIframePlayerMuted(onReturn)", fun(returnValue){
-            onReturn(returnValue?.toString()?.toBoolean()?:true)
-        })
-    }
-
-    /**
-     * 設換靜音
-     *
-     * Call一次靜音,再Call取消靜音
-     * 由於其他平台需要其他位置設置設換靜音
-     * 因此此值可被修改成學合其他平台嘅程序
-     * */
-    var volumeMute = fun(){
-        getMuted(fun(volume){
-            setMuted(!volume)
-        })
-    }
 
 
     /**
@@ -552,6 +576,9 @@ class Player(private val channel: Channel) {
     }
 
 
+    /**
+     * pictureInPicture模式切換
+     * */
     fun pictureInPictureModeSwitch(){
         callIframePlayerFunction("""
             async function pictureInPictureModeSwitch(){

@@ -2185,13 +2185,13 @@ var HKNBP_Core = function (_, Kotlin) {
     };
   }
   MutedDescription.prototype.update = function () {
-    player != null ? (player.getMuted_y8twos$(MutedDescription$update$lambda_3(this)), Unit) : null;
+    Player$Companion_getInstance().getMuted_y8twos$(MutedDescription$update$lambda_3(this));
   };
   function MutedDescription_init$lambda$lambda(muted) {
-    player != null ? (player.setMuted_6taknv$(!muted), Unit) : null;
+    Player$Companion_getInstance().setMuted_6taknv$(!muted);
   }
   function MutedDescription_init$lambda(event) {
-    player != null ? (player.getMuted_y8twos$(MutedDescription_init$lambda$lambda), Unit) : null;
+    Player$Companion_getInstance().getMuted_y8twos$(MutedDescription_init$lambda$lambda);
   }
   MutedDescription.$metadata$ = {
     kind: Kind_OBJECT,
@@ -2396,10 +2396,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.audioTracks_oydct3$_0 = Player$audioTracks$lambda(this)();
     this.subtitleTracks_my27pv$_0 = Player$subtitleTracks$lambda(this)();
     this.iframePlayerVolumeInit_0 = Player$iframePlayerVolumeInit$lambda(this)();
-    this.volumeUp = Player$volumeUp$lambda(this);
-    this.volumeDown = Player$volumeDown$lambda(this);
     this.iframePlayerMutedInit_0 = Player$iframePlayerMutedInit$lambda(this)();
-    this.volumeMute = Player$volumeMute$lambda(this);
     this.onPlaying_0 = Player$onPlaying$lambda(this);
     this.onNotPlaying_0 = Player$onNotPlaying$lambda(this);
     var tmp$, tmp$_0, tmp$_1, tmp$_2;
@@ -2415,7 +2412,11 @@ var HKNBP_Core = function (_, Kotlin) {
     this.listenIframePlayerScript_0 = Player$Companion$listenIframePlayerScript$lambda;
     var tmp$, tmp$_0, tmp$_1, tmp$_2;
     this.volume_xu8cq7$_0 = (tmp$_0 = (tmp$ = localStorage.getItem('RecentlyVolume')) != null ? toDoubleOrNull(tmp$) : null) != null ? tmp$_0 : 100.0;
+    this.volumeUp = Player$Companion$volumeUp$lambda(this);
+    this.volumeDown = Player$Companion$volumeDown$lambda(this);
     this.muted_oj2db2$_0 = (tmp$_2 = (tmp$_1 = localStorage.getItem('RecentlyMuted')) != null ? toBoolean(tmp$_1) : null) != null ? tmp$_2 : false;
+    this.isMutedCanAutoplay_0 = false;
+    this.volumeMute_5wo648$_0 = Player$Companion$volumeMute$lambda(this);
     this.isCheckVideoAutoPlayNeedToMute_0 = true;
     this.checkNeedCanTouchIframePlayerModeTimer_r3xwh1$_0 = 0;
     this.checkIsLowSignalShowChannelDescriptionTimer_nk3s78$_0 = 0;
@@ -2467,6 +2468,27 @@ var HKNBP_Core = function (_, Kotlin) {
       this.volume_xu8cq7$_0 = value;
     }
   });
+  Player$Companion.prototype.setVolume_0 = function (volume) {
+    var volumeChecked = volume;
+    if (100 < volumeChecked) {
+      volumeChecked = 100.0;
+    }
+    if (volumeChecked < 0) {
+      volumeChecked = 0.0;
+    }
+    this.callIframePlayerFunction_0('onSetIframePlayerVolume(' + this.kotlinValueToEvalScriptUseableValue_0(volumeChecked) + ')');
+    Player$Companion_getInstance().volume_0 = volumeChecked;
+    VolumeDescription_getInstance().show_za3lpa$(3000);
+  };
+  function Player$Companion$getVolume$lambda(closure$onReturn) {
+    return function (returnValue) {
+      var tmp$, tmp$_0;
+      closure$onReturn((tmp$_0 = (tmp$ = returnValue != null ? returnValue.toString() : null) != null ? toDoubleOrNull(tmp$) : null) != null ? tmp$_0 : 100.0);
+    };
+  }
+  Player$Companion.prototype.getVolume_huw4wd$ = function (onReturn) {
+    this.callIframePlayerFunction_0('onGetIframePlayerVolume(onReturn)', Player$Companion$getVolume$lambda(onReturn));
+  };
   Object.defineProperty(Player$Companion.prototype, 'muted_0', {
     get: function () {
       return this.muted_oj2db2$_0;
@@ -2474,6 +2496,64 @@ var HKNBP_Core = function (_, Kotlin) {
     set: function (value) {
       localStorage.setItem('RecentlyMuted', this.muted_0.toString());
       this.muted_oj2db2$_0 = value;
+    }
+  });
+  function Player$Companion$setMuted$lambda(this$Player$) {
+    return function (muted) {
+      this$Player$.callIframePlayerFunction_0('onSetIframePlayerMuted(' + this$Player$.kotlinValueToEvalScriptUseableValue_0(muted) + ')');
+      println(muted);
+      MutedDescription_getInstance().update_6taknv$(muted);
+    };
+  }
+  function Player$Companion$setMuted$lambda_0(closure$muted, this$Player$, closure$setScript) {
+    return function () {
+      Player$Companion_getInstance().muted_0 = closure$muted;
+      this$Player$.isMutedCanAutoplay_0 = false;
+      closure$setScript(closure$muted);
+    };
+  }
+  function Player$Companion$setMuted$lambda_1(this$Player$, closure$setScript) {
+    return function () {
+      this$Player$.isMutedCanAutoplay_0 = true;
+      closure$setScript(true);
+    };
+  }
+  Player$Companion.prototype.setMuted_6taknv$ = function (muted) {
+    var setScript = Player$Companion$setMuted$lambda(this);
+    if (this.isCheckVideoAutoPlayNeedToMute_0) {
+      CanAutoplay_getInstance().checkVideoAutoPlayNeedToMute_9dmrm4$(Player$Companion$setMuted$lambda_0(muted, this, setScript), Player$Companion$setMuted$lambda_1(this, setScript));
+    }
+     else {
+      Player$Companion_getInstance().muted_0 = muted;
+      setScript(muted);
+    }
+  };
+  function Player$Companion$getMuted$lambda(closure$onReturn) {
+    return function (returnValue) {
+      var tmp$, tmp$_0;
+      closure$onReturn((tmp$_0 = (tmp$ = returnValue != null ? returnValue.toString() : null) != null ? toBoolean(tmp$) : null) != null ? tmp$_0 : true);
+    };
+  }
+  Player$Companion.prototype.getMuted_y8twos$ = function (onReturn) {
+    this.callIframePlayerFunction_0('onGetIframePlayerMuted(onReturn)', Player$Companion$getMuted$lambda(onReturn));
+  };
+  function Player$Companion$set_Player$Companion$volumeMute$lambda(this$Player$, closure$value) {
+    return function () {
+      if (this$Player$.isMutedCanAutoplay_0) {
+        this$Player$.isMutedCanAutoplay_0 = false;
+        this$Player$.setMuted_6taknv$(false);
+      }
+       else {
+        closure$value();
+      }
+    };
+  }
+  Object.defineProperty(Player$Companion.prototype, 'volumeMute', {
+    get: function () {
+      return this.volumeMute_5wo648$_0;
+    },
+    set: function (value) {
+      this.volumeMute_5wo648$_0 = Player$Companion$set_Player$Companion$volumeMute$lambda(this, value);
     }
   });
   Object.defineProperty(Player$Companion.prototype, 'checkNeedCanTouchIframePlayerModeTimer_0', {
@@ -2495,6 +2575,36 @@ var HKNBP_Core = function (_, Kotlin) {
     }
   });
   function Player$Companion$listenIframePlayerScript$lambda(event) {
+  }
+  function Player$Companion$volumeUp$lambda$lambda(this$Player$) {
+    return function (volume) {
+      this$Player$.setVolume_0(volume + 1.0);
+    };
+  }
+  function Player$Companion$volumeUp$lambda(this$Player$) {
+    return function () {
+      this$Player$.getVolume_huw4wd$(Player$Companion$volumeUp$lambda$lambda(this$Player$));
+    };
+  }
+  function Player$Companion$volumeDown$lambda$lambda(this$Player$) {
+    return function (volume) {
+      this$Player$.setVolume_0(volume - 1.0);
+    };
+  }
+  function Player$Companion$volumeDown$lambda(this$Player$) {
+    return function () {
+      this$Player$.getVolume_huw4wd$(Player$Companion$volumeDown$lambda$lambda(this$Player$));
+    };
+  }
+  function Player$Companion$volumeMute$lambda$lambda(this$Player$) {
+    return function (muted) {
+      this$Player$.setMuted_6taknv$(!muted);
+    };
+  }
+  function Player$Companion$volumeMute$lambda(this$Player$) {
+    return function () {
+      this$Player$.getMuted_y8twos$(Player$Companion$volumeMute$lambda$lambda(this$Player$));
+    };
   }
   Player$Companion.$metadata$ = {
     kind: Kind_OBJECT,
@@ -2644,62 +2754,6 @@ var HKNBP_Core = function (_, Kotlin) {
       Dialogue$Companion_getInstance().getDialogues_fs1aqo$(Player$designatedSubtitleTrack$lambda);
       return false;
     }
-  };
-  Player.prototype.setVolume_14dthe$ = function (volume) {
-    var volumeChecked = volume;
-    if (100 < volumeChecked) {
-      volumeChecked = 100.0;
-    }
-    if (volumeChecked < 0) {
-      volumeChecked = 0.0;
-    }
-    Player$Companion_getInstance().callIframePlayerFunction_0('onSetIframePlayerVolume(' + Player$Companion_getInstance().kotlinValueToEvalScriptUseableValue_0(volumeChecked) + ')');
-    Player$Companion_getInstance().volume_0 = volumeChecked;
-    VolumeDescription_getInstance().show_za3lpa$(3000);
-  };
-  function Player$getVolume$lambda(closure$onReturn) {
-    return function (returnValue) {
-      var tmp$, tmp$_0;
-      closure$onReturn((tmp$_0 = (tmp$ = returnValue != null ? returnValue.toString() : null) != null ? toDoubleOrNull(tmp$) : null) != null ? tmp$_0 : 100.0);
-    };
-  }
-  Player.prototype.getVolume_huw4wd$ = function (onReturn) {
-    Player$Companion_getInstance().callIframePlayerFunction_0('onGetIframePlayerVolume(onReturn)', Player$getVolume$lambda(onReturn));
-  };
-  function Player$setMuted$lambda(muted) {
-    Player$Companion_getInstance().callIframePlayerFunction_0('onSetIframePlayerMuted(' + Player$Companion_getInstance().kotlinValueToEvalScriptUseableValue_0(muted) + ')');
-    println(muted);
-    MutedDescription_getInstance().update_6taknv$(muted);
-  }
-  function Player$setMuted$lambda_0(closure$muted, closure$setScript) {
-    return function () {
-      Player$Companion_getInstance().muted_0 = closure$muted;
-      closure$setScript(closure$muted);
-    };
-  }
-  function Player$setMuted$lambda_1(closure$setScript) {
-    return function () {
-      closure$setScript(true);
-    };
-  }
-  Player.prototype.setMuted_6taknv$ = function (muted) {
-    var setScript = Player$setMuted$lambda;
-    if (Player$Companion_getInstance().isCheckVideoAutoPlayNeedToMute_0) {
-      CanAutoplay_getInstance().checkVideoAutoPlayNeedToMute_9dmrm4$(Player$setMuted$lambda_0(muted, setScript), Player$setMuted$lambda_1(setScript));
-    }
-     else {
-      Player$Companion_getInstance().muted_0 = muted;
-      setScript(muted);
-    }
-  };
-  function Player$getMuted$lambda(closure$onReturn) {
-    return function (returnValue) {
-      var tmp$, tmp$_0;
-      closure$onReturn((tmp$_0 = (tmp$ = returnValue != null ? returnValue.toString() : null) != null ? toBoolean(tmp$) : null) != null ? tmp$_0 : true);
-    };
-  }
-  Player.prototype.getMuted_y8twos$ = function (onReturn) {
-    Player$Companion_getInstance().callIframePlayerFunction_0('onGetIframePlayerMuted(onReturn)', Player$getMuted$lambda(onReturn));
   };
   function Player$ProgrammableColor(name, ordinal) {
     Enum.call(this);
@@ -2972,34 +3026,13 @@ var HKNBP_Core = function (_, Kotlin) {
       return Unit;
     };
   }
-  function Player$volumeUp$lambda$lambda(this$Player) {
-    return function (volume) {
-      this$Player.setVolume_14dthe$(volume + 1.0);
-    };
-  }
-  function Player$volumeUp$lambda(this$Player) {
-    return function () {
-      this$Player.getVolume_huw4wd$(Player$volumeUp$lambda$lambda(this$Player));
-    };
-  }
-  function Player$volumeDown$lambda$lambda(this$Player) {
-    return function (volume) {
-      this$Player.setVolume_14dthe$(volume - 1.0);
-    };
-  }
-  function Player$volumeDown$lambda(this$Player) {
-    return function () {
-      this$Player.getVolume_huw4wd$(Player$volumeDown$lambda$lambda(this$Player));
-    };
-  }
-  function Player$iframePlayerMutedInit$lambda$ObjectLiteral(this$Player) {
-    this.this$Player = this$Player;
+  function Player$iframePlayerMutedInit$lambda$ObjectLiteral() {
     this.isInit = false;
   }
   Player$iframePlayerMutedInit$lambda$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
     if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance()))
       if (!this.isInit) {
-        this.this$Player.setMuted_6taknv$(Player$Companion_getInstance().muted_0);
+        Player$Companion_getInstance().setMuted_6taknv$(Player$Companion_getInstance().muted_0);
         this.isInit = true;
       }
   };
@@ -3009,18 +3042,8 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function Player$iframePlayerMutedInit$lambda(this$Player) {
     return function () {
-      this$Player.addOnPlayerEventListener_j8fzjz$(new Player$iframePlayerMutedInit$lambda$ObjectLiteral(this$Player));
+      this$Player.addOnPlayerEventListener_j8fzjz$(new Player$iframePlayerMutedInit$lambda$ObjectLiteral());
       return Unit;
-    };
-  }
-  function Player$volumeMute$lambda$lambda(this$Player) {
-    return function (volume) {
-      this$Player.setMuted_6taknv$(!volume);
-    };
-  }
-  function Player$volumeMute$lambda(this$Player) {
-    return function () {
-      this$Player.getMuted_y8twos$(Player$volumeMute$lambda$lambda(this$Player));
     };
   }
   function Player$onPlaying$lambda(this$Player) {
@@ -4184,16 +4207,13 @@ var HKNBP_Core = function (_, Kotlin) {
     SubtitleDescription_getInstance().show_za3lpa$(3000);
   }
   function VirtualRemote_init$lambda_17(event) {
-    var tmp$;
-    (tmp$ = player != null ? player.volumeMute : null) != null ? tmp$() : null;
+    Player$Companion_getInstance().volumeMute();
   }
   function VirtualRemote_init$lambda_18(event) {
-    var tmp$;
-    (tmp$ = player != null ? player.volumeUp : null) != null ? tmp$() : null;
+    Player$Companion_getInstance().volumeUp();
   }
   function VirtualRemote_init$lambda_19(event) {
-    var tmp$;
-    (tmp$ = player != null ? player.volumeDown : null) != null ? tmp$() : null;
+    Player$Companion_getInstance().volumeDown();
   }
   function VirtualRemote_init$lambda_20(event) {
     player != null ? (player.programmable(Player$ProgrammableColor$red_getInstance()), Unit) : null;
@@ -4482,7 +4502,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.volumeUpButton_0.onclick = VolumeDescription_init$lambda;
     this.volumeDownButton_0.onclick = VolumeDescription_init$lambda_0;
   }
-  function VolumeDescription$show$lambda(volume) {
+  function VolumeDescription$show$lambda$lambda(volume) {
     var tmp$;
     VolumeDescription_getInstance().volumeValue_0.innerHTML = numberToInt(volume).toString();
     VolumeDescription_getInstance().volumeIconList_0.innerHTML = '';
@@ -4491,15 +4511,49 @@ var HKNBP_Core = function (_, Kotlin) {
       VolumeDescription_getInstance().volumeIconList_0.innerHTML = VolumeDescription_getInstance().volumeIconList_0.innerHTML + VolumeDescription_getInstance().volumeIcon_0;
     }
   }
+  function VolumeDescription$show$lambda() {
+    Player$Companion_getInstance().getVolume_huw4wd$(VolumeDescription$show$lambda$lambda);
+  }
+  function VolumeDescription$show$lambda_0(closure$script) {
+    return function () {
+      closure$script();
+    };
+  }
+  function VolumeDescription$show$lambda_1(closure$script) {
+    return function () {
+      closure$script();
+    };
+  }
+  function VolumeDescription$show$lambda_2(closure$script) {
+    return function () {
+      closure$script();
+    };
+  }
+  function VolumeDescription$show$lambda_3(closure$script) {
+    return function () {
+      closure$script();
+    };
+  }
+  function VolumeDescription$show$lambda_4(closure$script) {
+    return function () {
+      closure$script();
+    };
+  }
   VolumeDescription.prototype.show = function () {
     UserInterface.prototype.show.call(this);
-    player != null ? (player.getVolume_huw4wd$(VolumeDescription$show$lambda), Unit) : null;
+    var script = VolumeDescription$show$lambda;
+    script();
+    window.setTimeout(VolumeDescription$show$lambda_0(script), 100);
+    window.setTimeout(VolumeDescription$show$lambda_1(script), 500);
+    window.setTimeout(VolumeDescription$show$lambda_2(script), 1000);
+    window.setTimeout(VolumeDescription$show$lambda_3(script), 10000);
+    window.setTimeout(VolumeDescription$show$lambda_4(script), 60000);
   };
   function VolumeDescription_init$lambda(event) {
-    player != null ? player.volumeUp : null;
+    Player$Companion_getInstance().volumeUp();
   }
   function VolumeDescription_init$lambda_0(event) {
-    player != null ? player.volumeDown : null;
+    Player$Companion_getInstance().volumeDown();
   }
   VolumeDescription.$metadata$ = {
     kind: Kind_OBJECT,

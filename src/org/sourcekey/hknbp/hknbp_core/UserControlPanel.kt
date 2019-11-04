@@ -122,7 +122,7 @@ object UserControlPanel: UserInterface(
         PictureInPictureButton
         FullScreenButton
 
-        //首先focus userControlPanelShower
+        //開程式時首先focus userControlPanelShower
         jQuery("#userControlPanelShower").focus()
 
         //設定使用者控制界面顯示方法
