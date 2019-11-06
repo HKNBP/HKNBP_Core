@@ -1957,9 +1957,6 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   var coreVersion_0;
   var appVersion;
-  function setAppVersion(_appVersion) {
-    appVersion = _appVersion;
-  }
   function channels$lambda$ObjectLiteral() {
   }
   channels$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
@@ -2147,14 +2144,22 @@ var HKNBP_Core = function (_, Kotlin) {
     this.mutedDescriptionButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('mutedDescriptionButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.mutedDescriptionButton_0.onclick = MutedDescription_init$lambda;
   }
-  function MutedDescription$update$lambda(closure$muted, this$MutedDescription) {
+  MutedDescription.prototype.update_6taknv$ = function (muted) {
+    if (muted) {
+      this.show();
+    }
+     else {
+      this.hide();
+    }
+  };
+  function MutedDescription$update$lambda$lambda(this$MutedDescription) {
+    return function (muted) {
+      this$MutedDescription.update_6taknv$(muted);
+    };
+  }
+  function MutedDescription$update$lambda(this$MutedDescription) {
     return function () {
-      if (closure$muted) {
-        this$MutedDescription.show();
-      }
-       else {
-        this$MutedDescription.hide();
-      }
+      Player$Companion_getInstance().getMuted_y8twos$(MutedDescription$update$lambda$lambda(this$MutedDescription));
     };
   }
   function MutedDescription$update$lambda_0(closure$script) {
@@ -2172,20 +2177,12 @@ var HKNBP_Core = function (_, Kotlin) {
       closure$script();
     };
   }
-  MutedDescription.prototype.update_6taknv$ = function (muted) {
-    var script = MutedDescription$update$lambda(muted, this);
+  MutedDescription.prototype.update = function () {
+    var script = MutedDescription$update$lambda(this);
     script();
     window.setTimeout(MutedDescription$update$lambda_0(script), 1000);
     window.setTimeout(MutedDescription$update$lambda_1(script), 10000);
     window.setTimeout(MutedDescription$update$lambda_2(script), 60000);
-  };
-  function MutedDescription$update$lambda_3(this$MutedDescription) {
-    return function (muted) {
-      this$MutedDescription.update_6taknv$(muted);
-    };
-  }
-  MutedDescription.prototype.update = function () {
-    Player$Companion_getInstance().getMuted_y8twos$(MutedDescription$update$lambda_3(this));
   };
   function MutedDescription_init$lambda$lambda(muted) {
     Player$Companion_getInstance().setMuted_6taknv$(!muted);
@@ -2468,7 +2465,7 @@ var HKNBP_Core = function (_, Kotlin) {
       this.volume_xu8cq7$_0 = value;
     }
   });
-  Player$Companion.prototype.setVolume_0 = function (volume) {
+  Player$Companion.prototype.setVolume_14dthe$ = function (volume) {
     var volumeChecked = volume;
     if (100 < volumeChecked) {
       volumeChecked = 100.0;
@@ -2501,7 +2498,6 @@ var HKNBP_Core = function (_, Kotlin) {
   function Player$Companion$setMuted$lambda(this$Player$) {
     return function (muted) {
       this$Player$.callIframePlayerFunction_0('onSetIframePlayerMuted(' + this$Player$.kotlinValueToEvalScriptUseableValue_0(muted) + ')');
-      println(muted);
       MutedDescription_getInstance().update_6taknv$(muted);
     };
   }
@@ -2578,7 +2574,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function Player$Companion$volumeUp$lambda$lambda(this$Player$) {
     return function (volume) {
-      this$Player$.setVolume_0(volume + 1.0);
+      this$Player$.setVolume_14dthe$(volume + 1.0);
     };
   }
   function Player$Companion$volumeUp$lambda(this$Player$) {
@@ -2588,7 +2584,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function Player$Companion$volumeDown$lambda$lambda(this$Player$) {
     return function (volume) {
-      this$Player$.setVolume_0(volume - 1.0);
+      this$Player$.setVolume_14dthe$(volume - 1.0);
     };
   }
   function Player$Companion$volumeDown$lambda(this$Player$) {
@@ -3073,7 +3069,6 @@ var HKNBP_Core = function (_, Kotlin) {
     this.isLowSignalShowChannelDescription_0 = false;
     ChannelDescription_getInstance().show();
     ChannelDescription_getInstance().update();
-    Player$Companion_getInstance().checkNeedCanTouchIframePlayerModeTimer_0 = window.setTimeout(Player_init$Player_init$ObjectLiteral_init$lambda(this), 30000);
   }
   function Player_init$ObjectLiteral$on$lambda(this$) {
     return function () {
@@ -3111,14 +3106,6 @@ var HKNBP_Core = function (_, Kotlin) {
         break;
     }
   };
-  function Player_init$Player_init$ObjectLiteral_init$lambda(this$) {
-    return function () {
-      if (!this$.isPlaying_0 && this$.numberOfPlaying_0 === 0) {
-        UserControlPanel_getInstance().canTouchIframePlayerMode();
-        PromptBox_getInstance().promptMessage('\u5DF2\u5207\u63DB\u5230\u624B\u52D5\u64AD\u653E\u6A21\u5F0F');
-      }
-    };
-  }
   Player_init$ObjectLiteral.$metadata$ = {
     kind: Kind_CLASS,
     interfaces: [Player$OnPlayerEventListener]
@@ -6192,7 +6179,6 @@ var HKNBP_Core = function (_, Kotlin) {
       appVersion = value;
     }
   });
-  package$hknbp_core.setAppVersion_61zpoe$ = setAppVersion;
   Object.defineProperty(package$hknbp_core, 'channels', {
     get: function () {
       return channels;

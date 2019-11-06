@@ -22,6 +22,7 @@ import kotlin.browser.document
 import kotlin.browser.localStorage
 import kotlin.browser.window
 import kotlin.js.Date
+import kotlin.js.Json
 import kotlin.random.Random
 
 
@@ -137,13 +138,6 @@ val coreVersion: String = {
  * 此值會畀其他框架所改至該框架嘅Version
  * */
 var appVersion: String = "${coreVersion}-PWA"
-
-/**
- * 設定程式版本名
- * */
-fun setAppVersion(_appVersion: String){
-    appVersion = _appVersion
-}
 
 /**
 fun includeScript(vararg files: String) {

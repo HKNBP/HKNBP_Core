@@ -77,7 +77,7 @@ class Player(private val channel: Channel) {
          * 注:音量值用Double原因係因為有啲IframePlayer嘅音量值有小數
          * 小數中有取捨使到有機會調教唔到音量值
          * */
-        private fun setVolume(volume: Double) {
+        fun setVolume(volume: Double) {
             var volumeChecked = volume
             if(100 < volumeChecked){volumeChecked = 100.0}
             if(volumeChecked < 0){volumeChecked = 0.0}
@@ -152,7 +152,6 @@ class Player(private val channel: Channel) {
                 callIframePlayerFunction(
                         "onSetIframePlayerMuted(${kotlinValueToEvalScriptUseableValue(muted)})"
                 )
-                println(muted)
                 MutedDescription.update(muted)
             }
 
@@ -721,13 +720,14 @@ class Player(private val channel: Channel) {
             init {
                 ChannelDescription.show()
                 ChannelDescription.update()
+                /**
                 //如果冇自動播放就換到手動播放模式
                 checkNeedCanTouchIframePlayerModeTimer = window.setTimeout(fun() {
                     if (!isPlaying && numberOfPlaying == 0) {
                         UserControlPanel.canTouchIframePlayerMode()
                         PromptBox.promptMessage("已切換到手動播放模式")
                     }
-                }, 30000)
+                }, 30000)*/
             }
         })
         iframePlayer?.src = channel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
