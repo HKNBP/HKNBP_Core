@@ -2395,7 +2395,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.iframePlayerVolumeInit_0 = Player$iframePlayerVolumeInit$lambda(this)();
     this.iframePlayerMutedInit_0 = Player$iframePlayerMutedInit$lambda(this)();
     this.onPlaying_0 = Player$onPlaying$lambda(this);
-    this.onNotPlaying_0 = Player$onNotPlaying$lambda(this);
+    this.onNotPlaying_0 = Player$onNotPlaying$lambda;
     var tmp$, tmp$_0, tmp$_1, tmp$_2;
     println('\u8F49\u81F3\u983B\u9053' + this.channel_0.number);
     this.addOnPlayerEventListener_j8fzjz$(new Player_init$ObjectLiteral(this));
@@ -3052,15 +3052,7 @@ var HKNBP_Core = function (_, Kotlin) {
       }
     };
   }
-  function Player$onNotPlaying$lambda(this$Player) {
-    return function () {
-      var tmp$;
-      tmp$ = this$Player.onPlayerEvents_0.iterator();
-      while (tmp$.hasNext()) {
-        var event = tmp$.next();
-        event.on_mdxcb7$(Player$OnPlayerEvent$notPlaying_getInstance());
-      }
-    };
+  function Player$onNotPlaying$lambda() {
   }
   function Player_init$ObjectLiteral(this$Player) {
     this.this$Player = this$Player;

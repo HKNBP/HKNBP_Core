@@ -617,7 +617,7 @@ class Player(private val channel: Channel) {
      * 當iframePlayer冇進行播放頻道時
      * 會執行此function
      * */
-    private val onNotPlaying = fun(){ for(event in onPlayerEvents){ event.on(OnPlayerEvent.notPlaying) } }
+    private val onNotPlaying = fun(){ /**for(event in onPlayerEvents){ event.on(OnPlayerEvent.notPlaying) }*/ }
 
     /**
     /**
