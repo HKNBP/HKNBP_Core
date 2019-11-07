@@ -35,6 +35,7 @@ private val setConsoleLogsListener = {
             console.stdlog = console.log.bind(console);
             console.logs = [];
             console.log = function(){
+                if(1000<console.logs.length){console.logs.shift();}//防過多Log
                 console.logs.push(Array.from(arguments));
                 console.stdlog.apply(console, arguments);
             }

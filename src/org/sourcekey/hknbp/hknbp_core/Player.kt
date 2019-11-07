@@ -164,6 +164,7 @@ class Player(private val channel: Channel) {
          * */
         fun getMuted(onReturn: (muted: Boolean)->Unit) {
             callIframePlayerFunction("onGetIframePlayerMuted(onReturn)", fun(returnValue){
+                MutedDescription.update(muted)
                 onReturn(returnValue?.toString()?.toBoolean()?:true)
             })
         }
@@ -189,6 +190,7 @@ class Player(private val channel: Channel) {
                             setMuted(false)
                         }else{
                             //行其他平台設置自己靜音方式
+                            setMuted(false)
                             value()
                         }
                     })

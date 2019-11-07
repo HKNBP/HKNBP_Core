@@ -1873,6 +1873,9 @@ var HKNBP_Core = function (_, Kotlin) {
       console.stdlog = console.log.bind(console);
       console.logs = [];
       return console.log = function () {
+        if (1000 < console.logs.length) {
+          console.logs.shift();
+        }
         console.logs.push(Array.from(arguments));
         console.stdlog.apply(console, arguments);
       };
@@ -2521,14 +2524,15 @@ var HKNBP_Core = function (_, Kotlin) {
       setScript(muted);
     }
   };
-  function Player$Companion$getMuted$lambda(closure$onReturn) {
+  function Player$Companion$getMuted$lambda(this$Player$, closure$onReturn) {
     return function (returnValue) {
       var tmp$, tmp$_0;
+      MutedDescription_getInstance().update_6taknv$(this$Player$.muted_0);
       closure$onReturn((tmp$_0 = (tmp$ = returnValue != null ? returnValue.toString() : null) != null ? toBoolean(tmp$) : null) != null ? tmp$_0 : true);
     };
   }
   Player$Companion.prototype.getMuted_y8twos$ = function (onReturn) {
-    this.callIframePlayerFunction_0('onGetIframePlayerMuted(onReturn)', Player$Companion$getMuted$lambda(onReturn));
+    this.callIframePlayerFunction_0('onGetIframePlayerMuted(onReturn)', Player$Companion$getMuted$lambda(this, onReturn));
   };
   function Player$Companion$set_Player$Companion$volumeMute$lambda$lambda(this$Player$, closure$value) {
     return function (muted) {
@@ -2536,6 +2540,7 @@ var HKNBP_Core = function (_, Kotlin) {
         this$Player$.setMuted_6taknv$(false);
       }
        else {
+        this$Player$.setMuted_6taknv$(false);
         closure$value();
       }
     };
