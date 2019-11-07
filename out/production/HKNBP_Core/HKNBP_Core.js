@@ -2394,10 +2394,10 @@ var HKNBP_Core = function (_, Kotlin) {
     this.subtitleTracks_my27pv$_0 = Player$subtitleTracks$lambda(this)();
     this.iframePlayerVolumeInit_0 = Player$iframePlayerVolumeInit$lambda(this)();
     this.iframePlayerMutedInit_0 = Player$iframePlayerMutedInit$lambda(this)();
-    this.onPlaying_0 = Player$onPlaying$lambda(this);
+    this.onPlaying_0 = Player$onPlaying$lambda;
     this.onNotPlaying_0 = Player$onNotPlaying$lambda;
     var tmp$, tmp$_0, tmp$_1, tmp$_2;
-    println('\u8F49\u81F3\u983B\u9053' + this.channel_0.number);
+    println('\u64AD\u653E\u5668\u521D\u59CB\u5316' + this.channel_0.number);
     this.addOnPlayerEventListener_j8fzjz$(new Player_init$ObjectLiteral(this));
     (tmp$_1 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_1.src = (tmp$_0 = (tmp$ = this.channel_0.sources.node) != null ? tmp$.iFramePlayerSrc : null) != null ? tmp$_0 : 'iframePlayer/videojs_hls.html') : null;
     (tmp$_2 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_2.onload = Player_init$lambda(this)) : null;
@@ -3042,15 +3042,7 @@ var HKNBP_Core = function (_, Kotlin) {
       return Unit;
     };
   }
-  function Player$onPlaying$lambda(this$Player) {
-    return function () {
-      var tmp$;
-      tmp$ = this$Player.onPlayerEvents_0.iterator();
-      while (tmp$.hasNext()) {
-        var event = tmp$.next();
-        event.on_mdxcb7$(Player$OnPlayerEvent$playing_getInstance());
-      }
-    };
+  function Player$onPlaying$lambda() {
   }
   function Player$onNotPlaying$lambda() {
   }

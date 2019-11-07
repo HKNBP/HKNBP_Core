@@ -611,7 +611,7 @@ class Player(private val channel: Channel) {
      * 即iframePlayer正確地播放緊
      * 有關資料可讀取
      * */
-    private val onPlaying = fun(){ for(event in onPlayerEvents){ event.on(OnPlayerEvent.playing) } }
+    private val onPlaying = fun(){ /**for(event in onPlayerEvents){ event.on(OnPlayerEvent.playing) }*/ }
 
     /**
      * 當iframePlayer冇進行播放頻道時
@@ -682,7 +682,7 @@ class Player(private val channel: Channel) {
     }
 
     init {
-        println("轉至頻道${channel.number}")
+        println("播放器初始化${channel.number}")
         addOnPlayerEventListener(object : OnPlayerEventListener {
             private var isPlaying: Boolean = false
             private var numberOfPlaying: Int = 0
