@@ -135,15 +135,6 @@ class Player(private val channel: Channel) {
             }
 
         /**
-         * 係米已經Mute左iframePlayer先可自動播放
-         *
-         * 此值為左識別現在(靜音行為)為CanAutoplay做成
-         * 而其他平台設置自己靜音方式後
-         * 需要能夠畀其他平台關閉CanAutoplay做成嘅(靜音行為)
-         * */
-        private var isMutedCanAutoplay = false
-
-        /**
          * 設定iframePlayer嘅靜音資訊
          * */
         fun setMuted(muted: Boolean) {
@@ -158,10 +149,8 @@ class Player(private val channel: Channel) {
             if(isCheckVideoAutoPlayNeedToMute){
                 CanAutoplay.checkVideoAutoPlayNeedToMute(fun(){
                     Companion.muted = muted
-                    isMutedCanAutoplay = false
                     setScript(muted)
                 }, fun(){
-                    isMutedCanAutoplay = true
                     setScript(true)
                 })
             }else{
@@ -194,16 +183,15 @@ class Player(private val channel: Channel) {
             set(value) {
                 field = fun(){
                     //其他平台設置自己靜音方式後
-                    if(isMutedCanAutoplay){
-                        println("Mt")
-                        //取消因要Mute左iframePlayer先可自動播放嘅靜音
-                        isMutedCanAutoplay = false
-                        setMuted(false)
-                    }else{
-                        println("Mf")
-                        //行其他平台設置自己靜音方式
-                        value()
-                    }
+                    getMuted(fun(muted){
+                        if(muted){
+                            //取消因要Mute左iframePlayer先可自動播放嘅靜音
+                            setMuted(false)
+                        }else{
+                            //行其他平台設置自己靜音方式
+                            value()
+                        }
+                    })
                 }
             }
 
@@ -613,13 +601,13 @@ class Player(private val channel: Channel) {
      * 即iframePlayer正確地播放緊
      * 有關資料可讀取
      * */
-    private val onPlaying = fun(){ /**for(event in onPlayerEvents){ event.on(OnPlayerEvent.playing) }*/ }
+    private val onPlaying = fun(){ for(event in onPlayerEvents){ event.on(OnPlayerEvent.playing) } }
 
     /**
      * 當iframePlayer冇進行播放頻道時
      * 會執行此function
      * */
-    private val onNotPlaying = fun(){ /**for(event in onPlayerEvents){ event.on(OnPlayerEvent.notPlaying) }*/ }
+    private val onNotPlaying = fun(){ for(event in onPlayerEvents){ event.on(OnPlayerEvent.notPlaying) } }
 
     /**
     /**

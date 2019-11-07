@@ -2394,8 +2394,8 @@ var HKNBP_Core = function (_, Kotlin) {
     this.subtitleTracks_my27pv$_0 = Player$subtitleTracks$lambda(this)();
     this.iframePlayerVolumeInit_0 = Player$iframePlayerVolumeInit$lambda(this)();
     this.iframePlayerMutedInit_0 = Player$iframePlayerMutedInit$lambda(this)();
-    this.onPlaying_0 = Player$onPlaying$lambda;
-    this.onNotPlaying_0 = Player$onNotPlaying$lambda;
+    this.onPlaying_0 = Player$onPlaying$lambda(this);
+    this.onNotPlaying_0 = Player$onNotPlaying$lambda(this);
     var tmp$, tmp$_0, tmp$_1, tmp$_2;
     println('\u64AD\u653E\u5668\u521D\u59CB\u5316' + this.channel_0.number);
     this.addOnPlayerEventListener_j8fzjz$(new Player_init$ObjectLiteral(this));
@@ -2412,7 +2412,6 @@ var HKNBP_Core = function (_, Kotlin) {
     this.volumeUp = Player$Companion$volumeUp$lambda(this);
     this.volumeDown = Player$Companion$volumeDown$lambda(this);
     this.muted_oj2db2$_0 = (tmp$_2 = (tmp$_1 = localStorage.getItem('RecentlyMuted')) != null ? toBoolean(tmp$_1) : null) != null ? tmp$_2 : false;
-    this.isMutedCanAutoplay_0 = false;
     this.volumeMute_5wo648$_0 = Player$Companion$volumeMute$lambda(this);
     this.isCheckVideoAutoPlayNeedToMute_0 = true;
     this.checkNeedCanTouchIframePlayerModeTimer_r3xwh1$_0 = 0;
@@ -2501,23 +2500,21 @@ var HKNBP_Core = function (_, Kotlin) {
       MutedDescription_getInstance().update_6taknv$(muted);
     };
   }
-  function Player$Companion$setMuted$lambda_0(closure$muted, this$Player$, closure$setScript) {
+  function Player$Companion$setMuted$lambda_0(closure$muted, closure$setScript) {
     return function () {
       Player$Companion_getInstance().muted_0 = closure$muted;
-      this$Player$.isMutedCanAutoplay_0 = false;
       closure$setScript(closure$muted);
     };
   }
-  function Player$Companion$setMuted$lambda_1(this$Player$, closure$setScript) {
+  function Player$Companion$setMuted$lambda_1(closure$setScript) {
     return function () {
-      this$Player$.isMutedCanAutoplay_0 = true;
       closure$setScript(true);
     };
   }
   Player$Companion.prototype.setMuted_6taknv$ = function (muted) {
     var setScript = Player$Companion$setMuted$lambda(this);
     if (this.isCheckVideoAutoPlayNeedToMute_0) {
-      CanAutoplay_getInstance().checkVideoAutoPlayNeedToMute_9dmrm4$(Player$Companion$setMuted$lambda_0(muted, this, setScript), Player$Companion$setMuted$lambda_1(this, setScript));
+      CanAutoplay_getInstance().checkVideoAutoPlayNeedToMute_9dmrm4$(Player$Companion$setMuted$lambda_0(muted, setScript), Player$Companion$setMuted$lambda_1(setScript));
     }
      else {
       Player$Companion_getInstance().muted_0 = muted;
@@ -2533,17 +2530,19 @@ var HKNBP_Core = function (_, Kotlin) {
   Player$Companion.prototype.getMuted_y8twos$ = function (onReturn) {
     this.callIframePlayerFunction_0('onGetIframePlayerMuted(onReturn)', Player$Companion$getMuted$lambda(onReturn));
   };
-  function Player$Companion$set_Player$Companion$volumeMute$lambda(this$Player$, closure$value) {
-    return function () {
-      if (this$Player$.isMutedCanAutoplay_0) {
-        println('Mt');
-        this$Player$.isMutedCanAutoplay_0 = false;
+  function Player$Companion$set_Player$Companion$volumeMute$lambda$lambda(this$Player$, closure$value) {
+    return function (muted) {
+      if (muted) {
         this$Player$.setMuted_6taknv$(false);
       }
        else {
-        println('Mf');
         closure$value();
       }
+    };
+  }
+  function Player$Companion$set_Player$Companion$volumeMute$lambda(this$Player$, closure$value) {
+    return function () {
+      this$Player$.getMuted_y8twos$(Player$Companion$set_Player$Companion$volumeMute$lambda$lambda(this$Player$, closure$value));
     };
   }
   Object.defineProperty(Player$Companion.prototype, 'volumeMute', {
@@ -3044,9 +3043,25 @@ var HKNBP_Core = function (_, Kotlin) {
       return Unit;
     };
   }
-  function Player$onPlaying$lambda() {
+  function Player$onPlaying$lambda(this$Player) {
+    return function () {
+      var tmp$;
+      tmp$ = this$Player.onPlayerEvents_0.iterator();
+      while (tmp$.hasNext()) {
+        var event = tmp$.next();
+        event.on_mdxcb7$(Player$OnPlayerEvent$playing_getInstance());
+      }
+    };
   }
-  function Player$onNotPlaying$lambda() {
+  function Player$onNotPlaying$lambda(this$Player) {
+    return function () {
+      var tmp$;
+      tmp$ = this$Player.onPlayerEvents_0.iterator();
+      while (tmp$.hasNext()) {
+        var event = tmp$.next();
+        event.on_mdxcb7$(Player$OnPlayerEvent$notPlaying_getInstance());
+      }
+    };
   }
   function Player_init$ObjectLiteral(this$Player) {
     this.this$Player = this$Player;
