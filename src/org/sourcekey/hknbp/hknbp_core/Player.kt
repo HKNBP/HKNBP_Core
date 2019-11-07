@@ -195,10 +195,12 @@ class Player(private val channel: Channel) {
                 field = fun(){
                     //其他平台設置自己靜音方式後
                     if(isMutedCanAutoplay){
+                        println("Mt")
                         //取消因要Mute左iframePlayer先可自動播放嘅靜音
                         isMutedCanAutoplay = false
                         setMuted(false)
                     }else{
+                        println("Mf")
                         //行其他平台設置自己靜音方式
                         value()
                     }
