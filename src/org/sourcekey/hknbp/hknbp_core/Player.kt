@@ -53,7 +53,7 @@ class Player(private val channel: Channel) {
 
         private var listenIframePlayerScript = fun(event: dynamic){}
 
-        private fun setListenIframePlayer(){
+        private fun setListenIframePlayerMessage(){
             window.addEventListener("message", fun(event: dynamic){
                 listenIframePlayerScript(event)
             }, false)
@@ -231,7 +231,7 @@ class Player(private val channel: Channel) {
 
 
         init {
-            setListenIframePlayer()
+            setListenIframePlayerMessage()
         }
     }
 
@@ -675,6 +675,7 @@ class Player(private val channel: Channel) {
 
     init {
         println("播放器初始化${channel.number}")
+        /**
         addOnPlayerEventListener(object : OnPlayerEventListener {
             private var isPlaying: Boolean = false
             private var numberOfPlaying: Int = 0
@@ -721,7 +722,7 @@ class Player(private val channel: Channel) {
                     }
                 }, 30000)*/
             }
-        })
+        })*/
         iframePlayer?.src = channel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
         iframePlayer?.onload = fun() {
             setListenIframePlayerScript()
