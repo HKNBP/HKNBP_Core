@@ -3076,6 +3076,34 @@ var HKNBP_Core = function (_, Kotlin) {
       Player$Companion_getInstance().callIframePlayerFunction_0(tmp$_2);
     };
   }
+<<<<<<< 43df8c6f3a9bac490ad6df311186ba86b3c26be1
+=======
+  function Player_init$ObjectLiteral(this$Player) {
+    this.this$Player = this$Player;
+    this.isPlaying_0 = false;
+    this.numberOfPlaying_0 = 0;
+    this.isLowSignalShowChannelDescription_0 = false;
+    ChannelDescription_getInstance().update();
+    ChannelDescription_getInstance().show();
+  }
+  Player_init$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
+    switch (onPlayerEvent.name) {
+      case 'playing':
+        ChannelDescription_getInstance().show_za3lpa$(5000);
+        VirtualRemote_getInstance().update();
+        UserControlPanel_getInstance().cannotTouchIframePlayerMode();
+        println('\u64AD\u653E\u7DCA\u983B\u9053' + this.this$Player.channel_0.number);
+        break;
+      case 'notPlaying':
+        ChannelDescription_getInstance().show();
+        break;
+    }
+  };
+  Player_init$ObjectLiteral.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: [Player$OnPlayerEventListener]
+  };
+>>>>>>> test
   Player.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'Player',
