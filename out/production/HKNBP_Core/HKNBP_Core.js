@@ -3082,15 +3082,17 @@ var HKNBP_Core = function (_, Kotlin) {
     this.isPlaying_0 = false;
     this.numberOfPlaying_0 = 0;
     this.isLowSignalShowChannelDescription_0 = false;
+    ChannelDescription_getInstance().update();
+    ChannelDescription_getInstance().show();
   }
   Player_init$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
     switch (onPlayerEvent.name) {
       case 'playing':
-        VirtualRemote_getInstance().update();
-        UserControlPanel_getInstance().cannotTouchIframePlayerMode();
+        ChannelDescription_getInstance().show_za3lpa$(5000);
         println('\u64AD\u653E\u7DCA\u983B\u9053' + this.this$Player.channel_0.number);
         break;
       case 'notPlaying':
+        ChannelDescription_getInstance().show();
         break;
     }
   };

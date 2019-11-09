@@ -738,19 +738,19 @@ class Player(private val channel: Channel) {
             override fun on(onPlayerEvent: OnPlayerEvent) {
                 when (onPlayerEvent) {
                     OnPlayerEvent.playing -> {
-                        //ChannelDescription.show(5000)
-                        VirtualRemote.update()
-                        UserControlPanel.cannotTouchIframePlayerMode()
+                        ChannelDescription.show(5000)
+                        //VirtualRemote.update()
+                        //UserControlPanel.cannotTouchIframePlayerMode()
                         println("播放緊頻道${channel.number}")
                     }
                     OnPlayerEvent.notPlaying -> {
-                        //ChannelDescription.show()
+                        ChannelDescription.show()
                     }
                 }
             }
             init {
-                //ChannelDescription.update()
-                //ChannelDescription.show()
+                ChannelDescription.update()
+                ChannelDescription.show()
                 /**
                 //如果冇自動播放就換到手動播放模式
                 checkNeedCanTouchIframePlayerModeTimer = window.setTimeout(fun() {
