@@ -24,6 +24,7 @@ object MutedDescription: UserInterface("mutedDescription") {
     private val mutedDescriptionButton: HTMLButtonElement = document.getElementById("mutedDescriptionButton") as HTMLButtonElement
 
     fun update(muted: Boolean){
+        println("MDupdateV")
         if(muted){
             show()
         }else{
@@ -32,6 +33,7 @@ object MutedDescription: UserInterface("mutedDescription") {
     }
 
     override fun update() {
+        println("MDupdate")
         val script = fun(){
             Player.getMuted(fun(muted){
                 update(muted)
