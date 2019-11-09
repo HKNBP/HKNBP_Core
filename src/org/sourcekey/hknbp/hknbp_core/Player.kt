@@ -261,7 +261,7 @@ class Player(private val channel: Channel) {
      * 所以此值會設定響iframePlayer Load好個頻道之後
      * 先初始化此值
      * */
-    var videoTracks: ArrayLinkList<TrackDescription> = {
+    var videoTracks: ArrayLinkList<TrackDescription> = {/**
         addOnPlayerEventListener(object : OnPlayerEventListener {
             var isInit: Boolean = false
             override fun on(onPlayerEvent: OnPlayerEvent) {
@@ -297,7 +297,7 @@ class Player(private val channel: Channel) {
                 }
             }
         })
-
+        */
         ArrayLinkList(TrackDescription(-5, "-------"))
     }()
         private set
@@ -342,7 +342,7 @@ class Player(private val channel: Channel) {
      * 所以此值會設定響iframePlayer Load好個頻道之後
      * 先初始化此值
      * */
-    var audioTracks: ArrayLinkList<TrackDescription> = {
+    var audioTracks: ArrayLinkList<TrackDescription> = {/**
         addOnPlayerEventListener(object : OnPlayerEventListener {
             var isInit: Boolean = false
             override fun on(onPlayerEvent: OnPlayerEvent) {
@@ -379,7 +379,7 @@ class Player(private val channel: Channel) {
                 }
             }
         })
-
+        */
         ArrayLinkList(TrackDescription(-5, "-------"))
     }()
         private set
@@ -424,7 +424,7 @@ class Player(private val channel: Channel) {
      * 所以此值會設定響iframePlayer Load好個頻道之後
      * 先初始化此值
      * */
-    var subtitleTracks: ArrayLinkList<TrackDescription> = {
+    var subtitleTracks: ArrayLinkList<TrackDescription> = {/**
         addOnPlayerEventListener(object : OnPlayerEventListener {
             var isInit: Boolean = false
             override fun on(onPlayerEvent: OnPlayerEvent) {
@@ -461,7 +461,7 @@ class Player(private val channel: Channel) {
                 }
             }
         })
-
+        */
         ArrayLinkList(TrackDescription(-5, "-------"))
     }()
         private set
@@ -501,7 +501,7 @@ class Player(private val channel: Channel) {
 
     /**
      * 對IframePlayer音量值初始化
-     * */
+     *
     private val iframePlayerVolumeInit = {
         addOnPlayerEventListener(object : OnPlayerEventListener {
             var isInit: Boolean = false
@@ -519,11 +519,11 @@ class Player(private val channel: Channel) {
                 }
             }
         })
-    }()
+    }()*/
 
     /**
      * 對IframePlayer靜音值初始化
-     * */
+     *
     private val iframePlayerMutedInit = {
         addOnPlayerEventListener(object : OnPlayerEventListener {
             var isInit: Boolean = false
@@ -538,7 +538,7 @@ class Player(private val channel: Channel) {
                 }
             }
         })
-    }()
+    }()*/
 
 
     /**

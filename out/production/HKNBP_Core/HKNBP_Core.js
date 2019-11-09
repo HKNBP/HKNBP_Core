@@ -2392,11 +2392,9 @@ var HKNBP_Core = function (_, Kotlin) {
     this.channel_0 = channel;
     this.watchingCounter_0 = new WatchingCounter(this.channel_0);
     this.onPlayerEvents_0 = ArrayList_init();
-    this.videoTracks_15iau4$_0 = Player$videoTracks$lambda(this)();
-    this.audioTracks_oydct3$_0 = Player$audioTracks$lambda(this)();
-    this.subtitleTracks_my27pv$_0 = Player$subtitleTracks$lambda(this)();
-    this.iframePlayerVolumeInit_0 = Player$iframePlayerVolumeInit$lambda(this)();
-    this.iframePlayerMutedInit_0 = Player$iframePlayerMutedInit$lambda(this)();
+    this.videoTracks_15iau4$_0 = Player$videoTracks$lambda();
+    this.audioTracks_oydct3$_0 = Player$audioTracks$lambda();
+    this.subtitleTracks_my27pv$_0 = Player$subtitleTracks$lambda();
     this.onPlaying_0 = Player$onPlaying$lambda(this);
     this.onNotPlaying_0 = Player$onNotPlaying$lambda(this);
     var tmp$, tmp$_0, tmp$_1, tmp$_2;
@@ -2868,184 +2866,14 @@ var HKNBP_Core = function (_, Kotlin) {
   Player.prototype.setListenIframePlayerScript_0 = function () {
     Player$Companion_getInstance().listenIframePlayerScript_0 = Player$setListenIframePlayerScript$lambda(this);
   };
-  function Player$videoTracks$lambda$ObjectLiteral(this$Player) {
-    this.this$Player = this$Player;
-    this.isInit = false;
+  function Player$videoTracks$lambda() {
+    return ArrayLinkList_init([new TrackDescription(-5, '-------')]);
   }
-  function Player$videoTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral(this$Player) {
-    this.this$Player = this$Player;
+  function Player$audioTracks$lambda() {
+    return ArrayLinkList_init([new TrackDescription(-5, '-------')]);
   }
-  Player$videoTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
-    Player$Companion_getInstance().callIframePlayerFunction_0('onSetIframePlayerVideoTrack(' + Player$Companion_getInstance().kotlinValueToEvalScriptUseableValue_0(postChangeNode) + ')');
-    localStorage.setItem('RecentlyChannel' + this.this$Player.channel_0.number + 'VideoTrackID', toString(postChangeNodeID));
-    VirtualRemote_getInstance().updateVideoInformation();
-  };
-  Player$videoTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral.$metadata$ = {
-    kind: Kind_CLASS,
-    interfaces: [ArrayLinkList$OnNodeEventListener]
-  };
-  function Player$videoTracks$lambda$ObjectLiteral$on$lambda$lambda(closure$tracks, this$Player) {
-    return function (track) {
-      var tmp$, tmp$_0;
-      this$Player.videoTracks = TrackDescription$Companion_getInstance().fromIframePlayerReturnTrackDescriptionsToKotilnUseableTrackDescriptions_wn2jw4$(closure$tracks, track);
-      this$Player.videoTracks.addOnNodeEventListener_ljxrtv$(new Player$videoTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral(this$Player));
-      this$Player.videoTracks.designated_za3lpa$((tmp$_0 = (tmp$ = localStorage.getItem('RecentlyChannel' + this$Player.channel_0.number + 'VideoTrackID')) != null ? toIntOrNull(tmp$) : null) != null ? tmp$_0 : 0);
-    };
-  }
-  function Player$videoTracks$lambda$ObjectLiteral$on$lambda(this$Player) {
-    return function (tracks) {
-      Player$Companion_getInstance().callIframePlayerFunction_0('onGetIframePlayerVideoTrack(onReturn)', Player$videoTracks$lambda$ObjectLiteral$on$lambda$lambda(tracks, this$Player));
-    };
-  }
-  Player$videoTracks$lambda$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
-    if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance()))
-      if (!this.isInit) {
-        Player$Companion_getInstance().callIframePlayerFunction_0('onGetIframePlayerVideoTracks(onReturn)', Player$videoTracks$lambda$ObjectLiteral$on$lambda(this.this$Player));
-        this.isInit = true;
-      }
-  };
-  Player$videoTracks$lambda$ObjectLiteral.$metadata$ = {
-    kind: Kind_CLASS,
-    interfaces: [Player$OnPlayerEventListener]
-  };
-  function Player$videoTracks$lambda(this$Player) {
-    return function () {
-      this$Player.addOnPlayerEventListener_j8fzjz$(new Player$videoTracks$lambda$ObjectLiteral(this$Player));
-      return ArrayLinkList_init([new TrackDescription(-5, '-------')]);
-    };
-  }
-  function Player$audioTracks$lambda$ObjectLiteral(this$Player) {
-    this.this$Player = this$Player;
-    this.isInit = false;
-  }
-  function Player$audioTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral(this$Player) {
-    this.this$Player = this$Player;
-  }
-  Player$audioTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
-    Player$Companion_getInstance().callIframePlayerFunction_0('onSetIframePlayerAudioTrack(' + Player$Companion_getInstance().kotlinValueToEvalScriptUseableValue_0(postChangeNode) + ')');
-    localStorage.setItem('RecentlyChannel' + this.this$Player.channel_0.number + 'AudioTrackID', toString(postChangeNodeID));
-    VirtualRemote_getInstance().updateAudioInformation();
-  };
-  Player$audioTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral.$metadata$ = {
-    kind: Kind_CLASS,
-    interfaces: [ArrayLinkList$OnNodeEventListener]
-  };
-  function Player$audioTracks$lambda$ObjectLiteral$on$lambda$lambda(closure$tracks, this$Player) {
-    return function (track) {
-      var tmp$, tmp$_0;
-      this$Player.audioTracks = TrackDescription$Companion_getInstance().fromIframePlayerReturnTrackDescriptionsToKotilnUseableTrackDescriptions_wn2jw4$(closure$tracks, track);
-      this$Player.audioTracks.addOnNodeEventListener_ljxrtv$(new Player$audioTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral(this$Player));
-      this$Player.audioTracks.designated_za3lpa$((tmp$_0 = (tmp$ = localStorage.getItem('RecentlyChannel' + this$Player.channel_0.number + 'AudioTrackID')) != null ? toIntOrNull(tmp$) : null) != null ? tmp$_0 : 0);
-    };
-  }
-  function Player$audioTracks$lambda$ObjectLiteral$on$lambda(this$Player) {
-    return function (tracks) {
-      Player$Companion_getInstance().callIframePlayerFunction_0('onGetIframePlayerAudioTrack(onReturn)', Player$audioTracks$lambda$ObjectLiteral$on$lambda$lambda(tracks, this$Player));
-    };
-  }
-  Player$audioTracks$lambda$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
-    if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance())) {
-      if (!this.isInit) {
-        this.isInit = true;
-      }
-      Player$Companion_getInstance().callIframePlayerFunction_0('onGetIframePlayerAudioTracks(onReturn)', Player$audioTracks$lambda$ObjectLiteral$on$lambda(this.this$Player));
-    }
-  };
-  Player$audioTracks$lambda$ObjectLiteral.$metadata$ = {
-    kind: Kind_CLASS,
-    interfaces: [Player$OnPlayerEventListener]
-  };
-  function Player$audioTracks$lambda(this$Player) {
-    return function () {
-      this$Player.addOnPlayerEventListener_j8fzjz$(new Player$audioTracks$lambda$ObjectLiteral(this$Player));
-      return ArrayLinkList_init([new TrackDescription(-5, '-------')]);
-    };
-  }
-  function Player$subtitleTracks$lambda$ObjectLiteral(this$Player) {
-    this.this$Player = this$Player;
-    this.isInit = false;
-  }
-  function Player$subtitleTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral(this$Player) {
-    this.this$Player = this$Player;
-  }
-  Player$subtitleTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
-    Player$Companion_getInstance().callIframePlayerFunction_0('onSetIframePlayerSubtitleTrack(' + Player$Companion_getInstance().kotlinValueToEvalScriptUseableValue_0(postChangeNode) + ')');
-    localStorage.setItem('RecentlyChannel' + this.this$Player.channel_0.number + 'SubtitleTrackID', toString(postChangeNodeID));
-    VirtualRemote_getInstance().updateSubtitleInformation();
-  };
-  Player$subtitleTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral.$metadata$ = {
-    kind: Kind_CLASS,
-    interfaces: [ArrayLinkList$OnNodeEventListener]
-  };
-  function Player$subtitleTracks$lambda$ObjectLiteral$on$lambda$lambda(closure$tracks, this$Player) {
-    return function (track) {
-      var tmp$, tmp$_0;
-      this$Player.subtitleTracks = TrackDescription$Companion_getInstance().fromIframePlayerReturnTrackDescriptionsToKotilnUseableTrackDescriptions_wn2jw4$(closure$tracks, track);
-      this$Player.subtitleTracks.addOnNodeEventListener_ljxrtv$(new Player$subtitleTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral(this$Player));
-      this$Player.subtitleTracks.designated_za3lpa$((tmp$_0 = (tmp$ = localStorage.getItem('RecentlyChannel' + this$Player.channel_0.number + 'SubtitleTrackID')) != null ? toIntOrNull(tmp$) : null) != null ? tmp$_0 : 0);
-    };
-  }
-  function Player$subtitleTracks$lambda$ObjectLiteral$on$lambda(this$Player) {
-    return function (tracks) {
-      Player$Companion_getInstance().callIframePlayerFunction_0('onGetIframePlayerSubtitleTrack(onReturn)', Player$subtitleTracks$lambda$ObjectLiteral$on$lambda$lambda(tracks, this$Player));
-    };
-  }
-  Player$subtitleTracks$lambda$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
-    if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance()))
-      if (!this.isInit) {
-        Player$Companion_getInstance().callIframePlayerFunction_0('onGetIframePlayerSubtitleTracks(onReturn)', Player$subtitleTracks$lambda$ObjectLiteral$on$lambda(this.this$Player));
-        this.isInit = true;
-      }
-  };
-  Player$subtitleTracks$lambda$ObjectLiteral.$metadata$ = {
-    kind: Kind_CLASS,
-    interfaces: [Player$OnPlayerEventListener]
-  };
-  function Player$subtitleTracks$lambda(this$Player) {
-    return function () {
-      this$Player.addOnPlayerEventListener_j8fzjz$(new Player$subtitleTracks$lambda$ObjectLiteral(this$Player));
-      return ArrayLinkList_init([new TrackDescription(-5, '-------')]);
-    };
-  }
-  function Player$iframePlayerVolumeInit$lambda$ObjectLiteral() {
-    this.isInit = false;
-  }
-  Player$iframePlayerVolumeInit$lambda$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
-    if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance()))
-      if (!this.isInit) {
-        Player$Companion_getInstance().callIframePlayerFunction_0('onSetIframePlayerVolume(' + Player$Companion_getInstance().kotlinValueToEvalScriptUseableValue_0(Player$Companion_getInstance().volume_0) + ')');
-        this.isInit = true;
-      }
-  };
-  Player$iframePlayerVolumeInit$lambda$ObjectLiteral.$metadata$ = {
-    kind: Kind_CLASS,
-    interfaces: [Player$OnPlayerEventListener]
-  };
-  function Player$iframePlayerVolumeInit$lambda(this$Player) {
-    return function () {
-      this$Player.addOnPlayerEventListener_j8fzjz$(new Player$iframePlayerVolumeInit$lambda$ObjectLiteral());
-      return Unit;
-    };
-  }
-  function Player$iframePlayerMutedInit$lambda$ObjectLiteral() {
-    this.isInit = false;
-  }
-  Player$iframePlayerMutedInit$lambda$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
-    if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance()))
-      if (!this.isInit) {
-        Player$Companion_getInstance().setMuted_6taknv$(Player$Companion_getInstance().muted_0);
-        this.isInit = true;
-      }
-  };
-  Player$iframePlayerMutedInit$lambda$ObjectLiteral.$metadata$ = {
-    kind: Kind_CLASS,
-    interfaces: [Player$OnPlayerEventListener]
-  };
-  function Player$iframePlayerMutedInit$lambda(this$Player) {
-    return function () {
-      this$Player.addOnPlayerEventListener_j8fzjz$(new Player$iframePlayerMutedInit$lambda$ObjectLiteral());
-      return Unit;
-    };
+  function Player$subtitleTracks$lambda() {
+    return ArrayLinkList_init([new TrackDescription(-5, '-------')]);
   }
   function Player$onPlaying$lambda(this$Player) {
     return function () {
