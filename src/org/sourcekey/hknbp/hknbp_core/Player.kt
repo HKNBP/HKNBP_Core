@@ -501,7 +501,7 @@ class Player(private val channel: Channel) {
 
     /**
      * 對IframePlayer音量值初始化
-     *
+     * */
     private val iframePlayerVolumeInit = {
         addOnPlayerEventListener(object : OnPlayerEventListener {
             var isInit: Boolean = false
@@ -519,7 +519,7 @@ class Player(private val channel: Channel) {
                 }
             }
         })
-    }()*/
+    }()
 
     /**
      * 對IframePlayer靜音值初始化
