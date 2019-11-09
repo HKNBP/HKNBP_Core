@@ -682,7 +682,7 @@ class Player(private val channel: Channel) {
             kotlinValueToEvalScriptUseableValue(channel.sources.node?.link ?: "")
             })")
         }
-        /***/
+        /**
         addOnPlayerEventListener(object : OnPlayerEventListener {
             private var isPlaying: Boolean = false
             private var numberOfPlaying: Int = 0
@@ -729,8 +729,8 @@ class Player(private val channel: Channel) {
                     }
                 }, 30000)*/
             }
-        })
-        /**
+        })*/
+        /***/
         addOnPlayerEventListener(object : OnPlayerEventListener {
             private var isPlaying: Boolean = false
             private var numberOfPlaying: Int = 0
@@ -760,6 +760,6 @@ class Player(private val channel: Channel) {
                 }
                 }, 30000)*/
             }
-        })*/
+        })
     }
 }
