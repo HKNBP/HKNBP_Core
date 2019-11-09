@@ -675,11 +675,6 @@ class Player(private val channel: Channel) {
 
     init {
         println("播放器初始化${channel.number}")
-<<<<<<< HEAD
-<<<<<<< 43df8c6f3a9bac490ad6df311186ba86b3c26be1
-=======
-=======
->>>>>>> master
         iframePlayer?.src = channel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
         iframePlayer?.onload = fun() {
             setListenIframePlayerScript()
@@ -687,10 +682,6 @@ class Player(private val channel: Channel) {
             kotlinValueToEvalScriptUseableValue(channel.sources.node?.link ?: "")
             })")
         }
-<<<<<<< HEAD
->>>>>>> test
-=======
->>>>>>> master
         /**
         addOnPlayerEventListener(object : OnPlayerEventListener {
             private var isPlaying: Boolean = false
@@ -739,18 +730,6 @@ class Player(private val channel: Channel) {
                 }, 30000)*/
             }
         })*/
-<<<<<<< HEAD
-<<<<<<< 43df8c6f3a9bac490ad6df311186ba86b3c26be1
-        iframePlayer?.src = channel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
-        iframePlayer?.onload = fun() {
-            setListenIframePlayerScript()
-            callIframePlayerFunction("onIframePlayerInit(${
-                kotlinValueToEvalScriptUseableValue(channel.sources.node?.link ?: "")
-            })")
-        }
-=======
-=======
->>>>>>> master
         /***/
         addOnPlayerEventListener(object : OnPlayerEventListener {
             private var isPlaying: Boolean = false
@@ -782,9 +761,5 @@ class Player(private val channel: Channel) {
                 }, 30000)*/
             }
         })
-<<<<<<< HEAD
->>>>>>> test
-=======
->>>>>>> master
     }
 }

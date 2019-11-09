@@ -3077,11 +3077,6 @@ var HKNBP_Core = function (_, Kotlin) {
       Player$Companion_getInstance().callIframePlayerFunction_0(tmp$_2);
     };
   }
-<<<<<<< HEAD
-<<<<<<< 43df8c6f3a9bac490ad6df311186ba86b3c26be1
-=======
-=======
->>>>>>> master
   function Player_init$ObjectLiteral(this$Player) {
     this.this$Player = this$Player;
     this.isPlaying_0 = false;
@@ -3107,10 +3102,6 @@ var HKNBP_Core = function (_, Kotlin) {
     kind: Kind_CLASS,
     interfaces: [Player$OnPlayerEventListener]
   };
-<<<<<<< HEAD
->>>>>>> test
-=======
->>>>>>> master
   Player.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'Player',

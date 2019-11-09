@@ -18,15 +18,7 @@
  * 控制更新cache版本
  * 修改版本名今用戶進行更新新版
  */
-<<<<<<< HEAD
-<<<<<<< 43df8c6f3a9bac490ad6df311186ba86b3c26be1
-var coreVersion = "v2019.11_1-test8";
-=======
 var coreVersion = "v2019.11_1-test10";
->>>>>>> test
-=======
-var coreVersion = "v2019.11_1-test10";
->>>>>>> master
 
 /**
  * 檢查依家運行係米ServiceWorker
