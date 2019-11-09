@@ -2403,6 +2403,7 @@ var HKNBP_Core = function (_, Kotlin) {
     println('\u64AD\u653E\u5668\u521D\u59CB\u5316' + this.channel_0.number);
     (tmp$_1 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_1.src = (tmp$_0 = (tmp$ = this.channel_0.sources.node) != null ? tmp$.iFramePlayerSrc : null) != null ? tmp$_0 : 'iframePlayer/videojs_hls.html') : null;
     (tmp$_2 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_2.onload = Player_init$lambda(this)) : null;
+    this.addOnPlayerEventListener_j8fzjz$(new Player_init$ObjectLiteral(this));
   }
   function Player$Companion() {
     Player$Companion_instance = this;
@@ -3076,8 +3077,11 @@ var HKNBP_Core = function (_, Kotlin) {
       Player$Companion_getInstance().callIframePlayerFunction_0(tmp$_2);
     };
   }
+<<<<<<< HEAD
 <<<<<<< 43df8c6f3a9bac490ad6df311186ba86b3c26be1
 =======
+=======
+>>>>>>> master
   function Player_init$ObjectLiteral(this$Player) {
     this.this$Player = this$Player;
     this.isPlaying_0 = false;
@@ -3103,7 +3107,10 @@ var HKNBP_Core = function (_, Kotlin) {
     kind: Kind_CLASS,
     interfaces: [Player$OnPlayerEventListener]
   };
+<<<<<<< HEAD
 >>>>>>> test
+=======
+>>>>>>> master
   Player.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'Player',
