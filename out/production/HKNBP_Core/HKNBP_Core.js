@@ -2403,7 +2403,6 @@ var HKNBP_Core = function (_, Kotlin) {
     println('\u64AD\u653E\u5668\u521D\u59CB\u5316' + this.channel_0.number);
     (tmp$_1 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_1.src = (tmp$_0 = (tmp$ = this.channel_0.sources.node) != null ? tmp$.iFramePlayerSrc : null) != null ? tmp$_0 : 'iframePlayer/videojs_hls.html') : null;
     (tmp$_2 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_2.onload = Player_init$lambda(this)) : null;
-    this.addOnPlayerEventListener_j8fzjz$(new Player_init$ObjectLiteral(this));
   }
   function Player$Companion() {
     Player$Companion_instance = this;
@@ -3077,29 +3076,6 @@ var HKNBP_Core = function (_, Kotlin) {
       Player$Companion_getInstance().callIframePlayerFunction_0(tmp$_2);
     };
   }
-  function Player_init$ObjectLiteral(this$Player) {
-    this.this$Player = this$Player;
-    this.isPlaying_0 = false;
-    this.numberOfPlaying_0 = 0;
-    this.isLowSignalShowChannelDescription_0 = false;
-    ChannelDescription_getInstance().update();
-    ChannelDescription_getInstance().show();
-  }
-  Player_init$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
-    switch (onPlayerEvent.name) {
-      case 'playing':
-        ChannelDescription_getInstance().show_za3lpa$(5000);
-        println('\u64AD\u653E\u7DCA\u983B\u9053' + this.this$Player.channel_0.number);
-        break;
-      case 'notPlaying':
-        ChannelDescription_getInstance().show();
-        break;
-    }
-  };
-  Player_init$ObjectLiteral.$metadata$ = {
-    kind: Kind_CLASS,
-    interfaces: [Player$OnPlayerEventListener]
-  };
   Player.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'Player',
