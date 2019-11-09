@@ -2403,6 +2403,7 @@ var HKNBP_Core = function (_, Kotlin) {
     println('\u64AD\u653E\u5668\u521D\u59CB\u5316' + this.channel_0.number);
     (tmp$_1 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_1.src = (tmp$_0 = (tmp$ = this.channel_0.sources.node) != null ? tmp$.iFramePlayerSrc : null) != null ? tmp$_0 : 'iframePlayer/videojs_hls.html') : null;
     (tmp$_2 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_2.onload = Player_init$lambda(this)) : null;
+    this.addOnPlayerEventListener_j8fzjz$(new Player_init$ObjectLiteral(this));
   }
   function Player$Companion() {
     Player$Companion_instance = this;
@@ -3076,6 +3077,54 @@ var HKNBP_Core = function (_, Kotlin) {
       Player$Companion_getInstance().callIframePlayerFunction_0(tmp$_2);
     };
   }
+  function Player_init$ObjectLiteral(this$Player) {
+    this.this$Player = this$Player;
+    this.isPlaying_0 = false;
+    this.numberOfPlaying_0 = 0;
+    this.isLowSignalShowChannelDescription_0 = false;
+    ChannelDescription_getInstance().show();
+    ChannelDescription_getInstance().update();
+  }
+  function Player_init$ObjectLiteral$on$lambda(this$) {
+    return function () {
+      if (!this$.isPlaying_0) {
+        this$.isLowSignalShowChannelDescription_0 = true;
+        ChannelDescription_getInstance().show();
+        PromptBox_getInstance().promptMessage('\u8A0A\u865F\u63A5\u6536\u4E0D\u826F');
+      }
+    };
+  }
+  Player_init$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
+    switch (onPlayerEvent.name) {
+      case 'playing':
+        this.isPlaying_0 = true;
+        this.numberOfPlaying_0 = this.numberOfPlaying_0 + 1 | 0;
+        if (this.isLowSignalShowChannelDescription_0) {
+          this.isLowSignalShowChannelDescription_0 = false;
+          ChannelDescription_getInstance().hide();
+        }
+
+        if (this.numberOfPlaying_0 <= 1) {
+          ChannelDescription_getInstance().show_za3lpa$(5000);
+        }
+
+        VirtualRemote_getInstance().update();
+        UserControlPanel_getInstance().cannotTouchIframePlayerMode();
+        println('\u64AD\u653E\u7DCA\u983B\u9053' + this.this$Player.channel_0.number);
+        break;
+      case 'notPlaying':
+        this.isPlaying_0 = false;
+        if (0 < this.numberOfPlaying_0) {
+          Player$Companion_getInstance().checkIsLowSignalShowChannelDescriptionTimer_0 = window.setTimeout(Player_init$ObjectLiteral$on$lambda(this), 5000);
+        }
+
+        break;
+    }
+  };
+  Player_init$ObjectLiteral.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: [Player$OnPlayerEventListener]
+  };
   Player.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'Player',

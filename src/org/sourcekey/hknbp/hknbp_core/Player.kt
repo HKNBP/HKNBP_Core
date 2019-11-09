@@ -675,7 +675,14 @@ class Player(private val channel: Channel) {
 
     init {
         println("播放器初始化${channel.number}")
-        /**
+        iframePlayer?.src = channel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
+        iframePlayer?.onload = fun() {
+            setListenIframePlayerScript()
+            callIframePlayerFunction("onIframePlayerInit(${
+            kotlinValueToEvalScriptUseableValue(channel.sources.node?.link ?: "")
+            })")
+        }
+        /***/
         addOnPlayerEventListener(object : OnPlayerEventListener {
             private var isPlaying: Boolean = false
             private var numberOfPlaying: Int = 0
@@ -722,13 +729,37 @@ class Player(private val channel: Channel) {
                     }
                 }, 30000)*/
             }
+        })
+        /**
+        addOnPlayerEventListener(object : OnPlayerEventListener {
+            private var isPlaying: Boolean = false
+            private var numberOfPlaying: Int = 0
+            private var isLowSignalShowChannelDescription = false
+            override fun on(onPlayerEvent: OnPlayerEvent) {
+                when (onPlayerEvent) {
+                    OnPlayerEvent.playing -> {
+                        ChannelDescription.show(5000)
+                        VirtualRemote.update()
+                        UserControlPanel.cannotTouchIframePlayerMode()
+                        println("播放緊頻道${channel.number}")
+                    }
+                    OnPlayerEvent.notPlaying -> {
+                        ChannelDescription.show()
+                    }
+                }
+            }
+            init {
+                ChannelDescription.update()
+                ChannelDescription.show()
+                /**
+                //如果冇自動播放就換到手動播放模式
+                checkNeedCanTouchIframePlayerModeTimer = window.setTimeout(fun() {
+                if (!isPlaying && numberOfPlaying == 0) {
+                UserControlPanel.canTouchIframePlayerMode()
+                PromptBox.promptMessage("已切換到手動播放模式")
+                }
+                }, 30000)*/
+            }
         })*/
-        iframePlayer?.src = channel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
-        iframePlayer?.onload = fun() {
-            setListenIframePlayerScript()
-            callIframePlayerFunction("onIframePlayerInit(${
-                kotlinValueToEvalScriptUseableValue(channel.sources.node?.link ?: "")
-            })")
-        }
     }
 }
