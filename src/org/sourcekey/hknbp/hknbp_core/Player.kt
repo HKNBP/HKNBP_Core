@@ -534,7 +534,7 @@ class Player(private val channel: Channel) {
                     OnPlayerEvent.playing -> {
                         if(!isInit){
                             println("initM")
-                            setMuted(muted)
+                            //setMuted(muted)
                             isInit = true
                         }
                     }

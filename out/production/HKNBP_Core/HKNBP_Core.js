@@ -3039,7 +3039,6 @@ var HKNBP_Core = function (_, Kotlin) {
     if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance()))
       if (!this.isInit) {
         println('initM');
-        Player$Companion_getInstance().setMuted_6taknv$(Player$Companion_getInstance().muted_0);
         this.isInit = true;
       }
   };
