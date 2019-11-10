@@ -2502,7 +2502,6 @@ var HKNBP_Core = function (_, Kotlin) {
   function Player$Companion$setMuted$lambda(this$Player$) {
     return function (muted) {
       this$Player$.callIframePlayerFunction_0('onSetIframePlayerMuted(' + this$Player$.kotlinValueToEvalScriptUseableValue_0(muted) + ')');
-      MutedDescription_getInstance().update_6taknv$(muted);
     };
   }
   function Player$Companion$setMuted$lambda_0(closure$muted, closure$setScript) {
@@ -3038,7 +3037,7 @@ var HKNBP_Core = function (_, Kotlin) {
   Player$iframePlayerMutedInit$lambda$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
     if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance()))
       if (!this.isInit) {
-        println('initM');
+        Player$Companion_getInstance().setMuted_6taknv$(Player$Companion_getInstance().muted_0);
         this.isInit = true;
       }
   };

@@ -144,7 +144,7 @@ class Player(private val channel: Channel) {
                 callIframePlayerFunction(
                         "onSetIframePlayerMuted(${kotlinValueToEvalScriptUseableValue(muted)})"
                 )
-                MutedDescription.update(muted)
+                //MutedDescription.update(muted)
             }
 
             if(isCheckVideoAutoPlayNeedToMute){
@@ -533,8 +533,7 @@ class Player(private val channel: Channel) {
                 when (onPlayerEvent) {
                     OnPlayerEvent.playing -> {
                         if(!isInit){
-                            println("initM")
-                            //setMuted(muted)
+                            setMuted(muted)
                             isInit = true
                         }
                     }
