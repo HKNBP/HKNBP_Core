@@ -2501,7 +2501,6 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   Player$Companion.prototype.setMuted_6taknv$ = function (muted) {
     println('setM');
-    this.callIframePlayerFunction_0('onSetIframePlayerMuted(' + this.kotlinValueToEvalScriptUseableValue_0(muted) + ')');
   };
   function Player$Companion$getMuted$lambda(this$Player$, closure$onReturn) {
     return function (returnValue) {
