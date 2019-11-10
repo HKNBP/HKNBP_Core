@@ -140,7 +140,24 @@ class Player(private val channel: Channel) {
         fun setMuted(muted: Boolean) {
             println("setM")
             //因依家大部分 <瀏覽器> 唔畀自動播放, 如果要自動播放一定要將Player設為 <靜音>
+            val setScript = fun(muted: Boolean){
+                callIframePlayerFunction(
+                        "onSetIframePlayerMuted(${kotlinValueToEvalScriptUseableValue(muted)})"
+                )
+                MutedDescription.update(muted)
+            }
 
+            if(isCheckVideoAutoPlayNeedToMute){
+                CanAutoplay.checkVideoAutoPlayNeedToMute(fun(){
+                    Companion.muted = muted
+                    setScript(muted)
+                }, fun(){
+                    setScript(true)
+                })
+            }else{
+                Companion.muted = muted
+                setScript(muted)
+            }
         }
 
         /**
