@@ -2499,32 +2499,9 @@ var HKNBP_Core = function (_, Kotlin) {
       this.muted_oj2db2$_0 = value;
     }
   });
-  function Player$Companion$setMuted$lambda(this$Player$) {
-    return function (muted) {
-      this$Player$.callIframePlayerFunction_0('onSetIframePlayerMuted(' + this$Player$.kotlinValueToEvalScriptUseableValue_0(muted) + ')');
-    };
-  }
-  function Player$Companion$setMuted$lambda_0(closure$muted, closure$setScript) {
-    return function () {
-      Player$Companion_getInstance().muted_0 = closure$muted;
-      closure$setScript(closure$muted);
-    };
-  }
-  function Player$Companion$setMuted$lambda_1(closure$setScript) {
-    return function () {
-      closure$setScript(true);
-    };
-  }
   Player$Companion.prototype.setMuted_6taknv$ = function (muted) {
     println('setM');
-    var setScript = Player$Companion$setMuted$lambda(this);
-    if (this.isCheckVideoAutoPlayNeedToMute_0) {
-      CanAutoplay_getInstance().checkVideoAutoPlayNeedToMute_9dmrm4$(Player$Companion$setMuted$lambda_0(muted, setScript), Player$Companion$setMuted$lambda_1(setScript));
-    }
-     else {
-      Player$Companion_getInstance().muted_0 = muted;
-      setScript(muted);
-    }
+    this.callIframePlayerFunction_0('onSetIframePlayerMuted(' + this.kotlinValueToEvalScriptUseableValue_0(muted) + ')');
   };
   function Player$Companion$getMuted$lambda(this$Player$, closure$onReturn) {
     return function (returnValue) {
