@@ -2517,7 +2517,6 @@ var HKNBP_Core = function (_, Kotlin) {
     };
   }
   Player$Companion.prototype.setMuted_6taknv$ = function (muted) {
-    println('setM');
     var setScript = Player$Companion$setMuted$lambda(this);
     if (this.isCheckVideoAutoPlayNeedToMute_0) {
       CanAutoplay_getInstance().checkVideoAutoPlayNeedToMute_9dmrm4$(Player$Companion$setMuted$lambda_0(muted, setScript), Player$Companion$setMuted$lambda_1(setScript));
@@ -2535,7 +2534,6 @@ var HKNBP_Core = function (_, Kotlin) {
     };
   }
   Player$Companion.prototype.getMuted_y8twos$ = function (onReturn) {
-    println('getM');
     this.callIframePlayerFunction_0('onGetIframePlayerMuted(onReturn)', Player$Companion$getMuted$lambda(this, onReturn));
   };
   function Player$Companion$set_Player$Companion$volumeMute$lambda$lambda(this$Player$, closure$value) {
@@ -3038,6 +3036,7 @@ var HKNBP_Core = function (_, Kotlin) {
   Player$iframePlayerMutedInit$lambda$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
     if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance()))
       if (!this.isInit) {
+        Player$Companion_getInstance().setMuted_6taknv$(Player$Companion_getInstance().muted_0);
         this.isInit = true;
       }
   };

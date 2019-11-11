@@ -138,7 +138,6 @@ class Player(private val channel: Channel) {
          * 設定iframePlayer嘅靜音資訊
          * */
         fun setMuted(muted: Boolean) {
-            println("setM")
             //因依家大部分 <瀏覽器> 唔畀自動播放, 如果要自動播放一定要將Player設為 <靜音>
             val setScript = fun(muted: Boolean){
                 callIframePlayerFunction(
@@ -164,7 +163,6 @@ class Player(private val channel: Channel) {
          * 獲取iframePlayer嘅靜音資訊
          * */
         fun getMuted(onReturn: (muted: Boolean)->Unit) {
-            println("getM")
             callIframePlayerFunction("onGetIframePlayerMuted(onReturn)", fun(returnValue){
                 MutedDescription.update(muted)
                 onReturn(returnValue?.toString()?.toBoolean()?:true)
@@ -533,7 +531,7 @@ class Player(private val channel: Channel) {
                 when (onPlayerEvent) {
                     OnPlayerEvent.playing -> {
                         if(!isInit){
-                            //setMuted(muted)
+                            setMuted(muted)
                             isInit = true
                         }
                     }
