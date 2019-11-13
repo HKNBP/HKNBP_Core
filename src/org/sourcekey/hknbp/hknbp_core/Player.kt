@@ -42,6 +42,7 @@ class Player(private val channel: Channel) {
             }, 60000)
             try {
                 iframePlayer.contentWindow.postMessage(JSON.stringify(caller), "*")
+                println("--Smess")
             } catch (e: dynamic){ println("iframePlayer有啲Function搵唔到或發生問題: $e") }
         }
 
@@ -652,6 +653,7 @@ class Player(private val channel: Channel) {
                             callIframePlayerFunctionList.remove(obj)
                         }
                     }
+                    println("--Lret")
                 }else if(callMessage.name == "IframePlayer"){
                     val onPlaying = onPlaying // 畀IframePlayer方便Call
                     val onNotPlaying = onNotPlaying // 畀IframePlayer方便Call
@@ -663,6 +665,7 @@ class Player(private val channel: Channel) {
                     window.parent.postMessage(JSON.stringify(obj), "*")
                     }*/
                     eval(callMessage.functionName + "()")
+                    println("--Lcall")
                 }
             }catch(e: dynamic){
                 println("callIframePlayerFunction衰左: ${e}" + "\n" +

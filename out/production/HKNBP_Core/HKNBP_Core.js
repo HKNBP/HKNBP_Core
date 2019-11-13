@@ -2442,6 +2442,7 @@ var HKNBP_Core = function (_, Kotlin) {
     window.setTimeout(Player$Companion$callIframePlayerFunction$lambda_0(this, caller), 60000);
     try {
       this.iframePlayer_0.contentWindow.postMessage(JSON.stringify(caller), '*');
+      println('--Smess');
     }
      catch (e) {
       println('iframePlayer\u6709\u5572Function\u6435\u5514\u5230\u6216\u767C\u751F\u554F\u984C: ' + e.toString());
@@ -2856,11 +2857,13 @@ var HKNBP_Core = function (_, Kotlin) {
               Player$Companion_getInstance().callIframePlayerFunctionList_0.remove_11rb$(obj);
             }
           }
+          println('--Lret');
         }
          else if (callMessage.name == 'IframePlayer') {
           var onPlaying = this$Player.onPlaying_0;
           var onNotPlaying = this$Player.onNotPlaying_0;
           eval(callMessage.functionName + '()');
+          println('--Lcall');
         }
       }
        catch (e) {
