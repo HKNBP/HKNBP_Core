@@ -2950,12 +2950,11 @@ var HKNBP_Core = function (_, Kotlin) {
     };
   }
   Player$audioTracks$lambda$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
-    if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance())) {
+    if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance()))
       if (!this.isInit) {
+        Player$Companion_getInstance().callIframePlayerFunction_0('onGetIframePlayerAudioTracks(onReturn)', Player$audioTracks$lambda$ObjectLiteral$on$lambda(this.this$Player));
         this.isInit = true;
       }
-      Player$Companion_getInstance().callIframePlayerFunction_0('onGetIframePlayerAudioTracks(onReturn)', Player$audioTracks$lambda$ObjectLiteral$on$lambda(this.this$Player));
-    }
   };
   Player$audioTracks$lambda$ObjectLiteral.$metadata$ = {
     kind: Kind_CLASS,

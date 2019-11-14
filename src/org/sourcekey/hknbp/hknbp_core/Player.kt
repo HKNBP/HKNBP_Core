@@ -350,32 +350,31 @@ class Player(private val channel: Channel) {
                 when (onPlayerEvent) {
                     OnPlayerEvent.playing -> {
                         if(!isInit){
-
+                            //設定AudioTracks值
+                            callIframePlayerFunction("onGetIframePlayerAudioTracks(onReturn)", fun(tracks){
+                                callIframePlayerFunction("onGetIframePlayerAudioTrack(onReturn)", fun(track){
+                                    audioTracks = TrackDescription.fromIframePlayerReturnTrackDescriptionsToKotilnUseableTrackDescriptions(
+                                            tracks, track
+                                    )
+                                    audioTracks.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<TrackDescription> {
+                                        override fun OnNodeIDChanged(
+                                                preChangeNodeID: Int?, postChangeNodeID: Int?,
+                                                preChangeNode: TrackDescription?, postChangeNode: TrackDescription?
+                                        ) {
+                                            callIframePlayerFunction("onSetIframePlayerAudioTrack(${
+                                            kotlinValueToEvalScriptUseableValue(postChangeNode)
+                                            })")
+                                            localStorage.setItem("RecentlyChannel${channel.number}AudioTrackID", postChangeNodeID.toString())
+                                            VirtualRemote.updateAudioInformation()
+                                        }
+                                    })
+                                    audioTracks.designated(
+                                            localStorage.getItem("RecentlyChannel${channel.number}AudioTrackID")?.toIntOrNull()?:0
+                                    )
+                                })
+                            })
                             isInit = true
                         }
-                        //設定AudioTracks值
-                        callIframePlayerFunction("onGetIframePlayerAudioTracks(onReturn)", fun(tracks){
-                            callIframePlayerFunction("onGetIframePlayerAudioTrack(onReturn)", fun(track){
-                                audioTracks = TrackDescription.fromIframePlayerReturnTrackDescriptionsToKotilnUseableTrackDescriptions(
-                                        tracks, track
-                                )
-                                audioTracks.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<TrackDescription> {
-                                    override fun OnNodeIDChanged(
-                                            preChangeNodeID: Int?, postChangeNodeID: Int?,
-                                            preChangeNode: TrackDescription?, postChangeNode: TrackDescription?
-                                    ) {
-                                        callIframePlayerFunction("onSetIframePlayerAudioTrack(${
-                                                kotlinValueToEvalScriptUseableValue(postChangeNode)
-                                        })")
-                                        localStorage.setItem("RecentlyChannel${channel.number}AudioTrackID", postChangeNodeID.toString())
-                                        VirtualRemote.updateAudioInformation()
-                                    }
-                                })
-                                audioTracks.designated(
-                                        localStorage.getItem("RecentlyChannel${channel.number}AudioTrackID")?.toIntOrNull()?:0
-                                )
-                            })
-                        })
                     }
                 }
             }
@@ -457,7 +456,6 @@ class Player(private val channel: Channel) {
                             })
                             isInit = true
                         }
-
                     }
                 }
             }
