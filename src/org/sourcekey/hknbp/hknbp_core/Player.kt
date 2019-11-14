@@ -676,6 +676,7 @@ class Player(private val channel: Channel) {
 
     init {
         println("播放器初始化${channel.number}")
+        iframePlayer?.src = "about:blank"
         iframePlayer?.src = channel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
         iframePlayer?.onload = fun() {
             setListenIframePlayerScript()
