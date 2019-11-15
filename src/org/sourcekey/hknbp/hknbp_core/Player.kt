@@ -231,8 +231,6 @@ class Player(private val channel: Channel) {
             }
 
 
-        private var number = 0
-
         init {
             setListenIframePlayerMessage()
         }
@@ -532,7 +530,7 @@ class Player(private val channel: Channel) {
                 when (onPlayerEvent) {
                     OnPlayerEvent.playing -> {
                         if(!isInit){
-                            setMuted(muted)
+                            //setMuted(muted)
                             isInit = true
                         }
                     }
@@ -678,65 +676,59 @@ class Player(private val channel: Channel) {
 
     init {
         println("播放器初始化${channel.number}")
-        iframePlayer?.src = "about:blank"
-        println("load blank")
-        window.setTimeout(fun(){
-            println("load C")
-            iframePlayer?.src = channel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
-            iframePlayer?.onload = fun() {
-                setListenIframePlayerScript()
-                callIframePlayerFunction("onIframePlayerInit(${
-                kotlinValueToEvalScriptUseableValue(channel.sources.node?.link ?: "")
-                })")
+        iframePlayer?.src = channel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
+        iframePlayer?.onload = fun() {
+            setListenIframePlayerScript()
+            callIframePlayerFunction("onIframePlayerInit(${
+            kotlinValueToEvalScriptUseableValue(channel.sources.node?.link ?: "")
+            })")
+        }
+        addOnPlayerEventListener(object : OnPlayerEventListener {
+            private var isPlaying: Boolean = false
+            private var numberOfPlaying: Int = 0
+            private var isLowSignalShowChannelDescription = false
+            override fun on(onPlayerEvent: OnPlayerEvent) {
+                when (onPlayerEvent) {
+                    OnPlayerEvent.playing -> {
+                        isPlaying = true
+                        numberOfPlaying++
+                        if(isLowSignalShowChannelDescription){
+                            isLowSignalShowChannelDescription = false
+                            ChannelDescription.hide()
+                        }
+                        if(numberOfPlaying <= 1){
+                            ChannelDescription.show(5000)
+                        }
+                        VirtualRemote.update()
+                        UserControlPanel.cannotTouchIframePlayerMode()
+                        println("播放緊頻道${channel.number}")
+                    }
+                    OnPlayerEvent.notPlaying -> {
+                        isPlaying = false
+                        if(0 < numberOfPlaying){
+                            checkIsLowSignalShowChannelDescriptionTimer = window.setTimeout(fun(){
+                                if(!isPlaying){
+                                    isLowSignalShowChannelDescription = true
+                                    ChannelDescription.show()
+                                    PromptBox.promptMessage("訊號接收不良")
+                                }
+                            }, 5000)
+                        }
+                    }
+                }
             }
-            addOnPlayerEventListener(object : OnPlayerEventListener {
-                private var isPlaying: Boolean = false
-                private var numberOfPlaying: Int = 0
-                private var isLowSignalShowChannelDescription = false
-                override fun on(onPlayerEvent: OnPlayerEvent) {
-                    when (onPlayerEvent) {
-                        OnPlayerEvent.playing -> {
-                            isPlaying = true
-                            numberOfPlaying++
-                            if(isLowSignalShowChannelDescription){
-                                isLowSignalShowChannelDescription = false
-                                ChannelDescription.hide()
-                            }
-                            if(numberOfPlaying <= 1){
-                                ChannelDescription.show(5000)
-                            }
-                            VirtualRemote.update()
-                            UserControlPanel.cannotTouchIframePlayerMode()
-                            println("播放緊頻道${channel.number}")
-                        }
-                        OnPlayerEvent.notPlaying -> {
-                            isPlaying = false
-                            if(0 < numberOfPlaying){
-                                checkIsLowSignalShowChannelDescriptionTimer = window.setTimeout(fun(){
-                                    if(!isPlaying){
-                                        isLowSignalShowChannelDescription = true
-                                        ChannelDescription.show()
-                                        PromptBox.promptMessage("訊號接收不良")
-                                    }
-                                }, 5000)
-                            }
-                        }
-                    }
-                }
-                init {
-                    ChannelDescription.show()
-                    ChannelDescription.update()
-                    /**
-                    //如果冇自動播放就換到手動播放模式
-                    checkNeedCanTouchIframePlayerModeTimer = window.setTimeout(fun() {
+            init {
+                ChannelDescription.show()
+                ChannelDescription.update()
+                /**
+                //如果冇自動播放就換到手動播放模式
+                checkNeedCanTouchIframePlayerModeTimer = window.setTimeout(fun() {
                     if (!isPlaying && numberOfPlaying == 0) {
-                    UserControlPanel.canTouchIframePlayerMode()
-                    PromptBox.promptMessage("已切換到手動播放模式")
+                        UserControlPanel.canTouchIframePlayerMode()
+                        PromptBox.promptMessage("已切換到手動播放模式")
                     }
-                    }, 30000)*/
-                }
-            })
-        }, 5000)
-
+                }, 30000)*/
+            }
+        })
     }
 }

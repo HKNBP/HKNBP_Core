@@ -2401,11 +2401,11 @@ var HKNBP_Core = function (_, Kotlin) {
     this.iframePlayerMutedInit_0 = Player$iframePlayerMutedInit$lambda(this)();
     this.onPlaying_0 = Player$onPlaying$lambda(this);
     this.onNotPlaying_0 = Player$onNotPlaying$lambda(this);
-    var tmp$;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2;
     println('\u64AD\u653E\u5668\u521D\u59CB\u5316' + this.channel_0.number);
-    (tmp$ = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$.src = 'about:blank') : null;
-    println('load blank');
-    window.setTimeout(Player_init$lambda(this), 5000);
+    (tmp$_1 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_1.src = (tmp$_0 = (tmp$ = this.channel_0.sources.node) != null ? tmp$.iFramePlayerSrc : null) != null ? tmp$_0 : 'iframePlayer/videojs_hls.html') : null;
+    (tmp$_2 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_2.onload = Player_init$lambda(this)) : null;
+    this.addOnPlayerEventListener_j8fzjz$(new Player_init$ObjectLiteral(this));
   }
   function Player$Companion() {
     Player$Companion_instance = this;
@@ -2421,7 +2421,6 @@ var HKNBP_Core = function (_, Kotlin) {
     this.isCheckVideoAutoPlayNeedToMute_0 = true;
     this.checkNeedCanTouchIframePlayerModeTimer_r3xwh1$_0 = 0;
     this.checkIsLowSignalShowChannelDescriptionTimer_nk3s78$_0 = 0;
-    this.number_0 = 0;
     this.setListenIframePlayerMessage_0();
   }
   function Player$Companion$callIframePlayerFunction$lambda(returnValue) {
@@ -3039,7 +3038,6 @@ var HKNBP_Core = function (_, Kotlin) {
   Player$iframePlayerMutedInit$lambda$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
     if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance()))
       if (!this.isInit) {
-        Player$Companion_getInstance().setMuted_6taknv$(Player$Companion_getInstance().muted_0);
         this.isInit = true;
       }
   };
@@ -3073,7 +3071,7 @@ var HKNBP_Core = function (_, Kotlin) {
       }
     };
   }
-  function Player_init$lambda$lambda(this$Player) {
+  function Player_init$lambda(this$Player) {
     return function () {
       var tmp$, tmp$_0, tmp$_1, tmp$_2;
       this$Player.setListenIframePlayerScript_0();
@@ -3082,7 +3080,7 @@ var HKNBP_Core = function (_, Kotlin) {
       Player$Companion_getInstance().callIframePlayerFunction_0(tmp$_2);
     };
   }
-  function Player_init$lambda$ObjectLiteral(this$Player) {
+  function Player_init$ObjectLiteral(this$Player) {
     this.this$Player = this$Player;
     this.isPlaying_0 = false;
     this.numberOfPlaying_0 = 0;
@@ -3090,7 +3088,7 @@ var HKNBP_Core = function (_, Kotlin) {
     ChannelDescription_getInstance().show();
     ChannelDescription_getInstance().update();
   }
-  function Player_init$lambda$ObjectLiteral$on$lambda(this$) {
+  function Player_init$ObjectLiteral$on$lambda(this$) {
     return function () {
       if (!this$.isPlaying_0) {
         this$.isLowSignalShowChannelDescription_0 = true;
@@ -3099,7 +3097,7 @@ var HKNBP_Core = function (_, Kotlin) {
       }
     };
   }
-  Player_init$lambda$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
+  Player_init$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
     switch (onPlayerEvent.name) {
       case 'playing':
         this.isPlaying_0 = true;
@@ -3120,25 +3118,16 @@ var HKNBP_Core = function (_, Kotlin) {
       case 'notPlaying':
         this.isPlaying_0 = false;
         if (0 < this.numberOfPlaying_0) {
-          Player$Companion_getInstance().checkIsLowSignalShowChannelDescriptionTimer_0 = window.setTimeout(Player_init$lambda$ObjectLiteral$on$lambda(this), 5000);
+          Player$Companion_getInstance().checkIsLowSignalShowChannelDescriptionTimer_0 = window.setTimeout(Player_init$ObjectLiteral$on$lambda(this), 5000);
         }
 
         break;
     }
   };
-  Player_init$lambda$ObjectLiteral.$metadata$ = {
+  Player_init$ObjectLiteral.$metadata$ = {
     kind: Kind_CLASS,
     interfaces: [Player$OnPlayerEventListener]
   };
-  function Player_init$lambda(this$Player) {
-    return function () {
-      var tmp$, tmp$_0, tmp$_1, tmp$_2;
-      println('load C');
-      (tmp$_1 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_1.src = (tmp$_0 = (tmp$ = this$Player.channel_0.sources.node) != null ? tmp$.iFramePlayerSrc : null) != null ? tmp$_0 : 'iframePlayer/videojs_hls.html') : null;
-      (tmp$_2 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_2.onload = Player_init$lambda$lambda(this$Player)) : null;
-      this$Player.addOnPlayerEventListener_j8fzjz$(new Player_init$lambda$ObjectLiteral(this$Player));
-    };
-  }
   Player.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'Player',
