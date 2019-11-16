@@ -2403,20 +2403,24 @@ var HKNBP_Core = function (_, Kotlin) {
     this.onNotPlaying_0 = Player$onNotPlaying$lambda(this);
     var tmp$, tmp$_0, tmp$_1, tmp$_2;
     println('\u64AD\u653E\u5668\u521D\u59CB\u5316' + this.channel_0.number);
+    Player$Companion_getInstance().playerDivElement_0.innerHTML = '';
+    Player$Companion_getInstance().playerDivElement_0.innerHTML = '\n            <iframe\n                    id="iframePlayer"\n                    style="width:100%; height:100%; position:absolute; top:0; left:0; overflow:hidden;"\n                    frameBorder="0"\n                    allow="autoplay; fullscreen;">\n                \u4F60\u5605\u700F\u89BD\u5668\u5514\u652F\u63F4iframe\n            <\/iframe>\n        ';
+    Player$Companion_getInstance().iframePlayer_0 = document.getElementById('iframePlayer');
     (tmp$_1 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_1.src = (tmp$_0 = (tmp$ = this.channel_0.sources.node) != null ? tmp$.iFramePlayerSrc : null) != null ? tmp$_0 : 'iframePlayer/videojs_hls.html') : null;
     (tmp$_2 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_2.onload = Player_init$lambda(this)) : null;
     this.addOnPlayerEventListener_j8fzjz$(new Player_init$ObjectLiteral(this));
   }
   function Player$Companion() {
     Player$Companion_instance = this;
-    this.iframePlayer_0 = document.getElementById('iframePlayer');
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3;
+    this.playerDivElement_0 = Kotlin.isType(tmp$ = document.getElementById('player'), HTMLDivElement) ? tmp$ : throwCCE();
+    this.iframePlayer_0 = null;
     this.callIframePlayerFunctionList_0 = ArrayList_init();
     this.listenIframePlayerScript_0 = Player$Companion$listenIframePlayerScript$lambda;
-    var tmp$, tmp$_0, tmp$_1, tmp$_2;
-    this.volume_xu8cq7$_0 = (tmp$_0 = (tmp$ = localStorage.getItem('RecentlyVolume')) != null ? toDoubleOrNull(tmp$) : null) != null ? tmp$_0 : 100.0;
+    this.volume_xu8cq7$_0 = (tmp$_1 = (tmp$_0 = localStorage.getItem('RecentlyVolume')) != null ? toDoubleOrNull(tmp$_0) : null) != null ? tmp$_1 : 100.0;
     this.volumeUp = Player$Companion$volumeUp$lambda(this);
     this.volumeDown = Player$Companion$volumeDown$lambda(this);
-    this.muted_oj2db2$_0 = (tmp$_2 = (tmp$_1 = localStorage.getItem('RecentlyMuted')) != null ? toBoolean(tmp$_1) : null) != null ? tmp$_2 : false;
+    this.muted_oj2db2$_0 = (tmp$_3 = (tmp$_2 = localStorage.getItem('RecentlyMuted')) != null ? toBoolean(tmp$_2) : null) != null ? tmp$_3 : false;
     this.volumeMute_5wo648$_0 = Player$Companion$volumeMute$lambda(this);
     this.isCheckVideoAutoPlayNeedToMute_0 = true;
     this.checkNeedCanTouchIframePlayerModeTimer_r3xwh1$_0 = 0;
@@ -3038,6 +3042,7 @@ var HKNBP_Core = function (_, Kotlin) {
   Player$iframePlayerMutedInit$lambda$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
     if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance()))
       if (!this.isInit) {
+        Player$Companion_getInstance().setMuted_6taknv$(Player$Companion_getInstance().muted_0);
         this.isInit = true;
       }
   };

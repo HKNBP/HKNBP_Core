@@ -14,16 +14,21 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
+import org.w3c.dom.HTMLDivElement
+import org.w3c.dom.HTMLIFrameElement
 import kotlin.browser.document
 import kotlin.browser.localStorage
 import kotlin.browser.window
+import kotlin.dom.createElement
 import kotlin.js.Date
 import kotlin.js.Math
 import kotlin.random.Random
 
 class Player(private val channel: Channel) {
     companion object{
-        private val iframePlayer: dynamic = document.getElementById("iframePlayer")
+        private val playerDivElement = document.getElementById("player") as HTMLDivElement
+
+        private var iframePlayer: dynamic = null
 
 
         private val callIframePlayerFunctionList = ArrayList<dynamic>()
@@ -530,7 +535,7 @@ class Player(private val channel: Channel) {
                 when (onPlayerEvent) {
                     OnPlayerEvent.playing -> {
                         if(!isInit){
-                            //setMuted(muted)
+                            setMuted(muted)
                             isInit = true
                         }
                     }
@@ -676,6 +681,17 @@ class Player(private val channel: Channel) {
 
     init {
         println("播放器初始化${channel.number}")
+        playerDivElement.innerHTML = ""
+        playerDivElement.innerHTML = """
+            <iframe
+                    id="iframePlayer"
+                    style="width:100%; height:100%; position:absolute; top:0; left:0; overflow:hidden;"
+                    frameBorder="0"
+                    allow="autoplay; fullscreen;">
+                你嘅瀏覽器唔支援iframe
+            </iframe>
+        """
+        iframePlayer = document.getElementById("iframePlayer")
         iframePlayer?.src = channel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
         iframePlayer?.onload = fun() {
             setListenIframePlayerScript()
