@@ -54,5 +54,7 @@ object MutedDescription: UserInterface("mutedDescription") {
                 Player.setMuted(!muted)
             })
         }
+
+        println("Init MutedDescription")
     }
 }

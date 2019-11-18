@@ -27,5 +27,7 @@ object VideoDescription: UserInterface("videoDescription") {
         VideoDescription.text.innerHTML = player?.videoTracks?.node?.name?:""
     }
 
-    init { }
+    init {
+        println("Init VideoDescription")
+    }
 }

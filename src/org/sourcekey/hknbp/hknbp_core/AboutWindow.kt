@@ -36,5 +36,7 @@ object AboutWindow: Window("aboutWindow", firstFocusElementID = "aboutWindowHide
     init {
         hideButton.onclick = fun(event){hide()}
         consentText.onclick = fun(event){ConsentPanel.show()}
+
+        println("Init AboutWindow")
     }
 }

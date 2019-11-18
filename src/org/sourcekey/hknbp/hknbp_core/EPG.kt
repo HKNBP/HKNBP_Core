@@ -654,6 +654,8 @@ object EPG: Window("epg") {
     init {
         epg.style.cursor = "auto"
         hideButton.onclick = fun(event){ hide() }
+
+        println("Init EPG")
     }
 }
 

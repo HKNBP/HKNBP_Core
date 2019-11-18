@@ -53,5 +53,7 @@ object VolumeDescription: UserInterface("volumeDescription") {
     init {
         volumeUpButton.onclick = fun(event){Player.volumeUp()}
         volumeDownButton.onclick = fun(event){Player.volumeDown()}
+
+        println("Init VolumeDescription")
     }
 }

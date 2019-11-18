@@ -38,5 +38,7 @@ object NativeAppInstallButton: UserInterface("nativeAppInstallButton") {
         nativeAppInstallButton.onclick = fun(event){
             installPromptEvent.prompt()
         }
+
+        println("Init NativeAppInstallButton")
     }
 }

@@ -26,5 +26,7 @@ object PictureInPictureButton: UserInterface("pictureInPictureButton"){
         pictureInPictureButton.onclick = fun(event){
             player?.pictureInPictureModeSwitch()
         }
+
+        println("Init PictureInPictureButton")
     }
 }

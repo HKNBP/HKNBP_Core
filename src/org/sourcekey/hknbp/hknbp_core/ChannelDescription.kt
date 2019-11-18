@@ -127,5 +127,7 @@ object ChannelDescription: UserInterface("channelDescription") {
 
     init {
         setCurrentDate()
+
+        println("Init ChannelDescription")
     }
 }

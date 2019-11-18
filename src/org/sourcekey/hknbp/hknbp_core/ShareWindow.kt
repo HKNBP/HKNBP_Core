@@ -31,5 +31,7 @@ object ShareWindow : Window("shareWindow", firstFocusElementID = "shareWindowHid
 
     init {
         hideButton.onclick = fun(event){hide()}
+
+        println("Init ShareWindow")
     }
 }

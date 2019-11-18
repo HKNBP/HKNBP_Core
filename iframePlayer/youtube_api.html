@@ -288,13 +288,14 @@
         youtubeVideoId = sourceSrc;
         tag.src = "https://www.youtube.com/iframe_api";
         firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-        //防佢冇PLAY
+        //防冇PLAY
+        /**
         var count = 0;
         var timer = window.setInterval(function(){
             player.playVideo();
             count++;
             if(count >= 60){window.clearInterval(timer)}
-        }, 1000)
+        }, 1000)*/
     }
     /**
      * 存底callHKNBPCoreFunction要求

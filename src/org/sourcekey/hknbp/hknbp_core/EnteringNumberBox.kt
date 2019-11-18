@@ -85,5 +85,7 @@ object EnteringNumberBox: UserInterface("enteringNumberBox") {
         show()
     }
 
-    init {  }
+    init {
+        println("Init EnteringNumberBox")
+    }
 }

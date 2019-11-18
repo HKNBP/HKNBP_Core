@@ -76,5 +76,7 @@ object LongClickEvent {
                 onLongClick.mouseup()
             }
         })
+
+        println("Init LongClickEvent")
     }
 }

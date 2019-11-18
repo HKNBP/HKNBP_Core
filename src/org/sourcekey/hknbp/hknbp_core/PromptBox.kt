@@ -30,4 +30,8 @@ object PromptBox: UserInterface("promptBox") {
         show(3500)
         return 0/////////
     }
+
+    init {
+        println("Init PromptBox")
+    }
 }

@@ -27,5 +27,7 @@ object SubtitleDescription: UserInterface("subtitleDescription") {
         SubtitleDescription.text.innerHTML = player?.subtitleTracks?.node?.name?:""
     }
 
-    init {  }
+    init {
+        println("Init SubtitleDescription")
+    }
 }

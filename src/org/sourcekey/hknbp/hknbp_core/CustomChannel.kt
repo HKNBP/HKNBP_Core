@@ -25,6 +25,6 @@ object CustomChannel {
     }
 
     init{
-
+        println("Init CustomChannel")
     }
 }

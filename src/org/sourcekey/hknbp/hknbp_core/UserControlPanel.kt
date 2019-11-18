@@ -168,5 +168,7 @@ object UserControlPanel: UserInterface(
             canTouchIframePlayerMode()
         }
         setIframeOnClick("iframePlayer", fun(){ showHideAlternately() })
+
+        println("Init UserControlPanel")
     }
 }

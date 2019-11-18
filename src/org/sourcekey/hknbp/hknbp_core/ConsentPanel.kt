@@ -35,10 +35,11 @@ object ConsentPanel: UserInterface(
             agreeConsentButton.innerHTML = dialagues.node?.agree?:"同意"
         })
 
-
         agreeConsentButton.onclick = fun(event){
             localStorage.setItem("IsAgreeConsent", true.toString())
             hide()
         }
+
+        println("Init ConsentPanel")
     }
 }

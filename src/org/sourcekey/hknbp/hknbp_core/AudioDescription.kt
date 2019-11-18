@@ -30,5 +30,7 @@ object AudioDescription: UserInterface("audioDescription") {
         AudioDescription.text.innerHTML = player?.audioTracks?.node?.name?:""
     }
 
-    init {  }
+    init {
+        println("Init AudioDescription")
+    }
 }

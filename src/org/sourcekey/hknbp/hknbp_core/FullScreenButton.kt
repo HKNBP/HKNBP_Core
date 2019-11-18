@@ -81,5 +81,7 @@ object FullScreenButton: UserInterface("fullScreenButton") {
     init {
         if(document.fullscreenEnabled){ show() }else{ hide() }
         fullScreenButton.onclick = fun(event){ enterExitFullScreenAlternately() }
+
+        println("Init FullScreenButton")
     }
 }

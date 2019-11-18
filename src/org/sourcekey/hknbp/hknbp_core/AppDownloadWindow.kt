@@ -25,5 +25,7 @@ object AppDownloadWindow: Window("appDownloadWindow", firstFocusElementID = "app
 
     init {
         hideButton.onclick = fun(event){ hide() }
+
+        println("Init AppDownloadWindow")
     }
 }

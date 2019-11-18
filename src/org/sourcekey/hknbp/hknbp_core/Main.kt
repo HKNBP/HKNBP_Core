@@ -337,8 +337,10 @@ fun main(args: Array<String>) {
         UserControlPanel
         ConsentPanel
         VirtualRemote
-        RealRemote
+        //RealRemote
         LongClickEvent
         println("介面初始化完成")
     } catch (e: dynamic) { println("介面初始化哀左: $e") }
+
+    println("Init Main")
 }

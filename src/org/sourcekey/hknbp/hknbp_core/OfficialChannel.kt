@@ -127,5 +127,7 @@ object OfficialChannel {
         }, "${rootURL}data/official_channels.xml", "data/official_channels.xml")
     }
 
-    init{ }
+    init{
+        println("Init OfficialChannel")
+    }
 }

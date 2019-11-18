@@ -208,5 +208,7 @@ object SettingWindow: Window("settingWindow", firstFocusElementID = "settingWind
         initLangugeSetting()
         initClearSetting()
         initDevModeCheckbox()
+
+        println("Init SettingWindow")
     }
 }

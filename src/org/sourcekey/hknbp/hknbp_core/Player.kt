@@ -14,21 +14,16 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
-import org.w3c.dom.HTMLDivElement
-import org.w3c.dom.HTMLIFrameElement
 import kotlin.browser.document
 import kotlin.browser.localStorage
 import kotlin.browser.window
-import kotlin.dom.createElement
 import kotlin.js.Date
 import kotlin.js.Math
 import kotlin.random.Random
 
 class Player(private val channel: Channel) {
     companion object{
-        private val playerDivElement = document.getElementById("player") as HTMLDivElement
-
-        private var iframePlayer: dynamic = null
+        private val iframePlayer: dynamic = document.getElementById("iframePlayer")
 
 
         private val callIframePlayerFunctionList = ArrayList<dynamic>()
@@ -47,7 +42,6 @@ class Player(private val channel: Channel) {
             }, 60000)
             try {
                 iframePlayer.contentWindow.postMessage(JSON.stringify(caller), "*")
-                println("--Smess ${JSON.stringify(caller)}")
             } catch (e: dynamic){ println("iframePlayer有啲Function搵唔到或發生問題: $e") }
         }
 
@@ -656,7 +650,6 @@ class Player(private val channel: Channel) {
                             callIframePlayerFunctionList.remove(obj)
                         }
                     }
-                    println("--Lret ${event.data.toString()}")
                 }else if(callMessage.name == "IframePlayer"){
                     val onPlaying = onPlaying // 畀IframePlayer方便Call
                     val onNotPlaying = onNotPlaying // 畀IframePlayer方便Call
@@ -668,7 +661,6 @@ class Player(private val channel: Channel) {
                     window.parent.postMessage(JSON.stringify(obj), "*")
                     }*/
                     eval(callMessage.functionName + "()")
-                    println("--Lcall ${callMessage.functionName}")
                 }
             }catch(e: dynamic){
                 println("callIframePlayerFunction衰左: ${e}" + "\n" +
@@ -680,18 +672,6 @@ class Player(private val channel: Channel) {
     }
 
     init {
-        println("播放器初始化${channel.number}")
-        playerDivElement.innerHTML = ""
-        playerDivElement.innerHTML = """
-            <iframe
-                    id="iframePlayer"
-                    style="width:100%; height:100%; position:absolute; top:0; left:0; overflow:hidden;"
-                    frameBorder="0"
-                    allow="autoplay; fullscreen;">
-                你嘅瀏覽器唔支援iframe
-            </iframe>
-        """
-        iframePlayer = document.getElementById("iframePlayer")
         iframePlayer?.src = channel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
         iframePlayer?.onload = fun() {
             setListenIframePlayerScript()
@@ -717,7 +697,7 @@ class Player(private val channel: Channel) {
                         }
                         VirtualRemote.update()
                         UserControlPanel.cannotTouchIframePlayerMode()
-                        println("播放緊頻道${channel.number}")
+                        println("Playing 頻道${channel.number}")
                     }
                     OnPlayerEvent.notPlaying -> {
                         isPlaying = false

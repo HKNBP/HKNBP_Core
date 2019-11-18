@@ -24,5 +24,7 @@ object RealRemote {
                 ///////////
             }
         })
+
+        println("Init RealRemote")
     }
 }
