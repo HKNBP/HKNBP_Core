@@ -18,7 +18,7 @@
  * 控制更新cache版本
  * 修改版本名今用戶進行更新新版
  */
-var coreVersion = "v2019.11_2_test3";
+var coreVersion = "v2019.11_2_test2";
 
 /**
  * 檢查依家運行係米ServiceWorker
@@ -94,19 +94,19 @@ if(self.registration){
     self.addEventListener('activate', function(event) {
         event.waitUntil(
             // 揀選舊版本cache去刪除
-            caches.keys().then(function(cacheNames){
+            caches.keys().then(cacheNames => {
                 console.log("正儲存嘅版本Cache有: " + cacheNames);
                 return Promise.all(
-                    cacheNames.filter(function(cacheName){
+                    cacheNames.filter(cacheName => {
                         // return true為刪除冇使用緊嘅cache
                         return cacheName !== workbox.core.cacheNames.precache;
-                    }).map(function(cacheName){
+                    }).map(cacheName => {
                         console.log("刪除" + cacheName + "版本Cache");
                         // 被filter判定為要刪除嘅cache去刪除
                         return caches.delete(cacheName);
                     })
                 );
-            }).then(function(){
+            }).then(() => {
                 return self.clients.claim();
             })
         );
