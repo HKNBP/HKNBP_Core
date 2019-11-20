@@ -106,7 +106,7 @@ if(self.registration){
                         return caches.delete(cacheName);
                     })
                 );
-            }).then(() => {
+            }).then(function(){
                 return self.clients.claim();
             })
         );
