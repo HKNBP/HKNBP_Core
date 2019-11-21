@@ -3660,8 +3660,11 @@ var HKNBP_Core = function (_, Kotlin) {
     if (equals(RunnerInfo_getInstance().getOsFamily(), 'iOS')) {
       this.canTouchIframePlayerMode();
     }
-    var obj = {v: {}};
-    obj.v.blurCallback = UserControlPanel_init$lambda_6(this);
+    var obj = {};
+    var focusShower = UserControlPanel_init$lambda_6(this);
+    obj.blurCallback = focusShower;
+    obj.overCallback = focusShower;
+    obj.outCallback = focusShower;
     jQuery(document).ready(UserControlPanel_init$lambda_7(obj));
     println('Init UserControlPanel');
   }
@@ -3751,6 +3754,7 @@ var HKNBP_Core = function (_, Kotlin) {
   function UserControlPanel_init$lambda$lambda(this$UserControlPanel) {
     return function () {
       this$UserControlPanel.shower_0.focus();
+      println('focusShower');
     };
   }
   function UserControlPanel_init$lambda_6(this$UserControlPanel) {
@@ -3760,7 +3764,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function UserControlPanel_init$lambda_7(closure$obj) {
     return function () {
-      jQuery('#iframePlayer').iframeTracker(closure$obj.v);
+      jQuery('#iframePlayer').iframeTracker(closure$obj);
     };
   }
   UserControlPanel.$metadata$ = {
