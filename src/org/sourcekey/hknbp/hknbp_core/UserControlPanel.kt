@@ -83,17 +83,17 @@ object UserControlPanel: UserInterface(
      * */
     fun setIframeOnClick(iframeId: String, onClick: ()->Unit){
         /**
-        shower.focus()
+        //shower.focus()
         var obj = js("{}")
         obj.blurCallback = fun(){
-        onClick()
-        window.setTimeout(fun() {
-        jQuery(js("this")).focus()
-        shower.focus()
-        }, 0)
+            onClick()
+            window.setTimeout(fun(){
+                jQuery(js("this")).focus()
+                shower.focus()
+            }, 0)
         }
         jQuery(js("document")).ready(fun(){
-        jQuery("#${iframeId}").iframeTracker(obj)
+            jQuery("#${iframeId}").iframeTracker(obj)
         })*/
     }
 
@@ -123,7 +123,7 @@ object UserControlPanel: UserInterface(
         FullScreenButton
 
         //開程式時首先focus userControlPanelShower
-        jQuery("#userControlPanelShower").focus()
+        //jQuery("#userControlPanelShower").focus()
 
         //設定使用者控制界面顯示方法
         shower.onclick = fun(event){
@@ -167,7 +167,16 @@ object UserControlPanel: UserInterface(
         if(RunnerInfo.getOsFamily() == "iOS"){
             canTouchIframePlayerMode()
         }
-        setIframeOnClick("iframePlayer", fun(){ showHideAlternately() })
+        //setIframeOnClick("iframePlayer", fun(){ showHideAlternately() })
+
+        //
+        var obj = js("{}")
+        obj.blurCallback = fun(){
+            window.setTimeout(fun(){ shower.focus() }, 0)
+        }
+        jQuery(js("document")).ready(fun(){
+            jQuery("#iframePlayer").iframeTracker(obj)
+        })
 
         println("Init UserControlPanel")
     }

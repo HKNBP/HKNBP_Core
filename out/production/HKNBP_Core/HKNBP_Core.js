@@ -3649,7 +3649,6 @@ var HKNBP_Core = function (_, Kotlin) {
     NativeAppInstallButton_getInstance();
     PictureInPictureButton_getInstance();
     FullScreenButton_getInstance();
-    jQuery('#userControlPanelShower').focus();
     this.shower_0.onclick = UserControlPanel_init$lambda(this);
     this.shower_0.onmousemove = UserControlPanel_init$lambda_0(this);
     this.panel_0.onmousemove = UserControlPanel_init$lambda_1(this);
@@ -3661,7 +3660,9 @@ var HKNBP_Core = function (_, Kotlin) {
     if (equals(RunnerInfo_getInstance().getOsFamily(), 'iOS')) {
       this.canTouchIframePlayerMode();
     }
-    this.setIframeOnClick_a4mwiz$('iframePlayer', UserControlPanel_init$lambda_6(this));
+    var obj = {v: {}};
+    obj.v.blurCallback = UserControlPanel_init$lambda_6(this);
+    jQuery(document).ready(UserControlPanel_init$lambda_7(obj));
     println('Init UserControlPanel');
   }
   Object.defineProperty(UserControlPanel.prototype, 'hideMouseTimer_0', {
@@ -3747,9 +3748,19 @@ var HKNBP_Core = function (_, Kotlin) {
       }
     };
   }
+  function UserControlPanel_init$lambda$lambda(this$UserControlPanel) {
+    return function () {
+      this$UserControlPanel.shower_0.focus();
+    };
+  }
   function UserControlPanel_init$lambda_6(this$UserControlPanel) {
     return function () {
-      this$UserControlPanel.showHideAlternately();
+      window.setTimeout(UserControlPanel_init$lambda$lambda(this$UserControlPanel), 0);
+    };
+  }
+  function UserControlPanel_init$lambda_7(closure$obj) {
+    return function () {
+      jQuery('#iframePlayer').iframeTracker(closure$obj.v);
     };
   }
   UserControlPanel.$metadata$ = {
