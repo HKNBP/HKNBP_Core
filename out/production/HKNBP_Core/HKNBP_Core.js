@@ -715,11 +715,11 @@ var HKNBP_Core = function (_, Kotlin) {
   function ConsentPanel() {
     ConsentPanel_instance = this;
     UserInterface.call(this, 'consentPanel', 'consentPanelAgreeConsentButton', false, void 0, true);
-    var tmp$, tmp$_0, tmp$_1;
+    var tmp$, tmp$_0;
     this.consentPanel_0 = Kotlin.isType(tmp$ = document.getElementById('consentPanel'), HTMLDivElement) ? tmp$ : throwCCE();
     this.agreeConsentButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('consentPanelAgreeConsentButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.consentPanel_0.style.cursor = 'auto';
-    if (((tmp$_1 = localStorage.getItem('IsAgreeConsent')) != null ? toBoolean(tmp$_1) : null) !== true) {
+    if (this.isAgreeConsent() !== true) {
       this.show();
       this.agreeConsentButton_0.focus();
     }
@@ -727,6 +727,10 @@ var HKNBP_Core = function (_, Kotlin) {
     this.agreeConsentButton_0.onclick = ConsentPanel_init$lambda_0(this);
     println('Init ConsentPanel');
   }
+  ConsentPanel.prototype.isAgreeConsent = function () {
+    var tmp$, tmp$_0;
+    return (tmp$_0 = (tmp$ = localStorage.getItem('IsAgreeConsent')) != null ? toBoolean(tmp$) : null) != null ? tmp$_0 : false;
+  };
   function ConsentPanel_init$lambda(this$ConsentPanel) {
     return function (dialagues) {
       var tmp$, tmp$_0;
@@ -2423,7 +2427,6 @@ var HKNBP_Core = function (_, Kotlin) {
     this.onPlaying_0 = Player$onPlaying$lambda(this);
     this.onNotPlaying_0 = Player$onNotPlaying$lambda(this);
     var tmp$, tmp$_0, tmp$_1, tmp$_2;
-    this.hide();
     (tmp$_1 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_1.src = (tmp$_0 = (tmp$ = this.channel_0.sources.node) != null ? tmp$.iFramePlayerSrc : null) != null ? tmp$_0 : 'iframePlayer/videojs_hls.html') : null;
     (tmp$_2 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_2.onload = Player_init$lambda(this)) : null;
     this.addOnPlayerEventListener_j8fzjz$(new Player_init$ObjectLiteral(this));
@@ -3107,10 +3110,8 @@ var HKNBP_Core = function (_, Kotlin) {
     ChannelDescription_getInstance().show();
     ChannelDescription_getInstance().update();
   }
-  function Player_init$ObjectLiteral$on$lambda(this$Player) {
-    return function () {
-      this$Player.show();
-    };
+  function Player_init$ObjectLiteral$on$lambda() {
+    println('removeClass');
   }
   function Player_init$ObjectLiteral$on$lambda_0(this$) {
     return function () {
@@ -3137,8 +3138,7 @@ var HKNBP_Core = function (_, Kotlin) {
 
         VirtualRemote_getInstance().update();
         UserControlPanel_getInstance().cannotTouchIframePlayerMode();
-        window.setTimeout(Player_init$ObjectLiteral$on$lambda(this.this$Player), 1000);
-        println('removeClass');
+        window.setTimeout(Player_init$ObjectLiteral$on$lambda, 1000);
         println('Playing \u983B\u9053' + this.this$Player.channel_0.number);
         break;
       case 'notPlaying':
@@ -3661,6 +3661,9 @@ var HKNBP_Core = function (_, Kotlin) {
     NativeAppInstallButton_getInstance();
     PictureInPictureButton_getInstance();
     FullScreenButton_getInstance();
+    if (ConsentPanel_getInstance().isAgreeConsent()) {
+      jQuery('#userControlPanelShower').focus();
+    }
     this.shower_0.onclick = UserControlPanel_init$lambda(this);
     this.shower_0.onmousemove = UserControlPanel_init$lambda_0(this);
     this.panel_0.onmousemove = UserControlPanel_init$lambda_1(this);

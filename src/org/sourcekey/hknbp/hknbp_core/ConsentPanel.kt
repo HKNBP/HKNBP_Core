@@ -28,9 +28,13 @@ object ConsentPanel: UserInterface(
     private val consentPanel       = document.getElementById("consentPanel") as HTMLDivElement
     private val agreeConsentButton  = document.getElementById("consentPanelAgreeConsentButton") as HTMLButtonElement
 
+    fun isAgreeConsent(): Boolean{
+        return localStorage.getItem("IsAgreeConsent")?.toBoolean()?: false
+    }
+
     init {
         consentPanel.style.cursor = "auto"
-        if(localStorage.getItem("IsAgreeConsent")?.toBoolean() != true){
+        if(isAgreeConsent() != true){
             show()
             agreeConsentButton.focus()
         }
