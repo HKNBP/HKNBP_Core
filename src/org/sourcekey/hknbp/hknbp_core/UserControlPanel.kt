@@ -123,9 +123,8 @@ object UserControlPanel: UserInterface(
         FullScreenButton
 
         //開程式時首先focus userControlPanelShower
-        if(ConsentPanel.isAgreeConsent()){
-            jQuery("#userControlPanelShower").focus()
-        }
+        shower.focus()
+        println("U focus ")
 
         //設定使用者控制界面顯示方法
         shower.onclick = fun(event){

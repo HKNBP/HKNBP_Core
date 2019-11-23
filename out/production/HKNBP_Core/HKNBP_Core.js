@@ -3661,9 +3661,8 @@ var HKNBP_Core = function (_, Kotlin) {
     NativeAppInstallButton_getInstance();
     PictureInPictureButton_getInstance();
     FullScreenButton_getInstance();
-    if (ConsentPanel_getInstance().isAgreeConsent()) {
-      jQuery('#userControlPanelShower').focus();
-    }
+    this.shower_0.focus();
+    println('U focus ');
     this.shower_0.onclick = UserControlPanel_init$lambda(this);
     this.shower_0.onmousemove = UserControlPanel_init$lambda_0(this);
     this.panel_0.onmousemove = UserControlPanel_init$lambda_1(this);
