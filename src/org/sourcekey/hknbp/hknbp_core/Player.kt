@@ -702,9 +702,11 @@ class Player(private val channel: Channel): UserInterface("player") {
                         VirtualRemote.update()
                         UserControlPanel.cannotTouchIframePlayerMode()
 
-                        show()
+                        window.setTimeout(fun(){
+                            show()
+                        },1000)
                         println("removeClass")
-                        
+
                         println("Playing 頻道${channel.number}")
                     }
                     OnPlayerEvent.notPlaying -> {

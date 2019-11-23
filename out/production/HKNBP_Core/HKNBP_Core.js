@@ -3107,7 +3107,12 @@ var HKNBP_Core = function (_, Kotlin) {
     ChannelDescription_getInstance().show();
     ChannelDescription_getInstance().update();
   }
-  function Player_init$ObjectLiteral$on$lambda(this$) {
+  function Player_init$ObjectLiteral$on$lambda(this$Player) {
+    return function () {
+      this$Player.show();
+    };
+  }
+  function Player_init$ObjectLiteral$on$lambda_0(this$) {
     return function () {
       if (!this$.isPlaying_0) {
         this$.isLowSignalShowChannelDescription_0 = true;
@@ -3132,14 +3137,14 @@ var HKNBP_Core = function (_, Kotlin) {
 
         VirtualRemote_getInstance().update();
         UserControlPanel_getInstance().cannotTouchIframePlayerMode();
-        this.this$Player.show();
+        window.setTimeout(Player_init$ObjectLiteral$on$lambda(this.this$Player), 1000);
         println('removeClass');
         println('Playing \u983B\u9053' + this.this$Player.channel_0.number);
         break;
       case 'notPlaying':
         this.isPlaying_0 = false;
         if (0 < this.numberOfPlaying_0) {
-          Player$Companion_getInstance().checkIsLowSignalShowChannelDescriptionTimer_0 = window.setTimeout(Player_init$ObjectLiteral$on$lambda(this), 5000);
+          Player$Companion_getInstance().checkIsLowSignalShowChannelDescriptionTimer_0 = window.setTimeout(Player_init$ObjectLiteral$on$lambda_0(this), 5000);
         }
 
         break;
