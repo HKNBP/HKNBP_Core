@@ -721,6 +721,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.consentPanel_0.style.cursor = 'auto';
     if (((tmp$_1 = localStorage.getItem('IsAgreeConsent')) != null ? toBoolean(tmp$_1) : null) !== true) {
       this.show();
+      this.agreeConsentButton_0.focus();
     }
     Dialogue$Companion_getInstance().getDialogues_fs1aqo$(ConsentPanel_init$lambda(this));
     this.agreeConsentButton_0.onclick = ConsentPanel_init$lambda_0(this);
