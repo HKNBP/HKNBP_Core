@@ -3097,8 +3097,6 @@ var HKNBP_Core = function (_, Kotlin) {
       tmp$_1 = (tmp$_0 = (tmp$ = this$Player.channel_0.sources.node) != null ? tmp$.link : null) != null ? tmp$_0 : '';
       tmp$_2 = 'onIframePlayerInit(' + Player$Companion_getInstance().kotlinValueToEvalScriptUseableValue_0(tmp$_1) + ')';
       Player$Companion_getInstance().callIframePlayerFunction_0(tmp$_2);
-      this$Player.show();
-      println('removeClass');
     };
   }
   function Player_init$ObjectLiteral(this$Player) {
@@ -3134,6 +3132,8 @@ var HKNBP_Core = function (_, Kotlin) {
 
         VirtualRemote_getInstance().update();
         UserControlPanel_getInstance().cannotTouchIframePlayerMode();
+        this.this$Player.show();
+        println('removeClass');
         println('Playing \u983B\u9053' + this.this$Player.channel_0.number);
         break;
       case 'notPlaying':

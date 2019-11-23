@@ -682,9 +682,6 @@ class Player(private val channel: Channel): UserInterface("player") {
             callIframePlayerFunction("onIframePlayerInit(${
             kotlinValueToEvalScriptUseableValue(channel.sources.node?.link ?: "")
             })")
-
-            show()
-            println("removeClass")
         }
         addOnPlayerEventListener(object : OnPlayerEventListener {
             private var isPlaying: Boolean = false
@@ -704,6 +701,10 @@ class Player(private val channel: Channel): UserInterface("player") {
                         }
                         VirtualRemote.update()
                         UserControlPanel.cannotTouchIframePlayerMode()
+
+                        show()
+                        println("removeClass")
+                        
                         println("Playing 頻道${channel.number}")
                     }
                     OnPlayerEvent.notPlaying -> {
