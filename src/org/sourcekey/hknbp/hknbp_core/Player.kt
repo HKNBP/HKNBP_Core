@@ -14,14 +14,17 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
+import org.w3c.dom.HTMLDivElement
 import kotlin.browser.document
 import kotlin.browser.localStorage
 import kotlin.browser.window
+import kotlin.dom.addClass
+import kotlin.dom.removeClass
 import kotlin.js.Date
 import kotlin.js.Math
 import kotlin.random.Random
 
-class Player(private val channel: Channel) {
+class Player(private val channel: Channel): UserInterface("player") {
     companion object{
         private val iframePlayer: dynamic = document.getElementById("iframePlayer")
 
@@ -672,12 +675,16 @@ class Player(private val channel: Channel) {
     }
 
     init {
+        hide()
         iframePlayer?.src = channel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
         iframePlayer?.onload = fun() {
             setListenIframePlayerScript()
             callIframePlayerFunction("onIframePlayerInit(${
             kotlinValueToEvalScriptUseableValue(channel.sources.node?.link ?: "")
             })")
+
+            show()
+            println("removeClass")
         }
         addOnPlayerEventListener(object : OnPlayerEventListener {
             private var isPlaying: Boolean = false

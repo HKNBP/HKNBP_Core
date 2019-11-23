@@ -169,14 +169,6 @@ object UserControlPanel: UserInterface(
         }
         //setIframeOnClick("iframePlayer", fun(){ showHideAlternately() })
 
-        //
-        val obj = js("{}")
-        val focusShower = fun(){ window.setTimeout(fun(){ shower.focus(); println("focusShower") }, 0) }
-        obj.blurCallback = focusShower
-        obj.overCallback = focusShower
-        obj.outCallback = focusShower
-        jQuery(js("document")).ready(fun(){ jQuery("#iframePlayer").iframeTracker(obj) })
-
         println("Init UserControlPanel")
     }
 }

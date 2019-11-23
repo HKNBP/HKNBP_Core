@@ -72,6 +72,8 @@ var HKNBP_Core = function (_, Kotlin) {
   Player$OnPlayerEvent.prototype.constructor = Player$OnPlayerEvent;
   Player$ProgrammableColor.prototype = Object.create(Enum.prototype);
   Player$ProgrammableColor.prototype.constructor = Player$ProgrammableColor;
+  Player.prototype = Object.create(UserInterface.prototype);
+  Player.prototype.constructor = Player;
   PromptBox.prototype = Object.create(UserInterface.prototype);
   PromptBox.prototype.constructor = PromptBox;
   SettingWindow.prototype = Object.create(Window.prototype);
@@ -2408,6 +2410,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function Player(channel) {
     Player$Companion_getInstance();
+    UserInterface.call(this, 'player');
     this.channel_0 = channel;
     this.watchingCounter_0 = new WatchingCounter(this.channel_0);
     this.onPlayerEvents_0 = ArrayList_init();
@@ -2419,6 +2422,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.onPlaying_0 = Player$onPlaying$lambda(this);
     this.onNotPlaying_0 = Player$onNotPlaying$lambda(this);
     var tmp$, tmp$_0, tmp$_1, tmp$_2;
+    this.hide();
     (tmp$_1 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_1.src = (tmp$_0 = (tmp$ = this.channel_0.sources.node) != null ? tmp$.iFramePlayerSrc : null) != null ? tmp$_0 : 'iframePlayer/videojs_hls.html') : null;
     (tmp$_2 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_2.onload = Player_init$lambda(this)) : null;
     this.addOnPlayerEventListener_j8fzjz$(new Player_init$ObjectLiteral(this));
@@ -3092,6 +3096,8 @@ var HKNBP_Core = function (_, Kotlin) {
       tmp$_1 = (tmp$_0 = (tmp$ = this$Player.channel_0.sources.node) != null ? tmp$.link : null) != null ? tmp$_0 : '';
       tmp$_2 = 'onIframePlayerInit(' + Player$Companion_getInstance().kotlinValueToEvalScriptUseableValue_0(tmp$_1) + ')';
       Player$Companion_getInstance().callIframePlayerFunction_0(tmp$_2);
+      this$Player.show();
+      println('removeClass');
     };
   }
   function Player_init$ObjectLiteral(this$Player) {
@@ -3145,7 +3151,7 @@ var HKNBP_Core = function (_, Kotlin) {
   Player.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'Player',
-    interfaces: []
+    interfaces: [UserInterface]
   };
   function PromptBox() {
     PromptBox_instance = this;
@@ -3660,12 +3666,6 @@ var HKNBP_Core = function (_, Kotlin) {
     if (equals(RunnerInfo_getInstance().getOsFamily(), 'iOS')) {
       this.canTouchIframePlayerMode();
     }
-    var obj = {};
-    var focusShower = UserControlPanel_init$lambda_6(this);
-    obj.blurCallback = focusShower;
-    obj.overCallback = focusShower;
-    obj.outCallback = focusShower;
-    jQuery(document).ready(UserControlPanel_init$lambda_7(obj));
     println('Init UserControlPanel');
   }
   Object.defineProperty(UserControlPanel.prototype, 'hideMouseTimer_0', {
@@ -3749,22 +3749,6 @@ var HKNBP_Core = function (_, Kotlin) {
        else {
         this$UserControlPanel.show_za3lpa$(15000);
       }
-    };
-  }
-  function UserControlPanel_init$lambda$lambda(this$UserControlPanel) {
-    return function () {
-      this$UserControlPanel.shower_0.focus();
-      println('focusShower');
-    };
-  }
-  function UserControlPanel_init$lambda_6(this$UserControlPanel) {
-    return function () {
-      window.setTimeout(UserControlPanel_init$lambda$lambda(this$UserControlPanel), 0);
-    };
-  }
-  function UserControlPanel_init$lambda_7(closure$obj) {
-    return function () {
-      jQuery('#iframePlayer').iframeTracker(closure$obj);
     };
   }
   UserControlPanel.$metadata$ = {
