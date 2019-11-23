@@ -32,7 +32,7 @@ object UserControlPanel: UserInterface(
         isHideFocusToUserControlPanelShower = true
 ) {
     private val panel: HTMLElement   = document.getElementById("userControlPanel") as HTMLElement
-    private val shower: HTMLElement  = document.getElementById("userControlPanelShower") as HTMLElement
+    val shower: HTMLElement  = document.getElementById("userControlPanelShower") as HTMLElement
 
     /**
      * 隱藏滑鼠計時器
