@@ -34,14 +34,11 @@ object ConsentPanel: UserInterface(
 
     init {
         consentPanel.style.cursor = "auto"
-        if(isAgreeConsent() != true){
-            show()
-            agreeConsentButton.focus()
-        }
+        if(isAgreeConsent() != true){ show() }
+        agreeConsentButton.focus()
         Dialogue.getDialogues(fun(dialagues){
             agreeConsentButton.innerHTML = dialagues.node?.agree?:"同意"
         })
-
         agreeConsentButton.onclick = fun(event){
             localStorage.setItem("IsAgreeConsent", true.toString())
             hide()

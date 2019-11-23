@@ -721,8 +721,8 @@ var HKNBP_Core = function (_, Kotlin) {
     this.consentPanel_0.style.cursor = 'auto';
     if (this.isAgreeConsent() !== true) {
       this.show();
-      this.agreeConsentButton_0.focus();
     }
+    this.agreeConsentButton_0.focus();
     Dialogue$Companion_getInstance().getDialogues_fs1aqo$(ConsentPanel_init$lambda(this));
     this.agreeConsentButton_0.onclick = ConsentPanel_init$lambda_0(this);
     println('Init ConsentPanel');
@@ -3652,8 +3652,8 @@ var HKNBP_Core = function (_, Kotlin) {
     UserControlPanel_instance = this;
     UserInterface.call(this, 'userControlPanel', 'onHeadNextAudioButton', void 0, void 0, true);
     var tmp$, tmp$_0;
-    this.panel_0 = Kotlin.isType(tmp$ = document.getElementById('userControlPanel'), HTMLElement) ? tmp$ : throwCCE();
-    this.shower_0 = Kotlin.isType(tmp$_0 = document.getElementById('userControlPanelShower'), HTMLElement) ? tmp$_0 : throwCCE();
+    this.panel_0 = Kotlin.isType(tmp$ = document.getElementById('userControlPanel'), HTMLDivElement) ? tmp$ : throwCCE();
+    this.shower_0 = Kotlin.isType(tmp$_0 = document.getElementById('userControlPanelShower'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.hideMouseTimer_r29tyc$_0 = 0;
     this.onShowUserControlPanel = UserControlPanel$onShowUserControlPanel$lambda;
     this.onHideUserControlPanel = UserControlPanel$onHideUserControlPanel$lambda;
@@ -3663,6 +3663,7 @@ var HKNBP_Core = function (_, Kotlin) {
     FullScreenButton_getInstance();
     if (ConsentPanel_getInstance().isAgreeConsent()) {
       this.shower_0.focus();
+      this.shower_0.click();
       println('U focus ');
     }
     this.shower_0.onclick = UserControlPanel_init$lambda(this);
@@ -3726,9 +3727,13 @@ var HKNBP_Core = function (_, Kotlin) {
       player != null ? (player.play(), Unit) : null;
     };
   }
+  function UserControlPanel_init$lambda$lambda() {
+    jQuery('#userControlPanelShower').css('cursor', 'none');
+  }
   function UserControlPanel_init$lambda_0(this$UserControlPanel) {
     return function (event) {
-      this$UserControlPanel.show_za3lpa$(500);
+      jQuery('#userControlPanelShower').css('cursor', 'auto');
+      this$UserControlPanel.hideMouseTimer_0 = window.setTimeout(UserControlPanel_init$lambda$lambda, 2000);
     };
   }
   function UserControlPanel_init$lambda_1(this$UserControlPanel) {

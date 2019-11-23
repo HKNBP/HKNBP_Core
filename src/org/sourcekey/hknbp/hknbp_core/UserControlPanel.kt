@@ -16,6 +16,8 @@ package org.sourcekey.hknbp.hknbp_core
 
 import jquery.jq
 import org.w3c.dom.Element
+import org.w3c.dom.HTMLButtonElement
+import org.w3c.dom.HTMLDivElement
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.events.Event
 import org.w3c.dom.events.MouseEvent
@@ -31,8 +33,8 @@ object UserControlPanel: UserInterface(
         firstFocusElementID = "onHeadNextAudioButton",
         isHideFocusToUserControlPanelShower = true
 ) {
-    private val panel: HTMLElement   = document.getElementById("userControlPanel") as HTMLElement
-    private val shower: HTMLElement  = document.getElementById("userControlPanelShower") as HTMLElement
+    private val panel: HTMLDivElement   = document.getElementById("userControlPanel") as HTMLDivElement
+    private val shower: HTMLButtonElement  = document.getElementById("userControlPanelShower") as HTMLButtonElement
 
     /**
      * 隱藏滑鼠計時器
@@ -125,7 +127,7 @@ object UserControlPanel: UserInterface(
         //開程式時首先focus userControlPanelShower
         if(ConsentPanel.isAgreeConsent()){
             shower.focus()
-            //shower.click()
+            shower.click()
             println("U focus ")
         }
 
@@ -135,22 +137,19 @@ object UserControlPanel: UserInterface(
             player?.play()
         }
         shower.onmousemove = fun(event){
-            show(500)
+            jQuery("#userControlPanelShower").css("cursor", "auto")
+            hideMouseTimer = window.setTimeout(fun(){
+                jQuery("#userControlPanelShower").css("cursor", "none")
+            }, 2000)
         }
         panel.onmousemove = fun(event){
             //使用緊panel就繼續顯示
             event.stopPropagation()
             show(30000)
         }
-        panel.onscroll = fun(event){
-            show(30000)
-        }
-        jQuery("body").mouseleave(fun(){
-            hide()
-        })
-        shower.ondblclick = fun(event){
-            FullScreenButton.enterExitFullScreenAlternately()
-        }
+        panel.onscroll = fun(event){ show(30000) }
+        jQuery("body").mouseleave(fun(){ hide() })
+        shower.ondblclick = fun(event){ FullScreenButton.enterExitFullScreenAlternately() }
         val _shower: dynamic = shower
         _shower.ontouchstart = fun(event: MouseEvent){
             // 因觸控會同時觸發其他EVENT

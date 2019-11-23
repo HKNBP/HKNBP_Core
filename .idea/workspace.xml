@@ -8,7 +8,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.meta.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.meta.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ConsentPanel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ConsentPanel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
