@@ -32,7 +32,7 @@ object UserControlPanel: UserInterface(
         isHideFocusToUserControlPanelShower = true
 ) {
     private val panel: HTMLElement   = document.getElementById("userControlPanel") as HTMLElement
-    val shower: HTMLElement  = document.getElementById("userControlPanelShower") as HTMLElement
+    private val shower: HTMLElement  = document.getElementById("userControlPanelShower") as HTMLElement
 
     /**
      * 隱藏滑鼠計時器
@@ -123,8 +123,11 @@ object UserControlPanel: UserInterface(
         FullScreenButton
 
         //開程式時首先focus userControlPanelShower
-        shower.focus()
-        println("U focus ")
+        if(ConsentPanel.isAgreeConsent()){
+            shower.focus()
+            //shower.click()
+            println("U focus ")
+        }
 
         //設定使用者控制界面顯示方法
         shower.onclick = fun(event){

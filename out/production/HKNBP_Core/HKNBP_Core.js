@@ -2157,7 +2157,6 @@ var HKNBP_Core = function (_, Kotlin) {
      catch (e) {
       println('\u4ECB\u9762\u521D\u59CB\u5316\u54C0\u5DE6: ' + e.toString());
     }
-    UserControlPanel_getInstance().shower.focus();
     println('Init Main');
   }
   function MutedDescription() {
@@ -3654,7 +3653,7 @@ var HKNBP_Core = function (_, Kotlin) {
     UserInterface.call(this, 'userControlPanel', 'onHeadNextAudioButton', void 0, void 0, true);
     var tmp$, tmp$_0;
     this.panel_0 = Kotlin.isType(tmp$ = document.getElementById('userControlPanel'), HTMLElement) ? tmp$ : throwCCE();
-    this.shower = Kotlin.isType(tmp$_0 = document.getElementById('userControlPanelShower'), HTMLElement) ? tmp$_0 : throwCCE();
+    this.shower_0 = Kotlin.isType(tmp$_0 = document.getElementById('userControlPanelShower'), HTMLElement) ? tmp$_0 : throwCCE();
     this.hideMouseTimer_r29tyc$_0 = 0;
     this.onShowUserControlPanel = UserControlPanel$onShowUserControlPanel$lambda;
     this.onHideUserControlPanel = UserControlPanel$onHideUserControlPanel$lambda;
@@ -3662,15 +3661,17 @@ var HKNBP_Core = function (_, Kotlin) {
     NativeAppInstallButton_getInstance();
     PictureInPictureButton_getInstance();
     FullScreenButton_getInstance();
-    this.shower.focus();
-    println('U focus ');
-    this.shower.onclick = UserControlPanel_init$lambda(this);
-    this.shower.onmousemove = UserControlPanel_init$lambda_0(this);
+    if (ConsentPanel_getInstance().isAgreeConsent()) {
+      this.shower_0.focus();
+      println('U focus ');
+    }
+    this.shower_0.onclick = UserControlPanel_init$lambda(this);
+    this.shower_0.onmousemove = UserControlPanel_init$lambda_0(this);
     this.panel_0.onmousemove = UserControlPanel_init$lambda_1(this);
     this.panel_0.onscroll = UserControlPanel_init$lambda_2(this);
     jQuery('body').mouseleave(UserControlPanel_init$lambda_3(this));
-    this.shower.ondblclick = UserControlPanel_init$lambda_4;
-    var _shower = this.shower;
+    this.shower_0.ondblclick = UserControlPanel_init$lambda_4;
+    var _shower = this.shower_0;
     _shower.ontouchstart = UserControlPanel_init$lambda_5(this);
     if (equals(RunnerInfo_getInstance().getOsFamily(), 'iOS')) {
       this.canTouchIframePlayerMode();
@@ -3702,17 +3703,17 @@ var HKNBP_Core = function (_, Kotlin) {
   UserControlPanel.prototype.setIframeOnClick_a4mwiz$ = function (iframeId, onClick) {
   };
   UserControlPanel.prototype.canTouchIframePlayerMode = function () {
-    this.shower.style.right = 'auto';
-    this.shower.style.width = '10vh';
-    this.shower.style.backgroundColor = '#303030';
-    this.shower.innerHTML = '<i class="icon-font" style="font-size: 5vh;">&#xe825;<\/i>';
+    this.shower_0.style.right = 'auto';
+    this.shower_0.style.width = '10vh';
+    this.shower_0.style.backgroundColor = '#303030';
+    this.shower_0.innerHTML = '<i class="icon-font" style="font-size: 5vh;">&#xe825;<\/i>';
   };
   UserControlPanel.prototype.cannotTouchIframePlayerMode = function () {
     if (!equals(RunnerInfo_getInstance().getOsFamily(), 'iOS')) {
-      this.shower.style.right = '0';
-      this.shower.style.width = '100%';
-      this.shower.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-      this.shower.innerHTML = '';
+      this.shower_0.style.right = '0';
+      this.shower_0.style.width = '100%';
+      this.shower_0.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+      this.shower_0.innerHTML = '';
     }
   };
   function UserControlPanel$onShowUserControlPanel$lambda() {
