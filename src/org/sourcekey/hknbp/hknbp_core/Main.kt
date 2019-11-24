@@ -348,7 +348,7 @@ fun main(args: Array<String>) {
         jQuery(":focus")?.click()
     }, 5000)
 
-    (document.getElementById("ccc") as HTMLButtonElement).focus()
+
 
     println("Init Main")
 }
