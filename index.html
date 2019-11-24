@@ -356,8 +356,16 @@
               background: rgba(0, 0, 0, 0);
               border-style: none;
               outline: 0;
-            " autofocus><!--為左focus userControlPanelShower,預先focus此,左由JS嘅Code focus到userControlPanelShower,因為發現只用autofocus響某情怳下不能focus-->
+            " ><!--為左focus userControlPanelShower,預先focus此,左由JS嘅Code focus到userControlPanelShower,因為發現只用autofocus響某情怳下不能focus-->
     </button>
+    <button id="ccc" style="
+            padding:0;
+            position:absolute;
+            top:0;bottom:0;right:0;
+            width:20vh;
+            font-size:4vh;
+            z-index: 50;
+    " autofocus>同意</button>
     <div id="userControlPanel" style="display: none;">
         <div id="virtualRemote" style="
                   background: #303030;
