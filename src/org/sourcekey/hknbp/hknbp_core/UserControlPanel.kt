@@ -163,9 +163,7 @@ object UserControlPanel: UserInterface(
         //所以要畀iOS用戶直接點擊iframePlayer
         //好似有解決方法, 有待研究
         //https://stackoverflow.com/questions/5054560/can-i-avoid-the-native-fullscreen-video-player-with-html5-on-iphone-or-android
-        if(RunnerInfo.getOsFamily() == "iOS"){
-            canTouchIframePlayerMode()
-        }
+        if(RunnerInfo.getOsFamily() == "iOS"){ canTouchIframePlayerMode() }
         //setIframeOnClick("iframePlayer", fun(){ showHideAlternately() })
 
         println("Init UserControlPanel")
