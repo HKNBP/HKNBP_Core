@@ -2147,8 +2147,9 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   var userLanguageList;
   function main$lambda() {
-    var tmp$;
+    var tmp$, tmp$_0;
     println((tmp$ = jQuery(':focus')) != null ? tmp$.html() : null);
+    (tmp$_0 = jQuery(':focus')) != null ? tmp$_0.click() : null;
   }
   function main(args) {
     try {
@@ -3115,10 +3116,7 @@ var HKNBP_Core = function (_, Kotlin) {
     ChannelDescription_getInstance().show();
     ChannelDescription_getInstance().update();
   }
-  function Player_init$ObjectLiteral$on$lambda() {
-    println('removeClass');
-  }
-  function Player_init$ObjectLiteral$on$lambda_0(this$) {
+  function Player_init$ObjectLiteral$on$lambda(this$) {
     return function () {
       if (!this$.isPlaying_0) {
         this$.isLowSignalShowChannelDescription_0 = true;
@@ -3143,13 +3141,12 @@ var HKNBP_Core = function (_, Kotlin) {
 
         VirtualRemote_getInstance().update();
         UserControlPanel_getInstance().cannotTouchIframePlayerMode();
-        window.setTimeout(Player_init$ObjectLiteral$on$lambda, 1000);
         println('Playing \u983B\u9053' + this.this$Player.channel_0.number);
         break;
       case 'notPlaying':
         this.isPlaying_0 = false;
         if (0 < this.numberOfPlaying_0) {
-          Player$Companion_getInstance().checkIsLowSignalShowChannelDescriptionTimer_0 = window.setTimeout(Player_init$ObjectLiteral$on$lambda_0(this), 5000);
+          Player$Companion_getInstance().checkIsLowSignalShowChannelDescriptionTimer_0 = window.setTimeout(Player_init$ObjectLiteral$on$lambda(this), 5000);
         }
 
         break;
@@ -3667,19 +3664,16 @@ var HKNBP_Core = function (_, Kotlin) {
     PictureInPictureButton_getInstance();
     FullScreenButton_getInstance();
     if (ConsentPanel_getInstance().isAgreeConsent()) {
-      window.setInterval(UserControlPanel_init$lambda(this), 10000);
-      window.setInterval(UserControlPanel_init$lambda_0(this), 20000);
-      window.setInterval(UserControlPanel_init$lambda_1(this), 30000);
-      println('U focus ');
+      this.shower_0.focus();
     }
-    this.shower_0.onclick = UserControlPanel_init$lambda_2(this);
-    this.shower_0.onmousemove = UserControlPanel_init$lambda_3(this);
-    this.panel_0.onmousemove = UserControlPanel_init$lambda_4(this);
-    this.panel_0.onscroll = UserControlPanel_init$lambda_5(this);
-    jQuery('body').mouseleave(UserControlPanel_init$lambda_6(this));
-    this.shower_0.ondblclick = UserControlPanel_init$lambda_7;
+    this.shower_0.onclick = UserControlPanel_init$lambda(this);
+    this.shower_0.onmousemove = UserControlPanel_init$lambda_0(this);
+    this.panel_0.onmousemove = UserControlPanel_init$lambda_1(this);
+    this.panel_0.onscroll = UserControlPanel_init$lambda_2(this);
+    jQuery('body').mouseleave(UserControlPanel_init$lambda_3(this));
+    this.shower_0.ondblclick = UserControlPanel_init$lambda_4;
     var _shower = this.shower_0;
-    _shower.ontouchstart = UserControlPanel_init$lambda_8(this);
+    _shower.ontouchstart = UserControlPanel_init$lambda_5(this);
     if (equals(RunnerInfo_getInstance().getOsFamily(), 'iOS')) {
       this.canTouchIframePlayerMode();
     }
@@ -3728,25 +3722,6 @@ var HKNBP_Core = function (_, Kotlin) {
   function UserControlPanel$onHideUserControlPanel$lambda() {
   }
   function UserControlPanel_init$lambda(this$UserControlPanel) {
-    return function () {
-      this$UserControlPanel.shower_0.focus();
-      this$UserControlPanel.shower_0.click();
-      println('10000');
-    };
-  }
-  function UserControlPanel_init$lambda_0(this$UserControlPanel) {
-    return function () {
-      this$UserControlPanel.shower_0.focus();
-      this$UserControlPanel.shower_0.click();
-    };
-  }
-  function UserControlPanel_init$lambda_1(this$UserControlPanel) {
-    return function () {
-      this$UserControlPanel.shower_0.focus();
-      this$UserControlPanel.shower_0.click();
-    };
-  }
-  function UserControlPanel_init$lambda_2(this$UserControlPanel) {
     return function (event) {
       this$UserControlPanel.showHideAlternately();
       player != null ? (player.play(), Unit) : null;
@@ -3755,32 +3730,32 @@ var HKNBP_Core = function (_, Kotlin) {
   function UserControlPanel_init$lambda$lambda() {
     jQuery('#userControlPanelShower').css('cursor', 'none');
   }
-  function UserControlPanel_init$lambda_3(this$UserControlPanel) {
+  function UserControlPanel_init$lambda_0(this$UserControlPanel) {
     return function (event) {
       jQuery('#userControlPanelShower').css('cursor', 'auto');
       this$UserControlPanel.hideMouseTimer_0 = window.setTimeout(UserControlPanel_init$lambda$lambda, 2000);
     };
   }
-  function UserControlPanel_init$lambda_4(this$UserControlPanel) {
+  function UserControlPanel_init$lambda_1(this$UserControlPanel) {
     return function (event) {
       event.stopPropagation();
       this$UserControlPanel.show_za3lpa$(30000);
     };
   }
-  function UserControlPanel_init$lambda_5(this$UserControlPanel) {
+  function UserControlPanel_init$lambda_2(this$UserControlPanel) {
     return function (event) {
       this$UserControlPanel.show_za3lpa$(30000);
     };
   }
-  function UserControlPanel_init$lambda_6(this$UserControlPanel) {
+  function UserControlPanel_init$lambda_3(this$UserControlPanel) {
     return function () {
       this$UserControlPanel.hide();
     };
   }
-  function UserControlPanel_init$lambda_7(event) {
+  function UserControlPanel_init$lambda_4(event) {
     FullScreenButton_getInstance().enterExitFullScreenAlternately();
   }
-  function UserControlPanel_init$lambda_8(this$UserControlPanel) {
+  function UserControlPanel_init$lambda_5(this$UserControlPanel) {
     return function (event) {
       event.preventDefault();
       if (this$UserControlPanel.panel_0.style.display === 'block') {

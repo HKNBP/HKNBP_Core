@@ -125,13 +125,7 @@ object UserControlPanel: UserInterface(
         FullScreenButton
 
         //開程式時首先focus userControlPanelShower
-        if(ConsentPanel.isAgreeConsent()){
-            window.setInterval(fun(){shower.focus();shower.click();println("10000")}, 10000)
-            window.setInterval(fun(){shower.focus();shower.click()}, 20000)
-            window.setInterval(fun(){shower.focus();shower.click()}, 30000)
-            println("U focus ")
-        }
-        //window.setInterval(fun(){shower.click()}, 3000)
+        if(ConsentPanel.isAgreeConsent()){ shower.focus() }
 
         //設定使用者控制界面顯示方法
         shower.onclick = fun(event){

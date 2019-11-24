@@ -675,7 +675,6 @@ class Player(private val channel: Channel): UserInterface("player") {
     }
 
     init {
-        //hide()
         iframePlayer?.src = channel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
         iframePlayer?.onload = fun() {
             setListenIframePlayerScript()
@@ -701,11 +700,6 @@ class Player(private val channel: Channel): UserInterface("player") {
                         }
                         VirtualRemote.update()
                         UserControlPanel.cannotTouchIframePlayerMode()
-
-                        window.setTimeout(fun(){
-                            //show()
-                            println("removeClass")
-                        },1000)
 
                         println("Playing 頻道${channel.number}")
                     }

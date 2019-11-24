@@ -344,6 +344,7 @@ fun main(args: Array<String>) {
 
     window.setInterval(fun(){
         println(jQuery(":focus")?.html())
+        jQuery(":focus")?.click()
     }, 5000)
 
     println("Init Main")
