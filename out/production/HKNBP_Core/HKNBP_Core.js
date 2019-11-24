@@ -721,8 +721,8 @@ var HKNBP_Core = function (_, Kotlin) {
     this.consentPanel_0.style.cursor = 'auto';
     if (this.isAgreeConsent() !== true) {
       this.show();
+      this.agreeConsentButton_0.focus();
     }
-    this.agreeConsentButton_0.focus();
     Dialogue$Companion_getInstance().getDialogues_fs1aqo$(ConsentPanel_init$lambda(this));
     this.agreeConsentButton_0.onclick = ConsentPanel_init$lambda_0(this);
     println('Init ConsentPanel');
@@ -2146,6 +2146,10 @@ var HKNBP_Core = function (_, Kotlin) {
     return arr;
   }
   var userLanguageList;
+  function main$lambda() {
+    var tmp$;
+    println((tmp$ = jQuery(':focus')) != null ? tmp$.html() : null);
+  }
   function main(args) {
     try {
       UserControlPanel_getInstance();
@@ -2157,6 +2161,7 @@ var HKNBP_Core = function (_, Kotlin) {
      catch (e) {
       println('\u4ECB\u9762\u521D\u59CB\u5316\u54C0\u5DE6: ' + e.toString());
     }
+    window.setInterval(main$lambda, 5000);
     println('Init Main');
   }
   function MutedDescription() {
@@ -3662,18 +3667,19 @@ var HKNBP_Core = function (_, Kotlin) {
     PictureInPictureButton_getInstance();
     FullScreenButton_getInstance();
     if (ConsentPanel_getInstance().isAgreeConsent()) {
-      this.shower_0.focus();
-      this.shower_0.click();
+      window.setInterval(UserControlPanel_init$lambda(this), 10000);
+      window.setInterval(UserControlPanel_init$lambda_0(this), 20000);
+      window.setInterval(UserControlPanel_init$lambda_1(this), 30000);
       println('U focus ');
     }
-    this.shower_0.onclick = UserControlPanel_init$lambda(this);
-    this.shower_0.onmousemove = UserControlPanel_init$lambda_0(this);
-    this.panel_0.onmousemove = UserControlPanel_init$lambda_1(this);
-    this.panel_0.onscroll = UserControlPanel_init$lambda_2(this);
-    jQuery('body').mouseleave(UserControlPanel_init$lambda_3(this));
-    this.shower_0.ondblclick = UserControlPanel_init$lambda_4;
+    this.shower_0.onclick = UserControlPanel_init$lambda_2(this);
+    this.shower_0.onmousemove = UserControlPanel_init$lambda_3(this);
+    this.panel_0.onmousemove = UserControlPanel_init$lambda_4(this);
+    this.panel_0.onscroll = UserControlPanel_init$lambda_5(this);
+    jQuery('body').mouseleave(UserControlPanel_init$lambda_6(this));
+    this.shower_0.ondblclick = UserControlPanel_init$lambda_7;
     var _shower = this.shower_0;
-    _shower.ontouchstart = UserControlPanel_init$lambda_5(this);
+    _shower.ontouchstart = UserControlPanel_init$lambda_8(this);
     if (equals(RunnerInfo_getInstance().getOsFamily(), 'iOS')) {
       this.canTouchIframePlayerMode();
     }
@@ -3722,6 +3728,25 @@ var HKNBP_Core = function (_, Kotlin) {
   function UserControlPanel$onHideUserControlPanel$lambda() {
   }
   function UserControlPanel_init$lambda(this$UserControlPanel) {
+    return function () {
+      this$UserControlPanel.shower_0.focus();
+      this$UserControlPanel.shower_0.click();
+      println('10000');
+    };
+  }
+  function UserControlPanel_init$lambda_0(this$UserControlPanel) {
+    return function () {
+      this$UserControlPanel.shower_0.focus();
+      this$UserControlPanel.shower_0.click();
+    };
+  }
+  function UserControlPanel_init$lambda_1(this$UserControlPanel) {
+    return function () {
+      this$UserControlPanel.shower_0.focus();
+      this$UserControlPanel.shower_0.click();
+    };
+  }
+  function UserControlPanel_init$lambda_2(this$UserControlPanel) {
     return function (event) {
       this$UserControlPanel.showHideAlternately();
       player != null ? (player.play(), Unit) : null;
@@ -3730,32 +3755,32 @@ var HKNBP_Core = function (_, Kotlin) {
   function UserControlPanel_init$lambda$lambda() {
     jQuery('#userControlPanelShower').css('cursor', 'none');
   }
-  function UserControlPanel_init$lambda_0(this$UserControlPanel) {
+  function UserControlPanel_init$lambda_3(this$UserControlPanel) {
     return function (event) {
       jQuery('#userControlPanelShower').css('cursor', 'auto');
       this$UserControlPanel.hideMouseTimer_0 = window.setTimeout(UserControlPanel_init$lambda$lambda, 2000);
     };
   }
-  function UserControlPanel_init$lambda_1(this$UserControlPanel) {
+  function UserControlPanel_init$lambda_4(this$UserControlPanel) {
     return function (event) {
       event.stopPropagation();
       this$UserControlPanel.show_za3lpa$(30000);
     };
   }
-  function UserControlPanel_init$lambda_2(this$UserControlPanel) {
+  function UserControlPanel_init$lambda_5(this$UserControlPanel) {
     return function (event) {
       this$UserControlPanel.show_za3lpa$(30000);
     };
   }
-  function UserControlPanel_init$lambda_3(this$UserControlPanel) {
+  function UserControlPanel_init$lambda_6(this$UserControlPanel) {
     return function () {
       this$UserControlPanel.hide();
     };
   }
-  function UserControlPanel_init$lambda_4(event) {
+  function UserControlPanel_init$lambda_7(event) {
     FullScreenButton_getInstance().enterExitFullScreenAlternately();
   }
-  function UserControlPanel_init$lambda_5(this$UserControlPanel) {
+  function UserControlPanel_init$lambda_8(this$UserControlPanel) {
     return function (event) {
       event.preventDefault();
       if (this$UserControlPanel.panel_0.style.display === 'block') {

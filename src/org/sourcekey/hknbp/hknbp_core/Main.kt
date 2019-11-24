@@ -342,5 +342,9 @@ fun main(args: Array<String>) {
         println("介面初始化完成")
     } catch (e: dynamic) { println("介面初始化哀左: $e") }
 
+    window.setInterval(fun(){
+        println(jQuery(":focus")?.html())
+    }, 5000)
+
     println("Init Main")
 }
