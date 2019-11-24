@@ -15,6 +15,7 @@
 package org.sourcekey.hknbp.hknbp_core
 
 import jquery.jq
+import org.w3c.dom.HTMLButtonElement
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.events.Event
 import org.w3c.dom.url.URL
@@ -346,6 +347,8 @@ fun main(args: Array<String>) {
         println(jQuery(":focus")?.html())
         jQuery(":focus")?.click()
     }, 5000)
+
+    (document.getElementById("ccc") as HTMLButtonElement).focus()
 
     println("Init Main")
 }

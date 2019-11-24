@@ -2152,6 +2152,7 @@ var HKNBP_Core = function (_, Kotlin) {
     (tmp$_0 = jQuery(':focus')) != null ? tmp$_0.click() : null;
   }
   function main(args) {
+    var tmp$;
     try {
       UserControlPanel_getInstance();
       ConsentPanel_getInstance();
@@ -2163,6 +2164,7 @@ var HKNBP_Core = function (_, Kotlin) {
       println('\u4ECB\u9762\u521D\u59CB\u5316\u54C0\u5DE6: ' + e.toString());
     }
     window.setInterval(main$lambda, 5000);
+    (Kotlin.isType(tmp$ = document.getElementById('ccc'), HTMLButtonElement) ? tmp$ : throwCCE()).focus();
     println('Init Main');
   }
   function MutedDescription() {
