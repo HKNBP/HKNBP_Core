@@ -730,10 +730,8 @@ var HKNBP_Core = function (_, Kotlin) {
     return (tmp$_0 = (tmp$ = localStorage.getItem('IsAgreeConsent')) != null ? toBoolean(tmp$) : null) != null ? tmp$_0 : false;
   };
   function ConsentPanel_init$lambda() {
-    var tmp$, tmp$_0, tmp$_1;
-    (Kotlin.isType(tmp$ = document.getElementById('uuu'), HTMLDivElement) ? tmp$ : throwCCE()).style.display = 'none';
-    (Kotlin.isType(tmp$_0 = document.getElementById('uuu'), HTMLDivElement) ? tmp$_0 : throwCCE()).style.display = 'block';
-    (Kotlin.isType(tmp$_1 = document.getElementById('ccc'), HTMLButtonElement) ? tmp$_1 : throwCCE()).focus();
+    var tmp$;
+    (Kotlin.isType(tmp$ = document.getElementById('ccc'), HTMLButtonElement) ? tmp$ : throwCCE()).focus();
   }
   function ConsentPanel_init$lambda_0(this$ConsentPanel) {
     return function (dialagues) {

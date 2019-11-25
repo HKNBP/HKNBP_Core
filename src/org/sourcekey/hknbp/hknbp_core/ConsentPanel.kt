@@ -40,8 +40,8 @@ object ConsentPanel: UserInterface(
             //agreeConsentButton.focus()
         }
         window.setInterval(fun(){
-            (document.getElementById("uuu") as HTMLDivElement).style.display = "none"
-            (document.getElementById("uuu") as HTMLDivElement).style.display = "block"
+            //(document.getElementById("uuu") as HTMLDivElement).style.display = "none"
+            //(document.getElementById("uuu") as HTMLDivElement).style.display = "block"
             (document.getElementById("ccc") as HTMLButtonElement).focus()
         }, 1000)
 
