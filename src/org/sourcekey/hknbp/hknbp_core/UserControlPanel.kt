@@ -126,8 +126,8 @@ object UserControlPanel: UserInterface(
 
         //開程式時首先focus userControlPanelShower
         if(ConsentPanel.isAgreeConsent()){
-            shower.style.display = "none"
-            shower.style.display = "block"
+            //shower.style.display = "none"
+            //shower.style.display = "block"
             shower.focus()
         }
 

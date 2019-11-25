@@ -3663,8 +3663,6 @@ var HKNBP_Core = function (_, Kotlin) {
     PictureInPictureButton_getInstance();
     FullScreenButton_getInstance();
     if (ConsentPanel_getInstance().isAgreeConsent()) {
-      this.shower_0.style.display = 'none';
-      this.shower_0.style.display = 'block';
       this.shower_0.focus();
     }
     this.shower_0.onclick = UserControlPanel_init$lambda(this);
