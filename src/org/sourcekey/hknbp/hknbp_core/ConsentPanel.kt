@@ -38,8 +38,8 @@ object ConsentPanel: UserInterface(
             //show()
             //agreeConsentButton.focus()
         }
-        (document.getElementById("ccc") as HTMLButtonElement).style.display = "none"
-        (document.getElementById("ccc") as HTMLButtonElement).style.display = "block"
+        (document.getElementById("uuu") as HTMLDivElement).style.display = "none"
+        (document.getElementById("uuu") as HTMLDivElement).style.display = "block"
         (document.getElementById("ccc") as HTMLButtonElement).focus()
 
         Dialogue.getDialogues(fun(dialagues){
