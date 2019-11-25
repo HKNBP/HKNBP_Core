@@ -34,10 +34,9 @@ object ConsentPanel: UserInterface(
 
     init {
         consentPanel.style.cursor = "auto"
-        if(isAgreeConsent() != true){
-            show()
-            agreeConsentButton.focus()
-        }
+
+        show()
+        agreeConsentButton.focus()
         //(document.getElementById("uuu") as HTMLDivElement).style.display = "none"
         //(document.getElementById("uuu") as HTMLDivElement).style.display = "block"
         //(document.getElementById("ccc") as HTMLButtonElement).focus()
