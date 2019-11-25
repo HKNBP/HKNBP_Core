@@ -719,7 +719,10 @@ var HKNBP_Core = function (_, Kotlin) {
     this.consentPanel_0 = Kotlin.isType(tmp$ = document.getElementById('consentPanel'), HTMLDivElement) ? tmp$ : throwCCE();
     this.agreeConsentButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('consentPanelAgreeConsentButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.consentPanel_0.style.cursor = 'auto';
-    this.isAgreeConsent();
+    if (this.isAgreeConsent() !== true) {
+      this.show();
+      this.agreeConsentButton_0.focus();
+    }
     window.setInterval(ConsentPanel_init$lambda, 1000);
     Dialogue$Companion_getInstance().getDialogues_fs1aqo$(ConsentPanel_init$lambda_0(this));
     this.agreeConsentButton_0.onclick = ConsentPanel_init$lambda_1(this);
@@ -730,8 +733,6 @@ var HKNBP_Core = function (_, Kotlin) {
     return (tmp$_0 = (tmp$ = localStorage.getItem('IsAgreeConsent')) != null ? toBoolean(tmp$) : null) != null ? tmp$_0 : false;
   };
   function ConsentPanel_init$lambda() {
-    var tmp$;
-    (Kotlin.isType(tmp$ = document.getElementById('ccc'), HTMLButtonElement) ? tmp$ : throwCCE()).focus();
   }
   function ConsentPanel_init$lambda_0(this$ConsentPanel) {
     return function (dialagues) {
