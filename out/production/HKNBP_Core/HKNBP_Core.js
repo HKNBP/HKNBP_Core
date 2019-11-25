@@ -715,13 +715,13 @@ var HKNBP_Core = function (_, Kotlin) {
   function ConsentPanel() {
     ConsentPanel_instance = this;
     UserInterface.call(this, 'consentPanel', 'consentPanelAgreeConsentButton', false, void 0, true);
-    var tmp$, tmp$_0, tmp$_1;
+    var tmp$, tmp$_0;
     this.consentPanel_0 = Kotlin.isType(tmp$ = document.getElementById('consentPanel'), HTMLDivElement) ? tmp$ : throwCCE();
     this.agreeConsentButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('consentPanelAgreeConsentButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.consentPanel_0.style.cursor = 'auto';
     if (this.isAgreeConsent() !== true) {
       this.show();
-      (Kotlin.isType(tmp$_1 = document.getElementById('ccc'), HTMLButtonElement) ? tmp$_1 : throwCCE()).focus();
+      this.agreeConsentButton_0.focus();
     }
     Dialogue$Companion_getInstance().getDialogues_fs1aqo$(ConsentPanel_init$lambda(this));
     this.agreeConsentButton_0.onclick = ConsentPanel_init$lambda_0(this);
@@ -2147,9 +2147,8 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   var userLanguageList;
   function main$lambda() {
-    var tmp$, tmp$_0;
+    var tmp$;
     println((tmp$ = jQuery(':focus')) != null ? tmp$.html() : null);
-    (tmp$_0 = jQuery(':focus')) != null ? tmp$_0.click() : null;
   }
   function main(args) {
     try {
@@ -3664,6 +3663,8 @@ var HKNBP_Core = function (_, Kotlin) {
     PictureInPictureButton_getInstance();
     FullScreenButton_getInstance();
     if (ConsentPanel_getInstance().isAgreeConsent()) {
+      this.shower_0.style.display = 'none';
+      this.shower_0.style.display = 'block';
       this.shower_0.focus();
     }
     this.shower_0.onclick = UserControlPanel_init$lambda(this);
