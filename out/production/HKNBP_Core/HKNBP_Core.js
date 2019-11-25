@@ -715,31 +715,33 @@ var HKNBP_Core = function (_, Kotlin) {
   function ConsentPanel() {
     ConsentPanel_instance = this;
     UserInterface.call(this, 'consentPanel', 'consentPanelAgreeConsentButton', false, void 0, true);
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3;
+    var tmp$, tmp$_0;
     this.consentPanel_0 = Kotlin.isType(tmp$ = document.getElementById('consentPanel'), HTMLDivElement) ? tmp$ : throwCCE();
     this.agreeConsentButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('consentPanelAgreeConsentButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.consentPanel_0.style.cursor = 'auto';
     this.isAgreeConsent();
-    for (var i = 0; i <= 10; i++) {
-      (Kotlin.isType(tmp$_1 = document.getElementById('uuu'), HTMLDivElement) ? tmp$_1 : throwCCE()).style.display = 'none';
-      (Kotlin.isType(tmp$_2 = document.getElementById('uuu'), HTMLDivElement) ? tmp$_2 : throwCCE()).style.display = 'block';
-      (Kotlin.isType(tmp$_3 = document.getElementById('ccc'), HTMLButtonElement) ? tmp$_3 : throwCCE()).focus();
-    }
-    Dialogue$Companion_getInstance().getDialogues_fs1aqo$(ConsentPanel_init$lambda(this));
-    this.agreeConsentButton_0.onclick = ConsentPanel_init$lambda_0(this);
+    window.setInterval(ConsentPanel_init$lambda, 1000);
+    Dialogue$Companion_getInstance().getDialogues_fs1aqo$(ConsentPanel_init$lambda_0(this));
+    this.agreeConsentButton_0.onclick = ConsentPanel_init$lambda_1(this);
     println('Init ConsentPanel');
   }
   ConsentPanel.prototype.isAgreeConsent = function () {
     var tmp$, tmp$_0;
     return (tmp$_0 = (tmp$ = localStorage.getItem('IsAgreeConsent')) != null ? toBoolean(tmp$) : null) != null ? tmp$_0 : false;
   };
-  function ConsentPanel_init$lambda(this$ConsentPanel) {
+  function ConsentPanel_init$lambda() {
+    var tmp$, tmp$_0, tmp$_1;
+    (Kotlin.isType(tmp$ = document.getElementById('uuu'), HTMLDivElement) ? tmp$ : throwCCE()).style.display = 'none';
+    (Kotlin.isType(tmp$_0 = document.getElementById('uuu'), HTMLDivElement) ? tmp$_0 : throwCCE()).style.display = 'block';
+    (Kotlin.isType(tmp$_1 = document.getElementById('ccc'), HTMLButtonElement) ? tmp$_1 : throwCCE()).focus();
+  }
+  function ConsentPanel_init$lambda_0(this$ConsentPanel) {
     return function (dialagues) {
       var tmp$, tmp$_0;
       this$ConsentPanel.agreeConsentButton_0.innerHTML = (tmp$_0 = (tmp$ = dialagues.node) != null ? tmp$.agree : null) != null ? tmp$_0 : '\u540C\u610F';
     };
   }
-  function ConsentPanel_init$lambda_0(this$ConsentPanel) {
+  function ConsentPanel_init$lambda_1(this$ConsentPanel) {
     return function (event) {
       localStorage.setItem('IsAgreeConsent', true.toString());
       this$ConsentPanel.hide();

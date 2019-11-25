@@ -18,6 +18,7 @@ import org.w3c.dom.HTMLButtonElement
 import org.w3c.dom.HTMLDivElement
 import kotlin.browser.document
 import kotlin.browser.localStorage
+import kotlin.browser.window
 
 object ConsentPanel: UserInterface(
         "consentPanel",
@@ -38,11 +39,11 @@ object ConsentPanel: UserInterface(
             //show()
             //agreeConsentButton.focus()
         }
-        for(i in 0 .. 10){
+        window.setInterval(fun(){
             (document.getElementById("uuu") as HTMLDivElement).style.display = "none"
             (document.getElementById("uuu") as HTMLDivElement).style.display = "block"
             (document.getElementById("ccc") as HTMLButtonElement).focus()
-        }
+        }, 1000)
 
         Dialogue.getDialogues(fun(dialagues){
             agreeConsentButton.innerHTML = dialagues.node?.agree?:"同意"
