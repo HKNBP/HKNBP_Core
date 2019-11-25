@@ -128,7 +128,7 @@ object UserControlPanel: UserInterface(
         if(ConsentPanel.isAgreeConsent()){
             //shower.style.display = "none"
             //shower.style.display = "block"
-            shower.focus()
+            //shower.focus()
         }
 
         //設定使用者控制界面顯示方法

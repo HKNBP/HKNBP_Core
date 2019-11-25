@@ -34,12 +34,15 @@ object ConsentPanel: UserInterface(
 
     init {
         consentPanel.style.cursor = "auto"
-
-        show()
-        agreeConsentButton.focus()
-        //(document.getElementById("uuu") as HTMLDivElement).style.display = "none"
-        //(document.getElementById("uuu") as HTMLDivElement).style.display = "block"
-        //(document.getElementById("ccc") as HTMLButtonElement).focus()
+        if(isAgreeConsent() != true){
+            //show()
+            //agreeConsentButton.focus()
+        }
+        for(i in 0 .. 10){
+            (document.getElementById("uuu") as HTMLDivElement).style.display = "none"
+            (document.getElementById("uuu") as HTMLDivElement).style.display = "block"
+            (document.getElementById("ccc") as HTMLButtonElement).focus()
+        }
 
         Dialogue.getDialogues(fun(dialagues){
             agreeConsentButton.innerHTML = dialagues.node?.agree?:"同意"
