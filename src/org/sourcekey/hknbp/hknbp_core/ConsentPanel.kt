@@ -35,9 +35,13 @@ object ConsentPanel: UserInterface(
     init {
         consentPanel.style.cursor = "auto"
         if(isAgreeConsent() != true){
-            show()
-            agreeConsentButton.focus()
+            //show()
+            //agreeConsentButton.focus()
         }
+        (document.getElementById("ccc") as HTMLButtonElement).style.display = "none"
+        (document.getElementById("ccc") as HTMLButtonElement).style.display = "block"
+        (document.getElementById("ccc") as HTMLButtonElement).focus()
+
         Dialogue.getDialogues(fun(dialagues){
             agreeConsentButton.innerHTML = dialagues.node?.agree?:"同意"
         })
