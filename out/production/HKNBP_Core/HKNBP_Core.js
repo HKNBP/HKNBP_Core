@@ -723,24 +723,21 @@ var HKNBP_Core = function (_, Kotlin) {
       this.show();
       this.agreeConsentButton_0.focus();
     }
-    window.setInterval(ConsentPanel_init$lambda, 1000);
-    Dialogue$Companion_getInstance().getDialogues_fs1aqo$(ConsentPanel_init$lambda_0(this));
-    this.agreeConsentButton_0.onclick = ConsentPanel_init$lambda_1(this);
+    Dialogue$Companion_getInstance().getDialogues_fs1aqo$(ConsentPanel_init$lambda(this));
+    this.agreeConsentButton_0.onclick = ConsentPanel_init$lambda_0(this);
     println('Init ConsentPanel');
   }
   ConsentPanel.prototype.isAgreeConsent = function () {
     var tmp$, tmp$_0;
     return (tmp$_0 = (tmp$ = localStorage.getItem('IsAgreeConsent')) != null ? toBoolean(tmp$) : null) != null ? tmp$_0 : false;
   };
-  function ConsentPanel_init$lambda() {
-  }
-  function ConsentPanel_init$lambda_0(this$ConsentPanel) {
+  function ConsentPanel_init$lambda(this$ConsentPanel) {
     return function (dialagues) {
       var tmp$, tmp$_0;
       this$ConsentPanel.agreeConsentButton_0.innerHTML = (tmp$_0 = (tmp$ = dialagues.node) != null ? tmp$.agree : null) != null ? tmp$_0 : '\u540C\u610F';
     };
   }
-  function ConsentPanel_init$lambda_1(this$ConsentPanel) {
+  function ConsentPanel_init$lambda_0(this$ConsentPanel) {
     return function (event) {
       localStorage.setItem('IsAgreeConsent', true.toString());
       this$ConsentPanel.hide();
@@ -2149,10 +2146,6 @@ var HKNBP_Core = function (_, Kotlin) {
     return arr;
   }
   var userLanguageList;
-  function main$lambda() {
-    var tmp$;
-    println((tmp$ = jQuery(':focus')) != null ? tmp$.html() : null);
-  }
   function main(args) {
     try {
       UserControlPanel_getInstance();
@@ -2164,7 +2157,6 @@ var HKNBP_Core = function (_, Kotlin) {
      catch (e) {
       println('\u4ECB\u9762\u521D\u59CB\u5316\u54C0\u5DE6: ' + e.toString());
     }
-    window.setInterval(main$lambda, 5000);
     println('Init Main');
   }
   function MutedDescription() {
@@ -3665,7 +3657,6 @@ var HKNBP_Core = function (_, Kotlin) {
     NativeAppInstallButton_getInstance();
     PictureInPictureButton_getInstance();
     FullScreenButton_getInstance();
-    ConsentPanel_getInstance().isAgreeConsent();
     this.shower_0.onclick = UserControlPanel_init$lambda(this);
     this.shower_0.onmousemove = UserControlPanel_init$lambda_0(this);
     this.panel_0.onmousemove = UserControlPanel_init$lambda_1(this);

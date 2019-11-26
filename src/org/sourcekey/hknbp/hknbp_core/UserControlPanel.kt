@@ -125,11 +125,7 @@ object UserControlPanel: UserInterface(
         FullScreenButton
 
         //開程式時首先focus userControlPanelShower
-        if(ConsentPanel.isAgreeConsent()){
-            //shower.style.display = "none"
-            //shower.style.display = "block"
-            //shower.focus()
-        }
+        //if(ConsentPanel.isAgreeConsent()){ shower.focus() }
 
         //設定使用者控制界面顯示方法
         shower.onclick = fun(event){
