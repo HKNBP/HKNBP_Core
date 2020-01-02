@@ -14,16 +14,76 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
+import kotlinx.serialization.Serializable
 import kotlin.browser.window
 import kotlin.js.Math.abs
 
 
 /**
  * 呢個Class嘅作用
- * 係為左以LinkList嘅型式
- * 去使用ArryList
+ * 令ArryList有LinkList嘅型態
  */
 open class ArrayLinkList<T> : ArrayList<T> {
+    interface OnElementsChangeListener{
+        fun onElementsChange()
+    }
+
+    private val onElementsChangeListeners: ArrayList<OnElementsChangeListener> = ArrayList()
+
+    fun addOnElementsChangeListener(onElementsChangeListener: OnElementsChangeListener){
+        onElementsChangeListeners.add(onElementsChangeListener)
+    }
+
+    override fun add(element: T): Boolean {
+        for (onElementsChangeListener in onElementsChangeListeners){onElementsChangeListener.onElementsChange()}
+        return super.add(element)
+    }
+
+    override fun add(index: Int, element: T) {
+        for (onElementsChangeListener in onElementsChangeListeners){onElementsChangeListener.onElementsChange()}
+        super.add(index, element)
+    }
+
+    override fun addAll(elements: Collection<T>): Boolean {
+        for (onElementsChangeListener in onElementsChangeListeners){onElementsChangeListener.onElementsChange()}
+        return super.addAll(elements)
+    }
+
+    override fun addAll(index: Int, elements: Collection<T>): Boolean {
+        for (onElementsChangeListener in onElementsChangeListeners){onElementsChangeListener.onElementsChange()}
+        return super.addAll(index, elements)
+    }
+
+    override fun clear() {
+        for (onElementsChangeListener in onElementsChangeListeners){onElementsChangeListener.onElementsChange()}
+        super.clear()
+    }
+
+    override fun remove(element: T): Boolean {
+        for (onElementsChangeListener in onElementsChangeListeners){onElementsChangeListener.onElementsChange()}
+        return super.remove(element)
+    }
+
+    override fun removeAll(elements: Collection<T>): Boolean {
+        for (onElementsChangeListener in onElementsChangeListeners){onElementsChangeListener.onElementsChange()}
+        return super.removeAll(elements)
+    }
+
+    override fun removeAt(index: Int): T {
+        for (onElementsChangeListener in onElementsChangeListeners){onElementsChangeListener.onElementsChange()}
+        return super.removeAt(index)
+    }
+
+    override fun removeRange(fromIndex: Int, toIndex: Int) {
+        for (onElementsChangeListener in onElementsChangeListeners){onElementsChangeListener.onElementsChange()}
+        super.removeRange(fromIndex, toIndex)
+    }
+
+    override fun set(index: Int, element: T): T {
+        for (onElementsChangeListener in onElementsChangeListeners){onElementsChangeListener.onElementsChange()}
+        return super.set(index, element)
+    }
+
     /**
      * 依家指住嘅Node
      */
@@ -43,11 +103,11 @@ open class ArrayLinkList<T> : ArrayList<T> {
 
             return field
         }
-        private set(value) {
+        protected set(value) {
             val preChangeNodeID = nodeID
             field = value
             for (onNodeEventListener: OnNodeEventListener<T> in onNodeEventListeners){
-                onNodeEventListener.OnNodeIDChanged(
+                onNodeEventListener.onNodeChanged(
                         preChangeNodeID, nodeID,
                         if(preChangeNodeID!=null){getOrNull(preChangeNodeID)}else{null}, node
                 )
@@ -57,9 +117,8 @@ open class ArrayLinkList<T> : ArrayList<T> {
     /**
      * 家指住嘅Node嘅ID
      */
-    var nodeID: Int?
-        get() { return indexOfOrNull(node) }
-        private set(value) {}
+    val nodeID: Int?
+        get() = indexOfOrNull(node)
 
     private var lastTimeNode: T? = null
 
@@ -72,7 +131,7 @@ open class ArrayLinkList<T> : ArrayList<T> {
     }
 
     interface OnNodeEventListener<T> {
-        fun OnNodeIDChanged(preChangeNodeID: Int?, postChangeNodeID: Int?, preChangeNode: T?, postChangeNode: T?)
+        fun onNodeChanged(preChangeNodeID: Int?, postChangeNodeID: Int?, preChangeNode: T?, postChangeNode: T?)
     }
 
     private val onNodeEventListeners: ArrayList<OnNodeEventListener<T>> = ArrayList()
@@ -130,6 +189,17 @@ open class ArrayLinkList<T> : ArrayList<T> {
             return true
         }
         return false
+    }
+
+    /**
+     * 將個Node指住指定嘅Node
+     * @param node 去指定嘅Node
+     * @return true 響個List成功搵到並設置呢個node做現時嘅node
+     * @return false 響個List搵唔到個node並不進行任何設置
+     */
+    fun designated(node: T): Boolean {
+        val index = indexOfOrNull(node)
+        return if(index != null){ designated(index) }else{ false }
     }
 
     /**
@@ -216,5 +286,4 @@ open class ArrayLinkList<T> : ArrayList<T> {
             node = getOrNull(0)
         }
     }
-
 }

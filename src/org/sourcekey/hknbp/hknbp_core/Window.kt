@@ -14,6 +14,9 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
+import org.w3c.dom.HTMLDivElement
+import kotlin.browser.document
+
 abstract class Window(
         mainFrameElementID: String,
         firstFocusElementID: String? = null,
@@ -30,7 +33,15 @@ abstract class Window(
         isHideFocusToUserControlPanelShower,
         isShowToHideUserControlPanel,
         conversionFocusHideTime
-)
+){
+    init {
+        /**
+        //按Window外區域隱藏Window
+        jQuery("#${mainFrameElementID}").children().blur(fun(){
+            if(jQuery(js("this")).parents("#${mainFrameElementID}").length){ }else{ hide() }
+        })*/
+    }
+}
 
 
 

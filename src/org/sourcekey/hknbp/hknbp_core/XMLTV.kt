@@ -17,8 +17,8 @@ package org.sourcekey.hknbp.hknbp_core
 import org.w3c.dom.Document
 import org.w3c.dom.Element
 import org.w3c.dom.get
-import org.w3c.xhr.XMLHttpRequest
 import kotlin.js.Date
+import org.sourcekey.hknbp.hknbp_core.MultiLanguageString.LanguageString
 
 /**
  * 一條頻道嘅所有節目同相關資訊
@@ -27,104 +27,11 @@ import kotlin.js.Date
  * https://salsa.debian.org/nickm-guest/xmltv/blob/master/xmltv.dtd
  * */
 open class XMLTV(
-        val displayNames: MultiLanguage.MultiLanguageList<DisplayName>? = null,
+        val displayName: MultiLanguageString?           = null,
         val icon: Icon?                                                 = null,
         val urls: ArrayList<String>?                                    = null,
         val programmes: Programme.ProgrammeList<Programme>?             = null
 ){
-    interface MultiLanguage{
-        val lang: String?
-
-        class MultiLanguageList<T: MultiLanguage>: ArrayList<T>{
-            private fun findSelectLanguage(lang: String?): String?{
-                lang?: return null
-
-                val langElementList = lang.split("-")
-                var findSelectLanguageList: MultiLanguageList<T> = this
-                for(index in 0 until langElementList.size){
-                    val langElement = langElementList.getOrNull(index)
-                    val findSelectLanguageListCache = MultiLanguageList<T>()
-                    for(findSelectLanguageListElement in findSelectLanguageList){
-                        val compareElement = findSelectLanguageListElement.lang?.split("-")?.getOrNull(index)
-                        if(langElement?.toUpperCase() === compareElement?.toUpperCase()){
-                            findSelectLanguageListCache.add(findSelectLanguageListElement)
-                        }
-                    }
-                    findSelectLanguageList = findSelectLanguageListCache
-                }
-
-                return if(findSelectLanguageList.size == 0){ null }else{
-                    findSelectLanguageList.getOrNull(0)?.lang
-                }
-            }
-
-            private fun findSelectLanguage(langList: ArrayList<String?>): String?{
-                for(lang in langList){
-                    val selectLanguage = findSelectLanguage(lang)
-                    if(selectLanguage != null){ return selectLanguage }
-                }
-                return null
-            }
-
-            /**
-             * 以指定語言表獲取所有元素
-             *
-             * @param langList 指定語言嘅名嘅表, 由第0個為最優先輸出語言
-             * @return 指定語言嘅所有元素, 但如果冇一個語言係同使用者語言一樣就用第0個語言
-             * */
-            fun getElementsByLanguage(langList: ArrayList<String?>): ArrayList<T>?{
-                if(this.size < 1){ return null }
-                val arrayList = ArrayList<T>()
-                val selectLanguge = findSelectLanguage(langList)
-                for (element in this){
-                    if(selectLanguge === element.lang){ arrayList.add(element) }
-                }
-                return arrayList
-            }
-
-            /**
-             * 以指定語言獲取所有元素
-             *
-             * @param langs 指定語言嘅名, 愈放得前嘅語言就愈優先輸出嘅語言
-             * @return 指定語言嘅所有元素, 但如果冇一個語言係同使用者語言一樣就用第0個語言
-             * */
-            fun getElementsByLanguage(vararg langs: String?): ArrayList<T>?{
-                val langList = ArrayList<String?>()
-                for(lang in langs){langList.add(lang)}
-                return getElementsByLanguage(langList)
-            }
-
-            /**
-             * 以現在用家使用嘅語言獲取所有元素
-             *
-             * @return 指定語言嘅所有元素, 但如果冇一個語言係同使用者語言一樣就用第0個語言
-             * */
-            fun getElementsByLanguage(): ArrayList<T>?{
-                val userLanguage: String = js("navigator.language || navigator.userLanguage;")
-
-                return getElementsByLanguage(userLanguage)
-            }
-
-            constructor(): super()
-
-            /**
-             * @param initElements 初始化時一次過窒入所有元素
-             * */
-            constructor(vararg initElements: T): super() {
-                for (initElement in initElements){
-                    add(initElement)
-                }
-            }
-
-            constructor(initialCapacity: Int): super(initialCapacity)
-
-            constructor(elements: Collection<T>): super(elements)
-        }
-    }
-    class DisplayName(
-            override val lang: String?                      = null,
-            val displayName: String?                        = null
-    ): MultiLanguage
     class Icon(
             val src: String?                                = null,
             val width: Int?                                 = null,
@@ -133,89 +40,57 @@ open class XMLTV(
     class Programme(
             val start: Date,
             val stop: Date,
-            val pdcStart: String?                                               = null,
-            val vpsStart: String?                                               = null,
-            val showView: String?                                               = null,
-            val videoPlus: String?                                              = null,
-            val clumpidx: String?                                               = null,
-            val titles: MultiLanguage.MultiLanguageList<Title>?                 = null,
-            val subTitles: MultiLanguage.MultiLanguageList<SubTitle>?           = null,
-            val descs: MultiLanguage.MultiLanguageList<Desc>?                   = null,
-            val credits: Credits?                                               = null,
-            val date: String?                                                   = null,
-            val categorys: MultiLanguage.MultiLanguageList<Category>?           = null,
-            val keywords: MultiLanguage.MultiLanguageList<Keyword>?             = null,
-            val languages: MultiLanguage.MultiLanguageList<Language>?           = null,
-            val origLanguages: MultiLanguage.MultiLanguageList<OrigLanguage>?   = null,
-            val length: Length?                                                 = null,
-            val icon: Icon?                                                     = null,
-            val urls: ArrayList<String>?                                        = null,
-            val countrys: MultiLanguage.MultiLanguageList<Country>?             = null,
-            val episodeNum: EpisodeNum?                                         = null,
-            val video: Video?                                                   = null,
-            val audio: Audio?                                                   = null,
-            val previouslyShown: PreviouslyShown?                               = null,
-            val premieres: MultiLanguage.MultiLanguageList<Premiere>?           = null,
-            val lastChances: MultiLanguage.MultiLanguageList<LastChance>?       = null,
-            val new: Boolean                                                    = false,
-            val subtitles: Subtitles?                                           = null,
-            val rating: Rating?                                                 = null,
-            val starRating: StarRating?                                         = null,
-            val reviews: MultiLanguage.MultiLanguageList<Review>?               = null
+            val pdcStart: String?                                       = null,
+            val vpsStart: String?                                       = null,
+            val showView: String?                                       = null,
+            val videoPlus: String?                                      = null,
+            val clumpidx: String?                                       = null,
+            val title: MultiLanguageString?                             = null,
+            val subTitle: MultiLanguageString?                          = null,
+            val desc: MultiLanguageString?                              = null,
+            val credits: Credits?                                       = null,
+            val date: String?                                           = null,
+            val category: MultiLanguageString?                          = null,
+            val keyword: MultiLanguageString?                           = null,
+            val language: MultiLanguageString?                          = null,
+            val origLanguage: MultiLanguageString?                      = null,
+            val length: Length?                                         = null,
+            val icon: Icon?                                             = null,
+            val urls: ArrayList<String>?                                = null,
+            val country: MultiLanguageString?                           = null,
+            val episodeNum: EpisodeNum?                                 = null,
+            val video: Video?                                           = null,
+            val audio: Audio?                                           = null,
+            val previouslyShown: PreviouslyShown?                       = null,
+            val premiere: MultiLanguageString?                          = null,
+            val lastChance: MultiLanguageString?                        = null,
+            val new: Boolean                                            = false,
+            val subtitles: Subtitles?                                   = null,
+            val rating: Rating?                                         = null,
+            val starRating: StarRating?                                 = null,
+            val review: Review?                                         = null
     ){
-        class Title(
-                override val lang: String?                      = null,
-                val title: String?                              = null
-        ): MultiLanguage
-        class SubTitle(
-                override val lang: String?                      = null,
-                val subTitle: String?                           = null
-        ): MultiLanguage
-        class Desc(
-                override val lang: String?                      = null,
-                val desc: String?                               = null
-        ): MultiLanguage
         class Credits(
-                val directors: ArrayList<String>?               = null,
-                val actors: ArrayList<Actor>?                   = null,
-                val writers: ArrayList<String>?                 = null,
-                val adapters: ArrayList<String>?                = null,
-                val producers: ArrayList<String>?               = null,
-                val composers: ArrayList<String>?               = null,
-                val editors: ArrayList<String>?                 = null,
-                val presenters: ArrayList<String>?              = null,
-                val commentators: ArrayList<String>?            = null,
-                val guests: ArrayList<String>?                  = null
+                val directors: ArrayList<String>?                       = null,
+                val actors: ArrayList<Actor>?                           = null,
+                val writers: ArrayList<String>?                         = null,
+                val adapters: ArrayList<String>?                        = null,
+                val producers: ArrayList<String>?                       = null,
+                val composers: ArrayList<String>?                       = null,
+                val editors: ArrayList<String>?                         = null,
+                val presenters: ArrayList<String>?                      = null,
+                val commentators: ArrayList<String>?                    = null,
+                val guests: ArrayList<String>?                          = null
         ){
             class Actor(
                     val role: String?                               = null,
                     val actor: String?                              = null
             )
         }
-        class Category(
-                override val lang: String?                      = null,
-                val category: String?                           = null
-        ): MultiLanguage
-        class Keyword(
-                override val lang: String?                      = null,
-                val keyword: String?                            = null
-        ): MultiLanguage
-        class Language(
-                override val lang: String?                      = null,
-                val language: String?                           = null
-        ): MultiLanguage
-        class OrigLanguage(
-                override val lang: String?                      = null,
-                val origLanguage: String?                       = null
-        ): MultiLanguage
         class Length(
                 val units: String?                              = null,
                 val length: String?                             = null
         )
-        class Country(
-                override val lang: String?                      = null,
-                val country: String?                            = null
-        ): MultiLanguage
         class EpisodeNum(
                 val system: String?                             = null,
                 val episodeNum: String?                         = null
@@ -345,17 +220,9 @@ open class XMLTV(
                 val start: Date?                                = null,
                 val channel: String?                            = null
         )
-        class Premiere(
-                override val lang: String?                      = null,
-                val premiere: String?                           = null
-        ): MultiLanguage
-        class LastChance(
-                override val lang: String?                      = null,
-                val lastChance: String?                         = null
-        ): MultiLanguage
         class Subtitles(
-                val type: String?                               = null,
-                val language: String?                           = null
+                val type: String?                                       = null,
+                val language: String?                                   = null
         )
         class Rating(
                 val system: String?                             = null,
@@ -368,12 +235,11 @@ open class XMLTV(
                 val icon: Icon?                                 = null
         )
         class Review(
-                val type: String?                               = null,
-                val source: String?                             = null,
-                val reviewer: String?                           = null,
-                override val lang: String?                      = null,
-                val review: String?                             = null
-        ): MultiLanguage
+                val type: MultiLanguageString?                          = null,
+                val source: MultiLanguageString?                        = null,
+                val reviewer: MultiLanguageString?                      = null,
+                val review: MultiLanguageString?                        = null
+        )
 
         class ProgrammeList<T: Programme>: ArrayList<T>{
             /**
@@ -548,13 +414,18 @@ open class XMLTV(
         }
 
         private fun getXMLTV(xmltvDoc: Document?, epgID: String): XMLTV{
+            val subElements = xmltvDoc?.getElementsByTagName("channel")
+            if(subElements == null || subElements.length < 1){return XMLTV()}
+
             var i = 0
-            while(i < (xmltvDoc?.getElementsByTagName("channel")?.length ?: 0)) {
-                if(xmltvDoc?.getElementsByTagName("channel")?.get(i)?.getAttribute("id") == epgID){
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
+
+                if(subElement?.getAttribute("id") == epgID){
                     return XMLTV(
-                            getDisplayNames(xmltvDoc.getElementsByTagName("channel").get(i)),
-                            getIcon(xmltvDoc.getElementsByTagName("channel").get(i)),
-                            getUrls(xmltvDoc.getElementsByTagName("channel").get(i)),
+                            getDisplayName(subElement),
+                            getIcon(subElement),
+                            getUrls(subElement),
                             getProgrammes(xmltvDoc, epgID)
                     )
                 }
@@ -563,20 +434,24 @@ open class XMLTV(
             return XMLTV()
         }
 
-        private fun getDisplayNames(element: Element?): MultiLanguage.MultiLanguageList<DisplayName>?{
-            if(element?.getElementsByTagName("displayName") == null){return null}
+        private fun getDisplayName(element: Element?): MultiLanguageString?{
+            val subElements = element?.getElementsByTagName("displayName")
+            if(subElements == null || subElements.length < 1){return null}
 
-            val displayNames = MultiLanguage.MultiLanguageList<DisplayName>()
+            val multiLangDisplayName = MultiLanguageString()
 
             var i = 0
-            while(i < (element.getElementsByTagName("displayName").length)) {
-                val lang        = getLang(element.getElementsByTagName("displayName").get(i))
-                val displayName = element.getElementsByTagName("displayName").get(i)?.innerHTML
-                displayNames.add(DisplayName(lang, displayName))
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
+
+                val lang        = getLang(subElement)
+                val displayName = subElement?.innerHTML
+
+                if(displayName != null){multiLangDisplayName.add(LanguageString(lang?:"", displayName))}
                 i++
             }
 
-            return displayNames
+            return multiLangDisplayName
         }
 
         private fun getLang(element: Element?): String?{
@@ -584,12 +459,13 @@ open class XMLTV(
         }
 
         private fun getIcon(element: Element?): Icon?{
-            if(element?.getElementsByTagName("icon") == null){return null}
+            val subElements = element?.getElementsByTagName("icon")
+            if(subElements == null || subElements.length < 1){return null}
 
             return Icon(
-                    getSrc(element.getElementsByTagName("icon").get(0)),
-                    getWidth(element.getElementsByTagName("icon").get(0)),
-                    getHeight(element.getElementsByTagName("icon").get(0))
+                    getSrc(subElements.get(0)),
+                    getWidth(subElements.get(0)),
+                    getHeight(subElements.get(0))
             )
         }
 
@@ -606,13 +482,16 @@ open class XMLTV(
         }
 
         private fun getUrls(element: Element?): ArrayList<String>?{
-            if(element?.getElementsByTagName("url") == null){return null}
+            val subElements = element?.getElementsByTagName("url")
+            if(subElements == null || subElements.length < 1){return null}
 
             val urls = ArrayList<String>()
 
             var i = 0
-            while(i < (element?.getElementsByTagName("url")?.length)) {
-                val url = element?.getElementsByTagName("url")?.get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
+
+                val url = subElement?.innerHTML
 
                 if(url != null){ urls.add(url) }
                 i++
@@ -622,51 +501,54 @@ open class XMLTV(
         }
 
         private fun getProgrammes(xmltvDoc: Document?, epgID: String): Programme.ProgrammeList<Programme>?{
-            if(xmltvDoc?.getElementsByTagName("programme") == null){return null}
+            val subElements = xmltvDoc?.getElementsByTagName("programme")
+            if(subElements == null || subElements.length < 1){return null}
 
             val programmes = Programme.ProgrammeList<Programme>()
 
             var i = 0
-            while(i < (xmltvDoc.getElementsByTagName("programme").length)) {
-                if(xmltvDoc.getElementsByTagName("programme").get(i)?.getAttribute("channel") == epgID){
-                    val start           = getStart(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val stop            = getStop(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val pdcStart        = getPDCStart(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val vpsStart        = getVPSStart(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val showView        = getShowView(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val videoPlus       = getVideoPlus(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val clumpidx        = getClumpidx(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val titles          = getTitles(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val subTitles       = getSubTitles(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val descs           = getDescs(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val credits         = getCredits(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val date            = getDate(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val categorys       = getCategorys(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val keywords        = getKeywords(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val languages       = getLanguages(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val origLanguages   = getOrigLanguages(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val length          = getLength(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val icon            = getIcon(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val urls            = getUrls(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val countrys        = getCountrys(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val episodeNum      = getEpisodeNum(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val video           = getVideo(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val audio           = getAudio(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val previouslyShown = getPreviouslyShown(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val premieres       = getPremieres(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val lastChances     = getLastChances(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val new             = getNew(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val subtitles       = getSubtitles(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val rating          = getRating(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val starRating      = getStarRating(xmltvDoc.getElementsByTagName("programme").get(i))
-                    val reviews         = getReviews(xmltvDoc.getElementsByTagName("programme").get(i))
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
+
+                if(subElement?.getAttribute("channel") == epgID){
+                    val start           = getStart(subElement)
+                    val stop            = getStop(subElement)
+                    val pdcStart        = getPDCStart(subElement)
+                    val vpsStart        = getVPSStart(subElement)
+                    val showView        = getShowView(subElement)
+                    val videoPlus       = getVideoPlus(subElement)
+                    val clumpidx        = getClumpidx(subElement)
+                    val title           = getTitle(subElement)
+                    val subTitle        = getSubTitle(subElement)
+                    val desc            = getDesc(subElement)
+                    val credits         = getCredits(subElement)
+                    val date            = getDate(subElement)
+                    val category        = getCategory(subElement)
+                    val keyword         = getKeyword(subElement)
+                    val language        = getLanguage(subElement)
+                    val origLanguage    = getOrigLanguage(subElement)
+                    val length          = getLength(subElement)
+                    val icon            = getIcon(subElement)
+                    val urls            = getUrls(subElement)
+                    val country         = getCountry(subElement)
+                    val episodeNum      = getEpisodeNum(subElement)
+                    val video           = getVideo(subElement)
+                    val audio           = getAudio(subElement)
+                    val previouslyShown = getPreviouslyShown(subElement)
+                    val premiere        = getPremiere(subElement)
+                    val lastChance      = getLastChance(subElement)
+                    val new             = getNew(subElement)
+                    val subtitles       = getSubtitles(subElement)
+                    val rating          = getRating(subElement)
+                    val starRating      = getStarRating(subElement)
+                    val reviews         = getReview(subElement)
 
                     if(start!=null && stop!=null && start<stop){//冇標明時間同時間錯誤將不加入到List中
                         programmes.add(Programme(
-                                start, stop, pdcStart, vpsStart, showView, videoPlus, clumpidx, titles,
-                                subTitles, descs, credits, date, categorys, keywords, languages, origLanguages,
-                                length, icon, urls, countrys, episodeNum, video, audio, previouslyShown,
-                                premieres, lastChances, new, subtitles, rating, starRating, reviews
+                                start, stop, pdcStart, vpsStart, showView, videoPlus, clumpidx, title,
+                                subTitle, desc, credits, date, category, keyword, language, origLanguage,
+                                length, icon, urls, country, episodeNum, video, audio, previouslyShown,
+                                premiere, lastChance, new, subtitles, rating, starRating, reviews
                         ))
                     }
                 }
@@ -704,82 +586,95 @@ open class XMLTV(
             return element?.getAttribute("clumpidx")
         }
 
-        private fun getTitles(element: Element?): MultiLanguage.MultiLanguageList<Programme.Title>?{
-            if(element?.getElementsByTagName("title") == null){return null}
+        private fun getTitle(element: Element?): MultiLanguageString?{
+            val subElements = element?.getElementsByTagName("title")
+            if(subElements == null || subElements.length < 1){return null}
 
-            val titles = MultiLanguage.MultiLanguageList<Programme.Title>()
+            val multiLangTitle = MultiLanguageString()
 
             var i = 0
-            while(i < (element?.getElementsByTagName("title")?.length)) {
-                val lang  = getLang(element?.getElementsByTagName("title")?.get(i))
-                val title = element?.getElementsByTagName("title")?.get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
 
-                titles.add(Programme.Title(lang, title))
+                val lang  = getLang(subElement)
+                val title = subElement?.innerHTML
+
+                if(title != null){multiLangTitle.add(LanguageString(lang?:"", title))}
                 i++
             }
 
-            return titles
+            return multiLangTitle
         }
 
-        private fun getSubTitles(element: Element?): MultiLanguage.MultiLanguageList<Programme.SubTitle>?{
-            if(element?.getElementsByTagName("sub-title") == null){return null}
+        private fun getSubTitle(element: Element?): MultiLanguageString?{
+            val subElements = element?.getElementsByTagName("sub-title")
+            if(subElements == null || subElements.length < 1){return null}
 
-            val subTitles = MultiLanguage.MultiLanguageList<Programme.SubTitle>()
+            val multiLangSubTitle = MultiLanguageString()
 
             var i = 0
-            while(i < (element?.getElementsByTagName("sub-title")?.length)) {
-                val lang        = getLang(element?.getElementsByTagName("sub-title")?.get(i))
-                val subTitle    = element?.getElementsByTagName("sub-title")?.get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
 
-                subTitles.add(Programme.SubTitle(lang, subTitle))
+                val lang        = getLang(subElement)
+                val subTitle    = subElement?.innerHTML
+
+                if(subTitle != null){multiLangSubTitle.add(LanguageString(lang?:"", subTitle))}
                 i++
             }
 
-            return subTitles
+            return multiLangSubTitle
         }
 
-        private fun getDescs(element: Element?): MultiLanguage.MultiLanguageList<Programme.Desc>?{
-            if(element?.getElementsByTagName("desc") == null){return null}
+        private fun getDesc(element: Element?): MultiLanguageString?{
+            val subElements = element?.getElementsByTagName("desc")
+            if(subElements == null || subElements.length < 1){return null}
 
-            val descs = MultiLanguage.MultiLanguageList<Programme.Desc>()
+            val multiLangDesc = MultiLanguageString()
 
             var i = 0
-            while(i < (element.getElementsByTagName("desc").length)) {
-                val lang    = getLang(element.getElementsByTagName("desc").get(i))
-                val desc    = element.getElementsByTagName("desc").get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
 
-                descs.add(Programme.Desc(lang, desc))
+                val lang    = getLang(subElement)
+                val desc    = subElement?.innerHTML
+
+                if(desc != null){multiLangDesc.add(LanguageString(lang?:"", desc))}
                 i++
             }
 
-            return descs
+            return multiLangDesc
         }
 
         private fun getCredits(element: Element?): Programme.Credits?{
-            if(element?.getElementsByTagName("credits") == null){return null}
+            val subElements = element?.getElementsByTagName("credits")
+            if(subElements == null || subElements.length < 1){return null}
 
             return Programme.Credits(
-                    getDirectors(element.getElementsByTagName("credits").get(0)),
-                    getActors(element.getElementsByTagName("credits").get(0)),
-                    getWriters(element.getElementsByTagName("credits").get(0)),
-                    getAdapters(element.getElementsByTagName("credits").get(0)),
-                    getProducers(element.getElementsByTagName("credits").get(0)),
-                    getComposers(element.getElementsByTagName("credits").get(0)),
-                    getEditors(element.getElementsByTagName("credits").get(0)),
-                    getPresenters(element.getElementsByTagName("credits").get(0)),
-                    getCommentators(element.getElementsByTagName("credits").get(0)),
-                    getGuests(element.getElementsByTagName("credits").get(0))
+                    getDirectors(subElements.get(0)),
+                    getActors(subElements.get(0)),
+                    getWriters(subElements.get(0)),
+                    getAdapters(subElements.get(0)),
+                    getProducers(subElements.get(0)),
+                    getComposers(subElements.get(0)),
+                    getEditors(subElements.get(0)),
+                    getPresenters(subElements.get(0)),
+                    getCommentators(subElements.get(0)),
+                    getGuests(subElements.get(0))
             )
         }
 
         private fun getDirectors(element: Element?): ArrayList<String>?{
-            if(element?.getElementsByTagName("director") == null){return null}
+            val subElements = element?.getElementsByTagName("director")
+            if(subElements == null || subElements.length < 1){return null}
 
             val directors = ArrayList<String>()
 
             var i = 0
-            while(i < (element.getElementsByTagName("director").length)) {
-                val director = element.getElementsByTagName("director").get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
+
+                val director = subElement?.innerHTML
 
                 if(director != null){ directors.add(director) }
                 i++
@@ -789,14 +684,17 @@ open class XMLTV(
         }
 
         private fun getActors(element: Element?): ArrayList<Programme.Credits.Actor>?{
-            if(element?.getElementsByTagName("actor") == null){return null}
+            val subElements = element?.getElementsByTagName("actor")
+            if(subElements == null || subElements.length < 1){return null}
 
             val actors = ArrayList<Programme.Credits.Actor>()
 
             var i = 0
-            while(i < (element.getElementsByTagName("actor").length)) {
-                val role = getRole(element.getElementsByTagName("actor").get(i))
-                val actor = element.getElementsByTagName("actor").get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
+
+                val role = getRole(subElement)
+                val actor = subElement?.innerHTML
 
                 actors.add(Programme.Credits.Actor(role, actor))
                 i++
@@ -810,13 +708,16 @@ open class XMLTV(
         }
 
         private fun getWriters(element: Element?): ArrayList<String>?{
-            if(element?.getElementsByTagName("writer") == null){return null}
+            val subElements = element?.getElementsByTagName("writer")
+            if(subElements == null || subElements.length < 1){return null}
 
             val writers = ArrayList<String>()
 
             var i = 0
-            while(i < (element.getElementsByTagName("writer").length)) {
-                val writer = element.getElementsByTagName("writer").get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
+
+                val writer = subElement?.innerHTML
 
                 if(writer != null){ writers.add(writer) }
                 i++
@@ -826,13 +727,16 @@ open class XMLTV(
         }
 
         private fun getAdapters(element: Element?): ArrayList<String>?{
-            if(element?.getElementsByTagName("adapter") == null){return null}
+            val subElements = element?.getElementsByTagName("adapter")
+            if(subElements == null || subElements.length < 1){return null}
 
             val adapters = ArrayList<String>()
 
             var i = 0
-            while(i < (element.getElementsByTagName("adapter").length)) {
-                val adapter = element.getElementsByTagName("adapter").get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
+
+                val adapter = subElement?.innerHTML
 
                 if(adapter != null){ adapters.add(adapter) }
                 i++
@@ -842,13 +746,16 @@ open class XMLTV(
         }
 
         private fun getProducers(element: Element?): ArrayList<String>?{
-            if(element?.getElementsByTagName("producer") == null){return null}
+            val subElements = element?.getElementsByTagName("producer")
+            if(subElements == null || subElements.length < 1){return null}
 
             val producers = ArrayList<String>()
 
             var i = 0
-            while(i < (element.getElementsByTagName("producer").length)) {
-                val producer = element.getElementsByTagName("producer").get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
+
+                val producer = subElement?.innerHTML
 
                 if(producer != null){ producers.add(producer) }
                 i++
@@ -858,13 +765,16 @@ open class XMLTV(
         }
 
         private fun getComposers(element: Element?): ArrayList<String>?{
-            if(element?.getElementsByTagName("composer") == null){return null}
+            val subElements = element?.getElementsByTagName("composer")
+            if(subElements == null || subElements.length < 1){return null}
 
             val composers = ArrayList<String>()
 
             var i = 0
-            while(i < (element.getElementsByTagName("composer").length)) {
-                val composer = element.getElementsByTagName("composer").get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
+
+                val composer = subElement?.innerHTML
 
                 if(composer != null){ composers.add(composer) }
                 i++
@@ -874,13 +784,16 @@ open class XMLTV(
         }
 
         private fun getEditors(element: Element?): ArrayList<String>?{
-            if(element?.getElementsByTagName("editor") == null){return null}
+            val subElements = element?.getElementsByTagName("editor")
+            if(subElements == null || subElements.length < 1){return null}
 
             val editors = ArrayList<String>()
 
             var i = 0
-            while(i < (element.getElementsByTagName("editor").length)) {
-                val editor = element.getElementsByTagName("editor").get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
+
+                val editor = subElement?.innerHTML
 
                 if(editor != null){ editors.add(editor) }
                 i++
@@ -890,13 +803,16 @@ open class XMLTV(
         }
 
         private fun getPresenters(element: Element?): ArrayList<String>?{
-            if(element?.getElementsByTagName("presenter") == null){return null}
+            val subElements = element?.getElementsByTagName("presenter")
+            if(subElements == null || subElements.length < 1){return null}
 
             val presenters = ArrayList<String>()
 
             var i = 0
-            while(i < (element.getElementsByTagName("presenter").length)) {
-                val presenter = element.getElementsByTagName("presenter").get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
+
+                val presenter = subElement?.innerHTML
 
                 if(presenter != null){ presenters.add(presenter) }
                 i++
@@ -906,13 +822,16 @@ open class XMLTV(
         }
 
         private fun getCommentators(element: Element?): ArrayList<String>?{
-            if(element?.getElementsByTagName("commentator") == null){return null}
+            val subElements = element?.getElementsByTagName("commentator")
+            if(subElements == null || subElements.length < 1){return null}
 
             val commentators = ArrayList<String>()
 
             var i = 0
-            while(i < (element.getElementsByTagName("commentator").length)) {
-                val commentator = element.getElementsByTagName("commentator").get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
+
+                val commentator = subElement?.innerHTML
 
                 if(commentator != null){ commentators.add(commentator) }
                 i++
@@ -922,13 +841,16 @@ open class XMLTV(
         }
 
         private fun getGuests(element: Element?): ArrayList<String>?{
-            if(element?.getElementsByTagName("guest") == null){return null}
+            val subElements = element?.getElementsByTagName("guest")
+            if(subElements == null || subElements.length < 1){return null}
 
             val guests = ArrayList<String>()
 
             var i = 0
-            while(i < (element.getElementsByTagName("guest").length)) {
-                val guest = element.getElementsByTagName("guest").get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
+
+                val guest = subElement?.innerHTML
 
                 if(guest != null){ guests.add(guest) }
                 i++
@@ -941,80 +863,93 @@ open class XMLTV(
             return element?.getElementsByTagName("date")?.get(0)?.innerHTML
         }
 
-        private fun getCategorys(element: Element?): MultiLanguage.MultiLanguageList<Programme.Category>?{
-            if(element?.getElementsByTagName("category") == null){return null}
+        private fun getCategory(element: Element?): MultiLanguageString?{
+            val subElements = element?.getElementsByTagName("category")
+            if(subElements == null || subElements.length < 1){return null}
 
-            val categorys = MultiLanguage.MultiLanguageList<Programme.Category>()
+            val multiLangCategory = MultiLanguageString()
 
             var i = 0
-            while(i < (element.getElementsByTagName("category").length)) {
-                val lang = getLang(element.getElementsByTagName("category").get(i))
-                val category = element.getElementsByTagName("category").get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
 
-                categorys.add(Programme.Category(lang, category))
+                val lang = getLang(subElement)
+                val category = subElement?.innerHTML
+
+                if(category != null){multiLangCategory.add(LanguageString(lang?:"", category))}
                 i++
             }
 
-            return categorys
+            return multiLangCategory
         }
 
-        private fun getKeywords(element: Element?): MultiLanguage.MultiLanguageList<Programme.Keyword>?{
-            if(element?.getElementsByTagName("keyword") == null){return null}
+        private fun getKeyword(element: Element?): MultiLanguageString?{
+            val subElements = element?.getElementsByTagName("keyword")
+            if(subElements == null || subElements.length < 1){return null}
 
-            val keywords = MultiLanguage.MultiLanguageList<Programme.Keyword>()
+            val multiLangKeyword = MultiLanguageString()
 
             var i = 0
-            while(i < (element.getElementsByTagName("keyword").length)) {
-                val lang = getLang(element.getElementsByTagName("keyword").get(i))
-                val keyword = element.getElementsByTagName("keyword").get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
 
-                keywords.add(Programme.Keyword(lang, keyword))
+                val lang = getLang(subElement)
+                val keyword = subElement?.innerHTML
+
+                if(keyword != null){multiLangKeyword.add(LanguageString(lang?:"", keyword))}
                 i++
             }
 
-            return keywords
+            return multiLangKeyword
         }
 
-        private fun getLanguages(element: Element?): MultiLanguage.MultiLanguageList<Programme.Language>?{
-            if(element?.getElementsByTagName("language") == null){return null}
+        private fun getLanguage(element: Element?): MultiLanguageString?{
+            val subElements = element?.getElementsByTagName("language")
+            if(subElements == null || subElements.length < 1){return null}
 
-            val languages = MultiLanguage.MultiLanguageList<Programme.Language>()
+            val multiLangLanguage = MultiLanguageString()
 
             var i = 0
-            while(i < (element.getElementsByTagName("language").length)) {
-                val lang = getLang(element.getElementsByTagName("language").get(i))
-                val language = element.getElementsByTagName("language").get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
 
-                languages.add(Programme.Language(lang, language))
+                val lang = getLang(subElement)
+                val language = subElement?.innerHTML
+
+                if(language != null){multiLangLanguage.add(LanguageString(lang?:"", language))}
                 i++
             }
 
-            return languages
+            return multiLangLanguage
         }
 
-        private fun getOrigLanguages(element: Element?): MultiLanguage.MultiLanguageList<Programme.OrigLanguage>?{
-            if(element?.getElementsByTagName("origLanguage") == null){return null}
+        private fun getOrigLanguage(element: Element?): MultiLanguageString?{
+            val subElements = element?.getElementsByTagName("origLanguage")
+            if(subElements == null || subElements.length < 1){return null}
 
-            val origLanguages = MultiLanguage.MultiLanguageList<Programme.OrigLanguage>()
+            val multiLangOrigLanguage = MultiLanguageString()
 
             var i = 0
-            while(i < (element.getElementsByTagName("origLanguage").length)) {
-                val lang = getLang(element.getElementsByTagName("origLanguage").get(i))
-                val origLanguage = element.getElementsByTagName("origLanguage").get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
 
-                origLanguages.add(Programme.OrigLanguage(lang, origLanguage))
+                val lang = getLang(subElement)
+                val origLanguage = subElement?.innerHTML
+
+                if(origLanguage != null){multiLangOrigLanguage.add(LanguageString(lang?:"", origLanguage))}
                 i++
             }
 
-            return origLanguages
+            return multiLangOrigLanguage
         }
 
         private fun getLength(element: Element?): Programme.Length?{
-            if(element?.getElementsByTagName("length") == null){return null}
+            val subElements = element?.getElementsByTagName("length")
+            if(subElements == null || subElements.length < 1){return null}
 
             return Programme.Length(
-                    getUnits(element.getElementsByTagName("length").get(0)),
-                    element.getElementsByTagName("length").get(0)?.innerHTML
+                    getUnits(subElements.get(0)),
+                    subElements.get(0)?.innerHTML
             )
         }
 
@@ -1022,29 +957,33 @@ open class XMLTV(
             return element?.getAttribute("units")
         }
 
-        private fun getCountrys(element: Element?): MultiLanguage.MultiLanguageList<Programme.Country>?{
-            if(element?.getElementsByTagName("country") == null){return null}
+        private fun getCountry(element: Element?): MultiLanguageString?{
+            val subElements = element?.getElementsByTagName("country")
+            if(subElements == null || subElements.length < 1){return null}
 
-            val countrys = MultiLanguage.MultiLanguageList<Programme.Country>()
+            val multiLangCountry = MultiLanguageString()
 
             var i = 0
-            while(i < (element.getElementsByTagName("country").length)) {
-                val lang = getLang(element.getElementsByTagName("country").get(i))
-                val country = element.getElementsByTagName("wcountry").get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
 
-                countrys.add(Programme.Country(lang, country))
+                val lang = getLang(subElement)
+                val country = element?.getElementsByTagName("wcountry").get(i)?.innerHTML
+
+                if(country != null){multiLangCountry.add(LanguageString(lang?:"", country))}
                 i++
             }
 
-            return countrys
+            return multiLangCountry
         }
 
         private fun getEpisodeNum(element: Element?): Programme.EpisodeNum?{
-            if(element?.getElementsByTagName("episode-num") == null){return null}
+            val subElements = element?.getElementsByTagName("episode-num")
+            if(subElements == null || subElements.length < 1){return null}
 
             return Programme.EpisodeNum(
-                    getSystem(element.getElementsByTagName("episode-num").get(0)),
-                    element.getElementsByTagName("episode-num").get(0)?.innerHTML
+                    getSystem(subElements.get(0)),
+                    subElements.get(0)?.innerHTML
             )
         }
 
@@ -1053,13 +992,14 @@ open class XMLTV(
         }
 
         private fun getVideo(element: Element?): Programme.Video?{
-            if(element?.getElementsByTagName("video") == null){return null}
+            val subElements = element?.getElementsByTagName("video")
+            if(subElements == null || subElements.length < 1){return null}
 
             return Programme.Video(
-                    getPresent(element.getElementsByTagName("video").get(0)),
-                    getColour(element.getElementsByTagName("video").get(0)),
-                    getAspect(element.getElementsByTagName("video").get(0)),
-                    getQuality(element.getElementsByTagName("video").get(0))
+                    getPresent(subElements.get(0)),
+                    getColour(subElements.get(0)),
+                    getAspect(subElements.get(0)),
+                    getQuality(subElements.get(0))
             )
         }
 
@@ -1080,11 +1020,12 @@ open class XMLTV(
         }
 
         private fun getAudio(element: Element?): Programme.Audio?{
-            if(element?.getElementsByTagName("audio") == null){ return null }
+            val subElements = element?.getElementsByTagName("audio")
+            if(subElements == null || subElements.length < 1){return null}
 
             return Programme.Audio(
-                    getPresent(element.getElementsByTagName("audio").get(0)),
-                    getStereo(element.getElementsByTagName("audio").get(0))
+                    getPresent(subElements.get(0)),
+                    getStereo(subElements.get(0))
             )
         }
 
@@ -1093,11 +1034,12 @@ open class XMLTV(
         }
 
         private fun getPreviouslyShown(element: Element?): Programme.PreviouslyShown?{
-            if(element?.getElementsByTagName("previously-shown") == null){return null}
+            val subElements = element?.getElementsByTagName("previously-shown")
+            if(subElements == null || subElements.length < 1){return null}
 
             return Programme.PreviouslyShown(
-                    getStart(element.getElementsByTagName("previously-shown").get(0)),
-                    getChannel(element.getElementsByTagName("previously-shown").get(0))
+                    getStart(subElements.get(0)),
+                    getChannel(subElements.get(0))
             )
         }
 
@@ -1105,38 +1047,44 @@ open class XMLTV(
             return element?.getElementsByTagName("channel")?.get(0)?.innerHTML
         }
 
-        private fun getPremieres(element: Element?): MultiLanguage.MultiLanguageList<Programme.Premiere>?{
-            if(element?.getElementsByTagName("premiere") == null){return null}
+        private fun getPremiere(element: Element?): MultiLanguageString?{
+            val subElements = element?.getElementsByTagName("premiere")
+            if(subElements == null || subElements.length < 1){return null}
 
-            val premieres = MultiLanguage.MultiLanguageList<Programme.Premiere>()
+            val multiLangPremiere = MultiLanguageString()
 
             var i = 0
-            while(i < (element.getElementsByTagName("premiere").length)) {
-                val lang = getLang(element.getElementsByTagName("premiere").get(i))
-                val premiere = element.getElementsByTagName("premiere").get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
 
-                premieres.add(Programme.Premiere(lang, premiere))
+                val lang = getLang(subElement)
+                val premiere = subElement?.innerHTML
+
+                if(premiere != null){multiLangPremiere.add(LanguageString(lang?:"", premiere))}
                 i++
             }
 
-            return premieres
+            return multiLangPremiere
         }
 
-        private fun getLastChances(element: Element?): MultiLanguage.MultiLanguageList<Programme.LastChance>?{
-            if(element?.getElementsByTagName("last-chance") == null){return null}
+        private fun getLastChance(element: Element?): MultiLanguageString?{
+            val subElements = element?.getElementsByTagName("last-chance")
+            if(subElements == null || subElements.length < 1){return null}
 
-            val lastChances = MultiLanguage.MultiLanguageList<Programme.LastChance>()
+            val multiLangLastChance = MultiLanguageString()
 
             var i = 0
-            while(i < (element.getElementsByTagName("last-chance").length)) {
-                val lang = getLang(element.getElementsByTagName("last-chance").get(i))
-                val lastChance = element.getElementsByTagName("last-chance").get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
 
-                lastChances.add(Programme.LastChance(lang, lastChance))
+                val lang = getLang(subElement)
+                val lastChance = subElement?.innerHTML
+
+                if(lastChance != null){multiLangLastChance.add(LanguageString(lang?:"", lastChance))}
                 i++
             }
 
-            return lastChances
+            return multiLangLastChance
         }
 
         private fun getNew(element: Element?): Boolean{
@@ -1144,11 +1092,12 @@ open class XMLTV(
         }
 
         private fun getSubtitles(element: Element?): Programme.Subtitles?{
-            if(element?.getElementsByTagName("video") == null){ return null }
+            val subElements = element?.getElementsByTagName("subtitles")
+            if(subElements == null || subElements.length < 1){return null}
 
             return Programme.Subtitles(
-                    getType(element.getElementsByTagName("video").get(0)),
-                    getLanguage(element.getElementsByTagName("video").get(0))
+                    getType(subElements.get(0)),
+                    getLanguage(subElements.get(0)).toString()
             )
         }
 
@@ -1156,17 +1105,14 @@ open class XMLTV(
             return element?.getAttribute("type")
         }
 
-        private fun getLanguage(element: Element?): String?{
-            return element?.getElementsByTagName("language")?.get(0)?.innerHTML
-        }
-
         private fun getRating(element: Element?): Programme.Rating?{
-            if(element?.getElementsByTagName("rating") == null){ return null }
+            val subElements = element?.getElementsByTagName("rating")
+            if(subElements == null || subElements.length < 1){return null}
 
             return Programme.Rating(
-                    getSystem(element.getElementsByTagName("rating").get(0)),
-                    getValue(element.getElementsByTagName("rating").get(0)),
-                    getIcon(element.getElementsByTagName("rating").get(0))
+                    getSystem(subElements.get(0)),
+                    getValue(subElements.get(0)),
+                    getIcon(subElements.get(0))
             )
         }
 
@@ -1175,32 +1121,43 @@ open class XMLTV(
         }
 
         private fun getStarRating(element: Element?): Programme.StarRating?{
-            if(element?.getElementsByTagName("star-rating") == null){ return null }
+            val subElements = element?.getElementsByTagName("star-rating")
+            if(subElements == null || subElements.length < 1){return null}
 
             return Programme.StarRating(
-                    getSystem(element.getElementsByTagName("star-rating").get(0)),
-                    getValue(element.getElementsByTagName("star-rating").get(0)),
-                    getIcon(element.getElementsByTagName("star-rating").get(0))
+                    getSystem(subElements.get(0)),
+                    getValue(subElements.get(0)),
+                    getIcon(subElements.get(0))
             )
         }
 
-        private fun getReviews(element: Element?): MultiLanguage.MultiLanguageList<Programme.Review>?{
-            if(element?.getElementsByTagName("review") == null){ return null }
+        private fun getReview(element: Element?): Programme.Review?{
+            val subElements = element?.getElementsByTagName("review")
+            if(subElements == null || subElements.length < 1){return null}
 
-            val reviews = MultiLanguage.MultiLanguageList<Programme.Review>()
+            val multiLangType       = MultiLanguageString()
+            val multiLangSource     = MultiLanguageString()
+            val multiLangReviewer   = MultiLanguageString()
+            val multiLangReview     = MultiLanguageString()
 
             var i = 0
-            while(i < (element.getElementsByTagName("review").length)) {
-                val type = getType(element.getElementsByTagName("review").get(i))
-                val source = getSource(element.getElementsByTagName("review").get(i))
-                val reviewer = getReviewer(element.getElementsByTagName("review").get(i))
-                val lang = getLang(element.getElementsByTagName("review").get(i))
-                val review = element.getElementsByTagName("review").get(i)?.innerHTML
+            while(i < subElements.length) {
+                val subElement = subElements.get(i)
 
-                reviews.add(Programme.Review(type, source, reviewer, lang, review))
+                val type = getType(subElement)
+                val source = getSource(subElement)
+                val reviewer = getReviewer(subElement)
+                val lang = getLang(subElement)
+                val review = subElement?.innerHTML
+
+                if(type != null){multiLangType.add(LanguageString(lang?:"", type))}
+                if(source != null){multiLangSource.add(LanguageString(lang?:"", source))}
+                if(reviewer != null){multiLangReviewer.add(LanguageString(lang?:"", reviewer))}
+                if(review != null){multiLangReview.add(LanguageString(lang?:"", review))}
                 i++
             }
-            return reviews
+
+            return Programme.Review(multiLangType, multiLangSource, multiLangReviewer, multiLangReview)
         }
 
         private fun getSource(element: Element?): String?{

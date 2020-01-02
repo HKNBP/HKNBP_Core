@@ -14,14 +14,7 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
-import kotlinx.serialization.Serializable
-import org.w3c.dom.*
-import org.w3c.dom.url.URL
-import org.w3c.xhr.XMLHttpRequest
-import kotlin.browser.localStorage
-import kotlin.browser.window
-import kotlin.js.Date
-import kotlin.random.Random
+import org.sourcekey.hknbp.hknbp_core.MultiLanguageString.LanguageString
 
 
 /**
@@ -32,10 +25,10 @@ import kotlin.random.Random
  * @param sources 頻道嘅頻道源list
  * @param information 頻道資料
  */
-data class Channel(
-        val number: Int                     = 0,
-        val name: String                    = "",
-        val sources: ArrayLinkList<Source>  = ArrayLinkList(0, Source()),
+class Channel(
+        val number: Int,
+        val name: MultiLanguageString       = MultiLanguageString(),
+        val sources: ArrayLinkList<Source>  = ArrayLinkList(),
         val information: Information        = Information()
 ) {
     /**
@@ -46,10 +39,11 @@ data class Channel(
      * @param link 頻道源條Link
      */
     class Source(
-            val description: String = "",
-            val iFramePlayerSrc: String = "",
-            val link: String = ""
+            val description: String         = "",
+            val iFramePlayerSrc: String,
+            val link: String
     )
+
     /**
      * 頻道節目表
      *
@@ -57,8 +51,8 @@ data class Channel(
      * @param src 頻道節目表源
      */
     class Information(
-            val epgID: String = "",
-            val src: String = ""
+            val epgID: String               = "",
+            val src: String                 = ""
     ){
         /**
          * 頻道資料

@@ -18,13 +18,14 @@ import org.w3c.dom.HTMLDivElement
 import kotlin.browser.document
 import kotlin.browser.window
 
-object VideoDescription: UserInterface("videoDescription") {
-    private val videoDescription: HTMLDivElement = document.getElementById("videoDescription") as HTMLDivElement
-    private val text: HTMLDivElement = document.getElementById("videoDescriptionText") as HTMLDivElement
+object VideoDescription: UserInterface("trackDescription") {
+    private val trackDescription: HTMLDivElement = document.getElementById("trackDescription") as HTMLDivElement
+    private val videoIconHTML = "<i class=\"icon-font nestle-bottom\" style=\"display:inline;\">&#xe815;</i>"
 
     override fun show() {
         super.show()
-        VideoDescription.text.innerHTML = player?.videoTracks?.node?.name?:""
+        val videoNameHTML = "<div style=\"display:inline;\">${player?.videoTracks?.node?.name?:""}</div>"
+        trackDescription.innerHTML = videoIconHTML + "&nbsp" + videoNameHTML
     }
 
     init {

@@ -15,6 +15,9 @@
 package org.sourcekey.hknbp.hknbp_core
 
 import jquery.jq
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.json.JsonArray
+import kotlinx.serialization.stringify
 import org.w3c.dom.HTMLButtonElement
 import org.w3c.dom.HTMLElement
 import org.w3c.dom.events.Event
@@ -25,6 +28,7 @@ import kotlin.browser.window
 import kotlin.js.Date
 import kotlin.js.Json
 import kotlin.random.Random
+
 
 
 /**
@@ -122,7 +126,7 @@ val rootURL: String = "https://hknbp.org/"
  * */
 val coreVersion: String = {
     var value: String = ""
-    val savedValue: String = localStorage.getItem("CoreVersion")?.toString()?: ""
+    val savedValue: String = localStorage.getItem("CoreVersion")?: ""
     try {
         value = js("coreVersion")?: savedValue
     }catch (e: dynamic){
@@ -149,25 +153,44 @@ fun includeScript(vararg files: String) {
 }
 val jQueryLib = includeScript("js/jquery-3.4.1.min.js")*/
 
-var channels: ArrayLinkList<Channel> = {
+/**
+ * 現在播放頻道嘅播放器
+ * */
+var player: Player? = null
+
+/**
+ * 更新頻道表
+ * 此function畀其他地方可直接更新頻道表(channels值)
+ *
+ * @return 純水畀channels嘅value直接可攞個頻道表兼可執行更新頻道表程序
+ * */
+fun updateChannels(): ArrayLinkList<Channel>{
     channels = ArrayLinkList<Channel>()
     channels.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<Channel> {
-        override fun OnNodeIDChanged(
+        override fun onNodeChanged(
                 preChangeNodeID: Int?, postChangeNodeID: Int?,
                 preChangeNode: Channel?, postChangeNode: Channel?
         ) {
             //儲存低返最近睇過嘅頻道
             localStorage.setItem("RecentlyWatchedChannel", postChangeNodeID.toString())
             //更新URL嘅channel參數
-            updateURLParameter("channel", postChangeNode?.number.toString())
+            if(postChangeNode?.number?:0 < 0){
+                //自訂頻道參數(用作分享連結)
+                updateURLParameter("channelXmlString", postChangeNode?.number.toString())///////////////////////
+            }else{
+                //官方頻道參數(用作分享連結)
+                updateURLParameter("channel", postChangeNode?.number.toString())
+            }
+
 
             updateChannel()
         }
     })
-    OfficialChannel.getOfficialChannels(fun(officialChannels){
-        channels.addAll(CustomChannel.getCustomChannels()?:ArrayLinkList<Channel>())//載入自定頻道
-        channels.addAll(officialChannels)//載入官方頻道
 
+    OfficialChannels.getOfficialChannels(fun(officialChannels){
+        channels.addAll(officialChannels)//載入官方頻道
+        channels.addAll(CustomChannels.getCustomChannels())//載入自定頻道
+        channels.sortBy { channel -> channel.number }
         //讀返最近睇過嘅頻道
         channels.designated(
                 //URL參數指定嘅道
@@ -188,10 +211,13 @@ var channels: ArrayLinkList<Channel> = {
     })
     updateChannel()
 
-    channels
-}()
+    return channels
+}
 
-var player: Player? = null
+/**
+ * 頻道表
+ * */
+var channels: ArrayLinkList<Channel> = updateChannels()
 
 /**
  * 去特定頻道
@@ -214,7 +240,7 @@ var player: Player? = null
  * 刷新頻道
  */
 fun updateChannel() {
-    player = Player(channels.node?: Channel())
+    player = Player(channels.node?: Channel(0))
     player?.addOnPlayerEventListener(object : Player.OnPlayerEventListener {
         private var currentPlayer: Player? = null
         private var isPlaying: Boolean = false
@@ -320,11 +346,6 @@ fun reductionTo(w: Int, h: Int): IntArray{
     return arr
 }
 
-/**
- * 使用者語言讀取優先排列表
- * */
-var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
-
 
 /**
  * ****************************** *
@@ -333,9 +354,9 @@ var userLanguageList: ArrayList<String?> = SettingWindow.getLanguageSetting()
  * */
 fun main(args: Array<String>) {
     //HKNBPAppLayerBridge
-
     try {
         UserControlPanel
+        VirtualRemote.show()
         ConsentPanel
         VirtualRemote
         //RealRemote

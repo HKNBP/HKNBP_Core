@@ -61,10 +61,11 @@ if(self.registration){
         "js/jquery.tabbable.js",
         "out/production/HKNBP_Core/HKNBP_Core.js",
 
+        "https://polyfill.io/v3/polyfill.min.js?features=default%2Ces5%2Ces6",
         "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js",
         "https://video-dev.github.io/can-autoplay/build/can-autoplay.min.js",
         "https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.5/platform.min.js",
-        "https://cdn.jsdelivr.net/npm/kotlin@1.3.41/kotlin.js"
+        "https://cdn.jsdelivr.net/npm/kotlin@1.3.61/kotlin.js"
     ];
 
     importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');

@@ -278,7 +278,7 @@ class Player(private val channel: Channel): UserInterface("player") {
                                             tracks, track
                                     )
                                     videoTracks.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<TrackDescription> {
-                                        override fun OnNodeIDChanged(
+                                        override fun onNodeChanged(
                                                 preChangeNodeID: Int?, postChangeNodeID: Int?,
                                                 preChangeNode: TrackDescription?, postChangeNode: TrackDescription?
                                         ) {
@@ -359,7 +359,7 @@ class Player(private val channel: Channel): UserInterface("player") {
                                             tracks, track
                                     )
                                     audioTracks.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<TrackDescription> {
-                                        override fun OnNodeIDChanged(
+                                        override fun onNodeChanged(
                                                 preChangeNodeID: Int?, postChangeNodeID: Int?,
                                                 preChangeNode: TrackDescription?, postChangeNode: TrackDescription?
                                         ) {
@@ -440,7 +440,7 @@ class Player(private val channel: Channel): UserInterface("player") {
                                             tracks, track
                                     )
                                     subtitleTracks.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<TrackDescription> {
-                                        override fun OnNodeIDChanged(
+                                        override fun onNodeChanged(
                                                 preChangeNodeID: Int?, postChangeNodeID: Int?,
                                                 preChangeNode: TrackDescription?, postChangeNode: TrackDescription?
                                         ) {

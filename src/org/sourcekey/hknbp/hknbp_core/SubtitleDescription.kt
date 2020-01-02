@@ -18,13 +18,15 @@ import org.w3c.dom.HTMLDivElement
 import kotlin.browser.document
 import kotlin.browser.window
 
-object SubtitleDescription: UserInterface("subtitleDescription") {
-    private val subtitleDescription: HTMLDivElement = document.getElementById("subtitleDescription") as HTMLDivElement
-    private val text: HTMLDivElement = document.getElementById("subtitleDescriptionText") as HTMLDivElement
+object SubtitleDescription: UserInterface("trackDescription") {
+    private val trackDescription: HTMLDivElement = document.getElementById("trackDescription") as HTMLDivElement
+    private val subtitleIconHTML = "<i class=\"icon-font nestle-bottom\" style=\"display:inline;\">&#xe81d;</i>"
 
     override fun show() {
         super.show()
-        SubtitleDescription.text.innerHTML = player?.subtitleTracks?.node?.name?:""
+        trackDescription.innerHTML = player?.subtitleTracks?.node?.name?:""
+        val subtitleNameHTML = "<div style=\"display:inline;\">${player?.subtitleTracks?.node?.name?:""}</div>"
+        trackDescription.innerHTML = subtitleIconHTML + "&nbsp" + subtitleNameHTML
     }
 
     init {

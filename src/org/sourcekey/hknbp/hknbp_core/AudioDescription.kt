@@ -21,13 +21,14 @@ import org.w3c.dom.Window
 import kotlin.browser.document
 import kotlin.browser.window
 
-object AudioDescription: UserInterface("audioDescription") {
-    private val audioDescription: HTMLDivElement = document.getElementById("audioDescription") as HTMLDivElement
-    private val text: HTMLDivElement = document.getElementById("audioDescriptionText") as HTMLDivElement
+object AudioDescription: UserInterface("trackDescription") {
+    private val trackDescription: HTMLDivElement = document.getElementById("trackDescription") as HTMLDivElement
+    private val audioIconHTML = "<i class=\"icon-font nestle-bottom\" style=\"display:inline;\">&#xe81c;</i>"
 
     override fun show() {
         super.show()
-        AudioDescription.text.innerHTML = player?.audioTracks?.node?.name?:""
+        val audioNameHTML = "<div style=\"display:inline;\">${player?.audioTracks?.node?.name?:""}</div>"
+        trackDescription.innerHTML = audioIconHTML + "&nbsp" + audioNameHTML
     }
 
     init {

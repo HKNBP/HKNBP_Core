@@ -14,17 +14,25 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
-import kotlin.browser.localStorage
 
-object CustomChannel {
 
-    fun getCustomChannels(): ArrayLinkList<Channel>?{
-        val customChannelsString = localStorage.getItem("customChannels")
-        if(customChannelsString != null){ return JSON.parse(customChannelsString) }
-        return null
+
+object OfficialChannels: ChannelsReader() {
+
+    /**
+     * 讀取電視頻道表資料
+     */
+    fun getOfficialChannels(onLoadedChannelsListener: (channels: ArrayLinkList<Channel>)->Unit){
+        parseChannels(fun(channels){
+            channels.sortBy { channel -> channel.number }
+            println("成功讀取official_channels.xml\n此OfficialChannels有${channels.size}條頻道")
+            onLoadedChannelsListener(channels)
+        }, fun(){
+            println("未能讀取official_channels.xml")
+        }, "${rootURL}data/official_channels.xml", "data/official_channels.xml")
     }
 
     init{
-        println("Init CustomChannel")
+        println("Init OfficialChannels")
     }
 }

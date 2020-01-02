@@ -14,34 +14,19 @@
   -->
 
 <officialchannel>
-    <channel>
-        <number>000</number>
-        <name>HLS測試頻道</name>
-        <source>
-            <description>HLSSource</description>
-            <iframeplayersrc>iframePlayer/videojs_hls.html</iframeplayersrc>
-            <link>https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8</link>
-        </source>
+    <channel number="000">
+        <name lang="">HLS測試頻道</name>
+        <source description="HLSSource" iframeplayersrc="iframePlayer/videojs_hls.html" link="https://d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8"/>
         <information epgid="htv2.hr" src="http://tvprofil.net/xmltv/data/htv2.hr/weekly_htv2.hr_tvprofil.net.xml"/>
     </channel>
-    <channel>
-        <number>001</number>
-        <name>Dash測試頻道</name>
-        <source>
-            <description>DashSource</description>
-            <iframeplayersrc>iframePlayer/videojs_dash.html</iframeplayersrc>http://rdmedia.bbc.co.uk/dash/ondemand/testcard/1/client_manifest-events.mpd
-            <link>https://akamai-axtest.akamaized.net/routes/lapd-v1-acceptance/www_c4/Manifest.mpd</link>
-        </source>
+    <channel number="001">
+        <name lang="">Dash測試頻道</name>
+        <source description="DashSource" iframeplayersrc="iframePlayer/videojs_dash.html" link="https://akamai-axtest.akamaized.net/routes/lapd-v1-acceptance/www_c4/Manifest.mpd"/>
         <information epgid="vinkovacka-tv.hr" src="http://tvprofil.net/xmltv/data/vinkovacka-tv.hr/weekly_vinkovacka-tv.hr_tvprofil.net.xml"/>
     </channel>
-    <channel>
-        <number>002</number>
-        <name>Youtube測試頻道</name>
-        <source>
-            <description>YoutubeSource</description>
-            <iframeplayersrc>iframePlayer/youtube_api.html</iframeplayersrc>
-            <link>ekthcIHDt3I</link>
-        </source>
+    <channel number="002">
+        <name lang="">Youtube測試頻道</name>
+        <source description="YoutubeSource" iframeplayersrc="iframePlayer/youtube_api.html" link="ekthcIHDt3I"/>
         <information epgid="hayat-tv.ba" src="http://tvprofil.net/xmltv/data/hayat-tv.ba/weekly_hayat-tv.ba_tvprofil.net.xml"/>
     </channel>
 </officialchannel>

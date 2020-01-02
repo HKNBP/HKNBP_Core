@@ -17,14 +17,15 @@ package org.sourcekey.hknbp.hknbp_core
 import kotlin.browser.document
 import kotlin.js.Date
 import org.sourcekey.hknbp.hknbp_core.XMLTV.Programme
+import org.sourcekey.hknbp.hknbp_core.MultiLanguageString.LanguageString
 import kotlin.browser.window
 import kotlin.dom.addClass
-import org.sourcekey.hknbp.hknbp_core.XMLTV.MultiLanguage.MultiLanguageList
+
 import org.w3c.dom.*
 import org.w3c.dom.events.FocusEvent
 
 
-object EPG: Window("epg") {
+object EPG: UserInterface("epg") {
     private val epg                             = document.getElementById("epg") as HTMLElement
     private val displayCurrentDateBox           = document.getElementById("epgDisplayCurrentDateBox") as HTMLElement
     private val hideButton                      = document.getElementById("epgHideButton") as HTMLElement
@@ -70,20 +71,20 @@ object EPG: Window("epg") {
     }
 
     private fun setProgrammeInformationTitle(programme: Programme){
-        programmeInformationTitle.innerHTML = programme.titles?.getElementsByLanguage(userLanguageList)?.getOrNull(0)?.title?: ""
+        programmeInformationTitle.innerHTML = programme.title?.toString()?:""
     }
 
     private fun setProgrammeInformationSubTitle(programme: Programme){
-        val string = programme.subTitles?.getElementsByLanguage(userLanguageList)?.getOrNull(0)?.subTitle
+        val string = programme.subTitle
         if(string != null){
-            programmeInformationSubTitle.innerHTML = " : " + string
+            programmeInformationSubTitle.innerHTML = " : $string"
         }else{
             programmeInformationSubTitle.innerHTML = ""
         }
     }
 
     private fun setProgrammeInformationDesc(programme: Programme){
-        programmeInformationDesc.innerHTML = programme.descs?.getElementsByLanguage(userLanguageList)?.getOrNull(0)?.desc?: ""
+        programmeInformationDesc.innerHTML = programme.desc?.toString() ?: ""
     }
 
     private fun setProgrammeInformationCredit(programme: Programme){
@@ -160,20 +161,18 @@ object EPG: Window("epg") {
     private fun setProgrammeInformationCategory(programme: Programme){
         programmeInformationCategory.innerHTML = ""
 
-        val category = programme.categorys?.getElementsByLanguage(userLanguageList)?.getOrNull(0)?.category
-        if(category != null){ programmeInformationCategory.innerHTML = "片類: " + category }
+        val category = programme.category
+        if(category != null){ programmeInformationCategory.innerHTML = "片類: $category" }
     }
 
     private fun setProgrammeInformationKeyword(programme: Programme){
         programmeInformationKeyword.innerHTML = ""
 
-        val keywordList = programme.keywords?.getElementsByLanguage(userLanguageList)
+        val keywordList = programme.keyword?.getAllStringByLanguage()
         if(keywordList != null){
             programmeInformationKeyword.innerHTML += "關鍵詞: "
             for(keyword in keywordList){
-                if(keyword.keyword != null){
-                    programmeInformationKeyword.innerHTML += keyword.keyword + " "
-                }
+                programmeInformationKeyword.innerHTML += keyword
             }
         }
     }
@@ -181,14 +180,12 @@ object EPG: Window("epg") {
     private fun setProgrammeInformationLanguage(programme: Programme){
         programmeInformationLanguage.innerHTML = ""
 
-        val languageList = programme.languages?.getElementsByLanguage(userLanguageList)
+        val languageList = programme.language?.getAllStringByLanguage()
         if(languageList != null){
             programmeInformationLanguage.innerHTML += "["
             for(language in languageList){
-                if(language.language != null){
-                    if(programmeInformationLanguage.innerHTML !== "["){programmeInformationLanguage.innerHTML += "/"}
-                    programmeInformationLanguage.innerHTML += language.language
-                }
+                if(programmeInformationLanguage.innerHTML !== "["){programmeInformationLanguage.innerHTML += "/"}
+                programmeInformationLanguage.innerHTML += language
             }
             programmeInformationLanguage.innerHTML += "]"
         }
@@ -197,8 +194,8 @@ object EPG: Window("epg") {
     private fun setProgrammeInformationOrigLanguage(programme: Programme){
         programmeInformationOrigLanguage.innerHTML = ""
 
-        val origLanguage = programme.origLanguages?.getElementsByLanguage(userLanguageList)?.getOrNull(0)?.origLanguage
-        if(origLanguage != null){ programmeInformationOrigLanguage.innerHTML = "原語言: " + origLanguage }
+        val origLanguage = programme.origLanguage
+        if(origLanguage != null){ programmeInformationOrigLanguage.innerHTML = "原語言: $origLanguage" }
     }
 
     private fun setProgrammeInformationLength(programme: Programme){
@@ -223,8 +220,8 @@ object EPG: Window("epg") {
     private fun setProgrammeInformationCountry(programme: Programme){
         programmeInformationCountry.innerHTML = ""
 
-        val country = programme.countrys?.getElementsByLanguage(userLanguageList)?.getOrNull(0)?.country
-        if(country != null){ programmeInformationCountry.innerHTML = "國家: " + country }
+        val country = programme.country
+        if(country != null){ programmeInformationCountry.innerHTML = "國家: $country" }
     }
 
     private fun setProgrammeInformationEpisodeNum(programme: Programme){
@@ -496,7 +493,7 @@ object EPG: Window("epg") {
                             width = "22vh",
                             addClass = "channelName",
                             backgroundColor = "#222",
-                            innerHTML = channel.name
+                            innerHTML = channel.name.toString()
                     )
             )
             programmeListChannelList.appendChild(line)
@@ -507,14 +504,14 @@ object EPG: Window("epg") {
         val addProgrammeFromTime: Date = if(fromDate.getTime() < programme.start.getTime()){ programme.start }else{ fromDate }
         val addProgrammeToTime: Date = if(programme.stop.getTime() < toDate.getTime()){ programme.stop }else{ toDate }
         val timeLength = dateToDateDifferenceMinute(addProgrammeFromTime, addProgrammeToTime)
-        val title = programme.titles?.getElementsByLanguage(userLanguageList)?.getOrNull(0)?.title?: ""
+        val title = programme.title
 
         timeLine.appendChild(
                 newProgrammeListBlock(
                         width = "${timeLength}vh",
                         addClass = "programme",
                         backgroundColor = "#333",
-                        innerHTML = title,
+                        innerHTML = title.toString(),
                         tabIndex = Tab3dIndex.toUnparsedTabIndex(Tab3dIndex(
                                 (programme.start.getDate().toString().padStart(2, '0') +
                                         programme.start.getHours().toString().padStart(2, '0')
@@ -560,7 +557,7 @@ object EPG: Window("epg") {
                     addToShowProgramme = Programme(
                             start = currentSettedLastTime,
                             stop = nextProgrammeStartTime,
-                            titles = MultiLanguageList(Programme.Title(title = "此時段無資訊"))
+                            title = MultiLanguageString(ArrayLinkList(LanguageString("","此時段無資訊")))
                     )
                 }
                 addProgrammeOnTimeLine(timeLine, channel, addToShowProgramme)
@@ -597,7 +594,7 @@ object EPG: Window("epg") {
             val id = "channel${channel.number}ProgrammeTimeLine"
             addProgrammeOnTimeLine((document.getElementById(id) as HTMLDivElement), channel,
                     Programme(start = fromDate, stop = toDate,
-                            titles = MultiLanguageList(Programme.Title(title = "暫無資訊"))//////////
+                            title = MultiLanguageString(ArrayLinkList(LanguageString("","暫無資訊")))//////////
                     )
             )
             loadProgrammeListTableContentChannelProgrammeTimeLine(channel)

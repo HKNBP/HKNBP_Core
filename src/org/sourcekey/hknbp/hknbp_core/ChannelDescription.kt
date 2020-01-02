@@ -36,7 +36,7 @@ object ChannelDescription: UserInterface("channelDescription") {
     private val currentProgrammeCategory        = document.getElementById("channelDescriptionCurrentProgrammeCategory") as HTMLDivElement
 
     private fun setCurrentChannelName(){
-        currentChannelName.innerHTML = channels.node?.name?: ""
+        currentChannelName.innerHTML = channels.node?.name.toString()
     }
 
     private fun setCurrentChannelNumber(){
@@ -54,14 +54,14 @@ object ChannelDescription: UserInterface("channelDescription") {
     private fun setCurrentProgrammeTitle(){
         currentProgrammeTitle.innerHTML = ""
         channels.node?.information?.getXMLTV(fun(xmltv){
-            currentProgrammeTitle.innerHTML = xmltv.programmes?.getProgrammeByTime()?.titles?.getElementsByLanguage(userLanguageList)?.getOrNull(0)?.title?: ""
+            currentProgrammeTitle.innerHTML = xmltv.programmes?.getProgrammeByTime()?.title?.toString()?:""
         })
     }
 
     private fun setCurrentProgrammeSubTitle(){
         currentProgrammeSubTitle.innerHTML = ""
         channels.node?.information?.getXMLTV(fun(xmltv){
-            currentProgrammeSubTitle.innerHTML = xmltv.programmes?.getProgrammeByTime()?.subTitles?.getElementsByLanguage(userLanguageList)?.getOrNull(0)?.subTitle?: ""
+            currentProgrammeSubTitle.innerHTML = xmltv.programmes?.getProgrammeByTime()?.subTitle?.toString()?:""
         })
     }
 
@@ -103,14 +103,14 @@ object ChannelDescription: UserInterface("channelDescription") {
     private fun setCurrentProgrammeDesc(){
         currentProgrammeDesc.innerHTML = ""
         channels.node?.information?.getXMLTV(fun(xmltv){
-            currentProgrammeDesc.innerHTML = xmltv.programmes?.getProgrammeByTime()?.descs?.getElementsByLanguage(userLanguageList)?.getOrNull(0)?.desc?: ""
+            currentProgrammeDesc.innerHTML = xmltv.programmes?.getProgrammeByTime()?.desc?.toString()?:""
         })
     }
 
     private fun setCurrentProgrammeCategory(){
         currentProgrammeCategory.innerHTML = ""
         channels.node?.information?.getXMLTV(fun(xmltv){
-            currentProgrammeCategory.innerHTML = xmltv.programmes?.getProgrammeByTime()?.categorys?.getElementsByLanguage(userLanguageList)?.getOrNull(0)?.category?: ""
+            currentProgrammeCategory.innerHTML = xmltv.programmes?.getProgrammeByTime()?.category?.toString()?:""
         })
     }
 

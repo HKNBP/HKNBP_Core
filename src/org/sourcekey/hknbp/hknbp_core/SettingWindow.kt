@@ -23,6 +23,18 @@ object SettingWindow: Window("settingWindow", firstFocusElementID = "settingWind
     private val settingWindow                   = document.getElementById("settingWindow") as HTMLDivElement
     private val hideButton                      = document.getElementById("settingWindowHideButton") as HTMLButtonElement
 
+    /********************************************/
+
+    private val customChannelsSettingOpenButton = document.getElementById("customChannelsSettingOpenButton") as HTMLButtonElement
+
+    fun initCustomChannelsSettingOpenButton(){
+        customChannelsSettingOpenButton.onclick = fun(event){
+            CustomChannelsSettingWindow.show()
+        }
+    }
+
+    /*******************************************
+
     private val languageSetHonJyutElegantSet    = document.getElementById("settingWindowLanguageSetHonJyutElegantSet") as HTMLButtonElement
     private val languageSetHonJyutColloquialSet = document.getElementById("settingWindowLanguageSetHonJyutColloquialSet") as HTMLButtonElement
     private val languageSetEnglishSet           = document.getElementById("settingWindowLanguageSetEnglishSet") as HTMLButtonElement
@@ -35,8 +47,8 @@ object SettingWindow: Window("settingWindow", firstFocusElementID = "settingWind
     private val languageMoveDownLanguage        = document.getElementById("settingWindowLanguageMoveDownLanguage") as HTMLButtonElement
     private val currentUserLanguage             = js("navigator.language || navigator.userLanguage;") as String
 
-    fun getLanguageSetting(): ArrayList<String?>{
-        val userLanguageList = ArrayList<String?>()
+    fun getLanguageSetting(): ArrayList<String>{
+        val userLanguageList = ArrayList<String>()
         for(index in 0 until languageSelectSequenceList.length){
             userLanguageList.add((languageSelectSequenceList.options.get(index) as HTMLOptionElement).text)
         }
@@ -165,8 +177,9 @@ object SettingWindow: Window("settingWindow", firstFocusElementID = "settingWind
         languageSelectSequenceList.innerHTML =
                 localStorage.getItem("RecentlyLanguageSelectSequence")?:
                         "<option value=\"${currentUserLanguage}\">${currentUserLanguage}</option>"
-    }
+    }*/
 
+    /********************************************/
 
     private val clearSettingButton = document.getElementById("clearSettingButton") as HTMLButtonElement
 
@@ -174,6 +187,7 @@ object SettingWindow: Window("settingWindow", firstFocusElementID = "settingWind
         clearSettingButton.onclick = fun(event){localStorage.clear();js("location.reload();")}
     }
 
+    /********************************************/
 
     private val devConsole = document.getElementById("devConsole") as HTMLDivElement
     private val devModeCheckbox = document.getElementById("DevModeCheckbox") as HTMLInputElement
@@ -201,11 +215,14 @@ object SettingWindow: Window("settingWindow", firstFocusElementID = "settingWind
         }
     }
 
+    /********************************************/
+
     init {
         settingWindow.style.cursor = "auto"
         hideButton.onclick = fun(event){ hide() }
 
-        initLangugeSetting()
+        initCustomChannelsSettingOpenButton()
+        //initLangugeSetting()
         initClearSetting()
         initDevModeCheckbox()
 

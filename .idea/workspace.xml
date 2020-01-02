@@ -2,10 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="439dc076-fa64-48ca-946e-6d20fa2781e4" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/CustomChannelsSettingWindow.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/DialogueBox.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HKNBP_Core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/HKNBP_Core.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/official_channels.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data/official_channels.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.meta.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.meta.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/lib/kotlin.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/lib/kotlin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/lib/kotlin.meta.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/lib/kotlin.meta.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/service-worker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ArrayLinkList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ArrayLinkList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/AudioDescription.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/AudioDescription.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Channel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Channel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ChannelDescription.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ChannelDescription.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/CustomChannel.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Dialogue.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Dialogue.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/EPG.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/EPG.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/OfficialChannel.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/SettingWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/SettingWindow.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/SubtitleDescription.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/SubtitleDescription.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserInterface.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VideoDescription.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VideoDescription.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VirtualRemote.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VirtualRemote.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Window.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Window.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/XMLTV.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/XMLTV.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,9 +62,10 @@
         <option value="Kotlin File" />
         <option value="JavaFXApplication" />
         <option value="Kotlin Script" />
-        <option value="Kotlin Object" />
         <option value="Gradle Kotlin DSL Build Script" />
         <option value="HTML File" />
+        <option value="Kotlin Interface" />
+        <option value="Kotlin Object" />
         <option value="Kotlin Class" />
       </list>
     </option>
@@ -80,6 +106,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -90,7 +117,7 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.ide.settings.web.browsers" />
+    <property name="settings.editor.selected.configurable" value="preferences.language.Kotlin" />
   </component>
   <component name="RecentsManager">
     <key name="OPEN_URL_DIALOG">
@@ -269,10 +296,34 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
-    <state x="1597" y="367" key="com.intellij.ide.util.TipDialog" timestamp="1575045853563">
+    <state x="1510" y="201" width="800" height="676" key="#Kotlin" timestamp="1576340059725">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="1597" y="367" key="com.intellij.ide.util.TipDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1575045853563" />
+    <state x="1510" y="201" width="800" height="676" key="#Kotlin/0.0.2560.1080@0.0.2560.1080" timestamp="1576340059725" />
+    <state x="1510" y="201" width="800" height="676" key="#Notifications" timestamp="1575468058644">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="1510" y="201" width="800" height="676" key="#Notifications/0.0.2560.1080@0.0.2560.1080" timestamp="1575468058644" />
+    <state x="1505" y="201" width="800" height="676" key="#Updates" timestamp="1576340076764">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="1505" y="201" width="800" height="676" key="#Updates/0.0.2560.1080@0.0.2560.1080" timestamp="1576340076764" />
+    <state x="1707" y="355" width="424" height="483" key="FileChooserDialogImpl" timestamp="1576340178737">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="1707" y="355" width="424" height="483" key="FileChooserDialogImpl/0.0.2560.1080@0.0.2560.1080" timestamp="1576340178737" />
+    <state x="1532" y="142" width="1024" height="844" key="SettingsEditor" timestamp="1576340259094">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="1532" y="142" width="1024" height="844" key="SettingsEditor/0.0.2560.1080@0.0.2560.1080" timestamp="1576340259094" />
+    <state x="1597" y="367" key="com.intellij.ide.util.TipDialog" timestamp="1577975331200">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="1597" y="367" key="com.intellij.ide.util.TipDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1577975331200" />
+    <state x="1579" y="247" key="run.anything.popup" timestamp="1576340208185">
+      <screen x="0" y="0" width="2560" height="1080" />
+    </state>
+    <state x="1579" y="247" key="run.anything.popup/0.0.2560.1080@0.0.2560.1080" timestamp="1576340208185" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -51,7 +51,7 @@ class Dialogue(
                     if(xmlHttp.responseText!==""){
                         val dialogues = ArrayLinkList(JSON.parse<Array<Dialogue>>(xmlHttp.responseText))
                         dialogues.addOnNodeEventListener(object: ArrayLinkList.OnNodeEventListener<Dialogue>{
-                            override fun OnNodeIDChanged(preChangeNodeID: Int?, postChangeNodeID: Int?, preChangeNode: Dialogue?, postChangeNode: Dialogue?) {
+                            override fun onNodeChanged(preChangeNodeID: Int?, postChangeNodeID: Int?, preChangeNode: Dialogue?, postChangeNode: Dialogue?) {
                                 localStorage.setItem("SelectedLanguage", postChangeNodeID.toString())//儲存低返最近睇過嘅頻道
                             }
                         })

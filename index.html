@@ -323,8 +323,6 @@
         你嘅瀏覽器唔支援iframe
     </iframe>
 </div>
-
-
 <div id="userInterface">
     <div id="devConsole" style="
             background-color: rgba(0,0,0,0);
@@ -678,35 +676,13 @@
                 "
         ><i class="icon-font">&#xe804;</i></button>
     </div>
-    <div id="videoDescription" style="
+    <div id="trackDescription" style="
            display: none;
            text-shadow: black 0em 0em 0.2em;
            position: absolute;
            top:5vh; right:5vh;
            z-index:40;
          ">
-        <div style="display:inline;"><i class="icon-font nestle-bottom">&#xe815;</i>&nbsp</div>
-        <div id="videoDescriptionText" style="float:right;"></div>
-    </div>
-    <div id="audioDescription" style="
-           display: none;
-           text-shadow: black 0em 0em 0.2em;
-           position: absolute;
-           top:5vh; right:5vh;
-           z-index:40;
-         ">
-        <div style="display:inline;"><i class="icon-font nestle-bottom">&#xe81c;</i>&nbsp</div>
-        <div id="audioDescriptionText" style="display:inline;"></div>
-    </div>
-    <div id="subtitleDescription" style="
-           display: none;
-           text-shadow: black 0em 0em 0.2em;
-           position: absolute;
-           top:5vh; right:5vh;
-           z-index:40;
-         ">
-        <div style="display:inline;"><i class="icon-font nestle-bottom">&#xe81d;</i>&nbsp</div>
-        <div id="subtitleDescriptionText" style="display:inline;"></div>
     </div>
     <div id="channelDescription" style="
               background: rgba(30, 30, 30, 0.9);
@@ -801,11 +777,11 @@
         <div style="position:absolute; top:6vh; left:0; right:0; height:41vh;">
             <div style="position:absolute; top:0vh; bottom:0vh; left:5vh; right:5vh;">
                 <div style="position:absolute; top:0vh; bottom:0vh; left:0; right:25vh; overflow:auto;">
-                    <div class="contentPenetrateX" style="display:flex; max-width:max-content; height:6vh;">
+                    <div class="contentPenetrateX" style="height:6vh;">
                         <div id="epgProgrammeInformationTitle" class="contentPenetrateX"
-                             style="flex:1; font-weight: bold;"></div>
+                             style="font-weight:bold;"></div>
                         <div id="epgProgrammeInformationSubTitle" class="contentPenetrateX"
-                             style="flex:1; "></div>
+                             style="color:#BBBBBB"></div>
                     </div>
                     <div style="color:#BBB; font-size:3vh; height:4vh; white-space:nowrap;">
                         <div id="epgProgrammeInformationLanguage"></div>
@@ -830,7 +806,7 @@
                 </div>
                 <div style="position:absolute; top:0vh; bottom:0vh; right:0; width:25vh; text-align:right;">
                     <div style="text-align:right;">
-                        <img id="epgProgrammeInformationIcon" style="width:20vh; height:30vh;" src="img/programmeNullIcon.png"/>
+                        <img id="epgProgrammeInformationIcon" style="width:20vh;height:30vh;background-color:rgba(255,255,255,0.1);" src="img/programmeNullIcon.png"/>
                     </div>
                     <div style="position:absolute; bottom:0vh; left:0; right:0;">
                         <div id="epgProgrammeInformationBroadcastDateSlot"
@@ -971,6 +947,58 @@
             </button>
         </div>
     </div>
+    <div id="customChannelsSettingWindow" class="absoluteCenter" style="
+        background:#303030;
+        display:none;
+        width:100vh;height:70vh;
+        z-index:91;
+    ">
+        <div style="position:absolute;top:0;bottom:0;left:0;right:0;padding:5vh;overflow:scroll;">
+            <div style="display:flex;">
+                <div style="flex:3;">
+                    <select id="customChannelsSettingChannelsSelect" size="7" style="font-size:5vh;width:100%;">
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                        <option value="opel">Opel</option>
+                        <option value="audi">Audi</option>
+                    </select>
+                    <div style="display:flex;">
+                        <div style="flex:1;">
+                            <button id="customChannelsSettingChannelsImportButton" style="font-size:5vh;margin:.2vh;">匯入</button>
+                        </div>
+                        <div style="flex:1;">
+                            <button id="customChannelsSettingChannelsExportButton" style="font-size:5vh;margin:.2vh;">匯出</button>
+                        </div>
+                    </div>
+                </div>
+                <div style="flex:1;">
+                    <button id="customChannelsSettingChannelAddButton" style="font-size:5vh;margin:.2vh;">
+                        <i class="icon-font">&#xe82e;</i>
+                    </button>
+                    <button id="customChannelsSettingChannelMoveUpButton" style="font-size:5vh;margin:.2vh;">
+                        <i class="icon-font">&#xe821;</i>
+                    </button>
+                    <button id="customChannelsSettingChannelMoveDownButton" style="font-size:5vh;margin:.2vh;">
+                        <i class="icon-font">&#xe80a;</i>
+                    </button>
+                    <button id="customChannelsSettingChannelRemoveButton" style="font-size:5vh;margin:.2vh;">
+                        <i class="icon-font">&#xe82f;</i>
+                    </button>
+                    <button id="customChannelsSettingChannelEditButton" style="font-size:5vh;margin:.2vh;">
+                        <i class="icon-font">&#xe810;</i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div style="position:absolute;top:0;left:0;">
+            <i class="icon-font">&#xe802;</i> 自訂頻道設定
+        </div>
+        <div style="position:absolute;top:0;right:0;">
+            <button id="customChannelsSettingWindowHideButton" style="color:#FFF;font-weight:bold;font-size:4vh;">
+                <i class="icon-font" style="font-size:6vh;">&#xe801;</i>
+            </button>
+        </div>
+    </div>
     <div id="shareWindow" class="absoluteCenter" style="
         background:#303030;
         display:none;
@@ -1032,11 +1060,19 @@
         z-index:90;
     ">
         <div style="position:absolute;top:0;bottom:0;left:0;right:0;padding:5vh;overflow:scroll;">
-            <div style="display:none;width:90vh;height:45vh;"><!--display:flex;-->
-                <div style="width:20vh;">
+            <div style="display:flex;margin-bottom:1vh;margin-up:1vh;">
+                <div style="flex:1">
+                    自訂頻道:
+                </div>
+                <div style="flex:4">
+                    <button id="customChannelsSettingOpenButton" style="font-size:4vh;width:13vh;">設置</button>
+                </div>
+            </div>
+            <div style="display:none;margin-bottom:1vh;margin-up:1vh;"><!--display:flex;-->
+                <div style="flex:2">
                     語言:
                 </div>
-                <div style="width:25vh;">
+                <div style="flex:2">
                     <button id="settingWindowLanguageSetHonJyutElegantSet" style="font-size:4vh;margin:1vh;width:23vh;">
                         漢文-粵語雅言
                     </button>
@@ -1050,45 +1086,43 @@
                         預設
                     </button>
                 </div>
-                <div style="display:flex;width:45vh;">
-                    <div style="width:30vh;">
-                        <input id="settingWindowLanguageSetLanguageISOCodeInput"
-                               style="font-size:6vh;width:28vh;margin:1vh;" type="text" placeholder="ISO Code">
-                        <select id="settingWindowLanguageSelectSequenceList" size="5"
-                                style="font-size:5vh;width:28vh;margin:1vh;">
-                        </select>
-                    </div>
-                    <div style="width:30vh;">
-                        <button id="settingWindowLanguageAddLanguage" style="font-size:6vh;margin:1vh;width:13vh;">
-                            <i class="icon-font">&#xe82e;</i>
-                        </button>
-                        <button id="settingWindowLanguageMoveUpLanguage" style="font-size:6vh;margin:1vh;width:13vh;">
-                            <i class="icon-font">&#xe821;</i>
-                        </button>
-                        <button id="settingWindowLanguageMoveDownLanguage" style="font-size:6vh;margin:1vh;width:13vh;">
-                            <i class="icon-font">&#xe80a;</i>
-                        </button>
-                        <button id="settingWindowLanguageRemoveLanguage" style="font-size:6vh;margin:1vh;width:13vh;">
-                            <i class="icon-font">&#xe82f;</i>
-                        </button>
-                    </div>
+                <div style="flex:3">
+                    <input id="settingWindowLanguageSetLanguageISOCodeInput"
+                           style="font-size:6vh;width:28vh;margin:1vh;" type="text" placeholder="ISO Code">
+                    <select id="settingWindowLanguageSelectSequenceList" size="5"
+                            style="font-size:5vh;width:28vh;margin:1vh;">
+                    </select>
+                </div>
+                <div style="flex:1">
+                    <button id="settingWindowLanguageAddLanguage" style="font-size:6vh;margin:1vh;width:100%;">
+                        <i class="icon-font">&#xe82e;</i>
+                    </button>
+                    <button id="settingWindowLanguageMoveUpLanguage" style="font-size:6vh;margin:1vh;width:100%;">
+                        <i class="icon-font">&#xe821;</i>
+                    </button>
+                    <button id="settingWindowLanguageMoveDownLanguage" style="font-size:6vh;margin:1vh;width:100%;">
+                        <i class="icon-font">&#xe80a;</i>
+                    </button>
+                    <button id="settingWindowLanguageRemoveLanguage" style="font-size:6vh;margin:1vh;width:100%;">
+                        <i class="icon-font">&#xe82f;</i>
+                    </button>
                 </div>
             </div>
-            <div style="display:flex;">
-                <div style="width:20vh;">
+            <div style="display:flex;margin-bottom:1vh;margin-up:1vh;">
+                <div style="flex:1">
                     設定移除:
                 </div>
-                <div style="width:15vh;">
-                    <button id="clearSettingButton" style="font-size:6vh;width:13vh;"><i
+                <div style="flex:4">
+                    <button id="clearSettingButton" style="font-size:5vh;width:13vh;"><i
                             class="icon-font">&#xe82b;</i></button>
                 </div>
             </div>
-            <div style="display:flex;">
-                <div style="width:20vh;">
+            <div style="display:flex;margin-bottom:1vh;margin-up:1vh;">
+                <div style="flex:1">
                     Dev模式:
                 </div>
-                <div style="width:15vh;">
-                        <input id="DevModeCheckbox" type="checkbox" style="width:3vh;height:3vh;">
+                <div style="flex:4">
+                        <input id="DevModeCheckbox" type="checkbox" style="width:6vh;height:6vh;">
                 </div>
             </div>
         </div>
@@ -1109,6 +1143,14 @@
             <button id="appDownloadWindowHideButton" style="color:#FFF;font-weight:bold;font-size:4vh;">
                 <i class="icon-font" style="font-size:6vh;">&#xe801;</i>
             </button>
+        </div>
+    </div>
+    <div id="dialogueBox" class="absoluteCenter" style="background:#303030;display:none;padding:5vh;z-index:100;">
+        <div id="dialogueBoxTitleDiv" style="text-align:left;"></div>
+        <div id="dialogueBoxDialogueDiv"></div>
+        <div style="display:flex;width:100%;">
+            <button id="dialogueBoxOkButton" style="flex:1;color:#FFF;font-weight:bold;font-size:4vh;">OK</button>
+            <button id="dialogueBoxCancelButton" style="flex:1;color:#FFF;font-weight:bold;font-size:4vh;">Cancel</button>
         </div>
     </div>
     <div id="watchingCounter" style="
@@ -1137,7 +1179,7 @@
 </noscript>
 
 <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=default%2Ces5%2Ces6"></script>
-<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<!--<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>-->
 <script src="service-worker.js"></script><!--此用作方便畀其他位置讀取service-worker.js內的值-->
 <script>
 //PWA, 註冊ServiceWorker
@@ -1164,7 +1206,8 @@ if ('serviceWorker' in navigator) {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.5/platform.min.js"></script>
 <!--<script src="https://cdn.rawgit.com/vincepare/iframeTracker-jquery/master/dist/jquery.iframetracker.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.iframetracker/1.1.0/jquery.iframetracker.min.js"></script>-->
 
-<script src="https://cdn.jsdelivr.net/npm/kotlin@1.3.41/kotlin.js"></script><!--<script src="out/production/HKNBP_Core/lib/kotlin.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/kotlin@1.3.61/kotlin.js"></script><!--<script src="out/production/HKNBP_Core/lib/kotlin.js"></script>-->
+<!--<script src="out/production/HKNBP_Core/lib/kotlinx-serialization-kotlinx-serialization-runtime.js"></script>-->
 <script src="out/production/HKNBP_Core/HKNBP_Core.js"></script>
 <script>var hknbpCore = HKNBP_Core.org.sourcekey.hknbp.hknbp_core;</script><!--畀其他地方方便Call-->
 

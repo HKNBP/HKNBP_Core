@@ -320,12 +320,12 @@ object VirtualRemote: UserInterface("virtualRemote"){
         }
         leftButton.onclick                  = fun(event){jQuery?.tabPrev()}
         rightButton.onclick                 = fun(event){jQuery?.tabNext()}
-        menuButton.onclick                  = fun(event){if(isShow){hide()}else{show()}}
+        menuButton.onclick                  = fun(event){if(isShow){hide()}else{show(60000)}}
         videoDescriptionButton.onclick      = fun(event){VideoDescription.show(5000)}
         audioDescriptionButton.onclick      = fun(event){AudioDescription.show(5000)}
         subtitleDescriptionButton.onclick   = fun(event){SubtitleDescription.show(5000)}
         volumeDescriptionButton.onclick     = fun(event){VolumeDescription.show(5000)}
-        returnButton.onclick                = fun(event){for(userInterface in allUserInterfaceList){userInterface.hide()}}
+        returnButton.onclick                = fun(event){hideAllUserInterface()}
 
         println("Init VirtualRemote")
     }

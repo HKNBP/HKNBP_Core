@@ -6,22 +6,25 @@ var HKNBP_Core = function (_, Kotlin) {
   var throwCCE = Kotlin.throwCCE;
   var println = Kotlin.kotlin.io.println_s8jyv4$;
   var Kind_OBJECT = Kotlin.Kind.OBJECT;
-  var getOrNull = Kotlin.kotlin.collections.getOrNull_yzln2o$;
   var Kind_INTERFACE = Kotlin.Kind.INTERFACE;
   var ArrayList = Kotlin.kotlin.collections.ArrayList;
+  var getOrNull = Kotlin.kotlin.collections.getOrNull_yzln2o$;
   var get_lastIndex = Kotlin.kotlin.collections.get_lastIndex_55thoc$;
   var ArrayList_init = Kotlin.kotlin.collections.ArrayList_init_287e2$;
   var Kind_CLASS = Kotlin.Kind.CLASS;
+  var toString = Kotlin.toString;
   var padStart = Kotlin.kotlin.text.padStart_vrc1nu$;
   var Unit = Kotlin.kotlin.Unit;
   var replace = Kotlin.kotlin.text.replace_680rmw$;
+  var toIntOrNull = Kotlin.kotlin.text.toIntOrNull_pdl1vz$;
   var toBoolean = Kotlin.kotlin.text.toBoolean_pdl1vz$;
-  var toString = Kotlin.toString;
+  var sortWith = Kotlin.kotlin.collections.sortWith_nqfjgj$;
+  var wrapFunction = Kotlin.wrapFunction;
+  var Comparator = Kotlin.kotlin.Comparator;
   var toInt = Kotlin.kotlin.text.toInt_pdl1vz$;
   var equals = Kotlin.equals;
   var numberToInt = Kotlin.numberToInt;
   var addClass = Kotlin.kotlin.dom.addClass_hhb33f$;
-  var toIntOrNull = Kotlin.kotlin.text.toIntOrNull_pdl1vz$;
   var Math_0 = Math;
   var toShort = Kotlin.toShort;
   var startsWith = Kotlin.kotlin.text.startsWith_7epoxm$;
@@ -29,17 +32,14 @@ var HKNBP_Core = function (_, Kotlin) {
   var ensureNotNull = Kotlin.ensureNotNull;
   var split_0 = Kotlin.kotlin.text.split_o64adg$;
   var Random = Kotlin.kotlin.random.Random;
-  var sortWith = Kotlin.kotlin.collections.sortWith_nqfjgj$;
-  var wrapFunction = Kotlin.wrapFunction;
-  var Comparator = Kotlin.kotlin.Comparator;
   var toDoubleOrNull = Kotlin.kotlin.text.toDoubleOrNull_pdl1vz$;
   var Enum = Kotlin.kotlin.Enum;
   var throwISE = Kotlin.throwISE;
   var getOrNull_0 = Kotlin.kotlin.text.getOrNull_94bcnn$;
   var last = Kotlin.kotlin.collections.last_2p1efm$;
+  var Regex_init = Kotlin.kotlin.text.Regex_init_61zpoe$;
   var ArrayList_init_0 = Kotlin.kotlin.collections.ArrayList_init_ww73n8$;
   var ArrayList_init_1 = Kotlin.kotlin.collections.ArrayList_init_mqih57$;
-  var Regex_init = Kotlin.kotlin.text.Regex_init_61zpoe$;
   var toDouble = Kotlin.kotlin.text.toDouble_pdl1vz$;
   var Exception = Kotlin.kotlin.Exception;
   Window.prototype = Object.create(UserInterface.prototype);
@@ -56,16 +56,28 @@ var HKNBP_Core = function (_, Kotlin) {
   ChannelDescription.prototype.constructor = ChannelDescription;
   ConsentPanel.prototype = Object.create(UserInterface.prototype);
   ConsentPanel.prototype.constructor = ConsentPanel;
-  EPG.prototype = Object.create(Window.prototype);
+  DialogueBox.prototype = Object.create(UserInterface.prototype);
+  DialogueBox.prototype.constructor = DialogueBox;
+  CustomChannelEditChannelDialogBox.prototype = Object.create(DialogueBox.prototype);
+  CustomChannelEditChannelDialogBox.prototype.constructor = CustomChannelEditChannelDialogBox;
+  CustomChannels.prototype = Object.create(ChannelsReader.prototype);
+  CustomChannels.prototype.constructor = CustomChannels;
+  CustomChannelsSettingWindow.prototype = Object.create(Window.prototype);
+  CustomChannelsSettingWindow.prototype.constructor = CustomChannelsSettingWindow;
+  EPG.prototype = Object.create(UserInterface.prototype);
   EPG.prototype.constructor = EPG;
   EnteringNumberBox.prototype = Object.create(UserInterface.prototype);
   EnteringNumberBox.prototype.constructor = EnteringNumberBox;
   FullScreenButton.prototype = Object.create(UserInterface.prototype);
   FullScreenButton.prototype.constructor = FullScreenButton;
+  MultiLanguageString.prototype = Object.create(ArrayLinkList.prototype);
+  MultiLanguageString.prototype.constructor = MultiLanguageString;
   MutedDescription.prototype = Object.create(UserInterface.prototype);
   MutedDescription.prototype.constructor = MutedDescription;
   NativeAppInstallButton.prototype = Object.create(UserInterface.prototype);
   NativeAppInstallButton.prototype.constructor = NativeAppInstallButton;
+  OfficialChannels.prototype = Object.create(ChannelsReader.prototype);
+  OfficialChannels.prototype.constructor = OfficialChannels;
   PictureInPictureButton.prototype = Object.create(UserInterface.prototype);
   PictureInPictureButton.prototype.constructor = PictureInPictureButton;
   Player$OnPlayerEvent.prototype = Object.create(Enum.prototype);
@@ -90,8 +102,6 @@ var HKNBP_Core = function (_, Kotlin) {
   VirtualRemote.prototype.constructor = VirtualRemote;
   VolumeDescription.prototype = Object.create(UserInterface.prototype);
   VolumeDescription.prototype.constructor = VolumeDescription;
-  XMLTV$MultiLanguage$MultiLanguageList.prototype = Object.create(ArrayList.prototype);
-  XMLTV$MultiLanguage$MultiLanguageList.prototype.constructor = XMLTV$MultiLanguage$MultiLanguageList;
   XMLTV$Programme$ProgrammeList.prototype = Object.create(ArrayList.prototype);
   XMLTV$Programme$ProgrammeList.prototype.constructor = XMLTV$Programme$ProgrammeList;
   function AboutWindow() {
@@ -159,10 +169,111 @@ var HKNBP_Core = function (_, Kotlin) {
     return AppDownloadWindow_instance;
   }
   function ArrayLinkList() {
+    this.onElementsChangeListeners_snldi6$_0 = ArrayList_init();
     this.node_ns7zwb$_0 = null;
     this.lastTimeNode_rxcek8$_0 = null;
     this.onNodeEventListeners_907qg9$_0 = ArrayList_init();
   }
+  function ArrayLinkList$OnElementsChangeListener() {
+  }
+  ArrayLinkList$OnElementsChangeListener.$metadata$ = {
+    kind: Kind_INTERFACE,
+    simpleName: 'OnElementsChangeListener',
+    interfaces: []
+  };
+  ArrayLinkList.prototype.addOnElementsChangeListener_9bqafr$ = function (onElementsChangeListener) {
+    this.onElementsChangeListeners_snldi6$_0.add_11rb$(onElementsChangeListener);
+  };
+  ArrayLinkList.prototype.add_11rb$ = function (element) {
+    var tmp$;
+    tmp$ = this.onElementsChangeListeners_snldi6$_0.iterator();
+    while (tmp$.hasNext()) {
+      var onElementsChangeListener = tmp$.next();
+      onElementsChangeListener.onElementsChange();
+    }
+    return ArrayList.prototype.add_11rb$.call(this, element);
+  };
+  ArrayLinkList.prototype.add_wxm5ur$ = function (index, element) {
+    var tmp$;
+    tmp$ = this.onElementsChangeListeners_snldi6$_0.iterator();
+    while (tmp$.hasNext()) {
+      var onElementsChangeListener = tmp$.next();
+      onElementsChangeListener.onElementsChange();
+    }
+    ArrayList.prototype.add_wxm5ur$.call(this, index, element);
+  };
+  ArrayLinkList.prototype.addAll_brywnq$ = function (elements) {
+    var tmp$;
+    tmp$ = this.onElementsChangeListeners_snldi6$_0.iterator();
+    while (tmp$.hasNext()) {
+      var onElementsChangeListener = tmp$.next();
+      onElementsChangeListener.onElementsChange();
+    }
+    return ArrayList.prototype.addAll_brywnq$.call(this, elements);
+  };
+  ArrayLinkList.prototype.addAll_u57x28$ = function (index, elements) {
+    var tmp$;
+    tmp$ = this.onElementsChangeListeners_snldi6$_0.iterator();
+    while (tmp$.hasNext()) {
+      var onElementsChangeListener = tmp$.next();
+      onElementsChangeListener.onElementsChange();
+    }
+    return ArrayList.prototype.addAll_u57x28$.call(this, index, elements);
+  };
+  ArrayLinkList.prototype.clear = function () {
+    var tmp$;
+    tmp$ = this.onElementsChangeListeners_snldi6$_0.iterator();
+    while (tmp$.hasNext()) {
+      var onElementsChangeListener = tmp$.next();
+      onElementsChangeListener.onElementsChange();
+    }
+    ArrayList.prototype.clear.call(this);
+  };
+  ArrayLinkList.prototype.remove_11rb$ = function (element) {
+    var tmp$;
+    tmp$ = this.onElementsChangeListeners_snldi6$_0.iterator();
+    while (tmp$.hasNext()) {
+      var onElementsChangeListener = tmp$.next();
+      onElementsChangeListener.onElementsChange();
+    }
+    return ArrayList.prototype.remove_11rb$.call(this, element);
+  };
+  ArrayLinkList.prototype.removeAll_brywnq$ = function (elements) {
+    var tmp$;
+    tmp$ = this.onElementsChangeListeners_snldi6$_0.iterator();
+    while (tmp$.hasNext()) {
+      var onElementsChangeListener = tmp$.next();
+      onElementsChangeListener.onElementsChange();
+    }
+    return ArrayList.prototype.removeAll_brywnq$.call(this, elements);
+  };
+  ArrayLinkList.prototype.removeAt_za3lpa$ = function (index) {
+    var tmp$;
+    tmp$ = this.onElementsChangeListeners_snldi6$_0.iterator();
+    while (tmp$.hasNext()) {
+      var onElementsChangeListener = tmp$.next();
+      onElementsChangeListener.onElementsChange();
+    }
+    return ArrayList.prototype.removeAt_za3lpa$.call(this, index);
+  };
+  ArrayLinkList.prototype.removeRange_vux9f0$ = function (fromIndex, toIndex) {
+    var tmp$;
+    tmp$ = this.onElementsChangeListeners_snldi6$_0.iterator();
+    while (tmp$.hasNext()) {
+      var onElementsChangeListener = tmp$.next();
+      onElementsChangeListener.onElementsChange();
+    }
+    ArrayList.prototype.removeRange_vux9f0$.call(this, fromIndex, toIndex);
+  };
+  ArrayLinkList.prototype.set_wxm5ur$ = function (index, element) {
+    var tmp$;
+    tmp$ = this.onElementsChangeListeners_snldi6$_0.iterator();
+    while (tmp$.hasNext()) {
+      var onElementsChangeListener = tmp$.next();
+      onElementsChangeListener.onElementsChange();
+    }
+    return ArrayList.prototype.set_wxm5ur$.call(this, index, element);
+  };
   Object.defineProperty(ArrayLinkList.prototype, 'node', {
     get: function () {
       if (this.indexOfOrNull_11rb$(this.node_ns7zwb$_0) == null) {
@@ -189,15 +300,13 @@ var HKNBP_Core = function (_, Kotlin) {
          else {
           tmp$_1 = null;
         }
-        onNodeEventListener.OnNodeIDChanged_t4rudg$(preChangeNodeID, tmp$_0, tmp$_1, this.node);
+        onNodeEventListener.onNodeChanged_t4rudg$(preChangeNodeID, tmp$_0, tmp$_1, this.node);
       }
     }
   });
   Object.defineProperty(ArrayLinkList.prototype, 'nodeID', {
     get: function () {
       return this.indexOfOrNull_11rb$(this.node);
-    },
-    set: function (value) {
     }
   });
   ArrayLinkList.prototype.saveLastTimeNode_8x70b$_0 = function () {
@@ -258,6 +367,17 @@ var HKNBP_Core = function (_, Kotlin) {
       return true;
     }
     return false;
+  };
+  ArrayLinkList.prototype.designated_11rb$ = function (node) {
+    var tmp$;
+    var index = this.indexOfOrNull_11rb$(node);
+    if (index != null) {
+      tmp$ = this.designated_za3lpa$(index);
+    }
+     else {
+      tmp$ = false;
+    }
+    return tmp$;
   };
   ArrayLinkList.prototype.lastTime = function () {
     var toNode = this.lastTimeNode_rxcek8$_0;
@@ -360,16 +480,17 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function AudioDescription() {
     AudioDescription_instance = this;
-    UserInterface.call(this, 'audioDescription');
-    var tmp$, tmp$_0;
-    this.audioDescription_0 = Kotlin.isType(tmp$ = document.getElementById('audioDescription'), HTMLDivElement) ? tmp$ : throwCCE();
-    this.text_0 = Kotlin.isType(tmp$_0 = document.getElementById('audioDescriptionText'), HTMLDivElement) ? tmp$_0 : throwCCE();
+    UserInterface.call(this, 'trackDescription');
+    var tmp$;
+    this.trackDescription_0 = Kotlin.isType(tmp$ = document.getElementById('trackDescription'), HTMLDivElement) ? tmp$ : throwCCE();
+    this.audioIconHTML_0 = '<i class="icon-font nestle-bottom" style="display:inline;">&#xe81c;<\/i>';
     println('Init AudioDescription');
   }
   AudioDescription.prototype.show = function () {
     var tmp$, tmp$_0, tmp$_1;
     UserInterface.prototype.show.call(this);
-    AudioDescription_getInstance().text_0.innerHTML = (tmp$_1 = (tmp$_0 = (tmp$ = player != null ? player.audioTracks : null) != null ? tmp$.node : null) != null ? tmp$_0.name : null) != null ? tmp$_1 : '';
+    var audioNameHTML = '<div style=' + '"' + 'display:inline;' + '"' + '>' + ((tmp$_1 = (tmp$_0 = (tmp$ = player != null ? player.audioTracks : null) != null ? tmp$.node : null) != null ? tmp$_0.name : null) != null ? tmp$_1 : '') + '<\/div>';
+    this.trackDescription_0.innerHTML = this.audioIconHTML_0 + '&nbsp' + audioNameHTML;
   };
   AudioDescription.$metadata$ = {
     kind: Kind_OBJECT,
@@ -471,12 +592,10 @@ var HKNBP_Core = function (_, Kotlin) {
     return CanAutoplay_instance;
   }
   function Channel(number, name, sources, information) {
-    if (number === void 0)
-      number = 0;
     if (name === void 0)
-      name = '';
+      name = new MultiLanguageString();
     if (sources === void 0)
-      sources = ArrayLinkList_init_0(0, [new Channel$Source()]);
+      sources = ArrayLinkList_init([]);
     if (information === void 0)
       information = new Channel$Information();
     this.number = number;
@@ -487,10 +606,6 @@ var HKNBP_Core = function (_, Kotlin) {
   function Channel$Source(description, iFramePlayerSrc, link) {
     if (description === void 0)
       description = '';
-    if (iFramePlayerSrc === void 0)
-      iFramePlayerSrc = '';
-    if (link === void 0)
-      link = '';
     this.description = description;
     this.iFramePlayerSrc = iFramePlayerSrc;
     this.link = link;
@@ -537,35 +652,6 @@ var HKNBP_Core = function (_, Kotlin) {
     simpleName: 'Channel',
     interfaces: []
   };
-  Channel.prototype.component1 = function () {
-    return this.number;
-  };
-  Channel.prototype.component2 = function () {
-    return this.name;
-  };
-  Channel.prototype.component3 = function () {
-    return this.sources;
-  };
-  Channel.prototype.component4 = function () {
-    return this.information;
-  };
-  Channel.prototype.copy_xi3hhe$ = function (number, name, sources, information) {
-    return new Channel(number === void 0 ? this.number : number, name === void 0 ? this.name : name, sources === void 0 ? this.sources : sources, information === void 0 ? this.information : information);
-  };
-  Channel.prototype.toString = function () {
-    return 'Channel(number=' + Kotlin.toString(this.number) + (', name=' + Kotlin.toString(this.name)) + (', sources=' + Kotlin.toString(this.sources)) + (', information=' + Kotlin.toString(this.information)) + ')';
-  };
-  Channel.prototype.hashCode = function () {
-    var result = 0;
-    result = result * 31 + Kotlin.hashCode(this.number) | 0;
-    result = result * 31 + Kotlin.hashCode(this.name) | 0;
-    result = result * 31 + Kotlin.hashCode(this.sources) | 0;
-    result = result * 31 + Kotlin.hashCode(this.information) | 0;
-    return result;
-  };
-  Channel.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.number, other.number) && Kotlin.equals(this.name, other.name) && Kotlin.equals(this.sources, other.sources) && Kotlin.equals(this.information, other.information)))));
-  };
   function ChannelDescription() {
     ChannelDescription_instance = this;
     UserInterface.call(this, 'channelDescription');
@@ -585,8 +671,8 @@ var HKNBP_Core = function (_, Kotlin) {
     println('Init ChannelDescription');
   }
   ChannelDescription.prototype.setCurrentChannelName_0 = function () {
-    var tmp$, tmp$_0;
-    this.currentChannelName_0.innerHTML = (tmp$_0 = (tmp$ = channels.node) != null ? tmp$.name : null) != null ? tmp$_0 : '';
+    var tmp$;
+    this.currentChannelName_0.innerHTML = toString((tmp$ = channels.node) != null ? tmp$.name : null);
   };
   ChannelDescription.prototype.setCurrentChannelNumber_0 = function () {
     var tmp$, tmp$_0;
@@ -604,8 +690,8 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function ChannelDescription$setCurrentProgrammeTitle$lambda(this$ChannelDescription) {
     return function (xmltv) {
-      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
-      this$ChannelDescription.currentProgrammeTitle_0.innerHTML = (tmp$_4 = (tmp$_3 = (tmp$_2 = (tmp$_1 = (tmp$_0 = (tmp$ = xmltv.programmes) != null ? tmp$.getProgrammeByTime() : null) != null ? tmp$_0.titles : null) != null ? tmp$_1.getElementsByLanguage_qj8e4y$(userLanguageList) : null) != null ? getOrNull(tmp$_2, 0) : null) != null ? tmp$_3.title : null) != null ? tmp$_4 : '';
+      var tmp$, tmp$_0, tmp$_1, tmp$_2;
+      this$ChannelDescription.currentProgrammeTitle_0.innerHTML = (tmp$_2 = (tmp$_1 = (tmp$_0 = (tmp$ = xmltv.programmes) != null ? tmp$.getProgrammeByTime() : null) != null ? tmp$_0.title : null) != null ? tmp$_1.toString() : null) != null ? tmp$_2 : '';
     };
   }
   ChannelDescription.prototype.setCurrentProgrammeTitle_0 = function () {
@@ -615,8 +701,8 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function ChannelDescription$setCurrentProgrammeSubTitle$lambda(this$ChannelDescription) {
     return function (xmltv) {
-      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
-      this$ChannelDescription.currentProgrammeSubTitle_0.innerHTML = (tmp$_4 = (tmp$_3 = (tmp$_2 = (tmp$_1 = (tmp$_0 = (tmp$ = xmltv.programmes) != null ? tmp$.getProgrammeByTime() : null) != null ? tmp$_0.subTitles : null) != null ? tmp$_1.getElementsByLanguage_qj8e4y$(userLanguageList) : null) != null ? getOrNull(tmp$_2, 0) : null) != null ? tmp$_3.subTitle : null) != null ? tmp$_4 : '';
+      var tmp$, tmp$_0, tmp$_1, tmp$_2;
+      this$ChannelDescription.currentProgrammeSubTitle_0.innerHTML = (tmp$_2 = (tmp$_1 = (tmp$_0 = (tmp$ = xmltv.programmes) != null ? tmp$.getProgrammeByTime() : null) != null ? tmp$_0.subTitle : null) != null ? tmp$_1.toString() : null) != null ? tmp$_2 : '';
     };
   }
   ChannelDescription.prototype.setCurrentProgrammeSubTitle_0 = function () {
@@ -670,8 +756,8 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function ChannelDescription$setCurrentProgrammeDesc$lambda(this$ChannelDescription) {
     return function (xmltv) {
-      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
-      this$ChannelDescription.currentProgrammeDesc_0.innerHTML = (tmp$_4 = (tmp$_3 = (tmp$_2 = (tmp$_1 = (tmp$_0 = (tmp$ = xmltv.programmes) != null ? tmp$.getProgrammeByTime() : null) != null ? tmp$_0.descs : null) != null ? tmp$_1.getElementsByLanguage_qj8e4y$(userLanguageList) : null) != null ? getOrNull(tmp$_2, 0) : null) != null ? tmp$_3.desc : null) != null ? tmp$_4 : '';
+      var tmp$, tmp$_0, tmp$_1, tmp$_2;
+      this$ChannelDescription.currentProgrammeDesc_0.innerHTML = (tmp$_2 = (tmp$_1 = (tmp$_0 = (tmp$ = xmltv.programmes) != null ? tmp$.getProgrammeByTime() : null) != null ? tmp$_0.desc : null) != null ? tmp$_1.toString() : null) != null ? tmp$_2 : '';
     };
   }
   ChannelDescription.prototype.setCurrentProgrammeDesc_0 = function () {
@@ -681,8 +767,8 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function ChannelDescription$setCurrentProgrammeCategory$lambda(this$ChannelDescription) {
     return function (xmltv) {
-      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
-      this$ChannelDescription.currentProgrammeCategory_0.innerHTML = (tmp$_4 = (tmp$_3 = (tmp$_2 = (tmp$_1 = (tmp$_0 = (tmp$ = xmltv.programmes) != null ? tmp$.getProgrammeByTime() : null) != null ? tmp$_0.categorys : null) != null ? tmp$_1.getElementsByLanguage_qj8e4y$(userLanguageList) : null) != null ? getOrNull(tmp$_2, 0) : null) != null ? tmp$_3.category : null) != null ? tmp$_4 : '';
+      var tmp$, tmp$_0, tmp$_1, tmp$_2;
+      this$ChannelDescription.currentProgrammeCategory_0.innerHTML = (tmp$_2 = (tmp$_1 = (tmp$_0 = (tmp$ = xmltv.programmes) != null ? tmp$.getProgrammeByTime() : null) != null ? tmp$_0.category : null) != null ? tmp$_1.toString() : null) != null ? tmp$_2 : '';
     };
   }
   ChannelDescription.prototype.setCurrentProgrammeCategory_0 = function () {
@@ -712,6 +798,76 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return ChannelDescription_instance;
   }
+  function ChannelsReader() {
+  }
+  ChannelsReader.prototype.getName_ejp6n4$ = function (element) {
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3;
+    var multiLangName = new MultiLanguageString();
+    var i = 0;
+    var nameTag = element != null ? element.getElementsByTagName('name') : null;
+    while (i < ((tmp$ = nameTag != null ? nameTag.length : null) != null ? tmp$ : 0)) {
+      var lang = (tmp$_1 = (tmp$_0 = nameTag != null ? nameTag[i] : null) != null ? tmp$_0.getAttribute('lang') : null) != null ? tmp$_1 : '';
+      var name = (tmp$_3 = (tmp$_2 = nameTag != null ? nameTag[i] : null) != null ? tmp$_2.innerHTML : null) != null ? tmp$_3 : '';
+      multiLangName.add_11rb$(new MultiLanguageString$LanguageString(lang, name));
+      i = i + 1 | 0;
+    }
+    return multiLangName;
+  };
+  ChannelsReader.prototype.getSources_ejp6n4$ = function (element) {
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5;
+    var sources = ArrayLinkList_init([]);
+    var i = 0;
+    var sourceTag = element != null ? element.getElementsByTagName('source') : null;
+    while (i < ((tmp$ = sourceTag != null ? sourceTag.length : null) != null ? tmp$ : 0)) {
+      var description = (tmp$_1 = (tmp$_0 = sourceTag != null ? sourceTag[i] : null) != null ? tmp$_0.getAttribute('description') : null) != null ? tmp$_1 : '';
+      var iframeplayersrc = (tmp$_3 = (tmp$_2 = sourceTag != null ? sourceTag[i] : null) != null ? tmp$_2.getAttribute('iframeplayersrc') : null) != null ? tmp$_3 : '';
+      var link = (tmp$_5 = (tmp$_4 = sourceTag != null ? sourceTag[i] : null) != null ? tmp$_4.getAttribute('link') : null) != null ? tmp$_5 : '';
+      sources.add_11rb$(new Channel$Source(description, iframeplayersrc, link));
+      i = i + 1 | 0;
+    }
+    return sources;
+  };
+  ChannelsReader.prototype.getInformation_ejp6n4$ = function (element) {
+    var tmp$, tmp$_0, tmp$_1, tmp$_2;
+    var informationTag = element != null ? element.getElementsByTagName('information') : null;
+    return new Channel$Information((tmp$_0 = (tmp$ = informationTag != null ? informationTag[0] : null) != null ? tmp$.getAttribute('epgid') : null) != null ? tmp$_0 : '', (tmp$_2 = (tmp$_1 = informationTag != null ? informationTag[0] : null) != null ? tmp$_1.getAttribute('src') : null) != null ? tmp$_2 : '');
+  };
+  ChannelsReader.prototype.getChannels_4wc2m1$ = function (document) {
+    var tmp$, tmp$_0, tmp$_1, tmp$_2;
+    var channels = ArrayLinkList_init([]);
+    var i = 0;
+    var channelTag = document != null ? document.getElementsByTagName('channel') : null;
+    while (i < ((tmp$ = channelTag != null ? channelTag.length : null) != null ? tmp$ : 0)) {
+      var number = (tmp$_2 = (tmp$_1 = (tmp$_0 = channelTag != null ? channelTag[i] : null) != null ? tmp$_0.getAttribute('number') : null) != null ? toIntOrNull(tmp$_1) : null) != null ? tmp$_2 : 0;
+      var name = this.getName_ejp6n4$(channelTag != null ? channelTag[i] : null);
+      var sources = this.getSources_ejp6n4$(channelTag != null ? channelTag[i] : null);
+      var information = this.getInformation_ejp6n4$(channelTag != null ? channelTag[i] : null);
+      channels.add_11rb$(new Channel(number, name, sources, information));
+      i = i + 1 | 0;
+    }
+    return channels;
+  };
+  function ChannelsReader$parseChannels$lambda(closure$onParsedChannelsListener, this$ChannelsReader) {
+    return function (xmlHttp) {
+      closure$onParsedChannelsListener(this$ChannelsReader.getChannels_4wc2m1$(xmlHttp.responseXML));
+    };
+  }
+  function ChannelsReader$parseChannels$lambda_0(closure$onFailedParseChannelsListener) {
+    return function () {
+      closure$onFailedParseChannelsListener();
+    };
+  }
+  ChannelsReader.prototype.parseChannels_d7jqb7$ = function (onParsedChannelsListener, onFailedParseChannelsListener, xmlSrc) {
+    LoadFile_getInstance().load_y8xsdy$(ChannelsReader$parseChannels$lambda(onParsedChannelsListener, this), ChannelsReader$parseChannels$lambda_0(onFailedParseChannelsListener), xmlSrc);
+  };
+  ChannelsReader.prototype.parseChannels_61zpoe$ = function (xmlString) {
+    return this.getChannels_4wc2m1$((new DOMParser()).parseFromString(xmlString, 'text/xml'));
+  };
+  ChannelsReader.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'ChannelsReader',
+    interfaces: []
+  };
   function ConsentPanel() {
     ConsentPanel_instance = this;
     UserInterface.call(this, 'consentPanel', 'consentPanelAgreeConsentButton', false, void 0, true);
@@ -755,28 +911,484 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return ConsentPanel_instance;
   }
-  function CustomChannel() {
-    CustomChannel_instance = this;
-    println('Init CustomChannel');
+  function CustomChannelEditChannelDialogBox() {
+    DialogueBox.call(this, '\u65B0\u589E\u81EA\u8A02\u983B\u9053', '\n        <div style="display:flex;">\n            <div style="text-align:left;font-size:3vh;">\n                <input id="customChannelsSettingChannelNumberInputNumber" type="number" placeholder="\u983B\u9053\u865F\u78BC" style="font-size:3vh;margin:.2vh;width:25vh;" min="-999" max="-1">\n                <input id="customChannelsSettingChannelNameInputText" type="Text" placeholder="\u983B\u9053\u540D\u7A31" style="font-size:3vh;margin:.2vh;">\n                <input id="customChannelsSettingChannelSourceLinkInputText" type="Text" placeholder="\u983B\u9053\u6E90\u9023\u7D50" style="font-size:3vh;margin:.2vh;">\n                <form style="margin:.5vh;">\n                    \u983B\u9053\u6E90\u64AD\u653E\u5668<br>\n                    <input id="customChannelsSettingChannelSourceIframelayerSrcVideoJsHlsInputRadio" type="radio" name="IframelayerSrc" style="width:3vh;height:3vh;" checked>HLS<br>\n                    <input id="customChannelsSettingChannelSourceIframelayerSrcVideoJsDashInputRadio" type="radio" name="IframelayerSrc" style="width:3vh;height:3vh;">DASH<br>\n                    <input id="customChannelsSettingChannelSourceIframelayerSrcYoutubeApiInputRadio" type="radio" name="IframelayerSrc" style="width:3vh;height:3vh;">YoutubeAPI<br>\n                    <input id="customChannelsSettingChannelSourceIframelayerSrcOtherInputRadio" type="radio" name="IframelayerSrc" style="width:3vh;height:3vh;">\n                    <input id="customChannelsSettingChannelSourceIframelayerSrcOtherInputText" type="Text" placeholder="\u5176\u4ED6\u6E90\u64AD\u653E\u5668\u9023\u7D50" style="font-size:3vh;width:25vh;"><br>\n                <\/form>\n                <input id="customChannelsSettingChannelInformationEpgIdInputText" type="Text" placeholder="EPG ID" style="font-size:3vh;margin:.2vh;">\n                <input id="customChannelsSettingChannelInformationSrcInputText" type="Text" placeholder="EPG Src" style="font-size:3vh;margin:.2vh;">\n            <\/div>\n        <\/div>\n        <div>\n            <textarea id="customChannelsSettingChannelXmlString" rows="5" style="font-size:1vh;width:100%;white-space:nowrap;"><\/textarea>\n        <\/div>\n        ');
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9;
+    this.channelNumberInputNumber_0 = Kotlin.isType(tmp$ = document.getElementById('customChannelsSettingChannelNumberInputNumber'), HTMLInputElement) ? tmp$ : throwCCE();
+    this.channelNameInputText_0 = Kotlin.isType(tmp$_0 = document.getElementById('customChannelsSettingChannelNameInputText'), HTMLInputElement) ? tmp$_0 : throwCCE();
+    this.channelSourceLinkInputText_0 = Kotlin.isType(tmp$_1 = document.getElementById('customChannelsSettingChannelSourceLinkInputText'), HTMLInputElement) ? tmp$_1 : throwCCE();
+    this.channelSourceIframelayerSrcVideoJsHlsInputRadio_0 = Kotlin.isType(tmp$_2 = document.getElementById('customChannelsSettingChannelSourceIframelayerSrcVideoJsHlsInputRadio'), HTMLInputElement) ? tmp$_2 : throwCCE();
+    this.channelSourceIframelayerSrcVideoJsDashInputRadio_0 = Kotlin.isType(tmp$_3 = document.getElementById('customChannelsSettingChannelSourceIframelayerSrcVideoJsDashInputRadio'), HTMLInputElement) ? tmp$_3 : throwCCE();
+    this.channelSourceIframelayerSrcYoutubeApiInputRadio_0 = Kotlin.isType(tmp$_4 = document.getElementById('customChannelsSettingChannelSourceIframelayerSrcYoutubeApiInputRadio'), HTMLInputElement) ? tmp$_4 : throwCCE();
+    this.channelSourceIframelayerSrcOtherInputRadio_0 = Kotlin.isType(tmp$_5 = document.getElementById('customChannelsSettingChannelSourceIframelayerSrcOtherInputRadio'), HTMLInputElement) ? tmp$_5 : throwCCE();
+    this.channelSourceIframelayerSrcOtherInputText_0 = Kotlin.isType(tmp$_6 = document.getElementById('customChannelsSettingChannelSourceIframelayerSrcOtherInputText'), HTMLInputElement) ? tmp$_6 : throwCCE();
+    this.channelInformationEpgIdInputText_0 = Kotlin.isType(tmp$_7 = document.getElementById('customChannelsSettingChannelInformationEpgIdInputText'), HTMLInputElement) ? tmp$_7 : throwCCE();
+    this.channelInformationSrcInputText_0 = Kotlin.isType(tmp$_8 = document.getElementById('customChannelsSettingChannelInformationSrcInputText'), HTMLInputElement) ? tmp$_8 : throwCCE();
+    this.channelXmlString_0 = Kotlin.isType(tmp$_9 = document.getElementById('customChannelsSettingChannelXmlString'), HTMLTextAreaElement) ? tmp$_9 : throwCCE();
+    this.okButton.onclick = CustomChannelEditChannelDialogBox_init$lambda(this);
+    this.initChannelNumberInputNumber_0();
+    this.initChannelNameInputText_0();
+    this.initChannelSourceLinkInputText_0();
+    this.initChannelSourceIframelayerSrcInputRadio_0();
+    this.initChannelInformationEpgIdInputText_0();
+    this.initChannelInformationSrcInputText_0();
+    this.initChannelXmlString_0();
   }
-  CustomChannel.prototype.getCustomChannels = function () {
-    var customChannelsString = localStorage.getItem('customChannels');
-    if (customChannelsString != null) {
-      return JSON.parse(customChannelsString);
+  function CustomChannelEditChannelDialogBox$getEditChannelDialogBoxInformation$lambda(number) {
+    if (-1 < number) {
+      return -number | 0;
+    }
+    return number;
+  }
+  function CustomChannelEditChannelDialogBox$getEditChannelDialogBoxInformation$lambda_0(this$CustomChannelEditChannelDialogBox) {
+    return function () {
+      var tmp$;
+      if (true === this$CustomChannelEditChannelDialogBox.channelSourceIframelayerSrcVideoJsHlsInputRadio_0.checked)
+        tmp$ = 'iframePlayer/videojs_hls.html';
+      else if (true === this$CustomChannelEditChannelDialogBox.channelSourceIframelayerSrcVideoJsDashInputRadio_0.checked)
+        tmp$ = 'iframePlayer/videojs_dash.html';
+      else if (true === this$CustomChannelEditChannelDialogBox.channelSourceIframelayerSrcYoutubeApiInputRadio_0.checked)
+        tmp$ = 'iframePlayer/youtube_api.html';
+      else if (true === this$CustomChannelEditChannelDialogBox.channelSourceIframelayerSrcOtherInputRadio_0.checked) {
+        println(this$CustomChannelEditChannelDialogBox.channelSourceIframelayerSrcOtherInputText_0.value);
+        tmp$ = this$CustomChannelEditChannelDialogBox.channelSourceIframelayerSrcOtherInputText_0.value;
+      }
+       else {
+        tmp$ = '';
+      }
+      return tmp$;
+    };
+  }
+  CustomChannelEditChannelDialogBox.prototype.getEditChannelDialogBoxInformation_0 = function () {
+    var tmp$;
+    var mustNegativeNumber = CustomChannelEditChannelDialogBox$getEditChannelDialogBoxInformation$lambda;
+    var getIframelayerSrc = CustomChannelEditChannelDialogBox$getEditChannelDialogBoxInformation$lambda_0(this);
+    return new Channel(mustNegativeNumber((tmp$ = toIntOrNull(this.channelNumberInputNumber_0.value)) != null ? tmp$ : -1), new MultiLanguageString(ArrayLinkList_init([new MultiLanguageString$LanguageString('', this.channelNameInputText_0.value)])), ArrayLinkList_init([new Channel$Source(getIframelayerSrc(), getIframelayerSrc(), this.channelSourceLinkInputText_0.value)]), new Channel$Information(this.channelInformationEpgIdInputText_0.value, this.channelInformationSrcInputText_0.value));
+  };
+  CustomChannelEditChannelDialogBox.prototype.setChannelXmlString_0 = function () {
+    println(CustomChannels_getInstance().setChannelToXMLString_e3jjlp$(this.getEditChannelDialogBoxInformation_0()));
+    this.channelXmlString_0.value = CustomChannels_getInstance().setChannelToXMLString_e3jjlp$(this.getEditChannelDialogBoxInformation_0());
+  };
+  function CustomChannelEditChannelDialogBox$initChannelNumberInputNumber$lambda(this$CustomChannelEditChannelDialogBox) {
+    return function (event) {
+      this$CustomChannelEditChannelDialogBox.setChannelXmlString_0();
+    };
+  }
+  function CustomChannelEditChannelDialogBox$initChannelNumberInputNumber$lambda_0(this$CustomChannelEditChannelDialogBox) {
+    return function (event) {
+      this$CustomChannelEditChannelDialogBox.setChannelXmlString_0();
+    };
+  }
+  function CustomChannelEditChannelDialogBox$initChannelNumberInputNumber$lambda_1(this$CustomChannelEditChannelDialogBox) {
+    return function (event) {
+      this$CustomChannelEditChannelDialogBox.setChannelXmlString_0();
+    };
+  }
+  CustomChannelEditChannelDialogBox.prototype.initChannelNumberInputNumber_0 = function () {
+    this.channelNumberInputNumber_0.onclick = CustomChannelEditChannelDialogBox$initChannelNumberInputNumber$lambda(this);
+    this.channelNumberInputNumber_0.onchange = CustomChannelEditChannelDialogBox$initChannelNumberInputNumber$lambda_0(this);
+    this.channelNumberInputNumber_0.onkeyup = CustomChannelEditChannelDialogBox$initChannelNumberInputNumber$lambda_1(this);
+  };
+  function CustomChannelEditChannelDialogBox$initChannelNameInputText$lambda(this$CustomChannelEditChannelDialogBox) {
+    return function (event) {
+      this$CustomChannelEditChannelDialogBox.setChannelXmlString_0();
+    };
+  }
+  CustomChannelEditChannelDialogBox.prototype.initChannelNameInputText_0 = function () {
+    this.channelNameInputText_0.onkeyup = CustomChannelEditChannelDialogBox$initChannelNameInputText$lambda(this);
+  };
+  function CustomChannelEditChannelDialogBox$initChannelSourceLinkInputText$lambda(this$CustomChannelEditChannelDialogBox) {
+    return function (event) {
+      this$CustomChannelEditChannelDialogBox.setChannelXmlString_0();
+    };
+  }
+  CustomChannelEditChannelDialogBox.prototype.initChannelSourceLinkInputText_0 = function () {
+    this.channelSourceLinkInputText_0.onkeyup = CustomChannelEditChannelDialogBox$initChannelSourceLinkInputText$lambda(this);
+  };
+  function CustomChannelEditChannelDialogBox$initChannelSourceIframelayerSrcInputRadio$lambda(this$CustomChannelEditChannelDialogBox) {
+    return function (event) {
+      this$CustomChannelEditChannelDialogBox.setChannelXmlString_0();
+    };
+  }
+  function CustomChannelEditChannelDialogBox$initChannelSourceIframelayerSrcInputRadio$lambda_0(this$CustomChannelEditChannelDialogBox) {
+    return function (event) {
+      this$CustomChannelEditChannelDialogBox.setChannelXmlString_0();
+    };
+  }
+  function CustomChannelEditChannelDialogBox$initChannelSourceIframelayerSrcInputRadio$lambda_1(this$CustomChannelEditChannelDialogBox) {
+    return function (event) {
+      this$CustomChannelEditChannelDialogBox.setChannelXmlString_0();
+    };
+  }
+  function CustomChannelEditChannelDialogBox$initChannelSourceIframelayerSrcInputRadio$lambda_2(this$CustomChannelEditChannelDialogBox) {
+    return function (event) {
+      this$CustomChannelEditChannelDialogBox.setChannelXmlString_0();
+    };
+  }
+  function CustomChannelEditChannelDialogBox$initChannelSourceIframelayerSrcInputRadio$lambda_3(this$CustomChannelEditChannelDialogBox) {
+    return function (event) {
+      this$CustomChannelEditChannelDialogBox.setChannelXmlString_0();
+    };
+  }
+  CustomChannelEditChannelDialogBox.prototype.initChannelSourceIframelayerSrcInputRadio_0 = function () {
+    this.channelSourceIframelayerSrcVideoJsHlsInputRadio_0.onchange = CustomChannelEditChannelDialogBox$initChannelSourceIframelayerSrcInputRadio$lambda(this);
+    this.channelSourceIframelayerSrcVideoJsDashInputRadio_0.onchange = CustomChannelEditChannelDialogBox$initChannelSourceIframelayerSrcInputRadio$lambda_0(this);
+    this.channelSourceIframelayerSrcYoutubeApiInputRadio_0.onchange = CustomChannelEditChannelDialogBox$initChannelSourceIframelayerSrcInputRadio$lambda_1(this);
+    this.channelSourceIframelayerSrcOtherInputRadio_0.onchange = CustomChannelEditChannelDialogBox$initChannelSourceIframelayerSrcInputRadio$lambda_2(this);
+    this.channelSourceIframelayerSrcOtherInputText_0.onkeyup = CustomChannelEditChannelDialogBox$initChannelSourceIframelayerSrcInputRadio$lambda_3(this);
+  };
+  function CustomChannelEditChannelDialogBox$initChannelInformationEpgIdInputText$lambda(this$CustomChannelEditChannelDialogBox) {
+    return function (event) {
+      this$CustomChannelEditChannelDialogBox.setChannelXmlString_0();
+    };
+  }
+  CustomChannelEditChannelDialogBox.prototype.initChannelInformationEpgIdInputText_0 = function () {
+    this.channelInformationEpgIdInputText_0.onkeyup = CustomChannelEditChannelDialogBox$initChannelInformationEpgIdInputText$lambda(this);
+  };
+  function CustomChannelEditChannelDialogBox$initChannelInformationSrcInputText$lambda(this$CustomChannelEditChannelDialogBox) {
+    return function (event) {
+      this$CustomChannelEditChannelDialogBox.setChannelXmlString_0();
+    };
+  }
+  CustomChannelEditChannelDialogBox.prototype.initChannelInformationSrcInputText_0 = function () {
+    this.channelInformationSrcInputText_0.onkeyup = CustomChannelEditChannelDialogBox$initChannelInformationSrcInputText$lambda(this);
+  };
+  function CustomChannelEditChannelDialogBox$initChannelXmlString$lambda(this$CustomChannelEditChannelDialogBox) {
+    return function (event) {
+      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6;
+      var channel = getOrNull(CustomChannels_getInstance().parseChannels_61zpoe$(this$CustomChannelEditChannelDialogBox.channelXmlString_0.value), 0);
+      this$CustomChannelEditChannelDialogBox.channelNumberInputNumber_0.value = toString(channel != null ? channel.number : null);
+      this$CustomChannelEditChannelDialogBox.channelNameInputText_0.value = toString(channel != null ? channel.name : null);
+      this$CustomChannelEditChannelDialogBox.channelSourceLinkInputText_0.value = toString((tmp$_0 = (tmp$ = channel != null ? channel.sources : null) != null ? tmp$.node : null) != null ? tmp$_0.link : null);
+      switch ((tmp$_2 = (tmp$_1 = channel != null ? channel.sources : null) != null ? tmp$_1.node : null) != null ? tmp$_2.iFramePlayerSrc : null) {
+        case 'iframePlayer/videojs_hls.html':
+          this$CustomChannelEditChannelDialogBox.channelSourceIframelayerSrcVideoJsHlsInputRadio_0.checked = true;
+          break;
+        case 'iframePlayer/videojs_dash.html':
+          this$CustomChannelEditChannelDialogBox.channelSourceIframelayerSrcVideoJsDashInputRadio_0.checked = true;
+          break;
+        case 'iframePlayer/youtube_api.html':
+          this$CustomChannelEditChannelDialogBox.channelSourceIframelayerSrcYoutubeApiInputRadio_0.checked = true;
+          break;
+        default:this$CustomChannelEditChannelDialogBox.channelSourceIframelayerSrcOtherInputRadio_0.checked = true;
+          this$CustomChannelEditChannelDialogBox.channelSourceIframelayerSrcOtherInputText_0.value = toString((tmp$_4 = (tmp$_3 = channel != null ? channel.sources : null) != null ? tmp$_3.node : null) != null ? tmp$_4.iFramePlayerSrc : null);
+          break;
+      }
+      this$CustomChannelEditChannelDialogBox.channelInformationEpgIdInputText_0.value = toString((tmp$_5 = channel != null ? channel.information : null) != null ? tmp$_5.epgID : null);
+      this$CustomChannelEditChannelDialogBox.channelInformationSrcInputText_0.value = toString((tmp$_6 = channel != null ? channel.information : null) != null ? tmp$_6.src : null);
+    };
+  }
+  CustomChannelEditChannelDialogBox.prototype.initChannelXmlString_0 = function () {
+    this.channelXmlString_0.onkeyup = CustomChannelEditChannelDialogBox$initChannelXmlString$lambda(this);
+  };
+  function CustomChannelEditChannelDialogBox_init$lambda(this$CustomChannelEditChannelDialogBox) {
+    return function (event) {
+      CustomChannels_getInstance().setCustomChannels_a1yrdc$(ArrayLinkList_init([this$CustomChannelEditChannelDialogBox.getEditChannelDialogBoxInformation_0()]));
+    };
+  }
+  CustomChannelEditChannelDialogBox.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'CustomChannelEditChannelDialogBox',
+    interfaces: [DialogueBox]
+  };
+  function Comparator$ObjectLiteral(closure$comparison) {
+    this.closure$comparison = closure$comparison;
+  }
+  Comparator$ObjectLiteral.prototype.compare = function (a, b) {
+    return this.closure$comparison(a, b);
+  };
+  Comparator$ObjectLiteral.$metadata$ = {kind: Kind_CLASS, interfaces: [Comparator]};
+  var compareBy$lambda = wrapFunction(function () {
+    var compareValues = Kotlin.kotlin.comparisons.compareValues_s00gnj$;
+    return function (closure$selector) {
+      return function (a, b) {
+        var selector = closure$selector;
+        return compareValues(selector(a), selector(b));
+      };
+    };
+  });
+  function CustomChannels() {
+    CustomChannels_instance = this;
+    ChannelsReader.call(this);
+    println('Init CustomChannels');
+  }
+  CustomChannels.prototype.setSourceToXMLString_0 = function (source) {
+    return '<source description=' + '"' + source.description + '"' + ' iframeplayersrc=' + '"' + source.iFramePlayerSrc + '"' + ' link=' + '"' + source.link + '"' + '/>';
+  };
+  CustomChannels.prototype.setSourcesToXMLString_0 = function (sources) {
+    var tmp$;
+    var sourcesString = '';
+    tmp$ = sources.iterator();
+    while (tmp$.hasNext()) {
+      var source = tmp$.next();
+      sourcesString += this.setSourceToXMLString_0(source);
+    }
+    return sourcesString;
+  };
+  CustomChannels.prototype.setChannelToXMLString_e3jjlp$ = function (channel) {
+    return '<channel number=' + '"' + channel.number + '"' + '>' + '\n' + '    <name lang=' + '"' + '"' + '>' + channel.name + '<\/name>' + '\n' + '    ' + this.setSourcesToXMLString_0(channel.sources) + '\n' + '    <information epgid=' + '"' + channel.information.epgID + '"' + ' src=' + '"' + channel.information.src + '"' + '/>' + '\n' + '<\/channel>';
+  };
+  CustomChannels.prototype.setChannelsToXMLString_a1yrdc$ = function (customChannels) {
+    var tmp$;
+    var channelsString = '';
+    tmp$ = customChannels.iterator();
+    while (tmp$.hasNext()) {
+      var channel = tmp$.next();
+      channelsString += this.setChannelToXMLString_e3jjlp$(channel);
+    }
+    return channelsString;
+  };
+  CustomChannels.prototype.getCustomChannels = function () {
+    var tmp$;
+    return this.parseChannels_61zpoe$((tmp$ = localStorage.getItem('customChannels')) != null ? tmp$ : '');
+  };
+  function CustomChannels$setCustomChannels$lambda(channel) {
+    return channel.number;
+  }
+  CustomChannels.prototype.setCustomChannels_a1yrdc$ = function (customChannels) {
+    var tmp$;
+    var currentCustomChannels = this.getCustomChannels();
+    tmp$ = customChannels.iterator();
+    while (tmp$.hasNext()) {
+      var channel = tmp$.next();
+      currentCustomChannels.add_11rb$(channel);
+    }
+    if (currentCustomChannels.size > 1) {
+      sortWith(currentCustomChannels, new Comparator$ObjectLiteral(compareBy$lambda(CustomChannels$setCustomChannels$lambda)));
+    }
+    localStorage.setItem('customChannels', this.setChannelsToXMLString_a1yrdc$(currentCustomChannels));
+    updateChannels();
+  };
+  CustomChannels.prototype.setCustomChannels_61zpoe$ = function (customChannelsXMLString) {
+    this.setCustomChannels_a1yrdc$(this.parseChannels_61zpoe$(customChannelsXMLString));
+  };
+  function CustomChannels$setCustomChannel$lambda(channel) {
+    return channel.number;
+  }
+  CustomChannels.prototype.setCustomChannel_e3jjlp$ = function (customChannel) {
+    var currentCustomChannels = this.getCustomChannels();
+    var firstOrNull$result;
+    firstOrNull$break: do {
+      var tmp$;
+      tmp$ = currentCustomChannels.iterator();
+      while (tmp$.hasNext()) {
+        var element = tmp$.next();
+        if (element.number === customChannel.number) {
+          firstOrNull$result = element;
+          break firstOrNull$break;
+        }
+      }
+      firstOrNull$result = null;
+    }
+     while (false);
+    var isNumberHaveChannel = firstOrNull$result != null;
+    if (!isNumberHaveChannel) {
+      currentCustomChannels.add_11rb$(customChannel);
+    }
+     else {
+      return false;
+    }
+    if (currentCustomChannels.size > 1) {
+      sortWith(currentCustomChannels, new Comparator$ObjectLiteral(compareBy$lambda(CustomChannels$setCustomChannel$lambda)));
+    }
+    localStorage.setItem('customChannels', this.setChannelsToXMLString_a1yrdc$(currentCustomChannels));
+    updateChannels();
+    return true;
+  };
+  CustomChannels.prototype.addCustomChannel_e3jjlp$ = function (customChannel) {
+    return this.setCustomChannel_e3jjlp$(customChannel);
+  };
+  CustomChannels.prototype.removeCustomChannel_e3jjlp$ = function (customChannel) {
+    var currentCustomChannels = this.getCustomChannels();
+    currentCustomChannels.remove_11rb$(customChannel);
+    localStorage.setItem('customChannels', this.setChannelsToXMLString_a1yrdc$(currentCustomChannels));
+    updateChannels();
+  };
+  CustomChannels.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'CustomChannels',
+    interfaces: [ChannelsReader]
+  };
+  var CustomChannels_instance = null;
+  function CustomChannels_getInstance() {
+    if (CustomChannels_instance === null) {
+      new CustomChannels();
+    }
+    return CustomChannels_instance;
+  }
+  function CustomChannelsSettingWindow() {
+    CustomChannelsSettingWindow_instance = this;
+    Window.call(this, 'customChannelsSettingWindow', 'customChannelsSettingWindowHideButton');
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7;
+    this.hideButton_0 = Kotlin.isType(tmp$ = document.getElementById('customChannelsSettingWindowHideButton'), HTMLButtonElement) ? tmp$ : throwCCE();
+    this.channelsSelect_0 = Kotlin.isType(tmp$_0 = document.getElementById('customChannelsSettingChannelsSelect'), HTMLSelectElement) ? tmp$_0 : throwCCE();
+    this.channelAddButton_0 = Kotlin.isType(tmp$_1 = document.getElementById('customChannelsSettingChannelAddButton'), HTMLInputElement) ? tmp$_1 : throwCCE();
+    this.channelRemoveButton_0 = Kotlin.isType(tmp$_2 = document.getElementById('customChannelsSettingChannelRemoveButton'), HTMLInputElement) ? tmp$_2 : throwCCE();
+    this.channelMoveUpButton_0 = Kotlin.isType(tmp$_3 = document.getElementById('customChannelsSettingChannelMoveUpButton'), HTMLInputElement) ? tmp$_3 : throwCCE();
+    this.channelMoveDownButton_0 = Kotlin.isType(tmp$_4 = document.getElementById('customChannelsSettingChannelMoveDownButton'), HTMLInputElement) ? tmp$_4 : throwCCE();
+    this.channelEditButton_0 = Kotlin.isType(tmp$_5 = document.getElementById('customChannelsSettingChannelEditButton'), HTMLInputElement) ? tmp$_5 : throwCCE();
+    this.channelsImportButton_0 = Kotlin.isType(tmp$_6 = document.getElementById('customChannelsSettingChannelImportButton'), HTMLInputElement) ? tmp$_6 : throwCCE();
+    this.channelsExportButton_0 = Kotlin.isType(tmp$_7 = document.getElementById('customChannelsSettingChannelExportButton'), HTMLInputElement) ? tmp$_7 : throwCCE();
+    this.initChannelsSelect_1();
+    this.hideButton_0.onclick = CustomChannelsSettingWindow_init$lambda(this);
+    this.channelAddButton_0.onclick = CustomChannelsSettingWindow_init$lambda_0(this);
+    this.channelRemoveButton_0.onclick = CustomChannelsSettingWindow_init$lambda_1(this);
+    this.channelMoveUpButton_0.onclick = CustomChannelsSettingWindow_init$lambda_2(this);
+    this.channelMoveDownButton_0.onclick = CustomChannelsSettingWindow_init$lambda_3(this);
+  }
+  CustomChannelsSettingWindow.prototype.createChannelOption_0 = function (channel) {
+    var tmp$;
+    var option = Kotlin.isType(tmp$ = document.createElement('option'), HTMLOptionElement) ? tmp$ : throwCCE();
+    option.text = padStart(channel.number.toString(), 3, 48) + ' ' + channel.name;
+    option.value = channel.number.toString();
+    return option;
+  };
+  CustomChannelsSettingWindow.prototype.initChannelsSelect_0 = function (channels) {
+    var tmp$;
+    this.channelsSelect_0.innerHTML = '';
+    tmp$ = channels.iterator();
+    while (tmp$.hasNext()) {
+      var channel = tmp$.next();
+      this.channelsSelect_0.append(this.createChannelOption_0(channel));
+    }
+  };
+  CustomChannelsSettingWindow.prototype.initChannelsSelect_1 = function () {
+    this.initChannelsSelect_0(CustomChannels_getInstance().getCustomChannels());
+  };
+  CustomChannelsSettingWindow.prototype.getChannelFromChannelNumber_0 = function (channelNumber) {
+    var tmp$;
+    var customChannels = CustomChannels_getInstance().getCustomChannels();
+    tmp$ = customChannels.iterator();
+    while (tmp$.hasNext()) {
+      var channel = tmp$.next();
+      if (channel.number === channelNumber) {
+        return channel;
+      }
     }
     return null;
   };
-  CustomChannel.$metadata$ = {
-    kind: Kind_OBJECT,
-    simpleName: 'CustomChannel',
-    interfaces: []
-  };
-  var CustomChannel_instance = null;
-  function CustomChannel_getInstance() {
-    if (CustomChannel_instance === null) {
-      new CustomChannel();
+  CustomChannelsSettingWindow.prototype.changeChannelNumber_0 = function (currentNumber, changeToNumber) {
+    var channel = this.getChannelFromChannelNumber_0(currentNumber);
+    if (channel != null) {
+      CustomChannels_getInstance().setCustomChannel_e3jjlp$(new Channel(changeToNumber, channel.name, channel.sources, channel.information));
     }
-    return CustomChannel_instance;
+  };
+  CustomChannelsSettingWindow.prototype.optionSortBy_0 = function (by) {
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
+    var options = this.channelsSelect_0.options;
+    tmp$ = options.length - 1 | 0;
+    for (var i = 0; i < tmp$; i++) {
+      tmp$_0 = options.length;
+      for (var j = i + 1 | 0; j < tmp$_0; j++) {
+        var optionI = Kotlin.isType(tmp$_2 = (tmp$_1 = options[i]) != null ? tmp$_1 : document.createElement('option'), HTMLOptionElement) ? tmp$_2 : throwCCE();
+        var optionJ = Kotlin.isType(tmp$_4 = (tmp$_3 = options[j]) != null ? tmp$_3 : document.createElement('option'), HTMLOptionElement) ? tmp$_4 : throwCCE();
+        if (by(optionI) < by(optionJ)) {
+          this.channelsSelect_0[i] = optionJ;
+          this.channelsSelect_0[j] = optionI;
+        }
+      }
+    }
+  };
+  function CustomChannelsSettingWindow$sortChannelsSelect$lambda(option) {
+    var tmp$;
+    return (tmp$ = toIntOrNull(option.value)) != null ? tmp$ : 0;
+  }
+  CustomChannelsSettingWindow.prototype.sortChannelsSelect_0 = function () {
+    this.optionSortBy_0(CustomChannelsSettingWindow$sortChannelsSelect$lambda);
+  };
+  CustomChannelsSettingWindow.prototype.saveChannelsSelect_0 = function () {
+  };
+  function CustomChannelsSettingWindow_init$lambda(this$CustomChannelsSettingWindow) {
+    return function (event) {
+      this$CustomChannelsSettingWindow.hide();
+    };
+  }
+  function CustomChannelsSettingWindow_init$lambda_0(this$CustomChannelsSettingWindow) {
+    return function (event) {
+      new CustomChannelEditChannelDialogBox();
+      this$CustomChannelsSettingWindow.initChannelsSelect_1();
+    };
+  }
+  function CustomChannelsSettingWindow_init$lambda_1(this$CustomChannelsSettingWindow) {
+    return function (event) {
+      var tmp$, tmp$_0;
+      var options = this$CustomChannelsSettingWindow.channelsSelect_0.selectedOptions;
+      tmp$ = options.length;
+      for (var i = 0; i < tmp$; i++) {
+        var channelNumber = toIntOrNull((Kotlin.isType(tmp$_0 = options[i], HTMLOptionElement) ? tmp$_0 : throwCCE()).value);
+        if (channelNumber != null) {
+          var channel = this$CustomChannelsSettingWindow.getChannelFromChannelNumber_0(channelNumber);
+          if (channel != null) {
+            CustomChannels_getInstance().removeCustomChannel_e3jjlp$(channel);
+          }
+        }
+      }
+      this$CustomChannelsSettingWindow.channelsSelect_0.remove(this$CustomChannelsSettingWindow.channelsSelect_0.selectedIndex);
+    };
+  }
+  function CustomChannelsSettingWindow_init$lambda_2(this$CustomChannelsSettingWindow) {
+    return function (event) {
+      var tmp$, tmp$_0, tmp$_1;
+      if (0 < this$CustomChannelsSettingWindow.channelsSelect_0.selectedIndex) {
+        var optionAIndex = this$CustomChannelsSettingWindow.channelsSelect_0.selectedIndex;
+        var optionBIndex = this$CustomChannelsSettingWindow.channelsSelect_0.selectedIndex - 1 | 0;
+        var options = ArrayList_init();
+        tmp$ = this$CustomChannelsSettingWindow.channelsSelect_0.length;
+        for (var index = 0; index < tmp$; index++) {
+          options.add_11rb$(Kotlin.isType(tmp$_0 = this$CustomChannelsSettingWindow.channelsSelect_0.options[index], HTMLOptionElement) ? tmp$_0 : throwCCE());
+        }
+        var optionA = options.get_za3lpa$(optionAIndex);
+        var optionB = options.get_za3lpa$(optionBIndex);
+        options.set_wxm5ur$(optionAIndex, optionB);
+        options.set_wxm5ur$(optionBIndex, optionA);
+        this$CustomChannelsSettingWindow.channelsSelect_0.innerHTML = '';
+        tmp$_1 = options.size;
+        for (var index_0 = 0; index_0 < tmp$_1; index_0++) {
+          var option = getOrNull(options, index_0);
+          if (option != null) {
+            this$CustomChannelsSettingWindow.channelsSelect_0.append(option);
+          }
+        }
+      }
+    };
+  }
+  function CustomChannelsSettingWindow_init$lambda_3(this$CustomChannelsSettingWindow) {
+    return function (event) {
+      var tmp$, tmp$_0, tmp$_1;
+      if (this$CustomChannelsSettingWindow.channelsSelect_0.selectedIndex < this$CustomChannelsSettingWindow.channelsSelect_0.length) {
+        var optionAIndex = this$CustomChannelsSettingWindow.channelsSelect_0.selectedIndex;
+        var optionBIndex = this$CustomChannelsSettingWindow.channelsSelect_0.selectedIndex + 1 | 0;
+        var options = ArrayList_init();
+        tmp$ = this$CustomChannelsSettingWindow.channelsSelect_0.length;
+        for (var index = 0; index < tmp$; index++) {
+          options.add_11rb$(Kotlin.isType(tmp$_0 = this$CustomChannelsSettingWindow.channelsSelect_0.options[index], HTMLOptionElement) ? tmp$_0 : throwCCE());
+        }
+        var optionA = options.get_za3lpa$(optionAIndex);
+        var optionB = options.get_za3lpa$(optionBIndex);
+        options.set_wxm5ur$(optionAIndex, optionB);
+        options.set_wxm5ur$(optionBIndex, optionA);
+        this$CustomChannelsSettingWindow.channelsSelect_0.innerHTML = '';
+        tmp$_1 = options.size;
+        for (var index_0 = 0; index_0 < tmp$_1; index_0++) {
+          var option = getOrNull(options, index_0);
+          if (option != null) {
+            this$CustomChannelsSettingWindow.channelsSelect_0.append(option);
+          }
+        }
+      }
+    };
+  }
+  CustomChannelsSettingWindow.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'CustomChannelsSettingWindow',
+    interfaces: [Window]
+  };
+  var CustomChannelsSettingWindow_instance = null;
+  function CustomChannelsSettingWindow_getInstance() {
+    if (CustomChannelsSettingWindow_instance === null) {
+      new CustomChannelsSettingWindow();
+    }
+    return CustomChannelsSettingWindow_instance;
   }
   function Dialogue(language, agree, programmeSeason, programmeTotalSeason, programmeEpisode, programmeTotalEpisode, programmePart, programmeTotalPart, canNotFind, canNotReadData) {
     Dialogue$Companion_getInstance();
@@ -830,7 +1442,7 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function Dialogue$Companion$getDialogues$lambda$ObjectLiteral() {
   }
-  Dialogue$Companion$getDialogues$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
+  Dialogue$Companion$getDialogues$lambda$ObjectLiteral.prototype.onNodeChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
     localStorage.setItem('SelectedLanguage', toString(postChangeNodeID));
   };
   Dialogue$Companion$getDialogues$lambda$ObjectLiteral.$metadata$ = {
@@ -877,9 +1489,59 @@ var HKNBP_Core = function (_, Kotlin) {
     simpleName: 'Dialogue',
     interfaces: []
   };
+  function DialogueBox(title, dialogueHTML, okButtonString, okButtonScript, cancelButtonString, cancelButtonScript) {
+    if (title === void 0)
+      title = '';
+    if (okButtonString === void 0)
+      okButtonString = 'OK';
+    if (okButtonScript === void 0)
+      okButtonScript = null;
+    if (cancelButtonString === void 0)
+      cancelButtonString = 'Cancel';
+    if (cancelButtonScript === void 0)
+      cancelButtonScript = null;
+    UserInterface.call(this, 'dialogueBox', void 0, void 0, void 0, void 0, void 0, null);
+    this.title = title;
+    this.dialogueHTML = dialogueHTML;
+    this.okButtonString = okButtonString;
+    this.okButtonScript = okButtonScript;
+    this.cancelButtonString = cancelButtonString;
+    this.cancelButtonScript = cancelButtonScript;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2;
+    this.titleDiv = Kotlin.isType(tmp$ = document.getElementById('dialogueBoxTitleDiv'), HTMLDivElement) ? tmp$ : throwCCE();
+    this.dialogueDiv = Kotlin.isType(tmp$_0 = document.getElementById('dialogueBoxDialogueDiv'), HTMLDivElement) ? tmp$_0 : throwCCE();
+    this.okButton = Kotlin.isType(tmp$_1 = document.getElementById('dialogueBoxOkButton'), HTMLButtonElement) ? tmp$_1 : throwCCE();
+    this.cancelButton = Kotlin.isType(tmp$_2 = document.getElementById('dialogueBoxCancelButton'), HTMLButtonElement) ? tmp$_2 : throwCCE();
+    this.titleDiv.innerHTML = this.title;
+    this.dialogueDiv.innerHTML = this.dialogueHTML;
+    this.okButton.innerHTML = this.okButtonString;
+    this.okButton.onclick = DialogueBox_init$lambda(this);
+    this.cancelButton.innerHTML = this.cancelButtonString;
+    this.cancelButton.onclick = DialogueBox_init$lambda_0(this);
+    this.show();
+  }
+  function DialogueBox_init$lambda(this$DialogueBox) {
+    return function (event) {
+      var tmp$;
+      (tmp$ = this$DialogueBox.okButtonScript) != null ? tmp$() : null;
+      this$DialogueBox.hide();
+    };
+  }
+  function DialogueBox_init$lambda_0(this$DialogueBox) {
+    return function (event) {
+      var tmp$;
+      (tmp$ = this$DialogueBox.cancelButtonScript) != null ? tmp$() : null;
+      this$DialogueBox.hide();
+    };
+  }
+  DialogueBox.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'DialogueBox',
+    interfaces: [UserInterface]
+  };
   function EPG() {
     EPG_instance = this;
-    Window.call(this, 'epg');
+    UserInterface.call(this, 'epg');
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22;
     this.epg_0 = Kotlin.isType(tmp$ = document.getElementById('epg'), HTMLElement) ? tmp$ : throwCCE();
     this.displayCurrentDateBox_0 = Kotlin.isType(tmp$_0 = document.getElementById('epgDisplayCurrentDateBox'), HTMLElement) ? tmp$_0 : throwCCE();
@@ -924,22 +1586,21 @@ var HKNBP_Core = function (_, Kotlin) {
     this.updateDisplayCurrentDateBoxTimer_0 = window.setInterval(script, 1000);
   };
   EPG.prototype.setProgrammeInformationTitle_0 = function (programme) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2;
-    this.programmeInformationTitle_0.innerHTML = (tmp$_2 = (tmp$_1 = (tmp$_0 = (tmp$ = programme.titles) != null ? tmp$.getElementsByLanguage_qj8e4y$(userLanguageList) : null) != null ? getOrNull(tmp$_0, 0) : null) != null ? tmp$_1.title : null) != null ? tmp$_2 : '';
+    var tmp$, tmp$_0;
+    this.programmeInformationTitle_0.innerHTML = (tmp$_0 = (tmp$ = programme.title) != null ? tmp$.toString() : null) != null ? tmp$_0 : '';
   };
   EPG.prototype.setProgrammeInformationSubTitle_0 = function (programme) {
-    var tmp$, tmp$_0, tmp$_1;
-    var string = (tmp$_1 = (tmp$_0 = (tmp$ = programme.subTitles) != null ? tmp$.getElementsByLanguage_qj8e4y$(userLanguageList) : null) != null ? getOrNull(tmp$_0, 0) : null) != null ? tmp$_1.subTitle : null;
+    var string = programme.subTitle;
     if (string != null) {
-      this.programmeInformationSubTitle_0.innerHTML = ' : ' + string;
+      this.programmeInformationSubTitle_0.innerHTML = ' : ' + toString(string);
     }
      else {
       this.programmeInformationSubTitle_0.innerHTML = '';
     }
   };
   EPG.prototype.setProgrammeInformationDesc_0 = function (programme) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2;
-    this.programmeInformationDesc_0.innerHTML = (tmp$_2 = (tmp$_1 = (tmp$_0 = (tmp$ = programme.descs) != null ? tmp$.getElementsByLanguage_qj8e4y$(userLanguageList) : null) != null ? getOrNull(tmp$_0, 0) : null) != null ? tmp$_1.desc : null) != null ? tmp$_2 : '';
+    var tmp$, tmp$_0;
+    this.programmeInformationDesc_0.innerHTML = (tmp$_0 = (tmp$ = programme.desc) != null ? tmp$.toString() : null) != null ? tmp$_0 : '';
   };
   EPG.prototype.setProgrammeInformationCredit_0 = function (programme) {
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22, tmp$_23, tmp$_24, tmp$_25, tmp$_26, tmp$_27, tmp$_28, tmp$_29, tmp$_30, tmp$_31, tmp$_32, tmp$_33, tmp$_34, tmp$_35, tmp$_36, tmp$_37, tmp$_38, tmp$_39, tmp$_40, tmp$_41, tmp$_42, tmp$_43, tmp$_44, tmp$_45, tmp$_46, tmp$_47, tmp$_48, tmp$_49, tmp$_50, tmp$_51, tmp$_52, tmp$_53, tmp$_54, tmp$_55, tmp$_56, tmp$_57, tmp$_58, tmp$_59, tmp$_60, tmp$_61, tmp$_62, tmp$_63, tmp$_64, tmp$_65, tmp$_66, tmp$_67, tmp$_68, tmp$_69, tmp$_70, tmp$_71, tmp$_72, tmp$_73, tmp$_74, tmp$_75, tmp$_76, tmp$_77, tmp$_78, tmp$_79, tmp$_80, tmp$_81, tmp$_82, tmp$_83, tmp$_84, tmp$_85, tmp$_86, tmp$_87, tmp$_88, tmp$_89, tmp$_90, tmp$_91, tmp$_92, tmp$_93, tmp$_94, tmp$_95, tmp$_96, tmp$_97, tmp$_98, tmp$_99, tmp$_100, tmp$_101, tmp$_102, tmp$_103, tmp$_104, tmp$_105, tmp$_106, tmp$_107, tmp$_108, tmp$_109, tmp$_110, tmp$_111, tmp$_112, tmp$_113, tmp$_114, tmp$_115, tmp$_116, tmp$_117, tmp$_118, tmp$_119, tmp$_120, tmp$_121, tmp$_122, tmp$_123, tmp$_124, tmp$_125, tmp$_126, tmp$_127, tmp$_128, tmp$_129, tmp$_130, tmp$_131;
@@ -1096,53 +1757,47 @@ var HKNBP_Core = function (_, Kotlin) {
     }
   };
   EPG.prototype.setProgrammeInformationCategory_0 = function (programme) {
-    var tmp$, tmp$_0, tmp$_1;
     this.programmeInformationCategory_0.innerHTML = '';
-    var category = (tmp$_1 = (tmp$_0 = (tmp$ = programme.categorys) != null ? tmp$.getElementsByLanguage_qj8e4y$(userLanguageList) : null) != null ? getOrNull(tmp$_0, 0) : null) != null ? tmp$_1.category : null;
+    var category = programme.category;
     if (category != null) {
-      this.programmeInformationCategory_0.innerHTML = '\u7247\u985E: ' + category;
+      this.programmeInformationCategory_0.innerHTML = '\u7247\u985E: ' + toString(category);
     }
   };
   EPG.prototype.setProgrammeInformationKeyword_0 = function (programme) {
     var tmp$, tmp$_0;
     this.programmeInformationKeyword_0.innerHTML = '';
-    var keywordList = (tmp$ = programme.keywords) != null ? tmp$.getElementsByLanguage_qj8e4y$(userLanguageList) : null;
+    var keywordList = (tmp$ = programme.keyword) != null ? tmp$.getAllStringByLanguage() : null;
     if (keywordList != null) {
       this.programmeInformationKeyword_0.innerHTML = this.programmeInformationKeyword_0.innerHTML + '\u95DC\u9375\u8A5E: ';
       tmp$_0 = keywordList.iterator();
       while (tmp$_0.hasNext()) {
         var keyword = tmp$_0.next();
-        if (keyword.keyword != null) {
-          this.programmeInformationKeyword_0.innerHTML = this.programmeInformationKeyword_0.innerHTML + (keyword.keyword + ' ');
-        }
+        this.programmeInformationKeyword_0.innerHTML = this.programmeInformationKeyword_0.innerHTML + keyword;
       }
     }
   };
   EPG.prototype.setProgrammeInformationLanguage_0 = function (programme) {
     var tmp$, tmp$_0;
     this.programmeInformationLanguage_0.innerHTML = '';
-    var languageList = (tmp$ = programme.languages) != null ? tmp$.getElementsByLanguage_qj8e4y$(userLanguageList) : null;
+    var languageList = (tmp$ = programme.language) != null ? tmp$.getAllStringByLanguage() : null;
     if (languageList != null) {
       this.programmeInformationLanguage_0.innerHTML = this.programmeInformationLanguage_0.innerHTML + '[';
       tmp$_0 = languageList.iterator();
       while (tmp$_0.hasNext()) {
         var language = tmp$_0.next();
-        if (language.language != null) {
-          if (this.programmeInformationLanguage_0.innerHTML !== '[') {
-            this.programmeInformationLanguage_0.innerHTML = this.programmeInformationLanguage_0.innerHTML + '/';
-          }
-          this.programmeInformationLanguage_0.innerHTML = this.programmeInformationLanguage_0.innerHTML + language.language;
+        if (this.programmeInformationLanguage_0.innerHTML !== '[') {
+          this.programmeInformationLanguage_0.innerHTML = this.programmeInformationLanguage_0.innerHTML + '/';
         }
+        this.programmeInformationLanguage_0.innerHTML = this.programmeInformationLanguage_0.innerHTML + language;
       }
       this.programmeInformationLanguage_0.innerHTML = this.programmeInformationLanguage_0.innerHTML + ']';
     }
   };
   EPG.prototype.setProgrammeInformationOrigLanguage_0 = function (programme) {
-    var tmp$, tmp$_0, tmp$_1;
     this.programmeInformationOrigLanguage_0.innerHTML = '';
-    var origLanguage = (tmp$_1 = (tmp$_0 = (tmp$ = programme.origLanguages) != null ? tmp$.getElementsByLanguage_qj8e4y$(userLanguageList) : null) != null ? getOrNull(tmp$_0, 0) : null) != null ? tmp$_1.origLanguage : null;
+    var origLanguage = programme.origLanguage;
     if (origLanguage != null) {
-      this.programmeInformationOrigLanguage_0.innerHTML = '\u539F\u8A9E\u8A00: ' + origLanguage;
+      this.programmeInformationOrigLanguage_0.innerHTML = '\u539F\u8A9E\u8A00: ' + toString(origLanguage);
     }
   };
   EPG.prototype.setProgrammeInformationLength_0 = function (programme) {
@@ -1167,11 +1822,10 @@ var HKNBP_Core = function (_, Kotlin) {
     }
   };
   EPG.prototype.setProgrammeInformationCountry_0 = function (programme) {
-    var tmp$, tmp$_0, tmp$_1;
     this.programmeInformationCountry_0.innerHTML = '';
-    var country = (tmp$_1 = (tmp$_0 = (tmp$ = programme.countrys) != null ? tmp$.getElementsByLanguage_qj8e4y$(userLanguageList) : null) != null ? getOrNull(tmp$_0, 0) : null) != null ? tmp$_1.country : null;
+    var country = programme.country;
     if (country != null) {
-      this.programmeInformationCountry_0.innerHTML = '\u570B\u5BB6: ' + country;
+      this.programmeInformationCountry_0.innerHTML = '\u570B\u5BB6: ' + toString(country);
     }
   };
   function EPG$setProgrammeInformationEpisodeNum$lambda(closure$programme, this$EPG) {
@@ -1380,7 +2034,7 @@ var HKNBP_Core = function (_, Kotlin) {
       var channel = tmp$.next();
       var line = this.newProgrammeListBlockLine_0();
       line.appendChild(this.newProgrammeListBlock_0('8vh', 'channelNumber', '#222', padStart(channel.number.toString(), 3, 48)));
-      line.appendChild(this.newProgrammeListBlock_0('22vh', 'channelName', '#222', channel.name));
+      line.appendChild(this.newProgrammeListBlock_0('22vh', 'channelName', '#222', channel.name.toString()));
       this.programmeListChannelList_0.appendChild(line);
     }
   };
@@ -1390,7 +2044,7 @@ var HKNBP_Core = function (_, Kotlin) {
     };
   }
   EPG.prototype.addProgrammeOnTimeLine_0 = function (timeLine, channel, programme) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2;
     if (this.fromDate_0.getTime() < programme.start.getTime()) {
       tmp$ = programme.start;
     }
@@ -1406,8 +2060,8 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     var addProgrammeToTime = tmp$_0;
     var timeLength = this.dateToDateDifferenceMinute_0(addProgrammeFromTime, addProgrammeToTime);
-    var title = (tmp$_4 = (tmp$_3 = (tmp$_2 = (tmp$_1 = programme.titles) != null ? tmp$_1.getElementsByLanguage_qj8e4y$(userLanguageList) : null) != null ? getOrNull(tmp$_2, 0) : null) != null ? tmp$_3.title : null) != null ? tmp$_4 : '';
-    timeLine.appendChild(this.newProgrammeListBlock_0(timeLength.toString() + 'vh', 'programme', '#333', title, (tmp$_6 = toIntOrNull(Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(new Tab3dIndex((tmp$_5 = toIntOrNull(padStart(programme.start.getDate().toString(), 2, 48) + padStart(programme.start.getHours().toString(), 2, 48))) != null ? tmp$_5 : 0, channel.number, this.tabIndexZ_0)))) != null ? tmp$_6 : 0, EPG$addProgrammeOnTimeLine$lambda(programme, this)));
+    var title = programme.title;
+    timeLine.appendChild(this.newProgrammeListBlock_0(timeLength.toString() + 'vh', 'programme', '#333', toString(title), (tmp$_2 = toIntOrNull(Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(new Tab3dIndex((tmp$_1 = toIntOrNull(padStart(programme.start.getDate().toString(), 2, 48) + padStart(programme.start.getHours().toString(), 2, 48))) != null ? tmp$_1 : 0, channel.number, this.tabIndexZ_0)))) != null ? tmp$_2 : 0, EPG$addProgrammeOnTimeLine$lambda(programme, this)));
   };
   function EPG$loadProgrammeListTableContentChannelProgrammeTimeLine$lambda(closure$channel, this$EPG) {
     return function (xmltv) {
@@ -1438,7 +2092,7 @@ var HKNBP_Core = function (_, Kotlin) {
            else {
             nextProgrammeStartTime = this$EPG.toDate_0;
           }
-          addToShowProgramme = new XMLTV$Programme(currentSettedLastTime, nextProgrammeStartTime, void 0, void 0, void 0, void 0, void 0, XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init_0([new XMLTV$Programme$Title(void 0, '\u6B64\u6642\u6BB5\u7121\u8CC7\u8A0A')]));
+          addToShowProgramme = new XMLTV$Programme(currentSettedLastTime, nextProgrammeStartTime, void 0, void 0, void 0, void 0, void 0, new MultiLanguageString(ArrayLinkList_init([new MultiLanguageString$LanguageString('', '\u6B64\u6642\u6BB5\u7121\u8CC7\u8A0A')])));
         }
         this$EPG.addProgrammeOnTimeLine_0(timeLine, closure$channel, addToShowProgramme);
         currentSettedLastTime = nextProgrammeStartTime;
@@ -1474,7 +2128,7 @@ var HKNBP_Core = function (_, Kotlin) {
     while (tmp$.hasNext()) {
       var channel = tmp$.next();
       var id = 'channel' + channel.number + 'ProgrammeTimeLine';
-      this.addProgrammeOnTimeLine_0(Kotlin.isType(tmp$_0 = document.getElementById(id), HTMLDivElement) ? tmp$_0 : throwCCE(), channel, new XMLTV$Programme(this.fromDate_0, this.toDate_0, void 0, void 0, void 0, void 0, void 0, XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init_0([new XMLTV$Programme$Title(void 0, '\u66AB\u7121\u8CC7\u8A0A')])));
+      this.addProgrammeOnTimeLine_0(Kotlin.isType(tmp$_0 = document.getElementById(id), HTMLDivElement) ? tmp$_0 : throwCCE(), channel, new XMLTV$Programme(this.fromDate_0, this.toDate_0, void 0, void 0, void 0, void 0, void 0, new MultiLanguageString(ArrayLinkList_init([new MultiLanguageString$LanguageString('', '\u66AB\u7121\u8CC7\u8A0A')]))));
       this.loadProgrammeListTableContentChannelProgrammeTimeLine_0(channel);
     }
   };
@@ -1507,12 +2161,12 @@ var HKNBP_Core = function (_, Kotlin) {
     this.setProgrammeListTable_0();
   };
   EPG.prototype.show = function () {
-    Window.prototype.show.call(this);
+    UserInterface.prototype.show.call(this);
     this.setDisplayCurrentDateBox_0();
     this.setProgrammeList_0();
   };
   EPG.prototype.hide = function () {
-    Window.prototype.hide.call(this);
+    UserInterface.prototype.hide.call(this);
     window.clearTimeout(this.updateDisplayCurrentDateBoxTimer_0);
   };
   function EPG_init$lambda(this$EPG) {
@@ -1523,7 +2177,7 @@ var HKNBP_Core = function (_, Kotlin) {
   EPG.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'EPG',
-    interfaces: [Window]
+    interfaces: [UserInterface]
   };
   var EPG_instance = null;
   function EPG_getInstance() {
@@ -1888,6 +2542,22 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return LongClickEvent_instance;
   }
+  function Comparator$ObjectLiteral_0(closure$comparison) {
+    this.closure$comparison = closure$comparison;
+  }
+  Comparator$ObjectLiteral_0.prototype.compare = function (a, b) {
+    return this.closure$comparison(a, b);
+  };
+  Comparator$ObjectLiteral_0.$metadata$ = {kind: Kind_CLASS, interfaces: [Comparator]};
+  var compareBy$lambda_0 = wrapFunction(function () {
+    var compareValues = Kotlin.kotlin.comparisons.compareValues_s00gnj$;
+    return function (closure$selector) {
+      return function (a, b) {
+        var selector = closure$selector;
+        return compareValues(selector(a), selector(b));
+      };
+    };
+  });
   function setConsoleLogsListener$lambda() {
     try {
       console.stdlog = console.log.bind(console);
@@ -1966,9 +2636,9 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   var rootURL;
   function coreVersion$lambda() {
-    var tmp$, tmp$_0;
+    var tmp$;
     var value = '';
-    var savedValue = (tmp$_0 = (tmp$ = localStorage.getItem('CoreVersion')) != null ? tmp$.toString() : null) != null ? tmp$_0 : '';
+    var savedValue = (tmp$ = localStorage.getItem('CoreVersion')) != null ? tmp$ : '';
     try {
       value = coreVersion != null ? coreVersion : savedValue;
     }
@@ -1980,18 +2650,28 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   var coreVersion_0;
   var appVersion;
-  function channels$lambda$ObjectLiteral() {
+  var player;
+  function updateChannels$ObjectLiteral() {
   }
-  channels$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
+  updateChannels$ObjectLiteral.prototype.onNodeChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
+    var tmp$;
     localStorage.setItem('RecentlyWatchedChannel', toString(postChangeNodeID));
-    updateURLParameter('channel', toString(postChangeNode != null ? postChangeNode.number : null));
+    if (((tmp$ = postChangeNode != null ? postChangeNode.number : null) != null ? tmp$ : 0) < 0) {
+      updateURLParameter('channelXmlString', toString(postChangeNode != null ? postChangeNode.number : null));
+    }
+     else {
+      updateURLParameter('channel', toString(postChangeNode != null ? postChangeNode.number : null));
+    }
     updateChannel();
   };
-  channels$lambda$ObjectLiteral.$metadata$ = {
+  updateChannels$ObjectLiteral.$metadata$ = {
     kind: Kind_CLASS,
     interfaces: [ArrayLinkList$OnNodeEventListener]
   };
-  function channels$lambda$lambda$lambda() {
+  function updateChannels$lambda$lambda(channel) {
+    return channel.number;
+  }
+  function updateChannels$lambda$lambda_0() {
     var tmp$;
     var channelParam = (tmp$ = (new URL(window.location.href)).searchParams.get('channel')) != null ? toIntOrNull(tmp$) : null;
     var tmp$_0 = channels;
@@ -2012,7 +2692,7 @@ var HKNBP_Core = function (_, Kotlin) {
      while (false);
     return tmp$_0.indexOfOrNull_11rb$(firstOrNull$result);
   }
-  function channels$lambda$lambda$lambda_0() {
+  function updateChannels$lambda$lambda_1() {
     var tmp$;
     var recentlyWatchedChannel = (tmp$ = localStorage.getItem('RecentlyWatchedChannel')) != null ? toInt(tmp$) : null;
     if (recentlyWatchedChannel != null) {
@@ -2027,31 +2707,34 @@ var HKNBP_Core = function (_, Kotlin) {
       return null;
     }
   }
-  function channels$lambda$lambda(officialChannels) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2;
-    channels.addAll_brywnq$((tmp$ = CustomChannel_getInstance().getCustomChannels()) != null ? tmp$ : ArrayLinkList_init([]));
+  function updateChannels$lambda(officialChannels) {
+    var tmp$, tmp$_0, tmp$_1;
     channels.addAll_brywnq$(officialChannels);
-    tmp$_2 = (tmp$_0 = channels$lambda$lambda$lambda()) != null ? tmp$_0 : channels$lambda$lambda$lambda_0();
-    if (tmp$_2 == null) {
+    channels.addAll_brywnq$(CustomChannels_getInstance().getCustomChannels());
+    var $receiver = channels;
+    if ($receiver.size > 1) {
+      sortWith($receiver, new Comparator$ObjectLiteral_0(compareBy$lambda_0(updateChannels$lambda$lambda)));
+    }
+    tmp$_1 = (tmp$ = updateChannels$lambda$lambda_0()) != null ? tmp$ : updateChannels$lambda$lambda_1();
+    if (tmp$_1 == null) {
       if (channels.size <= 0) {
-        tmp$_1 = 0;
+        tmp$_0 = 0;
       }
        else {
-        tmp$_1 = Random.Default.nextInt_vux9f0$(0, channels.size);
+        tmp$_0 = Random.Default.nextInt_vux9f0$(0, channels.size);
       }
-      tmp$_2 = tmp$_1;
+      tmp$_1 = tmp$_0;
     }
-    channels.designated_za3lpa$(tmp$_2);
+    channels.designated_za3lpa$(tmp$_1);
   }
-  function channels$lambda() {
+  function updateChannels() {
     channels = ArrayLinkList_init([]);
-    channels.addOnNodeEventListener_ljxrtv$(new channels$lambda$ObjectLiteral());
-    OfficialChannel_getInstance().getOfficialChannels_u69gef$(channels$lambda$lambda);
+    channels.addOnNodeEventListener_ljxrtv$(new updateChannels$ObjectLiteral());
+    OfficialChannels_getInstance().getOfficialChannels_u69gef$(updateChannels$lambda);
     updateChannel();
     return channels;
   }
   var channels;
-  var player;
   function designatedChannel$lambda(dialogues) {
     var tmp$, tmp$_0;
     PromptBox_getInstance().promptMessage((tmp$_0 = (tmp$ = dialogues.node) != null ? tmp$.canNotFind : null) != null ? tmp$_0 : '');
@@ -2114,7 +2797,7 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function updateChannel() {
     var tmp$;
-    player = new Player((tmp$ = channels.node) != null ? tmp$ : new Channel());
+    player = new Player((tmp$ = channels.node) != null ? tmp$ : new Channel(0));
     player != null ? (player.addOnPlayerEventListener_j8fzjz$(new updateChannel$ObjectLiteral()), Unit) : null;
     player != null ? (player.play(), Unit) : null;
     VirtualRemote_getInstance().update();
@@ -2145,10 +2828,10 @@ var HKNBP_Core = function (_, Kotlin) {
     arr[1] = q;
     return arr;
   }
-  var userLanguageList;
   function main(args) {
     try {
       UserControlPanel_getInstance();
+      VirtualRemote_getInstance().show();
       ConsentPanel_getInstance();
       VirtualRemote_getInstance();
       LongClickEvent_getInstance();
@@ -2159,6 +2842,186 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     println('Init Main');
   }
+  function MultiLanguageString(langStringList) {
+    MultiLanguageString$Companion_getInstance();
+    if (langStringList === void 0)
+      langStringList = ArrayLinkList_init([]);
+    ArrayLinkList_init_3(langStringList, this);
+    this.langStringList_0 = langStringList;
+    this.addOnElementsChangeListener_9bqafr$(new MultiLanguageString_init$ObjectLiteral(this));
+    this.changeToNeedToSelectLanguageOfFirst_0();
+  }
+  function MultiLanguageString$Companion() {
+    MultiLanguageString$Companion_instance = this;
+    var tmp$;
+    this.currentUserSystemLanguage_0 = typeof (tmp$ = navigator.language || navigator.userLanguage) === 'string' ? tmp$ : throwCCE();
+    this.userSelectLanguageSequence = MultiLanguageString$Companion$userSelectLanguageSequence$lambda(this)();
+  }
+  function MultiLanguageString$Companion$userSelectLanguageSequence$lambda$ObjectLiteral(closure$sequence) {
+    this.closure$sequence = closure$sequence;
+  }
+  MultiLanguageString$Companion$userSelectLanguageSequence$lambda$ObjectLiteral.prototype.onElementsChange = function () {
+    var tmp$;
+    var languageOptionSequence = '';
+    tmp$ = this.closure$sequence.iterator();
+    while (tmp$.hasNext()) {
+      var lang = tmp$.next();
+      languageOptionSequence += '<option>' + MultiLanguageString$Companion_getInstance().currentUserSystemLanguage_0 + '<\/option>';
+    }
+    localStorage.setItem('userSelectLanguageOptionSequence', languageOptionSequence);
+  };
+  MultiLanguageString$Companion$userSelectLanguageSequence$lambda$ObjectLiteral.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: [ArrayLinkList$OnElementsChangeListener]
+  };
+  function MultiLanguageString$Companion$userSelectLanguageSequence$lambda(this$MultiLanguageString$) {
+    return function () {
+      var tmp$, tmp$_0, tmp$_1, tmp$_2;
+      var languageSelect = Kotlin.isType(tmp$ = document.createElement('select'), HTMLSelectElement) ? tmp$ : throwCCE();
+      languageSelect.innerHTML = (tmp$_0 = localStorage.getItem('userSelectLanguageOptionSequence')) != null ? tmp$_0 : '<option>' + this$MultiLanguageString$.currentUserSystemLanguage_0 + '<\/option>';
+      var sequence = ArrayLinkList_init([]);
+      sequence.addOnElementsChangeListener_9bqafr$(new MultiLanguageString$Companion$userSelectLanguageSequence$lambda$ObjectLiteral(sequence));
+      tmp$_1 = languageSelect.length;
+      for (var index = 0; index < tmp$_1; index++) {
+        sequence.add_11rb$((Kotlin.isType(tmp$_2 = languageSelect.options[index], HTMLOptionElement) ? tmp$_2 : throwCCE()).text);
+      }
+      return sequence;
+    };
+  }
+  MultiLanguageString$Companion.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'Companion',
+    interfaces: []
+  };
+  var MultiLanguageString$Companion_instance = null;
+  function MultiLanguageString$Companion_getInstance() {
+    if (MultiLanguageString$Companion_instance === null) {
+      new MultiLanguageString$Companion();
+    }
+    return MultiLanguageString$Companion_instance;
+  }
+  function MultiLanguageString$LanguageString(lang, string) {
+    this.lang_klsrhp$_0 = lang;
+    this.string_ejq9ps$_0 = string;
+  }
+  Object.defineProperty(MultiLanguageString$LanguageString.prototype, 'lang', {
+    get: function () {
+      return this.lang_klsrhp$_0;
+    }
+  });
+  Object.defineProperty(MultiLanguageString$LanguageString.prototype, 'string', {
+    get: function () {
+      return this.string_ejq9ps$_0;
+    }
+  });
+  MultiLanguageString$LanguageString.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'LanguageString',
+    interfaces: []
+  };
+  Object.defineProperty(MultiLanguageString.prototype, 'lang', {
+    get: function () {
+      var tmp$;
+      return (tmp$ = this.node) != null ? tmp$.lang : null;
+    }
+  });
+  Object.defineProperty(MultiLanguageString.prototype, 'string', {
+    get: function () {
+      var tmp$;
+      return (tmp$ = this.node) != null ? tmp$.string : null;
+    }
+  });
+  MultiLanguageString.prototype.toString = function () {
+    var tmp$, tmp$_0;
+    return (tmp$_0 = (tmp$ = this.node) != null ? tmp$.string : null) != null ? tmp$_0 : 'null';
+  };
+  MultiLanguageString.prototype.getAllStringByLanguage_61zpoe$ = function (lang) {
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3;
+    var langElementList = split(lang, ['-']);
+    var allString = this;
+    tmp$ = langElementList.size;
+    for (var index = 0; index < tmp$; index++) {
+      var langElement = getOrNull(langElementList, index);
+      var findSelectLanguageListTemp = ArrayList_init();
+      tmp$_0 = allString.iterator();
+      while (tmp$_0.hasNext()) {
+        var findSelectLanguageListElement = tmp$_0.next();
+        var compareElement = (tmp$_2 = (tmp$_1 = findSelectLanguageListElement.lang) != null ? split(tmp$_1, ['-']) : null) != null ? getOrNull(tmp$_2, index) : null;
+        if ((langElement != null ? langElement.toUpperCase() : null) === (compareElement != null ? compareElement.toUpperCase() : null)) {
+          findSelectLanguageListTemp.add_11rb$(findSelectLanguageListElement);
+        }
+      }
+      allString = findSelectLanguageListTemp;
+    }
+    if (allString.size === 0) {
+      tmp$_3 = null;
+    }
+     else {
+      tmp$_3 = allString;
+    }
+    return tmp$_3;
+  };
+  MultiLanguageString.prototype.getAllStringByLanguage_un5gdn$ = function (langs) {
+    var tmp$, tmp$_0, tmp$_1;
+    var langStringList = ArrayList_init();
+    tmp$ = langs.iterator();
+    while (tmp$.hasNext()) {
+      var lang = tmp$.next();
+      var selectLanguage = (tmp$_0 = this.getAllStringByLanguage_61zpoe$(lang)) != null ? getOrNull(tmp$_0, 0) : null;
+      if (selectLanguage != null) {
+        langStringList.add_11rb$(selectLanguage);
+      }
+    }
+    if (langStringList.size < 1) {
+      tmp$_1 = null;
+    }
+     else {
+      tmp$_1 = langStringList;
+    }
+    return tmp$_1;
+  };
+  MultiLanguageString.prototype.getAllStringByLanguage = function () {
+    return this.getAllStringByLanguage_un5gdn$(MultiLanguageString$Companion_getInstance().userSelectLanguageSequence);
+  };
+  MultiLanguageString.prototype.changeToNeedToSelectLanguageOfFirst_0 = function () {
+    var tmp$;
+    var selectLanguage = (tmp$ = this.getAllStringByLanguage_un5gdn$(MultiLanguageString$Companion_getInstance().userSelectLanguageSequence)) != null ? getOrNull(tmp$, 0) : null;
+    if (selectLanguage != null) {
+      this.designated_11rb$(selectLanguage);
+    }
+     else {
+      this.node = getOrNull(this, 0);
+    }
+  };
+  function MultiLanguageString_init$ObjectLiteral(this$MultiLanguageString) {
+    this.this$MultiLanguageString = this$MultiLanguageString;
+  }
+  MultiLanguageString_init$ObjectLiteral.prototype.onElementsChange = function () {
+    this.this$MultiLanguageString.changeToNeedToSelectLanguageOfFirst_0();
+  };
+  MultiLanguageString_init$ObjectLiteral.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: [ArrayLinkList$OnElementsChangeListener]
+  };
+  MultiLanguageString.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'MultiLanguageString',
+    interfaces: [ArrayLinkList]
+  };
+  MultiLanguageString.prototype.component1_0 = function () {
+    return this.langStringList_0;
+  };
+  MultiLanguageString.prototype.copy_2rd0lw$ = function (langStringList) {
+    return new MultiLanguageString(langStringList === void 0 ? this.langStringList_0 : langStringList);
+  };
+  MultiLanguageString.prototype.hashCode = function () {
+    var result = 0;
+    result = result * 31 + Kotlin.hashCode(this.langStringList_0) | 0;
+    return result;
+  };
+  MultiLanguageString.prototype.equals = function (other) {
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && Kotlin.equals(this.langStringList_0, other.langStringList_0))));
+  };
   function MutedDescription() {
     MutedDescription_instance = this;
     UserInterface.call(this, 'mutedDescription');
@@ -2269,14 +3132,14 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return NativeAppInstallButton_instance;
   }
-  function Comparator$ObjectLiteral(closure$comparison) {
+  function Comparator$ObjectLiteral_1(closure$comparison) {
     this.closure$comparison = closure$comparison;
   }
-  Comparator$ObjectLiteral.prototype.compare = function (a, b) {
+  Comparator$ObjectLiteral_1.prototype.compare = function (a, b) {
     return this.closure$comparison(a, b);
   };
-  Comparator$ObjectLiteral.$metadata$ = {kind: Kind_CLASS, interfaces: [Comparator]};
-  var compareBy$lambda = wrapFunction(function () {
+  Comparator$ObjectLiteral_1.$metadata$ = {kind: Kind_CLASS, interfaces: [Comparator]};
+  var compareBy$lambda_1 = wrapFunction(function () {
     var compareValues = Kotlin.kotlin.comparisons.compareValues_s00gnj$;
     return function (closure$selector) {
       return function (a, b) {
@@ -2285,109 +3148,40 @@ var HKNBP_Core = function (_, Kotlin) {
       };
     };
   });
-  function OfficialChannel() {
-    OfficialChannel_instance = this;
-    println('Init OfficialChannel');
+  function OfficialChannels() {
+    OfficialChannels_instance = this;
+    ChannelsReader.call(this);
+    println('Init OfficialChannels');
   }
-  function OfficialChannel$parseChannels$lambda(closure$onParsedChannelsListener, this$OfficialChannel) {
-    return function (xmlHttp) {
-      closure$onParsedChannelsListener(this$OfficialChannel.getChannels_0(xmlHttp));
-    };
-  }
-  function OfficialChannel$parseChannels$lambda_0(closure$onFailedParseChannelsListener) {
-    return function () {
-      closure$onFailedParseChannelsListener();
-    };
-  }
-  OfficialChannel.prototype.parseChannels_0 = function (onParsedChannelsListener, onFailedParseChannelsListener, src) {
-    LoadFile_getInstance().load_y8xsdy$(OfficialChannel$parseChannels$lambda(onParsedChannelsListener, this), OfficialChannel$parseChannels$lambda_0(onFailedParseChannelsListener), src);
-  };
-  OfficialChannel.prototype.getChannels_0 = function (xmlHttp) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9;
-    var channels = ArrayLinkList_init([]);
-    var i = 0;
-    while (i < ((tmp$_1 = (tmp$_0 = (tmp$ = xmlHttp.responseXML) != null ? tmp$.getElementsByTagName('channel') : null) != null ? tmp$_0.length : null) != null ? tmp$_1 : 0)) {
-      var number = this.getNumber_0((tmp$_3 = (tmp$_2 = xmlHttp.responseXML) != null ? tmp$_2.getElementsByTagName('channel') : null) != null ? tmp$_3[i] : null);
-      var name = this.getName_0((tmp$_5 = (tmp$_4 = xmlHttp.responseXML) != null ? tmp$_4.getElementsByTagName('channel') : null) != null ? tmp$_5[i] : null);
-      var sources = this.getSources_0((tmp$_7 = (tmp$_6 = xmlHttp.responseXML) != null ? tmp$_6.getElementsByTagName('channel') : null) != null ? tmp$_7[i] : null);
-      var information = this.getInformation_0((tmp$_9 = (tmp$_8 = xmlHttp.responseXML) != null ? tmp$_8.getElementsByTagName('channel') : null) != null ? tmp$_9[i] : null);
-      channels.add_11rb$(new Channel(number, name, sources, information));
-      i = i + 1 | 0;
-    }
-    if (i === 0) {
-      channels.add_11rb$(new Channel(0, '', ArrayLinkList_init([new Channel$Source()]), new Channel$Information()));
-    }
-    return channels;
-  };
-  OfficialChannel.prototype.getNumber_0 = function (element) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2;
-    return (tmp$_2 = (tmp$_1 = (tmp$_0 = (tmp$ = element != null ? element.getElementsByTagName('number') : null) != null ? tmp$[0] : null) != null ? tmp$_0.innerHTML : null) != null ? toIntOrNull(tmp$_1) : null) != null ? tmp$_2 : 0;
-  };
-  OfficialChannel.prototype.getName_0 = function (element) {
-    var tmp$, tmp$_0, tmp$_1;
-    return (tmp$_1 = (tmp$_0 = (tmp$ = element != null ? element.getElementsByTagName('name') : null) != null ? tmp$[0] : null) != null ? tmp$_0.innerHTML : null) != null ? tmp$_1 : '';
-  };
-  OfficialChannel.prototype.getSources_0 = function (element) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3;
-    var sources = ArrayLinkList_init([]);
-    var i = 0;
-    while (i < ((tmp$_0 = (tmp$ = element != null ? element.getElementsByTagName('source') : null) != null ? tmp$.length : null) != null ? tmp$_0 : 0)) {
-      var description = this.getDescription_0((tmp$_1 = element != null ? element.getElementsByTagName('source') : null) != null ? tmp$_1[i] : null);
-      var iFramePlayerSrc = this.getIFramePlayerSrc_0((tmp$_2 = element != null ? element.getElementsByTagName('source') : null) != null ? tmp$_2[i] : null);
-      var link = this.getLink_0((tmp$_3 = element != null ? element.getElementsByTagName('source') : null) != null ? tmp$_3[i] : null);
-      sources.add_11rb$(new Channel$Source(description, iFramePlayerSrc, link));
-      i = i + 1 | 0;
-    }
-    if (i === 0) {
-      sources.add_11rb$(new Channel$Source('', '', ''));
-    }
-    return sources;
-  };
-  OfficialChannel.prototype.getInformation_0 = function (element) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
-    return new Channel$Information((tmp$_1 = (tmp$_0 = (tmp$ = element != null ? element.getElementsByTagName('information') : null) != null ? tmp$[0] : null) != null ? tmp$_0.getAttribute('epgid') : null) != null ? tmp$_1 : '', (tmp$_4 = (tmp$_3 = (tmp$_2 = element != null ? element.getElementsByTagName('information') : null) != null ? tmp$_2[0] : null) != null ? tmp$_3.getAttribute('src') : null) != null ? tmp$_4 : '');
-  };
-  OfficialChannel.prototype.getDescription_0 = function (element) {
-    var tmp$, tmp$_0, tmp$_1;
-    return (tmp$_1 = (tmp$_0 = (tmp$ = element != null ? element.getElementsByTagName('dscription') : null) != null ? tmp$[0] : null) != null ? tmp$_0.innerHTML : null) != null ? tmp$_1 : '';
-  };
-  OfficialChannel.prototype.getIFramePlayerSrc_0 = function (element) {
-    var tmp$, tmp$_0, tmp$_1;
-    return (tmp$_1 = (tmp$_0 = (tmp$ = element != null ? element.getElementsByTagName('iframeplayersrc') : null) != null ? tmp$[0] : null) != null ? tmp$_0.innerHTML : null) != null ? tmp$_1 : '';
-  };
-  OfficialChannel.prototype.getLink_0 = function (element) {
-    var tmp$, tmp$_0, tmp$_1;
-    return (tmp$_1 = (tmp$_0 = (tmp$ = element != null ? element.getElementsByTagName('link') : null) != null ? tmp$[0] : null) != null ? tmp$_0.innerHTML : null) != null ? tmp$_1 : '';
-  };
-  function OfficialChannel$getOfficialChannels$lambda$lambda(channel) {
+  function OfficialChannels$getOfficialChannels$lambda$lambda(channel) {
     return channel.number;
   }
-  function OfficialChannel$getOfficialChannels$lambda(closure$onLoadedChannelsListener) {
+  function OfficialChannels$getOfficialChannels$lambda(closure$onLoadedChannelsListener) {
     return function (channels) {
       if (channels.size > 1) {
-        sortWith(channels, new Comparator$ObjectLiteral(compareBy$lambda(OfficialChannel$getOfficialChannels$lambda$lambda)));
+        sortWith(channels, new Comparator$ObjectLiteral_1(compareBy$lambda_1(OfficialChannels$getOfficialChannels$lambda$lambda)));
       }
       println('\u6210\u529F\u8B80\u53D6official_channels.xml' + '\n' + '\u6B64OfficialChannels\u6709' + channels.size + '\u689D\u983B\u9053');
       closure$onLoadedChannelsListener(channels);
     };
   }
-  function OfficialChannel$getOfficialChannels$lambda_0() {
+  function OfficialChannels$getOfficialChannels$lambda_0() {
     println('\u672A\u80FD\u8B80\u53D6official_channels.xml');
   }
-  OfficialChannel.prototype.getOfficialChannels_u69gef$ = function (onLoadedChannelsListener) {
-    this.parseChannels_0(OfficialChannel$getOfficialChannels$lambda(onLoadedChannelsListener), OfficialChannel$getOfficialChannels$lambda_0, ['https://hknbp.org/data/official_channels.xml', 'data/official_channels.xml']);
+  OfficialChannels.prototype.getOfficialChannels_u69gef$ = function (onLoadedChannelsListener) {
+    this.parseChannels_d7jqb7$(OfficialChannels$getOfficialChannels$lambda(onLoadedChannelsListener), OfficialChannels$getOfficialChannels$lambda_0, ['https://hknbp.org/data/official_channels.xml', 'data/official_channels.xml']);
   };
-  OfficialChannel.$metadata$ = {
+  OfficialChannels.$metadata$ = {
     kind: Kind_OBJECT,
-    simpleName: 'OfficialChannel',
-    interfaces: []
+    simpleName: 'OfficialChannels',
+    interfaces: [ChannelsReader]
   };
-  var OfficialChannel_instance = null;
-  function OfficialChannel_getInstance() {
-    if (OfficialChannel_instance === null) {
-      new OfficialChannel();
+  var OfficialChannels_instance = null;
+  function OfficialChannels_getInstance() {
+    if (OfficialChannels_instance === null) {
+      new OfficialChannels();
     }
-    return OfficialChannel_instance;
+    return OfficialChannels_instance;
   }
   function PictureInPictureButton() {
     PictureInPictureButton_instance = this;
@@ -2902,7 +3696,7 @@ var HKNBP_Core = function (_, Kotlin) {
   function Player$videoTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral(this$Player) {
     this.this$Player = this$Player;
   }
-  Player$videoTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
+  Player$videoTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral.prototype.onNodeChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
     Player$Companion_getInstance().callIframePlayerFunction_0('onSetIframePlayerVideoTrack(' + Player$Companion_getInstance().kotlinValueToEvalScriptUseableValue_0(postChangeNode) + ')');
     localStorage.setItem('RecentlyChannel' + this.this$Player.channel_0.number + 'VideoTrackID', toString(postChangeNodeID));
     VirtualRemote_getInstance().updateVideoInformation();
@@ -2948,7 +3742,7 @@ var HKNBP_Core = function (_, Kotlin) {
   function Player$audioTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral(this$Player) {
     this.this$Player = this$Player;
   }
-  Player$audioTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
+  Player$audioTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral.prototype.onNodeChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
     Player$Companion_getInstance().callIframePlayerFunction_0('onSetIframePlayerAudioTrack(' + Player$Companion_getInstance().kotlinValueToEvalScriptUseableValue_0(postChangeNode) + ')');
     localStorage.setItem('RecentlyChannel' + this.this$Player.channel_0.number + 'AudioTrackID', toString(postChangeNodeID));
     VirtualRemote_getInstance().updateAudioInformation();
@@ -2994,7 +3788,7 @@ var HKNBP_Core = function (_, Kotlin) {
   function Player$subtitleTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral(this$Player) {
     this.this$Player = this$Player;
   }
-  Player$subtitleTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral.prototype.OnNodeIDChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
+  Player$subtitleTracks$lambda$ObjectLiteral$on$lambda$lambda$ObjectLiteral.prototype.onNodeChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
     Player$Companion_getInstance().callIframePlayerFunction_0('onSetIframePlayerSubtitleTrack(' + Player$Companion_getInstance().kotlinValueToEvalScriptUseableValue_0(postChangeNode) + ')');
     localStorage.setItem('RecentlyChannel' + this.this$Player.channel_0.number + 'SubtitleTrackID', toString(postChangeNodeID));
     VirtualRemote_getInstance().updateSubtitleInformation();
@@ -3247,153 +4041,25 @@ var HKNBP_Core = function (_, Kotlin) {
   function SettingWindow() {
     SettingWindow_instance = this;
     Window.call(this, 'settingWindow', 'settingWindowHideButton');
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
     this.settingWindow_0 = Kotlin.isType(tmp$ = document.getElementById('settingWindow'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('settingWindowHideButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
-    this.languageSetHonJyutElegantSet_0 = Kotlin.isType(tmp$_1 = document.getElementById('settingWindowLanguageSetHonJyutElegantSet'), HTMLButtonElement) ? tmp$_1 : throwCCE();
-    this.languageSetHonJyutColloquialSet_0 = Kotlin.isType(tmp$_2 = document.getElementById('settingWindowLanguageSetHonJyutColloquialSet'), HTMLButtonElement) ? tmp$_2 : throwCCE();
-    this.languageSetEnglishSet_0 = Kotlin.isType(tmp$_3 = document.getElementById('settingWindowLanguageSetEnglishSet'), HTMLButtonElement) ? tmp$_3 : throwCCE();
-    this.languageSetPresetSet_0 = Kotlin.isType(tmp$_4 = document.getElementById('settingWindowLanguageSetPresetSet'), HTMLButtonElement) ? tmp$_4 : throwCCE();
-    this.languageSetLanguageISOCodeInput_0 = Kotlin.isType(tmp$_5 = document.getElementById('settingWindowLanguageSetLanguageISOCodeInput'), HTMLInputElement) ? tmp$_5 : throwCCE();
-    this.languageSelectSequenceList_0 = Kotlin.isType(tmp$_6 = document.getElementById('settingWindowLanguageSelectSequenceList'), HTMLSelectElement) ? tmp$_6 : throwCCE();
-    this.languageAddLanguage_0 = Kotlin.isType(tmp$_7 = document.getElementById('settingWindowLanguageAddLanguage'), HTMLButtonElement) ? tmp$_7 : throwCCE();
-    this.languageRemoveLanguage_0 = Kotlin.isType(tmp$_8 = document.getElementById('settingWindowLanguageRemoveLanguage'), HTMLButtonElement) ? tmp$_8 : throwCCE();
-    this.languageMoveUpLanguage_0 = Kotlin.isType(tmp$_9 = document.getElementById('settingWindowLanguageMoveUpLanguage'), HTMLButtonElement) ? tmp$_9 : throwCCE();
-    this.languageMoveDownLanguage_0 = Kotlin.isType(tmp$_10 = document.getElementById('settingWindowLanguageMoveDownLanguage'), HTMLButtonElement) ? tmp$_10 : throwCCE();
-    this.currentUserLanguage_0 = typeof (tmp$_11 = navigator.language || navigator.userLanguage) === 'string' ? tmp$_11 : throwCCE();
-    this.clearSettingButton_0 = Kotlin.isType(tmp$_12 = document.getElementById('clearSettingButton'), HTMLButtonElement) ? tmp$_12 : throwCCE();
-    this.devConsole_0 = Kotlin.isType(tmp$_13 = document.getElementById('devConsole'), HTMLDivElement) ? tmp$_13 : throwCCE();
-    this.devModeCheckbox_0 = Kotlin.isType(tmp$_14 = document.getElementById('DevModeCheckbox'), HTMLInputElement) ? tmp$_14 : throwCCE();
+    this.customChannelsSettingOpenButton_0 = Kotlin.isType(tmp$_1 = document.getElementById('customChannelsSettingOpenButton'), HTMLButtonElement) ? tmp$_1 : throwCCE();
+    this.clearSettingButton_0 = Kotlin.isType(tmp$_2 = document.getElementById('clearSettingButton'), HTMLButtonElement) ? tmp$_2 : throwCCE();
+    this.devConsole_0 = Kotlin.isType(tmp$_3 = document.getElementById('devConsole'), HTMLDivElement) ? tmp$_3 : throwCCE();
+    this.devModeCheckbox_0 = Kotlin.isType(tmp$_4 = document.getElementById('DevModeCheckbox'), HTMLInputElement) ? tmp$_4 : throwCCE();
     this.settingWindow_0.style.cursor = 'auto';
     this.hideButton_0.onclick = SettingWindow_init$lambda(this);
-    this.initLangugeSetting();
+    this.initCustomChannelsSettingOpenButton();
     this.initClearSetting();
     this.initDevModeCheckbox();
     println('Init SettingWindow');
   }
-  SettingWindow.prototype.getLanguageSetting = function () {
-    var tmp$, tmp$_0;
-    var userLanguageList = ArrayList_init();
-    tmp$ = this.languageSelectSequenceList_0.length;
-    for (var index = 0; index < tmp$; index++) {
-      userLanguageList.add_11rb$((Kotlin.isType(tmp$_0 = this.languageSelectSequenceList_0.options[index], HTMLOptionElement) ? tmp$_0 : throwCCE()).text);
-    }
-    return userLanguageList;
-  };
-  SettingWindow.prototype.createLanguageOption_0 = function (isoCode) {
-    var tmp$;
-    var option = Kotlin.isType(tmp$ = document.createElement('option'), HTMLOptionElement) ? tmp$ : throwCCE();
-    option.text = isoCode;
-    option.value = isoCode;
-    return option;
-  };
-  function SettingWindow$initLangugeSetting$lambda(this$SettingWindow) {
-    return function (event) {
-      var tmp$;
-      if (!equals(this$SettingWindow.languageSetLanguageISOCodeInput_0.value, '')) {
-        var option = Kotlin.isType(tmp$ = document.createElement('option'), HTMLOptionElement) ? tmp$ : throwCCE();
-        option.text = this$SettingWindow.languageSetLanguageISOCodeInput_0.value;
-        option.value = this$SettingWindow.languageSetLanguageISOCodeInput_0.value;
-        this$SettingWindow.languageSelectSequenceList_0.add(option);
-        localStorage.setItem('RecentlyLanguageSelectSequence', this$SettingWindow.languageSelectSequenceList_0.innerHTML);
-      }
-    };
+  function SettingWindow$initCustomChannelsSettingOpenButton$lambda(event) {
+    CustomChannelsSettingWindow_getInstance().show();
   }
-  function SettingWindow$initLangugeSetting$lambda_0(this$SettingWindow) {
-    return function (event) {
-      this$SettingWindow.languageSelectSequenceList_0.remove(this$SettingWindow.languageSelectSequenceList_0.selectedIndex);
-      localStorage.setItem('RecentlyLanguageSelectSequence', this$SettingWindow.languageSelectSequenceList_0.innerHTML);
-    };
-  }
-  function SettingWindow$initLangugeSetting$lambda_1(this$SettingWindow) {
-    return function (event) {
-      var tmp$, tmp$_0, tmp$_1;
-      if (0 < this$SettingWindow.languageSelectSequenceList_0.selectedIndex) {
-        var optionAIndex = this$SettingWindow.languageSelectSequenceList_0.selectedIndex;
-        var optionBIndex = this$SettingWindow.languageSelectSequenceList_0.selectedIndex - 1 | 0;
-        var options = ArrayList_init();
-        tmp$ = this$SettingWindow.languageSelectSequenceList_0.length;
-        for (var index = 0; index < tmp$; index++) {
-          options.add_11rb$(Kotlin.isType(tmp$_0 = this$SettingWindow.languageSelectSequenceList_0.options[index], HTMLOptionElement) ? tmp$_0 : throwCCE());
-        }
-        var optionA = options.get_za3lpa$(optionAIndex);
-        var optionB = options.get_za3lpa$(optionBIndex);
-        options.set_wxm5ur$(optionAIndex, optionB);
-        options.set_wxm5ur$(optionBIndex, optionA);
-        this$SettingWindow.languageSelectSequenceList_0.innerHTML = '';
-        tmp$_1 = options.size;
-        for (var index_0 = 0; index_0 < tmp$_1; index_0++) {
-          var option = getOrNull(options, index_0);
-          if (option != null) {
-            this$SettingWindow.languageSelectSequenceList_0.append(option);
-          }
-        }
-        localStorage.setItem('RecentlyLanguageSelectSequence', this$SettingWindow.languageSelectSequenceList_0.innerHTML);
-      }
-    };
-  }
-  function SettingWindow$initLangugeSetting$lambda_2(this$SettingWindow) {
-    return function (event) {
-      var tmp$, tmp$_0, tmp$_1;
-      if (this$SettingWindow.languageSelectSequenceList_0.selectedIndex < this$SettingWindow.languageSelectSequenceList_0.length) {
-        var optionAIndex = this$SettingWindow.languageSelectSequenceList_0.selectedIndex;
-        var optionBIndex = this$SettingWindow.languageSelectSequenceList_0.selectedIndex + 1 | 0;
-        var options = ArrayList_init();
-        tmp$ = this$SettingWindow.languageSelectSequenceList_0.length;
-        for (var index = 0; index < tmp$; index++) {
-          options.add_11rb$(Kotlin.isType(tmp$_0 = this$SettingWindow.languageSelectSequenceList_0.options[index], HTMLOptionElement) ? tmp$_0 : throwCCE());
-        }
-        var optionA = options.get_za3lpa$(optionAIndex);
-        var optionB = options.get_za3lpa$(optionBIndex);
-        options.set_wxm5ur$(optionAIndex, optionB);
-        options.set_wxm5ur$(optionBIndex, optionA);
-        this$SettingWindow.languageSelectSequenceList_0.innerHTML = '';
-        tmp$_1 = options.size;
-        for (var index_0 = 0; index_0 < tmp$_1; index_0++) {
-          var option = getOrNull(options, index_0);
-          if (option != null) {
-            this$SettingWindow.languageSelectSequenceList_0.append(option);
-          }
-        }
-        localStorage.setItem('RecentlyLanguageSelectSequence', this$SettingWindow.languageSelectSequenceList_0.innerHTML);
-      }
-    };
-  }
-  function SettingWindow$initLangugeSetting$lambda_3(this$SettingWindow) {
-    return function (event) {
-      this$SettingWindow.languageSelectSequenceList_0.innerHTML = '';
-      this$SettingWindow.languageSelectSequenceList_0.append(this$SettingWindow.createLanguageOption_0('hon-JyutElegant'), this$SettingWindow.createLanguageOption_0('zh-HK'), this$SettingWindow.createLanguageOption_0('zh-Hant-HK'), this$SettingWindow.createLanguageOption_0('zh-TW'), this$SettingWindow.createLanguageOption_0('zh-Hant-TW'), this$SettingWindow.createLanguageOption_0('zh-Hant'), this$SettingWindow.createLanguageOption_0('hon-JyutColloquial'), this$SettingWindow.createLanguageOption_0('zh-Yue'), this$SettingWindow.createLanguageOption_0(this$SettingWindow.currentUserLanguage_0), this$SettingWindow.createLanguageOption_0('en'));
-    };
-  }
-  function SettingWindow$initLangugeSetting$lambda_4(this$SettingWindow) {
-    return function (event) {
-      this$SettingWindow.languageSelectSequenceList_0.innerHTML = '';
-      this$SettingWindow.languageSelectSequenceList_0.append(this$SettingWindow.createLanguageOption_0('hon-JyutColloquial'), this$SettingWindow.createLanguageOption_0('zh-Yue'), this$SettingWindow.createLanguageOption_0('hon-JyutElegant'), this$SettingWindow.createLanguageOption_0('zh-HK'), this$SettingWindow.createLanguageOption_0('zh-Hant-HK'), this$SettingWindow.createLanguageOption_0('zh-TW'), this$SettingWindow.createLanguageOption_0('zh-Hant-TW'), this$SettingWindow.createLanguageOption_0('zh-Hant'), this$SettingWindow.createLanguageOption_0(this$SettingWindow.currentUserLanguage_0), this$SettingWindow.createLanguageOption_0('en'));
-    };
-  }
-  function SettingWindow$initLangugeSetting$lambda_5(this$SettingWindow) {
-    return function (event) {
-      this$SettingWindow.languageSelectSequenceList_0.innerHTML = '';
-      this$SettingWindow.languageSelectSequenceList_0.append(this$SettingWindow.createLanguageOption_0('en'), this$SettingWindow.createLanguageOption_0(this$SettingWindow.currentUserLanguage_0));
-    };
-  }
-  function SettingWindow$initLangugeSetting$lambda_6(this$SettingWindow) {
-    return function (event) {
-      this$SettingWindow.languageSelectSequenceList_0.innerHTML = '';
-      this$SettingWindow.languageSelectSequenceList_0.append(this$SettingWindow.createLanguageOption_0(this$SettingWindow.currentUserLanguage_0), this$SettingWindow.createLanguageOption_0('en'));
-    };
-  }
-  SettingWindow.prototype.initLangugeSetting = function () {
-    var tmp$;
-    this.languageAddLanguage_0.onclick = SettingWindow$initLangugeSetting$lambda(this);
-    this.languageRemoveLanguage_0.onclick = SettingWindow$initLangugeSetting$lambda_0(this);
-    this.languageMoveUpLanguage_0.onclick = SettingWindow$initLangugeSetting$lambda_1(this);
-    this.languageMoveDownLanguage_0.onclick = SettingWindow$initLangugeSetting$lambda_2(this);
-    this.languageSetHonJyutElegantSet_0.onclick = SettingWindow$initLangugeSetting$lambda_3(this);
-    this.languageSetHonJyutColloquialSet_0.onclick = SettingWindow$initLangugeSetting$lambda_4(this);
-    this.languageSetEnglishSet_0.onclick = SettingWindow$initLangugeSetting$lambda_5(this);
-    this.languageSetPresetSet_0.onclick = SettingWindow$initLangugeSetting$lambda_6(this);
-    this.languageSelectSequenceList_0.innerHTML = (tmp$ = localStorage.getItem('RecentlyLanguageSelectSequence')) != null ? tmp$ : '<option value=' + '"' + this.currentUserLanguage_0 + '"' + '>' + this.currentUserLanguage_0 + '<\/option>';
+  SettingWindow.prototype.initCustomChannelsSettingOpenButton = function () {
+    this.customChannelsSettingOpenButton_0.onclick = SettingWindow$initCustomChannelsSettingOpenButton$lambda;
   };
   function SettingWindow$initClearSetting$lambda(event) {
     localStorage.clear();
@@ -3479,16 +4145,18 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function SubtitleDescription() {
     SubtitleDescription_instance = this;
-    UserInterface.call(this, 'subtitleDescription');
-    var tmp$, tmp$_0;
-    this.subtitleDescription_0 = Kotlin.isType(tmp$ = document.getElementById('subtitleDescription'), HTMLDivElement) ? tmp$ : throwCCE();
-    this.text_0 = Kotlin.isType(tmp$_0 = document.getElementById('subtitleDescriptionText'), HTMLDivElement) ? tmp$_0 : throwCCE();
+    UserInterface.call(this, 'trackDescription');
+    var tmp$;
+    this.trackDescription_0 = Kotlin.isType(tmp$ = document.getElementById('trackDescription'), HTMLDivElement) ? tmp$ : throwCCE();
+    this.subtitleIconHTML_0 = '<i class="icon-font nestle-bottom" style="display:inline;">&#xe81d;<\/i>';
     println('Init SubtitleDescription');
   }
   SubtitleDescription.prototype.show = function () {
-    var tmp$, tmp$_0, tmp$_1;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
     UserInterface.prototype.show.call(this);
-    SubtitleDescription_getInstance().text_0.innerHTML = (tmp$_1 = (tmp$_0 = (tmp$ = player != null ? player.subtitleTracks : null) != null ? tmp$.node : null) != null ? tmp$_0.name : null) != null ? tmp$_1 : '';
+    this.trackDescription_0.innerHTML = (tmp$_1 = (tmp$_0 = (tmp$ = player != null ? player.subtitleTracks : null) != null ? tmp$.node : null) != null ? tmp$_0.name : null) != null ? tmp$_1 : '';
+    var subtitleNameHTML = '<div style=' + '"' + 'display:inline;' + '"' + '>' + ((tmp$_4 = (tmp$_3 = (tmp$_2 = player != null ? player.subtitleTracks : null) != null ? tmp$_2.node : null) != null ? tmp$_3.name : null) != null ? tmp$_4 : '') + '<\/div>';
+    this.trackDescription_0.innerHTML = this.subtitleIconHTML_0 + '&nbsp' + subtitleNameHTML;
   };
   SubtitleDescription.$metadata$ = {
     kind: Kind_OBJECT,
@@ -3803,6 +4471,14 @@ var HKNBP_Core = function (_, Kotlin) {
     UserInterface$Companion_instance = this;
     this.allUserInterfaceList = ArrayList_init();
   }
+  UserInterface$Companion.prototype.hideAllUserInterface = function () {
+    var tmp$;
+    tmp$ = this.allUserInterfaceList.iterator();
+    while (tmp$.hasNext()) {
+      var userInterface = tmp$.next();
+      userInterface.hide();
+    }
+  };
   UserInterface$Companion.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'Companion',
@@ -3897,7 +4573,9 @@ var HKNBP_Core = function (_, Kotlin) {
         this$UserInterface.lastTimeFocusElement_bd4klp$_0 = jQuery(this);
         if (!this$UserInterface.isShowUserInterfaceFirstFocus_mby111$_0 && this$UserInterface.isFocusCountdownHide_768iff$_0) {
           this$UserInterface.isShowUserInterfaceFirstFocus_mby111$_0 = false;
-          this$UserInterface.setHideTimer_djwtaz$_0(this$UserInterface.conversionFocusHideTime_igwo47$_0);
+          if (this$UserInterface.conversionFocusHideTime_igwo47$_0 != null) {
+            this$UserInterface.setHideTimer_djwtaz$_0(this$UserInterface.conversionFocusHideTime_igwo47$_0);
+          }
         }
       }
     };
@@ -3913,16 +4591,17 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function VideoDescription() {
     VideoDescription_instance = this;
-    UserInterface.call(this, 'videoDescription');
-    var tmp$, tmp$_0;
-    this.videoDescription_0 = Kotlin.isType(tmp$ = document.getElementById('videoDescription'), HTMLDivElement) ? tmp$ : throwCCE();
-    this.text_0 = Kotlin.isType(tmp$_0 = document.getElementById('videoDescriptionText'), HTMLDivElement) ? tmp$_0 : throwCCE();
+    UserInterface.call(this, 'trackDescription');
+    var tmp$;
+    this.trackDescription_0 = Kotlin.isType(tmp$ = document.getElementById('trackDescription'), HTMLDivElement) ? tmp$ : throwCCE();
+    this.videoIconHTML_0 = '<i class="icon-font nestle-bottom" style="display:inline;">&#xe815;<\/i>';
     println('Init VideoDescription');
   }
   VideoDescription.prototype.show = function () {
     var tmp$, tmp$_0, tmp$_1;
     UserInterface.prototype.show.call(this);
-    VideoDescription_getInstance().text_0.innerHTML = (tmp$_1 = (tmp$_0 = (tmp$ = player != null ? player.videoTracks : null) != null ? tmp$.node : null) != null ? tmp$_0.name : null) != null ? tmp$_1 : '';
+    var videoNameHTML = '<div style=' + '"' + 'display:inline;' + '"' + '>' + ((tmp$_1 = (tmp$_0 = (tmp$ = player != null ? player.videoTracks : null) != null ? tmp$.node : null) != null ? tmp$_0.name : null) != null ? tmp$_1 : '') + '<\/div>';
+    this.trackDescription_0.innerHTML = this.videoIconHTML_0 + '&nbsp' + videoNameHTML;
   };
   VideoDescription.$metadata$ = {
     kind: Kind_OBJECT,
@@ -3936,13 +4615,13 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return VideoDescription_instance;
   }
-  function Comparator$ObjectLiteral_0(closure$comparison) {
+  function Comparator$ObjectLiteral_2(closure$comparison) {
     this.closure$comparison = closure$comparison;
   }
-  Comparator$ObjectLiteral_0.prototype.compare = function (a, b) {
+  Comparator$ObjectLiteral_2.prototype.compare = function (a, b) {
     return this.closure$comparison(a, b);
   };
-  Comparator$ObjectLiteral_0.$metadata$ = {kind: Kind_CLASS, interfaces: [Comparator]};
+  Comparator$ObjectLiteral_2.$metadata$ = {kind: Kind_CLASS, interfaces: [Comparator]};
   var compareByDescending$lambda = wrapFunction(function () {
     var compareValues = Kotlin.kotlin.comparisons.compareValues_s00gnj$;
     return function (closure$selector) {
@@ -3952,14 +4631,14 @@ var HKNBP_Core = function (_, Kotlin) {
       };
     };
   });
-  function Comparator$ObjectLiteral_1(closure$comparison) {
+  function Comparator$ObjectLiteral_3(closure$comparison) {
     this.closure$comparison = closure$comparison;
   }
-  Comparator$ObjectLiteral_1.prototype.compare = function (a, b) {
+  Comparator$ObjectLiteral_3.prototype.compare = function (a, b) {
     return this.closure$comparison(a, b);
   };
-  Comparator$ObjectLiteral_1.$metadata$ = {kind: Kind_CLASS, interfaces: [Comparator]};
-  var compareBy$lambda_0 = wrapFunction(function () {
+  Comparator$ObjectLiteral_3.$metadata$ = {kind: Kind_CLASS, interfaces: [Comparator]};
+  var compareBy$lambda_2 = wrapFunction(function () {
     var compareValues = Kotlin.kotlin.comparisons.compareValues_s00gnj$;
     return function (closure$selector) {
       return function (a, b) {
@@ -4358,7 +5037,7 @@ var HKNBP_Core = function (_, Kotlin) {
     var needTabIndex = {v: currentTabIndex};
     var tabIndexList = Tab3dIndex$Companion_getInstance().getTab3dIndexList_za3rmp$(selectables);
     if (tabIndexList.size > 1) {
-      sortWith(tabIndexList, new Comparator$ObjectLiteral_0(compareByDescending$lambda(VirtualRemote_init$lambda$lambda)));
+      sortWith(tabIndexList, new Comparator$ObjectLiteral_2(compareByDescending$lambda(VirtualRemote_init$lambda$lambda)));
     }
     if (needTabIndex.v.y === last(tabIndexList).y) {
       needTabIndex.v = new Tab3dIndex(currentTabIndex.x, ((tmp$_7 = (tmp$_6 = getOrNull(tabIndexList, 0)) != null ? tmp$_6.y : null) != null ? tmp$_7 : 0) + 1 | 0, currentTabIndex.z);
@@ -4423,7 +5102,7 @@ var HKNBP_Core = function (_, Kotlin) {
     var needTabIndex = {v: currentTabIndex};
     var tabIndexList = Tab3dIndex$Companion_getInstance().getTab3dIndexList_za3rmp$(selectables);
     if (tabIndexList.size > 1) {
-      sortWith(tabIndexList, new Comparator$ObjectLiteral_1(compareBy$lambda_0(VirtualRemote_init$lambda$lambda_1)));
+      sortWith(tabIndexList, new Comparator$ObjectLiteral_3(compareBy$lambda_2(VirtualRemote_init$lambda$lambda_1)));
     }
     if (needTabIndex.v.y === last(tabIndexList).y) {
       needTabIndex.v = new Tab3dIndex(currentTabIndex.x, -1, currentTabIndex.z);
@@ -4478,7 +5157,7 @@ var HKNBP_Core = function (_, Kotlin) {
         this$VirtualRemote.hide();
       }
        else {
-        this$VirtualRemote.show();
+        this$VirtualRemote.show_za3lpa$(60000);
       }
     };
   }
@@ -4495,12 +5174,7 @@ var HKNBP_Core = function (_, Kotlin) {
     VolumeDescription_getInstance().show_za3lpa$(5000);
   }
   function VirtualRemote_init$lambda_55(event) {
-    var tmp$;
-    tmp$ = UserInterface$Companion_getInstance().allUserInterfaceList.iterator();
-    while (tmp$.hasNext()) {
-      var userInterface = tmp$.next();
-      userInterface.hide();
-    }
+    UserInterface$Companion_getInstance().hideAllUserInterface();
   }
   VirtualRemote.$metadata$ = {
     kind: Kind_OBJECT,
@@ -4654,14 +5328,14 @@ var HKNBP_Core = function (_, Kotlin) {
     simpleName: 'Window',
     interfaces: [UserInterface]
   };
-  function Comparator$ObjectLiteral_2(closure$comparison) {
+  function Comparator$ObjectLiteral_4(closure$comparison) {
     this.closure$comparison = closure$comparison;
   }
-  Comparator$ObjectLiteral_2.prototype.compare = function (a, b) {
+  Comparator$ObjectLiteral_4.prototype.compare = function (a, b) {
     return this.closure$comparison(a, b);
   };
-  Comparator$ObjectLiteral_2.$metadata$ = {kind: Kind_CLASS, interfaces: [Comparator]};
-  var compareBy$lambda_1 = wrapFunction(function () {
+  Comparator$ObjectLiteral_4.$metadata$ = {kind: Kind_CLASS, interfaces: [Comparator]};
+  var compareBy$lambda_3 = wrapFunction(function () {
     var compareValues = Kotlin.kotlin.comparisons.compareValues_s00gnj$;
     return function (closure$selector) {
       return function (a, b) {
@@ -4670,151 +5344,21 @@ var HKNBP_Core = function (_, Kotlin) {
       };
     };
   });
-  function XMLTV(displayNames, icon, urls, programmes) {
+  function XMLTV(displayName, icon, urls, programmes) {
     XMLTV$Companion_getInstance();
-    if (displayNames === void 0)
-      displayNames = null;
+    if (displayName === void 0)
+      displayName = null;
     if (icon === void 0)
       icon = null;
     if (urls === void 0)
       urls = null;
     if (programmes === void 0)
       programmes = null;
-    this.displayNames = displayNames;
+    this.displayName = displayName;
     this.icon = icon;
     this.urls = urls;
     this.programmes = programmes;
   }
-  function XMLTV$MultiLanguage() {
-  }
-  function XMLTV$MultiLanguage$MultiLanguageList() {
-  }
-  XMLTV$MultiLanguage$MultiLanguageList.prototype.findSelectLanguage_0 = function (lang) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
-    if (lang == null)
-      return null;
-    var langElementList = split(lang, ['-']);
-    var findSelectLanguageList = this;
-    tmp$ = langElementList.size;
-    for (var index = 0; index < tmp$; index++) {
-      var langElement = getOrNull(langElementList, index);
-      var findSelectLanguageListCache = XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init();
-      tmp$_0 = findSelectLanguageList.iterator();
-      while (tmp$_0.hasNext()) {
-        var findSelectLanguageListElement = tmp$_0.next();
-        var compareElement = (tmp$_2 = (tmp$_1 = findSelectLanguageListElement.lang) != null ? split(tmp$_1, ['-']) : null) != null ? getOrNull(tmp$_2, index) : null;
-        if ((langElement != null ? langElement.toUpperCase() : null) === (compareElement != null ? compareElement.toUpperCase() : null)) {
-          findSelectLanguageListCache.add_11rb$(findSelectLanguageListElement);
-        }
-      }
-      findSelectLanguageList = findSelectLanguageListCache;
-    }
-    if (findSelectLanguageList.size === 0) {
-      tmp$_4 = null;
-    }
-     else {
-      tmp$_4 = (tmp$_3 = getOrNull(findSelectLanguageList, 0)) != null ? tmp$_3.lang : null;
-    }
-    return tmp$_4;
-  };
-  XMLTV$MultiLanguage$MultiLanguageList.prototype.findSelectLanguage_1 = function (langList) {
-    var tmp$;
-    tmp$ = langList.iterator();
-    while (tmp$.hasNext()) {
-      var lang = tmp$.next();
-      var selectLanguage = this.findSelectLanguage_0(lang);
-      if (selectLanguage != null) {
-        return selectLanguage;
-      }
-    }
-    return null;
-  };
-  XMLTV$MultiLanguage$MultiLanguageList.prototype.getElementsByLanguage_qj8e4y$ = function (langList) {
-    var tmp$;
-    if (this.size < 1) {
-      return null;
-    }
-    var arrayList = ArrayList_init();
-    var selectLanguge = this.findSelectLanguage_1(langList);
-    tmp$ = this.iterator();
-    while (tmp$.hasNext()) {
-      var element = tmp$.next();
-      if (selectLanguge === element.lang) {
-        arrayList.add_11rb$(element);
-      }
-    }
-    return arrayList;
-  };
-  XMLTV$MultiLanguage$MultiLanguageList.prototype.getElementsByLanguage_alerag$ = function (langs) {
-    var tmp$;
-    var langList = ArrayList_init();
-    for (tmp$ = 0; tmp$ !== langs.length; ++tmp$) {
-      var lang = langs[tmp$];
-      langList.add_11rb$(lang);
-    }
-    return this.getElementsByLanguage_qj8e4y$(langList);
-  };
-  XMLTV$MultiLanguage$MultiLanguageList.prototype.getElementsByLanguage = function () {
-    var userLanguage = navigator.language || navigator.userLanguage;
-    return this.getElementsByLanguage_alerag$([userLanguage]);
-  };
-  XMLTV$MultiLanguage$MultiLanguageList.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'MultiLanguageList',
-    interfaces: [ArrayList]
-  };
-  function XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init($this) {
-    $this = $this || Object.create(XMLTV$MultiLanguage$MultiLanguageList.prototype);
-    ArrayList_init($this);
-    XMLTV$MultiLanguage$MultiLanguageList.call($this);
-    return $this;
-  }
-  function XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init_0(initElements, $this) {
-    $this = $this || Object.create(XMLTV$MultiLanguage$MultiLanguageList.prototype);
-    ArrayList_init($this);
-    XMLTV$MultiLanguage$MultiLanguageList.call($this);
-    var tmp$;
-    for (tmp$ = 0; tmp$ !== initElements.length; ++tmp$) {
-      var initElement = initElements[tmp$];
-      $this.add_11rb$(initElement);
-    }
-    return $this;
-  }
-  function XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init_1(initialCapacity, $this) {
-    $this = $this || Object.create(XMLTV$MultiLanguage$MultiLanguageList.prototype);
-    ArrayList_init_0(initialCapacity, $this);
-    XMLTV$MultiLanguage$MultiLanguageList.call($this);
-    return $this;
-  }
-  function XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init_2(elements, $this) {
-    $this = $this || Object.create(XMLTV$MultiLanguage$MultiLanguageList.prototype);
-    ArrayList_init_1(elements, $this);
-    XMLTV$MultiLanguage$MultiLanguageList.call($this);
-    return $this;
-  }
-  XMLTV$MultiLanguage.$metadata$ = {
-    kind: Kind_INTERFACE,
-    simpleName: 'MultiLanguage',
-    interfaces: []
-  };
-  function XMLTV$DisplayName(lang, displayName) {
-    if (lang === void 0)
-      lang = null;
-    if (displayName === void 0)
-      displayName = null;
-    this.lang_scy6hi$_0 = lang;
-    this.displayName = displayName;
-  }
-  Object.defineProperty(XMLTV$DisplayName.prototype, 'lang', {
-    get: function () {
-      return this.lang_scy6hi$_0;
-    }
-  });
-  XMLTV$DisplayName.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'DisplayName',
-    interfaces: [XMLTV$MultiLanguage]
-  };
   function XMLTV$Icon(src, width, height) {
     if (src === void 0)
       src = null;
@@ -4831,7 +5375,7 @@ var HKNBP_Core = function (_, Kotlin) {
     simpleName: 'Icon',
     interfaces: []
   };
-  function XMLTV$Programme(start, stop, pdcStart, vpsStart, showView, videoPlus, clumpidx, titles, subTitles, descs, credits, date, categorys, keywords, languages, origLanguages, length, icon, urls, countrys, episodeNum, video, audio, previouslyShown, premieres, lastChances, new_0, subtitles, rating, starRating, reviews) {
+  function XMLTV$Programme(start, stop, pdcStart, vpsStart, showView, videoPlus, clumpidx, title, subTitle, desc, credits, date, category, keyword, language, origLanguage, length, icon, urls, country, episodeNum, video, audio, previouslyShown, premiere, lastChance, new_0, subtitles, rating, starRating, review) {
     if (pdcStart === void 0)
       pdcStart = null;
     if (vpsStart === void 0)
@@ -4842,32 +5386,32 @@ var HKNBP_Core = function (_, Kotlin) {
       videoPlus = null;
     if (clumpidx === void 0)
       clumpidx = null;
-    if (titles === void 0)
-      titles = null;
-    if (subTitles === void 0)
-      subTitles = null;
-    if (descs === void 0)
-      descs = null;
+    if (title === void 0)
+      title = null;
+    if (subTitle === void 0)
+      subTitle = null;
+    if (desc === void 0)
+      desc = null;
     if (credits === void 0)
       credits = null;
     if (date === void 0)
       date = null;
-    if (categorys === void 0)
-      categorys = null;
-    if (keywords === void 0)
-      keywords = null;
-    if (languages === void 0)
-      languages = null;
-    if (origLanguages === void 0)
-      origLanguages = null;
+    if (category === void 0)
+      category = null;
+    if (keyword === void 0)
+      keyword = null;
+    if (language === void 0)
+      language = null;
+    if (origLanguage === void 0)
+      origLanguage = null;
     if (length === void 0)
       length = null;
     if (icon === void 0)
       icon = null;
     if (urls === void 0)
       urls = null;
-    if (countrys === void 0)
-      countrys = null;
+    if (country === void 0)
+      country = null;
     if (episodeNum === void 0)
       episodeNum = null;
     if (video === void 0)
@@ -4876,10 +5420,10 @@ var HKNBP_Core = function (_, Kotlin) {
       audio = null;
     if (previouslyShown === void 0)
       previouslyShown = null;
-    if (premieres === void 0)
-      premieres = null;
-    if (lastChances === void 0)
-      lastChances = null;
+    if (premiere === void 0)
+      premiere = null;
+    if (lastChance === void 0)
+      lastChance = null;
     if (new_0 === void 0)
       new_0 = false;
     if (subtitles === void 0)
@@ -4888,8 +5432,8 @@ var HKNBP_Core = function (_, Kotlin) {
       rating = null;
     if (starRating === void 0)
       starRating = null;
-    if (reviews === void 0)
-      reviews = null;
+    if (review === void 0)
+      review = null;
     this.start = start;
     this.stop = stop;
     this.pdcStart = pdcStart;
@@ -4897,85 +5441,31 @@ var HKNBP_Core = function (_, Kotlin) {
     this.showView = showView;
     this.videoPlus = videoPlus;
     this.clumpidx = clumpidx;
-    this.titles = titles;
-    this.subTitles = subTitles;
-    this.descs = descs;
+    this.title = title;
+    this.subTitle = subTitle;
+    this.desc = desc;
     this.credits = credits;
     this.date = date;
-    this.categorys = categorys;
-    this.keywords = keywords;
-    this.languages = languages;
-    this.origLanguages = origLanguages;
+    this.category = category;
+    this.keyword = keyword;
+    this.language = language;
+    this.origLanguage = origLanguage;
     this.length = length;
     this.icon = icon;
     this.urls = urls;
-    this.countrys = countrys;
+    this.country = country;
     this.episodeNum = episodeNum;
     this.video = video;
     this.audio = audio;
     this.previouslyShown = previouslyShown;
-    this.premieres = premieres;
-    this.lastChances = lastChances;
+    this.premiere = premiere;
+    this.lastChance = lastChance;
     this.new = new_0;
     this.subtitles = subtitles;
     this.rating = rating;
     this.starRating = starRating;
-    this.reviews = reviews;
+    this.review = review;
   }
-  function XMLTV$Programme$Title(lang, title) {
-    if (lang === void 0)
-      lang = null;
-    if (title === void 0)
-      title = null;
-    this.lang_wjmm41$_0 = lang;
-    this.title = title;
-  }
-  Object.defineProperty(XMLTV$Programme$Title.prototype, 'lang', {
-    get: function () {
-      return this.lang_wjmm41$_0;
-    }
-  });
-  XMLTV$Programme$Title.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'Title',
-    interfaces: [XMLTV$MultiLanguage]
-  };
-  function XMLTV$Programme$SubTitle(lang, subTitle) {
-    if (lang === void 0)
-      lang = null;
-    if (subTitle === void 0)
-      subTitle = null;
-    this.lang_ecqlcz$_0 = lang;
-    this.subTitle = subTitle;
-  }
-  Object.defineProperty(XMLTV$Programme$SubTitle.prototype, 'lang', {
-    get: function () {
-      return this.lang_ecqlcz$_0;
-    }
-  });
-  XMLTV$Programme$SubTitle.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'SubTitle',
-    interfaces: [XMLTV$MultiLanguage]
-  };
-  function XMLTV$Programme$Desc(lang, desc) {
-    if (lang === void 0)
-      lang = null;
-    if (desc === void 0)
-      desc = null;
-    this.lang_hsmczu$_0 = lang;
-    this.desc = desc;
-  }
-  Object.defineProperty(XMLTV$Programme$Desc.prototype, 'lang', {
-    get: function () {
-      return this.lang_hsmczu$_0;
-    }
-  });
-  XMLTV$Programme$Desc.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'Desc',
-    interfaces: [XMLTV$MultiLanguage]
-  };
   function XMLTV$Programme$Credits(directors, actors, writers, adapters, producers, composers, editors, presenters, commentators, guests) {
     if (directors === void 0)
       directors = null;
@@ -5026,78 +5516,6 @@ var HKNBP_Core = function (_, Kotlin) {
     simpleName: 'Credits',
     interfaces: []
   };
-  function XMLTV$Programme$Category(lang, category) {
-    if (lang === void 0)
-      lang = null;
-    if (category === void 0)
-      category = null;
-    this.lang_gzbo4j$_0 = lang;
-    this.category = category;
-  }
-  Object.defineProperty(XMLTV$Programme$Category.prototype, 'lang', {
-    get: function () {
-      return this.lang_gzbo4j$_0;
-    }
-  });
-  XMLTV$Programme$Category.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'Category',
-    interfaces: [XMLTV$MultiLanguage]
-  };
-  function XMLTV$Programme$Keyword(lang, keyword) {
-    if (lang === void 0)
-      lang = null;
-    if (keyword === void 0)
-      keyword = null;
-    this.lang_1q3jkw$_0 = lang;
-    this.keyword = keyword;
-  }
-  Object.defineProperty(XMLTV$Programme$Keyword.prototype, 'lang', {
-    get: function () {
-      return this.lang_1q3jkw$_0;
-    }
-  });
-  XMLTV$Programme$Keyword.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'Keyword',
-    interfaces: [XMLTV$MultiLanguage]
-  };
-  function XMLTV$Programme$Language(lang, language) {
-    if (lang === void 0)
-      lang = null;
-    if (language === void 0)
-      language = null;
-    this.lang_cz5077$_0 = lang;
-    this.language = language;
-  }
-  Object.defineProperty(XMLTV$Programme$Language.prototype, 'lang', {
-    get: function () {
-      return this.lang_cz5077$_0;
-    }
-  });
-  XMLTV$Programme$Language.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'Language',
-    interfaces: [XMLTV$MultiLanguage]
-  };
-  function XMLTV$Programme$OrigLanguage(lang, origLanguage) {
-    if (lang === void 0)
-      lang = null;
-    if (origLanguage === void 0)
-      origLanguage = null;
-    this.lang_bmvppa$_0 = lang;
-    this.origLanguage = origLanguage;
-  }
-  Object.defineProperty(XMLTV$Programme$OrigLanguage.prototype, 'lang', {
-    get: function () {
-      return this.lang_bmvppa$_0;
-    }
-  });
-  XMLTV$Programme$OrigLanguage.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'OrigLanguage',
-    interfaces: [XMLTV$MultiLanguage]
-  };
   function XMLTV$Programme$Length(units, length) {
     if (units === void 0)
       units = null;
@@ -5110,24 +5528,6 @@ var HKNBP_Core = function (_, Kotlin) {
     kind: Kind_CLASS,
     simpleName: 'Length',
     interfaces: []
-  };
-  function XMLTV$Programme$Country(lang, country) {
-    if (lang === void 0)
-      lang = null;
-    if (country === void 0)
-      country = null;
-    this.lang_a6jevh$_0 = lang;
-    this.country = country;
-  }
-  Object.defineProperty(XMLTV$Programme$Country.prototype, 'lang', {
-    get: function () {
-      return this.lang_a6jevh$_0;
-    }
-  });
-  XMLTV$Programme$Country.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'Country',
-    interfaces: [XMLTV$MultiLanguage]
   };
   function XMLTV$Programme$EpisodeNum(system, episodeNum) {
     if (system === void 0)
@@ -5265,42 +5665,6 @@ var HKNBP_Core = function (_, Kotlin) {
     simpleName: 'PreviouslyShown',
     interfaces: []
   };
-  function XMLTV$Programme$Premiere(lang, premiere) {
-    if (lang === void 0)
-      lang = null;
-    if (premiere === void 0)
-      premiere = null;
-    this.lang_ix2bxe$_0 = lang;
-    this.premiere = premiere;
-  }
-  Object.defineProperty(XMLTV$Programme$Premiere.prototype, 'lang', {
-    get: function () {
-      return this.lang_ix2bxe$_0;
-    }
-  });
-  XMLTV$Programme$Premiere.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'Premiere',
-    interfaces: [XMLTV$MultiLanguage]
-  };
-  function XMLTV$Programme$LastChance(lang, lastChance) {
-    if (lang === void 0)
-      lang = null;
-    if (lastChance === void 0)
-      lastChance = null;
-    this.lang_ieq6b5$_0 = lang;
-    this.lastChance = lastChance;
-  }
-  Object.defineProperty(XMLTV$Programme$LastChance.prototype, 'lang', {
-    get: function () {
-      return this.lang_ieq6b5$_0;
-    }
-  });
-  XMLTV$Programme$LastChance.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'LastChance',
-    interfaces: [XMLTV$MultiLanguage]
-  };
   function XMLTV$Programme$Subtitles(type, language) {
     if (type === void 0)
       type = null;
@@ -5346,32 +5710,24 @@ var HKNBP_Core = function (_, Kotlin) {
     simpleName: 'StarRating',
     interfaces: []
   };
-  function XMLTV$Programme$Review(type, source, reviewer, lang, review) {
+  function XMLTV$Programme$Review(type, source, reviewer, review) {
     if (type === void 0)
       type = null;
     if (source === void 0)
       source = null;
     if (reviewer === void 0)
       reviewer = null;
-    if (lang === void 0)
-      lang = null;
     if (review === void 0)
       review = null;
     this.type = type;
     this.source = source;
     this.reviewer = reviewer;
-    this.lang_i28xod$_0 = lang;
     this.review = review;
   }
-  Object.defineProperty(XMLTV$Programme$Review.prototype, 'lang', {
-    get: function () {
-      return this.lang_i28xod$_0;
-    }
-  });
   XMLTV$Programme$Review.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'Review',
-    interfaces: [XMLTV$MultiLanguage]
+    interfaces: []
   };
   function XMLTV$Programme$ProgrammeList() {
   }
@@ -5420,7 +5776,7 @@ var HKNBP_Core = function (_, Kotlin) {
     ArrayList_init($this);
     XMLTV$Programme$ProgrammeList.call($this);
     if ($this.size > 1) {
-      sortWith($this, new Comparator$ObjectLiteral_2(compareBy$lambda_1(XMLTV$Programme$XMLTV$Programme$ProgrammeList_init$lambda)));
+      sortWith($this, new Comparator$ObjectLiteral_4(compareBy$lambda_3(XMLTV$Programme$XMLTV$Programme$ProgrammeList_init$lambda)));
     }
     return $this;
   }
@@ -5443,7 +5799,7 @@ var HKNBP_Core = function (_, Kotlin) {
     ArrayList_init_0(initialCapacity, $this);
     XMLTV$Programme$ProgrammeList.call($this);
     if ($this.size > 1) {
-      sortWith($this, new Comparator$ObjectLiteral_2(compareBy$lambda_1(XMLTV$Programme$XMLTV$Programme$ProgrammeList_init$lambda_0)));
+      sortWith($this, new Comparator$ObjectLiteral_4(compareBy$lambda_3(XMLTV$Programme$XMLTV$Programme$ProgrammeList_init$lambda_0)));
     }
     return $this;
   }
@@ -5455,7 +5811,7 @@ var HKNBP_Core = function (_, Kotlin) {
     ArrayList_init_1(elements, $this);
     XMLTV$Programme$ProgrammeList.call($this);
     if ($this.size > 1) {
-      sortWith($this, new Comparator$ObjectLiteral_2(compareBy$lambda_1(XMLTV$Programme$XMLTV$Programme$ProgrammeList_init$lambda_1)));
+      sortWith($this, new Comparator$ObjectLiteral_4(compareBy$lambda_3(XMLTV$Programme$XMLTV$Programme$ProgrammeList_init$lambda_1)));
     }
     return $this;
   }
@@ -5536,39 +5892,47 @@ var HKNBP_Core = function (_, Kotlin) {
     }
   };
   XMLTV$Companion.prototype.getXMLTV_0 = function (xmltvDoc, epgID) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2;
+    var subElements = xmltvDoc != null ? xmltvDoc.getElementsByTagName('channel') : null;
+    if (subElements == null || subElements.length < 1) {
+      return new XMLTV();
+    }
     var i = 0;
-    while (i < ((tmp$_0 = (tmp$ = xmltvDoc != null ? xmltvDoc.getElementsByTagName('channel') : null) != null ? tmp$.length : null) != null ? tmp$_0 : 0)) {
-      if (equals((tmp$_2 = (tmp$_1 = xmltvDoc != null ? xmltvDoc.getElementsByTagName('channel') : null) != null ? tmp$_1[i] : null) != null ? tmp$_2.getAttribute('id') : null, epgID)) {
-        return new XMLTV(this.getDisplayNames_0(xmltvDoc.getElementsByTagName('channel')[i]), this.getIcon_0(xmltvDoc.getElementsByTagName('channel')[i]), this.getUrls_0(xmltvDoc.getElementsByTagName('channel')[i]), this.getProgrammes_0(xmltvDoc, epgID));
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      if (equals(subElement != null ? subElement.getAttribute('id') : null, epgID)) {
+        return new XMLTV(this.getDisplayName_0(subElement), this.getIcon_0(subElement), this.getUrls_0(subElement), this.getProgrammes_0(xmltvDoc, epgID));
       }
       i = i + 1 | 0;
     }
     return new XMLTV();
   };
-  XMLTV$Companion.prototype.getDisplayNames_0 = function (element) {
-    var tmp$;
-    if ((element != null ? element.getElementsByTagName('displayName') : null) == null) {
+  XMLTV$Companion.prototype.getDisplayName_0 = function (element) {
+    var subElements = element != null ? element.getElementsByTagName('displayName') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    var displayNames = XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init();
+    var multiLangDisplayName = new MultiLanguageString();
     var i = 0;
-    while (i < element.getElementsByTagName('displayName').length) {
-      var lang = this.getLang_0(element.getElementsByTagName('displayName')[i]);
-      var displayName = (tmp$ = element.getElementsByTagName('displayName')[i]) != null ? tmp$.innerHTML : null;
-      displayNames.add_11rb$(new XMLTV$DisplayName(lang, displayName));
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var lang = this.getLang_0(subElement);
+      var displayName = subElement != null ? subElement.innerHTML : null;
+      if (displayName != null) {
+        multiLangDisplayName.add_11rb$(new MultiLanguageString$LanguageString(lang != null ? lang : '', displayName));
+      }
       i = i + 1 | 0;
     }
-    return displayNames;
+    return multiLangDisplayName;
   };
   XMLTV$Companion.prototype.getLang_0 = function (element) {
     return element != null ? element.getAttribute('Lang') : null;
   };
   XMLTV$Companion.prototype.getIcon_0 = function (element) {
-    if ((element != null ? element.getElementsByTagName('icon') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('icon') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    return new XMLTV$Icon(this.getSrc_0(element.getElementsByTagName('icon')[0]), this.getWidth_0(element.getElementsByTagName('icon')[0]), this.getHeight_0(element.getElementsByTagName('icon')[0]));
+    return new XMLTV$Icon(this.getSrc_0(subElements[0]), this.getWidth_0(subElements[0]), this.getHeight_0(subElements[0]));
   };
   XMLTV$Companion.prototype.getSrc_0 = function (element) {
     return element != null ? element.getAttribute('src') : null;
@@ -5582,14 +5946,15 @@ var HKNBP_Core = function (_, Kotlin) {
     return (tmp$ = element != null ? element.getAttribute('height') : null) != null ? toIntOrNull(tmp$) : null;
   };
   XMLTV$Companion.prototype.getUrls_0 = function (element) {
-    var tmp$, tmp$_0, tmp$_1;
-    if ((element != null ? element.getElementsByTagName('url') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('url') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
     var urls = ArrayList_init();
     var i = 0;
-    while (i < ((tmp$ = element != null ? element.getElementsByTagName('url') : null) != null ? tmp$.length : null)) {
-      var url = (tmp$_1 = (tmp$_0 = element != null ? element.getElementsByTagName('url') : null) != null ? tmp$_0[i] : null) != null ? tmp$_1.innerHTML : null;
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var url = subElement != null ? subElement.innerHTML : null;
       if (url != null) {
         urls.add_11rb$(url);
       }
@@ -5601,53 +5966,54 @@ var HKNBP_Core = function (_, Kotlin) {
     return programme.start.getTime();
   }
   XMLTV$Companion.prototype.getProgrammes_0 = function (xmltvDoc, epgID) {
-    var tmp$;
-    if ((xmltvDoc != null ? xmltvDoc.getElementsByTagName('programme') : null) == null) {
+    var subElements = xmltvDoc != null ? xmltvDoc.getElementsByTagName('programme') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
     var programmes = XMLTV$Programme$XMLTV$Programme$ProgrammeList_init();
     var i = 0;
-    while (i < xmltvDoc.getElementsByTagName('programme').length) {
-      if (equals((tmp$ = xmltvDoc.getElementsByTagName('programme')[i]) != null ? tmp$.getAttribute('channel') : null, epgID)) {
-        var start = this.getStart_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var stop = this.getStop_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var pdcStart = this.getPDCStart_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var vpsStart = this.getVPSStart_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var showView = this.getShowView_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var videoPlus = this.getVideoPlus_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var clumpidx = this.getClumpidx_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var titles = this.getTitles_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var subTitles = this.getSubTitles_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var descs = this.getDescs_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var credits = this.getCredits_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var date = this.getDate_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var categorys = this.getCategorys_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var keywords = this.getKeywords_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var languages = this.getLanguages_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var origLanguages = this.getOrigLanguages_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var length = this.getLength_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var icon = this.getIcon_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var urls = this.getUrls_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var countrys = this.getCountrys_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var episodeNum = this.getEpisodeNum_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var video = this.getVideo_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var audio = this.getAudio_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var previouslyShown = this.getPreviouslyShown_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var premieres = this.getPremieres_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var lastChances = this.getLastChances_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var new_0 = this.getNew_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var subtitles = this.getSubtitles_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var rating = this.getRating_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var starRating = this.getStarRating_0(xmltvDoc.getElementsByTagName('programme')[i]);
-        var reviews = this.getReviews_0(xmltvDoc.getElementsByTagName('programme')[i]);
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      if (equals(subElement != null ? subElement.getAttribute('channel') : null, epgID)) {
+        var start = this.getStart_0(subElement);
+        var stop = this.getStop_0(subElement);
+        var pdcStart = this.getPDCStart_0(subElement);
+        var vpsStart = this.getVPSStart_0(subElement);
+        var showView = this.getShowView_0(subElement);
+        var videoPlus = this.getVideoPlus_0(subElement);
+        var clumpidx = this.getClumpidx_0(subElement);
+        var title = this.getTitle_0(subElement);
+        var subTitle = this.getSubTitle_0(subElement);
+        var desc = this.getDesc_0(subElement);
+        var credits = this.getCredits_0(subElement);
+        var date = this.getDate_0(subElement);
+        var category = this.getCategory_0(subElement);
+        var keyword = this.getKeyword_0(subElement);
+        var language = this.getLanguage_0(subElement);
+        var origLanguage = this.getOrigLanguage_0(subElement);
+        var length = this.getLength_0(subElement);
+        var icon = this.getIcon_0(subElement);
+        var urls = this.getUrls_0(subElement);
+        var country = this.getCountry_0(subElement);
+        var episodeNum = this.getEpisodeNum_0(subElement);
+        var video = this.getVideo_0(subElement);
+        var audio = this.getAudio_0(subElement);
+        var previouslyShown = this.getPreviouslyShown_0(subElement);
+        var premiere = this.getPremiere_0(subElement);
+        var lastChance = this.getLastChance_0(subElement);
+        var new_0 = this.getNew_0(subElement);
+        var subtitles = this.getSubtitles_0(subElement);
+        var rating = this.getRating_0(subElement);
+        var starRating = this.getStarRating_0(subElement);
+        var reviews = this.getReview_0(subElement);
         if (start != null && stop != null && this.compareTo_fsx041$(start, stop) < 0) {
-          programmes.add_11rb$(new XMLTV$Programme(start, stop, pdcStart, vpsStart, showView, videoPlus, clumpidx, titles, subTitles, descs, credits, date, categorys, keywords, languages, origLanguages, length, icon, urls, countrys, episodeNum, video, audio, previouslyShown, premieres, lastChances, new_0, subtitles, rating, starRating, reviews));
+          programmes.add_11rb$(new XMLTV$Programme(start, stop, pdcStart, vpsStart, showView, videoPlus, clumpidx, title, subTitle, desc, credits, date, category, keyword, language, origLanguage, length, icon, urls, country, episodeNum, video, audio, previouslyShown, premiere, lastChance, new_0, subtitles, rating, starRating, reviews));
         }
       }
       i = i + 1 | 0;
     }
     if (programmes.size > 1) {
-      sortWith(programmes, new Comparator$ObjectLiteral_2(compareBy$lambda_1(XMLTV$Companion$getProgrammes$lambda)));
+      sortWith(programmes, new Comparator$ObjectLiteral_4(compareBy$lambda_3(XMLTV$Companion$getProgrammes$lambda)));
     }
     return programmes;
   };
@@ -5674,66 +6040,77 @@ var HKNBP_Core = function (_, Kotlin) {
   XMLTV$Companion.prototype.getClumpidx_0 = function (element) {
     return element != null ? element.getAttribute('clumpidx') : null;
   };
-  XMLTV$Companion.prototype.getTitles_0 = function (element) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2;
-    if ((element != null ? element.getElementsByTagName('title') : null) == null) {
+  XMLTV$Companion.prototype.getTitle_0 = function (element) {
+    var subElements = element != null ? element.getElementsByTagName('title') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    var titles = XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init();
+    var multiLangTitle = new MultiLanguageString();
     var i = 0;
-    while (i < ((tmp$ = element != null ? element.getElementsByTagName('title') : null) != null ? tmp$.length : null)) {
-      var lang = this.getLang_0((tmp$_0 = element != null ? element.getElementsByTagName('title') : null) != null ? tmp$_0[i] : null);
-      var title = (tmp$_2 = (tmp$_1 = element != null ? element.getElementsByTagName('title') : null) != null ? tmp$_1[i] : null) != null ? tmp$_2.innerHTML : null;
-      titles.add_11rb$(new XMLTV$Programme$Title(lang, title));
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var lang = this.getLang_0(subElement);
+      var title = subElement != null ? subElement.innerHTML : null;
+      if (title != null) {
+        multiLangTitle.add_11rb$(new MultiLanguageString$LanguageString(lang != null ? lang : '', title));
+      }
       i = i + 1 | 0;
     }
-    return titles;
+    return multiLangTitle;
   };
-  XMLTV$Companion.prototype.getSubTitles_0 = function (element) {
-    var tmp$, tmp$_0, tmp$_1, tmp$_2;
-    if ((element != null ? element.getElementsByTagName('sub-title') : null) == null) {
+  XMLTV$Companion.prototype.getSubTitle_0 = function (element) {
+    var subElements = element != null ? element.getElementsByTagName('sub-title') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    var subTitles = XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init();
+    var multiLangSubTitle = new MultiLanguageString();
     var i = 0;
-    while (i < ((tmp$ = element != null ? element.getElementsByTagName('sub-title') : null) != null ? tmp$.length : null)) {
-      var lang = this.getLang_0((tmp$_0 = element != null ? element.getElementsByTagName('sub-title') : null) != null ? tmp$_0[i] : null);
-      var subTitle = (tmp$_2 = (tmp$_1 = element != null ? element.getElementsByTagName('sub-title') : null) != null ? tmp$_1[i] : null) != null ? tmp$_2.innerHTML : null;
-      subTitles.add_11rb$(new XMLTV$Programme$SubTitle(lang, subTitle));
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var lang = this.getLang_0(subElement);
+      var subTitle = subElement != null ? subElement.innerHTML : null;
+      if (subTitle != null) {
+        multiLangSubTitle.add_11rb$(new MultiLanguageString$LanguageString(lang != null ? lang : '', subTitle));
+      }
       i = i + 1 | 0;
     }
-    return subTitles;
+    return multiLangSubTitle;
   };
-  XMLTV$Companion.prototype.getDescs_0 = function (element) {
-    var tmp$;
-    if ((element != null ? element.getElementsByTagName('desc') : null) == null) {
+  XMLTV$Companion.prototype.getDesc_0 = function (element) {
+    var subElements = element != null ? element.getElementsByTagName('desc') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    var descs = XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init();
+    var multiLangDesc = new MultiLanguageString();
     var i = 0;
-    while (i < element.getElementsByTagName('desc').length) {
-      var lang = this.getLang_0(element.getElementsByTagName('desc')[i]);
-      var desc = (tmp$ = element.getElementsByTagName('desc')[i]) != null ? tmp$.innerHTML : null;
-      descs.add_11rb$(new XMLTV$Programme$Desc(lang, desc));
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var lang = this.getLang_0(subElement);
+      var desc = subElement != null ? subElement.innerHTML : null;
+      if (desc != null) {
+        multiLangDesc.add_11rb$(new MultiLanguageString$LanguageString(lang != null ? lang : '', desc));
+      }
       i = i + 1 | 0;
     }
-    return descs;
+    return multiLangDesc;
   };
   XMLTV$Companion.prototype.getCredits_0 = function (element) {
-    if ((element != null ? element.getElementsByTagName('credits') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('credits') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    return new XMLTV$Programme$Credits(this.getDirectors_0(element.getElementsByTagName('credits')[0]), this.getActors_0(element.getElementsByTagName('credits')[0]), this.getWriters_0(element.getElementsByTagName('credits')[0]), this.getAdapters_0(element.getElementsByTagName('credits')[0]), this.getProducers_0(element.getElementsByTagName('credits')[0]), this.getComposers_0(element.getElementsByTagName('credits')[0]), this.getEditors_0(element.getElementsByTagName('credits')[0]), this.getPresenters_0(element.getElementsByTagName('credits')[0]), this.getCommentators_0(element.getElementsByTagName('credits')[0]), this.getGuests_0(element.getElementsByTagName('credits')[0]));
+    return new XMLTV$Programme$Credits(this.getDirectors_0(subElements[0]), this.getActors_0(subElements[0]), this.getWriters_0(subElements[0]), this.getAdapters_0(subElements[0]), this.getProducers_0(subElements[0]), this.getComposers_0(subElements[0]), this.getEditors_0(subElements[0]), this.getPresenters_0(subElements[0]), this.getCommentators_0(subElements[0]), this.getGuests_0(subElements[0]));
   };
   XMLTV$Companion.prototype.getDirectors_0 = function (element) {
-    var tmp$;
-    if ((element != null ? element.getElementsByTagName('director') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('director') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
     var directors = ArrayList_init();
     var i = 0;
-    while (i < element.getElementsByTagName('director').length) {
-      var director = (tmp$ = element.getElementsByTagName('director')[i]) != null ? tmp$.innerHTML : null;
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var director = subElement != null ? subElement.innerHTML : null;
       if (director != null) {
         directors.add_11rb$(director);
       }
@@ -5742,15 +6119,16 @@ var HKNBP_Core = function (_, Kotlin) {
     return directors;
   };
   XMLTV$Companion.prototype.getActors_0 = function (element) {
-    var tmp$;
-    if ((element != null ? element.getElementsByTagName('actor') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('actor') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
     var actors = ArrayList_init();
     var i = 0;
-    while (i < element.getElementsByTagName('actor').length) {
-      var role = this.getRole_0(element.getElementsByTagName('actor')[i]);
-      var actor = (tmp$ = element.getElementsByTagName('actor')[i]) != null ? tmp$.innerHTML : null;
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var role = this.getRole_0(subElement);
+      var actor = subElement != null ? subElement.innerHTML : null;
       actors.add_11rb$(new XMLTV$Programme$Credits$Actor(role, actor));
       i = i + 1 | 0;
     }
@@ -5760,14 +6138,15 @@ var HKNBP_Core = function (_, Kotlin) {
     return element != null ? element.getAttribute('rote') : null;
   };
   XMLTV$Companion.prototype.getWriters_0 = function (element) {
-    var tmp$;
-    if ((element != null ? element.getElementsByTagName('writer') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('writer') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
     var writers = ArrayList_init();
     var i = 0;
-    while (i < element.getElementsByTagName('writer').length) {
-      var writer = (tmp$ = element.getElementsByTagName('writer')[i]) != null ? tmp$.innerHTML : null;
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var writer = subElement != null ? subElement.innerHTML : null;
       if (writer != null) {
         writers.add_11rb$(writer);
       }
@@ -5776,14 +6155,15 @@ var HKNBP_Core = function (_, Kotlin) {
     return writers;
   };
   XMLTV$Companion.prototype.getAdapters_0 = function (element) {
-    var tmp$;
-    if ((element != null ? element.getElementsByTagName('adapter') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('adapter') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
     var adapters = ArrayList_init();
     var i = 0;
-    while (i < element.getElementsByTagName('adapter').length) {
-      var adapter = (tmp$ = element.getElementsByTagName('adapter')[i]) != null ? tmp$.innerHTML : null;
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var adapter = subElement != null ? subElement.innerHTML : null;
       if (adapter != null) {
         adapters.add_11rb$(adapter);
       }
@@ -5792,14 +6172,15 @@ var HKNBP_Core = function (_, Kotlin) {
     return adapters;
   };
   XMLTV$Companion.prototype.getProducers_0 = function (element) {
-    var tmp$;
-    if ((element != null ? element.getElementsByTagName('producer') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('producer') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
     var producers = ArrayList_init();
     var i = 0;
-    while (i < element.getElementsByTagName('producer').length) {
-      var producer = (tmp$ = element.getElementsByTagName('producer')[i]) != null ? tmp$.innerHTML : null;
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var producer = subElement != null ? subElement.innerHTML : null;
       if (producer != null) {
         producers.add_11rb$(producer);
       }
@@ -5808,14 +6189,15 @@ var HKNBP_Core = function (_, Kotlin) {
     return producers;
   };
   XMLTV$Companion.prototype.getComposers_0 = function (element) {
-    var tmp$;
-    if ((element != null ? element.getElementsByTagName('composer') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('composer') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
     var composers = ArrayList_init();
     var i = 0;
-    while (i < element.getElementsByTagName('composer').length) {
-      var composer = (tmp$ = element.getElementsByTagName('composer')[i]) != null ? tmp$.innerHTML : null;
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var composer = subElement != null ? subElement.innerHTML : null;
       if (composer != null) {
         composers.add_11rb$(composer);
       }
@@ -5824,14 +6206,15 @@ var HKNBP_Core = function (_, Kotlin) {
     return composers;
   };
   XMLTV$Companion.prototype.getEditors_0 = function (element) {
-    var tmp$;
-    if ((element != null ? element.getElementsByTagName('editor') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('editor') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
     var editors = ArrayList_init();
     var i = 0;
-    while (i < element.getElementsByTagName('editor').length) {
-      var editor = (tmp$ = element.getElementsByTagName('editor')[i]) != null ? tmp$.innerHTML : null;
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var editor = subElement != null ? subElement.innerHTML : null;
       if (editor != null) {
         editors.add_11rb$(editor);
       }
@@ -5840,14 +6223,15 @@ var HKNBP_Core = function (_, Kotlin) {
     return editors;
   };
   XMLTV$Companion.prototype.getPresenters_0 = function (element) {
-    var tmp$;
-    if ((element != null ? element.getElementsByTagName('presenter') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('presenter') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
     var presenters = ArrayList_init();
     var i = 0;
-    while (i < element.getElementsByTagName('presenter').length) {
-      var presenter = (tmp$ = element.getElementsByTagName('presenter')[i]) != null ? tmp$.innerHTML : null;
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var presenter = subElement != null ? subElement.innerHTML : null;
       if (presenter != null) {
         presenters.add_11rb$(presenter);
       }
@@ -5856,14 +6240,15 @@ var HKNBP_Core = function (_, Kotlin) {
     return presenters;
   };
   XMLTV$Companion.prototype.getCommentators_0 = function (element) {
-    var tmp$;
-    if ((element != null ? element.getElementsByTagName('commentator') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('commentator') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
     var commentators = ArrayList_init();
     var i = 0;
-    while (i < element.getElementsByTagName('commentator').length) {
-      var commentator = (tmp$ = element.getElementsByTagName('commentator')[i]) != null ? tmp$.innerHTML : null;
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var commentator = subElement != null ? subElement.innerHTML : null;
       if (commentator != null) {
         commentators.add_11rb$(commentator);
       }
@@ -5872,14 +6257,15 @@ var HKNBP_Core = function (_, Kotlin) {
     return commentators;
   };
   XMLTV$Companion.prototype.getGuests_0 = function (element) {
-    var tmp$;
-    if ((element != null ? element.getElementsByTagName('guest') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('guest') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
     var guests = ArrayList_init();
     var i = 0;
-    while (i < element.getElementsByTagName('guest').length) {
-      var guest = (tmp$ = element.getElementsByTagName('guest')[i]) != null ? tmp$.innerHTML : null;
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var guest = subElement != null ? subElement.innerHTML : null;
       if (guest != null) {
         guests.add_11rb$(guest);
       }
@@ -5891,106 +6277,125 @@ var HKNBP_Core = function (_, Kotlin) {
     var tmp$, tmp$_0;
     return (tmp$_0 = (tmp$ = element != null ? element.getElementsByTagName('date') : null) != null ? tmp$[0] : null) != null ? tmp$_0.innerHTML : null;
   };
-  XMLTV$Companion.prototype.getCategorys_0 = function (element) {
-    var tmp$;
-    if ((element != null ? element.getElementsByTagName('category') : null) == null) {
+  XMLTV$Companion.prototype.getCategory_0 = function (element) {
+    var subElements = element != null ? element.getElementsByTagName('category') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    var categorys = XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init();
+    var multiLangCategory = new MultiLanguageString();
     var i = 0;
-    while (i < element.getElementsByTagName('category').length) {
-      var lang = this.getLang_0(element.getElementsByTagName('category')[i]);
-      var category = (tmp$ = element.getElementsByTagName('category')[i]) != null ? tmp$.innerHTML : null;
-      categorys.add_11rb$(new XMLTV$Programme$Category(lang, category));
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var lang = this.getLang_0(subElement);
+      var category = subElement != null ? subElement.innerHTML : null;
+      if (category != null) {
+        multiLangCategory.add_11rb$(new MultiLanguageString$LanguageString(lang != null ? lang : '', category));
+      }
       i = i + 1 | 0;
     }
-    return categorys;
+    return multiLangCategory;
   };
-  XMLTV$Companion.prototype.getKeywords_0 = function (element) {
-    var tmp$;
-    if ((element != null ? element.getElementsByTagName('keyword') : null) == null) {
+  XMLTV$Companion.prototype.getKeyword_0 = function (element) {
+    var subElements = element != null ? element.getElementsByTagName('keyword') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    var keywords = XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init();
+    var multiLangKeyword = new MultiLanguageString();
     var i = 0;
-    while (i < element.getElementsByTagName('keyword').length) {
-      var lang = this.getLang_0(element.getElementsByTagName('keyword')[i]);
-      var keyword = (tmp$ = element.getElementsByTagName('keyword')[i]) != null ? tmp$.innerHTML : null;
-      keywords.add_11rb$(new XMLTV$Programme$Keyword(lang, keyword));
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var lang = this.getLang_0(subElement);
+      var keyword = subElement != null ? subElement.innerHTML : null;
+      if (keyword != null) {
+        multiLangKeyword.add_11rb$(new MultiLanguageString$LanguageString(lang != null ? lang : '', keyword));
+      }
       i = i + 1 | 0;
     }
-    return keywords;
+    return multiLangKeyword;
   };
-  XMLTV$Companion.prototype.getLanguages_0 = function (element) {
-    var tmp$;
-    if ((element != null ? element.getElementsByTagName('language') : null) == null) {
+  XMLTV$Companion.prototype.getLanguage_0 = function (element) {
+    var subElements = element != null ? element.getElementsByTagName('language') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    var languages = XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init();
+    var multiLangLanguage = new MultiLanguageString();
     var i = 0;
-    while (i < element.getElementsByTagName('language').length) {
-      var lang = this.getLang_0(element.getElementsByTagName('language')[i]);
-      var language = (tmp$ = element.getElementsByTagName('language')[i]) != null ? tmp$.innerHTML : null;
-      languages.add_11rb$(new XMLTV$Programme$Language(lang, language));
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var lang = this.getLang_0(subElement);
+      var language = subElement != null ? subElement.innerHTML : null;
+      if (language != null) {
+        multiLangLanguage.add_11rb$(new MultiLanguageString$LanguageString(lang != null ? lang : '', language));
+      }
       i = i + 1 | 0;
     }
-    return languages;
+    return multiLangLanguage;
   };
-  XMLTV$Companion.prototype.getOrigLanguages_0 = function (element) {
-    var tmp$;
-    if ((element != null ? element.getElementsByTagName('origLanguage') : null) == null) {
+  XMLTV$Companion.prototype.getOrigLanguage_0 = function (element) {
+    var subElements = element != null ? element.getElementsByTagName('origLanguage') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    var origLanguages = XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init();
+    var multiLangOrigLanguage = new MultiLanguageString();
     var i = 0;
-    while (i < element.getElementsByTagName('origLanguage').length) {
-      var lang = this.getLang_0(element.getElementsByTagName('origLanguage')[i]);
-      var origLanguage = (tmp$ = element.getElementsByTagName('origLanguage')[i]) != null ? tmp$.innerHTML : null;
-      origLanguages.add_11rb$(new XMLTV$Programme$OrigLanguage(lang, origLanguage));
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var lang = this.getLang_0(subElement);
+      var origLanguage = subElement != null ? subElement.innerHTML : null;
+      if (origLanguage != null) {
+        multiLangOrigLanguage.add_11rb$(new MultiLanguageString$LanguageString(lang != null ? lang : '', origLanguage));
+      }
       i = i + 1 | 0;
     }
-    return origLanguages;
+    return multiLangOrigLanguage;
   };
   XMLTV$Companion.prototype.getLength_0 = function (element) {
     var tmp$;
-    if ((element != null ? element.getElementsByTagName('length') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('length') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    return new XMLTV$Programme$Length(this.getUnits_0(element.getElementsByTagName('length')[0]), (tmp$ = element.getElementsByTagName('length')[0]) != null ? tmp$.innerHTML : null);
+    return new XMLTV$Programme$Length(this.getUnits_0(subElements[0]), (tmp$ = subElements[0]) != null ? tmp$.innerHTML : null);
   };
   XMLTV$Companion.prototype.getUnits_0 = function (element) {
     return element != null ? element.getAttribute('units') : null;
   };
-  XMLTV$Companion.prototype.getCountrys_0 = function (element) {
+  XMLTV$Companion.prototype.getCountry_0 = function (element) {
     var tmp$;
-    if ((element != null ? element.getElementsByTagName('country') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('country') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    var countrys = XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init();
+    var multiLangCountry = new MultiLanguageString();
     var i = 0;
-    while (i < element.getElementsByTagName('country').length) {
-      var lang = this.getLang_0(element.getElementsByTagName('country')[i]);
-      var country = (tmp$ = element.getElementsByTagName('wcountry')[i]) != null ? tmp$.innerHTML : null;
-      countrys.add_11rb$(new XMLTV$Programme$Country(lang, country));
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var lang = this.getLang_0(subElement);
+      var country = (tmp$ = (element != null ? element.getElementsByTagName('wcountry') : null)[i]) != null ? tmp$.innerHTML : null;
+      if (country != null) {
+        multiLangCountry.add_11rb$(new MultiLanguageString$LanguageString(lang != null ? lang : '', country));
+      }
       i = i + 1 | 0;
     }
-    return countrys;
+    return multiLangCountry;
   };
   XMLTV$Companion.prototype.getEpisodeNum_0 = function (element) {
     var tmp$;
-    if ((element != null ? element.getElementsByTagName('episode-num') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('episode-num') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    return new XMLTV$Programme$EpisodeNum(this.getSystem_0(element.getElementsByTagName('episode-num')[0]), (tmp$ = element.getElementsByTagName('episode-num')[0]) != null ? tmp$.innerHTML : null);
+    return new XMLTV$Programme$EpisodeNum(this.getSystem_0(subElements[0]), (tmp$ = subElements[0]) != null ? tmp$.innerHTML : null);
   };
   XMLTV$Companion.prototype.getSystem_0 = function (element) {
     return element != null ? element.getAttribute('system') : null;
   };
   XMLTV$Companion.prototype.getVideo_0 = function (element) {
-    if ((element != null ? element.getElementsByTagName('video') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('video') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    return new XMLTV$Programme$Video(this.getPresent_0(element.getElementsByTagName('video')[0]), this.getColour_0(element.getElementsByTagName('video')[0]), this.getAspect_0(element.getElementsByTagName('video')[0]), this.getQuality_0(element.getElementsByTagName('video')[0]));
+    return new XMLTV$Programme$Video(this.getPresent_0(subElements[0]), this.getColour_0(subElements[0]), this.getAspect_0(subElements[0]), this.getQuality_0(subElements[0]));
   };
   XMLTV$Companion.prototype.getPresent_0 = function (element) {
     var tmp$, tmp$_0;
@@ -6009,104 +6414,126 @@ var HKNBP_Core = function (_, Kotlin) {
     return (tmp$_0 = (tmp$ = element != null ? element.getElementsByTagName('quality') : null) != null ? tmp$[0] : null) != null ? tmp$_0.innerHTML : null;
   };
   XMLTV$Companion.prototype.getAudio_0 = function (element) {
-    if ((element != null ? element.getElementsByTagName('audio') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('audio') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    return new XMLTV$Programme$Audio(this.getPresent_0(element.getElementsByTagName('audio')[0]), this.getStereo_0(element.getElementsByTagName('audio')[0]));
+    return new XMLTV$Programme$Audio(this.getPresent_0(subElements[0]), this.getStereo_0(subElements[0]));
   };
   XMLTV$Companion.prototype.getStereo_0 = function (element) {
     var tmp$, tmp$_0;
     return (tmp$_0 = (tmp$ = element != null ? element.getElementsByTagName('stereo') : null) != null ? tmp$[0] : null) != null ? tmp$_0.innerHTML : null;
   };
   XMLTV$Companion.prototype.getPreviouslyShown_0 = function (element) {
-    if ((element != null ? element.getElementsByTagName('previously-shown') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('previously-shown') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    return new XMLTV$Programme$PreviouslyShown(this.getStart_0(element.getElementsByTagName('previously-shown')[0]), this.getChannel_0(element.getElementsByTagName('previously-shown')[0]));
+    return new XMLTV$Programme$PreviouslyShown(this.getStart_0(subElements[0]), this.getChannel_0(subElements[0]));
   };
   XMLTV$Companion.prototype.getChannel_0 = function (element) {
     var tmp$, tmp$_0;
     return (tmp$_0 = (tmp$ = element != null ? element.getElementsByTagName('channel') : null) != null ? tmp$[0] : null) != null ? tmp$_0.innerHTML : null;
   };
-  XMLTV$Companion.prototype.getPremieres_0 = function (element) {
-    var tmp$;
-    if ((element != null ? element.getElementsByTagName('premiere') : null) == null) {
+  XMLTV$Companion.prototype.getPremiere_0 = function (element) {
+    var subElements = element != null ? element.getElementsByTagName('premiere') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    var premieres = XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init();
+    var multiLangPremiere = new MultiLanguageString();
     var i = 0;
-    while (i < element.getElementsByTagName('premiere').length) {
-      var lang = this.getLang_0(element.getElementsByTagName('premiere')[i]);
-      var premiere = (tmp$ = element.getElementsByTagName('premiere')[i]) != null ? tmp$.innerHTML : null;
-      premieres.add_11rb$(new XMLTV$Programme$Premiere(lang, premiere));
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var lang = this.getLang_0(subElement);
+      var premiere = subElement != null ? subElement.innerHTML : null;
+      if (premiere != null) {
+        multiLangPremiere.add_11rb$(new MultiLanguageString$LanguageString(lang != null ? lang : '', premiere));
+      }
       i = i + 1 | 0;
     }
-    return premieres;
+    return multiLangPremiere;
   };
-  XMLTV$Companion.prototype.getLastChances_0 = function (element) {
-    var tmp$;
-    if ((element != null ? element.getElementsByTagName('last-chance') : null) == null) {
+  XMLTV$Companion.prototype.getLastChance_0 = function (element) {
+    var subElements = element != null ? element.getElementsByTagName('last-chance') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    var lastChances = XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init();
+    var multiLangLastChance = new MultiLanguageString();
     var i = 0;
-    while (i < element.getElementsByTagName('last-chance').length) {
-      var lang = this.getLang_0(element.getElementsByTagName('last-chance')[i]);
-      var lastChance = (tmp$ = element.getElementsByTagName('last-chance')[i]) != null ? tmp$.innerHTML : null;
-      lastChances.add_11rb$(new XMLTV$Programme$LastChance(lang, lastChance));
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var lang = this.getLang_0(subElement);
+      var lastChance = subElement != null ? subElement.innerHTML : null;
+      if (lastChance != null) {
+        multiLangLastChance.add_11rb$(new MultiLanguageString$LanguageString(lang != null ? lang : '', lastChance));
+      }
       i = i + 1 | 0;
     }
-    return lastChances;
+    return multiLangLastChance;
   };
   XMLTV$Companion.prototype.getNew_0 = function (element) {
     var tmp$;
     return ((tmp$ = element != null ? element.getElementsByTagName('new') : null) != null ? tmp$[0] : null) != null;
   };
   XMLTV$Companion.prototype.getSubtitles_0 = function (element) {
-    if ((element != null ? element.getElementsByTagName('video') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('subtitles') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    return new XMLTV$Programme$Subtitles(this.getType_0(element.getElementsByTagName('video')[0]), this.getLanguage_0(element.getElementsByTagName('video')[0]));
+    return new XMLTV$Programme$Subtitles(this.getType_0(subElements[0]), toString(this.getLanguage_0(subElements[0])));
   };
   XMLTV$Companion.prototype.getType_0 = function (element) {
     return element != null ? element.getAttribute('type') : null;
   };
-  XMLTV$Companion.prototype.getLanguage_0 = function (element) {
-    var tmp$, tmp$_0;
-    return (tmp$_0 = (tmp$ = element != null ? element.getElementsByTagName('language') : null) != null ? tmp$[0] : null) != null ? tmp$_0.innerHTML : null;
-  };
   XMLTV$Companion.prototype.getRating_0 = function (element) {
-    if ((element != null ? element.getElementsByTagName('rating') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('rating') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    return new XMLTV$Programme$Rating(this.getSystem_0(element.getElementsByTagName('rating')[0]), this.getValue_0(element.getElementsByTagName('rating')[0]), this.getIcon_0(element.getElementsByTagName('rating')[0]));
+    return new XMLTV$Programme$Rating(this.getSystem_0(subElements[0]), this.getValue_0(subElements[0]), this.getIcon_0(subElements[0]));
   };
   XMLTV$Companion.prototype.getValue_0 = function (element) {
     return element != null ? element.getAttribute('value') : null;
   };
   XMLTV$Companion.prototype.getStarRating_0 = function (element) {
-    if ((element != null ? element.getElementsByTagName('star-rating') : null) == null) {
+    var subElements = element != null ? element.getElementsByTagName('star-rating') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    return new XMLTV$Programme$StarRating(this.getSystem_0(element.getElementsByTagName('star-rating')[0]), this.getValue_0(element.getElementsByTagName('star-rating')[0]), this.getIcon_0(element.getElementsByTagName('star-rating')[0]));
+    return new XMLTV$Programme$StarRating(this.getSystem_0(subElements[0]), this.getValue_0(subElements[0]), this.getIcon_0(subElements[0]));
   };
-  XMLTV$Companion.prototype.getReviews_0 = function (element) {
-    var tmp$;
-    if ((element != null ? element.getElementsByTagName('review') : null) == null) {
+  XMLTV$Companion.prototype.getReview_0 = function (element) {
+    var subElements = element != null ? element.getElementsByTagName('review') : null;
+    if (subElements == null || subElements.length < 1) {
       return null;
     }
-    var reviews = XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init();
+    var multiLangType = new MultiLanguageString();
+    var multiLangSource = new MultiLanguageString();
+    var multiLangReviewer = new MultiLanguageString();
+    var multiLangReview = new MultiLanguageString();
     var i = 0;
-    while (i < element.getElementsByTagName('review').length) {
-      var type = this.getType_0(element.getElementsByTagName('review')[i]);
-      var source = this.getSource_0(element.getElementsByTagName('review')[i]);
-      var reviewer = this.getReviewer_0(element.getElementsByTagName('review')[i]);
-      var lang = this.getLang_0(element.getElementsByTagName('review')[i]);
-      var review = (tmp$ = element.getElementsByTagName('review')[i]) != null ? tmp$.innerHTML : null;
-      reviews.add_11rb$(new XMLTV$Programme$Review(type, source, reviewer, lang, review));
+    while (i < subElements.length) {
+      var subElement = subElements[i];
+      var type = this.getType_0(subElement);
+      var source = this.getSource_0(subElement);
+      var reviewer = this.getReviewer_0(subElement);
+      var lang = this.getLang_0(subElement);
+      var review = subElement != null ? subElement.innerHTML : null;
+      if (type != null) {
+        multiLangType.add_11rb$(new MultiLanguageString$LanguageString(lang != null ? lang : '', type));
+      }
+      if (source != null) {
+        multiLangSource.add_11rb$(new MultiLanguageString$LanguageString(lang != null ? lang : '', source));
+      }
+      if (reviewer != null) {
+        multiLangReviewer.add_11rb$(new MultiLanguageString$LanguageString(lang != null ? lang : '', reviewer));
+      }
+      if (review != null) {
+        multiLangReview.add_11rb$(new MultiLanguageString$LanguageString(lang != null ? lang : '', review));
+      }
       i = i + 1 | 0;
     }
-    return reviews;
+    return new XMLTV$Programme$Review(multiLangType, multiLangSource, multiLangReviewer, multiLangReview);
   };
   XMLTV$Companion.prototype.getSource_0 = function (element) {
     return element != null ? element.getAttribute('source') : null;
@@ -6141,6 +6568,7 @@ var HKNBP_Core = function (_, Kotlin) {
   Object.defineProperty(package$hknbp_core, 'AppDownloadWindow', {
     get: AppDownloadWindow_getInstance
   });
+  ArrayLinkList.OnElementsChangeListener = ArrayLinkList$OnElementsChangeListener;
   ArrayLinkList.OnNodeEventListener = ArrayLinkList$OnNodeEventListener;
   package$hknbp_core.ArrayLinkList_init_i5x0yv$ = ArrayLinkList_init;
   package$hknbp_core.ArrayLinkList_init_vzjx9f$ = ArrayLinkList_init_0;
@@ -6161,16 +6589,22 @@ var HKNBP_Core = function (_, Kotlin) {
   Object.defineProperty(package$hknbp_core, 'ChannelDescription', {
     get: ChannelDescription_getInstance
   });
+  package$hknbp_core.ChannelsReader = ChannelsReader;
   Object.defineProperty(package$hknbp_core, 'ConsentPanel', {
     get: ConsentPanel_getInstance
   });
-  Object.defineProperty(package$hknbp_core, 'CustomChannel', {
-    get: CustomChannel_getInstance
+  package$hknbp_core.CustomChannelEditChannelDialogBox = CustomChannelEditChannelDialogBox;
+  Object.defineProperty(package$hknbp_core, 'CustomChannels', {
+    get: CustomChannels_getInstance
+  });
+  Object.defineProperty(package$hknbp_core, 'CustomChannelsSettingWindow', {
+    get: CustomChannelsSettingWindow_getInstance
   });
   Object.defineProperty(Dialogue, 'Companion', {
     get: Dialogue$Companion_getInstance
   });
   package$hknbp_core.Dialogue = Dialogue;
+  package$hknbp_core.DialogueBox = DialogueBox;
   Object.defineProperty(package$hknbp_core, 'EPG', {
     get: EPG_getInstance
   });
@@ -6218,14 +6652,6 @@ var HKNBP_Core = function (_, Kotlin) {
       appVersion = value;
     }
   });
-  Object.defineProperty(package$hknbp_core, 'channels', {
-    get: function () {
-      return channels;
-    },
-    set: function (value) {
-      channels = value;
-    }
-  });
   Object.defineProperty(package$hknbp_core, 'player', {
     get: function () {
       return player;
@@ -6234,26 +6660,32 @@ var HKNBP_Core = function (_, Kotlin) {
       player = value;
     }
   });
+  package$hknbp_core.updateChannels = updateChannels;
+  Object.defineProperty(package$hknbp_core, 'channels', {
+    get: function () {
+      return channels;
+    },
+    set: function (value) {
+      channels = value;
+    }
+  });
   package$hknbp_core.designatedChannel = designatedChannel;
   package$hknbp_core.updateChannel = updateChannel;
   package$hknbp_core.reductionTo_vux9f0$ = reductionTo;
-  Object.defineProperty(package$hknbp_core, 'userLanguageList', {
-    get: function () {
-      return userLanguageList;
-    },
-    set: function (value) {
-      userLanguageList = value;
-    }
-  });
   package$hknbp_core.main_kand9s$ = main;
+  Object.defineProperty(MultiLanguageString, 'Companion', {
+    get: MultiLanguageString$Companion_getInstance
+  });
+  MultiLanguageString.LanguageString = MultiLanguageString$LanguageString;
+  package$hknbp_core.MultiLanguageString = MultiLanguageString;
   Object.defineProperty(package$hknbp_core, 'MutedDescription', {
     get: MutedDescription_getInstance
   });
   Object.defineProperty(package$hknbp_core, 'NativeAppInstallButton', {
     get: NativeAppInstallButton_getInstance
   });
-  Object.defineProperty(package$hknbp_core, 'OfficialChannel', {
-    get: OfficialChannel_getInstance
+  Object.defineProperty(package$hknbp_core, 'OfficialChannels', {
+    get: OfficialChannels_getInstance
   });
   Object.defineProperty(package$hknbp_core, 'PictureInPictureButton', {
     get: PictureInPictureButton_getInstance
@@ -6333,31 +6765,14 @@ var HKNBP_Core = function (_, Kotlin) {
   });
   package$hknbp_core.WatchingCounter = WatchingCounter;
   package$hknbp_core.Window = Window;
-  XMLTV$MultiLanguage.MultiLanguageList_init_w3j80s$ = XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init;
-  XMLTV$MultiLanguage.MultiLanguageList_init_s9eivz$ = XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init_0;
-  XMLTV$MultiLanguage.MultiLanguageList_init_nc4jq$ = XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init_1;
-  XMLTV$MultiLanguage.MultiLanguageList_init_vf20rz$ = XMLTV$MultiLanguage$XMLTV$MultiLanguage$MultiLanguageList_init_2;
-  XMLTV$MultiLanguage.MultiLanguageList = XMLTV$MultiLanguage$MultiLanguageList;
-  XMLTV.MultiLanguage = XMLTV$MultiLanguage;
-  XMLTV.DisplayName = XMLTV$DisplayName;
   XMLTV.Icon = XMLTV$Icon;
-  XMLTV$Programme.Title = XMLTV$Programme$Title;
-  XMLTV$Programme.SubTitle = XMLTV$Programme$SubTitle;
-  XMLTV$Programme.Desc = XMLTV$Programme$Desc;
   XMLTV$Programme$Credits.Actor = XMLTV$Programme$Credits$Actor;
   XMLTV$Programme.Credits = XMLTV$Programme$Credits;
-  XMLTV$Programme.Category = XMLTV$Programme$Category;
-  XMLTV$Programme.Keyword = XMLTV$Programme$Keyword;
-  XMLTV$Programme.Language = XMLTV$Programme$Language;
-  XMLTV$Programme.OrigLanguage = XMLTV$Programme$OrigLanguage;
   XMLTV$Programme.Length = XMLTV$Programme$Length;
-  XMLTV$Programme.Country = XMLTV$Programme$Country;
   XMLTV$Programme.EpisodeNum = XMLTV$Programme$EpisodeNum;
   XMLTV$Programme.Video = XMLTV$Programme$Video;
   XMLTV$Programme.Audio = XMLTV$Programme$Audio;
   XMLTV$Programme.PreviouslyShown = XMLTV$Programme$PreviouslyShown;
-  XMLTV$Programme.Premiere = XMLTV$Programme$Premiere;
-  XMLTV$Programme.LastChance = XMLTV$Programme$LastChance;
   XMLTV$Programme.Subtitles = XMLTV$Programme$Subtitles;
   XMLTV$Programme.Rating = XMLTV$Programme$Rating;
   XMLTV$Programme.StarRating = XMLTV$Programme$StarRating;
@@ -6378,9 +6793,8 @@ var HKNBP_Core = function (_, Kotlin) {
   rootURL = 'https://hknbp.org/';
   coreVersion_0 = coreVersion$lambda();
   appVersion = coreVersion_0 + '-PWA';
-  channels = channels$lambda();
   player = null;
-  userLanguageList = SettingWindow_getInstance().getLanguageSetting();
+  channels = updateChannels();
   main([]);
   Kotlin.defineModule('HKNBP_Core', _);
   return _;

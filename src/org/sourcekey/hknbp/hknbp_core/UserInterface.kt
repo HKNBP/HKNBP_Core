@@ -25,10 +25,14 @@ abstract class UserInterface(
         private var isFocusOutHide: Boolean = false,
         private val isHideFocusToUserControlPanelShower: Boolean = false,
         private val isShowToHideUserControlPanel: Boolean = false,
-        private val conversionFocusHideTime: Int = 15000
+        private val conversionFocusHideTime: Int? = 15000
 ) {
     companion object{
         val allUserInterfaceList = ArrayList<UserInterface>()
+
+        fun hideAllUserInterface(){
+            for(userInterface in allUserInterfaceList){userInterface.hide()}
+        }
     }
 
     private val htmlElement = document.getElementById(mainFrameElementID) as HTMLElement
@@ -111,7 +115,7 @@ abstract class UserInterface(
             //當focus就重新倒數介面顯示時間 同 唔係顯示介面時首次Focus
             if((!isShowUserInterfaceFirstFocus)&&isFocusCountdownHide){
                 isShowUserInterfaceFirstFocus = false
-                setHideTimer(conversionFocusHideTime)
+                if(conversionFocusHideTime != null){setHideTimer(conversionFocusHideTime)}
             }
         }})
         jQuery(
