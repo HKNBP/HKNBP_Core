@@ -43,7 +43,5 @@ object HKNBPAppLayerBridge {
                 if(callMessage.name == "HKNBP_AppLayer"){ eval(callMessage.expr) }
             }catch(e: dynamic){println("ListenHKNBPAppLayerCall衰左: ${e}\n${event.data.toString()}")}
         }, false)
-
-        println("Init HKNBPAppLayerBridge")
     }
 }

@@ -18,7 +18,7 @@
  * 控制更新cache版本
  * 修改版本名今用戶進行更新新版
  */
-var coreVersion = "v2020.01_1";
+var coreVersion = "v2020.01_3";
 
 /**
  * 檢查依家運行係米ServiceWorker
@@ -47,7 +47,6 @@ if(self.registration){
         "css/fontello-codes.css",
         "css/fontello-embedded.css",
         "data/dialogue.json",
-        "data/official_channels.xml",
         "font/fontello.eot",
         "font/fontello.svg",
         "font/fontello.ttf",
@@ -72,9 +71,9 @@ if(self.registration){
 
     // 檢查Workbox
     if (workbox) {
-      console.log("Yay! Workbox is loaded 🎉");
+        //console.log("Yay! Workbox is loaded 🎉");
     } else {
-      console.log("Boo! Workbox didn't load 😬");
+        console.log("Boo! Workbox didn't load 😬");
     }
 
     // Cache名 設置

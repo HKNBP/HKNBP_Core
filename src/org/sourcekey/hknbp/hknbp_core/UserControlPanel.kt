@@ -29,8 +29,8 @@ import kotlin.js.Math
  * 操作使用者介面器
  * */
 object UserControlPanel: UserInterface(
-        "userControlPanel",
-        firstFocusElementID = "onHeadNextAudioButton",
+        document.getElementById("userControlPanel") as HTMLElement,
+        firstFocusElement = document.getElementById("onHeadNextAudioButton") as HTMLElement,
         isHideFocusToUserControlPanelShower = true
 ) {
     private val panel: HTMLDivElement   = document.getElementById("userControlPanel") as HTMLDivElement
@@ -65,17 +65,17 @@ object UserControlPanel: UserInterface(
      * */
     var onHideUserControlPanel: ()->Unit = fun(){}
 
-    override fun show() {
-        super.show()
+    override fun show(showTime: Int?) {
+        super.show(showTime)
         onShowUserControlPanel()
-        jQuery("#userControlPanelShower").css("cursor", "auto")
+        shower.style.cursor = "auto"
     }
 
     override fun hide() {
         super.hide()
         onHideUserControlPanel()
         hideMouseTimer = window.setTimeout(fun(){
-            jQuery("#userControlPanelShower").css("cursor", "none")
+            shower.style.cursor = "none"
         }, 2000)
     }
 
@@ -90,12 +90,12 @@ object UserControlPanel: UserInterface(
         obj.blurCallback = fun(){
             onClick()
             window.setTimeout(fun(){
-                jQuery(js("this")).focus()
+                jq(js("this")).focus()
                 shower.focus()
             }, 0)
         }
-        jQuery(js("document")).ready(fun(){
-            jQuery("#${iframeId}").iframeTracker(obj)
+        jq(js("document")).ready(fun(){
+            jq("#${iframeId}").iframeTracker(obj)
         })*/
     }
 
@@ -104,7 +104,7 @@ object UserControlPanel: UserInterface(
         shower.style.width = "10vh"
         shower.style.backgroundColor = "#303030"
         //shower.style.outline = "1vh"
-        shower.innerHTML = "<i class=\"icon-font\" style=\"font-size: 5vh;\">&#xe825;</i>"
+        shower.innerHTML = """<i class="icon-font" style="font-size: 5vh;">&#xe825;</i>"""
     }
 
     fun cannotTouchIframePlayerMode(){
@@ -116,6 +116,7 @@ object UserControlPanel: UserInterface(
             shower.innerHTML = ""
         }
     }
+
 
     init {
         //初始化各使用者控制界面
@@ -129,13 +130,13 @@ object UserControlPanel: UserInterface(
 
         //設定使用者控制界面顯示方法
         shower.onclick = fun(event){
-            showHideAlternately()
+            showHideAlternately(30000)
             player?.play()
         }
         shower.onmousemove = fun(event){
-            jQuery("#userControlPanelShower").css("cursor", "auto")
+            shower.style.cursor = "auto"
             hideMouseTimer = window.setTimeout(fun(){
-                jQuery("#userControlPanelShower").css("cursor", "none")
+                shower.style.cursor = "none"
             }, 2000)
         }
         panel.onmousemove = fun(event){
@@ -144,7 +145,7 @@ object UserControlPanel: UserInterface(
             show(30000)
         }
         panel.onscroll = fun(event){ show(30000) }
-        jQuery("body").mouseleave(fun(){ hide() })
+        jq("body").mouseleave(fun(event){ hide() })
         shower.ondblclick = fun(event){ FullScreenButton.enterExitFullScreenAlternately() }
         val _shower: dynamic = shower
         _shower.ontouchstart = fun(event: MouseEvent){
@@ -165,7 +166,5 @@ object UserControlPanel: UserInterface(
         //https://stackoverflow.com/questions/5054560/can-i-avoid-the-native-fullscreen-video-player-with-html5-on-iphone-or-android
         if(RunnerInfo.getOsFamily() == "iOS"){ canTouchIframePlayerMode() }
         //setIframeOnClick("iframePlayer", fun(){ showHideAlternately() })
-
-        println("Init UserControlPanel")
     }
 }

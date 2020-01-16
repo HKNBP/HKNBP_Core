@@ -14,14 +14,14 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
+import jquery.jq
 import org.w3c.dom.*
 import kotlin.browser.document
 import kotlin.browser.localStorage
 import kotlin.browser.window
 
 
-object VirtualRemote: UserInterface("virtualRemote"){
-    private val virtualRemote       = document.getElementById("virtualRemote")              as HTMLDivElement
+object VirtualRemote{
     val hideVirtualRemoteButton     = document.getElementById("hideVirtualRemoteButton")    as HTMLButtonElement
     val epgButton                   = document.getElementById("epgButton")                  as HTMLButtonElement
     val nextChannelButton           = document.getElementById("nextChannelButton")          as HTMLButtonElement
@@ -88,7 +88,7 @@ object VirtualRemote: UserInterface("virtualRemote"){
         for(channel in channels){
             channelOptionHTMLString = "" +
                     "<option value=${channel.number}>" +
-                    "${channel.number.toString().padStart(3, '0')} ${channel.name}" +
+                    "${channel.number.toStringBackwardZeroPadding(3)} ${channel.name}" +
                     "</option>" +
                     channelOptionHTMLString
         }
@@ -126,13 +126,14 @@ object VirtualRemote: UserInterface("virtualRemote"){
         designateSubtitleSelect.value = (player?.subtitleTracks?.node?.id ?: 0).toString()
     }
 
-    override fun update(){
+    fun update(){
         updateChannelDescription()
         updateVideoInformation()
         updateAudioInformation()
         updateSubtitleInformation()
     }
 
+    /**
     override val isShow: Boolean
         get() {return UserControlPanel.isShow}
 
@@ -141,12 +142,13 @@ object VirtualRemote: UserInterface("virtualRemote"){
     }
 
     override fun hide(){
+        console.trace()
         UserControlPanel.hide()
     }
-
+*/
     init {
-        hideVirtualRemoteButton.onclick     = fun(event){event.stopPropagation();hide()}
-        epgButton.onclick                   = fun(event){EPG.showHideAlternately()}
+        hideVirtualRemoteButton.onclick     = fun(event){event.stopPropagation();UserControlPanel.hide()}
+        epgButton.onclick                   = fun(event){EPG.showHideAlternately(null)}
         nextChannelButton.onclick           = fun(event){channels.next()}
         previousChannelButton.onclick       = fun(event){channels.previous()}
         designateChannelSelect.onchange     = fun(event){designatedChannel(designateChannelSelect.value.toInt())}
@@ -183,8 +185,8 @@ object VirtualRemote: UserInterface("virtualRemote"){
         minusButton.onclick                 = fun(event){EnteringNumberBox.enter("-")}
         refreshButton.onclick               = fun(event){updateChannel()}
         channelDescriptionButton.onclick    = fun(event){if(ChannelDescription.isShow){ChannelDescription.hide()}else{ChannelDescription.show(60000)}}
-        aboutWindowButton.onclick           = fun(evebt){AboutWindow.showHideAlternately()}
-        feedbackWebButton.onclick           = fun(evebt){
+        aboutWindowButton.onclick           = fun(event){AboutWindow.showHideAlternately(null)}
+        feedbackWebButton.onclick           = fun(event){
             val formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSehWsf1J8sSzPpXHRfFg7mqAsCC1q5dJpef2W6YvNFCrIW-8g/viewform?usp=pp_url"
             val coreVersionArg = "entry.133709146=${coreVersion}"
             val appVersionArg = "entry.759953459=${appVersion}"
@@ -196,10 +198,10 @@ object VirtualRemote: UserInterface("virtualRemote"){
                     "_blank" // <- This is what makes it open in a new window.
             )
         }
-        shareWindowButton.onclick           = fun(evebt){ShareWindow.showHideAlternately()}
-        settingWindowButton.onclick         = fun(event){SettingWindow.showHideAlternately()}
-        appDownloadWindowButton.onclick     = fun(evebt){AppDownloadWindow.showHideAlternately()}
-        githubWebButton.onclick             = fun(evebt){
+        shareWindowButton.onclick           = fun(event){ShareWindow.showHideAlternately(null)}
+        settingWindowButton.onclick         = fun(event){SettingWindow.showHideAlternately(null)}
+        appDownloadWindowButton.onclick     = fun(event){AppDownloadWindow.showHideAlternately(null)}
+        githubWebButton.onclick             = fun(event){
             window.open(
                     "https://github.com/HKNBP",
                     "_blank" // <- This is what makes it open in a new window.
@@ -211,25 +213,25 @@ object VirtualRemote: UserInterface("virtualRemote"){
                     "_blank" // <- This is what makes it open in a new window.
             )
         }
-        watchingCounterWebButton.onclick    = fun(evebt){
+        watchingCounterWebButton.onclick    = fun(event){
             window.open(
                     "https://datastudio.google.com/reporting/1GKlAWHEsDdryWh2PRdQFmWzQ_ksRQ8BK/page/1M",
                     "_blank" // <- This is what makes it open in a new window.
             )
         }
-        centerButton.onclick                = fun(event){jQuery(":focus")?.click()}
+        centerButton.onclick                = fun(event){jq(":focus").click();}
         upButton.onclick                    = fun(event){
-            val selectables = jQuery(":tabbable")
-            val current = jQuery(":focus")
+            val selectables = jq(":tabbable")
+            val current = jq(":focus")
 
             //搵相同<TabIndex嘅Y>響剩余element
-            val currentIndex: Int = selectables?.index(current)?:0
-            val currentTabIndex: Tab3dIndex = Tab3dIndex.toTab3dIndex(current?.attr("tabIndex")?.toString()?:"")
+            val currentIndex: Int = selectables.index(current)?:0
+            val currentTabIndex: Tab3dIndex = Tab3dIndex.toTab3dIndex(current.attr("tabIndex").toString()?:"")
             for(i in (currentIndex-1) downTo 0 ){
-                val tabIndexForCheck = Tab3dIndex.toTab3dIndex(selectables?.eq(i)?.attr("tabIndex")?.toString()?:"")
+                val tabIndexForCheck = Tab3dIndex.toTab3dIndex(selectables.eq(i).attr("tabIndex").toString()?:"")
                 if(tabIndexForCheck.y == currentTabIndex.y && tabIndexForCheck.z == currentTabIndex.z){
                     if(tabIndexForCheck.x >= currentTabIndex.x){
-                        selectables?.eq(i)?.focus()
+                        selectables.eq(i).focus()
                         return
                     }
                 }
@@ -258,30 +260,30 @@ object VirtualRemote: UserInterface("virtualRemote"){
                 return false
             })?:Tab3dIndex(0,0,0)
             var closestIndex: Int? = null
-            for(i in (selectables?.length?.toString()?.toIntOrNull()?:0) downTo 0){
-                val tabIndexForCheck = Tab3dIndex.toTab3dIndex(selectables?.eq(i)?.attr("tabIndex")?.toString()?:"")
+            for(i in (selectables.length.toString().toIntOrNull()?:0) downTo 0){
+                val tabIndexForCheck = Tab3dIndex.toTab3dIndex(selectables.eq(i).attr("tabIndex").toString()?:"")
                 if(tabIndexForCheck.y == nextTabIndex.y && tabIndexForCheck.z == nextTabIndex.z){
                     if(tabIndexForCheck.x == currentTabIndex.x){
-                        selectables?.eq(i)?.focus()
+                        selectables.eq(i).focus()
                         return
                     }
                     closestIndex?: {closestIndex = i}()
                 }
             }
-            selectables?.eq(closestIndex)?.focus()
+            selectables.eq(closestIndex?:0).focus()
         }
         downButton.onclick                  = fun(event){
-            val selectables = jQuery(":tabbable")
-            val current = jQuery(":focus")
+            val selectables = jq(":tabbable")
+            val current = jq(":focus")
 
             //搵相同<TabIndex嘅Y>響剩余element
-            val currentIndex: Int = selectables?.index(current)?:0
-            val currentTabIndex: Tab3dIndex = Tab3dIndex.toTab3dIndex(current?.attr("tabIndex")?.toString()?:"")
-            for(i in (currentIndex+1) until (selectables?.length?.toString()?.toIntOrNull()?:0)){
-                val tabIndexForCheck = Tab3dIndex.toTab3dIndex(selectables?.eq(i)?.attr("tabIndex")?.toString()?:"")
+            val currentIndex: Int = selectables.index(current)?:0
+            val currentTabIndex: Tab3dIndex = Tab3dIndex.toTab3dIndex(current.attr("tabIndex").toString()?:"")
+            for(i in (currentIndex+1) until (selectables.length.toString().toIntOrNull()?:0)){
+                val tabIndexForCheck = Tab3dIndex.toTab3dIndex(selectables.eq(i).attr("tabIndex").toString()?:"")
                 if(tabIndexForCheck.y == currentTabIndex.y && tabIndexForCheck.z == currentTabIndex.z){
                     if(tabIndexForCheck.x <= currentTabIndex.x){
-                        selectables?.eq(i)?.focus()
+                        selectables.eq(i).focus()
                         return
                     }
                 }
@@ -306,27 +308,36 @@ object VirtualRemote: UserInterface("virtualRemote"){
                 return false
             })?:Tab3dIndex(0,0,0)
             var closestIndex: Int = 0
-            for(i in 0 until (selectables?.length?.toString()?.toIntOrNull()?:0)-1){
-                val tabIndexForCheck = Tab3dIndex.toTab3dIndex(selectables?.eq(i)?.attr("tabIndex")?.toString()?:"")
+            for(i in 0 until (selectables.length.toString().toIntOrNull()?:0)-1){
+                val tabIndexForCheck = Tab3dIndex.toTab3dIndex(selectables.eq(i).attr("tabIndex").toString()?:"")
                 if(tabIndexForCheck.y == nextTabIndex.y && tabIndexForCheck.z == nextTabIndex.z){
                     if(tabIndexForCheck.x == currentTabIndex.x){
-                        selectables?.eq(i)?.focus()
+                        selectables.eq(i).focus()
                         return
                     }
                     closestIndex = i
                 }
             }
-            selectables?.eq(closestIndex)?.focus()
+            selectables.eq(closestIndex).focus()
         }
-        leftButton.onclick                  = fun(event){jQuery?.tabPrev()}
-        rightButton.onclick                 = fun(event){jQuery?.tabNext()}
-        menuButton.onclick                  = fun(event){if(isShow){hide()}else{show(60000)}}
+        leftButton.onclick                  = fun(event){jq().tabPrev()}
+        rightButton.onclick                 = fun(event){jq().tabNext()}
+        menuButton.onclick                  = fun(event){if(UserControlPanel.isShow){UserControlPanel.hide()}else{UserControlPanel.show(60000)}}
         videoDescriptionButton.onclick      = fun(event){VideoDescription.show(5000)}
         audioDescriptionButton.onclick      = fun(event){AudioDescription.show(5000)}
         subtitleDescriptionButton.onclick   = fun(event){SubtitleDescription.show(5000)}
         volumeDescriptionButton.onclick     = fun(event){VolumeDescription.show(5000)}
-        returnButton.onclick                = fun(event){hideAllUserInterface()}
+        returnButton.onclick                = fun(event){UserInterface.hideAllUserInterface()}
 
-        println("Init VirtualRemote")
+        update()
+        channels.addOnNodeEventListener(object: ArrayLinkList.OnNodeEventListener<Channel>{
+            override fun onNodeChanged(
+                    preChangeNodeID: Int?, postChangeNodeID: Int?,
+                    preChangeNode: Channel?, postChangeNode: Channel?
+            ) { update() }
+        })
+        channels.addOnElementsChangedListener(object: ArrayLinkList.OnElementsChangedListener{
+            override fun onElementsChanged() { update() }
+        })
     }
 }

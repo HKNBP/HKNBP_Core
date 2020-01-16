@@ -14,18 +14,19 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
+import jquery.jq
 import org.w3c.dom.HTMLElement
 import kotlin.browser.document
 import kotlin.browser.window
 
 abstract class UserInterface(
-        private val mainFrameElementID: String,
-        private val firstFocusElementID: String? = null,
-        private var isFocusCountdownHide: Boolean = true,
-        private var isFocusOutHide: Boolean = false,
-        private val isHideFocusToUserControlPanelShower: Boolean = false,
-        private val isShowToHideUserControlPanel: Boolean = false,
-        private val conversionFocusHideTime: Int? = 15000
+        protected val mainFrameElement: HTMLElement,
+        protected var firstFocusElement: HTMLElement? = null,
+        protected var isFocusCountdownHide: Boolean = true,
+        protected var isFocusOutHide: Boolean = false,
+        protected val isHideFocusToUserControlPanelShower: Boolean = false,
+        protected val isShowToHideUserControlPanel: Boolean = false,
+        protected val conversionFocusHideTime: Int? = 15000
 ) {
     companion object{
         val allUserInterfaceList = ArrayList<UserInterface>()
@@ -35,11 +36,11 @@ abstract class UserInterface(
         }
     }
 
-    private val htmlElement = document.getElementById(mainFrameElementID) as HTMLElement
     private var lastTimeFocusElement: dynamic? = {
-        if(firstFocusElementID != null){
+        val _firstFocusElement = firstFocusElement
+        if(_firstFocusElement != null){
             try {
-                jQuery("#${firstFocusElementID}")
+                jq(_firstFocusElement)
             }catch (e: dynamic){ null }
         }else{ null }
     }()
@@ -65,27 +66,23 @@ abstract class UserInterface(
         }
 
     open val isShow: Boolean
-        get(){
-            return htmlElement.style.display == "block"
-        }
+        get() = mainFrameElement.style.display == "block"
 
-    open fun show(){
-        htmlElement.style.display = "block"
+    private fun setHideTimer(showTime: Int?){
+        hideTimer = if(showTime != null){
+            window.setTimeout(fun(){ hide() }, showTime)
+        }else{ 0 }
+    }
+
+    open fun show(showTime: Int?){
+        mainFrameElement.style.display = "block"
         isShowUserInterfaceFirstFocus = true
         if(isShow){ lastTimeFocusElement?.focus() }
-    }
-
-    private fun setHideTimer(showTime: Int){
-        hideTimer = window.setTimeout(fun(){ hide() }, showTime)
-    }
-
-    fun show(showTime: Int){
-        show()
         setHideTimer(showTime)
     }
 
     open fun hide(){
-        htmlElement.style.display = "none"
+        mainFrameElement.style.display = "none"
 
         if(isHideFocusToUserControlPanelShower){
             //focus到userControlPanelShower,為左之後撳centerButton可以顯示VirtualRemote
@@ -93,43 +90,40 @@ abstract class UserInterface(
         }
     }
 
-    fun showHideAlternately(){
-        if(isShow){ hide() }else{ show() }
-    }
-
-    fun showHideAlternately(showTime: Int){
+    fun showHideAlternately(showTime: Int?){
         if(isShow){ hide() }else{ show(showTime) }
     }
 
     init {
-        jQuery(
-                "#${mainFrameElementID} button" + "," +
-                "#${mainFrameElementID} select" + "," +
-                "#${mainFrameElementID} option" + "," +
-                "#${mainFrameElementID} input"
-        )?.focus(fun(){if(!js("\$(\"this\").is(\":focus\")")){
+        val id = mainFrameElement.id
+        jq(
+                "#${id} button" + "," +
+                "#${id} select" + "," +
+                "#${id} option" + "," +
+                "#${id} input"
+        ).focus(fun(event){if(!js("\$(\"this\").is(\":focus\")")){
             //設 當onfocus 就onhover 同步
-            jQuery(js("this"))?.hover()
+            jqThis().hover(fun(){})
             //記住依家Focus邊粒element為之後再Show呢個介面時Focus返對上個次嘅element
-            lastTimeFocusElement = jQuery(js("this"))
+            lastTimeFocusElement = jqThis()
             //當focus就重新倒數介面顯示時間 同 唔係顯示介面時首次Focus
             if((!isShowUserInterfaceFirstFocus)&&isFocusCountdownHide){
                 isShowUserInterfaceFirstFocus = false
                 if(conversionFocusHideTime != null){setHideTimer(conversionFocusHideTime)}
             }
         }})
-        jQuery(
-                "#${mainFrameElementID} button" + "," +
-                "#${mainFrameElementID} select" + "," +
-                "#${mainFrameElementID} option" + "," +
-                "#${mainFrameElementID} input"
-        )?.hover(fun(){
+        jq(
+                "#${id} button" + "," +
+                "#${id} select" + "," +
+                "#${id} option" + "," +
+                "#${id} input"
+        ).hover(fun(){
             //設 當onhover 就onfocus 同步
-            jQuery(js("this"))?.focus()
+            jqThis().focus()
         })
 
         /**
-        jQuery("#${mainFrameElementID}").blur(fun(){
+        jq("#${id}").blur(fun(){
             if(isFocusOutHide){
                 hide()
             }

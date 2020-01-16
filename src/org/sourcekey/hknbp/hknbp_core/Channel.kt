@@ -25,7 +25,7 @@ import org.sourcekey.hknbp.hknbp_core.MultiLanguageString.LanguageString
  * @param sources 頻道嘅頻道源list
  * @param information 頻道資料
  */
-class Channel(
+data class Channel(
         val number: Int,
         val name: MultiLanguageString       = MultiLanguageString(),
         val sources: ArrayLinkList<Source>  = ArrayLinkList(),
@@ -38,11 +38,21 @@ class Channel(
      * @param iFramePlayerSrc 頻道源需要使用嘅iFramePlayer嘅Src
      * @param link 頻道源條Link
      */
-    class Source(
+    data class Source(
             val description: String         = "",
             val iFramePlayerSrc: String,
             val link: String
-    )
+    ){
+        override fun equals(other: Any?): Boolean {
+            if(other is Source){
+                val isDescriptionEqual = this.description == other.description
+                val isIFramePlayerSrcEqual = this.iFramePlayerSrc == other.iFramePlayerSrc
+                val isLinkEqual = this.link == other.link
+                if(isDescriptionEqual&&isIFramePlayerSrcEqual&&isLinkEqual){return true}
+            }
+            return false
+        }
+    }
 
     /**
      * 頻道節目表
@@ -50,7 +60,7 @@ class Channel(
      * @param id 響節目表內嘅id 用來獲取此頻道嘅所有節目資訊
      * @param src 頻道節目表源
      */
-    class Information(
+    data class Information(
             val epgID: String               = "",
             val src: String                 = ""
     ){
@@ -77,6 +87,68 @@ class Channel(
                 onLoadedXMLTVListener(xmltv?:XMLTV())
             }
         }
+
+        override fun equals(other: Any?): Boolean {
+            if(other is Information){
+                val isEpgIdEqual = this.epgID == other.epgID
+                val isSrcEqual = this.src == other.src
+                if(isEpgIdEqual&&isSrcEqual){return true}
+            }
+            return false
+        }
+    }
+
+    override fun equals(other: Any?): Boolean {
+        if(other is Channel){
+            val isNumberEqual = this.number == other.number
+            val isNameEqual = this.name == other.name
+            for(thisSource in this.sources){
+                var isHaveSameSource = false
+                for(otherSource in other.sources){ if(thisSource == otherSource){isHaveSameSource = true} }
+                if(!isHaveSameSource){return false}
+            }
+            val isInformationEqual = this.information == other.information
+            if(isNumberEqual&&isNameEqual&&isInformationEqual){return true}
+        }
+        return false
+    }
+
+    private fun LanguageString.toXMLString(): String {
+        return """<name lang="${this.lang}">${this.string}</name>"""
+    }
+
+    private fun MultiLanguageString.toXMLString(): String {
+        var nameMultiLangString = ""
+        for (name in this) {
+            nameMultiLangString += name.toXMLString()
+        }
+        return nameMultiLangString
+    }
+
+    private fun Source.toXMLString(): String {
+        return """<source description="${this.description}" iframeplayersrc="${this.iFramePlayerSrc}" link="${this.link}"/>"""
+    }
+
+    private fun ArrayLinkList<Source>.toXMLString(): String {
+        var sourcesString = ""
+        for (source in this) {
+            sourcesString += source.toXMLString()
+        }
+        return sourcesString
+    }
+
+    fun toXMLString(): String {
+        return """<channel number="${this.number}">
+    ${this.name.toXMLString()}
+    ${this.sources.toXMLString()}
+    <information epgid="${this.information.epgID}" src="${this.information.src}"/>
+</channel>
+"""
+    }
+
+    companion object{
+
+
     }
 }
 
