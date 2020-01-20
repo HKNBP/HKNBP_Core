@@ -33,30 +33,30 @@ import kotlin.random.Random
 
 /**
 fun dynamicallyLoadScript(url: String) {
-    var script = document.createElement("script") as HTMLScriptElement  // create a script DOM node
-    script.src = url  // set its src to the provided URL
-    script.async = false
-    document.head?.appendChild(script)  // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
+var script = document.createElement("script") as HTMLScriptElement  // create a script DOM node
+script.src = url  // set its src to the provided URL
+script.async = false
+document.head?.appendChild(script)  // add it to the end of the head section of the page (could change 'head' to 'body' to add it to the end of the body section instead)
 }
 
 private val initLoadScript = {
-    dynamicallyLoadScript("https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
-    dynamicallyLoadScript("js/jquery.tabbable.js")
-    dynamicallyLoadScript("https://video-dev.github.io/can-autoplay/build/can-autoplay.min.js")
-    dynamicallyLoadScript("https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.5/platform.min.js")
+dynamicallyLoadScript("https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+dynamicallyLoadScript("js/jquery.tabbable.js")
+dynamicallyLoadScript("https://video-dev.github.io/can-autoplay/build/can-autoplay.min.js")
+dynamicallyLoadScript("https://cdnjs.cloudflare.com/ajax/libs/platform/1.3.5/platform.min.js")
 }()*/
-
+/**/
 /**
  * 設置ConsoleLog監聽器
  * */
-private val setConsoleLogsListener = {
+private val initConsoleLogsListener = {
     try {
         js("""
             console.stdlog = console.log.bind(console);
             console.logs = [];
-            console.log = function(){
+            console.log = function(message){
                 if(1000<console.logs.length){console.logs.shift();}//防過多Log
-                console.logs.push(Array.from(arguments));
+                console.logs.push(message);
                 console.stdlog.apply(console, arguments);
             }
         """)
@@ -159,8 +159,6 @@ fun Int.toNegative(): Int{
     return this
 }
 
-inline fun Console.trace() = asDynamic().trace()
-
 /**
  * 更新URL參數
  * @param param 參數名
@@ -224,7 +222,7 @@ val coreVersion: String = {
     value
     */
 
-    "v2020.01_3"
+    "v2020.01_4-test"
 }()
 
 /**
@@ -385,33 +383,35 @@ val channels: ArrayLinkList<Channel> = {
         channels.addAll(CustomChannels.get())//載入自定頻道
         //讀返最近睇過嘅頻道
         channels.designated(
-                //URL參數指定嘅道
-                {
-                    val channelParam = URL(window.location.href).searchParams.get("channel")
-                    //查個參數係米純ChannelNumber
-                    var goTOChannelNumber = channelParam?.toIntOrNull()
-                    //查個參數係米CustomChannel嘅XmlString
-                    val customChannel = ChannelsReader().parseChannels(decodeURIComponent(channelParam?:"")).getOrNull(0)
-                    if(customChannel != null && channels.find{ channel: Channel -> channel == customChannel } == null) {
-                        //將新嘅自訂頻道儲底
-                        CustomChannels.add(customChannel)
-                        //將新嘅自訂頻道加到現運行頻道表
-                        channels.add(customChannel)
-                        //轉到新自訂頻道
-                        goTOChannelNumber = customChannel.number
-                    }
-                    //轉換成ArrayList Index
-                    channels.indexOfOrNull(channels.find{channel -> channel.number == goTOChannelNumber})
-                }()?:
-                //上次收睇緊嘅頻道
-                {
-                    val recentlyWatchedChannel = localStorage.getItem("RecentlyWatchedChannel")?.toInt()
-                    if(recentlyWatchedChannel != null){
-                        if(recentlyWatchedChannel < channels.size){ recentlyWatchedChannel }else{ channels.lastIndex }
-                    }else{ null }
-                }()?:
-                //隨機一個頻道
-                if(channels.size <= 0){ 0 }else{ Random.nextInt(0, channels.size) }
+                try {
+                    //URL參數指定嘅道
+                    {
+                        val channelParam = URL(window.location.href).searchParams?.get("channel")//個<?.get>嘅問號要留,因試到https://cs.coredump.biz/questions/51961922/urlsearchparams-not-working-in-a-webview
+                        //查個參數係米純ChannelNumber
+                        var goTOChannelNumber = channelParam?.toIntOrNull()
+                        //查個參數係米CustomChannel嘅XmlString
+                        val customChannel = ChannelsReader().parseChannels(decodeURIComponent(channelParam?:"")).getOrNull(0)
+                        if(customChannel != null && channels.find{ channel: Channel -> channel == customChannel } == null) {
+                            //將新嘅自訂頻道儲底
+                            CustomChannels.add(customChannel)
+                            //將新嘅自訂頻道加到現運行頻道表
+                            channels.add(customChannel)
+                            //轉到新自訂頻道
+                            goTOChannelNumber = customChannel.number
+                        }
+                        //轉換成ArrayList Index
+                        channels.indexOfOrNull(channels.find{channel -> channel.number == goTOChannelNumber})
+                    }()?:
+                    //上次收睇緊嘅頻道
+                    {
+                        val recentlyWatchedChannel = localStorage.getItem("RecentlyWatchedChannel")?.toInt()
+                        if(recentlyWatchedChannel != null){
+                            if(recentlyWatchedChannel < channels.size){ recentlyWatchedChannel }else{ channels.lastIndex }
+                        }else{ null }
+                    }()?:
+                    //隨機一個頻道
+                    if(channels.size <= 0){ 0 }else{ Random.nextInt(0, channels.size) }
+                }catch(e:dynamic){0}finally{0}
         )
     })
     channels

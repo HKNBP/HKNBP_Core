@@ -193,7 +193,7 @@ object CustomChannelsSettingWindow: Window(
 
     class ChannelOption(val channel: Channel, val option: HTMLOptionElement)
 
-    private val channelsSelect          = document.getElementById("customChannelsSettingChannelsSelect") as HTMLSelectElement
+    private val channelsSelect           = document.getElementById("customChannelsSettingChannelsSelect") as HTMLSelectElement
     private val channelAddButton        = document.getElementById("customChannelsSettingChannelAddButton") as HTMLButtonElement
     private val channelRemoveButton     = document.getElementById("customChannelsSettingChannelRemoveButton") as HTMLButtonElement
     private val channelMoveUpButton     = document.getElementById("customChannelsSettingChannelMoveUpButton") as HTMLButtonElement
@@ -214,7 +214,7 @@ object CustomChannelsSettingWindow: Window(
         for(channel in channels){
             val option = createChannelOption(channel)
             channelOptionList.add(ChannelOption(channel, option))
-            channelsSelect.append(option)
+            channelsSelect.appendChild(option)
         }
     }
 
@@ -284,7 +284,7 @@ object CustomChannelsSettingWindow: Window(
     private fun HTMLSelectElement.sort(){
         channelOptionList.sortByDescending { channelOption: ChannelOption -> channelOption.channel.number }
         this.innerHTML = ""
-        for(channelOption in channelOptionList){ this.append(channelOption.option) }
+        for(channelOption in channelOptionList){ this.appendChild(channelOption.option) }
     }
 
     private fun HTMLSelectElement.select(option: HTMLOptionElement){

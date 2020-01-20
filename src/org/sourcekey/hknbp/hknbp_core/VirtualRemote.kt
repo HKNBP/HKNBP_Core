@@ -22,6 +22,7 @@ import kotlin.browser.window
 
 
 object VirtualRemote{
+    val virtualRemote               = document.getElementById("virtualRemote")              as HTMLDivElement
     val hideVirtualRemoteButton     = document.getElementById("hideVirtualRemoteButton")    as HTMLButtonElement
     val epgButton                   = document.getElementById("epgButton")                  as HTMLButtonElement
     val nextChannelButton           = document.getElementById("nextChannelButton")          as HTMLButtonElement
@@ -328,6 +329,8 @@ object VirtualRemote{
         subtitleDescriptionButton.onclick   = fun(event){SubtitleDescription.show(5000)}
         volumeDescriptionButton.onclick     = fun(event){VolumeDescription.show(5000)}
         returnButton.onclick                = fun(event){UserInterface.hideAllUserInterface()}
+
+        virtualRemote.onscroll = fun(event){ UserControlPanel.show(30000) }
 
         update()
         channels.addOnNodeEventListener(object: ArrayLinkList.OnNodeEventListener<Channel>{

@@ -39,7 +39,7 @@ open class Window(
             placeArea.style.zIndex              = "90"
             //將Window放置在dynamicUserInterfaceArea顯示
             val dynamicUserInterfaceArea = document.getElementById("dynamicUserInterfaceArea") as HTMLDivElement
-            dynamicUserInterfaceArea.append(placeArea)
+            dynamicUserInterfaceArea.appendChild(placeArea)
 
             placeArea
         }()
@@ -51,7 +51,8 @@ open class Window(
         isShowToHideUserControlPanel = true,
         conversionFocusHideTime = 15000
 ){
-    val titleArea = {
+
+    private val titleArea = {
         val title = document.createElement("div") as HTMLDivElement
         title.style.position                    = "absolute"
         title.style.top                         = "0"
@@ -62,7 +63,7 @@ open class Window(
         title
     }()
 
-    val closeButton = {
+    private val closeButton = {
         val closeButton = document.createElement("button") as HTMLButtonElement
         closeButton.style.background            = "rgba(0, 0, 0, 0)"
         closeButton.style.color                 = "#FFF"
@@ -79,7 +80,7 @@ open class Window(
         closeButton
     }()
 
-    val contentArea = {
+    private val contentArea = {
         val contentArea = document.createElement("div") as HTMLDivElement
         contentArea.style.position              = "absolute"
         contentArea.style.top                   = "0"
@@ -92,7 +93,7 @@ open class Window(
         contentArea
     }()
 
-    val window = {
+    private val window = {
         val window = document.createElement("div") as HTMLDivElement
         window.style.position                   = "absolute"
         window.style.width                      = width
@@ -100,11 +101,13 @@ open class Window(
         window.style.backgroundColor            = "#303030"
         window.style.cursor                     = "auto"
         window.onclick                          = fun(event){ event.stopPropagation() }//停止行父元素onclick
-        window.append(titleArea, closeButton, contentArea)
+        window.appendChild(titleArea)
+        window.appendChild(closeButton)
+        window.appendChild(contentArea)
         window
     }()
 
-    val focusOutArea = {
+    private val focusOutArea = {
         val focusOutArea = document.createElement("div") as HTMLDivElement
         focusOutArea.style.backgroundColor      = "rgba(0, 0, 0, 0.6)"
         focusOutArea.style.display              = "flex"
@@ -117,13 +120,12 @@ open class Window(
         focusOutArea.style.alignItems           = "center"
         focusOutArea.style.justifyContent       = "center"
         focusOutArea.onclick                    = fun(event){ hide() }
-        focusOutArea.append(window)
+        focusOutArea.appendChild(window)
         focusOutArea
     }()
 
-
     init {
-        placeArea.append(focusOutArea)
+        placeArea.appendChild(focusOutArea)
         firstFocusElement = closeButton
     }
 }

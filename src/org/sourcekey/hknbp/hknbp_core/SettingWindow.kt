@@ -254,7 +254,7 @@ object SettingWindow: Window(
 
     /********************************************/
 
-    private val devConsole = document.getElementById("devConsole") as HTMLDivElement
+    val devConsole = document.getElementById("devConsole") as HTMLDivElement
     private val devModeCheckbox = document.getElementById("DevModeCheckbox") as HTMLInputElement
 
     fun initDevModeCheckbox(){
@@ -266,8 +266,8 @@ object SettingWindow: Window(
                     val _getConsoleLogs: ()->String = getConsoleLogs
                     _devConsole.innerHTML = _getConsoleLogs()
                     js("""
-                        console.log = function(){
-                            console.logs.push(Array.from(arguments));
+                        console.log = function(message){
+                            console.logs.push(message);
                             console.stdlog.apply(console, arguments);
                             _devConsole.innerHTML = _getConsoleLogs();
                             _devConsole.scrollTop = _devConsole.scrollHeight

@@ -42,7 +42,7 @@ open class DialogueBox(
             placeArea.style.zIndex              = "90"
             //將Window放置在dynamicUserInterfaceArea顯示
             val dynamicUserInterfaceArea = document.getElementById("dynamicUserInterfaceArea") as HTMLDivElement
-            dynamicUserInterfaceArea.append(placeArea)
+            dynamicUserInterfaceArea.appendChild(placeArea)
 
             placeArea
         }()
@@ -96,7 +96,7 @@ open class DialogueBox(
         val flexArea = document.createElement("div") as HTMLDivElement
         flexArea.style.display                  = "flex"
         flexArea.style.width                    = "100%"
-        for(element in elements){ flexArea.append(element) }
+        for(element in elements){ flexArea.appendChild(element) }
         return flexArea
     }
 
@@ -106,7 +106,9 @@ open class DialogueBox(
         dialogueBox.style.backgroundColor       = "#303030"
         dialogueBox.style.cursor                = "auto"
         dialogueBox.onclick                     = fun(event){ event.stopPropagation() }//停止行父元素onclick
-        dialogueBox.append(titleDiv, dialogueDiv, createFlexArea(okButton, cancelButton))
+        dialogueBox.appendChild(titleDiv)
+        dialogueBox.appendChild(dialogueDiv)
+        dialogueBox.appendChild(createFlexArea(okButton, cancelButton))
         dialogueBox
     }()
 
@@ -123,7 +125,7 @@ open class DialogueBox(
         focusOutArea.style.alignItems           = "center"
         focusOutArea.style.justifyContent       = "center"
         //focusOutArea.onclick                    = fun(event){ hide() }
-        focusOutArea.append(dialogueBox)
+        focusOutArea.appendChild(dialogueBox)
         focusOutArea
     }()
 
@@ -134,7 +136,7 @@ open class DialogueBox(
     }
 
     init {
-        placeArea.append(focusOutArea)
+        placeArea.appendChild(focusOutArea)
         show(null)
     }
 }
