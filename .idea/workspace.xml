@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="439dc076-fa64-48ca-946e-6d20fa2781e4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HKNBP_Core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/HKNBP_Core.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app-download.html" beforeDir="false" afterPath="$PROJECT_DIR$/app-download.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.meta.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm" beforeDir="false" />
@@ -15,11 +11,8 @@
       <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/lib/kotlinx-serialization-kotlinx-serialization-runtime.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/lib/kotlinx-serialization-kotlinx-serialization-runtime.meta.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/CustomChannelsSettingWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/CustomChannelsSettingWindow.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/DialogueBox.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/DialogueBox.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/SettingWindow.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/SettingWindow.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VirtualRemote.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VirtualRemote.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserInterface.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserInterface.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Window.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Window.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -358,10 +351,10 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="1066" y="133" width="1024" height="844" key="SettingsEditor/0.0.2560.1080@0.0.2560.1080" timestamp="1579359750235" />
-    <state x="1597" y="367" key="com.intellij.ide.util.TipDialog" timestamp="1579509838835">
+    <state x="1597" y="367" key="com.intellij.ide.util.TipDialog" timestamp="1579681481906">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="1597" y="367" key="com.intellij.ide.util.TipDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1579509838834" />
+    <state x="1597" y="367" key="com.intellij.ide.util.TipDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1579681481906" />
     <state x="1152" y="187" width="784" height="704" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1578880895437">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>

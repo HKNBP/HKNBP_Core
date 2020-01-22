@@ -95,7 +95,7 @@ open class Window(
 
     private val window = {
         val window = document.createElement("div") as HTMLDivElement
-        window.style.position                   = "absolute"
+        window.style.position                   = "relative"
         window.style.width                      = width
         window.style.height                     = height
         window.style.backgroundColor            = "#303030"

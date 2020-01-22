@@ -82,8 +82,10 @@ val getConsoleLogs = fun(): String{
 
 /**
  * 等於 $(this) JS寫法
+ *
+ * 必要寫inline fun原因係為左編譯為JS時寫住 $(this)
  * */
-fun jqThis(): JQuery = js("\$")(js("this"))
+inline fun jqThis(): JQuery = js("\$")(js("this"))
 
 inline val JQuery.length: Int
     get() = asDynamic().length
@@ -132,11 +134,23 @@ inline fun JQuery.mouseout(noinline handler: (Event)->Unit): JQuery = asDynamic(
 
 inline fun JQuery.mouseout(eventData: dynamic, noinline handler: (Event)->Unit): JQuery = asDynamic().mouseout(eventData, handler)
 
-//inline fun JQuery.css(vararg propertyNames: String): String = asDynamic().css(propertyNames)
-
 inline fun JQuery.tabPrev(): JQuery = asDynamic().tabPrev()
 
 inline fun JQuery.tabNext(): JQuery = asDynamic().tabNext()
+
+inline fun JQuery.css(propertyName: String): String = asDynamic().css(propertyName)
+
+inline fun JQuery.css(propertyNames: Array<String>): String = asDynamic().css(propertyNames)
+
+inline fun JQuery.css(propertyName: String, value: Double): JQuery = asDynamic().css(propertyName, value)
+
+inline fun JQuery.css(propertyName: String, value: String): JQuery = asDynamic().css(propertyName, value)
+
+inline fun JQuery.css(propertyName: String, noinline function: (index: Int, value: String)->String): JQuery = asDynamic().css(propertyName, function)
+
+inline fun JQuery.css(properties: Json): JQuery = asDynamic().css(properties)
+
+inline fun JQuery.prev(selector: String): JQuery = asDynamic().prev(selector)
 
 external fun decodeURIComponent(encodedURI: String): String
 
@@ -222,7 +236,7 @@ val coreVersion: String = {
     value
     */
 
-    "v2020.01_4-test"
+    "v2020.01_5"
 }()
 
 /**

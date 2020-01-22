@@ -14,6 +14,7 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
+import jquery.JQuery
 import jquery.jq
 import org.w3c.dom.HTMLElement
 import kotlin.browser.document
@@ -36,12 +37,10 @@ abstract class UserInterface(
         }
     }
 
-    private var lastTimeFocusElement: dynamic? = {
+    private var lastTimeFocusElement: JQuery? = {
         val _firstFocusElement = firstFocusElement
         if(_firstFocusElement != null){
-            try {
-                jq(_firstFocusElement)
-            }catch (e: dynamic){ null }
+            jq(_firstFocusElement)
         }else{ null }
     }()
 
