@@ -102,7 +102,7 @@ open class DialogueBox(
 
     val dialogueBox = {
         val dialogueBox = document.createElement("div") as HTMLDivElement
-        dialogueBox.style.position              = "absolute"
+        dialogueBox.style.position              = "relative"
         dialogueBox.style.backgroundColor       = "#303030"
         dialogueBox.style.cursor                = "auto"
         dialogueBox.onclick                     = fun(event){ event.stopPropagation() }//停止行父元素onclick
