@@ -20,7 +20,10 @@ import org.w3c.dom.HTMLButtonElement
 import org.w3c.dom.HTMLElement
 import kotlin.browser.document
 
-object FullScreenButton: UserInterface(document.getElementById("fullScreenButton") as HTMLElement) {
+object FullScreenButton: TabbableUI(
+        mainFrameElement = document.getElementById("fullScreenButton") as HTMLElement,
+        isFocusTriggerShowEventElement = false
+) {
     private val fullScreenButton: HTMLButtonElement = document.getElementById("fullScreenButton") as HTMLButtonElement
     private val enterFullscreenIcon: String = "<i class=\"icon-font\">&#xe80c;</i>"
     private val exitFullscreenIcon: String = "<i class=\"icon-font\">&#xe80b;</i>"

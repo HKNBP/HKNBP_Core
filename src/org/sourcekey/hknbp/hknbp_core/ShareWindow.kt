@@ -20,7 +20,7 @@ import org.w3c.dom.HTMLElement
 import org.w3c.dom.HTMLScriptElement
 import kotlin.browser.document
 
-object ShareWindow : UserInterface(document.getElementById("shareWindow") as HTMLElement) {
+object ShareWindow : TabbableUI(document.getElementById("shareWindow") as HTMLElement) {
     //private val shareWindow = document.getElementById("shareWindow") as HTMLDivElement
     private val hideButton = document.getElementById("shareWindowHideButton") as HTMLButtonElement
     private val buttonList = document.getElementById("shareWindowShareButtonList") as HTMLDivElement

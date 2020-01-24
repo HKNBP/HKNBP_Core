@@ -152,6 +152,42 @@ inline fun JQuery.css(properties: Json): JQuery = asDynamic().css(properties)
 
 inline fun JQuery.prev(selector: String): JQuery = asDynamic().prev(selector)
 
+inline fun JQuery.children(selector: String): JQuery = asDynamic().children(selector)
+
+inline fun JQuery.find(selector: String): JQuery = asDynamic().find(selector)
+
+inline fun JQuery.find(selector: Element): JQuery = asDynamic().find(selector)
+
+inline fun JQuery.find(selector: JQuery): JQuery = asDynamic().find(selector)
+
+inline fun JQuery.get(index: Int): JQuery = asDynamic().get(index)
+
+/*
+inline fun JQuery.iS(selector: String): Boolean = {
+    val _this = asDynamic()
+    val _selector = selector
+    js("_this.is(_selector)") as Boolean
+}()
+
+inline fun JQuery.iS(noinline function: (index: Int, element: Element)->Boolean): Boolean = {
+    val _this = asDynamic()
+    val _function = function
+    js("_this.is(_function)") as Boolean
+}()
+
+inline fun JQuery.iS(selection: JQuery): Boolean = {
+    val _this = asDynamic()
+    val _selection = selection
+    js("_this.is(_selection)") as Boolean
+}()
+
+inline fun JQuery.iS(element: Element): Boolean = {
+    val _this = asDynamic()
+    val _element = element
+    js("_this.is(_element)") as Boolean
+}()
+*/
+
 external fun decodeURIComponent(encodedURI: String): String
 
 external fun encodeURIComponent(encodedURI: String): String
@@ -236,7 +272,7 @@ val coreVersion: String = {
     value
     */
 
-    "v2020.01_6"
+    "v2020.01_7"
 }()
 
 /**

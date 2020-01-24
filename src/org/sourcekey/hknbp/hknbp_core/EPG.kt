@@ -26,7 +26,7 @@ import org.w3c.dom.*
 import org.w3c.dom.events.FocusEvent
 
 
-object EPG: UserInterface(document.getElementById("epg") as HTMLElement) {
+object EPG: TabbableUI(document.getElementById("epg") as HTMLElement) {
     private val epg                             = document.getElementById("epg") as HTMLElement
     private val displayCurrentDateBox           = document.getElementById("epgDisplayCurrentDateBox") as HTMLElement
     private val hideButton                      = document.getElementById("epgHideButton") as HTMLElement

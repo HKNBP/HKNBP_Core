@@ -18,7 +18,10 @@ import org.w3c.dom.*
 import org.w3c.dom.events.Event
 import kotlin.browser.document
 
-object PictureInPictureButton: UserInterface(document.getElementById("pictureInPictureButton") as HTMLElement){
+object PictureInPictureButton: TabbableUI(
+        mainFrameElement = document.getElementById("pictureInPictureButton") as HTMLElement,
+        isFocusTriggerShowEventElement = false
+){
     private val pictureInPictureButton = document.getElementById("pictureInPictureButton") as HTMLButtonElement
 
     init {

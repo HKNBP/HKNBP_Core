@@ -63,7 +63,7 @@ object VirtualRemote{
     val refreshButton               = document.getElementById("refreshButton")              as HTMLButtonElement
     val channelDescriptionButton    = document.getElementById("channelDescriptionButton")   as HTMLButtonElement
     val aboutWindowButton           = document.getElementById("aboutWindowButton")          as HTMLButtonElement
-    val feedbackWebButton           = document.getElementById("feedbackWebButton")          as HTMLButtonElement
+    val feedbackWebWindowButton     = document.getElementById("feedbackWebButton")          as HTMLButtonElement
     val shareWindowButton           = document.getElementById("shareWindowButton")          as HTMLButtonElement
     val settingWindowButton         = document.getElementById("settingWindowButton")        as HTMLButtonElement
     val appDownloadWindowButton     = document.getElementById("appDownloadWindowButton")    as HTMLButtonElement
@@ -187,18 +187,7 @@ object VirtualRemote{
         refreshButton.onclick               = fun(event){updateChannel()}
         channelDescriptionButton.onclick    = fun(event){if(ChannelDescription.isShow){ChannelDescription.hide()}else{ChannelDescription.show(60000)}}
         aboutWindowButton.onclick           = fun(event){AboutWindow.showHideAlternately(null)}
-        feedbackWebButton.onclick           = fun(event){
-            val formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSehWsf1J8sSzPpXHRfFg7mqAsCC1q5dJpef2W6YvNFCrIW-8g/viewform?usp=pp_url"
-            val coreVersionArg = "entry.133709146=${coreVersion}"
-            val appVersionArg = "entry.759953459=${appVersion}"
-            val runningOsArg = "entry.272098163=${RunnerInfo.getOsName()}"
-            val runningBrowserArg = "entry.1391825326=${RunnerInfo.getBrowserName()}"
-            val logArg = "entry.1270012498=${encodeURIComponent(getConsoleLogs())}"
-            window.open(
-                    formUrl+"&"+coreVersionArg+"&"+appVersionArg+"&"+runningOsArg+"&"+runningBrowserArg+"&"+logArg,
-                    "_blank" // <- This is what makes it open in a new window.
-            )
-        }
+        feedbackWebWindowButton.onclick     = fun(event){FeedbackWebWindow.showHideAlternately(null)}
         shareWindowButton.onclick           = fun(event){ShareWindow.showHideAlternately(null)}
         settingWindowButton.onclick         = fun(event){SettingWindow.showHideAlternately(null)}
         appDownloadWindowButton.onclick     = fun(event){AppDownloadWindow.showHideAlternately(null)}

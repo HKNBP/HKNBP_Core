@@ -28,10 +28,9 @@ import kotlin.js.Math
 /**
  * 操作使用者介面器
  * */
-object UserControlPanel: UserInterface(
+object UserControlPanel: TabbableUI(
         document.getElementById("userControlPanel") as HTMLElement,
-        firstFocusElement = document.getElementById("onHeadNextAudioButton") as HTMLElement,
-        isHideFocusToUserControlPanelShower = true
+        firstFocusJqElement = jq(document.getElementById("onHeadNextAudioButton") as HTMLElement)
 ) {
     private val panel: HTMLDivElement   = document.getElementById("userControlPanel") as HTMLDivElement
     private val shower: HTMLButtonElement  = document.getElementById("userControlPanelShower") as HTMLButtonElement

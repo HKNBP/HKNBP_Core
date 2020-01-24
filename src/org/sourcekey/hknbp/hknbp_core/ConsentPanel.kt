@@ -14,6 +14,7 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
+import jquery.jq
 import org.w3c.dom.HTMLButtonElement
 import org.w3c.dom.HTMLDivElement
 import org.w3c.dom.HTMLElement
@@ -21,11 +22,10 @@ import kotlin.browser.document
 import kotlin.browser.localStorage
 import kotlin.browser.window
 
-object ConsentPanel: UserInterface(
+object ConsentPanel: TabbableUI(
         document.getElementById("consentPanel") as HTMLElement,
-        firstFocusElement = document.getElementById("consentPanelAgreeConsentButton") as HTMLElement,
-        isFocusCountdownHide = false,
-        isHideFocusToUserControlPanelShower = true
+        firstFocusJqElement = jq(document.getElementById("consentPanelAgreeConsentButton") as HTMLElement),
+        transpositionFocusHideTime = null
 ){
     private val consentPanel       = document.getElementById("consentPanel") as HTMLDivElement
     private val agreeConsentButton  = document.getElementById("consentPanelAgreeConsentButton") as HTMLButtonElement
