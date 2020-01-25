@@ -65,12 +65,14 @@ object UserControlPanel: TabbableUI(
     var onHideUserControlPanel: ()->Unit = fun(){}
 
     override fun show(showTime: Int?) {
+        println("show()")
         super.show(showTime)
         onShowUserControlPanel()
         shower.style.cursor = "auto"
     }
 
     override fun hide() {
+        println("hide()")
         super.hide()
         onHideUserControlPanel()
         hideMouseTimer = window.setTimeout(fun(){
@@ -107,7 +109,8 @@ object UserControlPanel: TabbableUI(
     }
 
     fun cannotTouchIframePlayerMode(){
-        if(RunnerInfo.getOsFamily() != "iOS"){//當iOS時唔會切換到"不可觸摸IframePlayer模式"
+        //當iOS時唔會切換到"不可觸摸IframePlayer模式"
+        if(RunnerInfo.getOsFamily() != "iOS"){
             shower.style.right = "0"
             shower.style.width = "100%"
             shower.style.backgroundColor = "rgba(0, 0, 0, 0)"

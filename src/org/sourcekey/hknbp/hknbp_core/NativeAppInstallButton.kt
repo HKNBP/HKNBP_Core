@@ -19,9 +19,8 @@ import org.w3c.dom.HTMLElement
 import kotlin.browser.document
 import kotlin.browser.window
 
-object NativeAppInstallButton: TabbableUI(
-        mainFrameElement = document.getElementById("nativeAppInstallButton") as HTMLElement,
-        isFocusTriggerShowEventElement = false
+object NativeAppInstallButton: UserInterface(
+        mainFrameElement = document.getElementById("nativeAppInstallButton") as HTMLElement
 ) {
     private val nativeAppInstallButton = document.getElementById("nativeAppInstallButton") as HTMLButtonElement
     private var installPromptEvent: dynamic = null

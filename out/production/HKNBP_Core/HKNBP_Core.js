@@ -38,6 +38,7 @@ var HKNBP_Core = function (_, Kotlin) {
   var Enum = Kotlin.kotlin.Enum;
   var throwISE = Kotlin.throwISE;
   var getOrNull_0 = Kotlin.kotlin.text.getOrNull_94bcnn$;
+  var lastOrNull = Kotlin.kotlin.collections.lastOrNull_2p1efm$;
   var last = Kotlin.kotlin.collections.last_2p1efm$;
   var Regex_init = Kotlin.kotlin.text.Regex_init_61zpoe$;
   var ArrayList_init_0 = Kotlin.kotlin.collections.ArrayList_init_ww73n8$;
@@ -76,7 +77,7 @@ var HKNBP_Core = function (_, Kotlin) {
   EnteringNumberBox.prototype.constructor = EnteringNumberBox;
   FeedbackWebWindow.prototype = Object.create(Window.prototype);
   FeedbackWebWindow.prototype.constructor = FeedbackWebWindow;
-  FullScreenButton.prototype = Object.create(TabbableUI.prototype);
+  FullScreenButton.prototype = Object.create(UserInterface.prototype);
   FullScreenButton.prototype.constructor = FullScreenButton;
   GithubWebWindow.prototype = Object.create(Window.prototype);
   GithubWebWindow.prototype.constructor = GithubWebWindow;
@@ -84,11 +85,11 @@ var HKNBP_Core = function (_, Kotlin) {
   MultiLanguageString.prototype.constructor = MultiLanguageString;
   MutedDescription.prototype = Object.create(UserInterface.prototype);
   MutedDescription.prototype.constructor = MutedDescription;
-  NativeAppInstallButton.prototype = Object.create(TabbableUI.prototype);
+  NativeAppInstallButton.prototype = Object.create(UserInterface.prototype);
   NativeAppInstallButton.prototype.constructor = NativeAppInstallButton;
   OfficialChannels.prototype = Object.create(ChannelsReader.prototype);
   OfficialChannels.prototype.constructor = OfficialChannels;
-  PictureInPictureButton.prototype = Object.create(TabbableUI.prototype);
+  PictureInPictureButton.prototype = Object.create(UserInterface.prototype);
   PictureInPictureButton.prototype.constructor = PictureInPictureButton;
   Player$OnPlayerEvent.prototype = Object.create(Enum.prototype);
   Player$OnPlayerEvent.prototype.constructor = Player$OnPlayerEvent;
@@ -2749,7 +2750,7 @@ var HKNBP_Core = function (_, Kotlin) {
   function FullScreenButton() {
     FullScreenButton_instance = this;
     var tmp$;
-    TabbableUI.call(this, Kotlin.isType(tmp$ = document.getElementById('fullScreenButton'), HTMLElement) ? tmp$ : throwCCE(), void 0, void 0, false);
+    UserInterface.call(this, Kotlin.isType(tmp$ = document.getElementById('fullScreenButton'), HTMLElement) ? tmp$ : throwCCE());
     var tmp$_0;
     this.fullScreenButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('fullScreenButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.enterFullscreenIcon_0 = '<i class="icon-font">&#xe80c;<\/i>';
@@ -2813,7 +2814,7 @@ var HKNBP_Core = function (_, Kotlin) {
   FullScreenButton.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'FullScreenButton',
-    interfaces: [TabbableUI]
+    interfaces: [UserInterface]
   };
   var FullScreenButton_instance = null;
   function FullScreenButton_getInstance() {
@@ -3290,7 +3291,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.01_7';
+    return 'v2020.01_8';
   }
   var coreVersion;
   var appVersion;
@@ -3806,7 +3807,7 @@ var HKNBP_Core = function (_, Kotlin) {
   function NativeAppInstallButton() {
     NativeAppInstallButton_instance = this;
     var tmp$;
-    TabbableUI.call(this, Kotlin.isType(tmp$ = document.getElementById('nativeAppInstallButton'), HTMLElement) ? tmp$ : throwCCE(), void 0, void 0, false);
+    UserInterface.call(this, Kotlin.isType(tmp$ = document.getElementById('nativeAppInstallButton'), HTMLElement) ? tmp$ : throwCCE());
     var tmp$_0;
     this.nativeAppInstallButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('nativeAppInstallButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.installPromptEvent_0 = null;
@@ -3835,7 +3836,7 @@ var HKNBP_Core = function (_, Kotlin) {
   NativeAppInstallButton.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'NativeAppInstallButton',
-    interfaces: [TabbableUI]
+    interfaces: [UserInterface]
   };
   var NativeAppInstallButton_instance = null;
   function NativeAppInstallButton_getInstance() {
@@ -3897,7 +3898,7 @@ var HKNBP_Core = function (_, Kotlin) {
   function PictureInPictureButton() {
     PictureInPictureButton_instance = this;
     var tmp$;
-    TabbableUI.call(this, Kotlin.isType(tmp$ = document.getElementById('pictureInPictureButton'), HTMLElement) ? tmp$ : throwCCE(), void 0, void 0, false);
+    UserInterface.call(this, Kotlin.isType(tmp$ = document.getElementById('pictureInPictureButton'), HTMLElement) ? tmp$ : throwCCE());
     var tmp$_0;
     this.pictureInPictureButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('pictureInPictureButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.pictureInPictureButton_0.style.display = 'none';
@@ -3909,7 +3910,7 @@ var HKNBP_Core = function (_, Kotlin) {
   PictureInPictureButton.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'PictureInPictureButton',
-    interfaces: [TabbableUI]
+    interfaces: [UserInterface]
   };
   var PictureInPictureButton_instance = null;
   function PictureInPictureButton_getInstance() {
@@ -4936,7 +4937,7 @@ var HKNBP_Core = function (_, Kotlin) {
     this.transpositionFocusHideTime = transpositionFocusHideTime;
     this.isFocusTriggerShowEventElement = isFocusTriggerShowEventElement;
     this.isFocusOutHide = isFocusOutHide;
-    this.triggerShowEventJqElement_5cjgqr$_0 = null;
+    this.isAddThisToTabbableUIList_elivbw$_0 = false;
     var mainFrameJqElementTabbableElement = $(mainFrameElement).find('button,select,option,input');
     mainFrameJqElementTabbableElement.focus(TabbableUI_init$lambda(this));
     mainFrameJqElementTabbableElement.hover(TabbableUI_init$lambda_0(this));
@@ -4959,23 +4960,30 @@ var HKNBP_Core = function (_, Kotlin) {
     return TabbableUI$Companion_instance;
   }
   TabbableUI.prototype.show_s8ev37$ = function (showTime) {
-    var tmp$;
-    if (!this.isShow) {
-      this.triggerShowEventJqElement_5cjgqr$_0 = $(':focus');
+    var tmp$, tmp$_0;
+    if (!this.isAddThisToTabbableUIList_elivbw$_0) {
+      this.isAddThisToTabbableUIList_elivbw$_0 = true;
+      tmp$ = TabbableUI$Companion_getInstance().tabbableUIList_0.iterator();
+      while (tmp$.hasNext()) {
+        var tabbableUI = tmp$.next();
+        tabbableUI.pushEventHide();
+      }
+      TabbableUI$Companion_getInstance().tabbableUIList_0.add_11rb$(this);
     }
     UserInterface.prototype.show_s8ev37$.call(this, showTime);
-    if ((tmp$ = this.firstFocusJqElement) != null) {
-      tmp$.focus();
+    if ((tmp$_0 = this.firstFocusJqElement) != null) {
+      tmp$_0.focus();
     }
+  };
+  TabbableUI.prototype.pushEventHide = function () {
+    UserInterface.prototype.hide.call(this);
   };
   TabbableUI.prototype.hide = function () {
     var tmp$;
     UserInterface.prototype.hide.call(this);
-    if (this.isFocusTriggerShowEventElement) {
-      if ((tmp$ = this.triggerShowEventJqElement_5cjgqr$_0) != null) {
-        tmp$.focus();
-      }
-    }
+    TabbableUI$Companion_getInstance().tabbableUIList_0.remove_11rb$(this);
+    this.isAddThisToTabbableUIList_elivbw$_0 = false;
+    (tmp$ = lastOrNull(TabbableUI$Companion_getInstance().tabbableUIList_0)) != null ? (tmp$.show_s8ev37$(this.transpositionFocusHideTime), Unit) : null;
   };
   function TabbableUI_init$lambda(this$TabbableUI) {
     return function (event) {
@@ -5133,6 +5141,7 @@ var HKNBP_Core = function (_, Kotlin) {
     }
   });
   UserControlPanel.prototype.show_s8ev37$ = function (showTime) {
+    println('show()');
     TabbableUI.prototype.show_s8ev37$.call(this, showTime);
     this.onShowUserControlPanel();
     this.shower_0.style.cursor = 'auto';
@@ -5143,6 +5152,7 @@ var HKNBP_Core = function (_, Kotlin) {
     };
   }
   UserControlPanel.prototype.hide = function () {
+    println('hide()');
     TabbableUI.prototype.hide.call(this);
     this.onHideUserControlPanel();
     this.hideMouseTimer_0 = window.setTimeout(UserControlPanel$hide$lambda(this), 2000);
