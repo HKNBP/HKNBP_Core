@@ -78,7 +78,7 @@ object CustomChannelsSettingWindow: Window(
             </div>
         </div>
         <div>
-            <textarea id="customChannelsSettingChannelXmlStringTextArea" rows="5" style="font-size:1vh;width:100%;white-space:nowrap;"></textarea>
+            <textarea id="customChannelsSettingChannelXmlStringTextArea" rows="5" style="font-size:1vh;width:100%;white-space:nowrap;" tabindex="-1"></textarea>
         </div>
         """
     ) {
@@ -193,7 +193,7 @@ object CustomChannelsSettingWindow: Window(
 
     class ChannelOption(val channel: Channel, val option: HTMLOptionElement)
 
-    private val channelsSelect           = document.getElementById("customChannelsSettingChannelsSelect") as HTMLSelectElement
+    private val channelsSelect          = document.getElementById("customChannelsSettingChannelsSelect") as HTMLSelectElement
     private val channelAddButton        = document.getElementById("customChannelsSettingChannelAddButton") as HTMLButtonElement
     private val channelRemoveButton     = document.getElementById("customChannelsSettingChannelRemoveButton") as HTMLButtonElement
     private val channelMoveUpButton     = document.getElementById("customChannelsSettingChannelMoveUpButton") as HTMLButtonElement

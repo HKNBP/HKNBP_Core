@@ -90,13 +90,17 @@ inline fun jqThis(): JQuery = js("\$")(js("this"))
 inline val JQuery.length: Int
     get() = asDynamic().length
 
-inline fun JQuery.on(selector: String): JQuery = asDynamic().on(selector)
+inline fun JQuery.on(events: String, noinline handler: (Event)->Unit): JQuery = asDynamic().on(events, handler)
 
-inline fun JQuery.on(data: dynamic): JQuery = asDynamic().on(data)
+inline fun JQuery.on(events: String, selector: String, noinline handler: (Event)->Unit): JQuery = asDynamic().on(events, selector, handler)
 
-inline fun JQuery.on(selector: String, noinline handler: (Event)->Unit): JQuery = asDynamic().on(selector, handler)
+inline fun JQuery.on(events: String, selector: String, data: dynamic, noinline handler: (Event)->Unit): JQuery = asDynamic().on(events, selector, data, handler)
 
-inline fun JQuery.on(data: dynamic, noinline handler: (Event)->Unit): JQuery = asDynamic().on(data, handler)
+inline fun JQuery.on(events: String): JQuery = asDynamic().on(events)
+
+inline fun JQuery.on(events: String, selector: String): JQuery = asDynamic().on(events, selector)
+
+inline fun JQuery.on(events: String, selector: String, data: dynamic): JQuery = asDynamic().on(events, selector, data)
 
 inline fun JQuery.index(): Int = asDynamic().index()
 
@@ -272,7 +276,7 @@ val coreVersion: String = {
     value
     */
 
-    "v2020.01_8"
+    "v2020.01_9"
 }()
 
 /**

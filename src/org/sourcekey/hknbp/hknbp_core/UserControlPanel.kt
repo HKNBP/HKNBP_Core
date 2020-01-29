@@ -65,14 +65,12 @@ object UserControlPanel: TabbableUI(
     var onHideUserControlPanel: ()->Unit = fun(){}
 
     override fun show(showTime: Int?) {
-        println("show()")
         super.show(showTime)
         onShowUserControlPanel()
         shower.style.cursor = "auto"
     }
 
     override fun hide() {
-        println("hide()")
         super.hide()
         onHideUserControlPanel()
         hideMouseTimer = window.setTimeout(fun(){

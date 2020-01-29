@@ -71,14 +71,13 @@ abstract class TabbableUI(
 
     init {
         //設置TabbableElement效果
-        val mainFrameJqElementTabbableElement = jq(mainFrameElement).find("button,select,option,input")
-        mainFrameJqElementTabbableElement.focus(fun(event){if(!js("\$(\"this\").is(\":focus\")")){
+        jq(mainFrameElement).on("focus", "button,select,option,input", fun(event){if(!js("\$(\"this\").is(\":focus\")")){
             //記住依家Focus邊粒element為之後再Show呢個介面時Focus返對上個次嘅element
             firstFocusJqElement = jqThis()
             //當focus就重新倒數介面顯示時間
             setHideTimer(transpositionFocusHideTime)
         }})
-        mainFrameJqElementTabbableElement.hover(fun(){
+        jq(mainFrameElement).on("hover", "button,select,option,input", fun(event){
             var isEquals = false
             for(i in 0 until jqThis().length){
                 for(j in 0 until (firstFocusJqElement?.length?:0)){
