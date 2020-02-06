@@ -80,6 +80,9 @@ val getConsoleLogs = fun(): String{
     return ""
 }
 
+inline val jq: JQuery
+    get() = js("\$")
+
 /**
  * 等於 $(this) JS寫法
  *
@@ -276,7 +279,7 @@ val coreVersion: String = {
     value
     */
 
-    "v2020.01_9"
+    "v2020.02_0"
 }()
 
 /**
@@ -505,10 +508,10 @@ fun reductionTo(w: Int, h: Int): IntArray{
 fun main(args: Array<String>) {
     //HKNBPAppLayerBridge
     try {
-        UserControlPanel.show(30000)
+        UserControlPanel.show(15000)
         ConsentPanel
         VirtualRemote
-        //RealRemote
+        RealRemote
         LongClickEvent
     } catch (e: dynamic) { println("介面初始化哀左: $e") }
 }

@@ -209,16 +209,22 @@ object VirtualRemote{
                     "_blank" // <- This is what makes it open in a new window.
             )
         }
-        centerButton.onclick                = fun(event){jq(":focus").click();}
+        centerButton.onclick                = fun(event){
+            //當冇Focus任何Element時
+            //按此鍵就Focus到userControlPanelShower實現顯示userControlPanel
+            if(jq(":focus").html() == null){
+                jq("#userControlPanelShower").focus()
+            }
+        }
         upButton.onclick                    = fun(event){
             val selectables = jq(":tabbable")
             val current = jq(":focus")
 
             //搵相同<TabIndex嘅Y>響剩余element
             val currentIndex: Int = selectables.index(current)?:0
-            val currentTabIndex: Tab3dIndex = Tab3dIndex.toTab3dIndex(current.attr("tabIndex").toString()?:"")
+            val currentTabIndex: Tab3dIndex = Tab3dIndex.toTab3dIndex(current.attr("tabIndex")?:"")
             for(i in (currentIndex-1) downTo 0 ){
-                val tabIndexForCheck = Tab3dIndex.toTab3dIndex(selectables.eq(i).attr("tabIndex").toString()?:"")
+                val tabIndexForCheck = Tab3dIndex.toTab3dIndex(selectables.eq(i).attr("tabIndex")?:"")
                 if(tabIndexForCheck.y == currentTabIndex.y && tabIndexForCheck.z == currentTabIndex.z){
                     if(tabIndexForCheck.x >= currentTabIndex.x){
                         selectables.eq(i).focus()
@@ -251,7 +257,7 @@ object VirtualRemote{
             })?:Tab3dIndex(0,0,0)
             var closestIndex: Int? = null
             for(i in (selectables.length.toString().toIntOrNull()?:0) downTo 0){
-                val tabIndexForCheck = Tab3dIndex.toTab3dIndex(selectables.eq(i).attr("tabIndex").toString()?:"")
+                val tabIndexForCheck = Tab3dIndex.toTab3dIndex(selectables.eq(i).attr("tabIndex")?:"")
                 if(tabIndexForCheck.y == nextTabIndex.y && tabIndexForCheck.z == nextTabIndex.z){
                     if(tabIndexForCheck.x == currentTabIndex.x){
                         selectables.eq(i).focus()
@@ -268,9 +274,9 @@ object VirtualRemote{
 
             //搵相同<TabIndex嘅Y>響剩余element
             val currentIndex: Int = selectables.index(current)?:0
-            val currentTabIndex: Tab3dIndex = Tab3dIndex.toTab3dIndex(current.attr("tabIndex").toString()?:"")
+            val currentTabIndex: Tab3dIndex = Tab3dIndex.toTab3dIndex(current.attr("tabIndex")?:"")
             for(i in (currentIndex+1) until (selectables.length.toString().toIntOrNull()?:0)){
-                val tabIndexForCheck = Tab3dIndex.toTab3dIndex(selectables.eq(i).attr("tabIndex").toString()?:"")
+                val tabIndexForCheck = Tab3dIndex.toTab3dIndex(selectables.eq(i).attr("tabIndex")?:"")
                 if(tabIndexForCheck.y == currentTabIndex.y && tabIndexForCheck.z == currentTabIndex.z){
                     if(tabIndexForCheck.x <= currentTabIndex.x){
                         selectables.eq(i).focus()
@@ -299,7 +305,7 @@ object VirtualRemote{
             })?:Tab3dIndex(0,0,0)
             var closestIndex: Int = 0
             for(i in 0 until (selectables.length.toString().toIntOrNull()?:0)-1){
-                val tabIndexForCheck = Tab3dIndex.toTab3dIndex(selectables.eq(i).attr("tabIndex").toString()?:"")
+                val tabIndexForCheck = Tab3dIndex.toTab3dIndex(selectables.eq(i).attr("tabIndex")?:"")
                 if(tabIndexForCheck.y == nextTabIndex.y && tabIndexForCheck.z == nextTabIndex.z){
                     if(tabIndexForCheck.x == currentTabIndex.x){
                         selectables.eq(i).focus()
@@ -310,9 +316,9 @@ object VirtualRemote{
             }
             selectables.eq(closestIndex).focus()
         }
-        leftButton.onclick                  = fun(event){jq().tabPrev()}
-        rightButton.onclick                 = fun(event){jq().tabNext()}
-        menuButton.onclick                  = fun(event){if(UserControlPanel.isShow){UserControlPanel.hide()}else{UserControlPanel.show(60000)}}
+        leftButton.onclick                  = fun(event){jq.tabPrev()}
+        rightButton.onclick                 = fun(event){jq.tabNext()}
+        menuButton.onclick                  = fun(event){UserControlPanel.showHideAlternately(60000)}
         videoDescriptionButton.onclick      = fun(event){VideoDescription.show(5000)}
         audioDescriptionButton.onclick      = fun(event){AudioDescription.show(5000)}
         subtitleDescriptionButton.onclick   = fun(event){SubtitleDescription.show(5000)}
