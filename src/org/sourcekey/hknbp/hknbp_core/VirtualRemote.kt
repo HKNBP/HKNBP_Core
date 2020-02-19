@@ -330,8 +330,6 @@ object VirtualRemote{
         volumeDescriptionButton.onclick     = fun(event){VolumeDescription.show(5000)}
         returnButton.onclick                = fun(event){UserInterface.hideAllUserInterface()}
 
-        virtualRemote.onscroll = fun(event){ UserControlPanel.show(30000) }
-
         update()
         channels.addOnNodeEventListener(object: ArrayLinkList.OnNodeEventListener<Channel>{
             override fun onNodeChanged(

@@ -664,7 +664,10 @@ class Player(private val channel: Channel): UserInterface(document.getElementByI
                     obj.returnValue = returnValue
                     window.parent.postMessage(JSON.stringify(obj), "*")
                     }*/
-                    eval(callMessage.functionName + "()")
+                    //檢查functionName係米指定特定名
+                    //因安全為由 避免被不安全IframePlayer執行不安全程序
+                    val functionName: String = callMessage.functionName
+                    if(functionName == "onPlaying" || functionName == "onNotPlaying"){ eval(functionName + "()") }
                 }
             }catch(e: dynamic){
                 println("callIframePlayerFunction衰左: ${e}" + "\n" +
@@ -676,7 +679,9 @@ class Player(private val channel: Channel): UserInterface(document.getElementByI
     }
 
     init {
-        iframePlayer?.src = channel.sources.node?.iFramePlayerSrc?: "iframePlayer/videojs_hls.html"
+        iframePlayer?.src =
+                "${channel.sources.node?.iFramePlayerSrc?:"iframePlayer/videojs.html"}?" +
+                "sourceSrc=${encodeURIComponent(channel.sources.node?.getLinkOfHttpsGetAble()?:"")}"
         iframePlayer?.onload = fun() {
             addOnPlayerEventListener(object : OnPlayerEventListener {
                 private var isPlaying: Boolean = false
@@ -696,8 +701,6 @@ class Player(private val channel: Channel): UserInterface(document.getElementByI
                             }
                             VirtualRemote.update()
                             UserControlPanelShower.cannotTouchIframePlayerMode()
-
-                            println("Playing 頻道${channel.number}")
                         }
                         OnPlayerEvent.notPlaying -> {
                             isPlaying = false
@@ -727,9 +730,11 @@ class Player(private val channel: Channel): UserInterface(document.getElementByI
                 }
             })
             setListenIframePlayerScript()
+            /*
             callIframePlayerFunction("onIframePlayerInit(${
             kotlinValueToEvalScriptUseableValue(channel.sources.node?.link ?: "")
-            })")
+            })")*/
         }
     }
 }
+

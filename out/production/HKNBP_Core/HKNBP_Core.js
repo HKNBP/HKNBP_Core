@@ -14,6 +14,7 @@ var HKNBP_Core = function (_, Kotlin) {
   var ArrayList_init = Kotlin.kotlin.collections.ArrayList_init_287e2$;
   var Kind_CLASS = Kotlin.Kind.CLASS;
   var equals = Kotlin.equals;
+  var startsWith = Kotlin.kotlin.text.startsWith_7epoxm$;
   var toString = Kotlin.toString;
   var Unit = Kotlin.kotlin.Unit;
   var replace = Kotlin.kotlin.text.replace_680rmw$;
@@ -28,9 +29,8 @@ var HKNBP_Core = function (_, Kotlin) {
   var numberToInt = Kotlin.numberToInt;
   var addClass = Kotlin.kotlin.dom.addClass_hhb33f$;
   var Math_0 = Math;
-  var toShort = Kotlin.toShort;
-  var startsWith = Kotlin.kotlin.text.startsWith_7epoxm$;
   var defineInlineFunction = Kotlin.defineInlineFunction;
+  var toShort = Kotlin.toShort;
   var split = Kotlin.kotlin.text.split_ip8yn$;
   var ensureNotNull = Kotlin.ensureNotNull;
   var split_0 = Kotlin.kotlin.text.split_o64adg$;
@@ -604,10 +604,10 @@ var HKNBP_Core = function (_, Kotlin) {
     this.videoMuted = {type: 'videoMuted', method: 'video', params: {muted: true}};
     this.videoInline = {type: 'videoInline', method: 'video', params: {inline: true}};
     this.videoInlineMuted = {type: 'videoInlineMuted', method: 'video', params: {inline: true, muted: true}};
-    this.checkCanAutoplay_0(CanAutoplay_init$lambda(this), CanAutoplay_init$lambda_0(this), this.video);
-    this.checkCanAutoplay_0(CanAutoplay_init$lambda_1(this), CanAutoplay_init$lambda_2(this), this.videoMuted);
-    this.checkCanAutoplay_0(CanAutoplay_init$lambda_3(this), CanAutoplay_init$lambda_4(this), this.videoInline);
-    this.checkCanAutoplay_0(CanAutoplay_init$lambda_5(this), CanAutoplay_init$lambda_6(this), this.videoInlineMuted);
+    this.checkCanAutoplay_0(CanAutoplay_init$lambda, CanAutoplay_init$lambda_0(this), this.video);
+    this.checkCanAutoplay_0(CanAutoplay_init$lambda_1, CanAutoplay_init$lambda_2(this), this.videoMuted);
+    this.checkCanAutoplay_0(CanAutoplay_init$lambda_3, CanAutoplay_init$lambda_4(this), this.videoInline);
+    this.checkCanAutoplay_0(CanAutoplay_init$lambda_5, CanAutoplay_init$lambda_6(this), this.videoInlineMuted);
   }
   function CanAutoplay$checkCanAutoplay$lambda(closure$onCanAutoplay, closure$onCanNotAutoplay) {
     return function (obj) {
@@ -632,40 +632,28 @@ var HKNBP_Core = function (_, Kotlin) {
   CanAutoplay.prototype.checkVideoAutoPlayNeedToMute_9dmrm4$ = function (onNotNeedToMuteCanAutoplay, onNeedToMuteCanAutoplay) {
     this.checkCanAutoplay_0(onNotNeedToMuteCanAutoplay, onNeedToMuteCanAutoplay, this.video);
   };
-  function CanAutoplay_init$lambda(this$CanAutoplay) {
-    return function () {
-      println(this$CanAutoplay.video.type + ': \u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
-    };
+  function CanAutoplay_init$lambda() {
   }
   function CanAutoplay_init$lambda_0(this$CanAutoplay) {
     return function () {
       println(this$CanAutoplay.video.type + ': \u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
     };
   }
-  function CanAutoplay_init$lambda_1(this$CanAutoplay) {
-    return function () {
-      println(this$CanAutoplay.videoMuted.type + ': \u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
-    };
+  function CanAutoplay_init$lambda_1() {
   }
   function CanAutoplay_init$lambda_2(this$CanAutoplay) {
     return function () {
       println(this$CanAutoplay.videoMuted.type + ': \u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
     };
   }
-  function CanAutoplay_init$lambda_3(this$CanAutoplay) {
-    return function () {
-      println(this$CanAutoplay.videoInline.type + ': \u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
-    };
+  function CanAutoplay_init$lambda_3() {
   }
   function CanAutoplay_init$lambda_4(this$CanAutoplay) {
     return function () {
       println(this$CanAutoplay.videoInline.type + ': \u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
     };
   }
-  function CanAutoplay_init$lambda_5(this$CanAutoplay) {
-    return function () {
-      println(this$CanAutoplay.videoInlineMuted.type + ': \u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
-    };
+  function CanAutoplay_init$lambda_5() {
   }
   function CanAutoplay_init$lambda_6(this$CanAutoplay) {
     return function () {
@@ -714,6 +702,13 @@ var HKNBP_Core = function (_, Kotlin) {
       }
     }
     return false;
+  };
+  Channel$Source.prototype.getLinkOfHttpsGetAble = function () {
+    if (startsWith(this.link, 'http://')) {
+      var proxy_url = 'https://netnr-proxy.cloudno.de/';
+      return proxy_url + this.link;
+    }
+    return this.link;
   };
   Channel$Source.$metadata$ = {
     kind: Kind_CLASS,
@@ -1268,20 +1263,19 @@ var HKNBP_Core = function (_, Kotlin) {
   function CustomChannelsSettingWindow$CustomChannelEditChannelDialogBox(initValueOfChannelXmlString) {
     if (initValueOfChannelXmlString === void 0)
       initValueOfChannelXmlString = '';
-    DialogueBox.call(this, '\u65B0\u589E\u81EA\u8A02\u983B\u9053', '\n        <div style="display:flex;">\n            <div style="text-align:left;font-size:3vh;">\n                <input id="customChannelsSettingChannelNumberInputNumber" type="number" placeholder="\u983B\u9053\u865F\u78BC" style="font-size:3vh;margin:.2vh;width:25vh;" min="-999" max="-1">\n                <input id="customChannelsSettingChannelNameInputText" type="Text" placeholder="\u983B\u9053\u540D\u7A31" style="font-size:3vh;margin:.2vh;">\n                <input id="customChannelsSettingChannelSourceLinkInputText" type="Text" placeholder="\u983B\u9053\u6E90\u9023\u7D50" style="font-size:3vh;margin:.2vh;">\n                <form style="margin:.5vh;">\n                    \u983B\u9053\u6E90\u64AD\u653E\u5668<br>\n                    <input id="customChannelsSettingChannelSourceIframelayerSrcVideoJsHlsInputRadio" type="radio" name="IframelayerSrc" style="width:3vh;height:3vh;" checked>HLS<br>\n                    <input id="customChannelsSettingChannelSourceIframelayerSrcVideoJsDashInputRadio" type="radio" name="IframelayerSrc" style="width:3vh;height:3vh;">DASH<br>\n                    <input id="customChannelsSettingChannelSourceIframelayerSrcYoutubeApiInputRadio" type="radio" name="IframelayerSrc" style="width:3vh;height:3vh;">YoutubeAPI<br>\n                    <input id="customChannelsSettingChannelSourceIframelayerSrcOtherInputRadio" type="radio" name="IframelayerSrc" style="width:3vh;height:3vh;">\n                    <input id="customChannelsSettingChannelSourceIframelayerSrcOtherInputText" type="Text" placeholder="\u5176\u4ED6\u6E90\u64AD\u653E\u5668\u9023\u7D50" style="font-size:3vh;width:25vh;"><br>\n                <\/form>\n                <input id="customChannelsSettingChannelInformationEpgIdInputText" type="Text" placeholder="EPG ID" style="font-size:3vh;margin:.2vh;">\n                <input id="customChannelsSettingChannelInformationSrcInputText" type="Text" placeholder="EPG Src" style="font-size:3vh;margin:.2vh;">\n            <\/div>\n        <\/div>\n        <div>\n            <textarea id="customChannelsSettingChannelXmlStringTextArea" rows="5" style="font-size:1vh;width:100%;white-space:nowrap;" tabindex="-1"><\/textarea>\n        <\/div>\n        ');
+    DialogueBox.call(this, '\u65B0\u589E\u81EA\u8A02\u983B\u9053', '\n        <div style="display:flex;">\n            <div style="text-align:left;font-size:3vh;">\n                <input id="customChannelsSettingChannelNumberInputNumber" type="number" placeholder="\u983B\u9053\u865F\u78BC" style="font-size:3vh;margin:.2vh;width:25vh;" min="-999" max="-1">\n                <input id="customChannelsSettingChannelNameInputText" type="Text" placeholder="\u983B\u9053\u540D\u7A31" style="font-size:3vh;margin:.2vh;">\n                <input id="customChannelsSettingChannelSourceLinkInputText" type="Text" placeholder="\u983B\u9053\u6E90\u9023\u7D50" style="font-size:3vh;margin:.2vh;">\n                <form style="margin:.5vh;">\n                    \u983B\u9053\u6E90\u64AD\u653E\u5668<br>\n                    <input id="customChannelsSettingChannelSourceIframelayerSrcVideoJsInputRadio" type="radio" name="IframelayerSrc" style="width:3vh;height:3vh;" checked>VideoJS<br>\n                    <input id="customChannelsSettingChannelSourceIframelayerSrcYoutubeApiInputRadio" type="radio" name="IframelayerSrc" style="width:3vh;height:3vh;">YoutubeAPI<br>\n                    <input id="customChannelsSettingChannelSourceIframelayerSrcOtherInputRadio" type="radio" name="IframelayerSrc" style="width:3vh;height:3vh;">\n                    <input id="customChannelsSettingChannelSourceIframelayerSrcOtherInputText" type="Text" placeholder="\u5176\u4ED6\u6E90\u64AD\u653E\u5668\u9023\u7D50" style="font-size:3vh;width:25vh;"><br>\n                <\/form>\n                <input id="customChannelsSettingChannelInformationEpgIdInputText" type="Text" placeholder="EPG ID" style="font-size:3vh;margin:.2vh;">\n                <input id="customChannelsSettingChannelInformationSrcInputText" type="Text" placeholder="EPG Src" style="font-size:3vh;margin:.2vh;">\n            <\/div>\n        <\/div>\n        <div>\n            <textarea id="customChannelsSettingChannelXmlStringTextArea" rows="5" style="font-size:1vh;width:100%;white-space:nowrap;" tabindex="-1"><\/textarea>\n        <\/div>\n        ');
     this.initValueOfChannelXmlString = initValueOfChannelXmlString;
-    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9;
+    var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8;
     this.channelNumberInputNumber_0 = Kotlin.isType(tmp$ = document.getElementById('customChannelsSettingChannelNumberInputNumber'), HTMLInputElement) ? tmp$ : throwCCE();
     this.channelNameInputText_0 = Kotlin.isType(tmp$_0 = document.getElementById('customChannelsSettingChannelNameInputText'), HTMLInputElement) ? tmp$_0 : throwCCE();
     this.channelSourceLinkInputText_0 = Kotlin.isType(tmp$_1 = document.getElementById('customChannelsSettingChannelSourceLinkInputText'), HTMLInputElement) ? tmp$_1 : throwCCE();
-    this.channelSourceIframelayerSrcVideoJsHlsInputRadio_0 = Kotlin.isType(tmp$_2 = document.getElementById('customChannelsSettingChannelSourceIframelayerSrcVideoJsHlsInputRadio'), HTMLInputElement) ? tmp$_2 : throwCCE();
-    this.channelSourceIframelayerSrcVideoJsDashInputRadio_0 = Kotlin.isType(tmp$_3 = document.getElementById('customChannelsSettingChannelSourceIframelayerSrcVideoJsDashInputRadio'), HTMLInputElement) ? tmp$_3 : throwCCE();
-    this.channelSourceIframelayerSrcYoutubeApiInputRadio_0 = Kotlin.isType(tmp$_4 = document.getElementById('customChannelsSettingChannelSourceIframelayerSrcYoutubeApiInputRadio'), HTMLInputElement) ? tmp$_4 : throwCCE();
-    this.channelSourceIframelayerSrcOtherInputRadio_0 = Kotlin.isType(tmp$_5 = document.getElementById('customChannelsSettingChannelSourceIframelayerSrcOtherInputRadio'), HTMLInputElement) ? tmp$_5 : throwCCE();
-    this.channelSourceIframelayerSrcOtherInputText_0 = Kotlin.isType(tmp$_6 = document.getElementById('customChannelsSettingChannelSourceIframelayerSrcOtherInputText'), HTMLInputElement) ? tmp$_6 : throwCCE();
-    this.channelInformationEpgIdInputText_0 = Kotlin.isType(tmp$_7 = document.getElementById('customChannelsSettingChannelInformationEpgIdInputText'), HTMLInputElement) ? tmp$_7 : throwCCE();
-    this.channelInformationSrcInputText_0 = Kotlin.isType(tmp$_8 = document.getElementById('customChannelsSettingChannelInformationSrcInputText'), HTMLInputElement) ? tmp$_8 : throwCCE();
-    this.channelXmlStringTextArea_0 = Kotlin.isType(tmp$_9 = document.getElementById('customChannelsSettingChannelXmlStringTextArea'), HTMLTextAreaElement) ? tmp$_9 : throwCCE();
+    this.channelSourceIframelayerSrcVideoJsInputRadio_0 = Kotlin.isType(tmp$_2 = document.getElementById('customChannelsSettingChannelSourceIframelayerSrcVideoJsInputRadio'), HTMLInputElement) ? tmp$_2 : throwCCE();
+    this.channelSourceIframelayerSrcYoutubeApiInputRadio_0 = Kotlin.isType(tmp$_3 = document.getElementById('customChannelsSettingChannelSourceIframelayerSrcYoutubeApiInputRadio'), HTMLInputElement) ? tmp$_3 : throwCCE();
+    this.channelSourceIframelayerSrcOtherInputRadio_0 = Kotlin.isType(tmp$_4 = document.getElementById('customChannelsSettingChannelSourceIframelayerSrcOtherInputRadio'), HTMLInputElement) ? tmp$_4 : throwCCE();
+    this.channelSourceIframelayerSrcOtherInputText_0 = Kotlin.isType(tmp$_5 = document.getElementById('customChannelsSettingChannelSourceIframelayerSrcOtherInputText'), HTMLInputElement) ? tmp$_5 : throwCCE();
+    this.channelInformationEpgIdInputText_0 = Kotlin.isType(tmp$_6 = document.getElementById('customChannelsSettingChannelInformationEpgIdInputText'), HTMLInputElement) ? tmp$_6 : throwCCE();
+    this.channelInformationSrcInputText_0 = Kotlin.isType(tmp$_7 = document.getElementById('customChannelsSettingChannelInformationSrcInputText'), HTMLInputElement) ? tmp$_7 : throwCCE();
+    this.channelXmlStringTextArea_0 = Kotlin.isType(tmp$_8 = document.getElementById('customChannelsSettingChannelXmlStringTextArea'), HTMLTextAreaElement) ? tmp$_8 : throwCCE();
     this.okButtonScript = CustomChannelsSettingWindow$CustomChannelsSettingWindow$CustomChannelEditChannelDialogBox_init$lambda(this);
     this.initChannelNumberInputNumber_0();
     this.initChannelNameInputText_0();
@@ -1294,10 +1288,8 @@ var HKNBP_Core = function (_, Kotlin) {
   function CustomChannelsSettingWindow$CustomChannelEditChannelDialogBox$getEditChannelDialogBoxInformation$lambda(this$CustomChannelEditChannelDialogBox) {
     return function () {
       var tmp$;
-      if (true === this$CustomChannelEditChannelDialogBox.channelSourceIframelayerSrcVideoJsHlsInputRadio_0.checked)
-        tmp$ = 'iframePlayer/videojs_hls.html';
-      else if (true === this$CustomChannelEditChannelDialogBox.channelSourceIframelayerSrcVideoJsDashInputRadio_0.checked)
-        tmp$ = 'iframePlayer/videojs_dash.html';
+      if (true === this$CustomChannelEditChannelDialogBox.channelSourceIframelayerSrcVideoJsInputRadio_0.checked)
+        tmp$ = 'iframePlayer/videojs.html';
       else if (true === this$CustomChannelEditChannelDialogBox.channelSourceIframelayerSrcYoutubeApiInputRadio_0.checked)
         tmp$ = 'iframePlayer/youtube_api.html';
       else if (true === this$CustomChannelEditChannelDialogBox.channelSourceIframelayerSrcOtherInputRadio_0.checked)
@@ -1372,17 +1364,11 @@ var HKNBP_Core = function (_, Kotlin) {
       this$CustomChannelEditChannelDialogBox.setChannelXmlStringTextArea_0();
     };
   }
-  function CustomChannelsSettingWindow$CustomChannelEditChannelDialogBox$initChannelSourceIframelayerSrcInputRadio$lambda_3(this$CustomChannelEditChannelDialogBox) {
-    return function (event) {
-      this$CustomChannelEditChannelDialogBox.setChannelXmlStringTextArea_0();
-    };
-  }
   CustomChannelsSettingWindow$CustomChannelEditChannelDialogBox.prototype.initChannelSourceIframelayerSrcInputRadio_0 = function () {
-    this.channelSourceIframelayerSrcVideoJsHlsInputRadio_0.onchange = CustomChannelsSettingWindow$CustomChannelEditChannelDialogBox$initChannelSourceIframelayerSrcInputRadio$lambda(this);
-    this.channelSourceIframelayerSrcVideoJsDashInputRadio_0.onchange = CustomChannelsSettingWindow$CustomChannelEditChannelDialogBox$initChannelSourceIframelayerSrcInputRadio$lambda_0(this);
-    this.channelSourceIframelayerSrcYoutubeApiInputRadio_0.onchange = CustomChannelsSettingWindow$CustomChannelEditChannelDialogBox$initChannelSourceIframelayerSrcInputRadio$lambda_1(this);
-    this.channelSourceIframelayerSrcOtherInputRadio_0.onchange = CustomChannelsSettingWindow$CustomChannelEditChannelDialogBox$initChannelSourceIframelayerSrcInputRadio$lambda_2(this);
-    this.channelSourceIframelayerSrcOtherInputText_0.onkeyup = CustomChannelsSettingWindow$CustomChannelEditChannelDialogBox$initChannelSourceIframelayerSrcInputRadio$lambda_3(this);
+    this.channelSourceIframelayerSrcVideoJsInputRadio_0.onchange = CustomChannelsSettingWindow$CustomChannelEditChannelDialogBox$initChannelSourceIframelayerSrcInputRadio$lambda(this);
+    this.channelSourceIframelayerSrcYoutubeApiInputRadio_0.onchange = CustomChannelsSettingWindow$CustomChannelEditChannelDialogBox$initChannelSourceIframelayerSrcInputRadio$lambda_0(this);
+    this.channelSourceIframelayerSrcOtherInputRadio_0.onchange = CustomChannelsSettingWindow$CustomChannelEditChannelDialogBox$initChannelSourceIframelayerSrcInputRadio$lambda_1(this);
+    this.channelSourceIframelayerSrcOtherInputText_0.onkeyup = CustomChannelsSettingWindow$CustomChannelEditChannelDialogBox$initChannelSourceIframelayerSrcInputRadio$lambda_2(this);
   };
   function CustomChannelsSettingWindow$CustomChannelEditChannelDialogBox$initChannelInformationEpgIdInputText$lambda(this$CustomChannelEditChannelDialogBox) {
     return function (event) {
@@ -1408,11 +1394,8 @@ var HKNBP_Core = function (_, Kotlin) {
       this$CustomChannelEditChannelDialogBox.channelNameInputText_0.value = ((tmp$_0 = channel != null ? channel.name : null) != null ? tmp$_0 : '').toString();
       this$CustomChannelEditChannelDialogBox.channelSourceLinkInputText_0.value = ((tmp$_3 = (tmp$_2 = (tmp$_1 = channel != null ? channel.sources : null) != null ? tmp$_1.node : null) != null ? tmp$_2.link : null) != null ? tmp$_3 : '').toString();
       switch ((tmp$_5 = (tmp$_4 = channel != null ? channel.sources : null) != null ? tmp$_4.node : null) != null ? tmp$_5.iFramePlayerSrc : null) {
-        case 'iframePlayer/videojs_hls.html':
-          this$CustomChannelEditChannelDialogBox.channelSourceIframelayerSrcVideoJsHlsInputRadio_0.checked = true;
-          break;
-        case 'iframePlayer/videojs_dash.html':
-          this$CustomChannelEditChannelDialogBox.channelSourceIframelayerSrcVideoJsDashInputRadio_0.checked = true;
+        case 'iframePlayer/videojs.html':
+          this$CustomChannelEditChannelDialogBox.channelSourceIframelayerSrcVideoJsInputRadio_0.checked = true;
           break;
         case 'iframePlayer/youtube_api.html':
           this$CustomChannelEditChannelDialogBox.channelSourceIframelayerSrcYoutubeApiInputRadio_0.checked = true;
@@ -2285,7 +2268,7 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   EPG.prototype.setProgrammeInformationIcon_0 = function (programme) {
     var tmp$, tmp$_0;
-    this.programmeInformationIcon_0.src = (tmp$_0 = (tmp$ = programme.icon) != null ? tmp$.src : null) != null ? tmp$_0 : 'img/programmeNullIcon.png';
+    this.programmeInformationIcon_0.src = (tmp$_0 = (tmp$ = programme.icon) != null ? tmp$.src : null) != null ? tmp$_0 : 'img/nullIcon.png';
   };
   EPG.prototype.setProgrammeInformationUrl_0 = function (programme) {
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3;
@@ -2841,6 +2824,132 @@ var HKNBP_Core = function (_, Kotlin) {
     }
     return GithubWebWindow_instance;
   }
+  var get_jq = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.get_jq', function () {
+    return $;
+  });
+  var jqThis = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.jqThis', function () {
+    return $(this);
+  });
+  var get_length = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.get_length_vwohdt$', function ($receiver) {
+    return $receiver.length;
+  });
+  var on = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.on_pdziuy$', function ($receiver, events, handler) {
+    return $receiver.on(events, handler);
+  });
+  var on_0 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.on_hpc46g$', function ($receiver, events, selector, handler) {
+    return $receiver.on(events, selector, handler);
+  });
+  var on_1 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.on_qwka2j$', function ($receiver, events, selector, data, handler) {
+    return $receiver.on(events, selector, data, handler);
+  });
+  var on_2 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.on_v89ba5$', function ($receiver, events) {
+    return $receiver.on(events);
+  });
+  var on_3 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.on_zc05ld$', function ($receiver, events, selector) {
+    return $receiver.on(events, selector);
+  });
+  var on_4 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.on_drqu84$', function ($receiver, events, selector, data) {
+    return $receiver.on(events, selector, data);
+  });
+  var index = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.index_vwohdt$', function ($receiver) {
+    return $receiver.index();
+  });
+  var index_0 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.index_v89ba5$', function ($receiver, selector) {
+    return $receiver.index(selector);
+  });
+  var index_1 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.index_k8fgrm$', function ($receiver, element) {
+    return $receiver.index(element);
+  });
+  var index_2 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.index_5kxll9$', function ($receiver, element) {
+    return $receiver.index(element);
+  });
+  var eq = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.eq_fjcsf1$', function ($receiver, index) {
+    return $receiver.eq(index);
+  });
+  var focus = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.focus_vwohdt$', function ($receiver) {
+    return $receiver.focus();
+  });
+  var focus_0 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.focus_656v9o$', function ($receiver, handler) {
+    return $receiver.focus(handler);
+  });
+  var focus_1 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.focus_rgoa8n$', function ($receiver, eventData, handler) {
+    return $receiver.focus(eventData, handler);
+  });
+  var scrollTop = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.scrollTop_vwohdt$', function ($receiver) {
+    return $receiver.scrollTop();
+  });
+  var scrollTop_0 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.scrollTop_o1vs4d$', function ($receiver, value) {
+    return $receiver.scrollTop(value);
+  });
+  var scrollLeft = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.scrollLeft_vwohdt$', function ($receiver) {
+    return $receiver.scrollLeft();
+  });
+  var scrollLeft_0 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.scrollLeft_o1vs4d$', function ($receiver, value) {
+    return $receiver.scrollLeft(value);
+  });
+  var mouseleave = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.mouseleave_vwohdt$', function ($receiver) {
+    return $receiver.mouseleave();
+  });
+  var mouseleave_0 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.mouseleave_656v9o$', function ($receiver, handler) {
+    return $receiver.mouseleave(handler);
+  });
+  var mouseleave_1 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.mouseleave_rgoa8n$', function ($receiver, eventData, handler) {
+    return $receiver.mouseleave(eventData, handler);
+  });
+  var mouseout = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.mouseout_vwohdt$', function ($receiver) {
+    return $receiver.mouseout();
+  });
+  var mouseout_0 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.mouseout_656v9o$', function ($receiver, handler) {
+    return $receiver.mouseout(handler);
+  });
+  var mouseout_1 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.mouseout_rgoa8n$', function ($receiver, eventData, handler) {
+    return $receiver.mouseout(eventData, handler);
+  });
+  var tabPrev = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.tabPrev_vwohdt$', function ($receiver) {
+    return $receiver.tabPrev();
+  });
+  var tabNext = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.tabNext_vwohdt$', function ($receiver) {
+    return $receiver.tabNext();
+  });
+  var css = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.css_v89ba5$', function ($receiver, propertyName) {
+    return $receiver.css(propertyName);
+  });
+  var css_0 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.css_u5828f$', function ($receiver, propertyNames) {
+    return $receiver.css(propertyNames);
+  });
+  var css_1 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.css_siqd7z$', function ($receiver, propertyName, value) {
+    return $receiver.css(propertyName, value);
+  });
+  var css_2 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.css_zc05ld$', function ($receiver, propertyName, value) {
+    return $receiver.css(propertyName, value);
+  });
+  var css_3 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.css_5msqvn$', function ($receiver, propertyName, function_0) {
+    return $receiver.css(propertyName, function_0);
+  });
+  var css_4 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.css_pm4xy9$', function ($receiver, properties) {
+    return $receiver.css(properties);
+  });
+  var prev = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.prev_v89ba5$', function ($receiver, selector) {
+    return $receiver.prev(selector);
+  });
+  var children = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.children_v89ba5$', function ($receiver, selector) {
+    return $receiver.children(selector);
+  });
+  var find = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.find_v89ba5$', function ($receiver, selector) {
+    return $receiver.find(selector);
+  });
+  var find_0 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.find_k8fgrm$', function ($receiver, selector) {
+    return $receiver.find(selector);
+  });
+  var find_1 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.find_5kxll9$', function ($receiver, selector) {
+    return $receiver.find(selector);
+  });
+  var get_0 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.get_vwohdt$', function ($receiver) {
+    return $receiver.get();
+  });
+  var get_1 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.get_fjcsf1$', function ($receiver, index) {
+    return $receiver.get(index);
+  });
   function LoadFile() {
     LoadFile_instance = this;
     this.cacheShelfLife = 604800;
@@ -3071,132 +3180,6 @@ var HKNBP_Core = function (_, Kotlin) {
     return '';
   }
   var getConsoleLogs;
-  var get_jq = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.get_jq', function () {
-    return $;
-  });
-  var jqThis = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.jqThis', function () {
-    return $(this);
-  });
-  var get_length = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.get_length_vwohdt$', function ($receiver) {
-    return $receiver.length;
-  });
-  var on = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.on_pdziuy$', function ($receiver, events, handler) {
-    return $receiver.on(events, handler);
-  });
-  var on_0 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.on_hpc46g$', function ($receiver, events, selector, handler) {
-    return $receiver.on(events, selector, handler);
-  });
-  var on_1 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.on_qwka2j$', function ($receiver, events, selector, data, handler) {
-    return $receiver.on(events, selector, data, handler);
-  });
-  var on_2 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.on_v89ba5$', function ($receiver, events) {
-    return $receiver.on(events);
-  });
-  var on_3 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.on_zc05ld$', function ($receiver, events, selector) {
-    return $receiver.on(events, selector);
-  });
-  var on_4 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.on_drqu84$', function ($receiver, events, selector, data) {
-    return $receiver.on(events, selector, data);
-  });
-  var index = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.index_vwohdt$', function ($receiver) {
-    return $receiver.index();
-  });
-  var index_0 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.index_v89ba5$', function ($receiver, selector) {
-    return $receiver.index(selector);
-  });
-  var index_1 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.index_k8fgrm$', function ($receiver, element) {
-    return $receiver.index(element);
-  });
-  var index_2 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.index_5kxll9$', function ($receiver, element) {
-    return $receiver.index(element);
-  });
-  var eq = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.eq_fjcsf1$', function ($receiver, index) {
-    return $receiver.eq(index);
-  });
-  var focus = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.focus_vwohdt$', function ($receiver) {
-    return $receiver.focus();
-  });
-  var focus_0 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.focus_656v9o$', function ($receiver, handler) {
-    return $receiver.focus(handler);
-  });
-  var focus_1 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.focus_rgoa8n$', function ($receiver, eventData, handler) {
-    return $receiver.focus(eventData, handler);
-  });
-  var scrollTop = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.scrollTop_vwohdt$', function ($receiver) {
-    return $receiver.scrollTop();
-  });
-  var scrollTop_0 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.scrollTop_o1vs4d$', function ($receiver, value) {
-    return $receiver.scrollTop(value);
-  });
-  var scrollLeft = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.scrollLeft_vwohdt$', function ($receiver) {
-    return $receiver.scrollLeft();
-  });
-  var scrollLeft_0 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.scrollLeft_o1vs4d$', function ($receiver, value) {
-    return $receiver.scrollLeft(value);
-  });
-  var mouseleave = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.mouseleave_vwohdt$', function ($receiver) {
-    return $receiver.mouseleave();
-  });
-  var mouseleave_0 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.mouseleave_656v9o$', function ($receiver, handler) {
-    return $receiver.mouseleave(handler);
-  });
-  var mouseleave_1 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.mouseleave_rgoa8n$', function ($receiver, eventData, handler) {
-    return $receiver.mouseleave(eventData, handler);
-  });
-  var mouseout = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.mouseout_vwohdt$', function ($receiver) {
-    return $receiver.mouseout();
-  });
-  var mouseout_0 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.mouseout_656v9o$', function ($receiver, handler) {
-    return $receiver.mouseout(handler);
-  });
-  var mouseout_1 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.mouseout_rgoa8n$', function ($receiver, eventData, handler) {
-    return $receiver.mouseout(eventData, handler);
-  });
-  var tabPrev = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.tabPrev_vwohdt$', function ($receiver) {
-    return $receiver.tabPrev();
-  });
-  var tabNext = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.tabNext_vwohdt$', function ($receiver) {
-    return $receiver.tabNext();
-  });
-  var css = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.css_v89ba5$', function ($receiver, propertyName) {
-    return $receiver.css(propertyName);
-  });
-  var css_0 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.css_u5828f$', function ($receiver, propertyNames) {
-    return $receiver.css(propertyNames);
-  });
-  var css_1 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.css_siqd7z$', function ($receiver, propertyName, value) {
-    return $receiver.css(propertyName, value);
-  });
-  var css_2 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.css_zc05ld$', function ($receiver, propertyName, value) {
-    return $receiver.css(propertyName, value);
-  });
-  var css_3 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.css_5msqvn$', function ($receiver, propertyName, function_0) {
-    return $receiver.css(propertyName, function_0);
-  });
-  var css_4 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.css_pm4xy9$', function ($receiver, properties) {
-    return $receiver.css(properties);
-  });
-  var prev = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.prev_v89ba5$', function ($receiver, selector) {
-    return $receiver.prev(selector);
-  });
-  var children = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.children_v89ba5$', function ($receiver, selector) {
-    return $receiver.children(selector);
-  });
-  var find = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.find_v89ba5$', function ($receiver, selector) {
-    return $receiver.find(selector);
-  });
-  var find_0 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.find_k8fgrm$', function ($receiver, selector) {
-    return $receiver.find(selector);
-  });
-  var find_1 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.find_5kxll9$', function ($receiver, selector) {
-    return $receiver.find(selector);
-  });
-  var get_0 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.get_vwohdt$', function ($receiver) {
-    return $receiver.get();
-  });
-  var get_1 = defineInlineFunction('HKNBP_Core.org.sourcekey.hknbp.hknbp_core.get_fjcsf1$', function ($receiver, index) {
-    return $receiver.get(index);
-  });
   function toStringBackwardZeroPadding$lambda(this$toStringBackwardZeroPadding, closure$length) {
     return function () {
       var tmp$, tmp$_0;
@@ -3268,7 +3251,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.02_1';
+    return 'v2020.02_2';
   }
   var coreVersion;
   var appVersion;
@@ -3860,7 +3843,7 @@ var HKNBP_Core = function (_, Kotlin) {
     println('\u672A\u80FD\u8B80\u53D6official_channels.xml');
   }
   OfficialChannels.prototype.getOfficialChannels_u69gef$ = function (onLoadedChannelsListener) {
-    this.parseChannels_d7jqb7$(OfficialChannels$getOfficialChannels$lambda(onLoadedChannelsListener), OfficialChannels$getOfficialChannels$lambda_0, ['data/official_channels.xml']);
+    this.parseChannels_d7jqb7$(OfficialChannels$getOfficialChannels$lambda(onLoadedChannelsListener), OfficialChannels$getOfficialChannels$lambda_0, ['https://hknbp.org/data/official_channels.xml']);
   };
   OfficialChannels.$metadata$ = {
     kind: Kind_OBJECT,
@@ -3912,9 +3895,12 @@ var HKNBP_Core = function (_, Kotlin) {
     this.iframePlayerMutedInit_0 = Player$iframePlayerMutedInit$lambda(this)();
     this.onPlaying_0 = Player$onPlaying$lambda(this);
     this.onNotPlaying_0 = Player$onNotPlaying$lambda(this);
-    var tmp$_0, tmp$_1, tmp$_2, tmp$_3;
-    (tmp$_2 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_2.src = (tmp$_1 = (tmp$_0 = this.channel_0.sources.node) != null ? tmp$_0.iFramePlayerSrc : null) != null ? tmp$_1 : 'iframePlayer/videojs_hls.html') : null;
-    (tmp$_3 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_3.onload = Player_init$lambda(this)) : null;
+    var tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7;
+    tmp$_6 = Player$Companion_getInstance().iframePlayer_0;
+    tmp$_5 = ((tmp$_1 = (tmp$_0 = this.channel_0.sources.node) != null ? tmp$_0.iFramePlayerSrc : null) != null ? tmp$_1 : 'iframePlayer/videojs.html') + '?';
+    tmp$_4 = 'sourceSrc=' + encodeURIComponent((tmp$_3 = (tmp$_2 = this.channel_0.sources.node) != null ? tmp$_2.getLinkOfHttpsGetAble() : null) != null ? tmp$_3 : '');
+    tmp$_6 != null ? (tmp$_6.src = tmp$_5 + tmp$_4) : null;
+    (tmp$_7 = Player$Companion_getInstance().iframePlayer_0) != null ? (tmp$_7.onload = Player_init$lambda(this)) : null;
   }
   function Player$Companion() {
     Player$Companion_instance = this;
@@ -4369,7 +4355,10 @@ var HKNBP_Core = function (_, Kotlin) {
          else if (callMessage.name == 'IframePlayer') {
           var onPlaying = this$Player.onPlaying_0;
           var onNotPlaying = this$Player.onNotPlaying_0;
-          eval(callMessage.functionName + '()');
+          var functionName = callMessage.functionName;
+          if (equals(functionName, 'onPlaying') || equals(functionName, 'onNotPlaying')) {
+            eval(functionName + '()');
+          }
         }
       }
        catch (e) {
@@ -4578,8 +4567,7 @@ var HKNBP_Core = function (_, Kotlin) {
       }
     };
   }
-  function Player_init$lambda$ObjectLiteral(this$Player) {
-    this.this$Player = this$Player;
+  function Player_init$lambda$ObjectLiteral() {
     this.isPlaying_0 = false;
     this.numberOfPlaying_0 = 0;
     this.isLowSignalShowChannelDescription_0 = false;
@@ -4611,7 +4599,6 @@ var HKNBP_Core = function (_, Kotlin) {
 
         VirtualRemote_getInstance().update();
         UserControlPanelShower_getInstance().cannotTouchIframePlayerMode();
-        println('Playing \u983B\u9053' + this.this$Player.channel_0.number);
         break;
       case 'notPlaying':
         this.isPlaying_0 = false;
@@ -4628,12 +4615,8 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function Player_init$lambda(this$Player) {
     return function () {
-      var tmp$, tmp$_0, tmp$_1, tmp$_2;
-      this$Player.addOnPlayerEventListener_j8fzjz$(new Player_init$lambda$ObjectLiteral(this$Player));
+      this$Player.addOnPlayerEventListener_j8fzjz$(new Player_init$lambda$ObjectLiteral());
       this$Player.setListenIframePlayerScript_0();
-      tmp$_1 = (tmp$_0 = (tmp$ = this$Player.channel_0.sources.node) != null ? tmp$.link : null) != null ? tmp$_0 : '';
-      tmp$_2 = 'onIframePlayerInit(' + Player$Companion_getInstance().kotlinValueToEvalScriptUseableValue_0(tmp$_1) + ')';
-      Player$Companion_getInstance().callIframePlayerFunction_0(tmp$_2);
     };
   }
   Player.$metadata$ = {
@@ -5091,8 +5074,10 @@ var HKNBP_Core = function (_, Kotlin) {
     this.isFocusTriggerShowEventElement = isFocusTriggerShowEventElement;
     this.isFocusOutHide = isFocusOutHide;
     this.isAddThisToTabbableUIList_elivbw$_0 = false;
-    $(mainFrameElement).on('focus', 'button,select,option,input', TabbableUI_init$lambda(this));
-    $(mainFrameElement).on('hover', 'button,select,option,input', TabbableUI_init$lambda_0(this));
+    $(mainFrameElement).on('hover', 'button,select,option,input', TabbableUI_init$lambda(this));
+    $(mainFrameElement).on('focus', 'button,select,option,input', TabbableUI_init$lambda_0(this));
+    $(mainFrameElement).on('scroll', TabbableUI_init$lambda_1(this));
+    $(mainFrameElement).on('mousemove', TabbableUI_init$lambda_2(this));
     UserInterface$Companion_getInstance().allUserInterfaceList.add_11rb$(this);
   }
   function TabbableUI$Companion() {
@@ -5139,14 +5124,6 @@ var HKNBP_Core = function (_, Kotlin) {
   };
   function TabbableUI_init$lambda(this$TabbableUI) {
     return function (event) {
-      if (!$('this').is(':focus')) {
-        this$TabbableUI.firstFocusJqElement = $(this);
-        this$TabbableUI.setHideTimer_s8ev37$(this$TabbableUI.transpositionFocusHideTime);
-      }
-    };
-  }
-  function TabbableUI_init$lambda_0(this$TabbableUI) {
-    return function (event) {
       var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3;
       var isEquals = false;
       tmp$ = $(this).length;
@@ -5161,6 +5138,24 @@ var HKNBP_Core = function (_, Kotlin) {
       if (!isEquals) {
         $(this).focus();
       }
+    };
+  }
+  function TabbableUI_init$lambda_0(this$TabbableUI) {
+    return function (event) {
+      if (!$('this').is(':focus')) {
+        this$TabbableUI.firstFocusJqElement = $(this);
+        this$TabbableUI.setHideTimer_s8ev37$(this$TabbableUI.transpositionFocusHideTime);
+      }
+    };
+  }
+  function TabbableUI_init$lambda_1(this$TabbableUI) {
+    return function (event) {
+      this$TabbableUI.setHideTimer_s8ev37$(this$TabbableUI.transpositionFocusHideTime);
+    };
+  }
+  function TabbableUI_init$lambda_2(this$TabbableUI) {
+    return function (event) {
+      this$TabbableUI.setHideTimer_s8ev37$(this$TabbableUI.transpositionFocusHideTime);
     };
   }
   TabbableUI.$metadata$ = {
@@ -5657,7 +5652,6 @@ var HKNBP_Core = function (_, Kotlin) {
     this.subtitleDescriptionButton.onclick = VirtualRemote_init$lambda_53;
     this.volumeDescriptionButton.onclick = VirtualRemote_init$lambda_54;
     this.returnButton.onclick = VirtualRemote_init$lambda_55;
-    this.virtualRemote.onscroll = VirtualRemote_init$lambda_56;
     this.update();
     channels.addOnNodeEventListener_ljxrtv$(new VirtualRemote_init$ObjectLiteral());
     channels.addOnElementsChangedListener_9f6p79$(new VirtualRemote_init$ObjectLiteral_0());
@@ -6045,9 +6039,6 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function VirtualRemote_init$lambda_55(event) {
     UserInterface$Companion_getInstance().hideAllUserInterface();
-  }
-  function VirtualRemote_init$lambda_56(event) {
-    UserControlPanel_getInstance().show_s8ev37$(30000);
   }
   function VirtualRemote_init$ObjectLiteral() {
   }
@@ -7675,17 +7666,6 @@ var HKNBP_Core = function (_, Kotlin) {
   Object.defineProperty(package$hknbp_core, 'GithubWebWindow', {
     get: GithubWebWindow_getInstance
   });
-  Object.defineProperty(package$hknbp_core, 'LoadFile', {
-    get: LoadFile_getInstance
-  });
-  Object.defineProperty(package$hknbp_core, 'LongClickEvent', {
-    get: LongClickEvent_getInstance
-  });
-  Object.defineProperty(package$hknbp_core, 'getConsoleLogs', {
-    get: function () {
-      return getConsoleLogs;
-    }
-  });
   Object.defineProperty(package$hknbp_core, 'jq', {
     get: get_jq
   });
@@ -7730,6 +7710,17 @@ var HKNBP_Core = function (_, Kotlin) {
   package$hknbp_core.find_5kxll9$ = find_1;
   package$hknbp_core.get_vwohdt$ = get_0;
   package$hknbp_core.get_fjcsf1$ = get_1;
+  Object.defineProperty(package$hknbp_core, 'LoadFile', {
+    get: LoadFile_getInstance
+  });
+  Object.defineProperty(package$hknbp_core, 'LongClickEvent', {
+    get: LongClickEvent_getInstance
+  });
+  Object.defineProperty(package$hknbp_core, 'getConsoleLogs', {
+    get: function () {
+      return getConsoleLogs;
+    }
+  });
   package$hknbp_core.toStringBackwardZeroPadding_dqglrj$ = toStringBackwardZeroPadding;
   package$hknbp_core.toNegative_s8ev3n$ = toNegative;
   package$hknbp_core.updateURLParameter_puj7f4$ = updateURLParameter;

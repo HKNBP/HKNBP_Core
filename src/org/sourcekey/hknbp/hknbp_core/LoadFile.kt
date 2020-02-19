@@ -63,8 +63,11 @@ object LoadFile {
 
         var path: String = filePaths.node?:""
         if(path.startsWith("http")){
-            val cors_api_url = "https://cors-anywhere.herokuapp.com/" //實現<跨Domain存取(CORS)>重點
-            path = cors_api_url + path //完全唔明點解做到,要將呢個+文件位置就得
+            //實現<跨Domain存取(CORS)>重點
+            //完全唔明點解做到,要將呢個url+文件位置就得
+            //https://github.com/Rob--W/cors-anywhere
+            val cors_api_url = "https://cors-anywhere.herokuapp.com/"
+            path = cors_api_url + path
         }
         xmlhttp.open("GET", path, true)
         xmlhttp.setRequestHeader("cache-control", "max-age=${cacheShelfLife}")//以秒為單位///////////////////////////////整個可以強制響線上讀取唔用Cache
