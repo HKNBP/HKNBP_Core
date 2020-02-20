@@ -39,27 +39,22 @@ object LoadFile {
 
     fun load(onLoadedFile: (xmlhttp: XMLHttpRequest)->Unit, onFailedLoadFile: ()->Unit, cacheShelfLife: Int, filePaths: ArrayLinkList<String>){
         val xmlhttp = XMLHttpRequest()
-        var isLoaded = false
         val onFailedLoadFileProgram: dynamic = fun(){
             window.setTimeout(fun(){
-                if(!isLoaded){
-                    onFailedLoadFile()
-                    //PromptBox.promptMessage(dialogues.node().canNotReadData)
-                    if(filePaths.nodeID?:return < filePaths.size-1){
-                        filePaths.next()
-                        load(onLoadedFile, onFailedLoadFile, filePaths)
-                    }
+                onFailedLoadFile()
+                //PromptBox.promptMessage(dialogues.node().canNotReadData)
+                if(filePaths.nodeID?:return < filePaths.size-1){
+                    filePaths.next()
+                    load(onLoadedFile, onFailedLoadFile, filePaths)
                 }
             }, 2000)
         }
-        xmlhttp.onreadystatechange = fun(event) {
-            if (xmlhttp.readyState == 4.toShort() && xmlhttp.status == 200.toShort()) {
-                isLoaded = true
-                onLoadedFile(xmlhttp)
-            }else{ onFailedLoadFileProgram() }
-        }
+        xmlhttp.onload = fun(event) { onLoadedFile(xmlhttp) }
         xmlhttp.ontimeout = onFailedLoadFileProgram
         xmlhttp.onerror = onFailedLoadFileProgram
+        xmlhttp.onreadystatechange = fun(event){
+            if (xmlhttp.readyState == 4.toShort() && xmlhttp.status == 404.toShort()) { onFailedLoadFileProgram() }
+        }
 
         var path: String = filePaths.node?:""
         if(path.startsWith("http")){

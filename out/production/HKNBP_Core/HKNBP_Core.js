@@ -2964,34 +2964,33 @@ var HKNBP_Core = function (_, Kotlin) {
   LoadFile.prototype.load_61zpoe$ = function (filePath) {
     return this.load_19mbxw$(this.cacheShelfLife, filePath);
   };
-  function LoadFile$load$lambda$lambda(closure$isLoaded, closure$onFailedLoadFile, closure$filePaths, closure$onLoadedFile, this$LoadFile) {
+  function LoadFile$load$lambda$lambda(closure$onFailedLoadFile, closure$filePaths, closure$onLoadedFile, this$LoadFile) {
     return function () {
       var tmp$;
-      if (!closure$isLoaded.v) {
-        closure$onFailedLoadFile();
-        tmp$ = closure$filePaths.nodeID;
-        if (tmp$ == null) {
-          return;
-        }
-        if (tmp$ < (closure$filePaths.size - 1 | 0)) {
-          closure$filePaths.next();
-          this$LoadFile.load_uq4zwc$(closure$onLoadedFile, closure$onFailedLoadFile, closure$filePaths);
-        }
+      closure$onFailedLoadFile();
+      tmp$ = closure$filePaths.nodeID;
+      if (tmp$ == null) {
+        return;
+      }
+      if (tmp$ < (closure$filePaths.size - 1 | 0)) {
+        closure$filePaths.next();
+        this$LoadFile.load_uq4zwc$(closure$onLoadedFile, closure$onFailedLoadFile, closure$filePaths);
       }
     };
   }
-  function LoadFile$load$lambda(closure$isLoaded, closure$onFailedLoadFile, closure$filePaths, closure$onLoadedFile, this$LoadFile) {
+  function LoadFile$load$lambda(closure$onFailedLoadFile, closure$filePaths, closure$onLoadedFile, this$LoadFile) {
     return function () {
-      window.setTimeout(LoadFile$load$lambda$lambda(closure$isLoaded, closure$onFailedLoadFile, closure$filePaths, closure$onLoadedFile, this$LoadFile), 2000);
+      window.setTimeout(LoadFile$load$lambda$lambda(closure$onFailedLoadFile, closure$filePaths, closure$onLoadedFile, this$LoadFile), 2000);
     };
   }
-  function LoadFile$load$lambda_0(closure$xmlhttp, closure$isLoaded, closure$onLoadedFile, closure$onFailedLoadFileProgram) {
+  function LoadFile$load$lambda_0(closure$onLoadedFile, closure$xmlhttp) {
     return function (event) {
-      if (closure$xmlhttp.readyState === toShort(4) && closure$xmlhttp.status === toShort(200)) {
-        closure$isLoaded.v = true;
-        closure$onLoadedFile(closure$xmlhttp);
-      }
-       else {
+      closure$onLoadedFile(closure$xmlhttp);
+    };
+  }
+  function LoadFile$load$lambda_1(closure$xmlhttp, closure$onFailedLoadFileProgram) {
+    return function (event) {
+      if (closure$xmlhttp.readyState === toShort(4) && closure$xmlhttp.status === toShort(404)) {
         closure$onFailedLoadFileProgram();
       }
     };
@@ -2999,11 +2998,11 @@ var HKNBP_Core = function (_, Kotlin) {
   LoadFile.prototype.load_duo3m8$ = function (onLoadedFile, onFailedLoadFile, cacheShelfLife, filePaths) {
     var tmp$;
     var xmlhttp = new XMLHttpRequest();
-    var isLoaded = {v: false};
-    var onFailedLoadFileProgram = LoadFile$load$lambda(isLoaded, onFailedLoadFile, filePaths, onLoadedFile, this);
-    xmlhttp.onreadystatechange = LoadFile$load$lambda_0(xmlhttp, isLoaded, onLoadedFile, onFailedLoadFileProgram);
+    var onFailedLoadFileProgram = LoadFile$load$lambda(onFailedLoadFile, filePaths, onLoadedFile, this);
+    xmlhttp.onload = LoadFile$load$lambda_0(onLoadedFile, xmlhttp);
     xmlhttp.ontimeout = onFailedLoadFileProgram;
     xmlhttp.onerror = onFailedLoadFileProgram;
+    xmlhttp.onreadystatechange = LoadFile$load$lambda_1(xmlhttp, onFailedLoadFileProgram);
     var path = (tmp$ = filePaths.node) != null ? tmp$ : '';
     if (startsWith(path, 'http')) {
       var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
@@ -3251,7 +3250,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.02_2';
+    return 'v2020.02_3';
   }
   var coreVersion;
   var appVersion;
@@ -3843,7 +3842,7 @@ var HKNBP_Core = function (_, Kotlin) {
     println('\u672A\u80FD\u8B80\u53D6official_channels.xml');
   }
   OfficialChannels.prototype.getOfficialChannels_u69gef$ = function (onLoadedChannelsListener) {
-    this.parseChannels_d7jqb7$(OfficialChannels$getOfficialChannels$lambda(onLoadedChannelsListener), OfficialChannels$getOfficialChannels$lambda_0, ['https://hknbp.org/data/official_channels.xml']);
+    this.parseChannels_d7jqb7$(OfficialChannels$getOfficialChannels$lambda(onLoadedChannelsListener), OfficialChannels$getOfficialChannels$lambda_0, ['https://official_channels.hknbp.org/official_channels.xml', 'data/official_channels.xml']);
   };
   OfficialChannels.$metadata$ = {
     kind: Kind_OBJECT,
