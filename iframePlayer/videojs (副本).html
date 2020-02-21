@@ -19,7 +19,7 @@
 
     <link href="https://vjs.zencdn.net/7.7.4/video-js.min.css" rel="stylesheet">
     <!--<link href="https://unpkg.com/video.js@6.7.1/dist/video-js.css" rel="stylesheet">-->
-    <style>
+    <style type="text/css">
         /* 字幕style */
         .video-js .vjs-text-track-display > div > div > div{
             /* font-weight: 1000; */
@@ -466,10 +466,27 @@
         });
     }
     /**
+     * 獲取URL參數值
+     *
+     * 因為有啲舊瀏覽器唔支援URL().searchParams.get()
+     *
+     * @param {paramName: String} 要獲取參數名
+     * @return {param: String} 參數值
+     * */
+    function getUrlParams(paramName) {
+        var url = window.location.href
+        var vars = {};
+        var parts = url.replace(/[?&]+([^=&]+)=([^&]*)/gi,
+        function(m,key,value) {
+            vars[key] = value;
+        });
+        return vars[paramName];
+    }
+    /**
      * 在URL參數讀取 片源
      * 並初始化IframePlayer
      */
-    onIframePlayerInit(decodeURIComponent(new URL(window.location.href).searchParams.get("sourceSrc")));
+    onIframePlayerInit(decodeURIComponent(getUrlParams("sourceSrc")));
 </script>
 </body>
 </html>

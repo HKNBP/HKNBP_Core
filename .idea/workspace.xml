@@ -2,22 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="439dc076-fa64-48ca-946e-6d20fa2781e4" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanelShower.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/official_channels.xml" beforeDir="false" afterPath="$PROJECT_DIR$/data/official_channels.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframePlayer/example.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframePlayer/example.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframePlayer/shakaplayer.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframePlayer/shakaplayer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframePlayer/videojs (副本).html" beforeDir="false" afterPath="$PROJECT_DIR$/iframePlayer/videojs (副本).html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframePlayer/videojs.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframePlayer/videojs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframePlayer/videojs_dash.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframePlayer/videojs_dash.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iframePlayer/videojs_hls.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframePlayer/videojs_hls.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframePlayer/videojs_youtube.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframePlayer/videojs_youtube.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iframePlayer/youtube_api.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframePlayer/youtube_api.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.meta.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.meta.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ConsentPanel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/ConsentPanel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/EnteringNumberBox.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/EnteringNumberBox.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/HKNBPAppLayerBridge.kt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/RealRemote.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/RealRemote.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VirtualRemote.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/VirtualRemote.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +97,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539618764335" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JAVA" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Test" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
@@ -339,6 +337,10 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="1298" y="171" width="1084" height="804" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1579241754803" />
+    <state x="1663" y="355" width="504" height="328" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1582197639525">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="1663" y="355" width="504" height="328" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1582197639525" />
     <state x="1319" y="429" width="469" height="340" key="#com.intellij.tools.ToolEditorDialog" timestamp="1579187741096">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
@@ -347,22 +349,24 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="1577" y="333" width="515" height="478" key="EnvironmentVariablesDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1579238350762" />
-    <state x="1707" y="355" width="424" height="483" key="FileChooserDialogImpl" timestamp="1579238495357">
-      <screen x="0" y="0" width="2560" height="1080" />
+    <state x="1254" y="243" width="451" height="514" key="FileChooserDialogImpl" timestamp="1582197751138">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
+    <state x="1254" y="243" width="451" height="514" key="FileChooserDialogImpl/0.0.2560.1040@0.0.2560.1040" timestamp="1582197751138" />
     <state x="1707" y="355" width="424" height="483" key="FileChooserDialogImpl/0.0.2560.1080@0.0.2560.1080" timestamp="1579238495357" />
     <state x="1066" y="133" width="1024" height="844" key="SettingsEditor" timestamp="1579359750235">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="1066" y="133" width="1024" height="844" key="SettingsEditor/0.0.2560.1080@0.0.2560.1080" timestamp="1579359750235" />
-    <state x="1597" y="353" key="com.intellij.ide.util.TipDialog" timestamp="1581127029225">
+    <state x="1597" y="353" key="com.intellij.ide.util.TipDialog" timestamp="1582257663647">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
-    <state x="1597" y="353" key="com.intellij.ide.util.TipDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1581127029225" />
+    <state x="1597" y="353" key="com.intellij.ide.util.TipDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1582257663647" />
     <state x="1597" y="367" key="com.intellij.ide.util.TipDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1580093374995" />
-    <state x="1152" y="187" width="784" height="704" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1578880895437">
-      <screen x="0" y="0" width="2560" height="1080" />
+    <state x="1152" y="180" width="784" height="704" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1582274805335">
+      <screen x="0" y="0" width="2560" height="1040" />
     </state>
+    <state x="1152" y="180" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2560.1040@0.0.2560.1040" timestamp="1582274805335" />
     <state x="1152" y="187" width="784" height="704" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2560.1080@0.0.2560.1080" timestamp="1578880895437" />
     <state x="1452" y="338" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey" timestamp="1579187747534">
       <screen x="0" y="0" width="2560" height="1080" />
