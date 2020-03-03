@@ -14,19 +14,48 @@
 
 package org.sourcekey.hknbp.hknbp_core
 
+import kotlin.browser.localStorage
 
 
-
-object OfficialChannels: ChannelsReader() {
+object OfficialChannels {
 
     /**
      * 讀取電視頻道表資料
      */
-    fun getOfficialChannels(onLoadedChannelsListener: (channels: ArrayLinkList<Channel>)->Unit){
-        parseChannels(fun(channels){
-            channels.sortBy { channel -> channel.number }
-            //println("成功讀取official_channels.xml\n此OfficialChannels有${channels.size}條頻道")
-            onLoadedChannelsListener(channels)
-        }, fun(){}, "https://official-channels.hknbp.org/official_channels.xml", "data/official_channels.xml")
+    private fun loadOfficialChannelsXML(onLoadedChannelsListener: (channels: ArrayLinkList<Channel>)->Unit){
+        parseChannels(fun(channels){ onLoadedChannelsListener(channels) }, fun(){},
+                "https://official-channels.hknbp.org/official_channels.xml", "data/official_channels.xml"
+        )
+    }
+
+    private fun set(needSetOfficialChannels: ArrayList<Channel>) {
+        //刪除舊有OfficialChannels
+        val needRemoveOfficialChannels = ArrayList<Channel>()
+        for(channel in channels){
+            println("${channel.number} ${-1 < channel.number}")
+            if(-1 < channel.number){ needRemoveOfficialChannels.add(channel) }
+        }
+        channels.removeAll(needRemoveOfficialChannels)
+        //加入最新OfficialChannels
+        channels.addAll(needSetOfficialChannels)
+    }
+
+    /**
+     * 更新OfficialChannels
+     * */
+    fun updateChannels(){
+        loadOfficialChannelsXML(fun(officialChannels){
+            //設置OfficialChannels
+            set(officialChannels)
+            //因第一次運行程式未有channel響表入面,當load到OfficialChannels資料時
+            if(localStorage.getItem("isFirstLoadedOfficialChannelsInfoToSet")?.toBoolean()?:true){
+                localStorage.setItem("isFirstLoadedOfficialChannelsInfoToSet", false.toString())
+                channels.changeToRecentlyWatchedChannel()
+            }
+        })
+    }
+
+    init {
+        updateChannels()
     }
 }
