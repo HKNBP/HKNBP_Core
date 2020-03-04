@@ -3359,7 +3359,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.03_0';
+    return 'v2020.03_1';
   }
   var coreVersion;
   var appVersion;
@@ -5609,12 +5609,10 @@ var HKNBP_Core = function (_, Kotlin) {
   function VirtualRemote_init$lambda_6(event) {
     Player_getInstance().nextVideoTrack();
     VideoDescription_getInstance().show_s8ev37$(3000);
-    window.history.pushState('12134', '', '');
   }
   function VirtualRemote_init$lambda_7(event) {
     Player_getInstance().previousVideoTrack();
     VideoDescription_getInstance().show_s8ev37$(3000);
-    window.history.back();
   }
   function VirtualRemote_init$lambda_8(this$VirtualRemote) {
     return function (event) {
