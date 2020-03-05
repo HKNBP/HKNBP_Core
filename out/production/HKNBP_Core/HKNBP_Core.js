@@ -3359,7 +3359,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.03_1';
+    return 'v2020.03_2';
   }
   var coreVersion;
   var appVersion;
@@ -3734,7 +3734,6 @@ var HKNBP_Core = function (_, Kotlin) {
     tmp$ = channels.iterator();
     while (tmp$.hasNext()) {
       var channel = tmp$.next();
-      println(channel.number.toString() + ' ' + (-1 < channel.number));
       if (-1 < channel.number) {
         needRemoveOfficialChannels.add_11rb$(channel);
       }
@@ -4445,17 +4444,11 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   function Player_init$ObjectLiteral$on$lambda(this$) {
     return function () {
-      if (!this$.isPlaying_0) {
-        PromptBox_getInstance().promptMessage('\u8A0A\u865F\u63A5\u6536\u4E0D\u826F');
-      }
-    };
-  }
-  function Player_init$ObjectLiteral$on$lambda_0(this$) {
-    return function () {
       var tmp$, tmp$_0;
       if (!this$.isPlaying_0) {
         tmp$_0 = (tmp$ = Player_getInstance().playingChannel_0) != null ? tmp$ : new Channel(0);
         Player_getInstance().playChannel_e3jjlp$(tmp$_0);
+        PromptBox_getInstance().promptMessage('\u8A0A\u865F\u63A5\u6536\u4E0D\u826F');
       }
     };
   }
@@ -4466,8 +4459,7 @@ var HKNBP_Core = function (_, Kotlin) {
         break;
       case 'notPlaying':
         this.isPlaying_0 = false;
-        window.setTimeout(Player_init$ObjectLiteral$on$lambda(this), 5000);
-        window.setTimeout(Player_init$ObjectLiteral$on$lambda_0(this), 15000);
+        window.setTimeout(Player_init$ObjectLiteral$on$lambda(this), 15000);
         break;
       default:Kotlin.noWhenBranchMatched();
         break;
