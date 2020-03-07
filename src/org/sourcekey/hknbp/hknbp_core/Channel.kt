@@ -331,7 +331,7 @@ private fun getName(element: Element): MultiLanguageString {
         val nameElement     = nameTag.get(i)?:break
 
         val lang            = nameElement.getAttribute("lang")?: ""
-        val name            = nameElement.innerHTML?: ""
+        val name            = nameElement.textContent?: ""
 
         multiLangName.add(MultiLanguageString.LanguageString(lang, name))
         i++
