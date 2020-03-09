@@ -1245,7 +1245,7 @@ if (typeof kotlin === 'undefined') {
   });
   function CustomChannelsSettingWindow() {
     CustomChannelsSettingWindow_instance = this;
-    Window.call(this, '\u81EA\u8A02\u983B\u9053\u8A2D\u5B9A', '\n            <div style="display:flex;display:-webkit-flex;">\n                <div style="flex:3;-webkit-flex:1;">\n                    <select id="customChannelsSettingChannelsSelect" size="7" style="font-size:5vh;width:100%;"><\/select>\n                    <div style="display:flex;display:-webkit-flex;">\n                        <div style="flex:1;-webkit-flex:1;">\n                            <button id="customChannelsSettingChannelsImportButton" style="display:none;font-size:5vh;margin:.2vh;">\u532F\u5165<\/button>\n                        <\/div>\n                        <div style="flex:1;-webkit-flex:1;">\n                            <button id="customChannelsSettingChannelsExportButton" style="display:none;font-size:5vh;margin:.2vh;">\u532F\u51FA<\/button>\n                        <\/div>\n                    <\/div>\n                <\/div>\n                <div style="flex:1;-webkit-flex:1;">\n                    <button id="customChannelsSettingChannelAddButton" style="font-size:5vh;margin:.2vh;">\n                        <i class="icon-font">&#xe82e;<\/i>\n                    <\/button>\n                    <button id="customChannelsSettingChannelMoveUpButton" style="font-size:5vh;margin:.2vh;">\n                        <i class="icon-font">&#xe821;<\/i>\n                    <\/button>\n                    <button id="customChannelsSettingChannelMoveDownButton" style="font-size:5vh;margin:.2vh;">\n                        <i class="icon-font">&#xe80a;<\/i>\n                    <\/button>\n                    <button id="customChannelsSettingChannelRemoveButton" style="font-size:5vh;margin:.2vh;">\n                        <i class="icon-font">&#xe82f;<\/i>\n                    <\/button>\n                    <button id="customChannelsSettingChannelEditButton" style="font-size:5vh;margin:.2vh;">\n                        <i class="icon-font">&#xe810;<\/i>\n                    <\/button>\n                <\/div>\n            <\/div>\n        ');
+    Window.call(this, '\u81EA\u8A02\u983B\u9053\u8A2D\u5B9A', '\n            <div style="display:flex;display:-webkit-flex;">\n                <div style="flex:3;-webkit-flex:3;">\n                    <select id="customChannelsSettingChannelsSelect" size="7" style="font-size:5vh;width:100%;"><\/select>\n                    <div style="display:flex;display:-webkit-flex;">\n                        <div style="flex:1;-webkit-flex:1;">\n                            <button id="customChannelsSettingChannelsImportButton" style="display:none;font-size:5vh;margin:.2vh;">\u532F\u5165<\/button>\n                        <\/div>\n                        <div style="flex:1;-webkit-flex:1;">\n                            <button id="customChannelsSettingChannelsExportButton" style="display:none;font-size:5vh;margin:.2vh;">\u532F\u51FA<\/button>\n                        <\/div>\n                    <\/div>\n                <\/div>\n                <div style="flex:1;-webkit-flex:1;">\n                    <button id="customChannelsSettingChannelAddButton" style="font-size:5vh;margin:.2vh;">\n                        <i class="icon-font">&#xe82e;<\/i>\n                    <\/button>\n                    <button id="customChannelsSettingChannelMoveUpButton" style="font-size:5vh;margin:.2vh;">\n                        <i class="icon-font">&#xe821;<\/i>\n                    <\/button>\n                    <button id="customChannelsSettingChannelMoveDownButton" style="font-size:5vh;margin:.2vh;">\n                        <i class="icon-font">&#xe80a;<\/i>\n                    <\/button>\n                    <button id="customChannelsSettingChannelRemoveButton" style="font-size:5vh;margin:.2vh;">\n                        <i class="icon-font">&#xe82f;<\/i>\n                    <\/button>\n                    <button id="customChannelsSettingChannelEditButton" style="font-size:5vh;margin:.2vh;">\n                        <i class="icon-font">&#xe810;<\/i>\n                    <\/button>\n                <\/div>\n            <\/div>\n        ');
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6;
     this.channelsSelect_0 = Kotlin.isType(tmp$ = document.getElementById('customChannelsSettingChannelsSelect'), HTMLSelectElement) ? tmp$ : throwCCE();
     this.channelAddButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('customChannelsSettingChannelAddButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
@@ -3182,7 +3182,7 @@ if (typeof kotlin === 'undefined') {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.03_3';
+    return 'v2020.03_4-test5';
   }
   var coreVersion;
   var appVersion;
@@ -4946,7 +4946,7 @@ if (typeof kotlin === 'undefined') {
     }
   });
   UserControlPanelShower.prototype.show_s8ev37$ = function (showTime) {
-    TabbableUI.prototype.show_s8ev37$.call(this, showTime);
+    TabbableUI.prototype.show_s8ev37$.call(this, null);
     this.shower_0.style.cursor = 'auto';
   };
   function UserControlPanelShower$hide$lambda(this$UserControlPanelShower) {
@@ -4955,7 +4955,6 @@ if (typeof kotlin === 'undefined') {
     };
   }
   UserControlPanelShower.prototype.hide = function () {
-    TabbableUI.prototype.hide.call(this);
     this.hideMouseTimer_0 = window.setTimeout(UserControlPanelShower$hide$lambda(this), 2000);
   };
   UserControlPanelShower.prototype.setIframeOnClick_a4mwiz$ = function (iframeId, onClick) {
@@ -5079,6 +5078,7 @@ if (typeof kotlin === 'undefined') {
     this.setHideTimer_s8ev37$(showTime);
   };
   UserInterface.prototype.hide = function () {
+    this.hideTimer = 0;
     this.mainFrameElement.style.display = 'none';
   };
   UserInterface.prototype.showHideAlternately_s8ev37$ = function (showTime) {
@@ -5270,7 +5270,9 @@ if (typeof kotlin === 'undefined') {
     this.volumeDescriptionButton.onclick = VirtualRemote_init$lambda_54;
     this.returnButton.onclick = VirtualRemote_init$lambda_55;
     this.update();
-    Player_getInstance().addOnPlayerEventListener_j8fzjz$(new VirtualRemote_init$ObjectLiteral());
+    channels.addOnNodeEventListener_ljxrtv$(new VirtualRemote_init$ObjectLiteral());
+    channels.addOnElementsChangedListener_9f6p79$(new VirtualRemote_init$ObjectLiteral_0());
+    Player_getInstance().addOnPlayerEventListener_j8fzjz$(new VirtualRemote_init$ObjectLiteral_1());
   }
   VirtualRemote.prototype.updateChannelDescription = function () {
     var tmp$, tmp$_0;
@@ -5639,11 +5641,29 @@ if (typeof kotlin === 'undefined') {
   }
   function VirtualRemote_init$ObjectLiteral() {
   }
-  VirtualRemote_init$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
+  VirtualRemote_init$ObjectLiteral.prototype.onNodeChanged_t4rudg$ = function (preChangeNodeID, postChangeNodeID, preChangeNode, postChangeNode) {
+    VirtualRemote_getInstance().update();
+  };
+  VirtualRemote_init$ObjectLiteral.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: [ArrayLinkList$OnNodeEventListener]
+  };
+  function VirtualRemote_init$ObjectLiteral_0() {
+  }
+  VirtualRemote_init$ObjectLiteral_0.prototype.onElementsChanged = function () {
+    VirtualRemote_getInstance().update();
+  };
+  VirtualRemote_init$ObjectLiteral_0.$metadata$ = {
+    kind: Kind_CLASS,
+    interfaces: [ArrayLinkList$OnElementsChangedListener]
+  };
+  function VirtualRemote_init$ObjectLiteral_1() {
+  }
+  VirtualRemote_init$ObjectLiteral_1.prototype.on_mdxcb7$ = function (onPlayerEvent) {
     if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance()))
       VirtualRemote_getInstance().update();
   };
-  VirtualRemote_init$ObjectLiteral.$metadata$ = {
+  VirtualRemote_init$ObjectLiteral_1.$metadata$ = {
     kind: Kind_CLASS,
     interfaces: [Player$OnPlayerEventListener]
   };
