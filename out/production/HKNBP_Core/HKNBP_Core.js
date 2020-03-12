@@ -3182,7 +3182,7 @@ if (typeof kotlin === 'undefined') {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.03_4-test5';
+    return 'v2020.03_5';
   }
   var coreVersion;
   var appVersion;
@@ -3438,7 +3438,7 @@ if (typeof kotlin === 'undefined') {
   }
   function MutedDescription$update$lambda(this$MutedDescription) {
     return function () {
-      Player$Companion_getInstance().getMuted_y8twos$(MutedDescription$update$lambda$lambda(this$MutedDescription));
+      Player_getInstance().getMuted_y8twos$(MutedDescription$update$lambda$lambda(this$MutedDescription));
     };
   }
   function MutedDescription$update$lambda_0(closure$script) {
@@ -3464,10 +3464,10 @@ if (typeof kotlin === 'undefined') {
     window.setTimeout(MutedDescription$update$lambda_2(script), 60000);
   };
   function MutedDescription_init$lambda$lambda(muted) {
-    Player$Companion_getInstance().setMuted_6taknv$(!muted);
+    Player_getInstance().setMuted_6taknv$(!muted);
   }
   function MutedDescription_init$lambda(event) {
-    Player$Companion_getInstance().getMuted_y8twos$(MutedDescription_init$lambda$lambda);
+    Player_getInstance().getMuted_y8twos$(MutedDescription_init$lambda$lambda);
   }
   MutedDescription.$metadata$ = {
     kind: Kind_OBJECT,
@@ -3579,7 +3579,7 @@ if (typeof kotlin === 'undefined') {
     this.pictureInPictureButton_0.onclick = PictureInPictureButton_init$lambda;
   }
   function PictureInPictureButton_init$lambda(event) {
-    player != null ? (player.pictureInPictureModeSwitch(), Unit) : null;
+    Player_getInstance().pictureInPictureModeSwitch();
   }
   PictureInPictureButton.$metadata$ = {
     kind: Kind_OBJECT,
@@ -5702,7 +5702,7 @@ if (typeof kotlin === 'undefined') {
     }
   }
   function VolumeDescription$show$lambda() {
-    Player$Companion_getInstance().getVolume_huw4wd$(VolumeDescription$show$lambda$lambda);
+    Player_getInstance().getVolume_huw4wd$(VolumeDescription$show$lambda$lambda);
   }
   function VolumeDescription$show$lambda_0(closure$script) {
     return function () {
@@ -5740,10 +5740,10 @@ if (typeof kotlin === 'undefined') {
     window.setTimeout(VolumeDescription$show$lambda_4(script), 60000);
   };
   function VolumeDescription_init$lambda(event) {
-    Player$Companion_getInstance().volumeUp();
+    Player_getInstance().volumeUp();
   }
   function VolumeDescription_init$lambda_0(event) {
-    Player$Companion_getInstance().volumeDown();
+    Player_getInstance().volumeDown();
   }
   VolumeDescription.$metadata$ = {
     kind: Kind_OBJECT,
