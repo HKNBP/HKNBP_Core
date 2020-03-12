@@ -74,19 +74,17 @@ object UserControlPanelShower: TabbableUI(
     }
 
     fun canTouchIframePlayerMode(){
-        shower.style.right = "auto"
-        shower.style.width = "10vh"
-        shower.style.backgroundColor = "#303030"
+        shower.style.top = "auto"
+        shower.style.height = "10vh"
         //shower.style.outline = "1vh"
-        shower.innerHTML = """<i class="icon-font" style="font-size: 5vh;">&#xe825;</i>"""
+        shower.innerHTML = """<i class="icon-font" style="font-size: 10vh;">&#xe831;</i>"""
     }
 
     fun cannotTouchIframePlayerMode(){
         //當iOS時唔會切換到"不可觸摸IframePlayer模式"
         if(RunnerInfo.getOsFamily() != "iOS"){
-            shower.style.right = "0"
-            shower.style.width = "100%"
-            shower.style.backgroundColor = "rgba(0, 0, 0, 0)"
+            shower.style.top = "0"
+            shower.style.height = "100%"
             //shower.style.outline = "0"
             shower.innerHTML = ""
         }
@@ -116,15 +114,19 @@ object UserControlPanelShower: TabbableUI(
             UserControlPanel.showHideAlternately(15000)
         }
 
-        //如果系統係iOS就開iframePlayer畀人撳Play制播放頻道
-        //由於iOS唔允唔全螢幕播放Video
-        //所以要畀iOS用戶直接點擊iframePlayer
+        //如果系統係iOS10以下就開iframePlayer畀人撳Play制播放頻道
+        //由於iOS10以下唔允唔網頁內播放Video
+        //故此iOS10以下唔允許Video自動播放
+        //所以要畀iOS10以下用戶直接點擊iframePlayer
         //好似有解決方法, 有待研究
         //https://stackoverflow.com/questions/5054560/can-i-avoid-the-native-fullscreen-video-player-with-html5-on-iphone-or-android
-        if(RunnerInfo.getOsFamily() == "iOS"){ canTouchIframePlayerMode() }
+        if(RunnerInfo.isBelowIOS10()){
+            canTouchIframePlayerMode()
+        }
 
         //setIframeOnClick("iframePlayer", fun(){ showHideAlternately() })
 
+        /**
         Player.addOnPlayerEventListener(object : Player.OnPlayerEventListener {
             override fun on(onPlayerEvent: Player.OnPlayerEvent) {
                 when (onPlayerEvent) {
@@ -133,6 +135,6 @@ object UserControlPanelShower: TabbableUI(
                     }
                 }
             }
-        })
+        })*/
     }
 }

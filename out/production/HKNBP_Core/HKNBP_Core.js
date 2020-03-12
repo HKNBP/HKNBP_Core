@@ -3182,7 +3182,7 @@ if (typeof kotlin === 'undefined') {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.03_5';
+    return 'v2020.03_6';
   }
   var coreVersion;
   var appVersion;
@@ -3211,13 +3211,13 @@ if (typeof kotlin === 'undefined') {
   }
   function main(args) {
     try {
+      OfficialChannels_getInstance();
       UserControlPanelShower_getInstance();
       UserControlPanel_getInstance();
       ConsentPanel_getInstance();
       VirtualRemote_getInstance();
       LongClickEvent_getInstance();
       ChannelDescription_getInstance();
-      OfficialChannels_getInstance();
     } catch (e) {
       println('\u4ECB\u9762\u521D\u59CB\u5316\u54C0\u5DE6: ' + e.toString());
     }
@@ -3617,8 +3617,9 @@ if (typeof kotlin === 'undefined') {
     this.onPlaying_0 = Player$onPlaying$lambda(this);
     this.onNotPlaying_0 = Player$onNotPlaying$lambda(this);
     this.listenIframePlayerScript_0 = Player$listenIframePlayerScript$lambda;
-    this.addOnPlayerEventListener_j8fzjz$(new Player_init$ObjectLiteral());
-    this.setListenIframePlayerScript_0();
+    if (!RunnerInfo_getInstance().isBelowIOS10()) {
+      this.addOnPlayerEventListener_j8fzjz$(new Player_init$ObjectLiteral());
+    }this.setListenIframePlayerScript_0();
     this.setListenIframePlayerMessage_0();
   }
   function Player$OnPlayerEvent(name, ordinal) {
@@ -4228,15 +4229,26 @@ if (typeof kotlin === 'undefined') {
   function Player$listenIframePlayerScript$lambda(event) {
   }
   function Player_init$ObjectLiteral() {
+    this.currentChannelNumber_0 = 0;
+    this.currentChannelNotPlayingCount_0 = 0;
     this.isPlaying_0 = false;
   }
   function Player_init$ObjectLiteral$on$lambda(this$) {
     return function () {
-      var tmp$, tmp$_0;
+      var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3;
       if (!this$.isPlaying_0) {
         tmp$_0 = (tmp$ = Player_getInstance().playingChannel_0) != null ? tmp$ : new Channel(0);
         Player_getInstance().playChannel_e3jjlp$(tmp$_0);
         PromptBox_getInstance().promptMessage('\u8A0A\u865F\u63A5\u6536\u4E0D\u826F');
+        if (3 < this$.currentChannelNotPlayingCount_0) {
+          window.location.reload();
+        }if (((tmp$_1 = Player_getInstance().playingChannel_0) != null ? tmp$_1.number : null) == this$.currentChannelNumber_0) {
+          tmp$_2 = this$.currentChannelNotPlayingCount_0;
+          this$.currentChannelNotPlayingCount_0 = tmp$_2 + 1 | 0;
+        } else {
+          this$.currentChannelNotPlayingCount_0 = 0;
+          this$.currentChannelNumber_0 = (tmp$_3 = Player_getInstance().playingChannel_0) != null ? tmp$_3.number : null;
+        }
       }};
   }
   Player_init$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
@@ -4508,6 +4520,26 @@ if (typeof kotlin === 'undefined') {
   };
   RunnerInfo.prototype.getBrowserName = function () {
     return this.platform.name.toString() + ' ' + this.platform.version.toString();
+  };
+  RunnerInfo.prototype.getIOSVersion = function () {
+    var tmp$;
+    var iOSVersion = typeof (tmp$ = function () {
+      try {
+        if (/iP(hone|od|ad)/.test(navigator.platform)) {
+          var v = navigator.appVersion.match(/OS (\d+)_(\d+)_?(\d+)?/);
+          return [parseInt(v[1], 10), parseInt(v[2], 10), parseInt(v[3] || 0, 10)][0];
+        }} catch (e) {
+        return null;
+      }
+      return null;
+    }) === 'function' ? tmp$ : throwCCE();
+    return iOSVersion();
+  };
+  RunnerInfo.prototype.isBelowIOS10 = function () {
+    var tmp$;
+    if (equals(this.getOsFamily(), 'iOS') && ((tmp$ = this.getIOSVersion()) != null ? tmp$ : 0) < 10) {
+      return true;
+    }return false;
   };
   RunnerInfo.$metadata$ = {
     kind: Kind_OBJECT,
@@ -4880,7 +4912,9 @@ if (typeof kotlin === 'undefined') {
     FullScreenButton_getInstance();
     this.panel_0.onmousemove = UserControlPanel_init$lambda(this);
     this.panel_0.onscroll = UserControlPanel_init$lambda_0(this);
-  }
+    if (RunnerInfo_getInstance().isBelowIOS10()) {
+      window.setInterval(UserControlPanel_init$lambda_1(this), 1000);
+    }}
   UserControlPanel.prototype.show_s8ev37$ = function (showTime) {
     TabbableUI.prototype.show_s8ev37$.call(this, showTime);
     this.onShowUserControlPanel();
@@ -4902,6 +4936,11 @@ if (typeof kotlin === 'undefined') {
   function UserControlPanel_init$lambda_0(this$UserControlPanel) {
     return function (event) {
       this$UserControlPanel.show_s8ev37$(30000);
+    };
+  }
+  function UserControlPanel_init$lambda_1(this$UserControlPanel) {
+    return function () {
+      this$UserControlPanel.show_s8ev37$(null);
     };
   }
   UserControlPanel.$metadata$ = {
@@ -4927,10 +4966,9 @@ if (typeof kotlin === 'undefined') {
     this.shower_0.onmousemove = UserControlPanelShower_init$lambda_0(this);
     this.shower_0.ondblclick = UserControlPanelShower_init$lambda_1;
     this.set_ontouchstart_0(this.shower_0, UserControlPanelShower_init$lambda_2);
-    if (equals(RunnerInfo_getInstance().getOsFamily(), 'iOS')) {
+    if (RunnerInfo_getInstance().isBelowIOS10()) {
       this.canTouchIframePlayerMode();
-    }Player_getInstance().addOnPlayerEventListener_j8fzjz$(new UserControlPanelShower_init$ObjectLiteral());
-  }
+    }}
   UserControlPanelShower.prototype.get_ontouchstart_0 = function ($receiver) {
     return this.get_ontouchstart_0($receiver);
   };
@@ -4960,16 +4998,14 @@ if (typeof kotlin === 'undefined') {
   UserControlPanelShower.prototype.setIframeOnClick_a4mwiz$ = function (iframeId, onClick) {
   };
   UserControlPanelShower.prototype.canTouchIframePlayerMode = function () {
-    this.shower_0.style.right = 'auto';
-    this.shower_0.style.width = '10vh';
-    this.shower_0.style.backgroundColor = '#303030';
-    this.shower_0.innerHTML = '<i class="icon-font" style="font-size: 5vh;">&#xe825;<\/i>';
+    this.shower_0.style.top = 'auto';
+    this.shower_0.style.height = '10vh';
+    this.shower_0.innerHTML = '<i class="icon-font" style="font-size: 10vh;">&#xe831;<\/i>';
   };
   UserControlPanelShower.prototype.cannotTouchIframePlayerMode = function () {
     if (!equals(RunnerInfo_getInstance().getOsFamily(), 'iOS')) {
-      this.shower_0.style.right = '0';
-      this.shower_0.style.width = '100%';
-      this.shower_0.style.backgroundColor = 'rgba(0, 0, 0, 0)';
+      this.shower_0.style.top = '0';
+      this.shower_0.style.height = '100%';
       this.shower_0.innerHTML = '';
     }};
   function UserControlPanelShower_init$lambda(event) {
@@ -4994,16 +5030,6 @@ if (typeof kotlin === 'undefined') {
     event.preventDefault();
     UserControlPanel_getInstance().showHideAlternately_s8ev37$(15000);
   }
-  function UserControlPanelShower_init$ObjectLiteral() {
-  }
-  UserControlPanelShower_init$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
-    if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance()))
-      UserControlPanelShower_getInstance().cannotTouchIframePlayerMode();
-  };
-  UserControlPanelShower_init$ObjectLiteral.$metadata$ = {
-    kind: Kind_CLASS,
-    interfaces: [Player$OnPlayerEventListener]
-  };
   UserControlPanelShower.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'UserControlPanelShower',
