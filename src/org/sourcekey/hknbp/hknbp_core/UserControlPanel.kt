@@ -90,7 +90,7 @@ object UserControlPanel: TabbableUI(
         //方便使用者使用UserControlPanel
         if(RunnerInfo.isBelowIOS10()){
             window.setInterval(fun(){
-                show(null)
+                if(!isShow){show(null)}
             }, 1000)
         }
     }

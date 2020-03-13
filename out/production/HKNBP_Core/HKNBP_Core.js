@@ -3182,7 +3182,7 @@ if (typeof kotlin === 'undefined') {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.03_6';
+    return 'v2020.03_7';
   }
   var coreVersion;
   var appVersion;
@@ -4045,9 +4045,10 @@ if (typeof kotlin === 'undefined') {
     Player_getInstance().callIframePlayerFunction_0('onGetIframePlayerVideoTrack(onReturn)', Player$videoTracks$lambda$ObjectLiteral$on$lambda$lambda(tracks));
   }
   Player$videoTracks$lambda$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
-    if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance()))
+    if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance())) {
+      Player_getInstance().videoTracks = ArrayLinkList_init([new TrackDescription(-5, '-------')]);
       Player_getInstance().callIframePlayerFunction_0('onGetIframePlayerVideoTracks(onReturn)', Player$videoTracks$lambda$ObjectLiteral$on$lambda);
-  };
+    }};
   Player$videoTracks$lambda$ObjectLiteral.$metadata$ = {
     kind: Kind_CLASS,
     interfaces: [Player$OnPlayerEventListener]
@@ -4088,9 +4089,10 @@ if (typeof kotlin === 'undefined') {
     Player_getInstance().callIframePlayerFunction_0('onGetIframePlayerAudioTrack(onReturn)', Player$audioTracks$lambda$ObjectLiteral$on$lambda$lambda(tracks));
   }
   Player$audioTracks$lambda$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
-    if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance()))
+    if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance())) {
+      Player_getInstance().audioTracks = ArrayLinkList_init([new TrackDescription(-5, '-------')]);
       Player_getInstance().callIframePlayerFunction_0('onGetIframePlayerAudioTracks(onReturn)', Player$audioTracks$lambda$ObjectLiteral$on$lambda);
-  };
+    }};
   Player$audioTracks$lambda$ObjectLiteral.$metadata$ = {
     kind: Kind_CLASS,
     interfaces: [Player$OnPlayerEventListener]
@@ -4131,9 +4133,10 @@ if (typeof kotlin === 'undefined') {
     Player_getInstance().callIframePlayerFunction_0('onGetIframePlayerSubtitleTrack(onReturn)', Player$subtitleTracks$lambda$ObjectLiteral$on$lambda$lambda(tracks));
   }
   Player$subtitleTracks$lambda$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
-    if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance()))
+    if (equals(onPlayerEvent, Player$OnPlayerEvent$playing_getInstance())) {
+      Player_getInstance().subtitleTracks = ArrayLinkList_init([new TrackDescription(-5, '-------')]);
       Player_getInstance().callIframePlayerFunction_0('onGetIframePlayerSubtitleTracks(onReturn)', Player$subtitleTracks$lambda$ObjectLiteral$on$lambda);
-  };
+    }};
   Player$subtitleTracks$lambda$ObjectLiteral.$metadata$ = {
     kind: Kind_CLASS,
     interfaces: [Player$OnPlayerEventListener]
@@ -4940,8 +4943,9 @@ if (typeof kotlin === 'undefined') {
   }
   function UserControlPanel_init$lambda_1(this$UserControlPanel) {
     return function () {
-      this$UserControlPanel.show_s8ev37$(null);
-    };
+      if (!this$UserControlPanel.isShow) {
+        this$UserControlPanel.show_s8ev37$(null);
+      }};
   }
   UserControlPanel.$metadata$ = {
     kind: Kind_OBJECT,
