@@ -449,14 +449,14 @@ if (typeof kotlin === 'undefined') {
   }
   function CanAutoplay() {
     CanAutoplay_instance = this;
-    this.video = {type: 'video', method: 'video', params: null};
-    this.videoMuted = {type: 'videoMuted', method: 'video', params: {muted: true}};
-    this.videoInline = {type: 'videoInline', method: 'video', params: {inline: true}};
-    this.videoInlineMuted = {type: 'videoInlineMuted', method: 'video', params: {inline: true, muted: true}};
-    this.checkCanAutoplay_0(CanAutoplay_init$lambda, CanAutoplay_init$lambda_0(this), this.video);
-    this.checkCanAutoplay_0(CanAutoplay_init$lambda_1, CanAutoplay_init$lambda_2(this), this.videoMuted);
-    this.checkCanAutoplay_0(CanAutoplay_init$lambda_3, CanAutoplay_init$lambda_4(this), this.videoInline);
-    this.checkCanAutoplay_0(CanAutoplay_init$lambda_5, CanAutoplay_init$lambda_6(this), this.videoInlineMuted);
+    this.video_0 = {type: 'video', method: 'video', params: null};
+    this.videoMuted_0 = {type: 'videoMuted', method: 'video', params: {muted: true}};
+    this.videoInline_0 = {type: 'videoInline', method: 'video', params: {inline: true}};
+    this.videoInlineMuted_0 = {type: 'videoInlineMuted', method: 'video', params: {inline: true, muted: true}};
+    this.checkCanAutoplay_0(CanAutoplay_init$lambda, CanAutoplay_init$lambda_0(this), this.video_0);
+    this.checkCanAutoplay_0(CanAutoplay_init$lambda_1, CanAutoplay_init$lambda_2(this), this.videoMuted_0);
+    this.checkCanAutoplay_0(CanAutoplay_init$lambda_3, CanAutoplay_init$lambda_4(this), this.videoInline_0);
+    this.checkCanAutoplay_0(CanAutoplay_init$lambda_5, CanAutoplay_init$lambda_6(this), this.videoInlineMuted_0);
   }
   function CanAutoplay$checkCanAutoplay$lambda(closure$onCanAutoplay, closure$onCanNotAutoplay) {
     return function (obj) {
@@ -473,38 +473,42 @@ if (typeof kotlin === 'undefined') {
     };
   }
   CanAutoplay.prototype.checkCanAutoplay_0 = function (onCanAutoplay, onCanNotAutoplay, autoplayType) {
-    var _canAutoplay = canAutoplay;
-    _canAutoplay[autoplayType.method](autoplayType.params).then(CanAutoplay$checkCanAutoplay$lambda(onCanAutoplay, onCanNotAutoplay));
+    try {
+      var _canAutoplay = canAutoplay;
+      _canAutoplay[autoplayType.method](autoplayType.params).then(CanAutoplay$checkCanAutoplay$lambda(onCanAutoplay, onCanNotAutoplay));
+    } catch (e) {
+      onCanAutoplay();
+    }
   };
   CanAutoplay.prototype.checkVideoAutoPlayNeedToMute_9dmrm4$ = function (onNotNeedToMuteCanAutoplay, onNeedToMuteCanAutoplay) {
-    this.checkCanAutoplay_0(onNotNeedToMuteCanAutoplay, onNeedToMuteCanAutoplay, this.video);
+    this.checkCanAutoplay_0(onNotNeedToMuteCanAutoplay, onNeedToMuteCanAutoplay, this.video_0);
   };
   function CanAutoplay_init$lambda() {
   }
   function CanAutoplay_init$lambda_0(this$CanAutoplay) {
     return function () {
-      println(this$CanAutoplay.video.type + ': \u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
+      println(this$CanAutoplay.video_0.type + ': \u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
     };
   }
   function CanAutoplay_init$lambda_1() {
   }
   function CanAutoplay_init$lambda_2(this$CanAutoplay) {
     return function () {
-      println(this$CanAutoplay.videoMuted.type + ': \u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
+      println(this$CanAutoplay.videoMuted_0.type + ': \u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
     };
   }
   function CanAutoplay_init$lambda_3() {
   }
   function CanAutoplay_init$lambda_4(this$CanAutoplay) {
     return function () {
-      println(this$CanAutoplay.videoInline.type + ': \u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
+      println(this$CanAutoplay.videoInline_0.type + ': \u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
     };
   }
   function CanAutoplay_init$lambda_5() {
   }
   function CanAutoplay_init$lambda_6(this$CanAutoplay) {
     return function () {
-      println(this$CanAutoplay.videoInlineMuted.type + ': \u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
+      println(this$CanAutoplay.videoInlineMuted_0.type + ': \u5514\u53EF\u4EE5\u81EA\u52D5\u64AD\u653E');
     };
   }
   CanAutoplay.$metadata$ = {
@@ -3182,7 +3186,7 @@ if (typeof kotlin === 'undefined') {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.03_7';
+    return 'v2020.03_8';
   }
   var coreVersion;
   var appVersion;
@@ -4540,7 +4544,7 @@ if (typeof kotlin === 'undefined') {
   };
   RunnerInfo.prototype.isBelowIOS10 = function () {
     var tmp$;
-    if (equals(this.getOsFamily(), 'iOS') && ((tmp$ = this.getIOSVersion()) != null ? tmp$ : 0) < 10) {
+    if (equals(this.getOsFamily(), 'iOS') && ((tmp$ = this.getIOSVersion()) != null ? tmp$ : 10) < 10) {
       return true;
     }return false;
   };

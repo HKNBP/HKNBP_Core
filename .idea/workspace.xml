@@ -5,18 +5,19 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iframePlayer/example.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframePlayer/example.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iframePlayer/shakaplayer.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframePlayer/shakaplayer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iframePlayer/videojs (副本).html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/iframePlayer/videojs.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframePlayer/videojs.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iframePlayer/videojs_dash.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframePlayer/videojs_dash.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iframePlayer/videojs_hls.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframePlayer/videojs_hls.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iframePlayer/videojs_youtube.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframePlayer/videojs_youtube.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iframePlayer/youtube_api.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframePlayer/youtube_api.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.meta.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.meta.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core/org/sourcekey/hknbp/hknbp_core/hknbp_core.kjsm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/LoadFile.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/CanAutoplay.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/CanAutoplay.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Player.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/UserControlPanel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/RunnerInfo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/RunnerInfo.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -322,10 +323,6 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="1510" y="201" width="800" height="676" key="#Kotlin/0.0.2560.1080@0.0.2560.1080" timestamp="1576340059725" />
-    <state x="1510" y="201" width="800" height="676" key="#Notifications" timestamp="1575468058644">
-      <screen x="0" y="0" width="2560" height="1080" />
-    </state>
-    <state x="1510" y="201" width="800" height="676" key="#Notifications/0.0.2560.1080@0.0.2560.1080" timestamp="1575468058644" />
     <state x="1505" y="201" width="800" height="676" key="#Updates" timestamp="1576340076764">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
@@ -364,13 +361,13 @@
       <screen x="0" y="25" width="2560" height="1055" />
     </state>
     <state x="1649" y="285" width="540" height="524" key="StructurePopup/0.25.2560.1055@0.25.2560.1055" timestamp="1583236223070" />
-    <state x="1597" y="383" key="com.intellij.ide.util.TipDialog" timestamp="1584059117683">
+    <state x="1597" y="383" key="com.intellij.ide.util.TipDialog" timestamp="1584330046053">
       <screen x="0" y="25" width="2560" height="1055" />
     </state>
     <state x="1597" y="353" key="com.intellij.ide.util.TipDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1582476326399" />
     <state x="1597" y="367" key="com.intellij.ide.util.TipDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1580093374995" />
     <state x="1597" y="380" key="com.intellij.ide.util.TipDialog/0.21.2560.1059@0.21.2560.1059" timestamp="1582601990951" />
-    <state x="1597" y="383" key="com.intellij.ide.util.TipDialog/0.25.2560.1055@0.25.2560.1055" timestamp="1584059117683" />
+    <state x="1597" y="383" key="com.intellij.ide.util.TipDialog/0.25.2560.1055@0.25.2560.1055" timestamp="1584330046053" />
     <state x="1152" y="180" width="784" height="704" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1582274805335">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
