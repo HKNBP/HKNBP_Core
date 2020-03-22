@@ -25,21 +25,21 @@ object EnteringNumberBox: UserInterface(document.getElementById("enteringNumberB
     /**
      * 用來裝住暫時輸入緊嘅頻道冧把
      */
-    private var enteringNumber: Int = 0
+    private var enteringNumber: String = ""
 
     private var enteringMinus: String = ""
 
-    /**
-     * 用來確認係米仲有時間繼續輸入頻道冧把
-     * 如果False即會再一次計時倒數輸入新一組頻道冧把
-     */
-    private var isEnteringNumber: Boolean = false
-
     private val enteringNumberWaitingTime: Int = 3500
 
+    private val enteringNumberDirectTime: Int = 500
 
     override fun update(){
-        text.innerHTML = enteringMinus + enteringNumber.toStringBackwardZeroPadding(3)
+        text.innerHTML = enteringMinus + enteringNumber
+    }
+
+    override fun show(showTime: Int?) {
+        update()
+        super.show(showTime)
     }
 
     /**
@@ -52,10 +52,15 @@ object EnteringNumberBox: UserInterface(document.getElementById("enteringNumberB
         if(channelNumber != null){ channels.designatedOfChannelNumber(channelNumber) }
 
         //初始化
-        enteringNumber = 0
+        enteringNumber = ""
         enteringMinus = ""
-        isEnteringNumber = false
     }
+
+    private var enteringNumberWaitingTimer: Int = 0
+        set(value) {
+            window.clearTimeout(field)
+            field = value
+        }
 
     /**
      * 使用數字鍵做輸入將要轉嘅頻道冧把
@@ -64,15 +69,10 @@ object EnteringNumberBox: UserInterface(document.getElementById("enteringNumberB
      * @param number 搖控數字鍵
      */
     fun enter(numberString: String){
-        if (!isEnteringNumber) {
-            //倒時完轉去相認頻道從輸入好嘅頻道冧把
-            window.setTimeout(fun(){
-                enteringNumberToDesignatedChannelRun()
-            }, enteringNumberWaitingTime)
-        }
+        //處理輸入
         val number = numberString.toIntOrNull()
         if(number != null){
-            enteringNumber = enteringNumber*10 + number
+            enteringNumber += number
         }else if(numberString == "-"){
             if(enteringMinus == ""){
                 enteringMinus = "-"
@@ -80,9 +80,17 @@ object EnteringNumberBox: UserInterface(document.getElementById("enteringNumberB
                 enteringMinus = ""
             }
         }
-
-        isEnteringNumber = true
-        update()
+        //顯示輸入
         show(null)
+        //等候使用者輸入
+        enteringNumberWaitingTimer = window.setTimeout(fun(){
+            enteringNumberToDesignatedChannelRun()
+        }, if(enteringNumber.length < 3){
+            //倒時完轉去相認頻道從輸入好嘅頻道冧把
+            enteringNumberWaitingTime
+        }else{
+            //當輸入第3個號碼就直接轉台
+            enteringNumberDirectTime
+        })
     }
 }

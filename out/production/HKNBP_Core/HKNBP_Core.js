@@ -2584,43 +2584,59 @@ if (typeof kotlin === 'undefined') {
     UserInterface.call(this, Kotlin.isType(tmp$ = document.getElementById('enteringNumberBox'), HTMLElement) ? tmp$ : throwCCE());
     this.enteringNumberBox_0 = document.getElementById('enteringNumberBox');
     this.text_0 = document.getElementById('enteringNumberBoxText');
-    this.enteringNumber_0 = 0;
+    this.enteringNumber_0 = '';
     this.enteringMinus_0 = '';
-    this.isEnteringNumber_0 = false;
     this.enteringNumberWaitingTime_0 = 3500;
+    this.enteringNumberDirectTime_0 = 500;
+    this.enteringNumberWaitingTimer_v3wr9j$_0 = 0;
   }
   EnteringNumberBox.prototype.update = function () {
-    this.text_0.innerHTML = this.enteringMinus_0 + toStringBackwardZeroPadding(this.enteringNumber_0, 3);
+    this.text_0.innerHTML = this.enteringMinus_0 + this.enteringNumber_0;
+  };
+  EnteringNumberBox.prototype.show_s8ev37$ = function (showTime) {
+    this.update();
+    UserInterface.prototype.show_s8ev37$.call(this, showTime);
   };
   EnteringNumberBox.prototype.enteringNumberToDesignatedChannelRun_0 = function () {
     this.hide();
-    var channelNumber = toIntOrNull(this.enteringMinus_0 + toString(this.enteringNumber_0));
+    var channelNumber = toIntOrNull(this.enteringMinus_0 + this.enteringNumber_0);
     if (channelNumber != null) {
       designatedOfChannelNumber(channels, channelNumber);
-    }this.enteringNumber_0 = 0;
+    }this.enteringNumber_0 = '';
     this.enteringMinus_0 = '';
-    this.isEnteringNumber_0 = false;
   };
+  Object.defineProperty(EnteringNumberBox.prototype, 'enteringNumberWaitingTimer_0', {
+    get: function () {
+      return this.enteringNumberWaitingTimer_v3wr9j$_0;
+    },
+    set: function (value) {
+      window.clearTimeout(this.enteringNumberWaitingTimer_v3wr9j$_0);
+      this.enteringNumberWaitingTimer_v3wr9j$_0 = value;
+    }
+  });
   function EnteringNumberBox$enter$lambda(this$EnteringNumberBox) {
     return function () {
       this$EnteringNumberBox.enteringNumberToDesignatedChannelRun_0();
     };
   }
   EnteringNumberBox.prototype.enter_61zpoe$ = function (numberString) {
-    if (!this.isEnteringNumber_0) {
-      window.setTimeout(EnteringNumberBox$enter$lambda(this), this.enteringNumberWaitingTime_0);
-    }var number = toIntOrNull(numberString);
+    var tmp$;
+    var number = toIntOrNull(numberString);
     if (number != null) {
-      this.enteringNumber_0 = (this.enteringNumber_0 * 10 | 0) + number | 0;
+      this.enteringNumber_0 += number;
     } else if (equals(numberString, '-')) {
       if (equals(this.enteringMinus_0, '')) {
         this.enteringMinus_0 = '-';
       } else {
         this.enteringMinus_0 = '';
       }
-    }this.isEnteringNumber_0 = true;
-    this.update();
-    this.show_s8ev37$(null);
+    }this.show_s8ev37$(null);
+    if (this.enteringNumber_0.length < 3) {
+      tmp$ = this.enteringNumberWaitingTime_0;
+    } else {
+      tmp$ = this.enteringNumberDirectTime_0;
+    }
+    this.enteringNumberWaitingTimer_0 = window.setTimeout(EnteringNumberBox$enter$lambda(this), tmp$);
   };
   EnteringNumberBox.$metadata$ = {
     kind: Kind_OBJECT,
@@ -3186,7 +3202,7 @@ if (typeof kotlin === 'undefined') {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.03_8';
+    return 'v2020.03_9';
   }
   var coreVersion;
   var appVersion;
