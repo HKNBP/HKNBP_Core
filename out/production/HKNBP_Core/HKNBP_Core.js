@@ -3380,7 +3380,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.03_11';
+    return 'v2020.03_12';
   }
   var coreVersion;
   var appVersion;
@@ -4474,8 +4474,14 @@ var HKNBP_Core = function (_, Kotlin) {
   function Player_init$ObjectLiteral$on$lambda(this$) {
     return function () {
       if (!this$.isPlaying_0) {
+        PromptBox_getInstance().promptMessage_bm4lxs$('\u8A0A\u865F\u63A5\u6536\u4E0D\u826F', 5000);
+      }
+    };
+  }
+  function Player_init$ObjectLiteral$on$lambda_0(this$) {
+    return function () {
+      if (!this$.isPlaying_0) {
         window.location.reload();
-        PromptBox_getInstance().promptMessage('\u8A0A\u865F\u63A5\u6536\u4E0D\u826F');
       }
     };
   }
@@ -4486,7 +4492,8 @@ var HKNBP_Core = function (_, Kotlin) {
         break;
       case 'notPlaying':
         this.isPlaying_0 = false;
-        window.setTimeout(Player_init$ObjectLiteral$on$lambda(this), 120000);
+        window.setTimeout(Player_init$ObjectLiteral$on$lambda(this), 10000);
+        window.setTimeout(Player_init$ObjectLiteral$on$lambda_0(this), 120000);
         break;
       default:Kotlin.noWhenBranchMatched();
         break;
@@ -4513,11 +4520,14 @@ var HKNBP_Core = function (_, Kotlin) {
     var tmp$;
     UserInterface.call(this, Kotlin.isType(tmp$ = document.getElementById('promptBox'), HTMLElement) ? tmp$ : throwCCE());
     this.promptBox_0 = document.getElementById('promptBox');
+    this.defaultShowTime_0 = 3500;
   }
-  PromptBox.prototype.promptMessage = function (promptMessage) {
-    this.promptBox_0.innerHTML = promptMessage;
-    this.show_s8ev37$(3500);
-    return 0;
+  PromptBox.prototype.promptMessage_bm4lxs$ = function (message, time) {
+    this.promptBox_0.innerHTML = message;
+    this.show_s8ev37$(time);
+  };
+  PromptBox.prototype.promptMessage = function (message) {
+    this.promptMessage_bm4lxs$(message, this.defaultShowTime_0);
   };
   PromptBox.$metadata$ = {
     kind: Kind_OBJECT,
