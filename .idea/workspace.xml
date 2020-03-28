@@ -93,7 +93,7 @@
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.kotlinCompiler" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="OPEN_URL_DIALOG">
@@ -308,14 +308,6 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
-    <state x="1510" y="201" width="800" height="676" key="#Kotlin" timestamp="1576340059725">
-      <screen x="0" y="0" width="2560" height="1080" />
-    </state>
-    <state x="1510" y="201" width="800" height="676" key="#Kotlin/0.0.2560.1080@0.0.2560.1080" timestamp="1576340059725" />
-    <state x="1505" y="201" width="800" height="676" key="#Updates" timestamp="1576340076764">
-      <screen x="0" y="0" width="2560" height="1080" />
-    </state>
-    <state x="1505" y="201" width="800" height="676" key="#Updates/0.0.2560.1080@0.0.2560.1080" timestamp="1576340076764" />
     <state x="1204" y="189" width="800" height="676" key="#Web_Browsers" timestamp="1579237917444">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
@@ -325,10 +317,11 @@
     </state>
     <state x="1298" y="171" width="1084" height="804" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1579241754803" />
     <state x="153" y="235" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.2560.1055@0.25.2560.1055" timestamp="1584036161482" />
-    <state x="1663" y="355" width="504" height="328" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1582197639525">
-      <screen x="0" y="0" width="2560" height="1040" />
+    <state x="1663" y="386" width="504" height="266" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1585385566166">
+      <screen x="0" y="27" width="2560" height="1053" />
     </state>
     <state x="1663" y="355" width="504" height="328" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1582197639525" />
+    <state x="1663" y="386" width="504" height="266" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.27.2560.1053@0.27.2560.1053" timestamp="1585385566166" />
     <state x="1319" y="429" width="469" height="340" key="#com.intellij.tools.ToolEditorDialog" timestamp="1579187741096">
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
@@ -337,26 +330,29 @@
       <screen x="0" y="0" width="2560" height="1080" />
     </state>
     <state x="1577" y="333" width="515" height="478" key="EnvironmentVariablesDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1579238350762" />
-    <state x="1254" y="243" width="451" height="514" key="FileChooserDialogImpl" timestamp="1582197751138">
-      <screen x="0" y="0" width="2560" height="1040" />
+    <state x="1082" y="337" width="451" height="522" key="FileChooserDialogImpl" timestamp="1585385561271">
+      <screen x="0" y="27" width="2560" height="1053" />
     </state>
     <state x="1254" y="243" width="451" height="514" key="FileChooserDialogImpl/0.0.2560.1040@0.0.2560.1040" timestamp="1582197751138" />
     <state x="1707" y="355" width="424" height="483" key="FileChooserDialogImpl/0.0.2560.1080@0.0.2560.1080" timestamp="1579238495357" />
-    <state x="1066" y="133" width="1024" height="844" key="SettingsEditor" timestamp="1579359750235">
-      <screen x="0" y="0" width="2560" height="1080" />
+    <state x="1082" y="337" width="451" height="522" key="FileChooserDialogImpl/0.27.2560.1053@0.27.2560.1053" timestamp="1585385561271" />
+    <state x="1066" y="157" width="1024" height="844" key="SettingsEditor" timestamp="1585374387132">
+      <screen x="0" y="27" width="2560" height="1053" />
     </state>
     <state x="1066" y="133" width="1024" height="844" key="SettingsEditor/0.0.2560.1080@0.0.2560.1080" timestamp="1579359750235" />
+    <state x="1066" y="157" key="SettingsEditor/0.27.2560.1053@0.27.2560.1053" timestamp="1585374387132" />
     <state x="1649" y="285" width="540" height="524" key="StructurePopup" timestamp="1583236223070">
       <screen x="0" y="25" width="2560" height="1055" />
     </state>
     <state x="1649" y="285" width="540" height="524" key="StructurePopup/0.25.2560.1055@0.25.2560.1055" timestamp="1583236223070" />
-    <state x="1597" y="353" key="com.intellij.ide.util.TipDialog" timestamp="1584951045626">
-      <screen x="0" y="0" width="2560" height="1040" />
+    <state x="1597" y="384" key="com.intellij.ide.util.TipDialog" timestamp="1585385598786">
+      <screen x="0" y="27" width="2560" height="1053" />
     </state>
     <state x="1597" y="353" key="com.intellij.ide.util.TipDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1584951045626" />
     <state x="1597" y="367" key="com.intellij.ide.util.TipDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1580093374995" />
     <state x="1597" y="380" key="com.intellij.ide.util.TipDialog/0.21.2560.1059@0.21.2560.1059" timestamp="1582601990951" />
     <state x="1597" y="383" key="com.intellij.ide.util.TipDialog/0.25.2560.1055@0.25.2560.1055" timestamp="1584330046053" />
+    <state x="1597" y="384" key="com.intellij.ide.util.TipDialog/0.27.2560.1053@0.27.2560.1053" timestamp="1585385598786" />
     <state x="1152" y="180" width="784" height="704" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1582274805335">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
