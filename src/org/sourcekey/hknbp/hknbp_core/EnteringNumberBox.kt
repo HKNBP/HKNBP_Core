@@ -69,28 +69,31 @@ object EnteringNumberBox: UserInterface(document.getElementById("enteringNumberB
      * @param number 搖控數字鍵
      */
     fun enter(numberString: String){
-        //處理輸入
-        val number = numberString.toIntOrNull()
-        if(number != null){
-            enteringNumber += number
-        }else if(numberString == "-"){
-            if(enteringMinus == ""){
-                enteringMinus = "-"
-            }else{
-                enteringMinus = ""
+        //當輸入夠3個史數字就等待轉台成功先可以再輸入
+        if(enteringNumber.length < 3){
+            //處理輸入
+            val number = numberString.toIntOrNull()
+            if(number != null){
+                enteringNumber += number
+            }else if(numberString == "-"){
+                if(enteringMinus == ""){
+                    enteringMinus = "-"
+                }else{
+                    enteringMinus = ""
+                }
             }
+            //顯示輸入
+            show(null)
+            //等候使用者輸入
+            enteringNumberWaitingTimer = window.setTimeout(fun(){
+                enteringNumberToDesignatedChannelRun()
+            }, if(enteringNumber.length < 3){
+                //倒時完轉去相認頻道從輸入好嘅頻道冧把
+                enteringNumberWaitingTime
+            }else{
+                //當輸入第3個號碼就直接轉台
+                enteringNumberDirectTime
+            })
         }
-        //顯示輸入
-        show(null)
-        //等候使用者輸入
-        enteringNumberWaitingTimer = window.setTimeout(fun(){
-            enteringNumberToDesignatedChannelRun()
-        }, if(enteringNumber.length < 3){
-            //倒時完轉去相認頻道從輸入好嘅頻道冧把
-            enteringNumberWaitingTime
-        }else{
-            //當輸入第3個號碼就直接轉台
-            enteringNumberDirectTime
-        })
     }
 }

@@ -2755,26 +2755,28 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   EnteringNumberBox.prototype.enter_61zpoe$ = function (numberString) {
     var tmp$;
-    var number = toIntOrNull(numberString);
-    if (number != null) {
-      this.enteringNumber_0 += number;
-    }
-     else if (equals(numberString, '-')) {
-      if (equals(this.enteringMinus_0, '')) {
-        this.enteringMinus_0 = '-';
+    if (this.enteringNumber_0.length < 3) {
+      var number = toIntOrNull(numberString);
+      if (number != null) {
+        this.enteringNumber_0 += number;
+      }
+       else if (equals(numberString, '-')) {
+        if (equals(this.enteringMinus_0, '')) {
+          this.enteringMinus_0 = '-';
+        }
+         else {
+          this.enteringMinus_0 = '';
+        }
+      }
+      this.show_s8ev37$(null);
+      if (this.enteringNumber_0.length < 3) {
+        tmp$ = this.enteringNumberWaitingTime_0;
       }
        else {
-        this.enteringMinus_0 = '';
+        tmp$ = this.enteringNumberDirectTime_0;
       }
+      this.enteringNumberWaitingTimer_0 = window.setTimeout(EnteringNumberBox$enter$lambda(this), tmp$);
     }
-    this.show_s8ev37$(null);
-    if (this.enteringNumber_0.length < 3) {
-      tmp$ = this.enteringNumberWaitingTime_0;
-    }
-     else {
-      tmp$ = this.enteringNumberDirectTime_0;
-    }
-    this.enteringNumberWaitingTimer_0 = window.setTimeout(EnteringNumberBox$enter$lambda(this), tmp$);
   };
   EnteringNumberBox.$metadata$ = {
     kind: Kind_OBJECT,
@@ -3380,7 +3382,7 @@ var HKNBP_Core = function (_, Kotlin) {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.03_12';
+    return 'v2020.03_13';
   }
   var coreVersion;
   var appVersion;
