@@ -1126,6 +1126,7 @@ if (typeof kotlin === 'undefined') {
       if (!this$.isPlaying_0) {
         ChannelDescription_getInstance().update();
         ChannelDescription_getInstance().show_s8ev37$(null);
+        PromptBox_getInstance().promptMessage_bm4lxs$('\u8A0A\u865F\u63A5\u6536\u4E0D\u826F', 5000);
       }};
   }
   ChannelDescription_init$ObjectLiteral_0.prototype.on_mdxcb7$ = function (onPlayerEvent) {
@@ -3205,7 +3206,7 @@ if (typeof kotlin === 'undefined') {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.03_14';
+    return 'v2020.03_15';
   }
   var coreVersion;
   var appVersion;
@@ -4267,12 +4268,6 @@ if (typeof kotlin === 'undefined') {
   function Player_init$ObjectLiteral$on$lambda(this$) {
     return function () {
       if (!this$.isPlaying_0) {
-        PromptBox_getInstance().promptMessage_bm4lxs$('\u8A0A\u865F\u63A5\u6536\u4E0D\u826F', 5000);
-      }};
-  }
-  function Player_init$ObjectLiteral$on$lambda_0(this$) {
-    return function () {
-      if (!this$.isPlaying_0) {
         window.location.reload();
       }};
   }
@@ -4283,8 +4278,7 @@ if (typeof kotlin === 'undefined') {
         break;
       case 'notPlaying':
         this.isPlaying_0 = false;
-        window.setTimeout(Player_init$ObjectLiteral$on$lambda(this), 10000);
-        window.setTimeout(Player_init$ObjectLiteral$on$lambda_0(this), 120000);
+        window.setTimeout(Player_init$ObjectLiteral$on$lambda(this), 120000);
         break;
       default:Kotlin.noWhenBranchMatched();
         break;
@@ -4588,14 +4582,15 @@ if (typeof kotlin === 'undefined') {
     var tmp$_0;
     this.screenOrientationButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('screenOrientationButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.orientation_0 = screen.orientation || screen.mozOrientation;
+    if (this.isNeedOrientation()) {
+      this.show_s8ev37$(null);
+    } else {
+      this.hide();
+    }
     this.screenOrientationButton_0.onclick = ScreenOrientationButton_init$lambda(this);
   }
-  ScreenOrientationButton.prototype.isSupportOrientation = function () {
-    if (orientation) {
-      return true;
-    } else {
-      return false;
-    }
+  ScreenOrientationButton.prototype.isNeedOrientation = function () {
+    return window.innerHeight > window.innerWidth;
   };
   ScreenOrientationButton.prototype.currentType = function () {
     return this.orientation_0.type;
