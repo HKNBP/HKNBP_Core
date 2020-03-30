@@ -651,6 +651,13 @@ object Player: UserInterface(document.getElementById("player") as HTMLElement) {
         watchingCounter = WatchingCounter(channel)
     }
 
+    /**
+     *
+     * */
+    fun reload(){
+        playChannel(playingChannel?:return)
+    }
+
     init {
         //iOS10以下就不需自動Reload
         //因播放頻道必需全由使用者操作
