@@ -3206,7 +3206,7 @@ if (typeof kotlin === 'undefined') {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.03_16';
+    return 'v2020.03_17';
   }
   var coreVersion;
   var appVersion;
@@ -4590,16 +4590,16 @@ if (typeof kotlin === 'undefined') {
     this.screenOrientationButton_0.onclick = ScreenOrientationButton_init$lambda(this);
   }
   ScreenOrientationButton.prototype.isNeedOrientation = function () {
-    return window.innerHeight > window.innerWidth;
+    return window.innerHeight >= window.innerWidth;
   };
   ScreenOrientationButton.prototype.currentType = function () {
     return this.orientation_0.type;
   };
   ScreenOrientationButton.prototype.orientation = function () {
-    if (!equals(this.currentType(), 'landscape')) {
+    if (equals(this.currentType(), 'portrait') || equals(this.currentType(), 'portrait-primary') || equals(this.currentType(), 'portrait-secondary')) {
       this.orientation_0.lock('landscape');
     } else {
-      this.orientation_0.unlock();
+      this.orientation_0.lock('portrait');
     }
   };
   function ScreenOrientationButton_init$lambda(this$ScreenOrientationButton) {
