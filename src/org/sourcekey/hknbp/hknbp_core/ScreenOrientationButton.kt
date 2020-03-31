@@ -35,7 +35,7 @@ object ScreenOrientationButton : UserInterface(
      * 運行裝置螢幕有冇需要旋轉
      *
      * 本程式主要傾向橫向使用
-     * 所以如果檢查到 高度 > 寬度
+     * 所以如果檢查到 高度 > 寬度 (即:縱向模式 中)
      * 就為需要旋轉嘅運行裝置
      *
      * @return 係米有需要旋轉
@@ -57,14 +57,13 @@ object ScreenOrientationButton : UserInterface(
      * 進行螢幕旋轉
      * */
     fun orientation(){
-        //強制旋轉至 橫向模式
-        if(currentType() != "landscape-primary"){
-            orientation.lock("landscape-primary")
+        if(currentType() != "landscape"){
+            //強制旋轉至 橫向模式
+            orientation.lock("landscape")
         }else{
-            orientation.lock("landscape-secondary")
+            //還原原本螢幕轉向
+            orientation.unlock()
         }
-        //解放強制使 重力旋轉螢幕 有效
-        orientation.unlock()
     }
 
     init {
