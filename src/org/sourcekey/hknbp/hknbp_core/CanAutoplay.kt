@@ -45,7 +45,7 @@ object CanAutoplay {
     }
 
     fun checkVideoAutoPlayNeedToMute(onNotNeedToMuteCanAutoplay: ()->Unit, onNeedToMuteCanAutoplay: ()->Unit){
-        checkCanAutoplay(onNotNeedToMuteCanAutoplay, onNeedToMuteCanAutoplay, video)
+        checkCanAutoplay(onNotNeedToMuteCanAutoplay, onNeedToMuteCanAutoplay, videoInline)
     }
 
     /**
@@ -64,3 +64,20 @@ object CanAutoplay {
         checkCanAutoplay(fun(){}, fun(){println(videoInlineMuted.type+": 唔可以自動播放")}, videoInlineMuted)
     }
 }
+/*
+//如果iOS就唔好用CanAutoplay來檢查可唔可唔靜音自動播放
+//因為
+if(!RunnerInfo.isIOS()){
+    val _canAutoplay: dynamic = js("canAutoplay")
+    _canAutoplay[autoplayType.method](autoplayType.params).then(fun(obj: dynamic){
+        var result: Boolean = false
+        try{result = obj.result}catch(e: dynamic){}
+        if (result == true) {
+            //可以自動播放
+            onCanAutoplay()
+        } else {
+            //唔可以自動播放
+            onCanNotAutoplay()
+        }
+    })
+}else{ onCanAutoplay() }*/

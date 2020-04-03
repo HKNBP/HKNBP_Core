@@ -73,12 +73,6 @@ object Player: UserInterface(document.getElementById("player") as HTMLElement) {
         return "JSON.parse(\'${JSON.stringify(obj)}\').value"
     }
 
-
-    /**
-     * 係米檢查自動播放需要靜音
-     * */
-    private var isCheckVideoAutoPlayNeedToMute = true
-
     /**
      * 檢查需唔需要可直接點擊IframePlayer模式嘅Timer
      *
@@ -422,29 +416,26 @@ object Player: UserInterface(document.getElementById("player") as HTMLElement) {
             field = value
         }
 
+    private var tryUnmuteCount = 0
+
     /**
      * 設定iframePlayer嘅靜音資訊
      * */
     fun setMuted(muted: Boolean) {
         //因依家大部分 <瀏覽器> 唔畀自動播放, 如果要自動播放一定要將Player設為 <靜音>
         val setScript = fun(muted: Boolean){
-            callIframePlayerFunction(
-                    "onSetIframePlayerMuted(${kotlinValueToEvalScriptUseableValue(muted)})"
-            )
+            callIframePlayerFunction("onSetIframePlayerMuted(${kotlinValueToEvalScriptUseableValue(muted)})")
             MutedDescription.update(muted)
         }
-
-        if(isCheckVideoAutoPlayNeedToMute){
-            CanAutoplay.checkVideoAutoPlayNeedToMute(fun(){
-                this.muted = muted
-                setScript(muted)
-            }, fun(){
-                setScript(true)
-            })
-        }else{
+        //檢查自動播放係米需要靜音
+        CanAutoplay.checkVideoAutoPlayNeedToMute(fun(){
             this.muted = muted
             setScript(muted)
-        }
+        }, fun(){
+            setScript(true)
+            if(1 < tryUnmuteCount){PromptBox("如未能解除靜音請任意點擊螢幕")}
+            tryUnmuteCount++
+        })
     }
 
     /**
@@ -605,16 +596,8 @@ object Player: UserInterface(document.getElementById("player") as HTMLElement) {
      */
 
 
-    private var listenIframePlayerScript = fun(event: dynamic){}
-
-    private fun setListenIframePlayerMessage(){
+    private val initListenIframePlayerMessage = {
         window.addEventListener("message", fun(event: dynamic){
-            listenIframePlayerScript(event)
-        }, false)
-    }
-
-    private fun setListenIframePlayerScript(){
-        listenIframePlayerScript = fun(event: dynamic){
             try{
                 val callMessage = JSON.parse<dynamic>(event.data.toString())
                 if (callMessage.name == null){
@@ -651,7 +634,15 @@ object Player: UserInterface(document.getElementById("player") as HTMLElement) {
                         "Event內容: ${JSON.stringify(event)}"
                 )
             }
-        }
+        }, false)
+    }()
+
+
+    /**
+     *
+     * */
+    fun reload(){
+        playChannel(playingChannel?:return)
     }
 
     fun playChannel(channel: Channel){
@@ -666,13 +657,6 @@ object Player: UserInterface(document.getElementById("player") as HTMLElement) {
         iframePlayer?.src =
                         "${getLink()}?sourceSrc=${encodeURIComponent(playingChannel?.sources?.node?.getLinkOfHttpsGetAble()?:"")}"
         watchingCounter = WatchingCounter(channel)
-    }
-
-    /**
-     *
-     * */
-    fun reload(){
-        playChannel(playingChannel?:return)
     }
 
     init {
@@ -710,8 +694,6 @@ object Player: UserInterface(document.getElementById("player") as HTMLElement) {
                 }
             })
         }
-        setListenIframePlayerScript()
-        setListenIframePlayerMessage()
     }
 }
 

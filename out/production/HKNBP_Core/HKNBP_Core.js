@@ -483,7 +483,7 @@ if (typeof kotlin === 'undefined') {
     }
   };
   CanAutoplay.prototype.checkVideoAutoPlayNeedToMute_9dmrm4$ = function (onNotNeedToMuteCanAutoplay, onNeedToMuteCanAutoplay) {
-    this.checkCanAutoplay_0(onNotNeedToMuteCanAutoplay, onNeedToMuteCanAutoplay, this.video_0);
+    this.checkCanAutoplay_0(onNotNeedToMuteCanAutoplay, onNeedToMuteCanAutoplay, this.videoInline_0);
   };
   function CanAutoplay_init$lambda() {
   }
@@ -3239,7 +3239,7 @@ if (typeof kotlin === 'undefined') {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.03_18';
+    return 'v2020.04_0';
   }
   var coreVersion;
   var appVersion;
@@ -3476,9 +3476,8 @@ if (typeof kotlin === 'undefined') {
     MutedDescription_instance = this;
     var tmp$;
     UserInterface.call(this, Kotlin.isType(tmp$ = document.getElementById('mutedDescription'), HTMLElement) ? tmp$ : throwCCE());
-    var tmp$_0, tmp$_1;
-    this.mutedDescription_0 = Kotlin.isType(tmp$_0 = document.getElementById('mutedDescription'), HTMLDivElement) ? tmp$_0 : throwCCE();
-    this.mutedDescriptionButton_0 = Kotlin.isType(tmp$_1 = document.getElementById('mutedDescriptionButton'), HTMLButtonElement) ? tmp$_1 : throwCCE();
+    var tmp$_0;
+    this.mutedDescriptionButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('mutedDescriptionButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
     this.mutedDescriptionButton_0.onclick = MutedDescription_init$lambda;
   }
   MutedDescription.prototype.update_6taknv$ = function (muted) {
@@ -3650,7 +3649,6 @@ if (typeof kotlin === 'undefined') {
     this.watchingCounter_0 = null;
     this.onPlayerEvents_0 = ArrayList_init();
     this.callIframePlayerFunctionList_0 = ArrayList_init();
-    this.isCheckVideoAutoPlayNeedToMute_0 = true;
     this.checkNeedCanTouchIframePlayerModeTimer_14c6cd$_0 = 0;
     this.videoTracks_15iau4$_0 = Player$videoTracks$lambda(this)();
     this.audioTracks_oydct3$_0 = Player$audioTracks$lambda(this)();
@@ -3661,17 +3659,16 @@ if (typeof kotlin === 'undefined') {
     this.volumeDown = Player$volumeDown$lambda(this);
     this.iframePlayerVolumeInit_0 = Player$iframePlayerVolumeInit$lambda(this)();
     this.muted_u89vz8$_0 = (tmp$_3 = (tmp$_2 = localStorage.getItem('RecentlyMuted')) != null ? toBoolean(tmp$_2) : null) != null ? tmp$_3 : false;
+    this.tryUnmuteCount_0 = 0;
     this.volumeMute_mj46gq$_0 = Player$volumeMute$lambda(this);
     this.iframePlayerMutedInit_0 = Player$iframePlayerMutedInit$lambda(this)();
     this.onPlaying_0 = Player$onPlaying$lambda(this);
     this.onNotPlaying_0 = Player$onNotPlaying$lambda(this);
     this.onError_0 = Player$onError$lambda(this);
-    this.listenIframePlayerScript_0 = Player$listenIframePlayerScript$lambda;
+    this.initListenIframePlayerMessage_0 = Player$initListenIframePlayerMessage$lambda(this)();
     if (!RunnerInfo_getInstance().isBelowIOS10()) {
       this.addOnPlayerEventListener_j8fzjz$(new Player_init$ObjectLiteral());
-    }this.setListenIframePlayerScript_0();
-    this.setListenIframePlayerMessage_0();
-  }
+    }}
   function Player$OnPlayerEvent(name, ordinal) {
     Enum.call(this);
     this.name$ = name;
@@ -3900,19 +3897,19 @@ if (typeof kotlin === 'undefined') {
       closure$setScript(closure$muted);
     };
   }
-  function Player$setMuted$lambda_1(closure$setScript) {
+  function Player$setMuted$lambda_1(closure$setScript, this$Player) {
     return function () {
+      var tmp$;
       closure$setScript(true);
+      if (1 < this$Player.tryUnmuteCount_0) {
+        new PromptBox('\u5982\u672A\u80FD\u89E3\u9664\u975C\u97F3\u8ACB\u4EFB\u610F\u9EDE\u64CA\u87A2\u5E55');
+      }tmp$ = this$Player.tryUnmuteCount_0;
+      this$Player.tryUnmuteCount_0 = tmp$ + 1 | 0;
     };
   }
   Player.prototype.setMuted_6taknv$ = function (muted) {
     var setScript = Player$setMuted$lambda(this);
-    if (this.isCheckVideoAutoPlayNeedToMute_0) {
-      CanAutoplay_getInstance().checkVideoAutoPlayNeedToMute_9dmrm4$(Player$setMuted$lambda_0(muted, this, setScript), Player$setMuted$lambda_1(setScript));
-    } else {
-      this.muted_0 = muted;
-      setScript(muted);
-    }
+    CanAutoplay_getInstance().checkVideoAutoPlayNeedToMute_9dmrm4$(Player$setMuted$lambda_0(muted, this, setScript), Player$setMuted$lambda_1(setScript, this));
   };
   function Player$getMuted$lambda(this$Player, closure$onReturn) {
     return function (returnValue) {
@@ -4027,43 +4024,12 @@ if (typeof kotlin === 'undefined') {
   Player.prototype.play = function () {
     this.callIframePlayerFunction_0('onSetIframePlayerPlay()');
   };
-  function Player$setListenIframePlayerMessage$lambda(this$Player) {
-    return function (event) {
-      this$Player.listenIframePlayerScript_0(event);
-    };
-  }
-  Player.prototype.setListenIframePlayerMessage_0 = function () {
-    window.addEventListener('message', Player$setListenIframePlayerMessage$lambda(this), false);
-  };
-  function Player$setListenIframePlayerScript$lambda(this$Player) {
-    return function (event) {
-      var tmp$;
-      try {
-        var callMessage = JSON.parse(event.data.toString());
-        if (callMessage.name == null) {
-          return;
-        } else if (callMessage.name == 'HKNBPCore') {
-          tmp$ = this$Player.callIframePlayerFunctionList_0.iterator();
-          while (tmp$.hasNext()) {
-            var obj = tmp$.next();
-            if (obj.id == callMessage.id) {
-              obj.onReturn(callMessage.returnValue);
-              this$Player.callIframePlayerFunctionList_0.remove_11rb$(obj);
-            }}
-        } else if (callMessage.name == 'IframePlayer') {
-          var onPlaying = this$Player.onPlaying_0;
-          var onNotPlaying = this$Player.onNotPlaying_0;
-          var onError = this$Player.onError_0;
-          var functionName = callMessage.functionName;
-          if (equals(functionName, 'onPlaying') || equals(functionName, 'onNotPlaying') || equals(functionName, 'onError')) {
-            eval(functionName + '()');
-          }}} catch (e) {
-        println('callIframePlayerFunction\u8870\u5DE6: ' + e.toString() + '\n' + ('JSON\u5B57\u4E32(message)\u5167\u5BB9: ' + event.data.toString()) + '\n' + ('Event\u5167\u5BB9: ' + JSON.stringify(event)));
-      }
-    };
-  }
-  Player.prototype.setListenIframePlayerScript_0 = function () {
-    this.listenIframePlayerScript_0 = Player$setListenIframePlayerScript$lambda(this);
+  Player.prototype.reload = function () {
+    var tmp$;
+    tmp$ = this.playingChannel_0;
+    if (tmp$ == null) {
+      return;
+    }this.playChannel_e3jjlp$(tmp$);
   };
   function Player$playChannel$getLink(this$Player) {
     return function () {
@@ -4082,13 +4048,6 @@ if (typeof kotlin === 'undefined') {
     tmp$_3 = (tmp$_2 = (tmp$_1 = (tmp$_0 = (tmp$ = this.playingChannel_0) != null ? tmp$.sources : null) != null ? tmp$_0.node : null) != null ? tmp$_1.getLinkOfHttpsGetAble() : null) != null ? tmp$_2 : '';
     tmp$_4 != null ? (tmp$_4.src = getLink() + '?sourceSrc=' + encodeURIComponent(tmp$_3)) : null;
     this.watchingCounter_0 = new WatchingCounter(channel);
-  };
-  Player.prototype.reload = function () {
-    var tmp$;
-    tmp$ = this.playingChannel_0;
-    if (tmp$ == null) {
-      return;
-    }this.playChannel_e3jjlp$(tmp$);
   };
   function Player$videoTracks$lambda$ObjectLiteral() {
   }
@@ -4314,7 +4273,38 @@ if (typeof kotlin === 'undefined') {
       }
     };
   }
-  function Player$listenIframePlayerScript$lambda(event) {
+  function Player$initListenIframePlayerMessage$lambda$lambda(this$Player) {
+    return function (event) {
+      var tmp$;
+      try {
+        var callMessage = JSON.parse(event.data.toString());
+        if (callMessage.name == null) {
+          return;
+        } else if (callMessage.name == 'HKNBPCore') {
+          tmp$ = this$Player.callIframePlayerFunctionList_0.iterator();
+          while (tmp$.hasNext()) {
+            var obj = tmp$.next();
+            if (obj.id == callMessage.id) {
+              obj.onReturn(callMessage.returnValue);
+              this$Player.callIframePlayerFunctionList_0.remove_11rb$(obj);
+            }}
+        } else if (callMessage.name == 'IframePlayer') {
+          var onPlaying = this$Player.onPlaying_0;
+          var onNotPlaying = this$Player.onNotPlaying_0;
+          var onError = this$Player.onError_0;
+          var functionName = callMessage.functionName;
+          if (equals(functionName, 'onPlaying') || equals(functionName, 'onNotPlaying') || equals(functionName, 'onError')) {
+            eval(functionName + '()');
+          }}} catch (e) {
+        println('callIframePlayerFunction\u8870\u5DE6: ' + e.toString() + '\n' + ('JSON\u5B57\u4E32(message)\u5167\u5BB9: ' + event.data.toString()) + '\n' + ('Event\u5167\u5BB9: ' + JSON.stringify(event)));
+      }
+    };
+  }
+  function Player$initListenIframePlayerMessage$lambda(this$Player) {
+    return function () {
+      window.addEventListener('message', Player$initListenIframePlayerMessage$lambda$lambda(this$Player), false);
+      return Unit;
+    };
   }
   function Player_init$ObjectLiteral() {
     this.isPlaying_0 = false;
@@ -4634,9 +4624,7 @@ if (typeof kotlin === 'undefined') {
   };
   RunnerInfo.prototype.isBelowIOS10 = function () {
     var tmp$;
-    if (equals(this.getOsFamily(), 'iOS') && ((tmp$ = this.getIOSVersion()) != null ? tmp$ : 10) < 10) {
-      return true;
-    }return false;
+    return equals(this.getOsFamily(), 'iOS') && ((tmp$ = this.getIOSVersion()) != null ? tmp$ : 10) < 10;
   };
   RunnerInfo.$metadata$ = {
     kind: Kind_OBJECT,
@@ -5850,12 +5838,11 @@ if (typeof kotlin === 'undefined') {
     VolumeDescription_instance = this;
     var tmp$;
     UserInterface.call(this, Kotlin.isType(tmp$ = document.getElementById('volumeDescription'), HTMLElement) ? tmp$ : throwCCE());
-    var tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4;
-    this.volumeDescription_0 = Kotlin.isType(tmp$_0 = document.getElementById('volumeDescription'), HTMLDivElement) ? tmp$_0 : throwCCE();
-    this.volumeUpButton_0 = Kotlin.isType(tmp$_1 = document.getElementById('volumeDescriptionVolumeUpButton'), HTMLButtonElement) ? tmp$_1 : throwCCE();
-    this.volumeDownButton_0 = Kotlin.isType(tmp$_2 = document.getElementById('volumeDescriptionVolumeDownButton'), HTMLButtonElement) ? tmp$_2 : throwCCE();
-    this.volumeValue_0 = Kotlin.isType(tmp$_3 = document.getElementById('volumeDescriptionVolumeValue'), HTMLDivElement) ? tmp$_3 : throwCCE();
-    this.volumeIconList_0 = Kotlin.isType(tmp$_4 = document.getElementById('volumeDescriptionVolumeIconList'), HTMLDivElement) ? tmp$_4 : throwCCE();
+    var tmp$_0, tmp$_1, tmp$_2, tmp$_3;
+    this.volumeUpButton_0 = Kotlin.isType(tmp$_0 = document.getElementById('volumeDescriptionVolumeUpButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
+    this.volumeDownButton_0 = Kotlin.isType(tmp$_1 = document.getElementById('volumeDescriptionVolumeDownButton'), HTMLButtonElement) ? tmp$_1 : throwCCE();
+    this.volumeValue_0 = Kotlin.isType(tmp$_2 = document.getElementById('volumeDescriptionVolumeValue'), HTMLDivElement) ? tmp$_2 : throwCCE();
+    this.volumeIconList_0 = Kotlin.isType(tmp$_3 = document.getElementById('volumeDescriptionVolumeIconList'), HTMLDivElement) ? tmp$_3 : throwCCE();
     this.volumeIcon_0 = '<i class="icon-font">&#xe82a;<\/i>';
     this.volumeUpButton_0.onclick = VolumeDescription_init$lambda;
     this.volumeDownButton_0.onclick = VolumeDescription_init$lambda_0;

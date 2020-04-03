@@ -87,7 +87,6 @@ object RunnerInfo {
     }
 
     fun isBelowIOS10(): Boolean{
-        if(getOsFamily() == "iOS" && getIOSVersion()?:10 < 10){ return true }
-        return false
+        return getOsFamily() == "iOS" && (getIOSVersion()?:10) < 10
     }
 }
