@@ -29,6 +29,7 @@ class Dialogue(
         val agree: String = "",
         val canNotFind: String = "",
         val canNotReadData: String = "",
+        val cannotReceiveChannelSignal: String = "",
         val episode: String = "",
         val part: String = "",
         val poorSignalReception: String = "",

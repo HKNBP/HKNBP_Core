@@ -13,7 +13,7 @@ function TrackDescription(id, name){
 /**
  * 當播放器播放緊頻道時
  * 需要設定call呢個function()
- * 向HKNBP_Core發送呢個IframePlayer嘅播放器正播放緊頻道
+ * 向HKNBP_Core發送呢個IframePlayer正播放緊頻道
  * */
 var onIframePlayerPlaying = function(){
    callHKNBPCoreFunction("onPlaying", "", function(){});
@@ -32,12 +32,21 @@ var onIframePlayerNotPlaying = function(){
 };
 
 /**
- * 當播放器播放頻道出錯時
+ * 當播放器播放頻道發現運行裝置不支援個頻道嘅訊號格式時
  * 需要設定call呢個function()
- * 向HKNBP_Core發送呢個IframePlayer嘅播放器依家出現錯誤
+ * 向HKNBP_Core發送呢個IframePlayer播放依家發現運行裝置不支援個頻道嘅訊號格式
  * */
-var onIframePlayerError = function(){
-   callHKNBPCoreFunction("onError", "", function(){});
+var onIframePlayerDeviceNotSupportFormat = function(){
+   callHKNBPCoreFunction("onDeviceNotSupportFormat", "", function(){});
+};
+
+/**
+ * 當播放器無法接收頻道訊號時(可能: 頻道源無效,頻道源伺服器瓜左)
+ * 需要設定call呢個function()
+ * 向HKNBP_Core發送呢個IframePlayer播放依家嘅頻道源無效
+ * */
+var onIframePlayerCannotReceiveChannelSignal = function(){
+   callHKNBPCoreFunction("onCannotReceiveChannelSignal", "", function(){});
 };
 
 /**

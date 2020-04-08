@@ -1153,6 +1153,11 @@ if (typeof kotlin === 'undefined') {
     tmp$_1 = (tmp$_0 = (tmp$ = dialogues.node) != null ? tmp$.thisDeviceDoesNotSupportThisChannelSignal : null) != null ? tmp$_0 : '';
     ChannelDescription_getInstance().channelStatusPrompt_0 = new PromptBox(tmp$_1, null);
   }
+  function ChannelDescription_init$ObjectLiteral$on$lambda_2(dialogues) {
+    var tmp$, tmp$_0, tmp$_1;
+    tmp$_1 = (tmp$_0 = (tmp$ = dialogues.node) != null ? tmp$.cannotReceiveChannelSignal : null) != null ? tmp$_0 : '';
+    ChannelDescription_getInstance().channelStatusPrompt_0 = new PromptBox(tmp$_1, null);
+  }
   ChannelDescription_init$ObjectLiteral_0.prototype.on_mdxcb7$ = function (onPlayerEvent) {
     switch (onPlayerEvent.name) {
       case 'turnChannel':
@@ -1175,10 +1180,17 @@ if (typeof kotlin === 'undefined') {
         this.isPlaying_0 = false;
         window.setTimeout(ChannelDescription_init$ObjectLiteral$on$lambda_0(this), 5000);
         break;
-      case 'error':
+      case 'deviceNotSupportFormat':
+        this.isPlaying_0 = false;
+        ChannelDescription_getInstance().update();
+        ChannelDescription_getInstance().show_s8ev37$(null);
         Dialogue$Companion_getInstance().getDialogues_fs1aqo$(ChannelDescription_init$ObjectLiteral$on$lambda_1);
         break;
-      default:Kotlin.noWhenBranchMatched();
+      case 'cannotReceiveChannelSignal':
+        this.isPlaying_0 = false;
+        ChannelDescription_getInstance().update();
+        ChannelDescription_getInstance().show_s8ev37$(null);
+        Dialogue$Companion_getInstance().getDialogues_fs1aqo$(ChannelDescription_init$ObjectLiteral$on$lambda_2);
         break;
     }
   };
@@ -1764,7 +1776,7 @@ if (typeof kotlin === 'undefined') {
       new CustomChannelsSettingWindow();
     }return CustomChannelsSettingWindow_instance;
   }
-  function Dialogue(language, agree, canNotFind, canNotReadData, episode, part, poorSignalReception, thisDeviceDoesNotSupportThisChannelSignal, totalEpisode, totalSeason, totalPart, season) {
+  function Dialogue(language, agree, canNotFind, canNotReadData, cannotReceiveChannelSignal, episode, part, poorSignalReception, thisDeviceDoesNotSupportThisChannelSignal, totalEpisode, totalSeason, totalPart, season) {
     Dialogue$Companion_getInstance();
     if (language === void 0)
       language = '';
@@ -1774,6 +1786,8 @@ if (typeof kotlin === 'undefined') {
       canNotFind = '';
     if (canNotReadData === void 0)
       canNotReadData = '';
+    if (cannotReceiveChannelSignal === void 0)
+      cannotReceiveChannelSignal = '';
     if (episode === void 0)
       episode = '';
     if (part === void 0)
@@ -1794,6 +1808,7 @@ if (typeof kotlin === 'undefined') {
     this.agree = agree;
     this.canNotFind = canNotFind;
     this.canNotReadData = canNotReadData;
+    this.cannotReceiveChannelSignal = cannotReceiveChannelSignal;
     this.episode = episode;
     this.part = part;
     this.poorSignalReception = poorSignalReception;
@@ -3281,7 +3296,7 @@ if (typeof kotlin === 'undefined') {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.04_1';
+    return 'v2020.04_2';
   }
   var coreVersion;
   var appVersion;
@@ -3636,12 +3651,13 @@ if (typeof kotlin === 'undefined') {
   };
   function OfficialChannels$updateChannels$lambda(this$OfficialChannels) {
     return function (officialChannels) {
-      var tmp$, tmp$_0;
-      this$OfficialChannels.set_0(officialChannels);
-      if (((tmp$_0 = (tmp$ = localStorage.getItem('isFirstLoadedOfficialChannelsInfoToSet')) != null ? toBoolean(tmp$) : null) != null ? tmp$_0 : true) || channels.size < 1) {
-        localStorage.setItem('isFirstLoadedOfficialChannelsInfoToSet', false.toString());
+      if (channels.size < 1) {
+        this$OfficialChannels.set_0(officialChannels);
         changeToRecentlyWatchedChannel(channels);
-      }};
+      } else {
+        this$OfficialChannels.set_0(officialChannels);
+      }
+    };
   }
   function OfficialChannels$updateChannels$lambda_0() {
   }
@@ -3707,7 +3723,9 @@ if (typeof kotlin === 'undefined') {
     this.onTurnChannel_0 = Player$onTurnChannel$lambda(this);
     this.onPlaying_0 = Player$onPlaying$lambda(this);
     this.onNotPlaying_0 = Player$onNotPlaying$lambda(this);
-    this.onError_0 = Player$onError$lambda(this);
+    this.onDeviceNotSupportFormat_0 = Player$onDeviceNotSupportFormat$lambda(this);
+    this.onCannotReceiveChannelSignal_0 = Player$onCannotReceiveChannelSignal$lambda(this);
+    this.onNoNetwork_0 = Player$onNoNetwork$lambda(this);
     this.initListenIframePlayerMessage_0 = Player$initListenIframePlayerMessage$lambda(this)();
     if (!RunnerInfo_getInstance().isBelowIOS10()) {
       this.addOnPlayerEventListener_j8fzjz$(new Player_init$ObjectLiteral());
@@ -3723,7 +3741,9 @@ if (typeof kotlin === 'undefined') {
     Player$OnPlayerEvent$turnChannel_instance = new Player$OnPlayerEvent('turnChannel', 0);
     Player$OnPlayerEvent$playing_instance = new Player$OnPlayerEvent('playing', 1);
     Player$OnPlayerEvent$notPlaying_instance = new Player$OnPlayerEvent('notPlaying', 2);
-    Player$OnPlayerEvent$error_instance = new Player$OnPlayerEvent('error', 3);
+    Player$OnPlayerEvent$deviceNotSupportFormat_instance = new Player$OnPlayerEvent('deviceNotSupportFormat', 3);
+    Player$OnPlayerEvent$cannotReceiveChannelSignal_instance = new Player$OnPlayerEvent('cannotReceiveChannelSignal', 4);
+    Player$OnPlayerEvent$noNetwork_instance = new Player$OnPlayerEvent('noNetwork', 5);
   }
   var Player$OnPlayerEvent$turnChannel_instance;
   function Player$OnPlayerEvent$turnChannel_getInstance() {
@@ -3740,10 +3760,20 @@ if (typeof kotlin === 'undefined') {
     Player$OnPlayerEvent_initFields();
     return Player$OnPlayerEvent$notPlaying_instance;
   }
-  var Player$OnPlayerEvent$error_instance;
-  function Player$OnPlayerEvent$error_getInstance() {
+  var Player$OnPlayerEvent$deviceNotSupportFormat_instance;
+  function Player$OnPlayerEvent$deviceNotSupportFormat_getInstance() {
     Player$OnPlayerEvent_initFields();
-    return Player$OnPlayerEvent$error_instance;
+    return Player$OnPlayerEvent$deviceNotSupportFormat_instance;
+  }
+  var Player$OnPlayerEvent$cannotReceiveChannelSignal_instance;
+  function Player$OnPlayerEvent$cannotReceiveChannelSignal_getInstance() {
+    Player$OnPlayerEvent_initFields();
+    return Player$OnPlayerEvent$cannotReceiveChannelSignal_instance;
+  }
+  var Player$OnPlayerEvent$noNetwork_instance;
+  function Player$OnPlayerEvent$noNetwork_getInstance() {
+    Player$OnPlayerEvent_initFields();
+    return Player$OnPlayerEvent$noNetwork_instance;
   }
   Player$OnPlayerEvent.$metadata$ = {
     kind: Kind_CLASS,
@@ -3751,7 +3781,7 @@ if (typeof kotlin === 'undefined') {
     interfaces: [Enum]
   };
   function Player$OnPlayerEvent$values() {
-    return [Player$OnPlayerEvent$turnChannel_getInstance(), Player$OnPlayerEvent$playing_getInstance(), Player$OnPlayerEvent$notPlaying_getInstance(), Player$OnPlayerEvent$error_getInstance()];
+    return [Player$OnPlayerEvent$turnChannel_getInstance(), Player$OnPlayerEvent$playing_getInstance(), Player$OnPlayerEvent$notPlaying_getInstance(), Player$OnPlayerEvent$deviceNotSupportFormat_getInstance(), Player$OnPlayerEvent$cannotReceiveChannelSignal_getInstance(), Player$OnPlayerEvent$noNetwork_getInstance()];
   }
   Player$OnPlayerEvent.values = Player$OnPlayerEvent$values;
   function Player$OnPlayerEvent$valueOf(name) {
@@ -3762,8 +3792,12 @@ if (typeof kotlin === 'undefined') {
         return Player$OnPlayerEvent$playing_getInstance();
       case 'notPlaying':
         return Player$OnPlayerEvent$notPlaying_getInstance();
-      case 'error':
-        return Player$OnPlayerEvent$error_getInstance();
+      case 'deviceNotSupportFormat':
+        return Player$OnPlayerEvent$deviceNotSupportFormat_getInstance();
+      case 'cannotReceiveChannelSignal':
+        return Player$OnPlayerEvent$cannotReceiveChannelSignal_getInstance();
+      case 'noNetwork':
+        return Player$OnPlayerEvent$noNetwork_getInstance();
       default:throwISE('No enum constant org.sourcekey.hknbp.hknbp_core.Player.OnPlayerEvent.' + name);
     }
   }
@@ -3948,19 +3982,14 @@ if (typeof kotlin === 'undefined') {
       closure$setScript(closure$muted);
     };
   }
-  function Player$setMuted$lambda_1(closure$setScript, this$Player) {
+  function Player$setMuted$lambda_1(closure$setScript) {
     return function () {
-      var tmp$;
       closure$setScript(true);
-      if (1 < this$Player.tryUnmuteCount_0) {
-        new PromptBox('\u5982\u672A\u80FD\u89E3\u9664\u975C\u97F3\u8ACB\u4EFB\u610F\u9EDE\u64CA\u87A2\u5E55');
-      }tmp$ = this$Player.tryUnmuteCount_0;
-      this$Player.tryUnmuteCount_0 = tmp$ + 1 | 0;
     };
   }
   Player.prototype.setMuted_6taknv$ = function (muted) {
     var setScript = Player$setMuted$lambda(this);
-    CanAutoplay_getInstance().checkVideoAutoPlayNeedToMute_9dmrm4$(Player$setMuted$lambda_0(muted, this, setScript), Player$setMuted$lambda_1(setScript, this));
+    CanAutoplay_getInstance().checkVideoAutoPlayNeedToMute_9dmrm4$(Player$setMuted$lambda_0(muted, this, setScript), Player$setMuted$lambda_1(setScript));
   };
   function Player$getMuted$lambda(this$Player, closure$onReturn) {
     return function (returnValue) {
@@ -4325,13 +4354,33 @@ if (typeof kotlin === 'undefined') {
       }
     };
   }
-  function Player$onError$lambda(this$Player) {
+  function Player$onDeviceNotSupportFormat$lambda(this$Player) {
     return function () {
       var tmp$;
       tmp$ = this$Player.onPlayerEvents_0.iterator();
       while (tmp$.hasNext()) {
         var event = tmp$.next();
-        event.on_mdxcb7$(Player$OnPlayerEvent$error_getInstance());
+        event.on_mdxcb7$(Player$OnPlayerEvent$deviceNotSupportFormat_getInstance());
+      }
+    };
+  }
+  function Player$onCannotReceiveChannelSignal$lambda(this$Player) {
+    return function () {
+      var tmp$;
+      tmp$ = this$Player.onPlayerEvents_0.iterator();
+      while (tmp$.hasNext()) {
+        var event = tmp$.next();
+        event.on_mdxcb7$(Player$OnPlayerEvent$cannotReceiveChannelSignal_getInstance());
+      }
+    };
+  }
+  function Player$onNoNetwork$lambda(this$Player) {
+    return function () {
+      var tmp$;
+      tmp$ = this$Player.onPlayerEvents_0.iterator();
+      while (tmp$.hasNext()) {
+        var event = tmp$.next();
+        event.on_mdxcb7$(Player$OnPlayerEvent$noNetwork_getInstance());
       }
     };
   }
@@ -4353,7 +4402,8 @@ if (typeof kotlin === 'undefined') {
         } else if (callMessage.name == 'IframePlayer') {
           var onPlaying = this$Player.onPlaying_0;
           var onNotPlaying = this$Player.onNotPlaying_0;
-          var onError = this$Player.onError_0;
+          var onDeviceNotSupportFormat = this$Player.onDeviceNotSupportFormat_0;
+          var onCannotReceiveChannelSignal = this$Player.onCannotReceiveChannelSignal_0;
           var functionName = callMessage.functionName;
           if (equals(functionName, 'onPlaying') || equals(functionName, 'onNotPlaying') || equals(functionName, 'onError')) {
             eval(functionName + '()');
@@ -4404,8 +4454,14 @@ if (typeof kotlin === 'undefined') {
         Player_getInstance().reload();
       }};
   }
+  function Player_init$ObjectLiteral$on$lambda_4(this$) {
+    return function () {
+      if (!this$.isPlaying_0) {
+        Player_getInstance().reload();
+      }};
+  }
   Player_init$ObjectLiteral.prototype.on_mdxcb7$ = function (onPlayerEvent) {
-    var tmp$, tmp$_0, tmp$_1;
+    var tmp$;
     switch (onPlayerEvent.name) {
       case 'playing':
         this.isPlaying_0 = true;
@@ -4424,16 +4480,9 @@ if (typeof kotlin === 'undefined') {
         this.timerList_0.add_11rb$(window.setTimeout(Player_init$ObjectLiteral$on$lambda_1(this), 10000));
         this.timerList_0.add_11rb$(window.setTimeout(Player_init$ObjectLiteral$on$lambda_2(this), 25000));
         this.timerList_0.add_11rb$(window.setTimeout(Player_init$ObjectLiteral$on$lambda_3(this), 30000));
-        if (10 < this.currentChannelNotPlayingCount_0) {
-          window.location.reload();
-        }
-        if (((tmp$_0 = Player_getInstance().playingChannel_0) != null ? tmp$_0.number : null) == this.currentChannelNumber_0) {
-          this.currentChannelNotPlayingCount_0 = this.currentChannelNotPlayingCount_0 + 1 | 0;
-        } else {
-          this.currentChannelNotPlayingCount_0 = 0;
-          this.currentChannelNumber_0 = (tmp$_1 = Player_getInstance().playingChannel_0) != null ? tmp$_1.number : null;
-        }
-
+        break;
+      case 'noNetwork':
+        this.timerList_0.add_11rb$(window.setInterval(Player_init$ObjectLiteral$on$lambda_4(this), 30000));
         break;
     }
   };
@@ -7564,8 +7613,14 @@ if (typeof kotlin === 'undefined') {
   Object.defineProperty(Player$OnPlayerEvent, 'notPlaying', {
     get: Player$OnPlayerEvent$notPlaying_getInstance
   });
-  Object.defineProperty(Player$OnPlayerEvent, 'error', {
-    get: Player$OnPlayerEvent$error_getInstance
+  Object.defineProperty(Player$OnPlayerEvent, 'deviceNotSupportFormat', {
+    get: Player$OnPlayerEvent$deviceNotSupportFormat_getInstance
+  });
+  Object.defineProperty(Player$OnPlayerEvent, 'cannotReceiveChannelSignal', {
+    get: Player$OnPlayerEvent$cannotReceiveChannelSignal_getInstance
+  });
+  Object.defineProperty(Player$OnPlayerEvent, 'noNetwork', {
+    get: Player$OnPlayerEvent$noNetwork_getInstance
   });
   Player.prototype.OnPlayerEvent = Player$OnPlayerEvent;
   Player.prototype.OnPlayerEventListener = Player$OnPlayerEventListener;
