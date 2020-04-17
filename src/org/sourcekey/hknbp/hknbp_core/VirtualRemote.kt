@@ -210,6 +210,7 @@ object VirtualRemote{
             )
         }
         centerButton.onclick                = fun(event){
+            /*
             //當冇Focus任何Element時
             //按此鍵就Focus到userControlPanelShower實現顯示userControlPanel
             var focusingElement = jq(":focus").get(0)
@@ -220,6 +221,7 @@ object VirtualRemote{
             )){ jq("#userControlPanelShower").focus() }
             //click入Focus緊嘅Element
             jq(":focus").click()
+            */
         }
         upButton.onclick                    = fun(event){
             val selectables = jq(":tabbable")

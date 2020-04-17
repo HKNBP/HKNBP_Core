@@ -11,5 +11,5 @@ IDE: IntelliJ IDEA
 ### 貢獻
 在開始前，請細閱本項目的[貢獻準則](https://www.contributor-covenant.org/version/2/0/code_of_conduct/)。
 
-# License
+### License
 The source code is licensed under GPL v3. License is available [here](/LICENSE).

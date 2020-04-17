@@ -3296,7 +3296,7 @@ if (typeof kotlin === 'undefined') {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.04_2';
+    return 'v2020.04_3';
   }
   var coreVersion;
   var appVersion;
@@ -4613,7 +4613,6 @@ if (typeof kotlin === 'undefined') {
     switch (toIntOrNull(event.which.toString())) {
       case 13:
         VirtualRemote_getInstance().centerButton.click();
-        event.preventDefault();
         break;
       case 18:
         VirtualRemote_getInstance().menuButton.click();
@@ -5806,10 +5805,6 @@ if (typeof kotlin === 'undefined') {
     window.open('https://datastudio.google.com/reporting/1GKlAWHEsDdryWh2PRdQFmWzQ_ksRQ8BK/page/1M', '_blank');
   }
   function VirtualRemote_init$lambda_45(event) {
-    var focusingElement = $(':focus').get(0);
-    if (!(Kotlin.isType(focusingElement, HTMLButtonElement) || Kotlin.isType(focusingElement, HTMLInputElement) || Kotlin.isType(focusingElement, HTMLSelectElement) || Kotlin.isType(focusingElement, HTMLOptionElement))) {
-      $('#userControlPanelShower').focus();
-    }$(':focus').click();
   }
   function VirtualRemote_init$lambda$lambda(element) {
     var tmp$;
