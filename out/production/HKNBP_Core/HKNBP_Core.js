@@ -3296,7 +3296,7 @@ if (typeof kotlin === 'undefined') {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.04_3';
+    return 'v2020.04_4';
   }
   var coreVersion;
   var appVersion;
@@ -5805,7 +5805,10 @@ if (typeof kotlin === 'undefined') {
     window.open('https://datastudio.google.com/reporting/1GKlAWHEsDdryWh2PRdQFmWzQ_ksRQ8BK/page/1M', '_blank');
   }
   function VirtualRemote_init$lambda_45(event) {
-  }
+    var focusingElement = $(':focus').get(0);
+    if (!(Kotlin.isType(focusingElement, HTMLButtonElement) || Kotlin.isType(focusingElement, HTMLInputElement) || Kotlin.isType(focusingElement, HTMLSelectElement) || Kotlin.isType(focusingElement, HTMLOptionElement))) {
+      $('#userControlPanelShower').focus();
+    }}
   function VirtualRemote_init$lambda$lambda(element) {
     var tmp$;
     return (tmp$ = toIntOrNull(Tab3dIndex$Companion_getInstance().toUnparsedTabIndex_lvro24$(element))) != null ? tmp$ : 0;
