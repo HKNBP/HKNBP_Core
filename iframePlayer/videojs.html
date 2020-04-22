@@ -103,6 +103,23 @@ function onSetIframePlayerPlay(){
 }
 
 /**
+ * 將Player重新載入頻道播放
+ * */
+function reload(){
+    player.src({
+        src: player.src(),
+        type: getSourceType(player.src())
+    });
+}
+
+/**
+ * 由HKNBP_Core開啟呢個IframePlayer去將Player重新載入頻道播放
+ * */
+function onSetIframePlayerReload(){
+    reload();
+}
+
+/**
  * 由HKNBP_Core開啟呢個IframePlayer去設定videoTrack
  *
  * @param {videoTrack: TrackDescription} videoTrack 當執行設定videoTrack時嘅videoTrack參數
@@ -348,6 +365,7 @@ function getSourceType(sourceSrc){
  * @param {source: String} source 頻道源
  * */
 function onIframePlayerInit(sourceSrc){
+    //設置播放器
     player = videojs('player', {
         autoplay: true,
         controls: false,
@@ -372,29 +390,31 @@ function onIframePlayerInit(sourceSrc){
         });
         settings.updateDisplay();
     });
+    //設置當播放頻道有問題時嘗試重新播放
     player.on("error", function(error){
-        /*
-        switch(error.code) {
-          case MediaError.MEDIA_ERR_ABORTED:
-            console.log("The user canceled the audio.");
+        //識別錯誤
+        switch(player.error().code) {
+            /*case MediaError.MEDIA_ERR_ABORTED:
+                console.log("The user canceled the audio.");
             break;
-          case MediaError.MEDIA_ERR_NETWORK:
-            console.log("A network error occurred while fetching the audio.");
+            case MediaError.MEDIA_ERR_NETWORK:
+                console.log("A network error occurred while fetching the audio.");
             break;
-          case MediaError.MEDIA_ERR_DECODE:
-            console.log("An error occurred while decoding the audio.");
+            case MediaError.MEDIA_ERR_DECODE:
+                console.log("An error occurred while decoding the audio.");
             break;
-          case MediaError.MEDIA_ERR_SRC_NOT_SUPPORTED:
-            console.log("The audio is missing or is in a format not supported by your browser.");
-            break;
-          default:
-            console.log("An unknown error occurred.");
+            case MediaError.MEDIA_ERR_SRC_NOT_SUPPORTED:
+                console.log("The audio is missing or is in a format not supported by your browser.");
+            break;*/
+            default:
+                console.log("An unknown error occurred.");
             break;
         }
-        console.log('error!', error.code, error.type , error.message);*/
+        console.log('error!', error.code, error.type , error.message);
+        //發出 頻道 未能播放資訊
         onIframePlayerNotPlaying();
     });
-    //Dash流訊號播放器監聽
+    //設置Dash流訊號播放器監聽
     videojs.Html5DashJS.hook('beforeinitialize', function(player, _mediaPlayer) {
         if (videojs && videojs.log) {
             mediaPlayer = _mediaPlayer;
@@ -406,6 +426,7 @@ function onIframePlayerInit(sourceSrc){
             });
         }
     });
+    //播放頻道
     player.src({
         src: sourceSrc,
         type: getSourceType(sourceSrc)/*,
