@@ -88,7 +88,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539618764335" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JAVA" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/my-app" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
@@ -295,38 +295,24 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
-    <state x="1204" y="189" width="800" height="676" key="#Web_Browsers" timestamp="1579237917444">
-      <screen x="0" y="0" width="2560" height="1080" />
-    </state>
-    <state x="1204" y="189" width="800" height="676" key="#Web_Browsers/0.0.2560.1080@0.0.2560.1080" timestamp="1579237917444" />
     <state x="153" y="235" width="1084" height="804" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584036161482">
       <screen x="0" y="25" width="2560" height="1055" />
     </state>
-    <state x="1298" y="171" width="1084" height="804" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1579241754803" />
     <state x="153" y="235" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.2560.1055@0.25.2560.1055" timestamp="1584036161482" />
     <state x="1663" y="386" width="504" height="266" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1585385566166">
       <screen x="0" y="27" width="2560" height="1053" />
     </state>
     <state x="1663" y="355" width="504" height="328" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1582197639525" />
     <state x="1663" y="386" width="504" height="266" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.27.2560.1053@0.27.2560.1053" timestamp="1585385566166" />
-    <state x="1319" y="429" width="469" height="340" key="#com.intellij.tools.ToolEditorDialog" timestamp="1579187741096">
-      <screen x="0" y="0" width="2560" height="1080" />
+    <state x="1082" y="306" width="426" height="493" key="FileChooserDialogImpl" timestamp="1588141759638">
+      <screen x="0" y="0" width="2560" height="1038" />
     </state>
-    <state x="1319" y="429" width="469" height="340" key="#com.intellij.tools.ToolEditorDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1579187741096" />
-    <state x="1577" y="333" width="515" height="478" key="EnvironmentVariablesDialog" timestamp="1579238350762">
-      <screen x="0" y="0" width="2560" height="1080" />
-    </state>
-    <state x="1577" y="333" width="515" height="478" key="EnvironmentVariablesDialog/0.0.2560.1080@0.0.2560.1080" timestamp="1579238350762" />
-    <state x="1082" y="337" width="451" height="522" key="FileChooserDialogImpl" timestamp="1585760407901">
-      <screen x="0" y="27" width="2560" height="1053" />
-    </state>
+    <state x="1082" y="306" width="426" height="493" key="FileChooserDialogImpl/0.0.2560.1038@0.0.2560.1038" timestamp="1588141759638" />
     <state x="1254" y="243" width="451" height="514" key="FileChooserDialogImpl/0.0.2560.1040@0.0.2560.1040" timestamp="1582197751138" />
-    <state x="1707" y="355" width="424" height="483" key="FileChooserDialogImpl/0.0.2560.1080@0.0.2560.1080" timestamp="1579238495357" />
     <state x="1082" y="337" width="451" height="522" key="FileChooserDialogImpl/0.27.2560.1053@0.27.2560.1053" timestamp="1585760407901" />
     <state x="1066" y="157" width="1007" height="737" key="SettingsEditor" timestamp="1585760556878">
       <screen x="0" y="27" width="2560" height="1053" />
     </state>
-    <state x="1066" y="133" width="1024" height="844" key="SettingsEditor/0.0.2560.1080@0.0.2560.1080" timestamp="1579359750235" />
     <state x="1066" y="157" width="1007" height="737" key="SettingsEditor/0.27.2560.1053@0.27.2560.1053" timestamp="1585760556878" />
     <state x="1649" y="285" width="540" height="524" key="StructurePopup" timestamp="1583236223070">
       <screen x="0" y="25" width="2560" height="1055" />
@@ -345,10 +331,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="1152" y="180" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2560.1040@0.0.2560.1040" timestamp="1582274805335" />
-    <state x="1452" y="338" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey" timestamp="1579187747534">
-      <screen x="0" y="0" width="2560" height="1080" />
+    <state x="1304" y="245" width="1201" height="556" key="new project wizard" timestamp="1587998518427">
+      <screen x="0" y="0" width="2560" height="1038" />
     </state>
-    <state x="1452" y="338" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey/0.0.2560.1080@0.0.2560.1080" timestamp="1579187747534" />
+    <state x="1304" y="245" width="1201" height="556" key="new project wizard/0.0.2560.1038@0.0.2560.1038" timestamp="1587998518427" />
     <state x="1579" y="238" key="run.anything.popup" timestamp="1587643898708">
       <screen x="0" y="0" width="2560" height="1038" />
     </state>
@@ -359,7 +345,6 @@
       <screen x="0" y="0" width="2560" height="1038" />
     </state>
     <state x="1583" y="229" width="672" height="653" key="search.everywhere.popup/0.0.2560.1038@0.0.2560.1038" timestamp="1587387811900" />
-    <state x="1583" y="238" width="672" height="678" key="search.everywhere.popup/0.0.2560.1080@0.0.2560.1080" timestamp="1579068070219" />
     <state x="1583" y="259" width="672" height="662" key="search.everywhere.popup/0.27.2560.1053@0.27.2560.1053" timestamp="1585562205506" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">

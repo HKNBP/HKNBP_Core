@@ -461,6 +461,15 @@ if (typeof kotlin === 'undefined') {
     this.checkCanAutoplay_0(CanAutoplay_init$lambda_3, CanAutoplay_init$lambda_4(this), this.videoInline_0);
     this.checkCanAutoplay_0(CanAutoplay_init$lambda_5, CanAutoplay_init$lambda_6(this), this.videoInlineMuted_0);
   }
+  CanAutoplay.prototype.isNotUseCanAutoplayOnThisRunner_0 = function () {
+    var tmp$, tmp$_0;
+    var isNotUse = false;
+    if (equals(RunnerInfo_getInstance().getOsFamily(), 'Tizen')) {
+      isNotUse = true;
+    }if (0 < ((tmp$_0 = (tmp$ = appVersion.match('webOS')) != null ? tmp$.length : null) != null ? tmp$_0 : 0)) {
+      isNotUse = true;
+    }return isNotUse;
+  };
   function CanAutoplay$checkCanAutoplay$lambda(closure$onCanAutoplay, closure$onCanNotAutoplay) {
     return function (obj) {
       var result = false;
@@ -477,11 +486,11 @@ if (typeof kotlin === 'undefined') {
   }
   CanAutoplay.prototype.checkCanAutoplay_0 = function (onCanAutoplay, onCanNotAutoplay, autoplayType) {
     try {
-      if (!equals(RunnerInfo_getInstance().getOsFamily(), 'Tizen')) {
+      if (this.isNotUseCanAutoplayOnThisRunner_0()) {
+        onCanAutoplay();
+      } else {
         var _canAutoplay = canAutoplay;
         _canAutoplay[autoplayType.method](autoplayType.params).then(CanAutoplay$checkCanAutoplay$lambda(onCanAutoplay, onCanNotAutoplay));
-      } else {
-        onCanAutoplay();
       }
     } catch (e) {
       onCanAutoplay();
@@ -3312,7 +3321,7 @@ if (typeof kotlin === 'undefined') {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.04_8';
+    return 'v2020.05_1';
   }
   var coreVersion;
   var appVersion;
