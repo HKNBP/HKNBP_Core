@@ -464,11 +464,10 @@ if (typeof kotlin === 'undefined') {
     this.checkCanAutoplay_0(CanAutoplay_init$lambda_5, CanAutoplay_init$lambda_6(this), this.videoInlineMuted_0);
   }
   CanAutoplay.prototype.isNotUseCanAutoplayOnThisRunner_0 = function () {
-    var tmp$, tmp$_0;
     var isNotUse = false;
-    if (equals(RunnerInfo_getInstance().getOsFamily(), 'Tizen')) {
+    if (RunnerInfo_getInstance().isTizen()) {
       isNotUse = true;
-    }if (0 < ((tmp$_0 = (tmp$ = appVersion.match('webOS')) != null ? tmp$.length : null) != null ? tmp$_0 : 0)) {
+    }if (RunnerInfo_getInstance().isWebOS()) {
       isNotUse = true;
     }return isNotUse;
   };
@@ -1196,7 +1195,7 @@ if (typeof kotlin === 'undefined') {
         break;
       case 'notPlaying':
         this.isPlaying_0 = false;
-        window.setTimeout(ChannelDescription_init$ObjectLiteral$on$lambda_0(this), 5000);
+        window.setTimeout(ChannelDescription_init$ObjectLiteral$on$lambda_0(this), 15000);
         break;
       case 'deviceNotSupportFormat':
         this.isPlaying_0 = false;
@@ -3323,7 +3322,7 @@ if (typeof kotlin === 'undefined') {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.05_2';
+    return 'v2020.05_3';
   }
   var coreVersion;
   var appVersion;
@@ -4914,6 +4913,13 @@ if (typeof kotlin === 'undefined') {
     var tmp$;
     return equals(this.getOsFamily(), 'iOS') && ((tmp$ = this.getIOSVersion()) != null ? tmp$ : 10) < 10;
   };
+  RunnerInfo.prototype.isTizen = function () {
+    return equals(this.getOsFamily(), 'Tizen');
+  };
+  RunnerInfo.prototype.isWebOS = function () {
+    var tmp$, tmp$_0;
+    return 0 < ((tmp$_0 = (tmp$ = appVersion.match('webOS')) != null ? tmp$.length : null) != null ? tmp$_0 : 0);
+  };
   RunnerInfo.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'RunnerInfo',
@@ -5937,6 +5943,8 @@ if (typeof kotlin === 'undefined') {
     var focusingElement = $(':focus').get(0);
     if (!(Kotlin.isType(focusingElement, HTMLButtonElement) || Kotlin.isType(focusingElement, HTMLInputElement) || Kotlin.isType(focusingElement, HTMLSelectElement) || Kotlin.isType(focusingElement, HTMLOptionElement))) {
       $('#userControlPanelShower').focus();
+    }if (!(RunnerInfo_getInstance().isTizen() || RunnerInfo_getInstance().isWebOS())) {
+      $(':focus').click();
     }}
   function VirtualRemote_init$lambda$lambda(element) {
     var tmp$;
