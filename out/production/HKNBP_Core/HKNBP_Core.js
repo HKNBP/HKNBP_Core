@@ -3322,7 +3322,7 @@ if (typeof kotlin === 'undefined') {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.05_4';
+    return 'v2020.06_0';
   }
   var coreVersion;
   var appVersion;
@@ -5943,7 +5943,7 @@ if (typeof kotlin === 'undefined') {
     var focusingElement = $(':focus').get(0);
     if (!(Kotlin.isType(focusingElement, HTMLButtonElement) || Kotlin.isType(focusingElement, HTMLInputElement) || Kotlin.isType(focusingElement, HTMLSelectElement) || Kotlin.isType(focusingElement, HTMLOptionElement))) {
       $('#userControlPanelShower').focus();
-    }if (!(RunnerInfo_getInstance().isTizen() || RunnerInfo_getInstance().isWebOS())) {
+    }if (!RunnerInfo_getInstance().isTizen()) {
       $(':focus').click();
     }}
   function VirtualRemote_init$lambda$lambda(element) {
