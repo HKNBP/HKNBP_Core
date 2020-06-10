@@ -18,7 +18,7 @@
  * 控制更新cache版本
  * 修改版本名今用戶進行更新新版
  */
-var coreVersion = "v2020.06_2";
+var coreVersion = "v2020.06_3";
 
 /**
  * 檢查依家運行係米ServiceWorker
@@ -40,6 +40,7 @@ if(self.registration){
         ".",
         "index.html",
         "consent.html",
+        "sleep.html",
         "watching-counter.html",
         "manifest.json",
         "css/animation.css",

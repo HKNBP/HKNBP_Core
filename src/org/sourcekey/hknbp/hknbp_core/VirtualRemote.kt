@@ -24,7 +24,7 @@ import kotlin.browser.window
 object VirtualRemote{
     val virtualRemote               = document.getElementById("virtualRemote")              as HTMLDivElement
     val hideVirtualRemoteButton     = document.getElementById("hideVirtualRemoteButton")    as HTMLButtonElement
-    val onOffButton                 = document.getElementById("onOffButton")                as HTMLButtonElement
+    val sleepButton                 = document.getElementById("sleepButton")                as HTMLButtonElement
     val epgButton                   = document.getElementById("epgButton")                  as HTMLButtonElement
     val nextChannelButton           = document.getElementById("nextChannelButton")          as HTMLButtonElement
     val previousChannelButton       = document.getElementById("previousChannelButton")      as HTMLButtonElement
@@ -150,7 +150,7 @@ object VirtualRemote{
 */
     init {
         hideVirtualRemoteButton.onclick     = fun(event){event.stopPropagation();UserControlPanel.hide()}
-        onOffButton.onclick                 = fun(event){window.location.href = "./off.html"}
+        sleepButton.onclick                 = fun(event){window.location.href = "./sleep.html"}
         epgButton.onclick                   = fun(event){EPG.showHideAlternately(null)}
         nextChannelButton.onclick           = fun(event){channels.next()}
         previousChannelButton.onclick       = fun(event){channels.previous()}

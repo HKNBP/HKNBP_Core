@@ -3322,7 +3322,7 @@ if (typeof kotlin === 'undefined') {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.06_2';
+    return 'v2020.06_3';
   }
   var coreVersion;
   var appVersion;
@@ -5607,7 +5607,7 @@ if (typeof kotlin === 'undefined') {
     var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3, tmp$_4, tmp$_5, tmp$_6, tmp$_7, tmp$_8, tmp$_9, tmp$_10, tmp$_11, tmp$_12, tmp$_13, tmp$_14, tmp$_15, tmp$_16, tmp$_17, tmp$_18, tmp$_19, tmp$_20, tmp$_21, tmp$_22, tmp$_23, tmp$_24, tmp$_25, tmp$_26, tmp$_27, tmp$_28, tmp$_29, tmp$_30, tmp$_31, tmp$_32, tmp$_33, tmp$_34, tmp$_35, tmp$_36, tmp$_37, tmp$_38, tmp$_39, tmp$_40, tmp$_41, tmp$_42, tmp$_43, tmp$_44, tmp$_45, tmp$_46, tmp$_47, tmp$_48, tmp$_49, tmp$_50, tmp$_51, tmp$_52, tmp$_53, tmp$_54, tmp$_55, tmp$_56, tmp$_57, tmp$_58;
     this.virtualRemote = Kotlin.isType(tmp$ = document.getElementById('virtualRemote'), HTMLDivElement) ? tmp$ : throwCCE();
     this.hideVirtualRemoteButton = Kotlin.isType(tmp$_0 = document.getElementById('hideVirtualRemoteButton'), HTMLButtonElement) ? tmp$_0 : throwCCE();
-    this.onOffButton = Kotlin.isType(tmp$_1 = document.getElementById('onOffButton'), HTMLButtonElement) ? tmp$_1 : throwCCE();
+    this.sleepButton = Kotlin.isType(tmp$_1 = document.getElementById('sleepButton'), HTMLButtonElement) ? tmp$_1 : throwCCE();
     this.epgButton = Kotlin.isType(tmp$_2 = document.getElementById('epgButton'), HTMLButtonElement) ? tmp$_2 : throwCCE();
     this.nextChannelButton = Kotlin.isType(tmp$_3 = document.getElementById('nextChannelButton'), HTMLButtonElement) ? tmp$_3 : throwCCE();
     this.previousChannelButton = Kotlin.isType(tmp$_4 = document.getElementById('previousChannelButton'), HTMLButtonElement) ? tmp$_4 : throwCCE();
@@ -5666,7 +5666,7 @@ if (typeof kotlin === 'undefined') {
     this.volumeDescriptionButton = Kotlin.isType(tmp$_57 = document.createElement('button'), HTMLButtonElement) ? tmp$_57 : throwCCE();
     this.returnButton = Kotlin.isType(tmp$_58 = document.createElement('button'), HTMLButtonElement) ? tmp$_58 : throwCCE();
     this.hideVirtualRemoteButton.onclick = VirtualRemote_init$lambda;
-    this.onOffButton.onclick = VirtualRemote_init$lambda_0;
+    this.sleepButton.onclick = VirtualRemote_init$lambda_0;
     this.epgButton.onclick = VirtualRemote_init$lambda_1;
     this.nextChannelButton.onclick = VirtualRemote_init$lambda_2;
     this.previousChannelButton.onclick = VirtualRemote_init$lambda_3;
@@ -5783,7 +5783,7 @@ if (typeof kotlin === 'undefined') {
     UserControlPanel_getInstance().hide();
   }
   function VirtualRemote_init$lambda_0(event) {
-    window.location.href = './off.html';
+    window.location.href = './sleep.html';
   }
   function VirtualRemote_init$lambda_1(event) {
     EPG_getInstance().showHideAlternately_s8ev37$(null);
