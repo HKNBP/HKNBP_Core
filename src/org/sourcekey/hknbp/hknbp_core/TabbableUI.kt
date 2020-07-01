@@ -71,6 +71,8 @@ abstract class TabbableUI(
      * */
     fun unfreeze(){
         super.show(transpositionFocusHideTime)
+        //Focus去當用戶介面顯示時最先Focus嘅Element
+        firstFocusJqElement?.focus()
         //記低呢個介面解除凍結
         isFreeze = false
     }

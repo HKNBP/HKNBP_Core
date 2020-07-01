@@ -3322,7 +3322,7 @@ if (typeof kotlin === 'undefined') {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.07_0';
+    return 'v2020.07_1';
   }
   var coreVersion;
   var appVersion;
@@ -5193,8 +5193,11 @@ if (typeof kotlin === 'undefined') {
     this.isFreeze_9y79cq$_0 = true;
   };
   TabbableUI.prototype.unfreeze = function () {
+    var tmp$;
     UserInterface.prototype.show_s8ev37$.call(this, this.transpositionFocusHideTime);
-    this.isFreeze_9y79cq$_0 = false;
+    if ((tmp$ = this.firstFocusJqElement) != null) {
+      tmp$.focus();
+    }this.isFreeze_9y79cq$_0 = false;
   };
   TabbableUI.prototype.show_s8ev37$ = function (showTime) {
     var tmp$, tmp$_0;
