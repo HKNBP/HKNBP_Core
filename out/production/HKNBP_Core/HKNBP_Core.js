@@ -3322,7 +3322,7 @@ if (typeof kotlin === 'undefined') {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.06_3';
+    return 'v2020.07_0';
   }
   var coreVersion;
   var appVersion;
@@ -5157,16 +5157,24 @@ if (typeof kotlin === 'undefined') {
     this.transpositionFocusHideTime = transpositionFocusHideTime;
     this.isFocusTriggerShowEventElement = isFocusTriggerShowEventElement;
     this.isFocusOutHide = isFocusOutHide;
-    this.isAddThisToTabbableUIList_elivbw$_0 = false;
+    this.isFreeze_9y79cq$_0 = false;
+    this.isShowOfNotHided_scfu1m$_0 = false;
     $(mainFrameElement).on('hover', 'button,select,option,input', TabbableUI_init$lambda(this));
     $(mainFrameElement).on('focus', 'button,select,option,input', TabbableUI_init$lambda_0(this));
     $(mainFrameElement).on('scroll', TabbableUI_init$lambda_1(this));
     $(mainFrameElement).on('mousemove', TabbableUI_init$lambda_2(this));
-    UserInterface$Companion_getInstance().allUserInterfaceList.add_11rb$(this);
   }
   function TabbableUI$Companion() {
     TabbableUI$Companion_instance = this;
-    this.tabbableUIList_0 = ArrayList_init();
+    this.showedIList_0 = ArrayList_init();
+    window.addEventListener('popstate', TabbableUI$TabbableUI$Companion_init$lambda(this));
+  }
+  function TabbableUI$TabbableUI$Companion_init$lambda(this$TabbableUI$) {
+    return function (event) {
+      var tmp$;
+      this$TabbableUI$.showedIList_0.removeAt_za3lpa$(get_lastIndex(this$TabbableUI$.showedIList_0));
+      (tmp$ = getOrNull(this$TabbableUI$.showedIList_0, get_lastIndex(this$TabbableUI$.showedIList_0))) != null ? (tmp$.unfreeze(), Unit) : null;
+    };
   }
   TabbableUI$Companion.$metadata$ = {
     kind: Kind_OBJECT,
@@ -5179,30 +5187,33 @@ if (typeof kotlin === 'undefined') {
       new TabbableUI$Companion();
     }return TabbableUI$Companion_instance;
   }
+  TabbableUI.prototype.freeze = function () {
+    UserInterface.prototype.hide.call(this);
+    this.setHideTimer_s8ev37$(null);
+    this.isFreeze_9y79cq$_0 = true;
+  };
+  TabbableUI.prototype.unfreeze = function () {
+    UserInterface.prototype.show_s8ev37$.call(this, this.transpositionFocusHideTime);
+    this.isFreeze_9y79cq$_0 = false;
+  };
   TabbableUI.prototype.show_s8ev37$ = function (showTime) {
     var tmp$, tmp$_0;
-    if (!this.isAddThisToTabbableUIList_elivbw$_0) {
-      this.isAddThisToTabbableUIList_elivbw$_0 = true;
-      tmp$ = TabbableUI$Companion_getInstance().tabbableUIList_0.iterator();
-      while (tmp$.hasNext()) {
-        var tabbableUI = tmp$.next();
-        tabbableUI.pushEventHide();
-      }
-      TabbableUI$Companion_getInstance().tabbableUIList_0.add_11rb$(this);
-    }UserInterface.prototype.show_s8ev37$.call(this, showTime);
-    if ((tmp$_0 = this.firstFocusJqElement) != null) {
-      tmp$_0.focus();
-    }};
-  TabbableUI.prototype.pushEventHide = function () {
-    UserInterface.prototype.hide.call(this);
-  };
+    if (!this.isFreeze_9y79cq$_0) {
+      if (!this.isShowOfNotHided_scfu1m$_0) {
+        (tmp$ = lastOrNull(TabbableUI$Companion_getInstance().showedIList_0)) != null ? (tmp$.freeze(), Unit) : null;
+        TabbableUI$Companion_getInstance().showedIList_0.add_11rb$(this);
+        window.history.pushState('', '', '');
+        this.isShowOfNotHided_scfu1m$_0 = true;
+      }UserInterface.prototype.show_s8ev37$.call(this, showTime);
+      if ((tmp$_0 = this.firstFocusJqElement) != null) {
+        tmp$_0.focus();
+      }}};
   TabbableUI.prototype.hide = function () {
-    var tmp$;
-    UserInterface.prototype.hide.call(this);
-    TabbableUI$Companion_getInstance().tabbableUIList_0.remove_11rb$(this);
-    this.isAddThisToTabbableUIList_elivbw$_0 = false;
-    (tmp$ = lastOrNull(TabbableUI$Companion_getInstance().tabbableUIList_0)) != null ? (tmp$.show_s8ev37$(this.transpositionFocusHideTime), Unit) : null;
-  };
+    if (!this.isFreeze_9y79cq$_0) {
+      UserInterface.prototype.hide.call(this);
+      window.history.back();
+      this.isShowOfNotHided_scfu1m$_0 = false;
+    }};
   function TabbableUI_init$lambda(this$TabbableUI) {
     return function (event) {
       var tmp$, tmp$_0, tmp$_1, tmp$_2, tmp$_3;
@@ -5325,7 +5336,7 @@ if (typeof kotlin === 'undefined') {
   function UserControlPanel() {
     UserControlPanel_instance = this;
     var tmp$, tmp$_0;
-    TabbableUI.call(this, Kotlin.isType(tmp$ = document.getElementById('userControlPanel'), HTMLElement) ? tmp$ : throwCCE(), $(Kotlin.isType(tmp$_0 = document.getElementById('onHeadNextAudioButton'), HTMLElement) ? tmp$_0 : throwCCE()));
+    TabbableUI.call(this, Kotlin.isType(tmp$ = document.getElementById('userControlPanel'), HTMLElement) ? tmp$ : throwCCE(), $(Kotlin.isType(tmp$_0 = document.getElementById('onHeadNextAudioButton'), HTMLElement) ? tmp$_0 : throwCCE()), 30000);
     var tmp$_1;
     this.panel_0 = Kotlin.isType(tmp$_1 = document.getElementById('userControlPanel'), HTMLDivElement) ? tmp$_1 : throwCCE();
     this.onShowUserControlPanel = UserControlPanel$onShowUserControlPanel$lambda;
@@ -5355,12 +5366,12 @@ if (typeof kotlin === 'undefined') {
   function UserControlPanel_init$lambda(this$UserControlPanel) {
     return function (event) {
       event.stopPropagation();
-      this$UserControlPanel.show_s8ev37$(30000);
+      this$UserControlPanel.show_s8ev37$(this$UserControlPanel.transpositionFocusHideTime);
     };
   }
   function UserControlPanel_init$lambda_0(this$UserControlPanel) {
     return function (event) {
-      this$UserControlPanel.show_s8ev37$(30000);
+      this$UserControlPanel.show_s8ev37$(this$UserControlPanel.transpositionFocusHideTime);
     };
   }
   function UserControlPanel_init$lambda_1(this$UserControlPanel) {
@@ -5387,7 +5398,6 @@ if (typeof kotlin === 'undefined') {
     var tmp$_1;
     this.shower_0 = Kotlin.isType(tmp$_1 = document.getElementById('userControlPanelShower'), HTMLButtonElement) ? tmp$_1 : throwCCE();
     this.hideMouseTimer_fjcaw6$_0 = 0;
-    this.show_s8ev37$(null);
     this.shower_0.onclick = UserControlPanelShower_init$lambda;
     this.shower_0.onmousemove = UserControlPanelShower_init$lambda_0(this);
     this.shower_0.ondblclick = UserControlPanelShower_init$lambda_1;
@@ -5410,16 +5420,8 @@ if (typeof kotlin === 'undefined') {
     }
   });
   UserControlPanelShower.prototype.show_s8ev37$ = function (showTime) {
-    TabbableUI.prototype.show_s8ev37$.call(this, null);
-    this.shower_0.style.cursor = 'auto';
   };
-  function UserControlPanelShower$hide$lambda(this$UserControlPanelShower) {
-    return function () {
-      this$UserControlPanelShower.shower_0.style.cursor = 'none';
-    };
-  }
   UserControlPanelShower.prototype.hide = function () {
-    this.hideMouseTimer_0 = window.setTimeout(UserControlPanelShower$hide$lambda(this), 2000);
   };
   UserControlPanelShower.prototype.setIframeOnClick_a4mwiz$ = function (iframeId, onClick) {
   };
@@ -5468,32 +5470,8 @@ if (typeof kotlin === 'undefined') {
     }return UserControlPanelShower_instance;
   }
   function UserInterface(mainFrameElement) {
-    UserInterface$Companion_getInstance();
     this.mainFrameElement = mainFrameElement;
     this.hideTimer_1c3smv$_0 = 0;
-  }
-  function UserInterface$Companion() {
-    UserInterface$Companion_instance = this;
-    this.allUserInterfaceList = ArrayList_init();
-  }
-  UserInterface$Companion.prototype.hideAllUserInterface = function () {
-    var tmp$;
-    tmp$ = this.allUserInterfaceList.iterator();
-    while (tmp$.hasNext()) {
-      var userInterface = tmp$.next();
-      userInterface.hide();
-    }
-  };
-  UserInterface$Companion.$metadata$ = {
-    kind: Kind_OBJECT,
-    simpleName: 'Companion',
-    interfaces: []
-  };
-  var UserInterface$Companion_instance = null;
-  function UserInterface$Companion_getInstance() {
-    if (UserInterface$Companion_instance === null) {
-      new UserInterface$Companion();
-    }return UserInterface$Companion_instance;
   }
   UserInterface.prototype.update = function () {
   };
@@ -6094,7 +6072,7 @@ if (typeof kotlin === 'undefined') {
     VolumeDescription_getInstance().show_s8ev37$(5000);
   }
   function VirtualRemote_init$lambda_56(event) {
-    UserInterface$Companion_getInstance().hideAllUserInterface();
+    window.history.back();
   }
   function VirtualRemote_init$ObjectLiteral() {
   }
@@ -7822,9 +7800,6 @@ if (typeof kotlin === 'undefined') {
   });
   Object.defineProperty(package$hknbp_core, 'UserControlPanelShower', {
     get: UserControlPanelShower_getInstance
-  });
-  Object.defineProperty(UserInterface, 'Companion', {
-    get: UserInterface$Companion_getInstance
   });
   package$hknbp_core.UserInterface = UserInterface;
   Object.defineProperty(package$hknbp_core, 'VideoDescription', {

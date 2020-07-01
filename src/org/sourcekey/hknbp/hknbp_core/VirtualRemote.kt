@@ -341,7 +341,7 @@ object VirtualRemote{
         audioDescriptionButton.onclick      = fun(event){AudioDescription.show(5000)}
         subtitleDescriptionButton.onclick   = fun(event){SubtitleDescription.show(5000)}
         volumeDescriptionButton.onclick     = fun(event){VolumeDescription.show(5000)}
-        returnButton.onclick                = fun(event){UserInterface.hideAllUserInterface()}
+        returnButton.onclick                = fun(event){window.history.back()}
 
         update()
         channels.addOnNodeEventListener(object : ArrayLinkList.OnNodeEventListener<Channel> {

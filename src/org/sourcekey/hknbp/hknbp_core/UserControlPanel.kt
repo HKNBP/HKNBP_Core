@@ -30,7 +30,8 @@ import kotlin.js.Math
  * */
 object UserControlPanel: TabbableUI(
         document.getElementById("userControlPanel") as HTMLElement,
-        firstFocusJqElement = jq(document.getElementById("onHeadNextAudioButton") as HTMLElement)
+        firstFocusJqElement = jq(document.getElementById("onHeadNextAudioButton") as HTMLElement),
+        transpositionFocusHideTime = 30000
 ) {
     private val panel: HTMLDivElement   = document.getElementById("userControlPanel") as HTMLDivElement
 
@@ -77,9 +78,9 @@ object UserControlPanel: TabbableUI(
         panel.onmousemove = fun(event){
             //使用緊panel就繼續顯示
             event.stopPropagation()
-            show(30000)
+            show(transpositionFocusHideTime)
         }
-        panel.onscroll = fun(event){ show(30000) }
+        panel.onscroll = fun(event){ show(transpositionFocusHideTime) }
 
         //當滑鼠離開瀏覽器就隱藏
         //jq("body").mouseleave(fun(event){ hide() })  ///////////////Bug: Firefox嘅Select同Option Element一展開就隱藏
