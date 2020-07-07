@@ -3322,7 +3322,7 @@ if (typeof kotlin === 'undefined') {
   }
   var rootURL;
   function coreVersion$lambda() {
-    return 'v2020.07_1';
+    return 'v2020.07_2-test_Google_Analytics';
   }
   var coreVersion;
   var appVersion;
