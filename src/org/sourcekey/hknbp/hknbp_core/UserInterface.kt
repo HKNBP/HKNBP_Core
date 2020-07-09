@@ -23,6 +23,14 @@ import kotlin.browser.window
 abstract class UserInterface(
         protected val mainFrameElement: HTMLElement             //用戶界面嘅最大Element
 ) {
+    companion object{
+        val allUserInterfaceList = ArrayList<UserInterface>()
+
+        fun hideAllUserInterface(){
+            for(userInterface in allUserInterfaceList){userInterface.hide()}
+        }
+    }
+
     open fun update(){}
 
     /**
@@ -63,4 +71,5 @@ abstract class UserInterface(
     fun showHideAlternately(showTime: Int?){
         if(isShow){ hide() }else{ show(showTime) }
     }
+
 }

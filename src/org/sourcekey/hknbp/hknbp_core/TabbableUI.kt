@@ -17,8 +17,6 @@ package org.sourcekey.hknbp.hknbp_core
 import jquery.JQuery
 import jquery.jq
 import org.w3c.dom.HTMLElement
-import org.w3c.dom.PopStateEvent
-import kotlin.browser.window
 
 abstract class TabbableUI(
         mainFrameElement: HTMLElement,
@@ -30,88 +28,45 @@ abstract class TabbableUI(
 
     companion object{
         /**
-         * 正顯示介面嘅表
+         * 將 可Tab用戶介面 草低到表度 作push同pop用途
          * */
-        private val showedIList = ArrayList<TabbableUI>()
-
-        init {
-            //設置PopState活動
-            window.addEventListener("popstate", fun(event){
-                //移除呢個介面響正顯示介面嘅表
-                showedIList.removeAt(showedIList.lastIndex)
-                //解除凍結上一個介面
-                showedIList.getOrNull(showedIList.lastIndex)?.unfreeze()
-            })
-        }
+        private val tabbableUIList = ArrayList<TabbableUI>()
     }
 
-    /**
-     * 記低呢個介面有否凍結
-     *
-     * 使凍結後介面免被操作
-     * */
-    private var isFreeze: Boolean = false
-
-    /**
-     * 凍結介面
-     *
-     * 因有其他新介面去顯示要隱藏呢個介面
-     * 將之前嘅介面 隱藏 防止搖控讀取到其他介面Element
-     * */
-    fun freeze(){
-        super.hide()
-        //暫停倒數隱藏呢個介面
-        setHideTimer(null)
-        //記低呢個介面已凍結
-        isFreeze = true
-    }
-
-    /**
-     * 解除凍結介面
-     * */
-    fun unfreeze(){
-        super.show(transpositionFocusHideTime)
-        //Focus去當用戶介面顯示時最先Focus嘅Element
-        firstFocusJqElement?.focus()
-        //記低呢個介面解除凍結
-        isFreeze = false
-    }
-
-    /**
-     * 係米正顯示但又未隱藏
-     * 使正顯示介面當未隱藏就不會多次執行
-     * */
-    private var isShowOfNotHided: Boolean = false
+    private var isAddThisToTabbableUIList: Boolean = false
 
     override fun show(showTime: Int?) {
         //如果未響表度就加到表度,如果響表度即是呢個介面係因有新介面顯示而被隱藏
-        if(!isFreeze){
-            if(!isShowOfNotHided){
-                //凍結上一個介面
-                showedIList.lastOrNull()?.freeze()
-                //加呢個介面到正顯示介面嘅表到記低
-                showedIList.add(this)
-                //Push介面
-                window.history.pushState("", "", "")
-                //已顯示但未隱藏
-                isShowOfNotHided = true
-            }
-            //顯示呢個介面
-            super.show(showTime)
-            //Focus去當用戶介面顯示時最先Focus嘅Element
-            firstFocusJqElement?.focus()
+        if(!isAddThisToTabbableUIList){
+            //記低呢個 可Tab用戶介面 係已經響個表度
+            isAddThisToTabbableUIList = true
+            //將所有 可Tab用戶介面 隱藏 防止搖控讀取到其他介面Element
+            for(tabbableUI in tabbableUIList){tabbableUI.pushEventHide()}
+            //將呢個 可Tab用戶介面 草低到表度
+            tabbableUIList.add(this)
         }
+        //顯示呢個可Tab用戶介面
+        super.show(showTime)
+        //Focus去當用戶介面顯示時最先Focus嘅Element
+        firstFocusJqElement?.focus()
+    }
+
+    /**
+     * 因有其他新介面去顯示而隱藏呢個介面
+     * */
+    fun pushEventHide(){
+        super.hide()
     }
 
     override fun hide() {
-        if(!isFreeze){
-            //隱藏呢個介面
-            super.hide()
-            //Pop介面
-            window.history.back()
-            //重新計顯示但未隱藏值
-            isShowOfNotHided = false
-        }
+        //隱藏呢個可Tab用戶介面
+        super.hide()
+        //響可Tab用戶介面表中移除呢個介面
+        tabbableUIList.remove(this)
+        //記低呢個 可Tab用戶介面 係已經唔響個表度
+        isAddThisToTabbableUIList = false
+        //顯示最新嘅 可Tab用戶介面
+        tabbableUIList.lastOrNull()?.show(transpositionFocusHideTime)
     }
 
     init {
@@ -141,11 +96,15 @@ abstract class TabbableUI(
             //當focus就重新倒數介面顯示時間
             setHideTimer(transpositionFocusHideTime)
         })
+
         /**
         jq("#${id}").blur(fun(){
         if(isFocusOutHide){
         hide()
         }
         })*/
+
+        //將呢個UserInterface加去一個List,為其他位置可以一次過搵到哂所有UserInterface
+        allUserInterfaceList.add(this)
     }
 }
