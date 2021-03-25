@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="439dc076-fa64-48ca-946e-6d20fa2781e4" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iframePlayer/videojs.html" beforeDir="false" afterPath="$PROJECT_DIR$/iframePlayer/videojs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HKNBP_Core/HKNBP_Core.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/service-worker.js" beforeDir="false" afterPath="$PROJECT_DIR$/service-worker.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/org/sourcekey/hknbp/hknbp_core/Main.kt" afterDir="false" />
-    </list>
+    <list default="true" id="439dc076-fa64-48ca-946e-6d20fa2781e4" name="Default" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -82,6 +76,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -90,10 +85,10 @@
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JAVA" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
   </component>
   <component name="RecentsManager">
     <key name="OPEN_URL_DIALOG">
@@ -144,6 +139,7 @@
       </method>
     </configuration>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -295,55 +291,20 @@
     </ignored-roots>
   </component>
   <component name="WindowStateProjectService">
-    <state x="153" y="235" width="1084" height="804" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584036161482">
-      <screen x="0" y="25" width="2560" height="1055" />
+    <state x="1082" y="322" width="426" height="493" key="FileChooserDialogImpl" timestamp="1604320948835">
+      <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="153" y="235" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.2560.1055@0.25.2560.1055" timestamp="1584036161482" />
-    <state x="1663" y="386" width="504" height="266" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog" timestamp="1585385566166">
-      <screen x="0" y="27" width="2560" height="1053" />
+    <state x="1082" y="309" width="426" height="493" key="FileChooserDialogImpl/0.0.2560.1038/2560.0.1920.1080@0.0.2560.1038" timestamp="1602374333698" />
+    <state x="1082" y="322" key="FileChooserDialogImpl/0.0.2560.1080/2560.0.1920.1080@0.0.2560.1080" timestamp="1604320948835" />
+    <state x="123" y="101" width="1024" height="846" key="SettingsEditor" timestamp="1604320986888">
+      <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="1663" y="355" width="504" height="328" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1582197639525" />
-    <state x="1663" y="386" width="504" height="266" key="#com.intellij.ide.actions.ChooseComponentsToExportDialog/0.27.2560.1053@0.27.2560.1053" timestamp="1585385566166" />
-    <state x="1082" y="309" width="426" height="493" key="FileChooserDialogImpl" timestamp="1588927404591">
-      <screen x="0" y="0" width="2560" height="1038" />
+    <state x="123" y="97" width="1026" height="854" key="SettingsEditor/0.0.2560.1038@0.0.2560.1038" timestamp="1596360129010" />
+    <state x="123" y="101" width="1024" height="846" key="SettingsEditor/0.0.2560.1080/2560.0.1920.1080@0.0.2560.1080" timestamp="1604320986888" />
+    <state x="353" y="437" width="565" height="217" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1604320884642">
+      <screen x="0" y="0" width="2560" height="1080" />
     </state>
-    <state x="1082" y="309" width="426" height="493" key="FileChooserDialogImpl/0.0.2560.1038@0.0.2560.1038" timestamp="1588927404591" />
-    <state x="1254" y="243" width="451" height="514" key="FileChooserDialogImpl/0.0.2560.1040@0.0.2560.1040" timestamp="1582197751138" />
-    <state x="1082" y="337" width="451" height="522" key="FileChooserDialogImpl/0.27.2560.1053@0.27.2560.1053" timestamp="1585760407901" />
-    <state x="1066" y="157" width="1007" height="737" key="SettingsEditor" timestamp="1585760556878">
-      <screen x="0" y="27" width="2560" height="1053" />
-    </state>
-    <state x="1066" y="157" width="1007" height="737" key="SettingsEditor/0.27.2560.1053@0.27.2560.1053" timestamp="1585760556878" />
-    <state x="1649" y="285" width="540" height="524" key="StructurePopup" timestamp="1583236223070">
-      <screen x="0" y="25" width="2560" height="1055" />
-    </state>
-    <state x="1649" y="285" width="540" height="524" key="StructurePopup/0.25.2560.1055@0.25.2560.1055" timestamp="1583236223070" />
-    <state x="1597" y="351" key="com.intellij.ide.util.TipDialog" timestamp="1586233418257">
-      <screen x="0" y="0" width="2560" height="1036" />
-    </state>
-    <state x="1597" y="351" key="com.intellij.ide.util.TipDialog/0.0.2560.1036@0.0.2560.1036" timestamp="1586233418257" />
-    <state x="1597" y="353" key="com.intellij.ide.util.TipDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1584951045626" />
-    <state x="1597" y="380" key="com.intellij.ide.util.TipDialog/0.21.2560.1059@0.21.2560.1059" timestamp="1582601990951" />
-    <state x="1597" y="383" key="com.intellij.ide.util.TipDialog/0.25.2560.1055@0.25.2560.1055" timestamp="1584330046053" />
-    <state x="1597" y="384" key="com.intellij.ide.util.TipDialog/0.27.2560.1053@0.27.2560.1053" timestamp="1585816457117" />
-    <state x="1152" y="180" width="784" height="704" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1582274805335">
-      <screen x="0" y="0" width="2560" height="1040" />
-    </state>
-    <state x="1152" y="180" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.2560.1040@0.0.2560.1040" timestamp="1582274805335" />
-    <state x="1304" y="245" width="1201" height="556" key="new project wizard" timestamp="1587998518427">
-      <screen x="0" y="0" width="2560" height="1038" />
-    </state>
-    <state x="1304" y="245" width="1201" height="556" key="new project wizard/0.0.2560.1038@0.0.2560.1038" timestamp="1587998518427" />
-    <state x="1579" y="238" key="run.anything.popup" timestamp="1587643898708">
-      <screen x="0" y="0" width="2560" height="1038" />
-    </state>
-    <state x="1579" y="238" key="run.anything.popup/0.0.2560.1038@0.0.2560.1038" timestamp="1587643898708" />
-    <state x="1579" y="238" key="run.anything.popup/0.0.2560.1040@0.0.2560.1040" timestamp="1581069513899" />
-    <state x="1583" y="229" width="672" height="653" key="search.everywhere.popup" timestamp="1587387811900">
-      <screen x="0" y="0" width="2560" height="1038" />
-    </state>
-    <state x="1583" y="229" width="672" height="653" key="search.everywhere.popup/0.0.2560.1038@0.0.2560.1038" timestamp="1587387811900" />
-    <state x="1583" y="259" width="672" height="662" key="search.everywhere.popup/0.27.2560.1053@0.27.2560.1053" timestamp="1585562205506" />
+    <state x="353" y="437" width="565" height="217" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/0.0.2560.1080/2560.0.1920.1080@0.0.2560.1080" timestamp="1604320884642" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
